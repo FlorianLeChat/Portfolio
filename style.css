@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+/* Document entier */
+html
+{
+	color: white;
+	min-width: 540px;
+	font-family: "Open Sans", sans-serif;
+	scroll-behavior: smooth;
+}
+
+/* En-tête */
+header
+{
+	/* Corps de l'en-tête */
+	padding: 4rem 2.5rem 4rem 2.5rem;
+	text-align: center;
+	background: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
+}
+
+header > h1
+{
+	/* Prénom & nom */
+	margin: 0;
+	font-size: 3rem;
+	margin-top: 8rem;
+}
+
+header > h2
+{
+	/* Description succincte */
+	margin-top: 1rem;
+}
+
+header a > img
+{
+	/* Plateformes de communication */
+	width: 2rem;
+	margin: 3rem 1rem 0 1rem;
+	padding: 0.6rem;
+	border-radius: 10px;
+}
+
+header > img
+{
+	/* Vagues marquant la fin de l'en-tête */
+	left: 0;
+	z-index: -1;
+	position: absolute;
+	transform: translateY(2rem);
+	min-width: 540px;
+	min-height: 400px;
+}
+
+.steam { background-color: rgb(63, 63, 70); }
+.discord { background-color: rgb(88, 101, 242); }
+.github { background-color: rgb(39, 39, 42); }
+.twitter { background-color: rgb(29, 161, 242); }
+
+/* Navigation */
+nav > ul
+{
+	/* Propriétés principales de la barre */
+	z-index: 5;
+	position: fixed;
+	border-radius: 100px;
+	backdrop-filter: blur(8px);
+	background-color: rgba(0, 133, 255, 0.7);
+
+	/* Suppression du style par défaut des listes
+		non ordonnées */
+	list-style-position: none;
+
+	/* Ajustement de l'espacement interne de la barre */
+	padding: 1.25rem;
+	padding-left: 2.5rem;
+	padding-right: 2.5rem;
+
+	/* Alignement automatique centrée de la barre
+		(de façon horizontale) */
+	top: 3rem;
+	left: 0;
+	right: 0;
+	width: 410px;
+	margin: 0 auto 0 auto;
+}
+
+nav > ul li
+{
+	/* Affichage des textes de la liste */
+	display: inline;
+	padding: 0 12px 0 12px;
+	line-height: 24px;
+}
+
+/* Liens */
+a
+{
+	/* État initial des liens */
+	color: inherit;
+	position: relative;
+	text-decoration: none;
+}
+
+li a:active
+{
+	/* Passage progressif en bleu lors de l'appui
+		(active + hover) */
+	background: rgb(12, 87, 157);
+}
+
+li a:hover
+{
+	transition: background 500ms ease-out;
+}
+
+li a::after
+{
+	/* Création d'une ligne qui apparaîtra
+		progressivement lors de la sélection */
+	left: 0;
+	bottom: 0;
+	position: absolute;
+
+	width: 100%;
+	height: 1px;
+
+	content: "";
+	transform: scale(0);
+}
+
+li a:hover::after
+{
+	transform: scale(1);
+	transition: transform 300ms ease;
+	background-color: white;
+}
