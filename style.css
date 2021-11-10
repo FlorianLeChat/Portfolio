@@ -7,13 +7,14 @@ html
 	min-width: 540px;
 	font-family: "Open Sans", sans-serif;
 	scroll-behavior: smooth;
+	background-color: rgb(24, 24, 27);
 }
 
 /* En-tête */
 header
 {
 	/* Corps de l'en-tête */
-	padding: 4rem 2.5rem 4rem 2.5rem;
+	padding: 64px 40px 64px 40px;
 	text-align: center;
 	background: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
@@ -22,22 +23,22 @@ header > h1
 {
 	/* Prénom & nom */
 	margin: 0;
-	font-size: 3rem;
-	margin-top: 8rem;
+	font-size: 48px;
+	margin-top: 128px;
 }
 
 header > h2
 {
 	/* Description succincte */
-	margin-top: 1rem;
+	margin-top: 16px;
 }
 
 header a > img
 {
 	/* Plateformes de communication */
-	width: 2rem;
-	margin: 3rem 1rem 0 1rem;
-	padding: 0.6rem;
+	width: 32px;
+	margin: 48px 16px 0 16px;
+	padding: 10px;
 	border-radius: 10px;
 }
 
@@ -47,7 +48,7 @@ header > img
 	left: 0;
 	z-index: -1;
 	position: absolute;
-	transform: translateY(2rem);
+	transform: translateY(32px);
 	min-width: 540px;
 	min-height: 400px;
 }
@@ -72,13 +73,11 @@ nav > ul
 	list-style-position: none;
 
 	/* Ajustement de l'espacement interne de la barre */
-	padding: 1.25rem;
-	padding-left: 2.5rem;
-	padding-right: 2.5rem;
+	padding: 20px 40px 20px 40px;
 
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
-	top: 3rem;
+	top: 48px;
 	left: 0;
 	right: 0;
 	width: 410px;
