@@ -58,6 +58,20 @@ header > img
 .github { background-color: rgb(39, 39, 42); }
 .twitter { background-color: rgb(29, 161, 242); }
 
+.steam, .discord, .github, .twitter
+{
+	/* Animation de réinitialisation de l'échelle */
+	transition: transform 300ms ease;
+}
+
+.steam:hover, .discord:hover, .github:hover, .twitter:hover
+{
+	/* Animation de sélection d'une icône
+		(modification de l'échelle) */
+	transform: scale(1.2);
+	transition: transform 300ms ease;
+}
+
 /* Navigation */
 nav > ul
 {
