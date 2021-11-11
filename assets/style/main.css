@@ -14,6 +14,13 @@ html
 	background-color: rgb(24, 24, 27);
 }
 
+strong
+{
+	/* Éléments de haute importance */
+	font-size: 1.1rem;
+	text-decoration: underline solid;
+}
+
 /* En-tête */
 header
 {
@@ -26,7 +33,7 @@ header > h1
 {
 	/* Prénom & nom */
 	margin: 0;
-	font-size: 48px;
+	font-size: 2rem;
 	margin-top: 128px;
 }
 
@@ -125,7 +132,7 @@ nav > ul li
 	/* Titre de la section */
 	color: white;
 	margin: 0 0 60px;
-	font-size: 32px;
+	font-size: 1.5rem;
 }
 
 #aboutme > h3, #projects > h3
@@ -220,19 +227,19 @@ a
 	text-decoration: none;
 }
 
-li a:active
+h1 a:active, li a:active
 {
 	/* Passage progressif en bleu lors de l'appui
 		(active + hover) */
 	background: rgb(12, 87, 157);
 }
 
-li a:hover
+h1 a:hover, li a:hover
 {
 	transition: background 500ms ease-out;
 }
 
-li a::after
+h1 a::after, li a::after
 {
 	/* Création d'une ligne qui apparaîtra
 		progressivement lors de la sélection */
@@ -247,7 +254,7 @@ li a::after
 	transform: scale(0);
 }
 
-li a:hover::after
+h1 a:hover::after, li a:hover::after
 {
 	transform: scale(1);
 	transition: transform 300ms ease;
