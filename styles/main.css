@@ -136,7 +136,7 @@ aside > select
 }
 
 /* Section : à propos de moi */
-#aboutme
+#aboutme, #services
 {
 	/* Corps de la section */
 	color: rgb(161, 161, 170);
@@ -147,7 +147,7 @@ aside > select
 	padding: var(--offset) 25% var(--offset) 25%;
 }
 
-#aboutme > h2, #projects > h2
+#aboutme > h2, #projects > h2, #services > h2
 {
 	/* Titre de la section */
 	color: white;
@@ -155,7 +155,7 @@ aside > select
 	font-size: 1.5rem;
 }
 
-#aboutme > h3, #projects > h3
+#aboutme > h3, #projects > h3, #services > h3
 {
 	/* Identifiant de la section */
 	margin-bottom: 8px;
@@ -236,7 +236,7 @@ aside > select
 	border-color: rgb(63, 63, 70);
 }
 
-#projects > img
+#projects > img:first-child
 {
 	/* Vagues marquant le début de la section */
 	left: 0;
@@ -245,6 +245,23 @@ aside > select
 	transform: translateY(-60%);
 	min-width: 540px;
 	min-height: 400px;
+}
+
+#projects > img:last-child
+{
+	/* Vagues marquant la fin de la section */
+	left: 0;
+	z-index: -1;
+	position: absolute;
+	transform: translateY(-30%);
+	min-width: 540px;
+	min-height: 400px;
+}
+
+/* Section : services */
+#services
+{
+
 }
 
 /* Liens */
