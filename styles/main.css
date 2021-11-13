@@ -102,7 +102,7 @@ nav > ul
 
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
-	top: 48px;
+	top: 60px;
 	left: 0;
 	right: 0;
 	width: 410px;
@@ -115,6 +115,24 @@ nav > ul li
 	display: inline;
 	padding: 0 12px 0 12px;
 	line-height: 24px;
+}
+
+/* Sélection de la langue */
+aside > select
+{
+	/* Positionnement */
+	top: 0;
+	left: 0;
+	position: absolute;
+
+	/* Dimensions */
+	margin: 5px;
+	padding: 10px;
+
+	/* Apparence */
+	color: white;
+	border-radius: 4px;
+	background-color: rgb(39, 39, 42);
 }
 
 /* Section : à propos de moi */
