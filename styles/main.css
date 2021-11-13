@@ -66,14 +66,16 @@ header > img
 .discord { background-color: rgb(88, 101, 242); }
 .github { background-color: rgb(39, 39, 42); }
 .twitter { background-color: rgb(29, 161, 242); }
+.cv { background-color: white; }
 
-.steam, .discord, .github, .twitter
+.steam, .discord, .github, .twitter, .cv
 {
 	/* Animation de réinitialisation de l'échelle */
 	transition: transform 300ms ease;
 }
 
-.steam:hover, .discord:hover, .github:hover, .twitter:hover
+.steam:hover, .discord:hover, .github:hover,
+.twitter:hover, .cv:hover
 {
 	/* Animation de sélection d'une icône
 		(modification de l'échelle) */
@@ -81,7 +83,7 @@ header > img
 	transition: transform 300ms ease;
 }
 
-/* Navigation */
+/* Barre de navigation */
 nav > ul
 {
 	/* Propriétés principales de la barre */
