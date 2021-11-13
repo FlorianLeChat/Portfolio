@@ -161,7 +161,7 @@ nav > ul li
 #projects article
 {
 	/* Corps de chaque projet */
-	margin: 0 17.5% 24px 17.5%;
+	margin: 0 5% 24px 5%;
 	padding: 32px;
 
 	color: white;
@@ -170,6 +170,15 @@ nav > ul li
 	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 	border-radius: 8px;
 	background-color: rgb(39, 39, 42);
+}
+
+@media (min-width: 1020px)
+{
+	#projects article
+	{
+		margin-left: 17.5%;
+		margin-right: 17.5%;
+	}
 }
 
 #projects div:first-child h1
