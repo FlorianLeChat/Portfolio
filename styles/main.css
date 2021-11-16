@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
-
 /* Document entier */
 html
 {
@@ -41,6 +39,7 @@ header > h2
 {
 	/* Description succincte */
 	margin-top: 16px;
+	font-weight: 400;
 }
 
 header a > img
@@ -158,6 +157,7 @@ aside > select
 #aboutme > h3, #projects > h3, #services > h3
 {
 	/* Identifiant de la section */
+	font-weight: 400;
 	margin-bottom: 8px;
 }
 
