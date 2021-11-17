@@ -72,12 +72,14 @@
 
 			<!-- Sélection de la langue -->
 			<aside>
-				<select>
-					<option>Anglais</option>
-					<option>Français</option>
-					<option>Espagnol</option>
-					<option>Japonais</option>
-				</select>
+				<form action="" method="POST">
+					<select onchange="this.form.submit()">
+						<option value="en">Anglais</option>
+						<option value="fr" selected>Français</option>
+						<option value="es">Espagnol</option>
+						<option value="jp">Japonais</option>
+					</select>
+				</form>
 			</aside>
 
 			<!-- À propos de moi -->
