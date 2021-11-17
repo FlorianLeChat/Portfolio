@@ -145,7 +145,7 @@ aside > select
 	/* Note : Le padding haut/bas prend en compte une taille fixe
 	pour toujours garder une marge quelque soit la résolution */
 	--offset: calc(10% + 72px);
-	padding: var(--offset) 25% var(--offset) 25%;
+	padding: var(--offset) 20% var(--offset) 20%;
 }
 
 #aboutme > h2, #projects > h2, #formations > h2
@@ -287,19 +287,19 @@ a
 	text-decoration: none;
 }
 
-h1 a:active, li a:active
+article a:active, li a:active
 {
 	/* Passage progressif en bleu lors de l'appui
 		(active + hover) */
 	background: rgb(12, 87, 157);
 }
 
-h1 a:hover, li a:hover
+article a:hover, li a:hover
 {
 	transition: background 500ms ease-out;
 }
 
-h1 a::after, li a::after
+article a::after, li a::after
 {
 	/* Création d'une ligne qui apparaîtra
 		progressivement lors de la sélection */
@@ -314,7 +314,7 @@ h1 a::after, li a::after
 	transform: scale(0);
 }
 
-h1 a:hover::after, li a:hover::after
+article a:hover::after, li a:hover::after
 {
 	transform: scale(1);
 	transition: transform 300ms ease;
