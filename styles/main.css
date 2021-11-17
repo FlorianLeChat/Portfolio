@@ -212,7 +212,7 @@ aside select:hover
 	background-attachment: fixed;
 }
 
-@media screen and (hover: hover)
+@media screen and (pointer: fine) and (hover: hover)
 {
 	/* On affiche un effet de sélection pour les affichages
 		sur ordinateurs uniquement */
