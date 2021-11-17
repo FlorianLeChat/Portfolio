@@ -192,7 +192,7 @@ aside select:hover
 	background: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
 
-#row article
+#projects .row article
 {
 	/* Corps de chaque projet */
 	color: white;
@@ -216,7 +216,7 @@ aside select:hover
 {
 	/* On affiche un effet de sélection pour les affichages
 		sur ordinateurs uniquement */
-	#row article
+	#projects .row article
 	{
 		/* État initial */
 		filter: blur(0.75px) grayscale(1);
@@ -229,7 +229,7 @@ aside select:hover
 		background-attachment: fixed;
 	}
 
-	#row article:hover
+	#projects .row article:hover
 	{
 		/* Apparition de la couleur et suppression du flou
 			lors du passage de la souris par dessus */
@@ -241,7 +241,7 @@ aside select:hover
 {
 	/* On affichage une disposition différente sur les
 		grands écrans d'ordinateur */
-	#container
+	#projects .container
 	{
 		/* Boite simulante un tableau de colonnes/cellules */
 		margin: -75px auto -25px auto;
@@ -250,7 +250,7 @@ aside select:hover
 		border-collapse: separate;
 	}
 
-	#container div article
+	#projects .row article
 	{
 		/* Cellules de la boite */
 		width: 500px;
