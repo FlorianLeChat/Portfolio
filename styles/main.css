@@ -223,6 +223,33 @@ aside > select
 	}
 }
 
+@media screen and (min-width: 1024px)
+{
+	/* On affichage une disposition différente sur les
+		grands écrans d'ordinateur */
+	#container
+	{
+		/* Boite simulante un tableau de colonnes/cellules */
+		margin: -50px auto 0 auto;
+		display: table;
+		border-spacing: 48px;
+		border-collapse: separate;
+	}
+
+	#container div article
+	{
+		/* Cellules de la boite */
+		width: 500px;
+		height: 300px;
+
+		display: table-cell;
+		box-sizing: border-box;
+
+		table-layout: fixed;
+		vertical-align: middle;
+	}
+}
+
 #projects > img:first-child
 {
 	/* Vagues marquant le début de la section */
