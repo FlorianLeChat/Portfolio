@@ -198,50 +198,29 @@ aside > select
 	background-attachment: fixed;
 }
 
-@media (min-width: 1020px)
+@media screen and (hover: hover)
 {
-	#projects article
+	/* On affiche un effet de sélection pour les affichages
+		sur ordinateurs uniquement */
+	#row article
 	{
-		margin-left: 17.5%;
-		margin-right: 17.5%;
+		/* État initial */
+		filter: blur(0.75px) grayscale(1);
+		transition: filter 300ms ease-in-out;
+
+		background-size: cover;
+		background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
+		background-color: rgb(39, 39, 42);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
 	}
-}
 
-#projects div:first-child h1
-{
-	/* Nom du projet */
-	text-align: left;
-	line-height: 32px;
-}
-
-#projects div:first-child p
-{
-	/* Description du projet */
-	text-align: justify;
-	line-height: 26px;
-}
-
-#projects div:first-child > img
-{
-	/* Icône du projet */
-	float: left;
-	height: 64px;
-	margin-right: 32px;
-}
-
-#projects div ~ div > img
-{
-	/* Icônes des langages utilisés */
-	height: 40px;
-	margin-left: 24px;
-}
-
-#projects hr
-{
-	/* Séparateur entre les deux parties
-		de chaque projets */
-	margin: 20px 0 20px 0;
-	border-color: rgb(63, 63, 70);
+	#row article:hover
+	{
+		/* Apparition de la couleur et suppression du flou
+			lors du passage de la souris par dessus */
+		filter: blur(0px) grayscale(0);
+	}
 }
 
 #projects > img:first-child
