@@ -106,7 +106,7 @@ nav > ul
 	top: 70px;
 	left: 0;
 	right: 0;
-	width: 427px; /* 415 de base + 12 de marge à droite  */
+	width: 432px; /* 420 de base + 12 de marge à droite  */
 	margin: 0 auto 0 auto;
 }
 
@@ -151,7 +151,7 @@ aside select:hover
 }
 
 /* Section : à propos de moi */
-#aboutme, #formations
+#aboutme, #skills
 {
 	/* Corps de la section */
 	color: rgb(161, 161, 170);
@@ -162,7 +162,7 @@ aside select:hover
 	padding: var(--offset) 20% var(--offset) 20%;
 }
 
-#aboutme > h2, #projects > h2, #formations > h2
+#aboutme > h2, #projects > h2, #skills > h2
 {
 	/* Titre de la section */
 	color: white;
@@ -170,7 +170,7 @@ aside select:hover
 	font-size: 1.5rem;
 }
 
-#aboutme > h3, #projects > h3, #formations > h3
+#aboutme > h3, #projects > h3, #skills > h3
 {
 	/* Identifiant de la section */
 	font-weight: 400;
@@ -286,10 +286,34 @@ aside select:hover
 	min-height: 400px;
 }
 
-/* Section : formations */
-#formations
+/* Section : expériences */
+#skills
 {
+	/* Corps de la section */
+	padding-left: 10%;
+	padding-right: 10%;
+}
 
+#skills div
+{
+	/* Conteneur des colonnes */
+	column-gap: 7.5%;
+	column-count: 2;
+}
+
+#skills article
+{
+	/* Apparence des deux articles */
+	color: white;
+	padding: 20px;
+	line-height: 24px;
+}
+
+#skills img
+{
+	/* Image d'illustration des articles */
+	width: 10%;
+	min-width: 64px;
 }
 
 /* Liens */
