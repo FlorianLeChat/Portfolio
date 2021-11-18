@@ -291,6 +291,7 @@ aside select:hover
 	/* Corps de la section */
 	padding-left: 10%;
 	padding-right: 10%;
+	padding-bottom: 7.5%;
 }
 
 #skills div
@@ -302,17 +303,21 @@ aside select:hover
 
 #skills article
 {
-	/* Apparence des deux articles */
+	/* Apparence des articles */
+	padding: 1rem;
+}
+
+#skills article h2
+{
+	/* Couleur du titre de l'article */
 	color: white;
-	padding: 20px;
-	line-height: 24px;
 }
 
 #skills img
 {
 	/* Image d'illustration des articles */
 	width: 10%;
-	min-width: 64px;
+	min-width: 4rem;
 }
 
 /* Liens */
