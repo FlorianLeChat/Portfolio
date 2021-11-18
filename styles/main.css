@@ -151,7 +151,7 @@ aside select:hover
 }
 
 /* Section : à propos de moi */
-#aboutme, #skills, #contact
+#aboutme, #experiences, #contact
 {
 	/* Corps de la section */
 	color: rgb(161, 161, 170);
@@ -162,7 +162,7 @@ aside select:hover
 	padding: var(--offset) 20% var(--offset) 20%;
 }
 
-#aboutme > h2, #projects > h2, #skills > h2, #contact > h2
+#aboutme > h2, #projects > h2, #experiences > h2, #contact > h2
 {
 	/* Titre de la section */
 	color: white;
@@ -170,14 +170,14 @@ aside select:hover
 	font-size: 1.5rem;
 }
 
-#aboutme > h3, #projects > h3, #skills > h3, #contact > h3
+#aboutme > h3, #projects > h3, #experiences > h3, #contact > h3
 {
 	/* Identifiant de la section */
 	font-weight: 400;
 	margin-bottom: 0.5rem;
 }
 
-#aboutme p, #skills p
+#aboutme p, #experiences p
 {
 	/* Description */
 	line-height: 1.25rem;
@@ -286,7 +286,7 @@ aside select:hover
 }
 
 /* Section : expériences */
-#skills
+#experiences
 {
 	/* Corps de la section */
 	padding-left: 10%;
@@ -294,26 +294,26 @@ aside select:hover
 	padding-bottom: 7.5%;
 }
 
-#skills div
+#experiences div
 {
 	/* Conteneur des colonnes */
 	column-gap: 7.5%;
 	column-count: 2;
 }
 
-#skills article
+#experiences article
 {
 	/* Apparence des articles */
 	padding: 1rem;
 }
 
-#skills article h2
+#experiences article h2
 {
 	/* Couleur du titre de l'article */
 	color: white;
 }
 
-#skills img
+#experiences img
 {
 	/* Image d'illustration des articles */
 	width: 10%;
