@@ -25,7 +25,7 @@ strong
 header
 {
 	/* Corps de l'en-tête */
-	padding: 64px 40px 64px 40px;
+	padding: 4rem 2.5rem 4rem 2.5rem;
 	background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
 
@@ -34,23 +34,23 @@ header > h1
 	/* Prénom & nom */
 	margin: 0;
 	font-size: 2rem;
-	margin-top: 128px;
+	margin-top: 8rem;
 }
 
 header > h2
 {
 	/* Description succincte */
-	margin-top: 16px;
+	margin-top: 1rem;
 	font-weight: 400;
 }
 
 header a > img
 {
 	/* Plateformes de communication */
-	width: 32px;
-	margin: 48px 16px 0 16px;
-	padding: 10px;
-	border-radius: 12px;
+	width: 2rem;
+	margin: 3rem 1rem 0 1rem;
+	padding: 0.625rem;
+	border-radius: 1rem;
 }
 
 header > img
@@ -90,8 +90,8 @@ nav > ul
 	/* Propriétés principales de la barre */
 	z-index: 5;
 	position: fixed;
-	border-radius: 100px;
-	backdrop-filter: blur(8px);
+	border-radius: 6rem;
+	backdrop-filter: blur(0.5rem);
 	background-color: rgba(0, 133, 255, 0.7);
 
 	/* Suppression du style par défaut des listes
@@ -99,11 +99,11 @@ nav > ul
 	list-style: none;
 
 	/* Ajustement de l'espacement interne de la barre */
-	padding: 20px 40px 20px 40px;
+	padding: 1.25rem 2.5rem 1.25rem 2.5rem;
 
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
-	top: 70px;
+	top: 4.25rem;
 	left: 0;
 	right: 0;
 	width: 432px; /* 420 de base + 12 de marge à droite  */
@@ -114,8 +114,8 @@ nav > ul li
 {
 	/* Affichage des textes de la liste */
 	display: inline;
-	padding: 0 12px 0 12px;
-	line-height: 24px;
+	padding: 0 0.75rem 0 0.75rem;
+	line-height: 1.5rem;
 }
 
 /* Sélection de la langue */
@@ -157,8 +157,8 @@ aside select:hover
 	color: rgb(161, 161, 170);
 
 	/* Note : Le padding haut/bas prend en compte une taille fixe
-	pour toujours garder une marge quelque soit la résolution */
-	--offset: calc(10% + 72px);
+		pour toujours garder une marge quelque soit la résolution */
+	--offset: calc(10% + 5rem);
 	padding: var(--offset) 20% var(--offset) 20%;
 }
 
@@ -166,7 +166,7 @@ aside select:hover
 {
 	/* Titre de la section */
 	color: white;
-	margin: 0 0 60px;
+	margin: 0 0 4rem;
 	font-size: 1.5rem;
 }
 
@@ -174,13 +174,13 @@ aside select:hover
 {
 	/* Identifiant de la section */
 	font-weight: 400;
-	margin-bottom: 8px;
+	margin-bottom: 0.5rem;
 }
 
 #aboutme p
 {
 	/* Description */
-	line-height: 24px;
+	line-height: 1.25rem;
 }
 
 /* Section : projets */
@@ -195,13 +195,13 @@ aside select:hover
 {
 	/* Corps de chaque projet */
 	color: white;
-	font-size: 24px;
+	font-size: 1.25rem;
 
-	margin: 24px 5% 0 5%;
-	padding: 48px;
+	margin: 1rem 5% 0 5%;
+	padding: 3rem;
 
-	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-	border-radius: 12px;
+	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.25);
+	border-radius: 1rem;
 
 	/* Fond d'écran de chaque bouton */
 	background-size: cover;
@@ -232,7 +232,7 @@ aside select:hover
 	{
 		/* Apparition de la couleur et suppression du flou
 			lors du passage de la souris par dessus */
-		filter: blur(0px) grayscale(0);
+		filter: blur(0) grayscale(0);
 	}
 }
 
@@ -243,9 +243,9 @@ aside select:hover
 	#projects .container
 	{
 		/* Boite simulante un tableau de colonnes/cellules */
-		margin: -75px auto -25px auto;
+		margin: -5rem auto -1rem auto;
 		display: table;
-		border-spacing: 48px;
+		border-spacing: 3rem;
 		border-collapse: separate;
 	}
 
