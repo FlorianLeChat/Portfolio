@@ -206,7 +206,7 @@ aside select:hover
 	/* Fond d'écran de chaque bouton */
 	background-size: cover;
 	background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
-	background-color: rgb(39, 39, 42);
+	background-color: rgb(24, 24, 27);
 	background-repeat: no-repeat;
 	background-attachment: fixed;
 }
@@ -217,13 +217,13 @@ aside select:hover
 		sur ordinateurs uniquement */
 	#projects .row article
 	{
-		/* État initial */
+		/* État initial (avant animation) */
 		filter: blur(0.75px) grayscale(1);
 		transition: filter 300ms ease-in-out;
 
 		background-size: cover;
 		background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
-		background-color: rgb(39, 39, 42);
+		background-color: rgb(24, 24, 27);
 		background-repeat: no-repeat;
 		background-attachment: fixed;
 	}
@@ -288,7 +288,8 @@ aside select:hover
 /* Section : expériences */
 #experiences
 {
-	/* Corps de la section */
+	/* Modification de la marge de remplissage
+		par défaut */
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-bottom: 7.5%;
@@ -296,14 +297,14 @@ aside select:hover
 
 #experiences div
 {
-	/* Conteneur des colonnes */
+	/* Ajout de deux colonnes dans le conteneur */
 	column-gap: 7.5%;
 	column-count: 2;
 }
 
 #experiences article
 {
-	/* Apparence des articles */
+	/* Marge de remplissage dans chaque article */
 	padding: 1rem;
 }
 
@@ -315,7 +316,7 @@ aside select:hover
 
 #experiences img
 {
-	/* Image d'illustration des articles */
+	/* Dimensions des images d'illustration */
 	width: 10%;
 	min-width: 4rem;
 }
@@ -344,7 +345,7 @@ aside select:hover
 
 #contact h2 + h2
 {
-	/* Texte de la section */
+	/* Souligne du texte (hors titres) */
 	text-decoration: underline;
 }
 
