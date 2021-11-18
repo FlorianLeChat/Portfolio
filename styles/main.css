@@ -151,7 +151,7 @@ aside select:hover
 }
 
 /* Section : à propos de moi */
-#aboutme, #skills
+#aboutme, #skills, #contact
 {
 	/* Corps de la section */
 	color: rgb(161, 161, 170);
@@ -162,7 +162,7 @@ aside select:hover
 	padding: var(--offset) 20% var(--offset) 20%;
 }
 
-#aboutme > h2, #projects > h2, #skills > h2
+#aboutme > h2, #projects > h2, #skills > h2, #contact > h2
 {
 	/* Titre de la section */
 	color: white;
@@ -170,14 +170,14 @@ aside select:hover
 	font-size: 1.5rem;
 }
 
-#aboutme > h3, #projects > h3, #skills > h3
+#aboutme > h3, #projects > h3, #skills > h3, #contact > h3
 {
 	/* Identifiant de la section */
 	font-weight: 400;
 	margin-bottom: 0.5rem;
 }
 
-#aboutme p
+#aboutme p, #skills p
 {
 	/* Description */
 	line-height: 1.25rem;
@@ -318,6 +318,61 @@ aside select:hover
 	/* Image d'illustration des articles */
 	width: 10%;
 	min-width: 4rem;
+}
+
+/* Section : contact */
+#contact
+{
+	/* Corps de la section */
+	margin: 0 20% 10% 20%;
+	padding: 2rem;
+	border-radius: 1rem;
+	background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
+}
+
+#contact h2
+{
+	/* Premier titre de la section */
+	margin-bottom: 2rem;
+}
+
+#contact h3
+{
+	/* Deuxième titre de la section */
+	margin-top: 0;
+}
+
+#contact h2 + h2
+{
+	/* Texte de la section */
+	text-decoration: underline;
+}
+
+#contact div
+{
+	/* Apparence du bouton de contact */
+	color: black;
+	font-weight: 700;
+	border-radius: 0.5rem;
+
+	display: inline-block;
+	padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+
+	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.25);
+	background-color: rgba(255, 255, 255, 0.7);
+
+	/* État initial de l'animation */
+	transform: translateY(0);
+	transition-duration: 150ms;
+	transition-timing-function: cubic-bezier(.4, 0, 1, 1);
+}
+
+#contact div:hover
+{
+	/* Animation de sélection du bouton */
+	cursor: pointer;
+	transform: translateY(-0.25rem);
+	background-color: white;
 }
 
 /* Liens */
