@@ -198,8 +198,8 @@ aside select:hover
 	color: white;
 	font-size: 24px;
 
-	margin: 0 5% 24px 5%;
-	padding: 32px;
+	margin: 24px 5% 0 5%;
+	padding: 48px;
 
 	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 	border-radius: 8px;
@@ -281,7 +281,7 @@ aside select:hover
 	left: 0;
 	z-index: -1;
 	position: absolute;
-	transform: translateY(-30%);
+	transform: translateY(-32.5%);
 	min-width: var(--html-width);
 	min-height: 400px;
 }
