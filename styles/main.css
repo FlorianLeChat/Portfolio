@@ -324,9 +324,13 @@ aside select:hover
 /* Section : contact */
 #contact
 {
-	/* Corps de la section */
-	margin: 0 20% 10% 20%;
+	/* Dimensions de la section (on tente de garder
+		les valeurs originales mais en les réduisant
+		un peu pour s'adapter aux autres éléments */
+	margin: 0 20% calc(var(--offset) - 5%) 20%;
 	padding: 2rem;
+
+	/* Apparence de la section */
 	border-radius: 1rem;
 	background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
