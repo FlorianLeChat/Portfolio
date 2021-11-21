@@ -227,12 +227,6 @@ aside select option
 		/* État initial (avant animation) */
 		filter: blur(0.75px) grayscale(1);
 		transition: filter 300ms ease-in-out;
-
-		background-size: cover;
-		background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
-		background-color: rgb(24, 24, 27);
-		background-repeat: no-repeat;
-		background-attachment: fixed;
 	}
 
 	#projects .row article:hover
