@@ -84,6 +84,22 @@ header > img
 	transition: transform 300ms ease;
 }
 
+/* Pied-de-page */
+footer > ul
+{
+	/* Apparence de la liste */
+	margin: 0;
+	columns: 3;
+	padding: 0 10% 0 10%;
+	list-style: none;
+}
+
+footer > ul > li
+{
+	/* Espacement interne des options */
+	padding: 1rem 0 1rem 0;
+}
+
 /* Barre de navigation */
 nav > ul
 {
@@ -328,7 +344,7 @@ aside select option
 	/* Dimensions de la section (on tente de garder
 		les valeurs originales mais en les réduisant
 		un peu pour s'adapter aux autres éléments */
-	margin: 0 20% calc(var(--offset) - 5%) 20%;
+	margin: 0 20% 7.5% 20%;
 	padding: 2rem;
 
 	/* Apparence de la section */
