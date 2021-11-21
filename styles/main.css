@@ -150,6 +150,13 @@ aside select:hover
 	cursor: pointer;
 }
 
+aside select option
+{
+	/* Couleur des options */
+	color: white;
+	background-color: rgb(24, 24, 27);
+}
+
 /* Section : à propos de moi */
 #aboutme, #experiences, #contact
 {
