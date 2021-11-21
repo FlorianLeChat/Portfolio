@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<!-- Méta-données du document -->
+		<meta charset="utf-8" />
+		<meta name="Author" content="Florian Trayon" />
+		<meta name="description" content="Mon portfolio de mes réalisations et de mes compétences !"/>
+		<meta name="keywords" lang="fr" content="portfolio, web, html, css, frontend, backend, fullstack" />
+		<meta name="robots" content="noindex" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Titre du document -->
+		<title>Florian Trayon - Portfolio</title>
+
+		<!-- Pré-connexion des ressources externes -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+		<!-- Polices & feuilles de style CSS -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin />
+		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" href="styles/projects.css" />
+
+		<!-- Icône du document (16x16) -->
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<!-- En-tête de la page -->
+		<header>
+			<!-- Titre de la catégorie -->
+			<h1>Mes projets</h1>
+
+			<!-- Icônes des projets -->
+			<a href="#raven">
+				<img class="steam" src="images/platforms/steam.svg" alt="Logo de Steam" />
+			</a>
+
+			<a href="#raven">
+				<img class="discord" src="images/platforms/steam.svg" alt="Logo de Discord" />
+			</a>
+
+			<a href="#raven">
+				<img class="github" src="images/platforms/steam.svg" alt="Logo de GitHub" />
+			</a>
+
+			<a href="#raven">
+				<img class="twitter" src="images/platforms/steam.svg" alt="Logo de Twitter" />
+			</a>
+
+			<a href="#raven">
+				<img class="cv" src="images/platforms/steam.svg" alt="Logo représentant le C.V" />
+			</a>
+
+			<!-- Vagues de fin -->
+			<img src="images/header_waves.svg" alt="Image de décoration" />
+		</header>
+
+		<main>
+			<!-- Barre de navigation -->
+			<nav>
+				<ul>
+					<li><a href="index.html">Retour à l'accueil</a></li>
+					<li><a href="experiences.html">Mes expériences</a></li>
+					<li><a href="contact.html">Accès contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- Sélection de la langue -->
+			<aside>
+				<form method="POST">
+					<select onchange="this.form.submit()">
+						<option value="en">Anglais</option>
+						<option value="fr" selected>Français</option>
+						<option value="es">Espagnol</option>
+						<option value="jp">Japonais</option>
+					</select>
+				</form>
+			</aside>
+
+			<!-- Premier projet -->
+			<article id="raven">
+				<div>
+					<!-- Nom, description et icône projet -->
+					<img src="google.png" alt="Logo de démonstration" />
+
+					<h1>Raven Framework</h1>
+
+					<p>
+						Le framework Raven (<strong>sources fermées</strong>) est un ensemble d'outils pour accélérer
+						la création de scripts simples, mais également de systèmes d'interaction homme-machine plus
+						complexes. Bâti au dessus de l'<strong>API Lua</strong> (<em>GLua</em>) du jeu vidéo Garry's Mod,
+						le framework a subit plusieurs itérations pour améliorer la robustesse de ses mécanismes et
+						comportements. Il est actuellement utilisé par la communauté <em>Combined-Roleplay</em>, mais
+						également disponible (en partie) sur le <em>Workshop</em> de Steam.
+					</p>
+				</div>
+
+				<hr />
+
+				<div>
+					<!-- Icônes des langages utilisés -->
+					<!-- <img src="images/languages/lua.svg" alt="Logo du langage de programmation Lua" />
+					<img src="images/languages/mysql.svg" alt="Logo de la base de données MySQL" />
+					<img src="images/languages/sqlite.svg" alt="Logo de la base de données SQLite" /> -->
+				</div>
+			</article>
+
+			<!-- Deuxième projet -->
+			<article id="steam">
+
+			</article>
+
+			<!-- Troisième projet -->
+			<article id="facepunch">
+				<div>
+					<!-- Nom, description et icône projet -->
+					<img src="google.png" alt="Logo de démonstration" />
+
+					<h1>
+						<a href="https://github.com/FlorianLeChat/Facepunch-Commits-Monitor">
+							Facepunch Commits Monitor
+						</a>
+					</h1>
+
+					<p>
+						Le moniteur des commits Facepunch (<strong>sources ouvertes</strong>) est l'une de mes
+						toutes premières applications graphiques écrites en C# et propulsées grâce à <strong>.NET 5</strong>
+						et <strong>Windows Forms</strong>. Grâce à une interface graphique simple et l'API du studio de
+						développement Facepunch, il est possible de suivre en temps réel les changements des dépôts publics
+						<em>Git</em> du studio et de les afficher sous forme de notifications Windows.
+					</p>
+				</div>
+
+				<hr />
+
+				<div>
+					<!-- Icônes des langages utilisés -->
+					<!-- <img src="images/languages/csharp.svg" alt="Logo du langage de programmation C#" />
+					<img src="images/languages/dotnet.svg" alt="Logo du framework .NET" /> -->
+				</div>
+			</article>
+
+			<!-- Quatrième projet -->
+			<article id="discordbot">
+				<div>
+					<!-- Nom, description et icône projet -->
+					<img src="google.png" alt="Logo de démonstration" />
+
+					<h1>Florian's Bot</h1>
+
+					<p>
+						Le robot de Florian (<strong>sources fermées</strong>) est un simple robot utilisant
+						les services Discord pour s'exécuter. Utilisant <strong>NodeJS</strong> et le paquet
+						<em>NPM</em> <strong>DiscordJS</strong>, le robot est capable d'effectuer des actions
+						de modération simples de la part des propriétaires des serveurs. Il est également relié
+						à une base de données <strong>MySQL</strong> pour permettre la sauvegarde et la
+						récupération des informations utilisateurs.
+					</p>
+				</div>
+
+				<hr />
+
+				<div>
+					<!-- Icônes des langages utilisés -->
+					<!-- <img src="images/languages/mysql.svg" alt="Logo de la base de données MySQL" />
+					<img src="images/languages/javascript.svg" alt="Logo du langage de programmation JavaScript" />
+					<img src="images/languages/nodejs.svg" alt="Logo de la plateforme NodeJS" /> -->
+				</div>
+			</article>
+
+			<!-- Cinquième projet -->
+			<article id="phpstorage">
+				<div>
+					<!-- Nom, description et icône projet -->
+					<img src="google.png" alt="Logo de démonstration" />
+
+					<h1>
+						<a href="https://github.com/FlorianLeChat/Simple-File-Storage">
+							Simple File Storage
+						</a>
+					</h1>
+
+					<p>
+						Le système de stockage simplifié de système (<strong>sources ouvertes</strong>) est mon tout
+						premier projet utilisant les langages du web les plus répandus (<strong>HTML</strong>,
+						<strong>CSS</strong> et <strong>PHP</strong>) afin de permettre aux utilisateurs d'enregistrer
+						des fichiers quelconques sur un serveur. Actuellement, il est possible de mettre en ligne des
+						fichiers, mais également de contrôler le contenu sauvegardé grâce à une page d'administration
+						sécurisé par mot de passe. Pour l'instant, les fondations sont fragiles, mais à l'avenir,
+						le système possédera un système de compte utilisateurs et une page d'accueil pour que les
+						utilisateurs/administrateurs puissent accéder aux contenus sauvegardés facilement.
+					</p>
+				</div>
+
+				<hr />
+
+				<div>
+					<!-- Icônes des langages utilisés -->
+					<!-- <img src="images/languages/apache.svg" alt="Logo du serveur HTTP Apache" />
+					<img src="images/languages/php.svg" alt="Logo du langage de programmation PHP" /> -->
+				</div>
+			</article>
+
+			<!-- Sixième projet -->
+			<article id="pythonrpg">
+				<div>
+					<!-- Nom, description et icône projet -->
+					<img src="google.png" alt="Logo de démonstration" />
+
+					<h1>
+						<a href="https://github.com/FlorianLeChat/Python-RPG">
+							Python RPG
+						</a>
+					</h1>
+
+					<p>
+						Python RPG (<strong>sources ouvertes</strong>) est ma première application console écrite
+						en Python. Il avait pour but d'expérimenter ce langage et d'exploiter la simplicité de
+						sa syntaxe pour réaliser un projet dans le thème du <em>roleplay</em>. Le programme est
+						actuellement capable de lire des histoires permettant à l'utilisateur d'interagir avec un
+						univers fictif (ou non) via différents moyens, comme des actions envers un objet ou un personne,
+						mais aussi des dialogues entre l'utilisateur et des personnages non-joueurs. Pour l'instant,
+						le programme fonctionne seulement en mode de lecture, mais il est prévu que j'intègre un mode
+						de création et d'édition des histoires.
+					</p>
+				</div>
+
+				<hr />
+
+				<div>
+					<!-- Icônes des langages utilisés -->
+					<!-- <img src="images/languages/python.svg" alt="Logo du langage de programmation Python" /> -->
+				</div>
+			</article>
+		</main>
+
+		<!-- Pied-de-page -->
+		<footer>
+			<ul>
+				<li><a href="admin/index.php">Contributions</a></li>
+				<li><a href="admin/index.php">Administration</a></li>
+				<li><a href="https://github.com/FlorianLeChat/Portfolio">Code source</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>

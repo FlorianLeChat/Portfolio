@@ -1,0 +1,39 @@
+/* En-tête */
+.steam { background-color: rgb(63, 63, 70); }
+.discord { background-color: rgb(88, 101, 242); }
+.github { background-color: rgb(39, 39, 42); }
+.twitter { background-color: rgb(29, 161, 242); }
+.cv { background-color: white; }
+
+.steam, .discord, .github, .twitter, .cv
+{
+	/* Animation de réinitialisation de l'échelle */
+	transition: transform 300ms ease;
+}
+
+.steam:hover, .discord:hover, .github:hover,
+.twitter:hover, .cv:hover
+{
+	/* Animation de sélection d'une icône
+		(modification de l'échelle) */
+	transform: scale(1.2);
+	transition: transform 300ms ease;
+}
+
+/* Barre de navigation */
+nav > ul
+{
+	width: 437px; /* 425 de base + 12 de marge à droite  */
+}
+
+/* Premier projet */
+
+/* Deuxième projet */
+
+/* Troisième projet */
+
+/* Quatrième projet */
+
+/* Cinquième projet */
+
+/* Sixième projet */
