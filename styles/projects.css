@@ -1,39 +1,74 @@
 /* En-tête */
-.steam { background-color: rgb(63, 63, 70); }
-.discord { background-color: rgb(88, 101, 242); }
-.github { background-color: rgb(39, 39, 42); }
-.twitter { background-color: rgb(29, 161, 242); }
-.cv { background-color: white; }
-
-.steam, .discord, .github, .twitter, .cv
+header
 {
-	/* Animation de réinitialisation de l'échelle */
-	transition: transform 300ms ease;
-}
-
-.steam:hover, .discord:hover, .github:hover,
-.twitter:hover, .cv:hover
-{
-	/* Animation de sélection d'une icône
-		(modification de l'échelle) */
-	transform: scale(1.2);
-	transition: transform 300ms ease;
+	background-image: linear-gradient(to right, rgb(158, 103, 13), rgb(255, 158, 0));
 }
 
 /* Barre de navigation */
 nav > ul
 {
 	width: 437px; /* 425 de base + 12 de marge à droite  */
+	background-color: rgba(255, 158, 0, 0.7);
 }
 
-/* Premier projet */
+/* Projets */
+article
+{
+	/* Corps de chaque projet */
+	margin: 0 10% 1.5rem 10%;
+	padding: 2rem;
 
-/* Deuxième projet */
+	color: white;
+	text-align: right;
 
-/* Troisième projet */
+	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.25);
+	border-radius: 1rem;
+	background-color: rgb(39, 39, 42);
+}
 
-/* Quatrième projet */
+article:first-of-type
+{
+	margin-top: 10%;
+}
 
-/* Cinquième projet */
+article div:first-child h1
+{
+	/* Nom du projet */
+	text-align: left;
+	line-height: 32px;
+}
 
-/* Sixième projet */
+article div:first-child p
+{
+	/* Description du projet */
+	text-align: justify;
+	line-height: 26px;
+}
+
+article div:first-child img
+{
+	/* Icône du projet */
+	float: left;
+	height: 64px;
+	margin-right: 32px;
+}
+
+article div:nth-child(2) img
+{
+	/* Galerie photos */
+}
+
+article div:last-child img
+{
+	/* Icônes des langages utilisés */
+	height: 40px;
+	margin-left: 24px;
+}
+
+article hr
+{
+	/* Séparateur entre les deux parties
+		de chaque projets */
+	margin: 20px 0 20px 0;
+	border-color: rgb(63, 63, 70);
+}
