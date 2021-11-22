@@ -7,7 +7,7 @@ header
 header > img
 {
 	/* Vagues marquant la fin de l'en-tête */
-	transform: translateY(-60px);
+	transform: translateY(-22.5%);
 }
 
 /* Barre de navigation */
@@ -34,7 +34,7 @@ article
 
 article:first-of-type
 {
-	margin-top: 10rem;
+	margin-top: calc(7.5% + 5rem);
 }
 
 article div:first-child h1
