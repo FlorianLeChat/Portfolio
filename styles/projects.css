@@ -4,6 +4,12 @@ header
 	background-image: linear-gradient(to right, rgb(158, 103, 13), rgb(255, 158, 0));
 }
 
+header > img
+{
+	/* Vagues marquant la fin de l'en-tête */
+	transform: translateY(-60px);
+}
+
 /* Barre de navigation */
 nav > ul
 {
@@ -28,7 +34,7 @@ article
 
 article:first-of-type
 {
-	margin-top: 10%;
+	margin-top: 10rem;
 }
 
 article div:first-child h1
@@ -71,4 +77,12 @@ article hr
 		de chaque projets */
 	margin: 20px 0 20px 0;
 	border-color: rgb(63, 63, 70);
+}
+
+/* Liens */
+article a:active, li a:active
+{
+	/* Passage progressif en bleu lors de l'appui
+		(active + hover) */
+	background: rgb(158, 103, 13);
 }
