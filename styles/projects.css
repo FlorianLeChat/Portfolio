@@ -63,10 +63,11 @@ article hr
 /* ------------------- */
 /* Projet : propriétés */
 /* ------------------- */
-article div.properties > h1
+article div.properties > h2
 {
 	/* Nom du projet */
 	overflow: hidden;
+	font-size: 2rem;
 	text-align: left;
 	line-height: 2rem;
 }
@@ -104,6 +105,7 @@ article div.images div
 	display: inline-block;
 	min-width: 170px;
 	max-width: 400px;
+	background-color: rgb(24, 24, 27);
 }
 
 @media screen and (min-width: 768px)
