@@ -21,7 +21,7 @@ nav > ul
 article
 {
 	/* Corps de chaque projet */
-	margin: 0 15% 1.5rem 15%;
+	margin: 0 5% 1.5rem 5%;
 	padding: 2rem;
 
 	color: white;
@@ -30,6 +30,16 @@ article
 	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.25);
 	border-radius: 1rem;
 	background-color: rgb(39, 39, 42);
+}
+
+@media screen and (min-width: 1024px)
+{
+	/* Modification des marges sur les grands écrans */
+	article
+	{
+		margin-left: 15%;
+		margin-right: 15%;
+	}
 }
 
 article:first-of-type
