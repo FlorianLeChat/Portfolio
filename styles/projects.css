@@ -21,7 +21,7 @@ nav > ul
 article
 {
 	/* Corps de chaque projet */
-	margin: 0 10% 1.5rem 10%;
+	margin: 0 15% 1.5rem 15%;
 	padding: 2rem;
 
 	color: white;
@@ -34,24 +34,26 @@ article
 
 article:first-of-type
 {
+	/* Ajout d'une marge uniquement au premier projet */
 	margin-top: calc(7.5% + 5rem);
 }
 
-article div:first-child h1
+article div.properties > h1
 {
 	/* Nom du projet */
 	text-align: left;
 	line-height: 32px;
 }
 
-article div:first-child p
+article div.properties > p
 {
 	/* Description du projet */
+	overflow: hidden;
 	text-align: justify;
 	line-height: 26px;
 }
 
-article div:first-child img
+article div.properties > img
 {
 	/* Icône du projet */
 	float: left;
@@ -59,12 +61,38 @@ article div:first-child img
 	margin-right: 32px;
 }
 
-article div:nth-child(2) img
+article div.images div
 {
-	/* Galerie photos */
+	/* État initial de la galerie des photos */
+	width: 45%;
+	margin: 5px;
+	border: 1px solid grey;
+	display: inline-block;
 }
 
-article div:last-child img
+article div.images div:hover
+{
+	/* Animation de sélection des images */
+	border: 1px solid white;
+}
+
+article div.images div img
+{
+	/* Adaptation des dimensions des images
+		à celles du conteneur */
+	width: 100%;
+	height: auto;
+}
+
+article div.images div p
+{
+	/* Ajustement de la position de la légende */
+	padding: 15px;
+	word-break: break-word;
+	text-align: center;
+}
+
+article div.languages img
 {
 	/* Icônes des langages utilisés */
 	height: 40px;
