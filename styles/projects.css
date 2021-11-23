@@ -7,7 +7,7 @@ header
 header > img
 {
 	/* Vagues marquant la fin de l'en-tête */
-	transform: translateY(-22.5%);
+	transform: translateY(-27.5%);
 }
 
 /* Barre de navigation */
