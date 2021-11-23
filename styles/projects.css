@@ -98,10 +98,19 @@ article div.images div
 	}
 }
 
-article div.images div:hover
+@media screen and (pointer: fine) and (hover: hover)
 {
-	/* Animation de sélection des photos */
-	border: 1px solid white;
+	/* On affiche un effet de sélection des photos
+		pour les affichages sur ordinateurs uniquement */
+	article div.images div
+	{
+		transition: border 300ms ease-in-out;
+	}
+
+	article div.images div:hover
+	{
+		border: 1px solid white;
+	}
 }
 
 article div.images div img
