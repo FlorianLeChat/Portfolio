@@ -99,7 +99,7 @@ footer > ul
 footer > ul > li
 {
 	/* Espacement interne des options */
-	padding: 1rem 0 1rem 0;
+	padding: 5rem 0 1rem 0;
 	word-break: break-word;
 }
 
@@ -117,15 +117,18 @@ nav > ul
 		non ordonnées */
 	list-style: none;
 
-	/* Ajustement de l'espacement interne de la barre */
+	/* Ajustement de l'espacement de la barre */
 	padding: 1.25rem 2.5rem 1.25rem 2.5rem;
 
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
 	top: 5rem;
-	left: 1rem;
-	right: 1rem;
+	left: 5%;
+	right: 5%;
 	margin: 0 auto 0 auto;
+
+	/* Dimensions minimum/maximum de la barre */
+	min-width: calc(var(--html-width) - 7rem); /* padding + position gauche/droite */
 	max-width: 432px; /* 420 de base + 12 de marge à droite  */
 }
 
