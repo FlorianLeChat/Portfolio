@@ -1,4 +1,6 @@
+/* ------- */
 /* En-tête */
+/* ------- */
 header
 {
 	background-image: linear-gradient(to right, rgb(158, 103, 13), rgb(255, 158, 0));
@@ -17,7 +19,9 @@ nav > ul
 	background-color: rgba(255, 158, 0, 0.7);
 }
 
+/* ------- */
 /* Projets */
+/* ------- */
 article
 {
 	/* Corps de chaque projet */
@@ -48,6 +52,17 @@ article:first-of-type
 	margin-top: calc(7.5% + 5rem);
 }
 
+article hr
+{
+	/* Séparateur entre les parties de
+		chaque projets */
+	margin: 1rem 0 1rem 0;
+	border-color: rgb(63, 63, 70);
+}
+
+/* ------------------- */
+/* Projet : propriétés */
+/* ------------------- */
 article div.properties > h1
 {
 	/* Nom du projet */
@@ -71,15 +86,18 @@ article div.properties > img
 	margin-right: 2rem;
 }
 
+/* ----------------------- */
+/* Projet : galerie photos */
+/* ----------------------- */
 article div.images
 {
-	/* Conteneur de la galerie des photos */
+	/* Conteneur de la galerie photos */
 	text-align: center;
 }
 
 article div.images div
 {
-	/* État initial de la galerie des photos */
+	/* État initial de la galerie photos */
 	width: calc(100% - 2rem);
 	margin: 0.5rem;
 	border: 1px solid grey;
@@ -91,7 +109,7 @@ article div.images div
 @media screen and (min-width: 768px)
 {
 	/* Adaptation de la taille du conteneur des
-		images sur les grands écrans */
+		photos sur les grands écrans */
 	article div.images div
 	{
 		width: calc(50% - 4rem);
@@ -129,19 +147,14 @@ article div.images div p
 	text-align: center;
 }
 
+/* ------------------------ */
+/* Projet : icônes langages */
+/* ------------------------ */
 article div.languages img
 {
 	/* Icônes des langages utilisés */
 	height: 2.5rem;
 	margin-left: 1.5rem;
-}
-
-article hr
-{
-	/* Séparateur entre les parties de
-		chaque projets */
-	margin: 1rem 0 1rem 0;
-	border-color: rgb(63, 63, 70);
 }
 
 /* Liens */
