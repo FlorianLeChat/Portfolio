@@ -97,7 +97,7 @@ article div.images div img
 article div.images div p
 {
 	/* Ajustement de la position de la légende */
-	padding: 15px;
+	padding: 1rem;
 	word-break: break-word;
 	text-align: center;
 }
@@ -105,15 +105,15 @@ article div.images div p
 article div.languages img
 {
 	/* Icônes des langages utilisés */
-	height: 40px;
-	margin-left: 24px;
+	height: 2.5rem;
+	margin-left: 1.5rem;
 }
 
 article hr
 {
-	/* Séparateur entre les deux parties
-		de chaque projets */
-	margin: 20px 0 20px 0;
+	/* Séparateur entre les parties de
+		chaque projets */
+	margin: 1rem 0 1rem 0;
 	border-color: rgb(63, 63, 70);
 }
 
