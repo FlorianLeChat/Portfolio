@@ -1,4 +1,6 @@
+/* --------------- */
 /* Document entier */
+/* --------------- */
 html
 {
 	/* Traitement des textes */
@@ -21,7 +23,9 @@ strong
 	text-decoration: underline solid;
 }
 
+/* ------- */
 /* En-tête */
+/* ------- */
 header
 {
 	/* Corps de l'en-tête */
@@ -84,7 +88,9 @@ header > img
 	transition: transform 300ms ease;
 }
 
+/* ------------ */
 /* Pied-de-page */
+/* ------------ */
 footer > ul
 {
 	/* Apparence de la liste */
@@ -103,7 +109,9 @@ footer > ul > li
 	word-break: break-word;
 }
 
+/* ------------------- */
 /* Barre de navigation */
+/* ------------------- */
 nav > ul
 {
 	/* Propriétés principales de la barre */
@@ -140,7 +148,9 @@ nav > ul li
 	line-height: 1.5rem;
 }
 
+/* ---------------------- */
 /* Sélection de la langue */
+/* ---------------------- */
 aside select
 {
 	/* Positionnement */
@@ -179,7 +189,9 @@ aside select option
 	background-color: rgb(24, 24, 27);
 }
 
+/* ------------------------- */
 /* Section : à propos de moi */
+/* ------------------------- */
 #aboutme, #experiences, #contact
 {
 	/* Corps de la section */
@@ -212,7 +224,9 @@ aside select option
 	line-height: 1.25rem;
 }
 
+/* ----------------- */
 /* Section : projets */
+/* ----------------- */
 #projects
 {
 	/* Corps de la section */
@@ -308,7 +322,9 @@ aside select option
 	min-height: 400px;
 }
 
+/* --------------------- */
 /* Section : expériences */
+/* --------------------- */
 #experiences
 {
 	/* Modification de la marge de remplissage
@@ -344,7 +360,9 @@ aside select option
 	min-width: 4rem;
 }
 
+/* ----------------- */
 /* Section : contact */
+/* ----------------- */
 #contact
 {
 	/* Dimensions de la section (on tente de garder
@@ -403,7 +421,9 @@ aside select option
 	background-color: white;
 }
 
+/* ----- */
 /* Liens */
+/* ----- */
 a
 {
 	/* État initial des liens */
