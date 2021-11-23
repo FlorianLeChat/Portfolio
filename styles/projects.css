@@ -51,44 +51,62 @@ article:first-of-type
 article div.properties > h1
 {
 	/* Nom du projet */
+	overflow: hidden;
 	text-align: left;
-	line-height: 32px;
+	line-height: 2rem;
 }
 
 article div.properties > p
 {
 	/* Description du projet */
-	overflow: hidden;
 	text-align: justify;
-	line-height: 26px;
+	line-height: 1.5rem;
 }
 
 article div.properties > img
 {
 	/* Icône du projet */
 	float: left;
-	height: 64px;
-	margin-right: 32px;
+	height: 4rem;
+	margin-right: 2rem;
+}
+
+article div.images
+{
+	/* Conteneur de la galerie des photos */
+	text-align: center;
 }
 
 article div.images div
 {
 	/* État initial de la galerie des photos */
-	width: 45%;
-	margin: 5px;
+	width: calc(100% - 2rem);
+	margin: 0.5rem;
 	border: 1px solid grey;
 	display: inline-block;
+	min-width: 170px;
+	max-width: 400px;
+}
+
+@media screen and (min-width: 768px)
+{
+	/* Adaptation de la taille du conteneur des
+		images sur les grands écrans */
+	article div.images div
+	{
+		width: calc(50% - 4rem);
+	}
 }
 
 article div.images div:hover
 {
-	/* Animation de sélection des images */
+	/* Animation de sélection des photos */
 	border: 1px solid white;
 }
 
 article div.images div img
 {
-	/* Adaptation des dimensions des images
+	/* Adaptation des dimensions des photos
 		à celles du conteneur */
 	width: 100%;
 	height: auto;
