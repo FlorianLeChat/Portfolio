@@ -69,7 +69,15 @@ article div.properties > h2
 	overflow: hidden;
 	font-size: 2rem;
 	text-align: left;
-	line-height: 2rem;
+	margin-bottom: 0;
+}
+
+article div.properties > h3
+{
+	/* Date du projet */
+	margin-top: 0.5rem;
+	text-align: left;
+	text-indent: 1rem;
 }
 
 article div.properties > p
@@ -164,7 +172,7 @@ article div.languages img
 /* ----- */
 article a:active, li a:active
 {
-	/* Passage progressif en bleu lors de l'appui
+	/* Passage progressif en orange lors de l'appui
 		(active + hover) */
 	background: rgb(158, 103, 13);
 }
