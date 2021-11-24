@@ -3,20 +3,20 @@
 /* ------- */
 header
 {
-	background-image: linear-gradient(to right, rgb(28, 158, 77), rgb(25, 255, 112));
+	background-image: linear-gradient(to right, rgb(28, 158, 77), rgb(25, 235, 112));
 }
 
 header > img
 {
 	/* Vagues marquant la fin de l'en-tête */
-	transform: translateY(-27.5%);
+	transform: translateY(-25%);
 }
 
 /* Barre de navigation */
 nav > ul
 {
 	max-width: 372px; /* 360 de base + 12 de marge à droite  */
-	background-color: rgba(25, 255, 112, 0.7);
+	background-color: rgba(25, 235, 112, 0.7);
 }
 
 /* ----- */
@@ -24,7 +24,7 @@ nav > ul
 /* ----- */
 article a:active, li a:active
 {
-	/* Passage progressif en bleu lors de l'appui
+	/* Passage progressif en vert lors de l'appui
 		(active + hover) */
 	background: rgb(28, 158, 77);
 }
