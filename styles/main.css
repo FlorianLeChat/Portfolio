@@ -349,8 +349,9 @@ aside select option
 
 #experiences article h2
 {
-	/* Couleur du titre de l'article */
+	/* Apparence du titre de l'article */
 	color: white;
+	word-break: break-word;
 }
 
 #experiences img
