@@ -159,7 +159,9 @@ article div.languages img
 	margin-left: 1.5rem;
 }
 
+/* ----- */
 /* Liens */
+/* ----- */
 article a:active, li a:active
 {
 	/* Passage progressif en bleu lors de l'appui
