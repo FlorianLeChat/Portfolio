@@ -95,6 +95,26 @@ article div.properties > img
 	margin-right: 2rem;
 }
 
+@media screen and (max-width: 768px)
+{
+	/* Alignement des propriétés du projet
+	au centre sur les petits écrans */
+	article div.properties > h2, article div.properties > h3
+	{
+		/* Nom et date */
+		text-align: center;
+	}
+
+	article div.properties > img
+	{
+		/* Icône */
+		float: none;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
 /* ----------------------- */
 /* Projet : galerie photos */
 /* ----------------------- */
