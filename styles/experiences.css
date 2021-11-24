@@ -1,0 +1,30 @@
+/* ------- */
+/* En-tête */
+/* ------- */
+header
+{
+	background-image: linear-gradient(to right, rgb(28, 158, 77), rgb(25, 255, 112));
+}
+
+header > img
+{
+	/* Vagues marquant la fin de l'en-tête */
+	transform: translateY(-27.5%);
+}
+
+/* Barre de navigation */
+nav > ul
+{
+	max-width: 397px; /* 395 de base + 12 de marge à droite  */
+	background-color: rgba(25, 255, 112, 0.7);
+}
+
+/* ----- */
+/* Liens */
+/* ----- */
+article a:active, li a:active
+{
+	/* Passage progressif en bleu lors de l'appui
+		(active + hover) */
+	background: rgb(28, 158, 77);
+}

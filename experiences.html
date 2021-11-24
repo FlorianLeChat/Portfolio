@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<!-- Méta-données du document -->
+		<meta charset="utf-8" />
+		<meta name="Author" content="Florian Trayon" />
+		<meta name="description" content="Mon portfolio de mes réalisations et de mes compétences !"/>
+		<meta name="keywords" lang="fr" content="portfolio, web, html, css, frontend, backend, fullstack" />
+		<meta name="robots" content="noindex" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Titre du document -->
+		<title>Florian Trayon - Portfolio</title>
+
+		<!-- Pré-connexion des ressources externes -->
+		<link rel="preconnect" href="https://fonts.gstatic.com" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+		<!-- Polices & feuilles de style CSS -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin />
+		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" href="styles/experiences.css" />
+
+		<!-- Icône du document (16x16) -->
+		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+	</head>
+	<body>
+		<!-- En-tête de la page -->
+		<header>
+			<!-- Titre de la catégorie -->
+			<h1>Mes expériences</h1>
+
+			<!-- Description succincte -->
+			<h2>Mon parcours scolaire et mes expériences professionnelles</h2>
+
+			<!-- Vagues de fin -->
+			<img src="images/decorations/header_waves_orange.svg" alt="Image de décoration" />
+		</header>
+
+		<main>
+			<!-- Barre de navigation -->
+			<nav>
+				<ul>
+					<li><a href="/">Retour à l'accueil</a></li>
+					<li><a href="projects">Mes projets</a></li>
+					<li><a href="contact">Accès contact</a></li>
+				</ul>
+			</nav>
+
+			<!-- Sélection de la langue -->
+			<aside>
+				<form method="POST">
+					<select onchange="this.form.submit()">
+						<option value="en">Anglais</option>
+						<option value="fr" selected>Français</option>
+						<option value="es">Espagnol</option>
+						<option value="jp">Japonais</option>
+					</select>
+				</form>
+			</aside>
+
+			<!-- Parcours scolaire -->
+			<section id="school">
+
+			</section>
+
+			<!-- Expériences professionnelles -->
+			<section id="work">
+
+			</section>
+		</main>
+
+		<!-- Pied-de-page -->
+		<footer>
+			<ul>
+				<li><a href="admin/index.php">Contributions</a></li>
+				<li><a href="admin/index.php">Administration</a></li>
+				<li><a href="https://github.com/FlorianLeChat/Portfolio">Code source</a></li>
+			</ul>
+		</footer>
+	</body>
+</html>
