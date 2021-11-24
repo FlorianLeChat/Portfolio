@@ -15,7 +15,7 @@ header > img
 /* Barre de navigation */
 nav > ul
 {
-	max-width: 437px; /* 425 de base + 12 de marge à droite  */
+	max-width: 412px; /* 400 de base + 12 de marge à droite  */
 	background-color: rgba(255, 158, 0, 0.7);
 }
 

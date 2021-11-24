@@ -137,15 +137,29 @@ nav > ul
 
 	/* Dimensions minimum/maximum de la barre */
 	min-width: calc(var(--html-width) - 7rem); /* padding + position gauche/droite */
-	max-width: 432px; /* 420 de base + 12 de marge à droite  */
+	max-width: 407px; /* 395 de base + 12 de marge à droite  */
 }
 
-nav > ul li
+nav > ul > li
 {
 	/* Affichage des textes de la liste */
 	display: inline;
 	padding: 0 0.75rem 0 0.75rem;
 	line-height: 1.5rem;
+}
+
+nav > ul > li:first-of-type
+{
+	/* Suppression de la marge à gauche
+	pour la première option */
+	padding-left: 0;
+}
+
+nav > ul > li:last-of-type
+{
+	/* Suppression de la marge à droite
+	pour la dernière option */
+	padding-right: 0;
 }
 
 /* ---------------------- */
