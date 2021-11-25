@@ -266,7 +266,6 @@ aside select option
 	background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
 	background-color: rgb(24, 24, 27);
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 }
 
 @media screen and (pointer: fine) and (hover: hover)
