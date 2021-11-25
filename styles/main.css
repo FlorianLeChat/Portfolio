@@ -64,6 +64,7 @@ header > img
 	z-index: -1;
 	position: absolute;
 	min-width: var(--html-width);
+	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
 
@@ -322,6 +323,7 @@ aside select option
 	position: absolute;
 	transform: translateY(-60%);
 	min-width: var(--html-width);
+	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
 
@@ -333,6 +335,7 @@ aside select option
 	position: absolute;
 	transform: translateY(-40%);
 	min-width: var(--html-width);
+	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
 
