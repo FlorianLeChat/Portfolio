@@ -36,6 +36,11 @@ article
 	background-color: rgb(39, 39, 42);
 }
 
+article:last-of-type
+{
+	margin-bottom: 5%;
+}
+
 @media screen and (min-width: 1024px)
 {
 	/* Modification des marges sur les grands écrans */
