@@ -19,6 +19,32 @@ nav > ul
 	background-color: rgba(25, 235, 112, 0.7);
 }
 
+/* ----------------- */
+/* Parcours scolaire */
+/* ----------------- */
+#school
+{
+	color: rgb(161, 161, 170);
+
+	--offset: calc(5% + 5rem);
+	padding: var(--offset) 20% var(--offset) 20%;
+}
+
+#school > h2
+{
+	/* Titre de la section */
+	color: white;
+	margin: 0 0 4rem;
+	font-size: 1.5rem;
+}
+
+#school > h3
+{
+	/* Identifiant de la section */
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
 /* ----- */
 /* Liens */
 /* ----- */
