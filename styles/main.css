@@ -445,6 +445,7 @@ a
 {
 	/* État initial des liens */
 	color: inherit;
+	display: inline-block;
 	position: relative;
 	text-decoration: none;
 }
@@ -466,7 +467,7 @@ article a::after, li a::after
 	/* Création d'une ligne qui apparaîtra
 		progressivement lors de la sélection */
 	left: 0;
-	bottom: 0;
+	bottom: -3px;
 	position: absolute;
 
 	width: 100%;
