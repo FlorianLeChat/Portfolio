@@ -87,6 +87,7 @@ article div.properties > h3
 article div.properties > p
 {
 	/* Description du projet */
+	color: rgb(161, 161, 170);
 	text-align: justify;
 	line-height: 1.5rem;
 }
