@@ -176,7 +176,7 @@ aside select
 	/* Dimensions */
 	width: calc(21.33px * 2.5); /* Gardons les proportions originales... */
 	height: calc(16px * 2.5);
-	margin: 1.5%;
+	margin: 2%;
 
 	/* Apparence */
 	color: transparent;
