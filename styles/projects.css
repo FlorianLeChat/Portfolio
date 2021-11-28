@@ -194,9 +194,15 @@ article div.images div p
 /* ------------------------ */
 /* Projet : icônes langages */
 /* ------------------------ */
+article div.languages
+{
+	padding-bottom: 2.5rem;
+}
+
 article div.languages img
 {
 	/* Icônes des langages utilisés */
+	float: right;
 	height: 2.5rem;
 	margin-left: 1.5rem;
 }
