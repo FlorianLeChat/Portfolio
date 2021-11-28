@@ -23,6 +23,13 @@ strong
 	text-decoration: underline solid;
 }
 
+::selection
+{
+	/* Sélection du texte */
+	color: white;
+	background: rgb(12, 87, 157);
+}
+
 /* ------- */
 /* En-tête */
 /* ------- */
