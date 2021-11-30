@@ -62,6 +62,12 @@ nav > ul
 	display: table-cell;
 }
 
+#school article > h3
+{
+	/* Titre de chaque partie */
+	text-decoration: underline;
+}
+
 /* Liste des diplômes */
 #school > #degrees ol
 {
@@ -100,6 +106,12 @@ nav > ul
 	content: "";
 	position: absolute;
 	background-image: url("../images/decorations/timeline_marker.svg");
+}
+
+#school > #degrees ol li > h2
+{
+	/* Titre du diplôme */
+	color: white;
 }
 
 /* ---------------------------- */
