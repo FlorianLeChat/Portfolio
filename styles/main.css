@@ -13,6 +13,8 @@ html
 
 	min-width: var(--html-width);
 	scroll-behavior: smooth;
+
+	background-image: url("../images/decorations/wireframes.png");
 	background-color: rgb(24, 24, 27);
 }
 
