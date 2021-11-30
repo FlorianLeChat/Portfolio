@@ -36,7 +36,7 @@ nav > ul
 	color: rgb(161, 161, 170);
 
 	--offset: calc(5% + 5rem);
-	padding: var(--offset) 0 var(--offset) 0;
+	padding: var(--offset) 5% var(--offset) 5%;
 }
 
 #school > h2, #work > h2
@@ -54,14 +54,23 @@ nav > ul
 	margin-bottom: 0.5rem;
 }
 
-#school ol
+#school article
+{
+	/* Corps de chaque partie */
+	width: 50vw;
+	padding: 1rem;
+	display: table-cell;
+}
+
+/* Liste des diplômes */
+#school > #degrees ol
 {
 	/* Liste ordonnée */
-	padding-right: 50%;
+	padding: 0;
 	list-style-type: none;
 }
 
-#school ol li
+#school > #degrees ol li
 {
 	margin: 0 0 0.5rem;
 	padding: 1rem 2rem 1rem 2rem;
@@ -69,7 +78,7 @@ nav > ul
 	background-color: rgb(39, 39, 42);
 }
 
-#school ol li:before
+#school > #degrees ol li:before
 {
 	/* Barre horizontale */
 	top: 0;
@@ -81,7 +90,7 @@ nav > ul
 	background-color: rgb(28, 158, 77);
 }
 
-#school ol li:after
+#school > #degrees ol li:after
 {
 	/* Ancre sur la barre */
 	top: calc(50% - 7.5px);
