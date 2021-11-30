@@ -114,6 +114,13 @@ nav > ul
 	color: white;
 }
 
+/* Résumé des formations */
+#school > #courses p
+{
+	text-align: justify;
+	line-height: 1.5rem;
+}
+
 /* ---------------------------- */
 /* Compétences professionnelles */
 /* ---------------------------- */
