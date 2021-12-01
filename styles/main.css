@@ -213,9 +213,9 @@ aside select option
 	background-color: rgb(24, 24, 27);
 }
 
-/* -------------------------------- */
-/* Bouton : retour au début de page */
-/* -------------------------------- */
+/* ----------------------------------- */
+/* Bouton : retour au début de la page */
+/* ----------------------------------- */
 #scrollTop
 {
 	/* Dimensions */
@@ -243,21 +243,21 @@ aside select option
 	background-position: center;
 }
 
-@media screen and (pointer: fine) and (hover: hover)
+@-moz-document url-prefix()
 {
-	/* On affiche un effet de sélection pour les affichages
-		sur ordinateurs uniquement */
+	/* On affiche l'effet de sélection seulement pour
+		Firefox et sa variante mobile */
 	#scrollTop
 	{
 		filter: contrast(50%);
-		transition: filter 1s linear;
+		transition: filter 300ms linear;
 	}
+}
 
-	#scrollTop:hover
-	{
-		cursor: pointer;
-		filter: contrast(100%);
-	}
+#scrollTop:hover
+{
+	cursor: pointer;
+	filter: contrast(100%); /* Voir le dernier commentaire */
 }
 
 /* ------------------------- */
