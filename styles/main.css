@@ -3,19 +3,28 @@
 /* --------------- */
 html
 {
+	/* Variables globales */
+	--html-min-width: 360px;
+
+	--theme-color-dark: 12, 87, 157;		/* Couleur foncée du thème */
+	--theme-color-bright: 0, 133, 255;		/* Couleur claire du thème */
+
+	--theme-text-color: 161, 161, 170;		/* Couleur de certains paragraphes */
+
+	--theme-background-color: 24, 24, 27;	/* Couleur de fond par défaut */
+	--theme-box-color: 39, 39, 42;			/* Couleur de certains blocs */
+
 	/* Traitement des textes */
 	color: white;
 	text-align: center;
 	font-family: "Open Sans", sans-serif;
 
 	/* Disposition et affichage */
-	--html-width: 360px;
-
-	min-width: var(--html-width);
+	min-width: var(--html-min-width);
 	scroll-behavior: smooth;
 
 	background-image: url("../images/decorations/wireframes.png");
-	background-color: rgb(24, 24, 27);
+	background-color: rgb(var(--theme-background-color));
 }
 
 strong
@@ -29,7 +38,7 @@ strong
 {
 	/* Sélection du texte */
 	color: white;
-	background: rgb(12, 87, 157);
+	background: rgb(var(--theme-color-dark));
 }
 
 /* ------- */
@@ -39,7 +48,7 @@ header
 {
 	/* Corps de l'en-tête */
 	padding: 4rem 2.5rem 4rem 2.5rem;
-	background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
 header > h1
@@ -72,7 +81,7 @@ header > img
 	left: 0;
 	z-index: -1;
 	position: absolute;
-	min-width: var(--html-width);
+	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
@@ -129,7 +138,7 @@ nav > ul
 	position: fixed;
 	border-radius: 6rem;
 	backdrop-filter: blur(0.5rem);
-	background-color: rgba(0, 133, 255, 0.7);
+	background-color: rgba(var(--theme-color-bright), 0.7);
 
 	/* Suppression du style par défaut des listes
 		non ordonnées */
@@ -146,7 +155,7 @@ nav > ul
 	margin: 0 auto 0 auto;
 
 	/* Dimensions minimum/maximum de la barre */
-	min-width: calc(var(--html-width) - 7rem); /* padding + position gauche/droite */
+	min-width: calc(var(--html-min-width) - 7rem); /* padding + position gauche/droite */
 	max-width: 422px; /* 410 de base + 12 de marge à droite  */
 }
 
@@ -210,7 +219,7 @@ aside select option
 {
 	/* Couleur des options */
 	color: white;
-	background-color: rgb(24, 24, 27);
+	background-color: rgb(var(--theme-background-color));
 }
 
 /* ----------------------------------- */
@@ -234,7 +243,7 @@ aside select option
 	/* Apparence */
 	border: none;
 	outline: none;
-	background-color: rgb(12, 87, 157);
+	background-color: rgb(var(--theme-color-dark));
 
 	/* Image de décoration */
 	background-size: 50%;
@@ -266,7 +275,7 @@ aside select option
 #aboutme, #skills, #contact
 {
 	/* Corps de la section */
-	color: rgb(161, 161, 170);
+	color: rgb(var(--theme-text-color));
 
 	/* Note : Le padding haut/bas prend en compte une taille fixe
 		pour toujours garder une marge quelque soit la résolution */
@@ -301,8 +310,8 @@ aside select option
 #projects
 {
 	/* Corps de la section */
-	color: rgb(161, 161, 170);
-	background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
+	color: rgb(var(--theme-text-color));
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
 #projects .row article
@@ -314,13 +323,13 @@ aside select option
 	margin: 1rem 5% 0 5%;
 	padding: 3rem;
 
-	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.25);
+	box-shadow: 0 1rem 2rem -1rem rgba(var(--theme-background-color), 0.3);
 	border-radius: 1rem;
 
 	/* Fond d'écran de chaque bouton */
 	background-size: cover;
 	background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
-	background-color: rgb(24, 24, 27);
+	background-color: rgb(var(--theme-background-color));
 	background-repeat: no-repeat;
 }
 
@@ -377,7 +386,7 @@ aside select option
 	z-index: -1;
 	position: absolute;
 	transform: translateY(-60%);
-	min-width: var(--html-width);
+	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
@@ -389,7 +398,7 @@ aside select option
 	z-index: -1;
 	position: absolute;
 	transform: translateY(-40%);
-	min-width: var(--html-width);
+	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
@@ -446,7 +455,7 @@ aside select option
 
 	/* Apparence de la section */
 	border-radius: 1rem;
-	background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
 #contact h2
@@ -507,7 +516,7 @@ h2 a:active, article a:active, li a:active
 {
 	/* Passage progressif en bleu lors de l'appui
 		(active + hover) */
-	background: rgb(12, 87, 157);
+	background: rgb(var(--theme-color-dark));
 }
 
 h2 a:hover, article a:hover, li a:hover

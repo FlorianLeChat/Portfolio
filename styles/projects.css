@@ -1,40 +1,20 @@
 /* --------------- */
 /* Document entier */
 /* --------------- */
-::selection
+html
 {
-	/* Sélection du texte */
-	background: rgb(158, 103, 13);
+	/* Variables globales */
+	--theme-color-dark: 158, 103, 13;
+	--theme-color-bright: 255, 158, 0;
 }
 
 /* ------- */
 /* En-tête */
 /* ------- */
-header
-{
-	background-image: linear-gradient(to right, rgb(158, 103, 13), rgb(255, 158, 0));
-}
-
 header > img
 {
 	/* Vagues marquant la fin de l'en-tête */
 	transform: translateY(-27.5%);
-}
-
-/* ------------------- */
-/* Barre de navigation */
-/* ------------------- */
-nav > ul
-{
-	background-color: rgba(255, 158, 0, 0.7);
-}
-
-/* -------------------------------- */
-/* Bouton : retour au début de page */
-/* -------------------------------- */
-#scrollTop
-{
-	background-color: rgba(158, 103, 13, 0.5);
 }
 
 /* ------- */
@@ -49,9 +29,9 @@ article
 	color: white;
 	text-align: right;
 
-	box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.25);
+	box-shadow: 0 1rem 2rem -1rem rgba(var(--theme-background-color), 0.3);
 	border-radius: 1rem;
-	background-color: rgb(39, 39, 42);
+	background-color: rgb(var(--theme-box-color));
 }
 
 article:last-of-type
@@ -106,7 +86,7 @@ article div.properties > h3
 article div.properties > p
 {
 	/* Description du projet */
-	color: rgb(161, 161, 170);
+	color: rgb(var(--theme-text-color));
 	text-align: justify;
 	line-height: 1.5rem;
 }
@@ -153,11 +133,11 @@ article div.images div
 	/* État initial de la galerie photos */
 	width: calc(100% - 2rem);
 	margin: 0.5rem;
-	border: 1px solid grey;
+	border: 1px solid rgb(var(--theme-text-color));
 	display: inline-block;
 	min-width: 170px;
 	max-width: 400px;
-	background-color: rgb(24, 24, 27);
+	background-color: rgb(var(--theme-background-color));
 }
 
 @media screen and (min-width: 768px)
@@ -215,14 +195,4 @@ article div.languages img
 	float: right;
 	height: 2.5rem;
 	margin-left: 1.5rem;
-}
-
-/* ----- */
-/* Liens */
-/* ----- */
-article a:active, li a:active
-{
-	/* Passage progressif en orange lors de l'appui
-		(active + hover) */
-	background: rgb(158, 103, 13);
 }

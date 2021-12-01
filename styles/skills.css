@@ -1,20 +1,16 @@
 /* --------------- */
 /* Document entier */
 /* --------------- */
-::selection
+html
 {
-	/* Sélection du texte */
-	background: rgb(28, 158, 77);
+	/* Variables globales */
+	--theme-color-dark: 28, 158, 77;
+	--theme-color-bright: 25, 235, 112;
 }
 
 /* ------- */
 /* En-tête */
 /* ------- */
-header
-{
-	background-image: linear-gradient(to right, rgb(28, 158, 77), rgb(25, 235, 112));
-}
-
 header > img
 {
 	/* Vagues marquant la fin de l'en-tête */
@@ -27,15 +23,6 @@ header > img
 nav > ul
 {
 	max-width: 372px; /* 360 de base + 12 de marge à droite  */
-	background-color: rgba(25, 235, 112, 0.7);
-}
-
-/* -------------------------------- */
-/* Bouton : retour au début de page */
-/* -------------------------------- */
-#scrollTop
-{
-	background-color: rgba(28, 158, 77, 0.5);
 }
 
 /* ----------------- */
@@ -43,7 +30,7 @@ nav > ul
 /* ----------------- */
 #school
 {
-	color: rgb(161, 161, 170);
+	color: rgb(var(--theme-text-color));
 
 	--offset: calc(5% + 5rem);
 	padding: var(--offset) 5% var(--offset) 5%;
@@ -91,7 +78,7 @@ nav > ul
 	margin: 0 0 0.5rem;
 	padding: 1rem 2rem 1rem 2rem;
 	position: relative;
-	background-color: rgb(39, 39, 42);
+	background-color: rgb(var(--theme-box-color));
 }
 
 #school > #degrees ol li:before
@@ -103,7 +90,7 @@ nav > ul
 	bottom: 0;
 	content: "";
 	position: absolute;
-	background-color: rgb(28, 158, 77);
+	background-color: rgb(var(--theme-color-bright));
 }
 
 #school > #degrees ol li:after
@@ -138,7 +125,7 @@ nav > ul
 {
 	/* Corps de la section */
 	color: rgb(161, 161, 170);
-	background-image: linear-gradient(to right, rgb(28, 158, 77), rgb(25, 235, 112));
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
 #work > img:first-child
@@ -148,7 +135,7 @@ nav > ul
 	z-index: -1;
 	position: absolute;
 	transform: translateY(-60%);
-	min-width: var(--html-width);
+	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
@@ -160,7 +147,7 @@ nav > ul
 	z-index: -1;
 	position: absolute;
 	transform: translateY(-40%);
-	min-width: var(--html-width);
+	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
@@ -181,13 +168,3 @@ nav > ul
   .css {width: 80%; background-color: #2196F3;} /* Blue */
   .js {width: 65%; background-color: #f44336;} /* Red */
   .php {width: 60%; background-color: #808080;} /* Dark Grey */
-
-/* ----- */
-/* Liens */
-/* ----- */
-article a:active, li a:active
-{
-	/* Passage progressif en vert lors de l'appui
-		(active + hover) */
-	background: rgb(28, 158, 77);
-}
