@@ -21,10 +21,20 @@ header > img
 	transform: translateY(-27.5%);
 }
 
+/* ------------------- */
 /* Barre de navigation */
+/* ------------------- */
 nav > ul
 {
 	background-color: rgba(255, 158, 0, 0.7);
+}
+
+/* -------------------------------- */
+/* Bouton : retour au début de page */
+/* -------------------------------- */
+#scrollTop
+{
+	background-color: rgba(158, 103, 13, 0.5);
 }
 
 /* ------- */

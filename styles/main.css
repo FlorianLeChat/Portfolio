@@ -213,6 +213,46 @@ aside select option
 	background-color: rgb(24, 24, 27);
 }
 
+/* -------------------------------- */
+/* Bouton : retour au début de page */
+/* -------------------------------- */
+#scrollTop
+{
+	/* Dimensions */
+	width: 3rem;
+	height: 3rem;
+
+	/* Alignement */
+	right: 1rem;
+	bottom: 1rem;
+	position: fixed;
+
+	/* Disposition */
+	z-index: 5;
+	border-radius: 1rem;
+
+	/* Apparence */
+	border: none;
+	filter: contrast(50%);
+	outline: none;
+	background-color: rgba(12, 87, 157, 0.5);
+
+	/* Image de décoration */
+	background-size: 50%;
+	background-image: url("../images/decorations/arrow_up.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+
+	/* Animation de transition */
+	transition: filter 300ms ease-out;
+}
+
+#scrollTop:hover
+{
+	cursor: pointer;
+	filter: contrast(100%);
+}
+
 /* ------------------------- */
 /* Section : à propos de moi */
 /* ------------------------- */
@@ -435,8 +475,7 @@ aside select option
 
 	/* État initial de l'animation */
 	transform: translateY(0);
-	transition-duration: 150ms;
-	transition-timing-function: cubic-bezier(.4, 0, 1, 1);
+	transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
 }
 
 #contact div:hover
