@@ -86,20 +86,20 @@ header > img
 	min-height: 400px;
 }
 
-.steam { background-color: rgb(63, 63, 70); }
 .discord { background-color: rgb(88, 101, 242); }
 .github { background-color: rgb(39, 39, 42); }
 .twitter { background-color: rgb(29, 161, 242); }
+.linkedin { background-color: rgb(0, 102, 153); }
 .cv { background-color: white; }
 
-.steam, .discord, .github, .twitter, .cv
+.discord, .github, .twitter, .linkedin, .cv
 {
 	/* Animation de réinitialisation de l'échelle */
 	transition: transform 300ms ease;
 }
 
-.steam:hover, .discord:hover, .github:hover,
-.twitter:hover, .cv:hover
+.discord:hover, .github:hover, .twitter:hover,
+.linkedin:hover, .cv:hover
 {
 	/* Animation de sélection d'une icône
 		(modification de l'échelle) */
