@@ -66,14 +66,14 @@ nav > ul
 }
 
 /* Liste des diplômes */
-#school > #degrees ol
+#school > #degrees ul
 {
 	/* Liste ordonnée */
 	padding: 0;
 	list-style-type: none;
 }
 
-#school > #degrees ol li
+#school > #degrees ul li
 {
 	margin: 0 0 0.5rem;
 	padding: 1rem 2rem 1rem 2rem;
@@ -81,7 +81,7 @@ nav > ul
 	background-color: rgb(var(--theme-box-color));
 }
 
-#school > #degrees ol li:before
+#school > #degrees ul li:before
 {
 	/* Barre horizontale */
 	top: 0;
@@ -93,7 +93,7 @@ nav > ul
 	background-color: rgb(var(--theme-color-bright));
 }
 
-#school > #degrees ol li:after
+#school > #degrees ul li:after
 {
 	/* Ancre sur la barre */
 	top: calc(50% - 7.5px);
@@ -105,7 +105,7 @@ nav > ul
 	background-image: url("../images/decorations/timeline_marker.svg");
 }
 
-#school > #degrees ol li > h2
+#school > #degrees ul li > h2
 {
 	/* Titre du diplôme */
 	color: white;
