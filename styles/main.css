@@ -242,7 +242,6 @@ aside select option
 
 	/* Apparence */
 	border: none;
-	outline: none;
 	background-color: rgb(var(--theme-color-dark));
 
 	/* Image de décoration */
@@ -476,13 +475,14 @@ aside select option
 	text-decoration: underline;
 }
 
-#contact div
+#contact span
 {
 	/* Apparence du bouton de contact */
 	color: black;
 	font-weight: 700;
 	border-radius: 0.5rem;
 
+	border: none;
 	display: inline-block;
 	padding: 0.75rem 1.5rem 0.75rem 1.5rem;
 	background-color: rgba(255, 255, 255, 0.7);
@@ -492,7 +492,7 @@ aside select option
 	transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
 }
 
-#contact div:hover
+#contact span:hover
 {
 	/* Animation de sélection du bouton */
 	cursor: pointer;
