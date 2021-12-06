@@ -117,8 +117,8 @@ footer > ul
 	columns: 3;
 	padding: 1rem 10% 1rem 10%;
 	column-gap: 2rem;
-	list-style: none;
 	column-rule: thin dotted white;
+	list-style-type: none;
 }
 
 footer > ul > li
@@ -142,7 +142,7 @@ nav > ul
 
 	/* Suppression du style par défaut des listes
 		non ordonnées */
-	list-style: none;
+	list-style-type: none;
 
 	/* Ajustement de l'espacement de la barre */
 	padding: 1.25rem 2.5rem 1.25rem 2.5rem;
@@ -165,6 +165,7 @@ nav > ul > li
 	display: inline;
 	padding: 0 0.75rem 0 0.75rem;
 	line-height: 1.5rem;
+	user-select: none;
 }
 
 nav > ul > li:first-of-type
@@ -342,6 +343,7 @@ ul#flags:hover li
 	padding: 3rem;
 
 	box-shadow: 0 1rem 2rem -1rem rgba(var(--theme-background-color), 0.3);
+	user-select: none;
 	border-radius: 1rem;
 
 	/* Fond d'écran de chaque bouton */
@@ -504,6 +506,7 @@ ul#flags:hover li
 	border: none;
 	display: inline-block;
 	padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+	user-select: none;
 	background-color: rgba(255, 255, 255, 0.7);
 
 	/* État initial de l'animation */
