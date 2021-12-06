@@ -56,7 +56,7 @@ header > h1
 	/* Prénom & nom */
 	margin: 0;
 	font-size: 2rem;
-	margin-top: 10rem;
+	margin-top: 11rem;
 }
 
 header > h2
@@ -149,7 +149,7 @@ nav > ul
 
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
-	top: 5rem;
+	top: 6rem;
 	left: 5%;
 	right: 5%;
 	margin: 0 auto 0 auto;
@@ -191,10 +191,7 @@ nav > ul > li:last-of-type
 	top: 0;
 	left: 0;
 	position: absolute;
-
-	cursor: pointer;
-	list-style: none;
-	background-color: transparent;
+	z-index: 10;
 
 	/* Dimensions */
 	width: 5rem;
@@ -202,43 +199,62 @@ nav > ul > li:last-of-type
 	padding: 0;
 
 	/* Apparence */
-	border: none;
-	outline: none;
+	cursor: pointer;
 	border-radius: 4px;
+	list-style-type: none;
+	backdrop-filter: blur(0.5rem);
+	background-color: transparent;
+}
+
+#flags p
+{
+	/* Nom de la langue */
+	color: white;
+	margin: 0.5rem 0 0;
+	font-size: 0.75rem;
+	user-select: none;
 }
 
 #flags img
 {
-	/* Dimensions */
+	/* Image représentative de la langue */
 	width: calc(21.33px * 2.5); /* Gardons les proportions originales... */
 	height: calc(16px * 2.5);
 	border-radius: 4px;
 }
 
-#flags p
-{
-	font-size: 0.75rem;
-	margin: 0.5rem 0 0;
-	color: white;
-}
-
 #flags li
 {
+	/* État initial d'un item de la liste */
 	padding: 10px;
+	transition: background-color 300ms ease-out;
 }
 
 ul#flags:hover li
 {
+	/* Apparition des items lors du passage
+		de la souris */
 	display: block;
 }
 
 #flags li:nth-of-type(n+2)
 {
+	/* Tous les éléments (sauf le premier) sont
+		cachés par défaut */
 	display: none;
 }
 
 #flags li:hover
 {
+	/* Animation de survol d'un item
+		(sélection sans appui) */
+	background-color: rgb(var(--theme-color-dark));
+}
+
+#flags li:active
+{
+	/* Animation de survol d'un item
+		(sélection avec maintien) */
 	background-color: rgb(var(--theme-color-bright));
 }
 
