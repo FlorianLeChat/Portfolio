@@ -49,20 +49,31 @@
 				</ul>
 			</nav>
 
-			<!-- Sélection de la langue -->
+			<!-- Navigation latérale -->
 			<aside>
-				<form method="POST">
-					<select name="lang" onchange="this.form.submit()">
-						<option value="en">Anglais</option>
-						<option value="fr" selected>Français</option>
-						<option value="es">Espagnol</option>
-						<option value="jp">Japonais</option>
-					</select>
-				</form>
-			</aside>
+				<!-- Sélection de la langue -->
+				<ul id="flags">
+					<li data-code="fr">
+						<img src="./images/flags/fr.svg" alt="Drapeau de langue française" />
+						<p>Français</p>
+					</li>
+					<li data-code="en">
+						<img src="./images/flags/gb.svg" alt="Drapeau de la langue anglaise" />
+						<p>Anglais</p>
+					</li>
+					<li data-code="es">
+						<img src="./images/flags/es.svg" alt="Drapeau de la langue espagnol" />
+						<p>Espagnol</p>
+					</li>
+					<li data-code="jp">
+						<img src="./images/flags/jp.svg" alt="Drapeau du la langue japonaise" />
+						<p>Japonais</p>
+					</li>
+				</ul>
 
-			<!-- Retour au début de page -->
-			<button id="scrollTop" title="Retour au début de la page"></button>
+				<!-- Retour au début de la page -->
+				<button id="scrollTop" title="Retour au début de la page"></button>
+			</aside>
 
 			<!-- Parcours scolaire -->
 			<section id="school">
@@ -128,7 +139,7 @@
 							<!-- Intitulé de la formation -->
 							<h2>
 								<a href="https://www.onisep.fr/Ressources/Univers-Formation/Formations/Lycees/bac-pro-systemes-numeriques-option-b-audiovisuels-reseau-et-equipement-domestiques">
-									Baccalauréat Professionnel - Systèmes Électroniques Numériques
+									Baccalauréat Professionnel - Systèmes électroniques numériques
 								</a>
 							</h2>
 
