@@ -535,12 +535,12 @@ h2 a:active, article a:active, li a:active
 {
 	/* Passage progressif en bleu lors de l'appui
 		(active + hover) */
-	background: rgb(var(--theme-color-dark));
+	background-color: rgb(var(--theme-color-dark));
 }
 
 h2 a:hover, article a:hover, li a:hover
 {
-	transition: background 500ms ease-out;
+	transition: background-color 500ms ease-out;
 }
 
 h2 a::after, article a::after, li a::after
@@ -548,7 +548,7 @@ h2 a::after, article a::after, li a::after
 	/* Création d'une ligne qui apparaîtra
 		progressivement lors de la sélection */
 	left: 0;
-	bottom: -3px;
+	bottom: -2px;
 	position: absolute;
 
 	width: 100%;
