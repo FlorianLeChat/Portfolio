@@ -345,7 +345,7 @@ ul#flags:hover li
 	font-size: 1.25rem;
 
 	margin: 1rem 5% 0 5%;
-	padding: 3rem;
+	padding: 1rem;
 
 	box-shadow: 0 1rem 2rem -1rem rgba(var(--theme-background-color), 0.3);
 	user-select: none;
