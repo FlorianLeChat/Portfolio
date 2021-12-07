@@ -34,6 +34,20 @@ strong
 	text-decoration: underline solid;
 }
 
+noscript
+{
+	/* Avertissement page sans JavaScript */
+	top: 1%;
+	right: 1%;
+	padding: 0.5rem;
+
+	z-index: 10;
+	position: fixed;
+
+	color: white;
+	background-color: red;
+}
+
 ::selection
 {
 	/* Sélection du texte */
