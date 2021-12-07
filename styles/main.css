@@ -296,7 +296,7 @@ ul#flags:hover li
 	background-repeat: no-repeat;
 	background-position: center;
 
-	/* Animation de sélection (Firefox uniquement) */
+	/* Animation de sélection (Firefox uniquement, https://caniuse.com/svg-html) */
 	filter: contrast(50%);
 	-moz-transition: filter 300ms linear;
 }
