@@ -66,33 +66,25 @@ nav > ul
 }
 
 /* Liste des formations */
-#school > #list ul
+#list ul
 {
-	/* Liste ordonnée */
+	/* État initial des formation */
 	padding: 0;
 	list-style-type: none;
 }
 
-#school > #list li
+#list li
 {
 	margin: 0 0 0.5rem;
 	padding: 1rem 2rem 1rem 2rem;
 	position: relative;
+	user-select: none;
 	background-color: rgb(var(--theme-box-color));
 }
 
-#school > #list li:hover
+#list li:before
 {
-	background-color: black;
-}
-
-#school > #list li:nth-of-type(2), #school > #summary li:nth-of-type(2) { opacity: 0.8; }	/* Disparition progressive des formations 		*/
-#school > #list li:nth-of-type(3), #school > #summary li:nth-of-type(3) { opacity: 0.7; }	/*	en fonction du temps (devra être déplacé	*/
-#school > #list li:nth-of-type(4), #school > #summary li:nth-of-type(4) { opacity: 0.6; }	/*	côté JS) 									*/
-
-#school > #list li:before
-{
-	/* Barre horizontale */
+	/* Barre horizontale à gauche */
 	top: 0;
 	left: 6px;
 	width: 3px;
@@ -102,7 +94,7 @@ nav > ul
 	background-color: rgb(var(--theme-color-bright));
 }
 
-#school > #list li:after
+#list li:after
 {
 	/* Ancre sur la barre */
 	top: calc(50% - 7.5px);
@@ -114,34 +106,56 @@ nav > ul
 	background-image: url("../images/decorations/timeline_marker.svg");
 }
 
-#school > #list li > h2
+#list li:active
 {
-	/* Titre du diplôme */
-	color: white;
+	/* Sélection d'une formation */
+	background-size: cover;
+	background-image: url("../images/skills/carlone.jpg"); /* Doit être modifié depuis le JS */
+	background-color: rgb(var(--theme-color-bright));
+	background-repeat: no-repeat;
+	background-position-x: 15px;
 }
 
-#school > #list img
+#list li:active > *
 {
+	color: transparent;
+}
+
+#list li:active > img
+{
+	display: none;
+}
+
+#list h4, #list h5
+{
+	/* Titre et option du diplôme */
+	color: white;
+	margin: 1rem 0 1rem;
+	font-size: 1.25rem;
+}
+
+#list img
+{
+	/* Image représentant un diplôme */
 	right: 0;
 	width: 3rem;
-	bottom: 0;
 	margin: 0.25rem;
+	bottom: 0;
 	position: absolute;
 }
 
 /* Résumé des formations */
-#school > #summary ul
+#summary ul
 {
 	padding: 0;
 	list-style-type: none;
 }
 
-#school > #summary li
+#summary li
 {
+	height: 250px; /* Devra être défini ultérieurement en JS */
 	text-align: justify;
 	line-height: 1.5rem;
-
-	height: 300px;
 }
 
 /* ---------------------------- */
