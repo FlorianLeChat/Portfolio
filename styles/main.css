@@ -171,14 +171,14 @@ nav > ul > li
 nav > ul > li:first-of-type
 {
 	/* Suppression de la marge à gauche
-	pour la première option */
+		pour la première option */
 	padding-left: 0;
 }
 
 nav > ul > li:last-of-type
 {
 	/* Suppression de la marge à droite
-	pour la dernière option */
+		pour la dernière option */
 	padding-right: 0;
 }
 
@@ -244,18 +244,14 @@ ul#flags:hover li
 	display: none;
 }
 
-#flags li:hover
+@media screen and (pointer: fine) and (hover: hover)
 {
-	/* Animation de survol d'un item
-		(sélection sans appui) */
-	background-color: rgb(var(--theme-color-dark));
-}
-
-#flags li:active
-{
-	/* Animation de survol d'un item
-		(sélection avec maintien) */
-	background-color: rgb(var(--theme-color-bright));
+	#flags li:hover
+	{
+		/* Animation de survol d'un item
+			(sélection avec maintien) */
+			background-color: rgb(var(--theme-color-bright));
+	}
 }
 
 /* -------------------------- */
