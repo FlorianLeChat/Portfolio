@@ -25,6 +25,7 @@ html
 
 	background-image: url("../images/decorations/wireframes.png");
 	background-color: rgb(var(--theme-background-color));
+	background-attachment: fixed;
 }
 
 strong
@@ -84,6 +85,7 @@ header a > img
 {
 	/* Plateformes de communication */
 	width: 2rem;
+	filter: drop-shadow(0 0 1rem rgb(var(--theme-color-dark)));
 	margin: 4rem 1rem 0 1rem;
 	padding: 0.625rem;
 	border-radius: 1rem;
@@ -264,7 +266,7 @@ ul#flags:hover li
 	{
 		/* Animation de survol d'un item
 			(sélection avec maintien) */
-			background-color: rgb(var(--theme-color-bright));
+		background-color: rgb(var(--theme-color-bright));
 	}
 }
 
