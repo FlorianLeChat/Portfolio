@@ -281,17 +281,10 @@ ul#flags:hover li
 	background-image: url("../images/decorations/arrow_up.svg");
 	background-repeat: no-repeat;
 	background-position: center;
-}
 
-@-moz-document url-prefix()
-{
-	/* On affiche l'effet de sélection seulement pour
-		Firefox et sa variante mobile */
-	#scrollTop
-	{
-		filter: contrast(50%);
-		transition: filter 300ms linear;
-	}
+	/* Animation de sélection (Firefox uniquement) */
+	filter: contrast(50%);
+	-moz-transition: filter 300ms linear;
 }
 
 #scrollTop:hover
