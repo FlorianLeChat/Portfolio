@@ -116,6 +116,15 @@ nav > ul
 	color: white;
 }
 
+#school > #list img
+{
+	right: 0;
+	width: 3rem;
+	bottom: 0;
+	margin: 0.25rem;
+	position: absolute;
+}
+
 /* Résumé des formations */
 #school > #summary ul
 {
