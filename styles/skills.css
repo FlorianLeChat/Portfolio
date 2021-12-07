@@ -65,15 +65,15 @@ nav > ul
 	text-decoration: underline;
 }
 
-/* Liste des diplômes */
-#school > #degrees ul
+/* Liste des formations */
+#school > #list ul
 {
 	/* Liste ordonnée */
 	padding: 0;
 	list-style-type: none;
 }
 
-#school > #degrees ul li
+#school > #list li
 {
 	margin: 0 0 0.5rem;
 	padding: 1rem 2rem 1rem 2rem;
@@ -81,7 +81,12 @@ nav > ul
 	background-color: rgb(var(--theme-box-color));
 }
 
-#school > #degrees ul li:before
+#school > #list li:hover
+{
+	background-color: black;
+}
+
+#school > #list li:before
 {
 	/* Barre horizontale */
 	top: 0;
@@ -93,7 +98,7 @@ nav > ul
 	background-color: rgb(var(--theme-color-bright));
 }
 
-#school > #degrees ul li:after
+#school > #list li:after
 {
 	/* Ancre sur la barre */
 	top: calc(50% - 7.5px);
@@ -105,17 +110,25 @@ nav > ul
 	background-image: url("../images/decorations/timeline_marker.svg");
 }
 
-#school > #degrees ul li > h2
+#school > #list li > h2
 {
 	/* Titre du diplôme */
 	color: white;
 }
 
 /* Résumé des formations */
-#school > #courses p
+#school > #summary ul
+{
+	padding: 0;
+	list-style-type: none;
+}
+
+#school > #summary li
 {
 	text-align: justify;
 	line-height: 1.5rem;
+
+	height: 300px;
 }
 
 /* ---------------------------- */
