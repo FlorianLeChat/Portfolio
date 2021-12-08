@@ -83,6 +83,34 @@ nav > ul
 	background-color: rgb(var(--theme-box-color));
 }
 
+@media screen and (max-width: 1024px)
+{
+	/* Modification de la disposition sur
+		les petits écrans (mobiles et tablettes) */
+	article#summary
+	{
+		/* Suppression des marges du résumé
+			de la formation */
+		margin: 0;
+		padding: 0;
+	}
+
+	#school article
+	{
+		/* Taille automatique des formations */
+		width: auto;
+		margin: auto;
+		display: block;
+	}
+
+	#school article > h3, #summary ul
+	{
+		/* Disparition des titres et du résumé
+			de la formation */
+		display: none;
+	}
+}
+
 #list li:before
 {
 	/* Barre horizontale à gauche */
