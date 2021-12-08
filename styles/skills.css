@@ -28,10 +28,11 @@ nav > ul
 /* ----------------- */
 /* Parcours scolaire */
 /* ----------------- */
-#school
+#school, #work
 {
 	color: rgb(var(--theme-text-color));
 
+	/* Marge minimum */
 	--offset: calc(5% + 5rem);
 	padding: var(--offset) 5% var(--offset) 5%;
 }
@@ -106,22 +107,22 @@ nav > ul
 	background-image: url("../images/decorations/timeline_marker.svg");
 }
 
-#list li:active
+#list li:hover
 {
 	/* Sélection d'une formation */
 	background-size: cover;
 	background-image: url("../images/skills/carlone.jpg"); /* Doit être modifié depuis le JS */
 	background-color: rgb(var(--theme-color-bright));
 	background-repeat: no-repeat;
-	background-position-x: 15px;
+	background-position: 15px center;
 }
 
-#list li:active > *
+#list li:hover > *
 {
 	color: transparent;
 }
 
-#list li:active > img
+#list li:hover > img
 {
 	display: none;
 }
@@ -174,7 +175,7 @@ nav > ul
 	left: 0;
 	z-index: -1;
 	position: absolute;
-	transform: translateY(-60%);
+	transform: translateY(-90%);
 	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
