@@ -28,7 +28,7 @@ nav > ul
 /* ----------------- */
 /* Parcours scolaire */
 /* ----------------- */
-#school, #work
+#school
 {
 	color: rgb(var(--theme-text-color));
 
@@ -203,7 +203,7 @@ nav > ul
 	left: 0;
 	z-index: -1;
 	position: absolute;
-	transform: translateY(-90%);
+	transform: translateY(-55%);
 	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
@@ -215,25 +215,8 @@ nav > ul
 	left: 0;
 	z-index: -1;
 	position: absolute;
-	transform: translateY(-40%);
+	transform: translateY(-35%);
 	min-width: var(--html-min-width);
 	max-width: 100%; /* Correction débile pour Firefox */
 	min-height: 400px;
 }
-
-.container {
-	width: 100%; /* Full width */
-	background-color: #ddd; /* Grey background */
-  }
-
-  .bar {
-	text-align: right; /* Right-align text */
-	padding-top: 10px; /* Add top padding */
-	padding-bottom: 10px; /* Add bottom padding */
-	color: white; /* White text color */
-  }
-
-  .html {width: 90%; background-color: #04AA6D;} /* Green */
-  .css {width: 80%; background-color: #2196F3;} /* Blue */
-  .js {width: 65%; background-color: #f44336;} /* Red */
-  .php {width: 60%; background-color: #808080;} /* Dark Grey */
