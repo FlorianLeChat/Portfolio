@@ -300,6 +300,7 @@ ul#flags:hover li
 
 	/* Animation de sélection (Firefox uniquement, https://caniuse.com/svg-html) */
 	filter: contrast(50%);
+	transition: inherit;
 	-moz-transition: filter 300ms linear;
 }
 
