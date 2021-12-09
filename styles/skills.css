@@ -37,11 +37,9 @@ nav > ul
 /* ----------------- */
 #school
 {
+	/* Corps de la section */
 	color: rgb(var(--theme-text-color));
-
-	/* Marge minimum */
-	--offset: calc(5% + 5rem);
-	padding: var(--offset) 5% var(--offset) 5%;
+	padding: calc(5% + 5rem) 5% 3rem 5%;
 }
 
 #school > h2, #work > h2
@@ -200,41 +198,59 @@ nav > ul
 #work
 {
 	/* Corps de la section */
-	color: rgb(161, 161, 170);
-	margin-bottom: 10rem;
+	margin: 5% 10% 0 10%;
+}
+
+#work article
+{
+	/* Corps de chaque article */
+	padding: 2rem;
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
-#work h2
+#work > h3
 {
-	color: white;
+	/* Identifiant de la section */
+	color: rgb(161, 161, 170);
 }
 
-#work .container
+#work > img:first-child
 {
-	/* Conteneur des deux cercles */
-	clip: rect(0px, 100px, 100px, 50px);
-	width: 6rem;
-	height: 6rem;
-
-	/* Préparation à la suppression des cercles */
-	animation-name: remove-clip;
-	animation-delay: 500ms;
-	animation-duration: 1ms;
-}
-
-#work .circle
-{
-	/* Cercles */
-	width: 5rem;
-	height: 5rem;
-	border: 0.5rem solid green;
-	border-radius: 50px;
+	/* Vagues marquant le début de la section */
+	left: 0;
+	z-index: -1;
 	position: absolute;
-	clip: rect(0px, 50px, 100px, 0px);
+	transform: translateY(-55%);
+	min-width: var(--html-min-width);
+	max-width: 100%; /* Correction débile pour Firefox */
+	min-height: 400px;
 }
 
-#work article div
+#work > img:last-child
+{
+	/* Vagues marquant la fin de la section */
+	left: 0;
+	z-index: -1;
+	position: absolute;
+	transform: translateY(-35%);
+	min-width: var(--html-min-width);
+	max-width: 100%; /* Correction débile pour Firefox */
+	min-height: 400px;
+}
+
+/* Expériences */
+#experiences
+{
+	margin-bottom: 2rem;
+}
+
+/* Compétences */
+#competences
+{
+
+}
+
+#competences div
 {
 	/* Lancement d'une seul animation retardée */
 	animation-fill-mode: forwards;
@@ -242,11 +258,52 @@ nav > ul
 	animation-timing-function: linear;
 }
 
-.circle[data-anim ~= left]
+#competences p
+{
+	left: 50%;
+	position: relative;
+	text-align: center;
+}
+
+#competences .container
+{
+	/* Conteneur des deux cercles */
+	clip: rect(0px, 100px, 100px, 50px);
+	width: 100px;
+	height: 100px;
+	margin: 1rem;
+	display: inline-block;
+
+	/* Préparation à la suppression des cercles */
+	animation-name: remove-clip;
+	animation-delay: 500ms;
+	animation-duration: 1ms;
+}
+
+#competences .circle
+{
+	/* Cercles */
+	clip: rect(0px, 50px, 100px, 0px);
+	width: 80px;
+	height: 80px;
+	border: 0.5rem solid rgb(var(--theme-box-color));
+	position: absolute;
+	border-radius: 50px;
+	background-color: transparent;
+}
+
+#competences .circle[data-anim ~= left]
 {
 	/* Cercle gauche */
 	animation-duration: 1.5s;
 	animation-name: left-spin;
+}
+
+#competences .circle[data-anim ~= right]
+{
+	/* Cercle droit */
+	animation-duration: 500ms;
+	animation-name: right-spin;
 }
 
 @keyframes left-spin
@@ -261,13 +318,6 @@ nav > ul
 	{
 		transform: rotate(360deg);
 	}
-}
-
-.circle[data-anim ~= right]
-{
-	/* Cercle droit */
-	animation-duration: 500ms;
-	animation-name: right-spin;
 }
 
 @keyframes right-spin
