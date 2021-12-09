@@ -293,27 +293,3 @@ nav > ul
 		clip: rect(auto, auto, auto, auto);
 	}
 }
-
-#work > img:first-child
-{
-	/* Vagues marquant le début de la section */
-	left: 0;
-	z-index: -1;
-	position: absolute;
-	transform: translateY(-55%);
-	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
-	min-height: 400px;
-}
-
-#work > img:last-child
-{
-	/* Vagues marquant la fin de la section */
-	left: 0;
-	z-index: -1;
-	position: absolute;
-	transform: translateY(-35%);
-	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
-	min-height: 400px;
-}
