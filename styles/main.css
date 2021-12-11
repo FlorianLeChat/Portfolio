@@ -71,7 +71,7 @@ header h1
 	/* Prénom & nom */
 	margin: 0;
 	font-size: 2rem;
-	margin-top: 11rem;
+	margin-top: 13rem;
 }
 
 header h2
@@ -161,7 +161,7 @@ nav ul
 
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
-	top: 6rem;
+	top: 7rem;
 	left: 5%;
 	right: 5%;
 	margin: 0 auto 0 auto;
@@ -368,6 +368,7 @@ ul#flags:hover li
 	background-size: cover;
 	background-image: url("../images/placeholder.svg"); /* Doit être modifié depuis le JS */
 	background-repeat: no-repeat;
+	background-position: center;
 }
 
 @media screen and (pointer: fine) and (hover: hover)
