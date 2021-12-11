@@ -66,7 +66,7 @@ header
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
-header > h1
+header h1
 {
 	/* Prénom & nom */
 	margin: 0;
@@ -74,7 +74,7 @@ header > h1
 	margin-top: 11rem;
 }
 
-header > h2
+header h2
 {
 	/* Description succincte */
 	margin-top: 1rem;
@@ -126,17 +126,24 @@ footer ul
 	list-style-type: none;
 }
 
-footer > ul > li
+footer li
 {
 	/* Espacement interne des options */
 	padding: 1rem 0 1rem 0;
 	word-break: break-word;
 }
 
+footer a
+{
+	/* Couleur de fond */
+	padding: 0.5rem;
+	background-color: rgb(var(--theme-color-dark));
+}
+
 /* ------------------- */
 /* Barre de navigation */
 /* ------------------- */
-nav > ul
+nav ul
 {
 	/* Propriétés principales de la barre */
 	z-index: 5;
@@ -164,7 +171,7 @@ nav > ul
 	max-width: 422px; /* 410 de base + 12 de marge à droite  */
 }
 
-nav > ul > li
+nav li
 {
 	/* Affichage des textes de la liste */
 	display: inline;
@@ -173,14 +180,14 @@ nav > ul > li
 	user-select: none;
 }
 
-nav > ul > li:first-of-type
+nav li:first-of-type
 {
 	/* Suppression de la marge à gauche
 		pour la première option */
 	padding-left: 0;
 }
 
-nav > ul > li:last-of-type
+nav li:last-of-type
 {
 	/* Suppression de la marge à droite
 		pour la dernière option */
@@ -216,7 +223,7 @@ nav > ul > li:last-of-type
 	/* Nom de la langue */
 	color: white;
 	margin: 0.5rem 0 0;
-	font-size: 0.75rem;
+	font-size: 0.875rem;
 	user-select: none;
 }
 
