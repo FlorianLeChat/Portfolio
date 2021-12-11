@@ -289,24 +289,33 @@ nav > ul
 	width: 5rem;
 	height: 5rem;
 	display: inline-block;
-	animation: spin 2s linear;
 	margin-right: 2rem;
 }
 
-#competences .circle[level = "25"]
+@media (prefers-reduced-motion: no-preference)
+{
+	/* Lancement d'une animation de rotation (disponible uniquement
+		si l'utilisateur n'a pas demandé à réduire les animations) */
+	#competences .circle
+	{
+		animation: spin 2s linear;
+	}
+}
+
+#competences .circle[data-level = "25"]
 {
 	/* Niveau à 25% (débutant) */
 	border-top: 8px solid dodgerblue;
 }
 
-#competences .circle[level = "50"]
+#competences .circle[data-level = "50"]
 {
 	/* Niveau à 50% (correct) */
 	border-top: 8px solid green;
 	border-left: 8px solid green;
 }
 
-#competences .circle[level = "75"]
+#competences .circle[data-level = "75"]
 {
 	/* Niveau à 75% (bon) */
 	border-top: 8px solid orange;
@@ -314,7 +323,7 @@ nav > ul
 	border-right: 8px solid orange;
 }
 
-#competences .circle[level = "100"]
+#competences .circle[data-level = "100"]
 {
 	/* Niveau à 100% (excellent) */
 	border: 8px solid red;
@@ -322,8 +331,7 @@ nav > ul
 
 @keyframes spin
 {
-	/* Animation de rotation de 0
-		à 360 degrès */
+	/* Animation de rotation de 0 à 360 degrés */
 	0%
 	{
 		transform: rotate(0deg);
