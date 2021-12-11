@@ -366,8 +366,7 @@ ul#flags:hover li
 
 	/* Fond d'écran de chaque bouton */
 	background-size: cover;
-	background-image: url("../images/projects/placeholder.jpg"); /* Doit être modifié depuis le JS */
-	background-color: rgb(var(--theme-background-color));
+	background-image: url("../images/placeholder.svg"); /* Doit être modifié depuis le JS */
 	background-repeat: no-repeat;
 }
 
