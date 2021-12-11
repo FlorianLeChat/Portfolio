@@ -187,7 +187,7 @@ nav > ul
 
 #summary li
 {
-	height: 250px; /* Devra être défini ultérieurement en JS */
+	height: 250px; /* Doit être modifié depuis le JS */
 	text-align: justify;
 	line-height: 1.5rem;
 }
@@ -201,6 +201,12 @@ nav > ul
 	margin: 5% 10% 0 10%;
 }
 
+#work > h3
+{
+	/* Identifiant de la section */
+	color: rgb(161, 161, 170);
+}
+
 #work article
 {
 	/* Corps de chaque article */
@@ -208,10 +214,11 @@ nav > ul
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
-#work > h3
+#work article h2
 {
-	/* Identifiant de la section */
-	color: rgb(161, 161, 170);
+	/* Titre de chaque article */
+	margin-bottom: 2rem;
+	text-decoration: underline;
 }
 
 #work > img:first-child
@@ -247,99 +254,82 @@ nav > ul
 /* Compétences */
 #competences
 {
-
+	/* Corps de l'article */
+	margin-bottom: 7.5%;
 }
 
-#competences div
+#competences hr
 {
-	/* Lancement d'une seul animation retardée */
-	animation-fill-mode: forwards;
-	animation-iteration-count: 1;
-	animation-timing-function: linear;
+	/* Séparateur avec les expériences */
+	margin: 2rem 0 2rem 0;
+	border-color: white;
 }
 
 #competences p
 {
-	left: 50%;
-	position: relative;
-	text-align: center;
+	/* Descriptif des compétences */
+	text-align: justify;
+	line-height: 1.5rem;
 }
 
-#competences .container
+#competences span
 {
-	/* Conteneur des deux cercles */
-	clip: rect(0px, 100px, 100px, 50px);
-	width: 100px;
-	height: 100px;
-	margin: 1rem;
-	display: inline-block;
-
-	/* Préparation à la suppression des cercles */
-	animation-name: remove-clip;
-	animation-delay: 500ms;
-	animation-duration: 1ms;
+	/* Titre de la compétence */
+	position: absolute;
+	transform: rotate(0);
 }
 
 #competences .circle
 {
-	/* Cercles */
-	clip: rect(0px, 50px, 100px, 0px);
-	width: 80px;
-	height: 80px;
-	border: 0.5rem solid rgb(var(--theme-box-color));
-	position: absolute;
-	border-radius: 50px;
-	background-color: transparent;
+	/* Bordures du cercles */
+	border: 10px solid rgb(var(--theme-box-color));
+	border-radius: 50%;
+
+	/* Dimensions et disposition */
+	width: 5rem;
+	height: 5rem;
+	display: inline-block;
+	animation: spin 2s linear;
+	margin-right: 2rem;
 }
 
-#competences .circle[data-anim ~= left]
+#competences .circle[level = "25"]
 {
-	/* Cercle gauche */
-	animation-duration: 1.5s;
-	animation-name: left-spin;
+	/* Niveau à 25% (débutant) */
+	border-top: 8px solid dodgerblue;
 }
 
-#competences .circle[data-anim ~= right]
+#competences .circle[level = "50"]
 {
-	/* Cercle droit */
-	animation-duration: 500ms;
-	animation-name: right-spin;
+	/* Niveau à 50% (correct) */
+	border-top: 8px solid green;
+	border-left: 8px solid green;
 }
 
-@keyframes left-spin
+#competences .circle[level = "75"]
 {
-	/* Rotation du côté gauche du cercle de 0 à
-		360 degrès */
-	from
+	/* Niveau à 75% (bon) */
+	border-top: 8px solid orange;
+	border-left: 8px solid orange;
+	border-right: 8px solid orange;
+}
+
+#competences .circle[level = "100"]
+{
+	/* Niveau à 100% (excellent) */
+	border: 8px solid red;
+}
+
+@keyframes spin
+{
+	/* Animation de rotation de 0
+		à 360 degrès */
+	0%
 	{
 		transform: rotate(0deg);
 	}
-	to
+	100%
 	{
 		transform: rotate(360deg);
-	}
-}
-
-@keyframes right-spin
-{
-	/* Rotation du côté droit du cercle de 0 à
-		180 degrès */
-	from
-	{
-		transform: rotate(0deg);
-	}
-	to
-	{
-		transform: rotate(180deg);
-	}
-}
-
-@keyframes remove-clip
-{
-	/* Suppression de la zone de démarcation après
-		la fin de l'animation */
-	to
-	{
-		clip: rect(auto, auto, auto, auto);
 	}
 }
