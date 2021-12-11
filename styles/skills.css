@@ -144,7 +144,7 @@ nav > ul
 {
 	/* Sélection d'une formation */
 	background-size: cover;
-	background-image: url("../images/skills/carlone.jpg"); /* Doit être modifié depuis le JS */
+	background-image: url("../images/placeholder.svg"); /* Doit être modifié depuis le JS */
 	background-color: rgb(var(--theme-color-bright));
 	background-repeat: no-repeat;
 	background-position: 15px center;
