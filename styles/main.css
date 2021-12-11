@@ -88,7 +88,17 @@ header a > img
 	filter: drop-shadow(0 0 1rem rgb(var(--theme-color-dark)));
 	margin: 4rem 1rem 0 1rem;
 	padding: 0.625rem;
+	transition: transform 300ms ease;
 	border-radius: 1rem;
+	background-color: transparent; /* Doit être modifié depuis le JS */
+}
+
+header a > img:hover
+{
+	/* Animation de sélection d'une icône
+		(modification de l'échelle) */
+	transform: scale(1.2);
+	transition: transform 300ms ease;
 }
 
 header > img
@@ -102,31 +112,10 @@ header > img
 	min-height: 400px;
 }
 
-.discord { background-color: rgb(88, 101, 242); }
-.github { background-color: rgb(39, 39, 42); }
-.twitter { background-color: rgb(29, 161, 242); }
-.linkedin { background-color: rgb(0, 102, 153); }
-.cv { background-color: white; }
-
-.discord, .github, .twitter, .linkedin, .cv
-{
-	/* Animation de réinitialisation de l'échelle */
-	transition: transform 300ms ease;
-}
-
-.discord:hover, .github:hover, .twitter:hover,
-.linkedin:hover, .cv:hover
-{
-	/* Animation de sélection d'une icône
-		(modification de l'échelle) */
-	transform: scale(1.2);
-	transition: transform 300ms ease;
-}
-
 /* ------------ */
 /* Pied-de-page */
 /* ------------ */
-footer > ul
+footer ul
 {
 	/* Apparence de la liste */
 	margin: 0;
