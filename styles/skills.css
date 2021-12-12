@@ -186,8 +186,8 @@ nav > ul
 
 #summary li
 {
-	height: 250px; /* Doit être modifié depuis le JS */
-	text-align: justify;
+	height: 250px; /* Doit être modifié depuis le JS + (afficher texte quand seulement truc à gauche hover) */
+	overflow-y: hidden;
 	line-height: 1.5rem;
 }
 
