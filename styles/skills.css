@@ -198,7 +198,17 @@ nav > ul
 #work
 {
 	/* Corps de la section */
-	margin: 5% 10% 0 10%;
+	margin: 3rem 5% 0 5%;
+}
+
+@media screen and (min-width: 1024px)
+{
+	/* Modification des marges sur les grands écrans */
+	#work
+	{
+		margin-left: 12.5%;
+		margin-right: 12.5%;
+	}
 }
 
 #work > h3
@@ -272,24 +282,31 @@ nav > ul
 	line-height: 1.5rem;
 }
 
+#competences > div
+{
+	/* Conteneur de chaque compétence */
+	display: inline-block;
+	margin-right: 2rem;
+}
+
 #competences span
 {
 	/* Titre de la compétence */
-	position: absolute;
-	transform: rotate(0);
+	top: 4rem;
+	z-index: 5;
+	display: block;
+	position: relative;
 }
 
 #competences .circle
 {
 	/* Bordures du cercles */
-	border: 10px solid rgb(var(--theme-box-color));
+	border: 8px solid rgb(var(--theme-box-color));
 	border-radius: 50%;
 
 	/* Dimensions et disposition */
-	width: 5rem;
-	height: 5rem;
-	display: inline-block;
-	margin-right: 2rem;
+	width: 6rem;
+	height: 6rem;
 }
 
 @media (prefers-reduced-motion: no-preference)
