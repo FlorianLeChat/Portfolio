@@ -277,7 +277,6 @@ nav > ul
 #competences p
 {
 	/* Descriptif des compétences */
-	text-align: justify;
 	line-height: 1.5rem;
 }
 
@@ -285,27 +284,56 @@ nav > ul
 {
 	/* Conteneur de chaque compétence */
 	display: inline-block;
+	user-select: none;
 	margin-right: 2rem;
+
 }
 
 #competences span
 {
 	/* Titre de la compétence */
 	top: 4rem;
+	color: rgb(var(--theme-color-dark));
 	z-index: 5;
 	display: block;
 	position: relative;
+	font-weight: 700;
 }
 
 #competences .circle
 {
-	/* Bordures du cercles */
-	border: 8px solid rgb(var(--theme-box-color));
+	/* Apparence du cercle */
+	border: 0.5rem solid rgb(var(--theme-box-color));
+	transition: background-color 300ms ease;
 	border-radius: 50%;
+	background-color: white;
 
 	/* Dimensions et disposition */
 	width: 6rem;
 	height: 6rem;
+}
+
+@media screen and (pointer: fine) and (hover: hover)
+{
+	/* On affiche un effet de sélection pour les affichages
+		sur ordinateurs uniquement */
+	#competences > div
+	{
+		/* Corps */
+		cursor: pointer;
+	}
+
+	#competences > div:hover span
+	{
+		/* Texte */
+		color: white;
+	}
+
+	#competences > div:hover .circle
+	{
+		/* Cercle */
+		background-color: rgb(var(--theme-color-dark));
+	}
 }
 
 @media (prefers-reduced-motion: no-preference)
@@ -321,28 +349,28 @@ nav > ul
 #competences .circle[data-level = "25"]
 {
 	/* Niveau à 25% (débutant) */
-	border-top: 8px solid dodgerblue;
+	border-top: 0.5rem solid dodgerblue;
 }
 
 #competences .circle[data-level = "50"]
 {
 	/* Niveau à 50% (correct) */
-	border-top: 8px solid green;
-	border-left: 8px solid green;
+	border-top: 0.5rem solid green;
+	border-left: 0.5rem solid green;
 }
 
 #competences .circle[data-level = "75"]
 {
 	/* Niveau à 75% (bon) */
-	border-top: 8px solid orange;
-	border-left: 8px solid orange;
-	border-right: 8px solid orange;
+	border-top: 0.5rem solid orange;
+	border-left: 0.5rem solid orange;
+	border-right: 0.5rem solid orange;
 }
 
 #competences .circle[data-level = "100"]
 {
 	/* Niveau à 100% (excellent) */
-	border: 8px solid red;
+	border: 0.5rem solid red;
 }
 
 @keyframes spin
