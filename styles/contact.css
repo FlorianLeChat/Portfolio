@@ -1,0 +1,40 @@
+/* --------------- */
+/* Document entier */
+/* --------------- */
+html
+{
+	/* Variables globales */
+	--theme-color-dark: 54, 24, 107;
+	--theme-color-bright: 103, 58, 183;
+}
+
+/* ------- */
+/* En-tête */
+/* ------- */
+header > img
+{
+	/* Vagues marquant la fin de l'en-tête */
+	transform: translateY(-25%);
+}
+
+/* ------------------- */
+/* Barre de navigation */
+/* ------------------- */
+nav > ul
+{
+	max-width: 407px; /* 395 de base + 12 de marge à droite  */
+}
+
+/* --------------------- */
+/* Formulaire de contact */
+/* --------------------- */
+section
+{
+	/* Corps de la section */
+	color: rgb(var(--theme-text-color));
+
+	/* Note : Le padding haut/bas prend en compte une taille fixe
+		pour toujours garder une marge quelque soit la résolution */
+	--offset: calc(5% + 5rem);
+	padding: var(--offset) 15% var(--offset) 15%;
+}
