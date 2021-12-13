@@ -584,5 +584,5 @@ h2 a:hover::after, article a:hover::after, li a:hover::after
 {
 	transform: scale(1);
 	transition: transform 300ms ease;
-	background-color: white;
+	background-color: currentColor;
 }
