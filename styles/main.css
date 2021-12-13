@@ -551,19 +551,19 @@ a
 	text-decoration: none;
 }
 
-h2 a:active, article a:active, li a:active
+h2 a:active, article a:active, li > a:active
 {
 	/* Passage progressif en bleu lors de l'appui
 		(active + hover) */
 	background-color: rgb(var(--theme-color-dark));
 }
 
-h2 a:hover, article a:hover, li a:hover
+h2 a:hover, article a:hover, li > a:hover
 {
 	transition: background-color 500ms ease-out;
 }
 
-h2 a::after, article a::after, li a::after
+h2 a::after, article a::after, li > a::after
 {
 	/* Création d'une ligne qui apparaîtra
 		progressivement lors de la sélection */
@@ -578,7 +578,7 @@ h2 a::after, article a::after, li a::after
 	transform: scale(0);
 }
 
-h2 a:hover::after, article a:hover::after, li a:hover::after
+h2 a:hover::after, article a:hover::after, li > a:hover::after
 {
 	transform: scale(1);
 	transition: transform 300ms ease;
