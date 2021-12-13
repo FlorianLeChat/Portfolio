@@ -109,7 +109,7 @@ header > img
 	z-index: -1;
 	position: absolute;
 	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
+	max-width: 100%; /* Correctif débile pour Firefox */
 	min-height: 400px;
 }
 
@@ -151,6 +151,7 @@ nav ul
 	position: fixed;
 	border-radius: 6rem;
 	backdrop-filter: blur(0.5rem);
+	-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
 	background-color: rgba(var(--theme-color-bright), 0.7);
 
 	/* Suppression du style par défaut des listes
@@ -226,6 +227,7 @@ nav li:last-of-type
 	cursor: pointer;
 	list-style-type: none;
 	backdrop-filter: blur(0.5rem); /* Ne fonctionne pas sur Firefox */
+	-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
 	background-color: transparent;
 }
 
@@ -435,7 +437,7 @@ ul#flags:hover li
 	position: absolute;
 	transform: translateY(-60%);
 	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
+	max-width: 100%; /* Correctif débile pour Firefox */
 	min-height: 400px;
 }
 
@@ -447,7 +449,7 @@ ul#flags:hover li
 	position: absolute;
 	transform: translateY(-40%);
 	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
+	max-width: 100%; /* Correctif débile pour Firefox */
 	min-height: 400px;
 }
 
