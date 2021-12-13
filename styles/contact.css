@@ -32,9 +32,86 @@ section
 {
 	/* Corps de la section */
 	color: rgb(var(--theme-text-color));
+	padding: calc(5% + 5rem) 15% 5rem 15%;
+}
 
-	/* Note : Le padding haut/bas prend en compte une taille fixe
-		pour toujours garder une marge quelque soit la résolution */
-	--offset: calc(5% + 5rem);
-	padding: var(--offset) 15% var(--offset) 15%;
+section > h2
+{
+	/* Titre de la section */
+	color: white;
+	margin: 0 0 4rem;
+	font-size: 1.5rem;
+}
+
+section > h3
+{
+	/* Identifiant de la section */
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
+section > p
+{
+	/* Descriptif de la section */
+	line-height: 1.5rem;
+	margin-bottom: 2.5rem;
+}
+
+section form
+{
+	/* Corps du formulaire */
+	padding: 1.5rem;
+	user-select: none;
+	border-radius: 0.25rem;
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+}
+
+section label
+{
+	/* Libellé de chaque champ de saisie */
+	color: white;
+}
+
+section input[type=text], section select, section textarea
+{
+	/* Champs de saisie et sélecteur de sujets */
+	width: 100%;
+	border: none;
+	resize: vertical;
+	margin: 0.5rem 0 1rem 0;
+	outline: none;
+	padding: 1rem;
+	border-radius: 0.5rem;
+	box-sizing: border-box;
+	transition: background-color 300ms ease;
+}
+
+section #message
+{
+	/* Champ de saisie pour indiquer le message */
+	height: 200px;
+}
+
+section input[type=text]:focus, section select:focus, section textarea:focus
+{
+	/* Animation lors du survol de l'élément */
+	background-color: beige;
+}
+
+section input[type=submit]
+{
+	/* Bouton de validation */
+	color: white;
+	cursor: pointer;
+	border: none;
+	padding: 0.75rem 1.25rem;
+	transition: background-color 250ms ease;
+	border-radius: 0.25rem;
+	background-color: rgb(var(--theme-color-bright));
+}
+
+section input[type=submit]:hover
+{
+	/* Animation lors du survol de l'élément */
+	background-color: rgb(var(--theme-color-dark));
 }
