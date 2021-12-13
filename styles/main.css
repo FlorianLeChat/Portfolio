@@ -213,7 +213,6 @@ nav li:last-of-type
 
 	/* Apparence */
 	cursor: pointer;
-	border-radius: 4px;
 	list-style-type: none;
 	backdrop-filter: blur(0.5rem);
 	background-color: transparent;
@@ -233,7 +232,6 @@ nav li:last-of-type
 	/* Image représentative de la langue */
 	width: calc(21.33px * 2.5); /* Gardons les proportions originales... */
 	height: calc(16px * 2.5);
-	border-radius: 4px;
 }
 
 #flags li

@@ -295,7 +295,7 @@ nav > ul
 {
 	/* Affichage de l'image indiquant
 		le descriptif de l'événement */
-	top: 22.5%;
+	top: 21%;
 	left: -0.5rem;
 	border: 0.5rem solid transparent;
 	content: "";
