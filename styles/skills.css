@@ -5,7 +5,7 @@ html
 {
 	/* Variables globales */
 	--theme-color-dark: 28, 158, 77;
-	--theme-color-bright: 25, 235, 112;
+	--theme-color-bright: 37, 208, 102;
 }
 
 hr
@@ -378,7 +378,6 @@ nav > ul
 	display: inline-block;
 	user-select: none;
 	margin-right: 2rem;
-
 }
 
 #competences span
@@ -462,7 +461,7 @@ nav > ul
 #competences .circle[data-level = "100"]
 {
 	/* Niveau à 100% (excellent) */
-	border: 0.5rem solid red;
+	border: 0.5rem solid crimson;
 }
 
 @keyframes spin
