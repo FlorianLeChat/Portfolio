@@ -172,6 +172,17 @@ nav ul
 	max-width: 422px; /* 410 de base + 12 de marge à droite  */
 }
 
+@-moz-document url-prefix()
+{
+	/* Modification de la composante alpha de la couleur sur
+		Firefox car `backdrop-filter` est désactivé par défaut
+		à cause de certains bugs. Source : https://bugzil.la/1578503 */
+	nav ul
+	{
+		background-color: rgba(var(--theme-color-bright), 0.9);
+	}
+}
+
 nav li
 {
 	/* Affichage des textes de la liste */
@@ -214,7 +225,7 @@ nav li:last-of-type
 	/* Apparence */
 	cursor: pointer;
 	list-style-type: none;
-	backdrop-filter: blur(0.5rem);
+	backdrop-filter: blur(0.5rem); /* Ne fonctionne pas sur Firefox */
 	background-color: transparent;
 }
 
