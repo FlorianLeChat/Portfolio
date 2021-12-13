@@ -98,7 +98,7 @@
 				</p>
 
 				<!-- Formulaire -->
-				<form method="GET" autocomplete="off">
+				<form method="POST" autocomplete="new-password">
 					<!-- Prénom -->
 					<label for="firstname">Prénom</label>
 					<input type="text" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
@@ -126,6 +126,9 @@
 					<!-- Validation -->
 					<input type="submit" value="Envoyer" />
 				</form>
+
+				<!-- Message de validation -->
+				<p id="success">Votre message à été transmis avec succès. Vous recevrez une réponse rapidement !</p>
 			</section>
 		</main>
 
