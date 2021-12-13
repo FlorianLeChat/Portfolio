@@ -32,7 +32,9 @@ section
 {
 	/* Corps de la section */
 	color: rgb(var(--theme-text-color));
+	margin: auto;
 	padding: calc(5% + 5rem) 15% 5rem 15%;
+	max-width: 800px;
 }
 
 section > h2
