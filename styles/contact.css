@@ -59,6 +59,30 @@ section > p
 	margin-bottom: 2.5rem;
 }
 
+section > #success
+{
+	/* Message de succès lors de l'envoi
+		d'un message via le formulaire */
+	color: green;
+	border: 3px dashed green;
+	padding: 10px;
+	animation: 1s fade 10s forwards;
+	font-size: 1.5rem;
+	line-height: 3rem;
+}
+
+@keyframes fade
+{
+	/* Animation de disparition progressive
+		du message de confirmation */
+	to
+	{
+		border: none;
+		margin: 0; padding: 0; 	/* La vie serait plus belle avec display: none; */
+		opacity: 0; height: 0;
+	}
+}
+
 section form
 {
 	/* Corps du formulaire */
