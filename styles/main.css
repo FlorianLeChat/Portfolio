@@ -38,9 +38,10 @@ strong
 noscript
 {
 	/* Avertissement page sans JavaScript */
-	top: 1%;
-	right: 1%;
+	top: 1rem;
+	right: 1rem;
 	padding: 0.5rem;
+	margin-left: 6rem;
 
 	z-index: 10;
 	position: fixed;
