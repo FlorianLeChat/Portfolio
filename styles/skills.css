@@ -238,7 +238,7 @@ nav > ul
 	position: absolute;
 	transform: translateY(-55%);
 	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
+	max-width: 100%; /* Correctif débile pour Firefox */
 	min-height: 400px;
 }
 
@@ -250,7 +250,7 @@ nav > ul
 	position: absolute;
 	transform: translateY(-35%);
 	min-width: var(--html-min-width);
-	max-width: 100%; /* Correction débile pour Firefox */
+	max-width: 100%; /* Correctif débile pour Firefox */
 	min-height: 400px;
 }
 
@@ -433,7 +433,7 @@ nav > ul
 		si l'utilisateur n'a pas demandé à réduire les animations) */
 	#competences .circle
 	{
-		animation: spin 2s linear;
+		animation: 2s linear spin;
 	}
 }
 
