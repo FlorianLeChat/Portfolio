@@ -83,9 +83,9 @@ section input[type=text], section select, section textarea
 	margin: 0.5rem 0 1rem 0;
 	outline: none;
 	padding: 1rem;
-	border-radius: 0.5rem;
 	box-sizing: border-box;
 	transition: background-color 300ms ease;
+	border-radius: 0.5rem;
 }
 
 section #message
