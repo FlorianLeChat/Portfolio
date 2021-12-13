@@ -539,6 +539,39 @@ ul#flags:hover li
 	background-color: white;
 }
 
+/* ----------------------- */
+/* Section : contributions */
+/* ----------------------- */
+#contributions
+{
+	/* Dimensions et position de la section */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	width: 100%;
+	height: 100%;
+	position: fixed;
+
+	/* Apparence de la section */
+	cursor: pointer;
+	display: none; /* Doit être modifié depuis le JS */
+	z-index: 15;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+
+#contributions > p
+{
+	/* Texte de la section */
+	color: white;
+	margin: 0;
+	padding: 2rem;
+	position: absolute;
+	font-size: 2rem;
+	text-align: left;
+}
+
 /* ----- */
 /* Liens */
 /* ----- */
