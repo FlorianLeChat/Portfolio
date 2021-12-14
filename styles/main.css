@@ -57,6 +57,32 @@ noscript
 	background-color: rgb(var(--theme-color-dark));
 }
 
+/* Personnalisation de la barre de défilement
+	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar) */
+::-webkit-scrollbar
+{
+	/* Taille dynamique */
+	width: 1vw;
+}
+
+::-webkit-scrollbar-track
+{
+	/* Fond de la barre */
+	background-color: whitesmoke;
+}
+
+::-webkit-scrollbar-thumb
+{
+	/* Couleur classique de la barre */
+	background-color: rgb(var(--theme-color-dark));
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+	/* Couleur de la barre lors d'une sélection */
+	background-color: rgb(var(--theme-box-color));
+}
+
 /* ------- */
 /* En-tête */
 /* ------- */
