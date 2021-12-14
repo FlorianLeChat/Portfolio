@@ -105,14 +105,17 @@
 					<!-- Prénom -->
 					<label for="firstname">Prénom</label>
 					<input type="text" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
+					<span></span>
 
 					<!-- Nom de famille -->
 					<label for="lastname">Nom</label>
 					<input type="text" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" required />
+					<span></span>
 
 					<!-- Adresse email -->
 					<label for="email">Adresse e-mail</label>
-					<input type="text" spellcheck="false" id="email" name="email" placeholder="jeandupont@domaine.com" minlength="10" maxlength="40" required />
+					<input type="email" spellcheck="false" id="email" name="email" placeholder="jeandupont@domaine.com" minlength="10" maxlength="40" required />
+					<span></span>
 
 					<!-- Sujet de la prise de contact -->
 					<label for="subject">Sujet</label>
@@ -124,7 +127,8 @@
 
 					<!-- Message -->
 					<label for="message">Message</label>
-					<textarea id="message" name="message" placeholder="Vous voulez me poser des questions ? C'est le bon endroit !" minlength="10" maxlength="4000" required></textarea>
+					<textarea id="message" name="message" placeholder="Vous voulez me poser des questions ? C'est le bon endroit !" minlength="20" maxlength="4000" required></textarea>
+					<span></span>
 
 					<!-- Validation -->
 					<input type="submit" value="Envoyer" />
