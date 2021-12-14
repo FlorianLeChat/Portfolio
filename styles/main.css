@@ -298,7 +298,7 @@ ul#flags:hover li
 
 	/* Apparence */
 	border: none;
-	display: none;
+	opacity: 0;
 	background-color: rgb(var(--theme-color-dark));
 
 	/* Image de décoration */
@@ -307,10 +307,18 @@ ul#flags:hover li
 	background-repeat: no-repeat;
 	background-position: center;
 
-	/* Animation de sélection (Firefox uniquement, https://caniuse.com/svg-html) */
+	/* Animation d'apparition (tous les navigateurs) mais
+		seul Firefox est capable de réaliser l'animation de
+		sélection donc on créé deux règles (https://caniuse.com/svg-html) */
 	filter: contrast(50%);
-	transition: inherit;
-	-moz-transition: filter 300ms linear;
+
+	transition: opacity 200ms ease-out;
+	-moz-transition: filter 300ms linear, opacity 200ms ease-out;
+}
+
+#scrollTop.show
+{
+	opacity: 1;
 }
 
 #scrollTop:hover
