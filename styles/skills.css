@@ -186,9 +186,18 @@ nav > ul
 
 #summary li
 {
-	height: 250px; /* Doit être modifié depuis le JS + (afficher texte quand seulement truc à gauche hover) */
+	height: 250px;
+	display: table;
 	overflow-y: hidden;
 	line-height: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+#summary li p
+{
+	/* Alignement du texte à la verticale */
+	display: table-cell;
+	vertical-align: middle;
 }
 
 /* ---------------------------- */

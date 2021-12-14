@@ -30,3 +30,23 @@ for ( const course of courses.values() )
 		course.style.backgroundImage = "";
 	} );
 }
+
+//
+// Permet de définir la taille de la description de chaque formation
+//	par rapport à son élément "frère" (images à gauche).
+//
+const descriptions = document.querySelectorAll( "#summary li" );
+let sizes = [];
+
+for ( const course of courses.values() )
+{
+	sizes.push( course.clientHeight );
+}
+
+for ( let indice in descriptions )
+{
+	if ( descriptions.hasOwnProperty( indice ) )
+	{
+		descriptions[ indice ].style.height = `${ sizes[ indice ] }px`;	// Taille en pixels
+	}
+}
