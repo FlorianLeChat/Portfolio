@@ -19,3 +19,28 @@ window.addEventListener( "keypress", ( event ) =>
 		keys = [];
 	}
 } );
+
+//
+// Permet d'ajouter le mécanisme de retour en haut de la page
+// 	(disparition progressive et actionneur).
+//
+const scrollTop = document.getElementById( "scrollTop" );
+const threshold = 200;
+
+scrollTop.addEventListener( "click", ( _event ) =>
+{
+	document.body.scrollTop = 0;						// Safari
+	document.documentElement.scrollTop = 0;				// Chrome, Firefox, IE, etc.
+} );
+
+window.addEventListener( "scroll", ( _event ) =>
+{
+	if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
+	{
+		scrollTop.style.display = "block";
+	}
+	else
+	{
+		scrollTop.style.display = "none";
+	}
+} );
