@@ -570,7 +570,7 @@ ul#flags:hover li
 
 	/* Apparence de la section */
 	cursor: pointer;
-	display: none; /* Doit être modifié depuis le JS */
+	display: none;
 	z-index: 15;
 	background-color: rgba(0, 0, 0, 0.75);
 }
