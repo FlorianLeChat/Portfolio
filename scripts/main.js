@@ -113,10 +113,10 @@ else
 //	est déployé sous un environnement de production.
 //	Note : le serveur hebergé possède également un mécanisme de réécriture d'URLs.
 //
+const links = document.querySelectorAll( "a" );
+
 if ( window.location.hostname == "www.florian-dev.fr" )
 {
-	const links = document.querySelectorAll( "a" );
-
 	for ( const link of links.values() )
 	{
 		// On fait le remplacement de certaines extensions.
@@ -128,4 +128,15 @@ if ( window.location.hostname == "www.florian-dev.fr" )
 
 		link.setAttribute( "href", url );
 	}
+}
+
+//
+// Permet de désactiver le mécanisme de glissement d'un lien.
+//
+for ( const link of links.values() )
+{
+	link.addEventListener( "mousedown", function ( event )
+	{
+		event.preventDefault();
+	} );
 }
