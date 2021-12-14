@@ -59,18 +59,6 @@ section > p
 	margin-bottom: 2.5rem;
 }
 
-section > #success
-{
-	/* Message de succès lors de l'envoi
-		d'un message via le formulaire */
-	color: green;
-	border: 3px dashed green;
-	padding: 10px;
-	animation: 1s fade 10s forwards;
-	font-size: 1.5rem;
-	line-height: 3rem;
-}
-
 @keyframes fade
 {
 	/* Animation de disparition progressive
@@ -83,7 +71,7 @@ section > #success
 	}
 }
 
-section form
+form
 {
 	/* Corps du formulaire */
 	padding: 1.5rem;
@@ -92,13 +80,13 @@ section form
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
-section label
+label
 {
 	/* Libellé de chaque champ de saisie */
 	color: white;
 }
 
-section input[type=text], section select, section textarea
+input[type *= "e"], select, textarea
 {
 	/* Champs de saisie et sélecteur de sujets */
 	width: 100%;
@@ -112,19 +100,19 @@ section input[type=text], section select, section textarea
 	border-radius: 0.5rem;
 }
 
-section #message
+#message
 {
 	/* Champ de saisie pour indiquer le message */
 	height: 200px;
 }
 
-section input[type=text]:focus, section select:focus, section textarea:focus
+input[type *= "e"]:focus, select:focus, textarea:focus
 {
 	/* Animation lors du survol de l'élément */
 	background-color: beige;
 }
 
-section input[type=submit]
+input[type = "submit"]
 {
 	/* Bouton de validation */
 	color: white;
@@ -136,8 +124,55 @@ section input[type=submit]
 	background-color: rgb(var(--theme-color-bright));
 }
 
-section input[type=submit]:hover
+input[type = "submit"]:hover
 {
 	/* Animation lors du survol de l'élément */
 	background-color: rgb(var(--theme-color-dark));
+}
+
+/* ---------------------- */
+/* Validations JavaScript */
+/* ---------------------- */
+section > #success
+{
+	/* Message de succès lors de l'envoi
+		d'un message via le formulaire */
+	color: green;
+	border: 3px dashed green;
+	padding: 10px;
+	animation: 1s fade 10s forwards;
+	font-size: 1.5rem;
+	line-height: 3rem;
+}
+
+input + span, textarea + span
+{
+	/* Icône d'état */
+	position: relative;
+}
+
+input + span::before, textarea + span::before
+{
+	top: 2px;
+	left: -18px;
+	position: absolute;
+}
+
+input:valid + span::before, textarea:valid + span::before
+{
+	/* Champ valide */
+	color: green;
+	content: "✓";
+}
+
+input:invalid + span::before, textarea:invalid + span::before
+{
+	/* Champ invalide */
+	color: red;
+	content: "✖";
+}
+
+input:invalid, textarea:invalid
+{
+	border: 3px solid red;
 }
