@@ -44,3 +44,36 @@ window.addEventListener( "scroll", ( _event ) =>
 		scrollTop.style.display = "none";
 	}
 } );
+
+//
+// Permet d'activer les mécanismes liés à l'overlay.
+//
+const parameters = window.location.search;
+
+function preventScroll()
+{
+	// Position X/Y : 0/0
+	window.scrollTo( 0, 0 );
+}
+
+if ( parameters.includes( "thanks" ) )
+{
+	const overlay = document.getElementById( "contributions" );
+
+	// On fait l'apparition de l'overlay.
+	overlay.style.display = "block";
+
+	overlay.addEventListener( "click", ( _event ) =>
+	{
+		// Si on tente de cliquer sur l'élément, alors on le cache.
+		overlay.style.display = "none";
+	} );
+
+	// On ajoute un événement pour empêcher partiellement le défilement.
+	window.addEventListener( "scroll", preventScroll );
+}
+else
+{
+	// Dans le cas contraire, on supprime l'événement.
+	window.removeEventListener( "scroll", preventScroll );
+}
