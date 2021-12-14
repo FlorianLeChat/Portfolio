@@ -298,6 +298,7 @@ ul#flags:hover li
 
 	/* Apparence */
 	border: none;
+	display: none;
 	background-color: rgb(var(--theme-color-dark));
 
 	/* Image de décoration */
