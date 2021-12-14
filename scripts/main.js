@@ -67,11 +67,11 @@ window.addEventListener( "scroll", ( _event ) =>
 {
 	if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
 	{
-		scrollTop.style.display = "block";
+		scrollTop.classList.add( "show" );
 	}
 	else
 	{
-		scrollTop.style.display = "none";
+		scrollTop.classList.remove( "show" );
 	}
 } );
 
