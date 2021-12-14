@@ -97,8 +97,23 @@ header h1
 {
 	/* Prénom & nom */
 	margin: 0;
+	display: inline-block;
 	font-size: 2rem;
 	margin-top: 13rem;
+
+	/* Animation à l'arrivée */
+	animation: blink 500ms step-end infinite alternate;;
+	border-right: 0.150rem solid white;
+}
+
+@keyframes blink
+{
+	50%
+	{
+		/* Entre chaque affiche d'un caractère,
+			on rend transparent le curseur */
+		border-color: transparent;
+	}
 }
 
 header h2

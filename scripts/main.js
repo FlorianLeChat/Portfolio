@@ -29,6 +29,44 @@ function imageExists( url, callback )
 }
 
 //
+// Permet d'ajouter une animation pour afficher
+// 	mon prénom et mon nom de famille.
+//
+function typingEffect( element, speed )
+{
+	// On sauvegarde d'abord le texte original.
+	const text = element.innerHTML;
+
+	// On le supprime juste après pour afficher
+	// 	notre animation.
+	element.innerHTML = "";
+
+	// On créé ensuite un minuteur qui affichera
+	// 	chaque lettre avec un délai d'attente.
+	let indice = 0;
+
+	const timer = setInterval( function ()
+	{
+		if ( indice < text.length )
+		{
+			// Le texte n'est pas encore totalement
+			// 	écrit, on poursuit l'animation.
+			element.append( text.charAt( indice ) );
+
+			indice++;
+		}
+		else
+		{
+			// L'animation est terminée, on supprime le
+			// 	minuteur créé précédemment.
+			clearInterval( timer );
+		}
+	}, speed );
+}
+
+typingEffect( document.querySelector( "header > h1" ), 150 );
+
+//
 // Permet d'effectuer une redirection vers la page d'administration
 // 	lorsqu'une suite de mots est alignés.
 //
@@ -127,8 +165,10 @@ if ( window.location.hostname == "www.florian-dev.fr" )
 		url = url.replace( "index", "" );	// Fichier "/index" vers "/"
 
 		if ( url == "" )
+		{
 			// Racine du document (index)
 			url = "/";
+		}
 
 		link.setAttribute( "href", url );
 	}
