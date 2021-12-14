@@ -1,4 +1,34 @@
 //
+// Permet de vérifier si une image existe sur le serveur.
+//
+function imageExists( url, callback )
+{
+	const img = new Image();
+
+	img.src = url;
+
+	if ( img.complete )
+	{
+		// Image déjà en cache dans le navigateur.
+		callback( true );
+	}
+	else
+	{
+		img.onload = () =>
+		{
+			// Chargement effectué sans erreur.
+			callback( true );
+		};
+
+		img.onerror = () =>
+		{
+			// Chargement échoué (erreur).
+			callback( false );
+		};
+	}
+}
+
+//
 // Permet d'effectuer une redirection vers la page d'administration
 // 	lorsqu'une suite de mots est alignés.
 //
