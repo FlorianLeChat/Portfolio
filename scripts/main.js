@@ -59,8 +59,8 @@ const threshold = 200;
 
 scrollTop.addEventListener( "click", ( _event ) =>
 {
-	document.body.scrollTop = 0;						// Safari
-	document.documentElement.scrollTop = 0;				// Chrome, Firefox, IE, etc.
+	document.body.scrollTop = 0;				// Safari uniquement.
+	document.documentElement.scrollTop = 0;		// Chrome, Firefox, IE, etc.
 } );
 
 window.addEventListener( "scroll", ( _event ) =>
@@ -106,4 +106,26 @@ else
 {
 	// Dans le cas contraire, on supprime l'événement.
 	window.removeEventListener( "scroll", preventScroll );
+}
+
+//
+// Permet de supprimer les extensions de certains liens lorsque le site
+//	est déployé sous un environnement de production.
+//	Note : le serveur hebergé possède également un mécanisme de réécriture d'URLs.
+//
+if ( window.location.hostname == "www.florian-dev.fr" )
+{
+	const links = document.querySelectorAll( "a" );
+
+	for ( const link of links.values() )
+	{
+		// On fait le remplacement de certaines extensions.
+		let url = link.getAttribute( "href" );
+
+		url = url.replace( ".html", "" );	// Extension HTML
+		url = url.replace( ".php", "" );	// Extension PHP
+		url = url.replace( "index", "" );	// Fichier "/index" vers "/"
+
+		link.setAttribute( "href", url );
+	}
 }
