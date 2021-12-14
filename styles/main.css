@@ -91,7 +91,7 @@ header a > img
 	padding: 0.625rem;
 	transition: transform 300ms ease;
 	border-radius: 1rem;
-	background-color: transparent; /* Doit être modifié depuis le JS */
+	background-color: rgb(var(--theme-color-bright));
 }
 
 header a > img:hover
