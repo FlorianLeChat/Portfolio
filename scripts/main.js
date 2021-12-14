@@ -126,6 +126,10 @@ if ( window.location.hostname == "www.florian-dev.fr" )
 		url = url.replace( ".php", "" );	// Extension PHP
 		url = url.replace( "index", "" );	// Fichier "/index" vers "/"
 
+		if ( url == "" )
+			// Racine du document (index)
+			url = "/";
+
 		link.setAttribute( "href", url );
 	}
 }
