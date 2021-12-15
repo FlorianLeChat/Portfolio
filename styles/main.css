@@ -63,7 +63,7 @@ noscript
 ::-webkit-scrollbar
 {
 	/* Taille dynamique */
-	width: 1vw;
+	width: 1rem;
 }
 
 ::-webkit-scrollbar-track

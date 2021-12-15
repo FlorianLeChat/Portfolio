@@ -37,6 +37,24 @@ function typingEffect( element, speed )
 typingEffect( document.querySelector( "header > h1" ), 150 );
 
 //
+// Permet d'ajuster l'agrandissement des éléments par rapport au zoom
+// 	du navigateur (fonctionne seulement pour l'amoindrissement).
+//
+function adjustZoom()
+{
+	const zoom = 100 / Math.round( window.devicePixelRatio * 100 );
+
+	if ( zoom >= 1 )
+	{
+		document.body.style.zoom = zoom;
+	}
+}
+
+adjustZoom();
+
+window.addEventListener( "resize", adjustZoom );
+
+//
 // Permet d'effectuer une redirection vers la page d'administration
 // 	lorsqu'une suite de mots est alignés.
 //
