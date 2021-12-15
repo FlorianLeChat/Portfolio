@@ -172,7 +172,13 @@ input:invalid + span::before, textarea:invalid + span::before
 	content: "✖";
 }
 
-input:invalid, textarea:invalid
+input:invalid
 {
-	border: 3px solid red;
+	/* Effet de sélection */
+	transition: box-shadow 250ms ease;
+}
+
+input:focus:invalid, textarea:focus:invalid
+{
+	box-shadow: inset 0 0 0 3px red;
 }
