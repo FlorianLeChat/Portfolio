@@ -28,15 +28,10 @@ for ( const course of courses.values() )
 // Permet de définir la taille de la description de chaque formation
 //	par rapport à son élément "frère" (images à gauche).
 //
+const sizes = [ ...courses ].map( property => property.clientHeight ); // NodeList -> Array -> Filtrage par propriété
 const descriptions = document.querySelectorAll( "#summary li" );
-let sizes = [];
 
-for ( const course of courses.values() )
-{
-	sizes.push( course.clientHeight );
-}
-
-for ( let indice in descriptions )
+for ( const indice in descriptions )
 {
 	if ( descriptions.hasOwnProperty( indice ) )
 	{
