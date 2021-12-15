@@ -16,17 +16,10 @@ const projects = document.querySelectorAll( "#projects .row article" );
 
 for ( const project of projects.values() )
 {
-	const url = project.getAttribute( "data-image" );
+	const target = project.getAttribute( "data-image" );						// Image ciblée
+	const current = window.getComputedStyle( project, null ).backgroundImage;	// Image de secours
 
-	imageExists( url, ( state ) =>
-	{
-		// On vérifie si la fonction de retour indique que l'image
-		// 	existe bien ou non.
-		if ( state )
-		{
-			project.style.backgroundImage = `url( "${ url }" )`;
-		}
-	} );
+	project.style.backgroundImage = `url( ${ target } ), ${ current }`;
 }
 
 //
