@@ -10,17 +10,10 @@ for ( const course of courses.values() )
 	//	est en train de survoler l'élément.
 	course.addEventListener( "mouseover", function ( _event )
 	{
-		const url = course.getAttribute( "data-image" );
+		const target = course.getAttribute( "data-image" );							// Image ciblée
+		const current = window.getComputedStyle( course, null ).backgroundImage;	// Image de secours
 
-		imageExists( url, ( state ) =>
-		{
-			// On vérifie si la fonction de retour indique que l'image
-			// 	existe bien ou non.
-			if ( state )
-			{
-				course.style.backgroundImage = `url( "${ url }" )`;
-			}
-		} );
+		course.style.backgroundImage = `url( ${ target } ), ${ current }`;
 	} );
 
 	// On cache l'image lorsque la souris n'est plus dans la zone de

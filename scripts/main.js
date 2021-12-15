@@ -1,34 +1,4 @@
 //
-// Permet de vérifier si une image existe sur le serveur.
-//
-function imageExists( url, callback )
-{
-	const img = new Image();
-
-	img.src = url;
-
-	if ( img.complete )
-	{
-		// Image déjà en cache dans le navigateur.
-		callback( true );
-	}
-	else
-	{
-		img.onload = () =>
-		{
-			// Chargement effectué sans erreur.
-			callback( true );
-		};
-
-		img.onerror = () =>
-		{
-			// Chargement échoué (erreur).
-			callback( false );
-		};
-	}
-}
-
-//
 // Permet d'ajouter une animation pour afficher
 // 	mon prénom et mon nom de famille.
 //
