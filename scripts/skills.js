@@ -8,7 +8,7 @@ for ( const course of courses.values() )
 {
 	// On ajoute un événement qui se déclenchera lorsque la souris
 	//	est en train de survoler l'élément.
-	course.addEventListener( "mouseover", function ( _event )
+	course.addEventListener( "mouseenter", function ( _event )
 	{
 		const target = course.getAttribute( "data-image" );							// Image ciblée
 		const current = window.getComputedStyle( course, null ).backgroundImage;	// Image de secours
@@ -16,11 +16,11 @@ for ( const course of courses.values() )
 		course.style.backgroundImage = `url( ${ target } ), ${ current }`;
 	} );
 
-	// On cache l'image lorsque la souris n'est plus dans la zone de
+	// On supprime l'image lorsque la souris n'est plus dans la zone de
 	// 	sélection de l'élément.
 	course.addEventListener( "mouseleave", function ( _event )
 	{
-		course.style.backgroundImage = "";
+		course.removeAttribute( "style" );
 	} );
 }
 
