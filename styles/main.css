@@ -607,29 +607,103 @@ ul#flags:hover li
 	/* Dimensions et position de la section */
 	top: 0;
 	left: 0;
-	right: 0;
 	bottom: 0;
 
 	width: 100%;
 	height: 100%;
 	position: fixed;
+    overflow-y: scroll;
+	scrollbar-width: none;  /* Cache la barre de défilement (Firefox uniquement) */
 
 	/* Apparence de la section */
 	cursor: pointer;
 	display: none;
 	z-index: 15;
-	background-color: rgba(0, 0, 0, 0.75);
+	background-color: rgba(0, 0, 0, 0.95);
 }
 
-#contributions > p
+#contributions::-webkit-scrollbar
 {
-	/* Texte de la section */
-	color: white;
-	margin: 0;
-	padding: 2rem;
-	position: absolute;
+    display: none;  /* Cache la barre de défilement pour Chrome & co */
+}
+
+#contributions > h2
+{
+	/* Titre de la section */
+	margin: 6rem 10% 6rem 10%;
+	font-size: 3rem;
+}
+
+@media (prefers-reduced-motion: no-preference)
+{
+	/* Lancement d'une animation de changement de couleur
+		en arc-en-ciel (disponible uniquement si l'utilisateur
+		n'a pas demandé à réduire les animations) */
+	#contributions > h2
+	{
+		animation: rainbow 2.5s linear infinite;
+	}
+
+	@keyframes rainbow
+	{
+		0%, 100% { 	color: rgb(255, 0, 0); 	}	/* Composante vert */
+		8% 	{ 		color: rgb(255, 127, 0);	}
+		16% {		color: rgb(255, 255, 0); 	}
+		25% {		color: rgb(127, 255, 0);	}
+		33%	{		color: rgb(0, 255, 0);		}	/* Composante rouge */
+		41% {		color: rgb(0, 255, 127);	}
+		50% {		color: rgb(0, 255, 255);	}
+		58% {		color: rgb(0, 127, 255);	}
+		66% {		color: rgb(0, 0, 255);		}	/* Composante bleu */
+		75% {		color: rgb(127, 0, 255);	}
+		83% {		color: rgb(255, 0, 255);	}
+		91% {		color: rgb(255, 0, 127);	}
+	}
+}
+
+#contributions > ul
+{
+	/* Liste des personnes */
+	padding-left: 0;
+	list-style-type: none;
+}
+
+#contributions li
+{
+	/* Description de chaque contribution */
+	margin: 0 5% 3rem 5%;
+	line-height: 1.5rem;
+}
+
+@media screen and (pointer: fine) and (hover: hover)
+{
+	/* On affiche un effet de sélection pour les affichages
+		sur ordinateurs uniquement */
+	#contributions li
+	{
+		/* Description de chaque contribution */
+		opacity: 0.3;
+		transition: opacity 500ms ease;
+	}
+}
+
+#contributions li:hover
+{
+	opacity: 1;
+	transition: opacity 500ms ease;
+}
+
+#contributions h3
+{
+	/* Identité du contributeur */
 	font-size: 2rem;
-	text-align: left;
+	text-decoration: underline;
+}
+
+#contributions p
+{
+	/* Description de la contribution */
+	color: rgb(var(--theme-text-color));
 }
 
 /* ----- */
