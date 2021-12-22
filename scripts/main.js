@@ -104,6 +104,7 @@ window.addEventListener( "scroll", ( _event ) =>
 //
 // Permet d'activer les mécanismes liés à l'overlay.
 //
+const audio = document.getElementById( "jazz" );
 const parameters = window.location.search;
 
 function preventScroll()
@@ -116,7 +117,11 @@ if ( parameters.includes( "thanks" ) )
 {
 	const overlay = document.getElementById( "contributions" );
 
-	// On fait l'apparition de l'overlay.
+	// On lance une musique d'ambiance.
+	audio.volume = 0.1;
+	audio.play();
+
+	// On fait ensuite l'apparition de l'overlay.
 	overlay.style.display = "block";
 
 	// On fait également disparaître la barre de défilement du document.
