@@ -25,6 +25,7 @@
 
 		<!-- Scripts JavaScript -->
 		<script src="scripts/main.js" defer></script>
+		<script src="scripts/contact.js" defer></script>
 
 		<!-- Icône du document (16x16) -->
 		<link rel="icon" href="images/favicon.ico" type="image/x-icon" />
@@ -100,8 +101,11 @@
 					sur la page d'accueil (Discord, Twitter, LinkedIn, ...).
 				</p>
 
+				<!-- Message de vérification/validation -->
+				<p id="result"></p>
+
 				<!-- Formulaire -->
-				<form method="POST" autocomplete="new-password">
+				<form method="POST" autocomplete="off" novalidate>
 					<!-- Prénom -->
 					<label for="firstname">Prénom</label>
 					<input type="text" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
@@ -133,9 +137,6 @@
 					<!-- Validation -->
 					<input type="submit" value="Envoyer" />
 				</form>
-
-				<!-- Message de validation -->
-				<p id="success">Votre message à été transmis avec succès. Vous recevrez une réponse rapidement !</p>
 			</section>
 
 			<!-- Contributions (overlay) -->
