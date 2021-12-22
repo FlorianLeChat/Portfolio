@@ -121,8 +121,10 @@ if ( parameters.includes( "thanks" ) )
 
 	overlay.addEventListener( "click", ( _event ) =>
 	{
-		// Si on tente de cliquer sur l'élément, alors on le cache.
+		// Si on tente de cliquer sur l'élément, alors on le cache et
+		// on supprime le blocage de la barre de défilement.
 		overlay.style.display = "none";
+		window.removeEventListener( "scroll", preventScroll );
 	} );
 
 	// On ajoute un événement pour empêcher partiellement le défilement.
