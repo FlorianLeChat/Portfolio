@@ -119,15 +119,16 @@ if ( parameters.includes( "thanks" ) )
 	// On fait l'apparition de l'overlay.
 	overlay.style.display = "block";
 
+	// On fait également disparaître la barre de défilement du document.
+	document.body.style.overflow = "hidden";
+
 	overlay.addEventListener( "click", ( _event ) =>
 	{
-		// Si on tente de cliquer sur l'élément, alors on le cache et
-		// on supprime le blocage de la barre de défilement.
-		overlay.style.display = "none";
-		window.removeEventListener( "scroll", preventScroll );
+		// Si on tente de cliquer sur l'élément, alors on rafraîchit la page.
+		window.location.href = window.location.href.replace( "?thanks=1", "" );
 	} );
 
-	// On ajoute un événement pour empêcher partiellement le défilement.
+	// On ajoute enfin un événement pour empêcher partiellement le défilement.
 	window.addEventListener( "scroll", preventScroll );
 }
 else
