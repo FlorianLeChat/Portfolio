@@ -444,6 +444,19 @@ nav > ul
 	{
 		animation: 2s linear spin;
 	}
+
+	@keyframes spin
+	{
+		/* Animation de rotation de 0 à 360 degrés */
+		0%
+		{
+			transform: rotate(0deg);
+		}
+		100%
+		{
+			transform: rotate(360deg);
+		}
+	}
 }
 
 #competences .circle[data-level = "25"]
@@ -471,17 +484,4 @@ nav > ul
 {
 	/* Niveau à 100% (excellent) */
 	border: 0.5rem solid crimson;
-}
-
-@keyframes spin
-{
-	/* Animation de rotation de 0 à 360 degrés */
-	0%
-	{
-		transform: rotate(0deg);
-	}
-	100%
-	{
-		transform: rotate(360deg);
-	}
 }
