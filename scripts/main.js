@@ -143,6 +143,25 @@ else
 }
 
 //
+// Permet de créer un effet d'apparition des sections.
+//
+const sections = document.querySelectorAll( "section" );
+
+function fadeIn()
+{
+	for ( const section of sections.values() )
+	{
+		const offset = section.getBoundingClientRect().top - window.innerHeight + 20;
+
+		section.style.opacity = offset < 0 ? 1 : 0;
+	}
+}
+
+fadeIn(); // Note : doit s'exécuter au moins une fois au chargement.
+
+window.addEventListener( "scroll", fadeIn );
+
+//
 // Permet de supprimer les extensions de certains liens lorsque le site
 //	est déployé sous un environnement de production.
 //	Note : le serveur hebergé possède également un mécanisme de réécriture d'URLs.
