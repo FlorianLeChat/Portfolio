@@ -121,22 +121,33 @@ nav > ul
 /* ---------------------- */
 /* Validations JavaScript */
 /* ---------------------- */
-#form > #success
+#form > #result
 {
 	/* Message de succès lors de l'envoi
 		d'un message via le formulaire */
-	color: green;
-	border: 3px dashed green;
-	padding: 10px;
-	animation: 1s fade 10s forwards;
-	font-size: 1.5rem;
+	color: orange;
+	border: 3px dashed orange;
+	padding: 0.5rem;
+	display: none;
+	animation: 250ms show 0s forwards;
 	line-height: 3rem;
 }
 
-@keyframes fade
+@keyframes show
 {
 	/* Animation de disparition progressive
 		du message de confirmation */
+	from
+	{
+		border: 3px dashed orange;
+		margin: 0; padding: 0.5rem; 	/* La vie serait plus belle avec display: none; */
+		opacity: 0; height: 0;
+	}
+}
+
+@keyframes hide
+{
+
 	to
 	{
 		border: none;
