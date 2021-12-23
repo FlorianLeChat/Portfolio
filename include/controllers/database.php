@@ -11,10 +11,8 @@
 	{
 		public function __construct()
 		{
-			// On récupère les informations de connexions.
-			$credentials = new Database();
-
-			$link = "mysql:host=" . $credentials->getHost() . ";dbname=" . $credentials->getDatabase() . ";charset=" . $credentials->getCharset();
+			// On indique les informations de connexions.
+			$link = sprintf("mysql:host=%s;dbname=%s;charset=%s", $this->getHost(), $this->getDatabase(), $this->getCharset());
 			$options = [
 				PDO::ATTR_ERRMODE			 	=> PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE	=> PDO::FETCH_ASSOC,
@@ -24,7 +22,7 @@
 			// On tente ensuite de créer le connecteur avec les informations renseignés.
 			try
 			{
-				$this->pdo = new PDO($link, $credentials->getUsername(), $credentials->getPassword(), $options);
+				$this->setPDO(new PDO($link, $this->getUsername(), $this->getPassword(), $options));
 			}
 			catch (PDOException $error)
 			{
