@@ -1,4 +1,7 @@
 <?php
+	//
+	// Contrôleur de la connexion et la gestion de la base de données SQL.
+	//
 	namespace Portfolio\Controllers;
 
 	include_once("./include/models/database.php");

@@ -35,7 +35,7 @@
 	}
 
 	// On récupère enfin le fichier cible.
-	$file = $_GET["target"];
+	$file = htmlspecialchars($_GET["target"]);
 
 	if (empty($file))
 	{
