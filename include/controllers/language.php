@@ -1,4 +1,7 @@
 <?php
+	//
+	// Contrôleur de récupération et la gestion des traductions.
+	//
 	namespace Portfolio\Controllers;
 
 	include_once("./include/models/language.php");
@@ -26,7 +29,7 @@
 		//
 		public function checkLanguage(string $code)
 		{
-			// TODO
+			// A faire !
 			return true;
 		}
 
