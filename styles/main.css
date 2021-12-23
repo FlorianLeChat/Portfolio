@@ -689,7 +689,7 @@ ul#flags:hover li
 	#contributions li
 	{
 		/* Description de chaque contribution */
-		opacity: 0.3;
+		opacity: 0.5;
 		transition: opacity 500ms ease;
 	}
 }

@@ -83,7 +83,7 @@ nav > ul
 #form input[type *= "e"], #form select, #form textarea
 {
 	/* Champs de saisie et sélecteur de sujets */
-	width: 100%;
+	width: calc(100% - 2rem);
 	border: none;
 	resize: vertical;
 	margin: 0.5rem 0 1rem 0;
@@ -195,8 +195,14 @@ nav > ul
 #form input + span::before, #form textarea + span::before
 {
 	top: 2px;
-	left: -18px;
+	left: -1.5rem;
 	position: absolute;
+}
+
+#form textarea + span::before
+{
+	top: -1.5rem; /* Pourquoi une zone de saisie se comporte différemment ?... */
+	left: -2rem;
 }
 
 #form input:valid + span::before, #form textarea:valid + span::before
@@ -213,7 +219,7 @@ nav > ul
 	content: "✖";
 }
 
-#form input:invalid
+#form input:invalid, #form textarea:invalid
 {
 	/* Effet de sélection */
 	transition: box-shadow 250ms ease;
