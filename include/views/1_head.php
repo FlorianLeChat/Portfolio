@@ -1,8 +1,6 @@
 <?php
 	// Ceci est le fichier générique de l'en-tête du site
 
-	// -> requête traduction
-	// -> check if $file existe
 ?>
 
 <head>
