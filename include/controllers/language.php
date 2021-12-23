@@ -11,21 +11,23 @@
 	class Translation extends Language
 	{
 		//
-		// Permet d'initialiser certains mécanismes lorsque la classe
-		//	est instanciée par un script.
+		// Permet d'initialiser la connexion avec la base de données.
 		//
 		public function __construct()
 		{
 			// On instancie le connecteur SQL.
 			$this->connector = new Connector();
 			$this->connector = $this->connector->getPDO();
+		}
 
-			// On vérifie ensuite si la langue n'est pas déjà enregistrée
-			// 	dans la session actuelle.
-			if (!empty($_SESSION) && isset($_SESSION["language"]))
-			{
-				$this->setCode($_SESSION["language"]);
-			}
+		//
+		// Permet de vérifier si une langue existe au niveau de
+		//	la base de données.
+		//
+		public function checkLanguage(string $code)
+		{
+			// TODO
+			return true;
 		}
 
 		//

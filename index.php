@@ -15,10 +15,24 @@
 	// On créé après le mécanisme des traductions.
 	use Portfolio\Controllers\Translation;
 
+	$language = htmlspecialchars($_GET["lang"]);
 	$translation = new Translation();
 
-	$language = $_GET["lang"];
-	$language = empty($language) ? $translation->getCode() : $language;
+	if (empty($language))
+	{
+		// La langue est absent des paramètres, on tente de la
+		// 	récupérer en interne via les sessions.
+		$language = $translation->getCode();
+	}
+	else
+	{
+		// Dans l'autre cas, on vérifie la langue du paramètre GET
+		//	avant de l'appliquer comme nouvelle langue.
+		if ($translation->checkLanguage($language))
+		{
+			$translation->setCode($language);
+		}
+	}
 
 	// On récupère enfin le fichier cible.
 	$file = $_GET["target"];
