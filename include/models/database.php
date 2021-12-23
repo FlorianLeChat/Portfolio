@@ -3,21 +3,12 @@
 
 	class Database
 	{
-		protected $host;
-		protected $database;
-		protected $username;
-		protected $password;
-		protected $charset;
-
-		public function __construct()
-		{
-			// Valeurs par défaut.
-			$this->host 		= "localhost";
-			$this->database   	= "portfolio";
-			$this->username		= "user";
-			$this->password 	= "RoTIGC!cLNIdml89";
-			$this->charset 		= "utf8";
-		}
+		protected $host = "localhost";
+		protected $database	= "portfolio";
+		protected $username	= "user";
+		protected $password = "RoTIGC!cLNIdml89";
+		protected $charset = "utf8";
+		protected $connector;
 
 		// Adresse du serveur distant.
 		public function setHost(string $host)
@@ -72,6 +63,17 @@
 		public function getCharset()
 		{
 			return $this->charset;
+		}
+
+		// Object PDO (connecteur).
+		public function setPDO(\PDO $connector)
+		{
+			$this->connector = $connector;
+		}
+
+		public function getPDO()
+		{
+			return $this->connector;
 		}
 	}
 ?>

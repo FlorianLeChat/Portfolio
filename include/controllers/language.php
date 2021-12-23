@@ -10,8 +10,6 @@
 	// Classe permettant de manipuler les traductions.
 	class Translation extends Language
 	{
-		private $connector;
-
 		//
 		// Permet d'initialiser certains mécanismes lorsque la classe
 		//	est instanciée par un script.
@@ -20,6 +18,7 @@
 		{
 			// On instancie le connecteur SQL.
 			$this->connector = new Connector();
+			$this->connector = $this->connector->getPDO();
 
 			// On vérifie ensuite si la langue n'est pas déjà enregistrée
 			// 	dans la session actuelle.
