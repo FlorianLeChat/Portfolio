@@ -16,7 +16,9 @@
 	use Portfolio\Controllers\Translation;
 
 	$translation = new Translation();
-	$translation = $translation->getCode();
+
+	$language = $_GET["lang"];
+	$language = empty($language) ? $translation->getCode() : $language;
 
 	// On récupère enfin le fichier cible.
 	$file = $_GET["target"];
@@ -26,11 +28,11 @@
 		$file = "index";
 	}
 
-	echo("Langue : " . $translation);
+	echo("Langue : " . $language);
 	echo("Fichier demandé : " . $file);
 ?>
 
-<html lang="<?php echo($translation); ?>">
+<html lang="<?php echo($language); ?>">
 	<!-- En-tête du site -->
 	<?php
 		include_once("include/views/1_head.php");

@@ -16,7 +16,7 @@
 			$this->host = $host;
 		}
 
-		public function getHost()
+		public function getHost(): string
 		{
 			return $this->host;
 		}
@@ -27,7 +27,7 @@
 			$this->database = $database;
 		}
 
-		public function getDatabase()
+		public function getDatabase(): string
 		{
 			return $this->database;
 		}
@@ -38,7 +38,7 @@
 			$this->username = $username;
 		}
 
-		public function getUsername()
+		public function getUsername(): string
 		{
 			return $this->username;
 		}
@@ -49,7 +49,7 @@
 			$this->password = $password;
 		}
 
-		public function getPassword()
+		public function getPassword(): string
 		{
 			return $this->password;
 		}
@@ -60,7 +60,7 @@
 			$this->charset = $charset;
 		}
 
-		public function getCharset()
+		public function getCharset(): string
 		{
 			return $this->charset;
 		}
@@ -71,7 +71,7 @@
 			$this->connector = $connector;
 		}
 
-		public function getPDO()
+		public function getPDO(): \PDO
 		{
 			return $this->connector;
 		}
