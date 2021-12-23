@@ -1,0 +1,256 @@
+/* ------- */
+/* En-tête */
+/* ------- */
+header a > img
+{
+	/* Plateformes de communication */
+	width: 2rem;
+	filter: drop-shadow(0 0 1rem rgb(var(--theme-color-dark)));
+	margin: 4rem 1rem 0 1rem;
+	padding: 0.625rem;
+	transition: transform 300ms ease;
+	border-radius: 1rem;
+	background-color: rgb(var(--theme-color-bright));
+}
+
+header a > img:hover
+{
+	/* Animation de sélection d'une icône
+		(modification de l'échelle) */
+	transform: scale(1.2);
+	transition: transform 300ms ease;
+}
+
+/* ------------------------- */
+/* Section : à propos de moi */
+/* ------------------------- */
+#aboutme, #skills, #contact
+{
+	/* Corps de la section */
+	color: rgb(var(--theme-text-color));
+
+	/* Note : Le padding haut/bas prend en compte une taille fixe
+		pour toujours garder une marge quelque soit la résolution */
+	--offset: calc(10% + 5rem);
+	padding: var(--offset) 20% var(--offset) 20%;
+}
+
+#aboutme > h2, #projects > h2, #skills > h2, #contact > h2
+{
+	/* Titre de la section */
+	color: white;
+	margin: 0 0 4rem;
+	font-size: 1.5rem;
+}
+
+#aboutme > h3, #projects > h3, #skills > h3, #contact > h3
+{
+	/* Identifiant de la section */
+	font-weight: 400;
+	margin-bottom: 0.5rem;
+}
+
+#aboutme p, #skills p
+{
+	/* Description */
+	line-height: 1.25rem;
+}
+
+/* ----------------- */
+/* Section : projets */
+/* ----------------- */
+#projects
+{
+	/* Corps de la section */
+	color: rgb(var(--theme-text-color));
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+}
+
+#projects .row article
+{
+	/* Corps de chaque projet */
+	color: white;
+	font-size: 1.25rem;
+
+	margin: 1rem 5% 0 5%;
+	padding: 1rem;
+
+	box-shadow: 0 1rem 2rem -1rem rgba(var(--theme-background-color), 0.3);
+	user-select: none;
+	border-radius: 1rem;
+
+	/* Fond d'écran de chaque bouton */
+	background-size: cover;
+	background-image: url("../images/placeholder.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+@media screen and (pointer: fine) and (hover: hover)
+{
+	/* On affiche un effet de sélection pour les affichages
+		sur ordinateurs uniquement */
+	#projects .row article
+	{
+		/* État initial (avant animation) */
+		filter: blur(0.75px) grayscale(1);
+		transition: filter 300ms ease-in-out;
+	}
+
+	#projects .row article:hover
+	{
+		/* Apparition de la couleur et suppression du flou
+			lors du passage de la souris par dessus */
+		filter: blur(0) grayscale(0);
+	}
+}
+
+@media screen and (min-width: 1024px)
+{
+	/* On affichage une disposition différente sur les
+		grands écrans d'ordinateur */
+	#projects .container
+	{
+		/* Boite simulante un tableau de colonnes/cellules */
+		margin: -5rem auto -1rem auto;
+		display: table;
+		border-spacing: 3rem;
+		border-collapse: separate;
+	}
+
+	#projects .row article
+	{
+		/* Cellules de la boite */
+		width: 500px;
+		height: 300px;
+
+		display: table-cell;
+		box-sizing: border-box;
+
+		table-layout: fixed;
+		vertical-align: middle;
+	}
+}
+
+#projects > img:first-child
+{
+	/* Vagues marquant le début de la section */
+	left: 0;
+	z-index: -1;
+	position: absolute;
+	transform: translateY(-60%);
+	min-width: var(--html-min-width);
+	max-width: 100%; /* Correctif débile pour Firefox */
+	min-height: 400px;
+}
+
+#projects > img:last-child
+{
+	/* Vagues marquant la fin de la section */
+	left: 0;
+	z-index: -1;
+	position: absolute;
+	transform: translateY(-40%);
+	min-width: var(--html-min-width);
+	max-width: 100%; /* Correctif débile pour Firefox */
+	min-height: 400px;
+}
+
+/* --------------------- */
+/* Section : compétences */
+/* --------------------- */
+#skills
+{
+	/* Modification de la marge de remplissage
+		par défaut */
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 7.5%;
+}
+
+#skills div
+{
+	/* Ajout de deux colonnes dans le conteneur */
+	column-gap: 7.5%;
+	column-count: 2;
+}
+
+#skills article
+{
+	/* Marge de remplissage dans chaque article */
+	padding: 1rem;
+}
+
+#skills article h2
+{
+	/* Apparence du titre de l'article */
+	color: white;
+	word-break: break-word;
+}
+
+#skills img
+{
+	/* Dimensions des images d'illustration */
+	width: 10%;
+	min-width: 4rem;
+}
+
+/* ----------------- */
+/* Section : contact */
+/* ----------------- */
+#contact
+{
+	/* Dimensions de la section (on tente de garder
+		les valeurs originales mais en les réduisant
+		un peu pour s'adapter aux autres éléments */
+	margin: 0 17.5% 7.5% 17.5%;
+	padding: 2rem;
+
+	/* Apparence de la section */
+	border-radius: 1rem;
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+}
+
+#contact h2
+{
+	/* Premier titre de la section */
+	margin-bottom: 2rem;
+}
+
+#contact h3
+{
+	/* Deuxième titre de la section */
+	margin-top: 0;
+}
+
+#contact h2 + h2
+{
+	/* Souligne du texte (hors titres) */
+	text-decoration: underline;
+}
+
+#contact span
+{
+	/* Apparence du bouton de contact */
+	color: black;
+	font-weight: 700;
+	border-radius: 0.5rem;
+
+	border: none;
+	display: inline-block;
+	padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+	user-select: none;
+	background-color: rgba(255, 255, 255, 0.7);
+
+	/* État initial de l'animation */
+	transform: translateY(0);
+	transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
+}
+
+#contact span:hover
+{
+	/* Animation de sélection du bouton */
+	cursor: pointer;
+	transform: translateY(-0.25rem);
+	background-color: white;
+}
