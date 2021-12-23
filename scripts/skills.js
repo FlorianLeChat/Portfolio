@@ -8,7 +8,7 @@ for ( const course of courses.values() )
 {
 	// On ajoute un événement qui se déclenchera lorsque la souris
 	//	est en train de survoler l'élément.
-	course.addEventListener( "mouseenter", function ( _event )
+	course.addEventListener( "mouseenter", ( _event ) =>
 	{
 		const target = course.getAttribute( "data-image" );							// Image ciblée
 		const current = window.getComputedStyle( course, null ).backgroundImage;	// Image de secours
@@ -18,7 +18,7 @@ for ( const course of courses.values() )
 
 	// On supprime l'image lorsque la souris n'est plus dans la zone de
 	// 	sélection de l'élément.
-	course.addEventListener( "mouseleave", function ( _event )
+	course.addEventListener( "mouseleave", ( _event ) =>
 	{
 		course.removeAttribute( "style" );
 	} );

@@ -193,7 +193,7 @@ if ( window.location.hostname == "www.florian-dev.fr" )
 //
 for ( const link of links.values() )
 {
-	link.addEventListener( "mousedown", function ( event )
+	link.addEventListener( "mousedown", ( event ) =>
 	{
 		event.preventDefault();
 	} );
