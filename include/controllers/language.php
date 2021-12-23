@@ -26,11 +26,6 @@
 			{
 				$this->setCode($_SESSION["language"]);
 			}
-			else
-			{
-				// La FRANCE !
-				$this->setCode("fr");
-			}
 		}
 
 		//
@@ -39,8 +34,11 @@
 		public function getPhrase(string $name, string $table): string
 		{
 			// Création et exécution de la requête.
-			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` = ? LIMIT 1;");
-			$query->execute([$name]);
+			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` = ? AND `target_language` = ? LIMIT 1;");
+			$query->execute([
+				$name,				// Mot-clé du mot
+				$this->getCode()	// Code ISO de la langue
+			]);
 
 			$result = $query->fetch(); // Un seul résultat.
 
@@ -64,10 +62,11 @@
 		public function getPhrases(string $search, string $table, int $limit): array
 		{
 			// Création et exécution de la requête.
-			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` LIKE ? LIMIT ?;");
+			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` LIKE ? AND `target_language` = ? LIMIT ?;");
 			$query->execute([
-				$search . "%",	// Expression de référence
-				$limit			// Nombre limite de résultats
+				$search . "%",		// Expression de référence
+				$this->getCode(),	// Code ISO de la langue
+				$limit				// Nombre limite de résultats
 			]);
 
 			$result = $query->fetchAll(); // Plus d'un résultat.
