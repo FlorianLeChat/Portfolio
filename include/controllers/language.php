@@ -34,19 +34,57 @@
 		}
 
 		//
-		// Permet de récupérer une seule traduction.
+		// Permet de récupérer une seule traduction dans une table donnée.
 		//
-		public function getPhrase(string $name, string $table)
+		public function getPhrase(string $name, string $table): string
 		{
-			$query = $this->connector->prepare("SELECT `translated_string` FROM ? WHERE `source_string` = ? LIMIT 1;");
+			// Création et exécution de la requête.
+			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` = ? LIMIT 1;");
+			$query->execute([$name]);
+
+			$result = $query->fetch(); // Un seul résultat.
+
+			if (gettype($result) == "array" && count($result) > 0)
+			{
+				// Si le résultat est une liste numérique et contenant
+				//	plus d'un résultat, alors on retourne la traduction.
+				return $result["translated_string"];
+			}
+
+			// Dans le cas contraire, on envoie l'identifiant de
+			//	la traduction pour signifier qu'il y a eu un problème
+			//	lors de sa récupération.
+			return "@$name";
+		}
+
+		//
+		// Permet de récupérer une ou plusieurs traductions dans une table
+		//	donnée et par une expression rationnelle (pattern).
+		//
+		public function getPhrases(string $search, string $table, int $limit): array
+		{
+			// Création et exécution de la requête.
+			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` LIKE ? LIMIT ?;");
 			$query->execute([
-				$table,	// Nom de la table
-				$name	// Mot-clé de référence
+				$search . "%",	// Expression de référence
+				$limit			// Nombre limite de résultats
 			]);
 
-			$result = $query->fetch();
+			$result = $query->fetchAll(); // Plus d'un résultat.
 
-			return $result != "" ? $result : "@$name";
+			if (count($result) > 0)
+			{
+				// Si le résultat est une liste contenant plus d'un
+				// 	résultat, alors on retourne la liste complète.
+				return $result;
+			}
+			else
+			{
+				// Dans le cas contraire, on lance une exception pour
+				//	avertir le développeur qu'il y a un problème avec
+				//	la requête SQL.
+				throw new \Exception("Erreur lors de la récupération des traductions pour : $search");
+			}
 		}
 	}
 ?>
