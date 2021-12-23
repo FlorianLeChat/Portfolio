@@ -130,30 +130,59 @@ nav > ul
 	border: 3px dashed orange;
 	padding: 0.5rem;
 	display: none;
-	animation: 250ms show 0s forwards;
-	line-height: 3rem;
+	line-height: 1.5rem;
 }
 
-@keyframes show
+#form > #result.show
 {
-	/* Animation de disparition progressive
-		du message de confirmation */
-	from
+	/* Apparition du message de validation */
+	display: inline-block;
+}
+
+#form > #result.hide
+{
+	/* Disparition du message de validation */
+	display: none;
+}
+
+@media (prefers-reduced-motion: no-preference)
+{
+	/* Lancement d'une animation d'apparition et de disparition
+		du message de validation (disponible uniquement si
+		l'utilisateur n'a pas demandé à réduire les animations) */
+	#form > #result.show
 	{
-		border: 3px dashed orange;
-		margin: 0; padding: 0.5rem; 	/* La vie serait plus belle avec display: none; */
-		opacity: 0; height: 0;
+		display: inline-block;
+		animation: 250ms show 0s forwards;
 	}
-}
 
-@keyframes hide
-{
-
-	to
+	#form > #result.hide
 	{
-		border: none;
-		margin: 0; padding: 0; 	/* La vie serait plus belle avec display: none; */
-		opacity: 0; height: 0;
+		display: inline-block;
+		animation: 250ms hide 0s forwards;
+	}
+
+	@keyframes show
+	{
+		/* Animation d'apparition du message
+			de validation du formulaire */
+		from
+		{
+			border: 3px dashed orange;
+			margin: 0; padding: 0.5rem;
+		}
+	}
+
+	@keyframes hide
+	{
+		/* Animation de disparition du message
+			de validation du formulaire */
+		to
+		{
+			border: none;
+			margin: 0; padding: 0; 	/* La vie serait plus belle avec display: none; */
+			opacity: 0; height: 0;
+		}
 	}
 }
 
