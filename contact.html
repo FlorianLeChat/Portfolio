@@ -108,12 +108,12 @@
 				<form method="POST" autocomplete="off" novalidate>
 					<!-- Prénom -->
 					<label for="firstname">Prénom</label>
-					<input type="text" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
+					<input type="text" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" pattern="\S" required />
 					<span></span>
 
 					<!-- Nom de famille -->
 					<label for="lastname">Nom</label>
-					<input type="text" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" required />
+					<input type="text" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" pattern="\S" required />
 					<span></span>
 
 					<!-- Adresse email -->
