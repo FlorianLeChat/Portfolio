@@ -74,6 +74,12 @@ nav > ul
 	color: white;
 }
 
+#form #message
+{
+	/* Champ de saisie pour indiquer le message */
+	height: 200px;
+}
+
 #form input[type *= "e"], #form select, #form textarea
 {
 	/* Champs de saisie et sélecteur de sujets */
@@ -84,14 +90,9 @@ nav > ul
 	outline: none;
 	padding: 1rem;
 	box-sizing: border-box;
+	line-height: 1; /* Correction étrange pour le normalisateur CSS */
 	transition: background-color 300ms ease;
 	border-radius: 0.5rem;
-}
-
-#form #message
-{
-	/* Champ de saisie pour indiquer le message */
-	height: 200px;
 }
 
 #form input[type *= "e"]:focus, #form select:focus, #form textarea:focus
