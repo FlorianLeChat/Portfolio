@@ -1,4 +1,7 @@
 <?php
+	//
+	// Modèle des données représentatives de la base de données SQL.
+	//
 	namespace Portfolio\Models;
 
 	class Database
@@ -6,7 +9,7 @@
 		protected $host = "localhost";
 		protected $database	= "portfolio";
 		protected $username	= "user";
-		protected $password = "RoTIGC!cLNIdml89";
+		protected $password = "RoTIGC!cLNIdml89";	// Devra être actualisé par la suite...
 		protected $charset = "utf8";
 		protected $connector;
 

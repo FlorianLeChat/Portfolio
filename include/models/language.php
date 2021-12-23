@@ -1,4 +1,7 @@
 <?php
+	//
+	// Modèle des données représentatives de la gestion des langues.
+	//
 	namespace Portfolio\Models;
 
 	class Language
