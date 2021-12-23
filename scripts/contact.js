@@ -35,11 +35,23 @@ for ( const element of elements.values() )
 }
 
 //
-// const submit = document.querySelector( "input[type=submit]" );
+// Permet de restreindre l'actionneur pour envoyer les données
+// 	du formulaire au serveur.
+//
+const form = document.querySelector( "#form > form" );
+const submit = document.querySelector( "input[type=submit]" );
 
-// console.log( submit );
+form.addEventListener( "submit", ( event ) =>
+{
+	for ( const element of elements.values() )
+	{
+		// Si un champ est invalide aux yeux du HTML, alors
+		//	on bloque le comportement par défaut de l'envoi.
+		if ( !element.validity.valid )
+		{
+			event.preventDefault();
 
-// submit.addEventListener( "submit", function ( event )
-// {
-// 	event.preventDefault();
-// } );
+			return false;
+		}
+	}
+} );
