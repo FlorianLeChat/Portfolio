@@ -24,8 +24,7 @@
 		}
 
 		//
-		// Permet de vérifier si une langue existe au niveau de
-		//	la base de données.
+		// Permet de vérifier si une langue existe au niveau de la base de données.
 		//
 		public function checkLanguage(string $code)
 		{
@@ -34,61 +33,116 @@
 		}
 
 		//
-		// Permet de récupérer une seule traduction dans une table donnée.
+		// Permet de remplacer certains caractères spéciaux dans leur équivalent en HTML.
+		// 	Note : cette fonction respecte la convention suivante - https://support.discord.com/hc/en-us/articles/210298617
 		//
-		public function getPhrase(string $name, string $table): string
+		public function formatString(string $phrase)
 		{
-			// Création et exécution de la requête.
-			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` = ? AND `target_language` = ? LIMIT 1;");
-			$query->execute([
-				$name,				// Mot-clé du mot
-				$this->getCode()	// Code ISO de la langue
-			]);
+			// A faire !
+			return $phrase;
+		}
 
-			$result = $query->fetch(); // Un seul résultat.
+		//
+		// Permet de récupérer une seule traduction dans une table donnée.
+		// 	Note : cette fonction retournera forcément une chaîne de caractère non-vide.
+		//
+		public function getPhrase(string $name, string $table = "translations"): string
+		{
+			// On prépare et on exécute la requête SQL.
+			$query = $this->connector->prepare("SELECT `translated_string`, `target_language` FROM $table WHERE `source_string` = ?;");
+			$query->execute([$name]);
 
+			$result = $query->fetchAll();
+
+			// On vérifie ensuite le résultat de la requête.
 			if (gettype($result) == "array" && count($result) > 0)
 			{
-				// Si le résultat est une liste numérique et contenant
-				//	plus d'un résultat, alors on retourne la traduction.
-				return $result["translated_string"];
+				// Si le résultat est un tableau avec au moins un résultat,
+				//	alors on tente de récupérer la traduction de la langue
+				//	actuelle, cependant si elle est manquante, on utilise le
+				//	français comme « langue de secours ».
+				$languages = array_column($result, "target_language");
+				$target_key = array_search($this->getCode(), $languages) || array_search("FR", $languages);
+
+				return $this->formatString($result[$target_key]["translated_string"]);
 			}
 
-			// Dans le cas contraire, on envoie l'identifiant de
-			//	la traduction pour signifier qu'il y a eu un problème
-			//	lors de sa récupération.
+			// Dans le dernier, on affiche enfin la chaîne source indiquant
+			//	que la traduction est manquante ou invalide.
 			return "@$name";
 		}
 
 		//
 		// Permet de récupérer une ou plusieurs traductions dans une table
 		//	donnée et par une expression rationnelle (pattern).
+		// 	Note : cette fonction retournera forcément un tableau associatif non-vide.
 		//
-		public function getPhrases(string $search, string $table, int $limit): array
+		public function getPhrases(string $search, string $table = "translations"): array
 		{
-			// Création et exécution de la requête.
-			$query = $this->connector->prepare("SELECT `translated_string` FROM $table WHERE `source_string` LIKE ? AND `target_language` = ? LIMIT ?;");
-			$query->execute([
-				$search . "%",		// Expression de référence
-				$this->getCode(),	// Code ISO de la langue
-				$limit				// Nombre limite de résultats
-			]);
+			// On prépare et on exécute la requête SQL.
+			$query = $this->connector->prepare("SELECT `translated_string`, `target_language`, `source_string` FROM $table WHERE `source_string` LIKE ?;");
+			$query->execute([$search . "%"]);
 
-			$result = $query->fetchAll(); // Plus d'un résultat.
+			$result = $query->fetchAll();
 
-			if (count($result) > 0)
+			// On vérifie le résultat de la requête.
+			if (gettype($result) == "array")
 			{
-				// Si le résultat est une liste contenant plus d'un
-				// 	résultat, alors on retourne la liste complète.
-				return $result;
+				// On calcule le nombre de résultat unique dans les clés
+				//	de toutes les langues enregistrées.
+				$keys = array_unique(array_column($result, "source_string"));
+				$unique_keys = count($keys);
+
+				// On filtre et on calcule ensuite le nombre de résultats dans
+				//	la langue actuellement sélectionnée.
+				$translations = array_filter($result, function($value)
+				{
+					return $value["target_language"] == $this->getCode();
+				});
+
+				// On calcule alors le décalage entre le nombre de traductions
+				// 	que l'on devrait obtenir et le nombre obtenu avec la langue
+				//	actuelle.
+				//	Note : cela permet de détecter si les traductions sont incomplètes.
+				$offset = $unique_keys - count($translations);
+
+				if ($offset > 0)
+				{
+					// On réarrange les traductions de la langue sélectionnée et
+					//	on filtre les résultats obtenus précédemment pour s'en servir
+					//	comme « langue de secours ».
+					$translations = array_values($translations);
+
+					$result = array_filter($result, function($value)
+					{
+						return $value["target_language"] == "FR";
+					});
+
+					// On fusionne après la langue de secours et les résultats de la
+					//	langue récupérée pour obtenir une traduction « complète ».
+					foreach ($translations as $value)
+					{
+						$indice = array_search($value["source_string"], $keys);
+
+						$result[$indice] = $value;
+					}
+				}
 			}
 			else
 			{
-				// Dans le cas contraire, on lance une exception pour
-				//	avertir le développeur qu'il y a un problème avec
-				//	la requête SQL.
+				// Dans le cas contraire, on lance une exception pour avertir le développeur
+				//	qu'il y a un problème avec la requête SQL.
 				throw new \Exception("Erreur lors de la récupération des traductions pour : $search");
 			}
+
+			// On modifie enfin le résultat final pour rendre plus facile la manipulation
+			//	des données par les scripts des vues.
+			foreach ($result as $value)
+			{
+				$result[$value["source_string"]] = $value["translated_string"];
+			}
+
+			return $result;
 		}
 	}
 ?>
