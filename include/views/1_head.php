@@ -1,12 +1,5 @@
 <?php
 	// Ceci est le fichier générique de l'en-tête du site
-	$test = $translation->getPhrase("project_1_name", "languages");
-
-	echo($test);
-
-	$test2 = $translation->getPhrases("project_1", "languages", 2);
-
-	print_r($test2);
 ?>
 
 <head>
