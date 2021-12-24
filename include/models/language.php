@@ -11,13 +11,13 @@
 		// Code ISO-3166
 		public function setCode(string $code)
 		{
-			$this->code = $code;
+			$this->code = strtoupper($code);
 
 			if (!empty($_SESSION))
 			{
 				// Si une session est active, alors on enregistre
 				//	ce code dans celle-ci.
-				$_SESSION["language"] = $code;
+				$_SESSION["language"] = $this->code;
 			}
 		}
 
