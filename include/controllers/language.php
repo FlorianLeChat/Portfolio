@@ -26,7 +26,7 @@
 		//
 		// Permet de vérifier si une langue existe au niveau de la base de données.
 		//
-		public function checkLanguage(string $code)
+		public function checkLanguage(string $code): bool
 		{
 			// A faire !
 			return true;
@@ -36,9 +36,36 @@
 		// Permet de remplacer certains caractères spéciaux dans leur équivalent en HTML.
 		// 	Note : cette fonction respecte la convention suivante - https://support.discord.com/hc/en-us/articles/210298617
 		//
-		public function formatString(string $phrase)
+		public function formatString(string $phrase): string
 		{
-			// A faire !
+			// Remplacement des retours chariot/sauts de ligne SQL par la balise "<br />".
+			$phrase = str_replace("\r\n", "<br />", $phrase);
+
+			// Remplacement des urls formattés "[url=<link>](<name>)" par la balise "<a href="<link>"><name>".
+			$phrase = preg_replace("/\[url=([^\]]*)]\(([^)]*)\)/", "<a href=\"$1\">$2</a>", $phrase);
+
+			// Replacement des caractères "**" en balise "<strong>".
+			// 	Source : https://stackoverflow.com/a/56426710
+			$count = 0;
+			$phrase = preg_replace_callback("/[**]{2}/", function(array $matches)
+				use (&$count)										// Modification par référence de la variable
+				{
+					++$count;										// Nombre d'itérations
+					return $count % 2 ? "<strong>" : "</strong>";	// Modulo 2 pour déterminer si balise ouvrante ou fermante
+				},
+			$phrase);
+
+			// Replacement des caractères "*" en balise "<em>".
+			// 	Note : en cas de difficulté de compréhension, voir commentaires ci-dessus.
+			$count = 0;
+			$phrase = preg_replace_callback("/\*(?!\*)/", function(array $matches)
+				use (&$count)
+				{
+					++$count;
+					return $count % 2 ? "<em>" : "</em>";
+				},
+			$phrase);
+
 			return $phrase;
 		}
 
@@ -139,7 +166,7 @@
 			//	des données par les scripts des vues.
 			foreach ($result as $value)
 			{
-				$result[$value["source_string"]] = $value["translated_string"];
+				$result[$value["source_string"]] = $this->formatString($value["translated_string"]);
 			}
 
 			return $result;
