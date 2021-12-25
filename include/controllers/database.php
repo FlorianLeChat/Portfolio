@@ -33,4 +33,35 @@
 			}
 		}
 	}
+
+	// Classe permettant de récupérer les données générales du site.
+	class Data extends Connector
+	{
+		//
+		// Permet de récupérer les projets déclarés dans la base de donénes.
+		//
+		public function getProjects(array $tables, bool $offset_start = true): array
+		{
+			// On tranforme la liste numérique en chaîne de caractère
+			//	comprise par la base de données via une requête SQL.
+			$tables = implode(", ", $tables);
+
+			// On effectue ensuite la requête avec les tables demandés.
+			$query = $this->connector->prepare("SELECT $tables FROM `projects` ORDER BY `position` ASC;");
+			$query->execute();
+
+			$result = $query->fetchAll();
+
+			// On réordonne (si demandé) le résultat de la requête SQL
+			// 	pour que l'indice commence à 1 et non pas à 0. Cela peut
+			//	être sur certaines opérations arithmétique de base.
+			if ($offset_start)
+			{
+				array_unshift($result, "");	// Décalage de 1.
+				unset($result[0]);			// Suppression de l'indice 0.
+			}
+
+			return $result;
+		}
+	}
 ?>
