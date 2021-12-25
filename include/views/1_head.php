@@ -1,18 +1,22 @@
 <?php
-	// Ceci est le fichier générique de l'en-tête du site
+	//
+	// Ceci est le fichier permettant de contrôler la vue de l'en-tête du site.
+	//
+
+	$head = $translation->getPhrases("head");
 ?>
 
 <head>
 	<!-- Méta-données du document -->
 	<meta charset="utf-8" />
 	<meta name="Author" content="Florian Trayon" />
-	<meta name="description" content="Mon portfolio de mes réalisations et de mes compétences !"/>
-	<meta name="keywords" lang="fr" content="portfolio, web, html, css, frontend, backend, fullstack" />
+	<meta name="description" content="<?php echo($head["head_description"]); ?>"/>
+	<meta name="keywords" lang="<?php echo($language); ?>" content="portfolio, web, html, css, frontend, backend, fullstack" />
 	<meta name="robots" content="noindex" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- Titre du document -->
-	<title>Florian Trayon - Portfolio</title>
+	<title><?php echo($head["head_title"]); ?></title>
 
 	<!-- Pré-connexion des ressources externes -->
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
