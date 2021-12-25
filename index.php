@@ -13,6 +13,7 @@
 
 	use Portfolio\Controllers\Translation;
 	use Portfolio\Controllers\Connector;
+	use Portfolio\Controllers\Data;
 
 	session_start();
 
@@ -21,6 +22,8 @@
 
 	$translation = new Translation();	// Liaison des traductions au connecteur.
 	$translation->connector = $connector;
+
+	$data = new Data();					// Données générales du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
 	$language = htmlspecialchars($_GET["lang"]);
@@ -42,15 +45,15 @@
 	}
 
 	// On récupère enfin la page demandée.
-	$page = htmlspecialchars($_GET["target"]);
+	$file = htmlspecialchars($_GET["target"]);
 
-	if (empty($page))
+	if (empty($file))
 	{
-		$page = "index";	// Page par défaut.
+		$file = "index";	// Page par défaut.
 	}
 
 	echo("Langue : " . $language);
-	echo("Fichier demandé : " . $page);
+	echo("Fichier demandé : " . $file);
 ?>
 
 <html lang="<?php echo($language); ?>">
@@ -78,7 +81,7 @@
 
 			<!-- Contenu de la page demandé -->
 			<?php
-				include_once("include/views/$page.php");
+				include_once("include/views/$file.php");
 			?>
 
 			<!-- Overlay des contributions -->

@@ -3,64 +3,48 @@
 	// Ceci est le fichier permettant de contrôler la vue de la page d'accueil du site.
 	//
 
-	// On récupère les données de la section "à propos de moi".
-	//	Note : on remplace les sauts de ligne SQL par leur équivalent en HTML (\n => <br />)
-	$about_me = $translation->getPhrases("about_me");
-	$about_me_description = str_replace("\r\n\r\n", "<br /><br />\n\t\t", $about_me["about_me_description"]);
+	// On récupère les traductions pour chacune des sections.
+	$about_me = $translation->getPhrases("about_me");	// Section « à propos de moi »
+	$projects = $translation->getPhrases("project");	// Section « mes projets »
+	$skills = $translation->getPhrases("skills");		// Section « mes compétences »
+	$contact = $translation->getPhrases("contact");		// Section « contact »
 
-	//
-	$projects_title = $translation->getPhrase("projects_title");
+	// On récupère ensuite les projets.
+	$projects_html = "<div class=\"row\">\n";
+	$projects_data = $data->getProjects(["identifier", "background_image"]);
+	$projects_length = count($projects_data);
 
-	//
-	$skills = $translation->getPhrases("skills");
-
-	//
-	$contact = $translation->getPhrases("contact");
-
-	// ------------------------
-	// PROJETS
-	// ------------------------
-	include_once("./include/controllers/database.php");
-
-	use Portfolio\Controllers\Connector;
-
-	$connector = new Connector();
-	$connector = $connector->getPDO();
-
-	$t1 = $connector->prepare("SELECT `identifier`, `background_image` FROM `projects` ORDER BY `projects`.`position` ASC;");
-	$t1->execute();
-	$t1 = $t1->fetchAll();
-
-	array_unshift($t1, "");
-	unset($t1[0]);
-
-	$projects = "<div class=\"row\">\n";
-
-	foreach ($t1 as $key => $value)
+	foreach ($projects_data as $key => $value)
 	{
-		$image = $value["background_image"];
-		$identifier = $value["identifier"];
+		// On récupère certaines données des projets.
+		$identifier = $value["identifier"];							// Identifiant du projet
+		$image = $value["background_image"];						// Image de fond en page d'accueil
+		$name = $projects["project_" . $identifier . "_title"];		// Nom du projet
 
-		$name = $translation->getPhrase("project_" . $identifier . "_title");
-
-		$projects .= <<<ARTICLE
+		// On les assemble par la suite sous forme d'articles.
+		$projects_html .= <<<ARTICLE
 			\t\t<!-- Project numéro $key -->
 			\t\t<article data-image="images/projects/$image">
 				\t\t<h3><a href="?target=projects&name=$identifier">$name</a></h3>
 			\t\t</article>\n
 		ARTICLE;
 
+		// On sépare les projets par groupe de 3 pour obtenir
+		//	la disposition attendue en CSS.
 		if ($key > 0 && $key % 3 == 0)
 		{
-			$projects .= "\t\t</div>\n";
+			// Fin d'un groupe.
+			$projects_html .= "\t\t</div>\n";
 
-			if ($key != count($t1))
+			if ($key != $projects_length)
 			{
-				$projects .= "\t\t<div class=\"row\">\n";
+				// Un nouveau groupe débute après la fin d'un groupe
+				//	précédent sauf si la boucle a atteint la dernière
+				//	valeur de la liste.
+				$projects_html .= "\t\t<div class=\"row\">\n";
 			}
 		}
 	}
-	// --------------------------
 ?>
 
 <!-- À propos de moi -->
@@ -85,12 +69,12 @@
 	<h3>#projects</h3>
 
 	<h2>
-		&#8250; <a href="?target=projects"><?php echo($projects_title); ?></a> &#8249;
+		&#8250; <a href="?target=projects"><?php echo($projects["projects_title"]); ?></a> &#8249;
 	</h2>
 
 	<div class="container">
 		<?php
-			echo($projects);
+			echo($projects_html);
 		?>
 	</div>
 
