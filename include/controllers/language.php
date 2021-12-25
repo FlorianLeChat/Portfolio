@@ -162,6 +162,11 @@
 						$result[$indice] = $value;
 					}
 				}
+				else
+				{
+					// Aucune modification ne doit être apportée.
+					$result = $translations;
+				}
 			}
 			else
 			{
