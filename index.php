@@ -7,16 +7,23 @@
 
 	error_reporting(E_ALL);
 
-	// On lance ensuite une session.
+	// On réalise la création de certaines variables cruciales.
+	include_once("include/controllers/language.php");
+	include_once("include/controllers/database.php");
+
+	use Portfolio\Controllers\Translation;
+	use Portfolio\Controllers\Connector;
+
 	session_start();
 
-	include("include/controllers/language.php");
+	$connector = new Connector();		// Connexion à la base de données.
+	$connector = $connector->getPDO();
 
-	// On créé après le mécanisme des traductions.
-	use Portfolio\Controllers\Translation;
+	$translation = new Translation();	// Liaison des traductions au connecteur.
+	$translation->connector = $connector;
 
+	// On récupère ensuite la langue demandée par l'utilisateur.
 	$language = htmlspecialchars($_GET["lang"]);
-	$translation = new Translation();
 
 	if (empty($language))
 	{
@@ -27,23 +34,23 @@
 	else
 	{
 		// Dans l'autre cas, on vérifie la langue du paramètre GET
-		//	avant de l'appliquer comme nouvelle langue.
+		//	avant de l'appliquer comme nouvelle langue (après vérification).
 		if ($translation->checkLanguage($language))
 		{
 			$translation->setCode($language);
 		}
 	}
 
-	// On récupère enfin le fichier cible.
-	$file = htmlspecialchars($_GET["target"]);
+	// On récupère enfin la page demandée.
+	$page = htmlspecialchars($_GET["target"]);
 
-	if (empty($file))
+	if (empty($page))
 	{
-		$file = "index";
+		$page = "index";	// Page par défaut.
 	}
 
 	echo("Langue : " . $language);
-	echo("Fichier demandé : " . $file);
+	echo("Fichier demandé : " . $page);
 ?>
 
 <html lang="<?php echo($language); ?>">
@@ -71,7 +78,7 @@
 
 			<!-- Contenu de la page demandé -->
 			<?php
-				include_once("include/views/$file.php");
+				include_once("include/views/$page.php");
 			?>
 
 			<!-- Overlay des contributions -->
