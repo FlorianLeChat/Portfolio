@@ -44,7 +44,7 @@
 		{
 			// On tranforme la liste numérique en chaîne de caractère
 			//	comprise par la base de données via une requête SQL.
-			$tables = implode(", ", $tables);
+			$tables = count($tables) > 1 ? implode(", ", $tables) : $tables[0];
 
 			// On effectue ensuite la requête avec les tables demandés.
 			$query = $this->connector->prepare("SELECT $tables FROM `projects` ORDER BY `position` ASC;");
