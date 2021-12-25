@@ -8,12 +8,12 @@
 	{
 		protected $code = "fr";
 
-		// Code ISO-3166
+		// Code ISO-3166 de la langue.
 		public function setCode(string $code)
 		{
 			$this->code = strtoupper($code);
 
-			if (!empty($_SESSION))
+			if (isset($_SESSION))
 			{
 				// Si une session est active, alors on enregistre
 				//	ce code dans celle-ci.
@@ -21,9 +21,9 @@
 			}
 		}
 
-		public function getCode()
+		public function getCode(): string
 		{
-			if (!empty($_SESSION) && !empty($_SESSION["language"]))
+			if (isset($_SESSION) && !empty($_SESSION["language"]))
 			{
 				// Si une session est active, on tente alors de
 				// 	récupérer la langue sélectionnée précédemment.
