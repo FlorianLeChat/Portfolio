@@ -129,8 +129,13 @@ if ( parameters.includes( "thanks" ) )
 
 	overlay.addEventListener( "click", ( _event ) =>
 	{
-		// Si on tente de cliquer sur l'élément, alors on rafraîchit la page.
-		window.location.href = window.location.href.replace( "?thanks=1", "" );
+		// Si on tente de cliquer sur l'élément, alors on rafraîchit la page
+		// 	en supprimant les paramètres GET ajoutés précédemment.
+		let url = window.location.href;
+		url = url.replace( "?thanks=1", "" )	// Premier paramètre (possible)
+		url = url.replace( "&thanks=1", "" )	// Deuxième paramètre (possible)
+
+		window.location.href = url;
 	} );
 
 	// On ajoute enfin un événement pour empêcher partiellement le défilement.
