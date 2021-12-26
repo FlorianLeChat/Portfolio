@@ -4,10 +4,10 @@
 	//
 
 	// On récupère les traductions pour chacune des sections.
-	$about_me = $translation->getPhrases("about_me");	// Section « à propos de moi »
-	$projects = $translation->getPhrases("project");	// Section « mes projets »
-	$skills = $translation->getPhrases("skills");		// Section « mes compétences »
-	$contact = $translation->getPhrases("contact");		// Section « contact »
+	$about_me = $translation->getPhrases("about_me");	// Section « À propos de moi »
+	$projects = $translation->getPhrases("project");	// Section « Mes projets »
+	$skills = $translation->getPhrases("skills");		// Section « Mes compétences »
+	$contact = $translation->getPhrases("contact");		// Section « Contact »
 
 	// On récupère ensuite les projets.
 	$projects_html = "<div class=\"row\">\n";
@@ -69,7 +69,7 @@
 	<h3>#projects</h3>
 
 	<h2>
-		&#8250; <a href="?target=projects"><?php echo($projects["projects_title"]); ?></a> &#8249;
+		&#8250; <a href="?target=projects"><?php echo($projects["header_projects_title"]); ?></a> &#8249;
 	</h2>
 
 	<div class="container">
