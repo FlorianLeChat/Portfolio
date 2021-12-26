@@ -20,13 +20,13 @@
 
 	session_start();
 
-	$connector = new Connector();		// Connexion à la base de données.
+	$connector = new Connector();			// Connexion à la base de données.
 	$connector = $connector->getPDO();
 
-	$translation = new Translation();	// Liaison des traductions au connecteur.
+	$translation = new Translation();		// Liaison des traductions au connecteur.
 	$translation->connector = $connector;
 
-	$data = new Data();					// Données générales du site.
+	$data = new Data();						// Données générales du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
 	$language = htmlspecialchars($_GET["lang"]);
@@ -54,7 +54,4 @@
 	{
 		$file = "index";	// Page par défaut.
 	}
-
-	echo("Langue : " . $language);
-	echo("Fichier demandé : " . $file);
 ?>
