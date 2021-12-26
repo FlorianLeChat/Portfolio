@@ -3,6 +3,7 @@
 	// Ceci est le fichier permettant de contrôler la vue de l'en-tête du site.
 	//
 
+	// On récupère les traductions depuis la base de données.
 	$head = $translation->getPhrases("head");
 ?>
 
