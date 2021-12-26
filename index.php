@@ -12,9 +12,12 @@
 	?>
 
 	<body>
+		<!-- Avertissement page sans JavaScript -->
+		<noscript>Votre navigateur ne supporte pas ou refuse de charger le JavaScript.</noscript>
+
 		<!-- En-tête de la page -->
 		<?php
-			include_once("include/views/2_header.php");
+			include_once("include/views/2_header_$file.php");
 		?>
 
 		<main>
