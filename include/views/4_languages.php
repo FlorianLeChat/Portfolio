@@ -12,13 +12,11 @@
 
 	// On réorganise la position des drapeaux en prenant compte
 	//	de la langue actuellement active.
-	$code = $translation->getCode();
-
-	if ($code != "FR")
+	if ($language != "FR")
 	{
 		// Si la langue active n'est pas le français, alors on
 		//	va rechercher son indice dans les données actuelle.
-		$indice = array_search($code, $languages_data);
+		$indice = array_search($language, $languages_data);
 
 		// On place ensuite sa valeur à la toute première position.
 		array_unshift($languages_data, $languages_data[$indice]);
@@ -33,7 +31,7 @@
 	foreach ($languages_data as $value)
 	{
 		$value = strtolower($value);				// Code ISO-3166 en minuscule
-		$flag = $value == "en" ? "gb" : $value;		// Ignore les variantes régionales (ex: FR_fr, FR_ca...)
+		$code = $value == "en" ? "gb" : $value;		// Ignore les variantes régionales (ex: FR_fr, FR_ca...)
 		$name = $languages["language_$value"];		// Nom de la langue
 
 		// On itére enfin à travers les langues pour contruire
@@ -42,7 +40,7 @@
 			\t\t<li>
 				\t\t<!-- $name -->
 				\t\t<button type="submit" name="language" value="$value">
-					\t\t<img src="images/flags/$flag.svg" width="21" height="16" draggable="false" alt="$name" />
+					\t\t<img src="images/flags/$code.svg" width="21" height="16" draggable="false" alt="$name" />
 					\t\t<span>$name</span>
 				\t\t</button>
 			\t\t</li>\n

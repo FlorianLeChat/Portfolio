@@ -41,10 +41,10 @@
 				include_once("include/views/5_contributions.php");
 			?>
 		</main>
-	</body>
 
-	<!-- Pied-de-page du site -->
-	<?php
-		include_once("include/views/6_footer.php");
-	?>
+		<!-- Pied-de-page du site -->
+		<?php
+			include_once("include/views/6_footer.php");
+		?>
+	</body>
 </html>
