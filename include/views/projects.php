@@ -52,7 +52,7 @@
 
 		// On construit ensuite les images présentes dans la galerie
 		//	des photos (uniquement si le répertoire existe).
-		$images = "";
+		$images = "\n";
 
 		if (is_dir($path))
 		{
@@ -114,7 +114,7 @@
 		$description = $projects["project_" . $identifier . "_description"];
 
 		$projects_html .= <<<ARTICLE
-			\t\t<!-- Project : $name -->
+			<!-- Project : $name -->
 			<article id="$identifier">
 				<div class="properties">
 					<!-- Icône -->
@@ -143,7 +143,7 @@
 					<!-- Icônes des langages utilisés -->
 					$logos
 				</div>
-			</article>
+			</article>\n\n
 		ARTICLE;
 	}
 ?>
