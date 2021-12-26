@@ -197,9 +197,8 @@ nav ul
 	right: 5%;
 	margin: 0 auto 0 auto;
 
-	/* Dimensions minimum/maximum de la barre */
+	/* Longueur minimale de la barre */
 	min-width: calc(var(--html-min-width) - 7rem); /* padding + position gauche/droite */
-	max-width: 422px; /* 410 de base + 12 de marge à droite  */
 }
 
 @-moz-document url-prefix()

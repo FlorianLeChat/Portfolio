@@ -16,8 +16,8 @@ const projects = document.querySelectorAll( "#projects .row article" );
 
 for ( const project of projects.values() )
 {
-	const target = project.getAttribute( "data-image" );						// Image ciblée
-	const current = window.getComputedStyle( project, null ).backgroundImage;	// Image de secours
+	const target = project.getAttribute( "data-image" );				// Image ciblée
+	const current = window.getComputedStyle( project ).backgroundImage;	// Image de secours
 
 	project.style.backgroundImage = `url( ${ target } ), ${ current }`;
 }
