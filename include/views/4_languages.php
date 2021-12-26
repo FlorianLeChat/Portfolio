@@ -5,7 +5,9 @@
 
 	// On récupère toutes les langues disponibles avant de
 	//	récupérer leur traduction.
-	$languages = $translation->getPhrases("language");
+	$languages = $translation->getPhrases("language");		// Langues
+	$backtotop = $translation->getPhrase("nav_backtotop");	// Bouton retour en haut de page
+
 	$languages_data = $translation->getLanguages();
 
 	// On réorganise la position des drapeaux en prenant compte
@@ -59,5 +61,5 @@
 	</form>
 
 	<!-- Retour au début de la page -->
-	<button id="scrollTop" title="Retour au début de la page"></button>
+	<button id="scrollTop" title="<?php echo($backtotop); ?>"></button>
 </aside>

@@ -86,7 +86,7 @@
 	<h3>#skills</h3>
 
 	<h2>
-		&#8250; <a href="?target=projects"><?php echo($skills["skills_title"]); ?></a> &#8249;
+		&#8250; <a href="?target=projects"><?php echo($skills["header_skills_title"]); ?></a> &#8249;
 	</h2>
 
 	<div>
