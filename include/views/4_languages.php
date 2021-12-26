@@ -1,45 +1,60 @@
 <?php
-	// Ceci est le fichier générique de la navigation latérale
+	//
+	// Ceci est le fichier permettant de contrôler la vue du sélecteur de langues.
+	//
 
-	// -> requête traduction
-	// -> check if $file existe
+	// On récupère toutes les langues disponibles avant de
+	//	récupérer leur traduction.
+	$languages = $translation->getPhrases("language");
+	$languages_data = $translation->getLanguages();
+
+	// On réorganise la position des drapeaux en prenant compte
+	//	de la langue actuellement active.
+	$code = $translation->getCode();
+
+	if ($code != "FR")
+	{
+		// Si la langue active n'est pas le français, alors on
+		//	va rechercher son indice dans les données actuelle.
+		$indice = array_search($code, $languages_data);
+
+		// On place ensuite sa valeur à la toute première position.
+		array_unshift($languages_data, $languages_data[$indice]);
+
+		// On supprime enfin son ancienne place dans le tableau.
+		unset($languages_data[$indice + 1]);
+	}
+
+	// On construit après la structure HTML du sélecteur de langues.
+	$flags_html = "\n";
+
+	foreach ($languages_data as $value)
+	{
+		$value = strtolower($value);				// Code ISO-3166 en minuscule
+		$flag = $value == "en" ? "gb" : $value;		// Ignore les variantes régionales (ex: FR_fr, FR_ca...)
+		$name = $languages["language_$value"];		// Nom de la langue
+
+		// On itére enfin à travers les langues pour contruire
+		//	les boutons des drapeaux.
+		$flags_html .= <<<FLAG
+			\t\t<li>
+				\t\t<!-- $name -->
+				\t\t<button type="submit" name="language" value="$value">
+					\t\t<img src="images/flags/$flag.svg" width="21" height="16" draggable="false" alt="$name" />
+					\t\t<span>$name</span>
+				\t\t</button>
+			\t\t</li>\n
+		FLAG;
+	}
 ?>
 
 <aside>
 	<!-- Sélection de la langue -->
 	<form method="POST" action="?target=<?php echo($file); ?>">
 		<ul id="flags">
-			<li>
-				<!-- Français -->
-				<button type="submit" name="language" value="fr">
-					<img src="images/flags/fr.svg" width="21" height="16" draggable="false" alt="Drapeau de la langue française" />
-					<span>Français</span>
-				</button>
-			</li>
-
-			<li>
-				<!-- Anglais -->
-				<button type="submit" name="language" value="en">
-					<img src="images/flags/gb.svg" width="21" height="16" draggable="false" alt="Drapeau de la langue anglaise" />
-					<span>Anglais</span>
-				</button>
-			</li>
-
-			<li>
-				<!-- Espagnol -->
-				<button type="submit" name="language" value="es">
-					<img src="images/flags/es.svg" width="21" height="16" draggable="false" alt="Drapeau de la langue espagnol" />
-					<span>Anglais</span>
-				</button>
-			</li>
-
-			<li>
-				<!-- Japonais -->
-				<button type="submit" name="language" value="jp">
-					<img src="images/flags/jp.svg" width="21" height="16" draggable="false" alt="Drapeau de la langue japonaise" />
-					<span>Japonais</span>
-				</button>
-			</li>
+			<?php
+				echo($flags_html);
+			?>
 		</ul>
 	</form>
 

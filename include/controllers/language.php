@@ -16,16 +16,23 @@
 		//
 		public function checkLanguage(string $code): bool
 		{
+			// On récupère toutes les langues disponibles avant de les comparer à
+			//	l'entrée de l'utilisateur.
+			return array_search(strtoupper($code), $this->getLanguages()) !== false;
+		}
+
+		//
+		// Permet de récupérer toutes les langues disponibles dans la base de données.
+		//
+		public function getLanguages(): array
+		{
 			// On prépare et on exécute une requête SQL pour récupérer toutes les langues
 			// 	ayant reçu au moins une traduction.
 			$query = $this->connector->prepare("SELECT DISTINCT `target_language` FROM `translations`;");
 			$query->execute();
 
-			// On sélectionne ensuite la colonne des codes de langues.
-			$result = array_column($query->fetchAll(), "target_language");
-
-			// On compare enfin les résultats de la base de données avec l'entrée utilisateur.
-			return array_search(strtoupper($code), $result) !== false;
+			// On retourne alors la colonne des codes de langues.
+			return array_column($query->fetchAll(), "target_language");
 		}
 
 		//
