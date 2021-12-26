@@ -47,6 +47,8 @@
 		}
 	}
 
+	unset($language); // Suppression de la variable pour éviter les conflits.
+
 	// On récupère enfin la page demandée.
 	$file = htmlspecialchars($_GET["target"]);
 
