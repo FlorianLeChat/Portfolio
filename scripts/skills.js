@@ -10,8 +10,8 @@ for ( const course of courses.values() )
 	//	est en train de survoler l'élément.
 	course.addEventListener( "mouseenter", ( _event ) =>
 	{
-		const target = course.getAttribute( "data-image" );							// Image ciblée
-		const current = window.getComputedStyle( course, null ).backgroundImage;	// Image de secours
+		const target = course.getAttribute( "data-image" );					// Image ciblée
+		const current = window.getComputedStyle( course, ).backgroundImage;	// Image de secours
 
 		course.style.backgroundImage = `url( ${ target } ), ${ current }`;
 	} );
