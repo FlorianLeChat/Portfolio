@@ -29,7 +29,7 @@
 	$data = new Data();						// Données générales du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
-	$language = htmlspecialchars($_GET["lang"]);
+	$language = htmlspecialchars($_POST["language"]);
 
 	if (empty($language))
 	{
