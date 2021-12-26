@@ -104,7 +104,7 @@
 		{
 			// On prépare et on exécute la requête SQL.
 			$query = $this->connector->prepare("SELECT `translated_string`, `target_language`, `source_string` FROM $table WHERE `source_string` LIKE ?;");
-			$query->execute([$search . "%"]);
+			$query->execute(["%$search%"]);
 
 			$result = $query->fetchAll();
 
