@@ -1,42 +1,43 @@
 <?php
-	// Ceci est le fichier générique de l'en-tête du document
-
-	// -> requête traduction
-	// -> check if $file existe
-
 	//
-	$index_title = $translation->getPhrase("projects_title");
-	$index_subtitle = $translation->getPhrase("projects_subtitle");
+	// Ceci est le fichier permettant de contrôler la vue de l'en-tête de la page d'accueil.
+	//
+
+	// On récupère les deux traductions pour le titre et le sous-titre
+	//	de la page.
+	$header_index = $translation->getPhrases("header_index");
+
+	// On récupère ensuite les plateformes qui doivent être affichées.
+	$plateforms_html = "";
+	$plateforms_data = $data->getPlateforms();
+
+	foreach ($plateforms_data as $value)
+	{
+		$url = $value["target_url"];				// Lien cible
+		$color = $value["hex_color"];				// Couleur hexadécimale de l'icône
+		$identifier = $value["identifier"];			// Identifiant de la plateforme
+		$name = ucfirst(strtolower($identifier));	// Nom de la plateforme (basé sur l'identifiant)
+
+		// On assemble enfin les données pour afficher une série
+		// 	de liens vers chaque plateforme.
+		$plateforms_html .= <<<LINK
+			<a href="$url" title="$name" target="_blank">
+				<img data-color="$color" src="images/platforms/$identifier.svg" width="32" height="32" draggable="false" alt="Image - $name" />
+			</a>\n
+		LINK;
+	}
 ?>
 
 <!-- En-tête de la page -->
 <header>
 	<!-- Prénom & Nom -->
-	<h1>Florian Trayon</h1>
+	<h1><?php echo($header_index["header_index_title"]); ?></h1>
 
 	<!-- Description succincte -->
-	<h2>Développeur Web (Front/Back-End)</h2>
+	<h2><?php echo($header_index["header_index_subtitle"]); ?></h2>
 
 	<!-- Plateformes de communication -->
-	<a href="https://discord.com/users/183272411167326209" title="Discord" target="_blank">
-		<img data-color="#5865f2" src="images/platforms/discord.svg" width="32" height="32" draggable="false" alt="Logo de Discord" />
-	</a>
-
-	<a href="https://github.com/FlorianLeChat" title="GitHub" target="_blank">
-		<img data-color="#27272a" src="images/platforms/github.svg" width="32" height="32" draggable="false" alt="Logo de GitHub" />
-	</a>
-
-	<a href="https://twitter.com/FlorianTrayon" title="Twitter" target="_blank">
-		<img data-color="#1da1f2" src="images/platforms/twitter.svg" width="32" height="32" draggable="false" alt="Logo de Twitter" />
-	</a>
-
-	<a href="https://www.linkedin.com/in/florian-trayon-826841227/" title="LinkedIn" target="_blank">
-		<img data-color="#006699" src="images/platforms/linkedin.svg" width="32" height="32" draggable="false" alt="Logo de LinkedIn" />
-	</a>
-
-	<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" title="Curriculum Vitae" target="_blank">
-		<img data-color="#ffffff" src="images/platforms/cv.svg" width="32" height="32" draggable="false" alt="Logo représentant le C.V" />
-	</a>
+	<?php echo($plateforms_html); ?>
 
 	<!-- Vagues de fin -->
 	<img src="images/decorations/header_waves_blue.svg" alt="" />

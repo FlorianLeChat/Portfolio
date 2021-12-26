@@ -38,7 +38,19 @@
 	class Data extends Connector
 	{
 		//
-		// Permet de récupérer les projets déclarés dans la base de donénes.
+		// Permet de récupérer les plateformes de communications depuis la base
+		//	de données.
+		//
+		public function getPlateforms(): array
+		{
+			$query = $this->connector->prepare("SELECT `identifier`, `hex_color`, `target_url` FROM `plateforms` ORDER BY `position` ASC;");
+			$query->execute();
+
+			return $query->fetchAll();
+		}
+
+		//
+		// Permet de récupérer les projets déclarés dans la base de données.
 		//
 		public function getProjects(array $tables, bool $offset_start = true): array
 		{
