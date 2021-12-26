@@ -23,7 +23,7 @@
 		<main>
 			<!-- Barre de navigation -->
 			<?php
-				include_once("include/views/3_navigation.php");
+				include_once("include/views/3_navigation_$file.php");
 			?>
 
 			<!-- Navigation latérale -->
