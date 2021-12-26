@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Controllers;
 
-	include_once("./include/models/language.php");
+	include_once("include/models/language.php");
 
 	use Portfolio\Models\Language;
 
