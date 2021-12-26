@@ -3,10 +3,11 @@
 
 	// -> requête traduction
 	// -> check if $file existe
-?>
 
-<!-- Avertissement page sans JavaScript -->
-<noscript>Votre navigateur ne supporte pas ou refuse de charger le JavaScript.</noscript>
+	//
+	$index_title = $translation->getPhrase("projects_title");
+	$index_subtitle = $translation->getPhrase("projects_subtitle");
+?>
 
 <!-- En-tête de la page -->
 <header>
