@@ -1,17 +1,20 @@
 <?php
-	// Ceci est le fichier générique de l'en-tête du document
+	//
+	// Ceci est le fichier permettant de contrôler la vue de l'en-tête de la page des compétences.
+	//
 
-	// -> requête traduction
-	// -> check if $file existe
+	// On récupère les deux traductions pour le titre et le sous-titre
+	//	de la page.
+	$header_skills = $translation->getPhrases("header_skills");
 ?>
 
 <!-- En-tête de la page -->
 <header>
 	<!-- Titre de la catégorie -->
-	<h1>Mes compétences</h1>
+	<h1><?php echo($header_skills["header_skills_title"]); ?></h1>
 
 	<!-- Description succincte -->
-	<h2>Mon parcours scolaire et mes compétences professionnelles</h2>
+	<h2><?php echo($header_skills["header_skills_subtitle"]); ?></h2>
 
 	<!-- Vagues de fin -->
 	<img src="images/decorations/header_waves_green.svg" alt="" />
