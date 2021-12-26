@@ -11,20 +11,19 @@
 
 	// On récupère ensuite les projets.
 	$projects_html = "<div class=\"row\">\n";
-	$projects_data = $data->getProjects(["identifier", "background_image"]);
+	$projects_data = $data->getProjects(["identifier"]);
 	$projects_length = count($projects_data);
 
 	foreach ($projects_data as $key => $value)
 	{
 		// On récupère certaines données des projets.
 		$identifier = $value["identifier"];							// Identifiant du projet
-		$image = $value["background_image"];						// Image de fond en page d'accueil
 		$name = $projects["project_" . $identifier . "_title"];		// Nom du projet
 
 		// On les assemble par la suite sous forme d'articles.
 		$projects_html .= <<<ARTICLE
 			\t\t<!-- Project numéro $key -->
-			\t\t<article data-image="images/projects/$image">
+			\t\t<article data-image="images/projects/bg_$identifier.jpg">
 				\t\t<h3><a href="?target=projects&name=$identifier">$name</a></h3>
 			\t\t</article>\n
 		ARTICLE;
