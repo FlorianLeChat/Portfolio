@@ -1,452 +1,153 @@
 <?php
-	// Ceci est le fichier de la page des projets
+	//
+	// Ceci est le fichier permettant de contrôler la vue de la page des projets/réalisations.
+	//
+
+	// On définit le jeu de caractère des en-têtes EXIF
+	// 	en UTF-8 (cela est utile pour lire correctement
+	//	les commentaires des images).
+	// 	Source : https://www.php.net/manual/fr/function.exif-read-data.php#Notes
+	ini_set("exif.encode_unicode", "UTF-8");
+
+	// On récupère les traductions nécessaires pour certaines
+	//	données des projets.
+	$projects = $translation->getPhrases("project");
+
+	// On récupère les données brutes des projets.
+	$projects_html = "";
+	$projects_data = $data->getProjects(["identifier", "creation_date", "source_url", "languages"]);
+
+	// On récupère toutes les images présentes dans le répertoire
+	//	des images du projet.
+	$path = "images/projects/";
+	$files = scandir($path);
+
+	if (PHP_OS == "Linux")
+	{
+		// Les environnements Linux (dont mon serveur Web sous Debian) souffrent
+		//	d'un « bug » lorsque des répertoires sont analysés sous Linux,
+		//	on applique donc un petit correctif.
+		// 	Source : https://www.php.net/manual/fr/function.scandir.php#107215
+		$files = array_diff($files, array("..", "."));	// Suppression des chemins invalides.
+		$files = array_values($files);					// Réarrangement des indices du tableau.
+	}
+
+	foreach ($projects_data as $key => $value)
+	{
+		// On construit le titre du projet.
+		// Note : durant cette étape, il est nécessaire de vérifier
+		//	si le projet est « open source », dans ce cas, un lien
+		//	clickable doit être ajouté.
+		$url = $value["source_url"];
+		$identifier = $value["identifier"];
+
+		$name = $projects["project_" . $identifier . "_title"];
+		$title = $name;
+
+		if (!empty($url))
+		{
+			// Le projet possède un dépot public !
+			$title = "<a href=\"$url\">$name</a>";
+		}
+
+		// On construit ensuite les images présentes dans la galerie
+		//	des photos (uniquement si le répertoire existe).
+		$images = "";
+
+		if (is_dir($path))
+		{
+			foreach ($files as $key => $image)
+			{
+				// On vérifie si le chemin d'accès de l'image semble
+				//	appartenir au projet actuellement à l'étape de la boucle.
+				if (str_contains($image, $identifier))
+				{
+					// À ce niveau, le chemin d'accès doit comporter le nom
+					//	de l'image récupéré précédemment.
+					$image = $path . $image;
+
+					// On tente de lire l'en-tête des images de la galerie des photos
+					//	pour récupérer les commentaires insérées au préalable.
+					$data = exif_read_data($image);
+
+					if (array_key_exists("Comments", $data))
+					{
+						// Le champ des commentaires existe, on réalise une conversion
+						//	du jeu de caractères pour obtenir une description lisible.
+						$label = mb_convert_encoding($data["Comments"], "byte2le");
+					}
+					else
+					{
+						// Dans le cas contraire, on indique une valeur par défaut.
+						$label = "N/A";
+					}
+
+					// On assemble les données récupérées pour créer la structure HTML
+					//	requise pour la disposition en CSS.
+					$images .= <<<IMAGE
+						\t\t<div>
+							\t\t<a href="$image">
+								\t\t<img src="$image" draggable="false" alt="Image - $key" />
+							\t\t</a>
+
+							\t\t<p>$label</p>
+						\t\t</div>\n
+					IMAGE;
+				}
+			}
+		}
+
+		// On construit après les images qui représentent les logos
+		//	de programmation utilisés par les projets.
+		$logos = "";
+		$languages = json_decode($value["languages"]);
+
+		foreach ($languages as $language)
+		{
+			$logos .= "<img src=\"images/languages/$language.svg\" height=\"40\" draggable=\"false\" alt=\"Logo - $language\" />\n";
+		}
+
+		// On assemble enfin toutes les parties créées précédemment
+		// 	pour faire une succession d'articles qui décrivent chacun
+		//	les projets de manière détaillée.
+		$date = $value["creation_date"];
+		$description = $projects["project_" . $identifier . "_description"];
+
+		$projects_html .= <<<ARTICLE
+			\t\t<!-- Project : $name -->
+			<article id="$identifier">
+				<div class="properties">
+					<!-- Icône -->
+					<img src="images/projects/logo_$identifier.svg" width="64" height="64" draggable="false" alt="Logo - $name" />
+
+					<!-- Nom -->
+					<h2>$title</h2>
+
+					<!-- Date -->
+					<h3><em>$date</em></h3>
+
+					<!-- Description -->
+					<p>$description</p>
+				</div>
+
+				<hr />
+
+				<!-- Galerie photos -->
+				<div class="images">
+					$images
+				</div>
+
+				<hr />
+
+				<div class="languages">
+					<!-- Icônes des langages utilisés -->
+					$logos
+				</div>
+			</article>
+		ARTICLE;
+	}
 ?>
 
-<!-- Titre de la catégorie -->
-<h1>Mes projets</h1>
-
-<!-- Description succincte -->
-<h2>Mes réalisations personnelles les plus abouties</h2>
-
-<!-- Premier projet -->
-<article id="raven">
-	<div class="properties">
-		<!-- Icône -->
-		<img src="images/placeholder.svg" width="64" height="64" draggable="false" alt="Logo de démonstration" />
-
-		<!-- Nom -->
-		<h2>Raven Framework</h2>
-
-		<!-- Date -->
-		<h3><em>2017 - ...</em></h3>
-
-		<!-- Description -->
-		<p>
-			Le framework Raven (<strong>sources fermées</strong>) est un ensemble d'outils pour accélérer
-			la création de scripts simples, mais également de systèmes d'interaction homme-machine plus
-			complexes. Bâti au dessus de l'<strong>API Lua</strong> (<em>GLua</em>) du jeu vidéo Garry's Mod,
-			le framework a subit plusieurs itérations pour améliorer la robustesse de ses mécanismes et
-			comportements. Il est actuellement utilisé par la communauté <em>Combined-Roleplay</em>, mais
-			également disponible (en partie) sur le <em>Workshop</em> de Steam.
-		</p>
-	</div>
-
-	<hr />
-
-	<!-- Galerie photos -->
-	<div class="images">
-		<div>
-			<!-- Première image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Première image" />
-			</a>
-
-			<p>Ceci est ma première image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Deuxième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Deuxième image" />
-			</a>
-
-			<p>Ceci est ma deuxième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Troisième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Troisième image" />
-			</a>
-
-			<p>Ceci est ma troisième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Quatrième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Quatrième image" />
-			</a>
-
-			<p>Ceci est ma quatrième image représentant le projet.</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="languages">
-		<!-- Icônes des langages utilisés -->
-		<img src="images/languages/lua.svg" height="40" draggable="false" alt="Logo du langage de programmation Lua" />
-		<img src="images/languages/mysql.svg" height="40" draggable="false" alt="Logo de la base de données MySQL" />
-		<img src="images/languages/sqlite.svg" height="40" draggable="false" alt="Logo de la base de données SQLite" />
-	</div>
-</article>
-
-<!-- Deuxième projet -->
-<article id="discordbot">
-	<div class="properties">
-		<!-- Icône -->
-		<img src="images/placeholder.svg" width="64" height="64" draggable="false" alt="Logo de démonstration" />
-
-		<!-- Nom -->
-		<h2>Florian's Bot</h2>
-
-		<!-- Date -->
-		<h3><em>2016 - ...</em></h3>
-
-		<!-- Description -->
-		<p>
-			Le robot de Florian (<strong>sources fermées</strong>) est un simple robot utilisant
-			les services Discord pour s'exécuter. Utilisant <strong>NodeJS</strong> et le paquet
-			<em>NPM</em> <strong>DiscordJS</strong>, le robot est capable d'effectuer des actions
-			de modération simples de la part des propriétaires des serveurs. Il est également relié
-			à une base de données <strong>MySQL</strong> pour permettre la sauvegarde et la
-			récupération des informations utilisateurs.
-		</p>
-	</div>
-
-	<hr />
-
-	<!-- Galerie photos -->
-	<div class="images">
-		<div>
-			<!-- Première image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Première image" />
-			</a>
-
-			<p>Ceci est ma première image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Deuxième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Deuxième image" />
-			</a>
-
-			<p>Ceci est ma deuxième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Troisième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Troisième image" />
-			</a>
-
-			<p>Ceci est ma troisième image représentant le projet.</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="languages">
-		<!-- Icônes des langages utilisés -->
-		<img src="images/languages/mysql.svg" height="40" draggable="false" alt="Logo de la base de données MySQL" />
-		<img src="images/languages/javascript.svg" height="40" draggable="false" alt="Logo du langage de programmation JavaScript" />
-		<img src="images/languages/nodejs.svg" height="40" draggable="false" alt="Logo de la plateforme NodeJS" />
-	</div>
-</article>
-
-<!-- Troisième projet -->
-<article id="facepunch">
-	<div class="properties">
-		<!-- Icône -->
-		<img src="images/placeholder.svg" width="64" height="64" alt="Logo de démonstration" />
-
-		<!-- Nom -->
-		<h2>
-			<a href="https://github.com/FlorianLeChat/Facepunch-Commits-Monitor">
-				Facepunch Commits Monitor
-			</a>
-		</h2>
-
-		<!-- Date -->
-		<h3><em>2021 - ...</em></h3>
-
-		<!-- Description -->
-		<p>
-			Le moniteur des commits Facepunch (<strong>sources ouvertes</strong>) est l'une de mes
-			toutes premières applications graphiques écrites en C# et propulsées grâce à <strong>.NET 5</strong>
-			et <strong>Windows Forms</strong>. Grâce à une interface graphique simple et l'API du studio de
-			développement Facepunch, il est possible de suivre en temps réel les changements des dépôts publics
-			<em>Git</em> du studio et de les afficher sous forme de notifications Windows.
-		</p>
-	</div>
-
-	<hr />
-
-	<!-- Galerie photos -->
-	<div class="images">
-		<div>
-			<!-- Première image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Première image" />
-			</a>
-
-			<p>Ceci est ma première image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Deuxième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Deuxième image" />
-			</a>
-
-			<p>Ceci est ma deuxième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Troisième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Troisième image" />
-			</a>
-
-			<p>Ceci est ma troisième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Quatrième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Quatrième image" />
-			</a>
-
-			<p>Ceci est ma quatrième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Cinquième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Cinquième image" />
-			</a>
-
-			<p>Ceci est ma cinquième image représentant le projet.</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="languages">
-		<!-- Icônes des langages utilisés -->
-		<img src="images/languages/csharp.svg" height="40" draggable="false" alt="Logo du langage de programmation C#" />
-		<img src="images/languages/dotnet.svg" height="40" draggable="false" alt="Logo du framework .NET" />
-	</div>
-</article>
-
-<!-- Quatrième projet -->
-<article id="phpstorage">
-	<div class="properties">
-		<!-- Icône -->
-		<img src="images/placeholder.svg" width="64" height="64" draggable="false" alt="Logo de démonstration" />
-
-		<!-- Nom -->
-		<h2>
-			<a href="https://github.com/FlorianLeChat/Simple-File-Storage">
-				Simple File Storage
-			</a>
-		</h2>
-
-		<!-- Date -->
-		<h3><em>2021 - ...</em></h3>
-
-		<!-- Description -->
-		<p>
-			Le système de stockage simplifié de système (<strong>sources ouvertes</strong>) est mon tout
-			premier projet utilisant les langages du web les plus répandus (<strong>HTML</strong>,
-			<strong>CSS</strong> et <strong>PHP</strong>) afin de permettre aux utilisateurs d'enregistrer
-			des fichiers quelconques sur un serveur. Actuellement, il est possible de mettre en ligne des
-			fichiers, mais également de contrôler le contenu sauvegardé grâce à une page d'administration
-			sécurisé par mot de passe. Pour l'instant, les fondations sont fragiles, mais à l'avenir,
-			le système possédera un système de compte utilisateurs et une page d'accueil pour que les
-			utilisateurs/administrateurs puissent accéder aux contenus sauvegardés facilement.
-		</p>
-	</div>
-
-	<hr />
-
-	<!-- Galerie photos -->
-	<div class="images">
-		<div>
-			<!-- Première image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Première image" />
-			</a>
-
-			<p>Ceci est ma première image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Deuxième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Deuxième image" />
-			</a>
-
-			<p>Ceci est ma deuxième image représentant le projet.</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="languages">
-		<!-- Icônes des langages utilisés -->
-		<img src="images/languages/nginx.svg" height="40" draggable="false" alt="Logo du serveur HTTP Nginx" />
-		<img src="images/languages/php.svg" height="40" draggable="false" alt="Logo du langage de programmation PHP" />
-	</div>
-</article>
-
-<!-- Cinquième projet -->
-<article id="steam">
-	<div class="properties">
-		<!-- Icône -->
-		<img src="images/placeholder.svg" width="64" height="64" draggable="false" alt="Logo de démonstration" />
-
-		<!-- Nom -->
-		<h2>
-			<a href="https://github.com/FlorianLeChat/Steam-Collection-Download-Size-Calculator">
-				Steam Download Size Calculator
-			</a>
-		</h2>
-
-		<!-- Date -->
-		<h3><em>2021</em></h3>
-
-		<!-- Description -->
-		<p>
-			A faire
-		</p>
-	</div>
-
-	<hr />
-
-	<!-- Galerie photos -->
-	<div class="images">
-		<div>
-			<!-- Première image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Première image" />
-			</a>
-
-			<p>Ceci est ma première image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Deuxième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Deuxième image" />
-			</a>
-
-			<p>Ceci est ma deuxième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Troisième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Troisième image" />
-			</a>
-
-			<p>Ceci est ma troisième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Quatrième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Quatrième image" />
-			</a>
-
-			<p>Ceci est ma quatrième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Cinquième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Cinquième image" />
-			</a>
-
-			<p>Ceci est ma cinquième image représentant le projet.</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="languages">
-		<!-- Icônes des langages utilisés -->
-		<img src="images/languages/csharp.svg" height="40" draggable="false" alt="Logo du langage de programmation C#" />
-		<img src="images/languages/dotnet.svg" height="40" draggable="false" alt="Logo du framework .NET" />
-	</div>
-</article>
-
-<!-- Sixième projet -->
-<article id="pythonrpg">
-	<div class="properties">
-		<!-- Icône -->
-		<img src="images/placeholder.svg" width="64" height="64" draggable="false" alt="Logo de démonstration" />
-
-		<!-- Nom -->
-		<h2>
-			<a href="https://github.com/FlorianLeChat/Python-RPG">
-				Python RPG
-			</a>
-		</h2>
-
-		<!-- Date -->
-		<h3><em>2021</em></h3>
-
-		<!-- Description -->
-		<p>
-			Python RPG (<strong>sources ouvertes</strong>) est ma première application console écrite
-			en Python. Il avait pour but d'expérimenter ce langage et d'exploiter la simplicité de
-			sa syntaxe pour réaliser un projet dans le thème du <em>roleplay</em>. Le programme est
-			actuellement capable de lire des histoires permettant à l'utilisateur d'interagir avec un
-			univers fictif (ou non) via différents moyens, comme des actions envers un objet ou un personne,
-			mais aussi des dialogues entre l'utilisateur et des personnages non-joueurs. Pour l'instant,
-			le programme fonctionne seulement en mode de lecture, mais il est prévu que j'intègre un mode
-			de création et d'édition des histoires.
-		</p>
-	</div>
-
-	<hr />
-
-	<!-- Galerie photos -->
-	<div class="images">
-		<div>
-			<!-- Première image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Première image" />
-			</a>
-
-			<p>Ceci est ma première image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Deuxième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Deuxième image" />
-			</a>
-
-			<p>Ceci est ma deuxième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Troisième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Troisième image" />
-			</a>
-
-			<p>Ceci est ma troisième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Quatrième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Quatrième image" />
-			</a>
-
-			<p>Ceci est ma quatrième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Cinquième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Cinquième image" />
-			</a>
-
-			<p>Ceci est ma cinquième image représentant le projet.</p>
-		</div>
-		<div>
-			<!-- Sixième image -->
-			<a href="images/placeholder.svg">
-				<img src="images/placeholder.svg" draggable="false" alt="Sixième image" />
-			</a>
-
-			<p>Ceci est ma sixième image représentant le projet.</p>
-		</div>
-	</div>
-
-	<hr />
-
-	<div class="languages">
-		<!-- Icônes des langages utilisés -->
-		<img src="images/languages/python.svg" height="40" draggable="false" alt="Logo du langage de programmation Python" />
-	</div>
-</article>
+<?php
+	echo($projects_html);
+?>
