@@ -92,7 +92,7 @@
 
 	<div>
 		<article>
-			<img src="images/skills/school.svg" draggable="false" width="64" height="64" alt="Image représentant une école." />
+			<img src="images/skills/school.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_school_image"]); ?>" />
 
 			<h2>
 				<?php echo($skills["skills_school_title"] . "\n"); ?>
@@ -104,7 +104,7 @@
 		</article>
 
 		<article>
-			<img src="images/skills/work.svg" draggable="false" width="64" height="64" alt="Image représentant le travail." />
+			<img src="images/skills/work.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_work_image"]); ?>" />
 
 			<h2>
 				<?php echo($skills["skills_work_title"] . "\n"); ?>
