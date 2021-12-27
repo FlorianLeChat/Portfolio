@@ -2,6 +2,20 @@
 	// Ceci est le fichier de la page du formulaire de contact
 ?>
 
+<!-- Traductions JavaScript -->
+<script>
+	// Messages d'avertissement du système de vérification du formulaire
+	//	côté JavaScript (doit être modifié avec 3 paramètres).
+	const check_phrase = "<?php echo($contact["contact_form_warning"]); ?>";
+
+	// Message indiquant à l'utilisateur d'entrer un code de vérification
+	//	pour lutter contre les robots et le spam.
+	const verification_code = "<?php echo($contact["contact_form_check_1"]); ?>";
+
+	// Message indiquant à l'utilisateur que le code indiqué est erroné.
+	const code_failed = "<?php echo($contact["contact_form_check_2"]); ?>";
+</script>
+
 <!-- Contact -->
 <section id="form">
 	<h3>#contact</h3>

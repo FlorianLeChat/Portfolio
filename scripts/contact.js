@@ -15,11 +15,14 @@ for ( const element of elements.values() )
 		{
 			// Si le champ est invalide, on affiche un message d'erreur
 			// 	avec les éléments qui doivent être modifiées.
-			const label = document.querySelector( `label[for = ${ element.id }]` ).innerHTML;	// Nom du champ
-			const minLength = element.getAttribute( "minLength" );								// Taille minimale
-			const maxLength = element.getAttribute( "maxLength" );								// Taille maximale
+			//	Note : le message d'erreur provient d'un script PHP.
+			let message = check_phrase;
 
-			result.innerHTML = `Le champ <q> ${ label } </q> doit avoir une taille comprise entre ${ minLength } et ${ maxLength } caractères.`;
+			message = message.replace( "$1", document.querySelector( `label[for = ${ element.id }]` ).innerHTML );	// Nom du champ
+			message = message.replace( "$2", element.getAttribute( "minLength" ) );									// Taille minimale
+			message = message.replace( "$3", element.getAttribute( "maxLength" ) );									// Taille maximale
+
+			result.innerHTML = message;
 
 			// Lancement d'une animation d'apparition du message.
 			result.classList.remove( "hide" );
@@ -79,11 +82,11 @@ form.addEventListener( "submit", ( event ) =>
 {
 	// Lors de la chaque soumission du formulaire, on demande à l'utilisateur
 	//	de renseigner le code indiqué dans la boite de dialogue.
-	const entry = prompt( "Veuillez entrer le code de vérification suivant : " + generation.join( "" ), "" );
+	const entry = prompt( verification_code + " " + generation.join( "" ), "" );
 
 	if ( entry != generation )
 	{
-		alert( "Code de vérification incorrect, vous êtes un robot ?!" );
+		alert( code_failed );
 
 		event.preventDefault();
 
