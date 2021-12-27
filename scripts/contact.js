@@ -84,7 +84,7 @@ form.addEventListener( "submit", ( event ) =>
 {
 	// Lors de la chaque soumission du formulaire, on demande à l'utilisateur
 	//	de renseigner le code indiqué dans la boite de dialogue.
-	const entry = prompt( verification_code + " " + generation.join( "" ), "" );
+	const entry = prompt( verification_code + " " + generation, "" );
 
 	if ( entry != generation )
 	{
