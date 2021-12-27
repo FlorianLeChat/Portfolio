@@ -15,7 +15,7 @@ function typingEffect( element, speed )
 	// 	chaque lettre avec un délai d'attente.
 	let indice = 0;
 
-	const timer = setInterval( function ()
+	const timer = setInterval( () =>
 	{
 		if ( indice < text.length )
 		{
