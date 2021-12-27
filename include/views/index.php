@@ -125,7 +125,7 @@
 	</h2>
 
 	<h2>
-		<?php echo($contact["contact_description"] . "\n"); ?>
+		<?php echo($contact["contact_message"] . "\n"); ?>
 	</h2>
 
 	<span>
