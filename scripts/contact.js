@@ -78,6 +78,8 @@ for ( let i = 1; i <= 7; i++ )
 	generation.push( characters[ Math.floor( Math.random() * characters.length ) ] );
 }
 
+generation = generation.join( "" ); // Assemblage de la chaîne de caractères.
+
 form.addEventListener( "submit", ( event ) =>
 {
 	// Lors de la chaque soumission du formulaire, on demande à l'utilisateur
