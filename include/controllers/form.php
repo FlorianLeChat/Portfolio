@@ -158,14 +158,16 @@
 				}
 				else
 				{
-					// Dans le cas contraire, on fait en sorte que
-					// 	la première lettre du champ soit en majuscule.
-					$this->{"set" . $this->capitalize($value)}($field);
+					// Dans le cas contraire, on assigne la valeur dans
+					// 	dans l'instance après avoir mis la première lettre
+					//	en majuscule.
+					$field = $this->capitalize($field);
+
+					$this->{"set" . $this->capitalize($value)}($field);	// Exemple : "setFirstName()"
 				}
 			}
 
-			// Arrivée à cette étape, les vérifications se sont
-			//	déroulées avec succès.
+			// Arrivée à cette étape, les vérifications se sont déroulées avec succès.
 			$this->message = $this->translation->getPhrase("contact_form_success");
 
 			return true;

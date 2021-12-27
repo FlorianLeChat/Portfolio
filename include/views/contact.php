@@ -24,7 +24,20 @@
 
 		if ($form->validate($_POST))
 		{
+			// Si les informations sont valides, alors on utilise
+			//	un serveur SMTP distant (OVH) pour envoyer un mail
+			//	à moi-même !
+			// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
+			$from = $form->getEmail();
+			$to = "admin@florian-dev.fr";
+			$subject = "Portfolio - " . $form->getSubject();
+			$message = $form->getContent();
+			$headers = array(
+				"From" => $form->getFirstname() . " " . $form->getLastName() . "<$from>",
+				"X-Mailer" => "PHP/" . phpversion()
+			);
 
+			mb_send_mail($to, $subject, $message, $headers);
 		}
 	}
 ?>
