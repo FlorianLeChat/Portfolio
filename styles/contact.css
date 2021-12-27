@@ -74,7 +74,7 @@ nav > ul
 	color: white;
 }
 
-#form #message
+#form #content
 {
 	/* Champ de saisie pour indiquer le message */
 	height: 200px;

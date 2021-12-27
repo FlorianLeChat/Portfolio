@@ -11,14 +11,14 @@
 	// Classe permettant de faire les validations du formulaire.
 	class FormValidation extends Form
 	{
-		public $message = "";	// Message d'erreur.
+		public $message = "";	// Message de validation/d'erreur.
 		private $length = [];	// Limites de caractères.
 		private $fields = [		// Champs du formulaire.
 			"firstname",
 			"lastname",
 			"email",
 			"subject",
-			"message"
+			"content"
 		];
 
 		//
@@ -160,7 +160,7 @@
 				{
 					// Dans le cas contraire, on fait en sorte que
 					// 	la première lettre du champ soit en majuscule.
-					$field = $this->capitalize($field);
+					$this->{"set" . $this->capitalize($value)}($field);
 				}
 			}
 
