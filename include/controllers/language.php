@@ -41,6 +41,10 @@
 		//
 		public function formatString(string $phrase): string
 		{
+			// Ajout de caractères anti-slashs pour afficher certaines chaînes de caractères
+			//	de manière lisibles (ex: Salut \"les\" amis !).
+			$phrase = addslashes($phrase);
+
 			// Remplacement des retours chariot/sauts de ligne SQL par la balise "<br />".
 			$phrase = str_replace("\r\n", "<br />", $phrase);
 
