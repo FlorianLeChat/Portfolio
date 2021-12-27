@@ -1,5 +1,11 @@
 <?php
-	// Ceci est le fichier de la page du formulaire de contact
+	//
+	// Ceci est le fichier permettant de contrôler la vue de la page du formulaire de contact.
+	//
+
+	// On récupère les traductions nécessaires pour le formulaire.
+	$contact = $translation->getPhrases("contact");
+	$contact["contact_message"] = str_replace("<br /><br />", " ", $contact["contact_message"]);
 ?>
 
 <!-- Traductions JavaScript -->
@@ -20,16 +26,13 @@
 <section id="form">
 	<h3>#contact</h3>
 
-	<h2>Contact</h2>
+	<h2>
+		<?php echo($contact["contact_title"] . "\n"); ?>
+	</h2>
 
 	<!-- Description -->
 	<p>
-		Voici le formulaire de contact permettant de m'adresser un message. Ce message sera directement transmis
-		dans ma boite mail personnelle. Afin de vous répondre, ce formulaire vous demande de renseigner une
-		adresse mail valide pour que je puisse vous répondre, elle ne sera ni stockée et ni utilisée à des fins
-		malveillantes. Sans ça, votre message restera évidemment lettre morte. Vous trouvez ce moyen de communication
-		trop.. <em>archaïque</em> ? N'oubliez pas que des supports de communication plus modernes sont disponibles
-		sur la page d'accueil (Discord, Twitter, LinkedIn, ...).
+		<?php echo($contact["contact_description"] . "\n"); ?>
 	</p>
 
 	<!-- Message de vérification/validation -->
@@ -38,31 +41,31 @@
 	<!-- Formulaire -->
 	<form method="POST" novalidate>
 		<!-- Prénom -->
-		<label for="firstname">Prénom</label>
+		<label for="firstname"><?php echo($contact["contact_form_firstname"]); ?></label>
 		<input type="text" autocomplete="off" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
 		<span></span>
 
 		<!-- Nom de famille -->
-		<label for="lastname">Nom</label>
+		<label for="lastname"><?php echo($contact["contact_form_lastname"]); ?></label>
 		<input type="text" autocomplete="off" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" required />
 		<span></span>
 
 		<!-- Adresse email -->
-		<label for="email">Adresse e-mail</label>
-		<input type="email" spellcheck="false" id="email" name="email" placeholder="jeandupont@domaine.com" minlength="10" maxlength="40" required />
+		<label for="email"><?php echo($contact["contact_form_email"]); ?></label>
+		<input type="email" spellcheck="false" id="email" name="email" placeholder="jeandupont@mail.com" minlength="10" maxlength="40" required />
 		<span></span>
 
 		<!-- Sujet de la prise de contact -->
-		<label for="subject">Sujet</label>
+		<label for="subject"><?php echo($contact["contact_form_subject"]); ?></label>
 		<select id="subject" name="subject" >
-			<option value="question">Question</option>
-			<option value="issue">Problème</option>
-			<option value="other">Autre</option>
+			<option value="question"><?php echo($contact["contact_form_subject_1"]); ?></option>
+			<option value="issue"><?php echo($contact["contact_form_subject_2"]); ?></option>
+			<option value="other"><?php echo($contact["contact_form_subject_3"]); ?></option>
 		</select>
 
 		<!-- Message -->
-		<label for="message">Message</label>
-		<textarea id="message" name="message" placeholder="Vous voulez me poser des questions ? C'est le bon endroit !" minlength="20" maxlength="4000" required></textarea>
+		<label for="message"><?php echo($contact["contact_form_message"]); ?></label>
+		<textarea id="message" name="message" placeholder="<?php echo($contact["contact_message"]); ?>" minlength="20" maxlength="4000" required></textarea>
 		<span></span>
 
 		<!-- Validation -->
