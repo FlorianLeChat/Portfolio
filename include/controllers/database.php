@@ -49,6 +49,18 @@
 		}
 
 		//
+		// Permet de récupérer les contributions utilisateurs depuis la base
+		//	de données.
+		//
+		public function getContributions(): array
+		{
+			$query = $this->connector->prepare("SELECT `firstname`, `lastname`, `details` FROM `contributions` ORDER BY `position` ASC;");
+			$query->execute();
+
+			return $query->fetchAll();
+		}
+
+		//
 		// Permet de récupérer les plateformes de communications depuis la base
 		//	de données.
 		//
