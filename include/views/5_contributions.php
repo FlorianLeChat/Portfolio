@@ -1,6 +1,33 @@
 <?php
-	// Ceci est le fichier générique du pied-de-page du site
+	//
+	// Ceci est le fichier permettant de contrôler la vue de l'overlay des contributions.
+	//
 
+	// On récupère la traduction du titre de l'overlay.
+	$contribution_title = $translation->getPhrase("contributions_title");
+
+	// On récupère ensuite toutes les contributions
+	//	depuis la base de données.
+	$contributions_html = "";
+	$contributions_data = $data->getContributions();
+
+	foreach ($contributions_data as $value)
+	{
+		$name = $value["firstname"] . " " . $value["lastname"];	// Prénom et nom de famille
+		$details = $value["details"];							// Description de la contribution
+
+		// On assemble enfin les données sous forme
+		//	d'items dans une liste.
+		$contributions_html .= <<<LI
+			\t<li>
+				\t<h3>$name</h3>
+
+				\t<p>
+					\t$details
+				\t</p>
+			\t</li>\n
+		LI;
+	}
 ?>
 
 <section id="contributions">
@@ -13,35 +40,8 @@
 
 	<ul>
 		<!-- Description de chaque contribution -->
-		<li>
-			<h3>Prénom Nom</h3>
-
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</li>
-		<li>
-			<h3>Prénom Nom</h3>
-
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</li>
-		<li>
-			<h3>Prénom Nom</h3>
-
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-			</p>
-		</li>
+		<?php
+			echo($contributions_html);
+		?>
 	</ul>
 </section>

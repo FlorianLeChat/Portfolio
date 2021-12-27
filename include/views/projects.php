@@ -68,13 +68,13 @@
 
 					// On tente de lire l'en-tête des images de la galerie des photos
 					//	pour récupérer les commentaires insérées au préalable.
-					$data = exif_read_data($image);
+					$header = exif_read_data($image);
 
-					if (array_key_exists("Comments", $data))
+					if (array_key_exists("Comments", $header))
 					{
 						// Le champ des commentaires existe, on réalise une conversion
 						//	du jeu de caractères pour obtenir une description lisible.
-						$label = mb_convert_encoding($data["Comments"], "byte2le");
+						$label = mb_convert_encoding($header["Comments"], "byte2le");
 					}
 					else
 					{
