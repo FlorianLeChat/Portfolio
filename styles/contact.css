@@ -124,8 +124,18 @@ nav > ul
 /* ---------------------- */
 #form > #result
 {
-	/* Message de succès lors de l'envoi
-		d'un message via le formulaire */
+	/* Message de validation après l'envoi
+		du formulaire */
+	color: rgb(var(--theme-color-bright));
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 2rem;
+}
+
+#form > #warning
+{
+	/* Messages de vérification pendant le
+		renseignement des informations */
 	color: orange;
 	border: 3px dashed orange;
 	padding: 0.5rem;
@@ -133,13 +143,13 @@ nav > ul
 	line-height: 1.5rem;
 }
 
-#form > #result.show
+#form > #warning.show
 {
 	/* Apparition du message de validation */
 	display: inline-block;
 }
 
-#form > #result.hide
+#form > #warning.hide
 {
 	/* Disparition du message de validation */
 	display: none;
@@ -150,13 +160,13 @@ nav > ul
 	/* Lancement d'une animation d'apparition et de disparition
 		du message de validation (disponible uniquement si
 		l'utilisateur n'a pas demandé à réduire les animations) */
-	#form > #result.show
+	#form > #warning.show
 	{
 		display: inline-block;
 		animation: 250ms show 0s forwards;
 	}
 
-	#form > #result.hide
+	#form > #warning.hide
 	{
 		display: inline-block;
 		animation: 250ms hide 0s forwards;
