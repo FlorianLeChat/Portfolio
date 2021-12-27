@@ -7,6 +7,7 @@
 	include_once("include/models/database.php");
 
 	use PDO;
+	use Portfolio\Models\Form;
 	use Portfolio\Models\Database;
 
 	// Classe permettant d'établir la liaison avec la base de données.
@@ -37,6 +38,16 @@
 	// Classe permettant de récupérer les données générales du site.
 	class Data extends Connector
 	{
+		//
+		// Permet d'ajouter un message reçu depuis le formulaire dans la base
+		//	de données pour y accéder dans l'interface d'administration.
+		//
+		public function addMessage(Form $data)
+		{
+			$query = $this->connector->prepare("INSERT INTO messages (`firstname`, `lastname`, `email`, `subject`, `content`) VALUES (?, ?, ?, ?, ?);");
+			$query->execute([$data->getFirstname(), $data->getLastname(), $data->getEmail(), $data->getSubject(), $data->getContent()]);
+		}
+
 		//
 		// Permet de récupérer les plateformes de communications depuis la base
 		//	de données.
