@@ -37,7 +37,11 @@
 				"X-Mailer" => "PHP/" . phpversion()
 			);
 
-			mb_send_mail($to, $subject, $message, $headers);
+			mb_send_mail($to, $subject, $message, $headers); // DOIT ÊTRE REMIS APRES !
+
+			// On écrit également ces mêmes informations dans la base
+			//	de données pour y accéder dans l'interface d'administration.
+			$data->addMessage($form);
 		}
 	}
 ?>
