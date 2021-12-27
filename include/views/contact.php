@@ -19,7 +19,7 @@
 			"firstname" => [2, 20],			// Prénom
 			"lastname" => [3, 25],			// Nom de l'utilisateur
 			"email" => [10, 40],			// Adresse email
-			"message" => [20, 4000]			// Message
+			"content" => [20, 4000]			// Message
 		]);
 
 		if ($form->validate($_POST))
@@ -87,9 +87,9 @@
 			<option value="other"><?php echo($contact["contact_form_subject_3"]); ?></option>
 		</select>
 
-		<!-- Message -->
-		<label for="message"><?php echo($contact["contact_form_message"]); ?></label>
-		<textarea id="message" name="message" placeholder="<?php echo($contact["contact_message"]); ?>" minlength="20" maxlength="4000" required></textarea>
+		<!-- Contenu du message -->
+		<label for="content"><?php echo($contact["contact_form_content"]); ?></label>
+		<textarea id="content" name="content" placeholder="<?php echo($contact["contact_message"]); ?>" minlength="20" maxlength="4000" required></textarea>
 		<span></span>
 
 		<!-- Validation -->

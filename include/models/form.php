@@ -10,7 +10,7 @@
 		protected $lastname;
 		protected $email;
 		protected $subject;
-		protected $message;
+		protected $content;
 
 		// Prénom de l'utilisateur.
 		public function setFirstname(string $firstname)
@@ -56,15 +56,15 @@
 			return $this->subject;
 		}
 
-		// Message de l'utilisateur.
-		public function setMessage(string $message)
+		// Contenu du message de l'utilisateur.
+		public function setContent(string $content)
 		{
-			$this->message = $message;
+			$this->content = $content;
 		}
 
-		public function getMessage(): string
+		public function getContent(): string
 		{
-			return $this->message;
+			return $this->content;
 		}
 	}
 ?>
