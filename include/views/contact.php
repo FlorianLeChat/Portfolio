@@ -24,24 +24,55 @@
 
 		if ($form->validate($_POST))
 		{
-			// Si les informations sont valides, alors on utilise
-			//	un serveur SMTP distant (OVH) pour envoyer un mail
-			//	à moi-même !
-			// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
-			$from = $form->getEmail();
-			$to = "admin@florian-dev.fr";
-			$subject = "Portfolio - " . $form->getSubject();
-			$message = $form->getContent();
-			$headers = array(
-				"From" => $form->getFirstname() . " " . $form->getLastName() . "<$from>",
-				"X-Mailer" => "PHP/" . phpversion()
-			);
+			// Si les informations sont valides, alors on va réaliser des
+			// 	vérifications au niveau du client ayant demandé la page.
+			// 	Note : Cela est considéré comme une protection contre les
+			//		robots et les utilisateurs malveillants.
+			$ip = htmlspecialchars($_SERVER["REMOTE_ADDR"] ?? "");
 
-			mb_send_mail($to, $subject, $message, $headers); // DOIT ÊTRE REMIS APRES !
+			if (filter_var($ip, FILTER_VALIDATE_IP))
+			{
+				// On effectue une requête HTTP vers un service de détection
+				//	des connexions sous proxy ou/et VPN.
+				$header = ["X-Key: api_key"];
+				$request = curl_init();
 
-			// On écrit également ces mêmes informations dans la base
-			//	de données pour y accéder dans l'interface d'administration.
-			$data->addMessage($form);
+				curl_setopt($request, CURLOPT_URL, "https://v2.api.iphub.info/ip/$ip");
+				curl_setopt($request, CURLOPT_HTTPHEADER, $header);
+				curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
+
+				$result = json_decode(curl_exec($request), true);
+
+				// On vérifie le résultat de l'API afin d'autoriser ou non la
+				//	suite du processus de validation du formulaire.
+				if (count($result) > 1 && $result["block"] == "1")
+				{
+					// Il semble que le client soit un utilisateur sous une connexion
+					//	« camouflée », alors on redirige la personne ailleurs...
+					http_response_code(418);
+					header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+					exit();
+				}
+				else
+				{
+					// Dans le cas contraire, on utilise un serveur SMTP (OVH) pour envoyer un mail.
+					// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
+					$from = $form->getEmail();
+					$to = "admin@florian-dev.fr";
+					$subject = "Portfolio - " . $form->getSubject();
+					$message = $form->getContent();
+					$headers = array(
+						"From" => $form->getFirstname() . " " . $form->getLastName() . "<$from>",
+						"X-Mailer" => "PHP/" . phpversion()
+					);
+
+					mb_send_mail($to, $subject, $message, $headers);
+
+					// On écrit par la même occassion ces informations dans la base de
+					//	données pour y accéder plus tard dans l'interface d'administration.
+					$data->addMessage($form);
+				}
+			}
 		}
 	}
 ?>
