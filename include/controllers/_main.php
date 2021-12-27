@@ -13,20 +13,17 @@
 	// On réalise la création de certaines variables cruciales.
 	include_once("include/controllers/language.php");
 	include_once("include/controllers/database.php");
-
-	use Portfolio\Controllers\Translation;
-	use Portfolio\Controllers\Connector;
-	use Portfolio\Controllers\Data;
+	include_once("include/controllers/form.php");
 
 	session_start();
 
-	$connector = new Connector();			// Connexion à la base de données.
+	$connector = new Portfolio\Controllers\Connector();		// Connexion à la base de données.
 	$connector = $connector->getPDO();
 
-	$translation = new Translation();		// Liaison des traductions au connecteur.
+	$translation = new Portfolio\Controllers\Translation();	// Liaison des traductions au connecteur.
 	$translation->connector = $connector;
 
-	$data = new Data();						// Données générales du site.
+	$data = new Portfolio\Controllers\Data();				// Données générales du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
 	$language = htmlspecialchars($_POST["language"] ?? "");
