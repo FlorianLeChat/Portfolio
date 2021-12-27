@@ -1,124 +1,112 @@
 <?php
-	// Ceci est le fichier de la page des compétences
+	//
+	// Ceci est le fichier permettant de contrôler la vue de la page des compétences.
+	//
+
+	// On récupère les traductions pour la page entière.
+	$skills = $translation->getPhrases("skills");
+	$degrees = $translation->getPhrases("degree");
+
+	// On récupère ensuite les données brutes des éléments
+	//	de la page avant de les fabriquer.
+	$degrees_data = $data->getDegrees();
+	$degrees_list_html = "";	// Liste des formations
+	$degrees_resume_html = "";	// Résumé des formations
+
+	foreach ($degrees_data as $value)
+	{
+		$date = $value["date"];											// Date de la formation
+		$identifier = $value["identifier"];								// Identifiant de la formation
+
+		// On sépare en deux le titre et le lieu de la formation
+		//	pour obtenir les deux parties voulues.
+		$title = $degrees["degree_" . $identifier . "_title"];			// Titre de la formation
+		$title = explode("<br /><br />", $title);
+
+		if (count($title) == 1)
+		{
+			// Certains intitulés de formation ne comporte pas
+			//	d'options ou de disciplines supplémentaires.
+			$title[1] = "";
+		}
+
+		$location = $degrees["degree_" . $identifier . "_location"];	// Lieu de la formation
+		$location = explode("<br /><br />", $location);
+
+		// On assemble les données pour réaliser une liste des
+		//	formation avec des informations générales.
+		$degrees_list_html .= <<<LI
+			\t\t<li data-image="images/skills/$identifier.jpg">
+				\t\t<!-- Intitulé de la formation -->
+				\t\t<h4>$title[0]</h4>
+
+				\t\t<h5>$title[1]</h5>
+
+				\t\t<!-- Lieu de formation -->
+				\t\t<p><em>$location[0]</em></p>
+
+				\t\t<p>$location[1]</p>
+
+				\t\t<!-- Période de formation -->
+				\t\t<p><strong>$date</strong></p>
+		LI;
+
+		// On réalise la même chose mais avec le résumé de
+		//	chacune des formations.
+		$description = $degrees["degree_" . $identifier . "_description"];	// Description de la formation
+		$degrees_resume_html .= <<<LI
+			\t\t<li>
+				\t\t<p>
+					\t\t$description
+				\t\t</p>
+			\t\t</li>\n
+		LI;
+
+		// On vérifie si la formation s'est terminée par
+		//	l'obtention (ou non) d'un diplôme.
+		if ($value["graduated"] == "1")
+		{
+			$degrees_list_html .= <<<IMAGE
+				\n\n\t\t\t\t<!-- Diplôme obtenu -->
+				\t\t\t<img src="images/skills/certificate.svg" width="48" height="48" draggable="false" alt="Diplôme obtenu" />
+			IMAGE;
+		}
+
+		$degrees_list_html .= "\n\t\t\t</li>\n";
+	}
 ?>
 
 <!-- Parcours scolaire -->
 <section id="school">
 	<h3>#school</h3>
 
-	<h2>Parcours scolaire</h2>
+	<h2>
+		<?php echo($skills["skills_school_title"] . "\n"); ?>
+	</h2>
 
 	<article id="list">
 		<!-- Formations (liste) -->
-		<h3>Liste des formations</h3>
+		<h3>
+			<?php echo($degrees["degrees_list_title"] . "\n"); ?>
+		</h3>
 
 		<ul>
-			<li data-image="images/skills/carlone.jpg">
-				<!-- Intitulé de la formation -->
-				<h4>Licence Professionnelle - Informatique Multimédia Appliquée</h4>
-
-				<!-- Lieu de formation -->
-				<p><em>Université Côte d'Azur, Campus Carlone (Département Informatique)</em>
-
-				<p>Nice, France</p>
-
-				<!-- Période de formation -->
-				<p><strong>2021 - </strong></p>
-			</li>
-
-			<li data-image="images/skills/valrose.jpg">
-				<!-- Intitulé de la formation -->
-				<h4>Licence - Sciences et Technologies</h4>
-
-				<h5>Parcours informatique</h5>
-
-				<!-- Lieu de formation -->
-				<p><em>Université Côte d'Azur, Campus Valrose (Faculté des Sciences et Ingénierie)</em></p>
-
-				<p>Nice, France</p>
-
-				<!-- Période de formation -->
-				<p><strong>2020 - 2021</strong></p>
-			</li>
-
-			<li data-image="images/skills/jules.jpg">
-				<!-- Intitulé de la formation -->
-				<h4>Brevet de Technicien Supérieur (BTS) - Systèmes numériques</h4>
-
-				<h5>Option B : électronique et communications</h5>
-
-				<!-- Lieu de formation -->
-				<p><em>Lycée général et technologique Jules Ferry</em></p>
-
-				<p>Cannes, France</p>
-
-				<!-- Période de formation -->
-				<p><strong>2018 - 2020</strong></p>
-
-				<!-- Diplôme obtenu -->
-				<img src="images/skills/certificate.svg" width="48" height="48" draggable="false" alt="Diplôme obtenu" />
-			</li>
-
-			<li data-image="images/skills/hutinel.jpg">
-				<!-- Intitulé de la formation -->
-				<h4>Baccalauréat Professionnel - Systèmes électroniques numériques</h4>
-
-				<h5>Option <q> AVM </q> : Audio Visuel Multimédia</h5>
-
-				<!-- Lieu de formation -->
-				<p><em>Lycée professionnel Alfred Hutinel</em></p>
-
-				<p>Cannes-La-Bocca, France</p>
-
-				<!-- Période de formation -->
-				<p><strong>2015 - 2018</strong></p>
-
-				<!-- Diplôme obtenu -->
-				<img src="images/skills/certificate.svg" width="48" height="48" draggable="false" alt="Diplôme obtenu" />
-			</li>
+			<?php
+				echo($degrees_list_html);
+			?>
 		</ul>
 	</article>
 
 	<article id="summary">
 		<!-- Formations (résumé descriptif) -->
-		<h3>Résumé des formations</h3>
+		<h3>
+			<?php echo($degrees["degrees_resume_title"] . "\n"); ?>
+		</h3>
 
 		<ul>
-			<li>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
-
-			<li>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
-
-			<li>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
-
-			<li>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
+			<?php
+				echo($degrees_resume_html);
+			?>
 		</ul>
 	</article>
 </section>
