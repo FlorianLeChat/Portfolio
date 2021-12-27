@@ -6,6 +6,27 @@
 	// On récupère les traductions nécessaires pour le formulaire.
 	$contact = $translation->getPhrases("contact");
 	$contact["contact_message"] = str_replace("<br /><br />", " ", $contact["contact_message"]);
+
+	// On réalise ensuite les vérifications liées au formulaire.
+	//	Note : la page doit avoir été demandée sous requête POST.
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	{
+		$form = new Portfolio\Controllers\FormValidation();
+
+		$form->translation = $translation;	// Traduction
+
+		$form->setLimits([
+			"firstname" => [2, 20],			// Prénom
+			"lastname" => [3, 25],			// Nom de l'utilisateur
+			"email" => [10, 40],			// Adresse email
+			"message" => [20, 4000]			// Message
+		]);
+
+		if ($form->validate($_POST))
+		{
+
+		}
+	}
 ?>
 
 <!-- Traductions JavaScript -->
