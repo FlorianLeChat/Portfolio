@@ -2,7 +2,7 @@
 // Permet de vérifier les informations renseignés dans le formulaire de contact.
 // 	Note : on utilise les fonctions de vérification du HTML pour plus de simplicité.
 //
-const result = document.getElementById( "result" );
+const warning = document.getElementById( "warning" );
 const elements = document.querySelectorAll( "#form input[type *= e], #form select, #form textarea" );
 
 for ( const element of elements.values() )
@@ -22,20 +22,31 @@ for ( const element of elements.values() )
 			message = message.replace( "$2", element.getAttribute( "minLength" ) );									// Taille minimale
 			message = message.replace( "$3", element.getAttribute( "maxLength" ) );									// Taille maximale
 
-			result.innerHTML = message;
+			warning.innerHTML = message;
 
 			// Lancement d'une animation d'apparition du message.
-			result.classList.remove( "hide" );
-			result.classList.add( "show" );
+			warning.classList.remove( "hide" );
+			warning.classList.add( "show" );
 		}
 		else
 		{
 			// Lancement d'une animation de disparition du message.
-			result.classList.remove( "show" );
-			result.classList.add( "hide" );
+			warning.classList.remove( "show" );
+			warning.classList.add( "hide" );
 		}
 	} );
 }
+
+//
+// Permet de supprimer (après un délai) le message résultant de
+//	l'envoi des données du formulaire au serveur.
+//
+const result = document.getElementById( "result" )
+
+setTimeout( () =>
+{
+	result.style.display = "none";
+}, 10000);
 
 //
 // Permet de restreindre l'actionneur pour envoyer les données

@@ -35,8 +35,11 @@
 		<?php echo($contact["contact_description"] . "\n"); ?>
 	</p>
 
-	<!-- Message de vérification/validation -->
-	<p id="result"></p>
+	<!-- Messages de vérification -->
+	<p id="warning"></p>
+
+	<!-- Message de résultat après envoi -->
+	<p id="result"><?php echo($form->message ?? ""); ?></p>
 
 	<!-- Formulaire -->
 	<form method="POST" novalidate>
