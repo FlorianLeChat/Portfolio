@@ -32,4 +32,7 @@ const relative = new Date( now - born ).getFullYear() - 1970;	// Nombre d'année
 
 const aboutme = document.querySelector( "#aboutme > p" );
 
-aboutme.innerHTML = aboutme.innerHTML.replace( /[0-9]+/g, relative );
+if ( aboutme != null )
+{
+	aboutme.innerHTML = aboutme.innerHTML.replace( /[0-9]+/g, relative );
+}
