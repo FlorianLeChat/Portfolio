@@ -11,9 +11,12 @@
 	error_reporting(E_ALL);
 
 	// On réalise la création de certaines variables cruciales.
-	include_once("include/controllers/language.php");
-	include_once("include/controllers/database.php");
-	include_once("include/controllers/form.php");
+	// 	Note : on utilise la variable globale « $_SERVER["DOCUMENT_ROOT"] » dans notre cas
+	//		afin de permettre d'inclure ces fichiers indépendamment de la position du fichier
+	//		demandeur comme par exemple le dossier « admin » de la page d'administration.
+	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/language.php");
+	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/database.php");
+	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/form.php");
 
 	session_start();
 
