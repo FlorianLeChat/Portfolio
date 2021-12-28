@@ -6,9 +6,10 @@
 	// On récupère les traductions pour la page entière.
 	$skills = $translation->getPhrases("skills");
 	$degrees = $translation->getPhrases("degree");
+	$experiences = $translation->getPhrases("experience");
 
-	// On récupère ensuite les données brutes des éléments
-	//	de la page avant de les fabriquer.
+	// On récupère ensuite les données brutes des diplômes
+	// 	avant de les fabriquer.
 	$degrees_data = $data->getDegrees();
 	$degrees_list_html = "";	// Liste des formations
 	$degrees_resume_html = "";	// Résumé des formations
@@ -74,6 +75,34 @@
 
 		$degrees_list_html .= "\n\t\t\t</li>\n";
 	}
+
+	// On fait la même chose avec les expériences et les
+	//	compétences professionnelles.
+	$experiences_data = $data->getExperiences();
+	$experiences_html = "";	// Expériences
+
+	foreach ($experiences_data as $value)
+	{
+		$date = $value["date"];														// Date de l'expérience
+		$identifier = $value["identifier"];											// Identifiant de l'expérience
+
+		$company = $experiences["experience_" . $identifier . "_company"];			// Nom de l'entreprise
+		$location = $experiences["experience_" . $identifier . "_location"];		// Lieu de l'expérience
+		$description = $experiences["experience_" . $identifier . "_description"];	// Description de l'expérience
+
+		$experiences_html .= <<<LI
+			\t\t<li>
+				\t\t<!-- Date et descriptif de l'événement -->
+				\t\t<strong>$company | $date</strong>
+
+				\t\t<p>
+					\t\t$description
+				\t\t</p>
+
+				\t\t<em>$location</em>
+			\t\t</li>\n
+		LI;
+	}
 ?>
 
 <!-- Parcours scolaire -->
@@ -117,57 +146,24 @@
 <section id="work">
 	<h3>#work</h3>
 
-	<h2>Compétences professionnelles</h2>
+	<h2>
+		<?php echo($skills["skills_work_title"] . "\n"); ?>
+	</h2>
 
 	<article id="experiences">
-		<h2>Expériences</h2>
+		<h3>
+			<?php echo($experiences["experiences_title"] . "\n"); ?>
+		</h3>
 
 		<ul>
-			<li>
-				<!-- Date et descriptif de l'événement -->
-				<strong>Entreprise numéro 1 - Date</strong>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
-			<li>
-				<!-- Date et descriptif de l'événement -->
-				<strong>Entreprise numéro 2  - Date</strong>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
-			<li>
-				<!-- Date et descriptif de l'événement -->
-				<strong>Entreprise numéro 3 - Date</strong>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
-			<li>
-				<!-- Date et descriptif de l'événement -->
-				<strong>Entreprise numéro 4 - Date</strong>
-				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-					sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-				</p>
-			</li>
+			<?php
+				echo($experiences_html);
+			?>
 		</ul>
 	</article>
 
 	<article id="competences">
-		<h2>Compétences</h2>
+		<h3>Compétences</h3>
 
 		<!-- Descriptif des compétences -->
 		<p>

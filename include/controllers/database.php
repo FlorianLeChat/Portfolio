@@ -73,18 +73,6 @@
 		}
 
 		//
-		// Permet de récupérer les diplômes et certifications depuis la base
-		//	de données.
-		//
-		public function getDegrees(): array
-		{
-			$query = $this->connector->prepare("SELECT `identifier`, `date`, `graduated` FROM `degrees` ORDER BY `position` ASC;");
-			$query->execute();
-
-			return $query->fetchAll();
-		}
-
-		//
 		// Permet de récupérer les projets déclarés dans la base de données.
 		//
 		public function getProjects(array $tables, bool $offset_start = true): array
@@ -109,6 +97,30 @@
 			}
 
 			return $result;
+		}
+
+		//
+		// Permet de récupérer les diplômes et certifications depuis la base
+		//	de données.
+		//
+		public function getDegrees(): array
+		{
+			$query = $this->connector->prepare("SELECT `identifier`, `date`, `graduated` FROM `degrees` ORDER BY `position` ASC;");
+			$query->execute();
+
+			return $query->fetchAll();
+		}
+
+		//
+		// Permet de récupérer les expériences professionnelles depuis la base
+		//	de données.
+		//
+		public function getExperiences(): array
+		{
+			$query = $this->connector->prepare("SELECT `identifier`, `date` FROM `experiences` ORDER BY `position` ASC;");
+			$query->execute();
+
+			return $query->fetchAll();
 		}
 	}
 ?>
