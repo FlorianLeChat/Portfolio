@@ -2,7 +2,7 @@
 
 <?php
 	// Point d'entrée de l'environnement des scripts.
-	include("include/controllers/_main.php")
+	include("include/controllers/_main.php");
 ?>
 
 <html lang="<?php echo($language); ?>">
