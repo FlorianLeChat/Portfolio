@@ -41,12 +41,12 @@ for ( const element of elements.values() )
 // Permet de supprimer (après un délai) le message résultant de
 //	l'envoi des données du formulaire au serveur.
 //
-const result = document.getElementById( "result" )
+const result = document.getElementById( "result" );
 
 setTimeout( () =>
 {
 	result.style.display = "none";
-}, 10000);
+}, 10000 );
 
 //
 // Permet de restreindre l'actionneur pour envoyer les données
