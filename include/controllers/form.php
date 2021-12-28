@@ -62,7 +62,7 @@
 		// Permet de « rendre propre » des chaînes de caractères pour
 		//	détecter les entrées invalides ou malveillantes.
 		//
-		private function serializeInput(array $data, string $field): string
+		private function serializeInput(array $data, string $field): mixed
 		{
 			// On récupère la valeur du champ depuis les données
 			//	récupérées du formulaire.
