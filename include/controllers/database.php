@@ -122,5 +122,17 @@
 
 			return $query->fetchAll();
 		}
+
+		//
+		// Permet de récupérer les compétences professionnelles depuis la base
+		//	de données.
+		//
+		public function getSkills(): array
+		{
+			$query = $this->connector->prepare("SELECT `name`, `level` FROM `skills` ORDER BY `position` ASC;");
+			$query->execute();
+
+			return $query->fetchAll();
+		}
 	}
 ?>

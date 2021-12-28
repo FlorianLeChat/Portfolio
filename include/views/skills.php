@@ -7,6 +7,7 @@
 	$skills = $translation->getPhrases("skills");
 	$degrees = $translation->getPhrases("degree");
 	$experiences = $translation->getPhrases("experience");
+	$competences = $translation->getPhrases("competence");	// "skills" != "competences"
 
 	// On récupère ensuite les données brutes des diplômes
 	// 	avant de les fabriquer.
@@ -79,7 +80,10 @@
 	// On fait la même chose avec les expériences et les
 	//	compétences professionnelles.
 	$experiences_data = $data->getExperiences();
+	$skills_data = $data->getSkills();
+
 	$experiences_html = "";	// Expériences
+	$skills_html = "";		// Compétences
 
 	foreach ($experiences_data as $value)
 	{
@@ -102,6 +106,19 @@
 				\t\t<em>$location</em>
 			\t\t</li>\n
 		LI;
+	}
+
+	foreach ($skills_data as $value)
+	{
+		$name = $value["name"];
+		$level = $value["level"];
+
+		$skills_html .= <<<DIV
+			\t\t<div>
+				\t\t<span>$name</span>
+				\t\t<div class="circle" data-level="$level"></div>
+			\t\t</div>\n
+		DIV;
 	}
 ?>
 
@@ -163,41 +180,20 @@
 	</article>
 
 	<article id="competences">
-		<h3>Compétences</h3>
+		<h3>
+			<?php echo($competences["competences_title"] . "\n"); ?>
+		</h3>
 
 		<!-- Descriptif des compétences -->
 		<p>
-			Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-			totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-			sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-			consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-			Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-			totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta
-			sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-			consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+			<?php echo($competences["competences_description"] . "\n"); ?>
 		</p>
 
 		<hr />
 
 		<!-- Représentations graphiques des compétences -->
-		<div>
-			<span>HTML</span>
-			<div class="circle" data-level="25"></div>
-		</div>
-
-		<div>
-			<span>CSS</span>
-			<div class="circle" data-level="50"></div>
-		</div>
-
-		<div>
-			<span>PHP</span>
-			<div class="circle" data-level="75"></div>
-		</div>
-
-		<div>
-			<span>JavaScript</span>
-			<div class="circle" data-level="100"></div>
-		</div>
+		<?php
+			echo($skills_html);
+		?>
 	</article>
 </section>
