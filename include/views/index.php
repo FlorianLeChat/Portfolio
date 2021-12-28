@@ -24,7 +24,7 @@
 		$projects_html .= <<<ARTICLE
 			\t\t<!-- Project numéro $key -->
 			\t\t<article data-image="images/projects/bg_$identifier.jpg">
-				\t\t<h3><a href="?target=projects&name=$identifier">$name</a></h3>
+				\t\t<h3><a href="?target=projects#$identifier">$name</a></h3>
 			\t\t</article>\n
 		ARTICLE;
 
