@@ -232,9 +232,10 @@ nav > ul
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
-#work article h2
+#work article h3
 {
 	/* Titre de chaque article */
+	font-size: 1.5rem;
 	margin-bottom: 2rem;
 	text-decoration: underline;
 }
@@ -292,7 +293,7 @@ nav > ul
 
 #experiences li
 {
-	/* Corps de chaque événement */
+	/* Corps de chaque expérience */
 	padding: 2rem 2rem;
 	position: relative;
 	border-radius: 0.5rem;
@@ -303,7 +304,7 @@ nav > ul
 #experiences li::before
 {
 	/* Affichage de l'image indiquant
-		le descriptif de l'événement */
+		le descriptif de l'expérience */
 	top: 21%;
 	left: -0.5rem;
 	border: 0.5rem solid transparent;
@@ -316,7 +317,7 @@ nav > ul
 #experiences li::after
 {
 	/* Affichage de l'indicateur sur la timeline
-		pour indiquer un nouvel événement */
+		pour indiquer une nouvelle expérience */
 	top: 20%;
 	left: -44px;
 	width: 1rem;
@@ -348,7 +349,8 @@ nav > ul
 
 #experiences strong
 {
-	/* Date de l'événement */
+	/* Nom de l'entreprise et date
+		de l'expérience */
 	color: rgb(var(--theme-color-dark));
 	font-size: 1.1rem;
 	font-weight: 700;
@@ -356,9 +358,17 @@ nav > ul
 
 #experiences p
 {
-	/* Descriptif de l'événement */
+	/* Descriptif de l'expérience */
 	color: rgb(var(--theme-box-color));
 	margin: 1rem 0 0;
+}
+
+#experiences em
+{
+	/* Date de l'expérience */
+	color: rgb(var(--theme-box-color));
+	display: block;
+	margin-top: 0.5rem;
 }
 
 /* Compétences */
