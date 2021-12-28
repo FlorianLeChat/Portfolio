@@ -4,14 +4,19 @@
 //
 function typingEffect( element, speed )
 {
-	// On sauvegarde d'abord le texte original.
+	// On vérifie tout d'abord si l'élément
+	//	existe au niveau du document HTML.
+	if ( element === null )
+		return;
+
+	// On sauvegarde après le texte original.
 	const text = element.innerHTML;
 
-	// On le supprime juste après pour afficher
+	// On le supprime ensuite pour afficher
 	// 	notre animation.
 	element.innerHTML = "";
 
-	// On créé ensuite un minuteur qui affichera
+	// On créé enfin un minuteur qui affichera
 	// 	chaque lettre avec un délai d'attente.
 	let indice = 0;
 
@@ -69,7 +74,7 @@ window.addEventListener( "keypress", ( event ) =>
 	{
 		if ( keys.join( "" ) == word )
 		{
-			window.location.href = "admin/index.php";
+			window.location.href = "admin/";
 		}
 
 		keys = [];
@@ -83,68 +88,73 @@ window.addEventListener( "keypress", ( event ) =>
 const scrollTop = document.getElementById( "scrollTop" );
 const threshold = 200;
 
-scrollTop.addEventListener( "click", ( _event ) =>
+if ( scrollTop !== null )
 {
-	document.body.scrollTop = 0;				// Safari uniquement.
-	document.documentElement.scrollTop = 0;		// Chrome, Firefox, IE, etc.
-} );
+	scrollTop.addEventListener( "click", ( _event ) =>
+	{
+		document.body.scrollTop = 0;				// Safari uniquement.
+		document.documentElement.scrollTop = 0;		// Chrome, Firefox, IE, etc.
+	} );
 
-window.addEventListener( "scroll", ( _event ) =>
-{
-	if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
+	window.addEventListener( "scroll", ( _event ) =>
 	{
-		scrollTop.classList.add( "show" );
-	}
-	else
-	{
-		scrollTop.classList.remove( "show" );
-	}
-} );
+		if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
+		{
+			scrollTop.classList.add( "show" );
+		}
+		else
+		{
+			scrollTop.classList.remove( "show" );
+		}
+	} );
+}
 
 //
 // Permet d'activer les mécanismes liés à l'overlay.
 //
 const audio = document.getElementById( "jazz" );
-const parameters = window.location.search;
 
-function preventScroll()
+if ( audio !== null )
 {
-	// Position X/Y : 0/0
-	window.scrollTo( 0, 0 );
-}
-
-if ( parameters.includes( "thanks" ) )
-{
-	const overlay = document.getElementById( "contributions" );
-
-	// On lance une musique d'ambiance.
-	audio.volume = 0.1;
-	audio.play();
-
-	// On fait ensuite l'apparition de l'overlay.
-	overlay.style.display = "block";
-
-	// On fait également disparaître la barre de défilement du document.
-	document.body.style.overflow = "hidden";
-
-	overlay.addEventListener( "click", ( _event ) =>
+	function preventScroll()
 	{
-		// Si on tente de cliquer sur l'élément, alors on rafraîchit la page
-		// 	en supprimant les paramètres GET ajoutés précédemment.
-		let url = window.location.href;
-		url = url.replace( "?thanks=1", "" )	// Premier paramètre (possible)
-		url = url.replace( "&thanks=1", "" )	// Deuxième paramètre (possible)
+		// Position X/Y : 0/0
+		window.scrollTo( 0, 0 );
+	}
 
-		window.location.href = url;
-	} );
+	if ( window.location.search.includes( "thanks" ) )
+	{
+		const overlay = document.getElementById( "contributions" );
 
-	// On ajoute enfin un événement pour empêcher partiellement le défilement.
-	window.addEventListener( "scroll", preventScroll );
-}
-else
-{
-	// Dans le cas contraire, on supprime l'événement.
-	window.removeEventListener( "scroll", preventScroll );
+		// On lance une musique d'ambiance.
+		audio.volume = 0.1;
+		audio.play();
+
+		// On fait ensuite l'apparition de l'overlay.
+		overlay.style.display = "block";
+
+		// On fait également disparaître la barre de défilement du document.
+		document.body.style.overflow = "hidden";
+
+		overlay.addEventListener( "click", ( _event ) =>
+		{
+			// Si on tente de cliquer sur l'élément, alors on rafraîchit la page
+			// 	en supprimant les paramètres GET ajoutés précédemment.
+			let url = window.location.href;
+			url = url.replace( "?thanks=1", "" );	// Premier paramètre (possible).
+			url = url.replace( "&thanks=1", "" );	// Deuxième paramètre (possible).
+
+			window.location.href = url;
+		} );
+
+		// On ajoute enfin un événement pour empêcher partiellement le défilement.
+		window.addEventListener( "scroll", preventScroll );
+	}
+	else
+	{
+		// Dans le cas contraire, on supprime l'événement.
+		window.removeEventListener( "scroll", preventScroll );
+	}
 }
 
 //
@@ -210,13 +220,16 @@ for ( const link of links.values() )
 const options = document.querySelectorAll( "nav li" );
 const navigation = document.querySelector( "nav ul" );
 
-let width = 0;
-
-for ( const option of options.values() )
+if ( options !== null && navigation !== null )
 {
-	const style = window.getComputedStyle( option );
+	let width = 0;
 
-	width += ( option.offsetWidth + parseInt( style.paddingLeft ) + parseInt( style.paddingRight ) );
+	for ( const option of options.values() )
+	{
+		const style = window.getComputedStyle( option );
+
+		width += ( option.offsetWidth + parseInt( style.paddingLeft ) + parseInt( style.paddingRight ) );
+	}
+
+	navigation.style.maxWidth = `${ width - 10 }px`;
 }
-
-navigation.style.maxWidth = `${ width - 10 }px`;
