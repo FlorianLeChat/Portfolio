@@ -101,14 +101,14 @@ nav > ul
 	outline: none;
 	padding: 1rem;
 	box-sizing: border-box;
-	line-height: 1; /* Correction étrange pour le normalisateur CSS */
 	transition: background-color 300ms ease;
+	line-height: 1; /* Correction étrange pour le normalisateur CSS */
 	border-radius: 0.5rem;
 }
 
 #form input[type *= "e"]:focus, #form select:focus, #form textarea:focus
 {
-	/* Animation lors du survol de l'élément */
+	/* Animation lors de la sélection de l'élément */
 	background-color: beige;
 }
 
