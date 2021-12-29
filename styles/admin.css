@@ -65,6 +65,40 @@ footer ul
 /* -------------------------*/
 /* Section : page d'accueil */
 /* ------------------------ */
+#tables
+{
+	/* Corps de la section */
+	display: grid;
+	grid-template:
+		"a a a" 40px
+		"b c c" 40px
+		"b c c" 40px / 1fr 1fr 1fr;
+}
+
+#tables > p
+{
+	/* Description de la section */
+	grid-area: a;
+}
+
+#tables > video
+{
+	/* Vidéo en arrière-plan */
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	opacity: 0.1;
+	position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+#tables ul
+{
+	/* Liste des catégories */
+	grid-area: b;
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+}
 
 /* --------------------------------- */
 /* Section : formulaire de connexion */

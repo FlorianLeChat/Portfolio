@@ -48,8 +48,41 @@
 		</header>
 
 		<main>
-			<section>
+			<section id="tables">
+				<!-- Vidéo en arrière-plan -->
+				<video autoplay muted loop>
+					<source src="../audio/data.mp4" type="video/mp4" />
+				</video>
 
+				<!-- Description de la section -->
+				<p>
+					Voici toutes les tables présentes dans la base de données.
+					Cliquez sur l'une d'en elles pour accéder à son contenu et le modifier librement.
+				</p>
+
+				<!-- Sélection de la catégorie -->
+				<form method="POST">
+					<?php
+						$result = $connector->query("SHOW TABLES;")->fetchAll();
+
+						echo("<ul>");
+
+						foreach ($result as $key => $value)
+						{
+							$name = $value["Tables_in_portfolio"];
+
+							echo(<<<LI
+								<li>
+									<button type="submit" name="language" value="$name">
+										<span>$name</span>
+									</button>
+								</li>
+							LI);
+						}
+
+						echo("</ul>");
+					?>
+				</form>
 			</section>
 		</main>
 
