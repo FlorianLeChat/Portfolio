@@ -37,3 +37,23 @@ if ( submit != null )
 		}
 	} );
 }
+
+//
+// Permet d'actualiser en temps réel l'horloge présente
+//	dans l'en-tête de l'interface d'administration.
+//
+const time = document.querySelector( "header p:first-of-type" );
+
+if ( time != null )
+{
+	function updateTime()
+	{
+		time.innerHTML = new Date().toLocaleTimeString();
+	}
+
+	// Exécution de la fonction toutes les secondes.
+	setInterval( updateTime, 1000 );
+
+	// Exécution initiale lors du chargement de la page.
+	updateTime();
+}

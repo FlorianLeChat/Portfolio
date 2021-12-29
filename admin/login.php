@@ -56,6 +56,9 @@
 
 			<!-- Description succincte -->
 			<h2>Pour accéder à cette ressource, vous devez vous identifier.</h2>
+
+			<!-- Heure actuelle -->
+			<p>00:00:00</p>
 		</header>
 
 		<main>
