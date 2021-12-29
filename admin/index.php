@@ -7,17 +7,18 @@
 	// Contrôleur permettant d'authentifier un utilisateur.
 	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
 
-	$authentificator = new Portfolio\Controllers\UserAuthentification();
-	$authentificator->connector = $connector;	// Liaison avec la base de données.
+	$user = new Portfolio\Controllers\UserAuthentication();
+	$user->connector = $connector;	// Liaison avec la base de données.
 
 	// On définit la page actuelle.
 	$file = "admin";
 
 	// On vérifie si l'utilisateur est connecté.
-	if (!$authentificator->isConnected())
+	if (!$user->isConnected())
 	{
 		http_response_code(401);
 		header("Location: login.php");
+		exit();
 	}
 ?>
 
@@ -40,7 +41,7 @@
 			<h2>Gestion du contenu dynamique de la base de données</h2>
 
 			<!-- Information de connexion -->
-			<p>Connecté en tant que « leptitkiller »</p>
+			<p>Connecté en tant que « <?php echo($user->getUsername()); ?> »</p>
 		</header>
 
 		<main>
