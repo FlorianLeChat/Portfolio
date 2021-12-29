@@ -14,10 +14,22 @@
 		public function setUsername(string $username)
 		{
 			$this->username = $username;
+
+			if (isset($_SESSION))
+			{
+				// Enregistrement dans la session active.
+				$_SESSION["username"] = $this->username;
+			}
 		}
 
 		public function getUsername(): string
 		{
+			if (isset($_SESSION) && !empty($_SESSION["username"]))
+			{
+				// Récupération dans la session active.
+				$this->username = $_SESSION["username"];
+			}
+
 			return $this->username;
 		}
 
@@ -32,15 +44,10 @@
 			return $this->password;
 		}
 
-		// État de connexion.
-		public function setConnected(bool $connected)
-		{
-			$this->connected = $connected;
-		}
-
+		// État de la connexion.
 		public function isConnected(): bool
 		{
-			return $this->connected;
+			return !empty($this->getUsername());
 		}
 	}
 ?>
