@@ -33,8 +33,19 @@ nav > ul
 	/* Corps de la section */
 	color: rgb(var(--theme-text-color));
 	margin: auto;
-	padding: calc(5% + 5rem) 15% 5rem 15%;
+	padding: calc(5% + 5rem) 5% 5rem 5%;
 	max-width: 800px;
+}
+
+@media screen and (min-width: 1024px)
+{
+	/* Modification des marges sur
+		les grands écrans */
+	#form
+	{
+		padding-left: 15%;
+		padding-right: 15%;
+	}
 }
 
 #form > h2
