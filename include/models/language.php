@@ -15,8 +15,7 @@
 
 			if (isset($_SESSION))
 			{
-				// Si une session est active, alors on enregistre
-				//	ce code dans celle-ci.
+				// Enregistrement dans la session active.
 				$_SESSION["language"] = $this->code;
 			}
 		}
@@ -25,8 +24,7 @@
 		{
 			if (isset($_SESSION) && !empty($_SESSION["language"]))
 			{
-				// Si une session est active, on tente alors de
-				// 	récupérer la langue sélectionnée précédemment.
+				// Récupération dans la session active.
 				$this->code = $_SESSION["language"];
 			}
 
