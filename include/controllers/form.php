@@ -143,14 +143,17 @@
 		//
 		public function validate(array $data): bool
 		{
+			// On itére à travers tous les champs connus pour
+			//	réaliser les vérifications.
 			foreach ($this->fields as $value)
 			{
-				// On prépare le champ pour les vérification.
+				// On rend propre l'entrée utilisateur avant
+				//	de la vérifier.
 				$field = $this->serializeInput($data, $value);
 
 				if (!$field)
 				{
-					// Si l'entrée utilisateur est invalide, on prépare le
+					// Si elle est invalide, on prépare alors le
 					//	message d'erreur qui doit être affiché.
 					$this->message = $this->formatMessage($value);
 
@@ -158,9 +161,8 @@
 				}
 				else
 				{
-					// Dans le cas contraire, on assigne la valeur dans
-					// 	dans l'instance après avoir mis la première lettre
-					//	en majuscule.
+					// Dans le cas contraire, on la place en mémoire
+					//	après avoir mis la première lettre en majuscule.
 					$field = $this->capitalize($field);
 
 					$this->{"set" . $this->capitalize($value)}($field);	// Exemple : "setFirstName()"
