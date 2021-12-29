@@ -40,6 +40,9 @@
 			<!-- Description succincte -->
 			<h2>Gestion du contenu dynamique de la base de données</h2>
 
+			<!-- Heure actuelle -->
+			<p>00:00:00</p>
+
 			<!-- Information de connexion -->
 			<p>Connecté en tant que « <?php echo($user->getUsername()); ?> »</p>
 		</header>

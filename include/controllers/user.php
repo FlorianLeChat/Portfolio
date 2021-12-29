@@ -24,7 +24,7 @@
 			// On effectue ensuite une requête SQL pour vérifier
 			//	si un enregistrement est présent avec les identifiants
 			//	donnés lors de l'étape précédente.
-			$query = $this->connector->prepare("SELECT * FROM `users` WHERE `username` = ?;");
+			$query = $this->connector->prepare("SELECT `password` FROM `users` WHERE `username` = ?;");
 			$query->execute([$username]);
 
 			$result = $query->fetch();
