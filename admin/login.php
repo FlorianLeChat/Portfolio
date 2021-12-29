@@ -2,12 +2,24 @@
 
 <?php
 	// Point d'entrée de l'environnement des scripts.
-	include($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/_main.php");
+	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/_main.php");
 
-	//
+	// Contrôleur permettant d'authentifier un utilisateur.
+	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
+
+	$authentificator = new Portfolio\Controllers\UserAuthentification();
+	$authentificator->connector = $connector;	// Liaison avec la base de données.
+
+	// On définit la page actuelle.
 	$file = "admin";
 
-	// Si authentification OK alors page principale
+	// On vérifie si l'utilisateur n'est pas
+	//	déjà connecté.
+	if ($authentificator->isConnected())
+	{
+		http_response_code(302);
+		header("Location: index.php");
+	}
 ?>
 
 <html lang="fr">

@@ -1,6 +1,6 @@
 <?php
 	//
-	// Contrôleur de contrôle des données du formulaire de contact.
+	// Contrôleur de gestion des données du formulaire de contact.
 	//
 	namespace Portfolio\Controllers;
 
