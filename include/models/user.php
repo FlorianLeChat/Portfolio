@@ -33,7 +33,7 @@
 			return $this->username;
 		}
 
-		// Mot de passe (chiffré) de l'utilisateur.
+		// Mot de passe (hashé) de l'utilisateur.
 		public function setPassword(string $password)
 		{
 			$this->password = $password;

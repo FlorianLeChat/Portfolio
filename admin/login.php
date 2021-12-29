@@ -7,18 +7,24 @@
 	// Contrôleur permettant d'authentifier un utilisateur.
 	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
 
-	$authentificator = new Portfolio\Controllers\UserAuthentification();
-	$authentificator->connector = $connector;	// Liaison avec la base de données.
+	$user = new Portfolio\Controllers\UserAuthentication();
+	$user->connector = $connector;	// Liaison avec la base de données.
 
 	// On définit la page actuelle.
 	$file = "admin";
 
-	// On vérifie si l'utilisateur n'est pas
-	//	déjà connecté.
-	if ($authentificator->isConnected())
+	// On tente de connecter l'utiliser si ce n'est pas
+	//	déjà le cas et si la requête actuelle est une
+	//	requête POST.
+	$message = "";
+
+	if (!$user->isConnected() && $_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		http_response_code(302);
-		header("Location: index.php");
+		$user->authenticate($_POST);
+
+		// Si le script continue ici, alors l'authentification
+		//	semble avoir échouée, on affiche un message d'erreur.
+		$message = "L'authentification a échouée. Veuillez recommencer.";
 	}
 ?>
 
@@ -46,7 +52,7 @@
 				<h2>Contenu protégé</h2>
 
 				<!-- Message d'erreur -->
-				<p id="failed">L'authentification a échouée. Veuillez recommencer.</p>
+				<p id="failed"><?php echo($message); ?></p>
 
 				<!-- Formulaire -->
 				<form method="POST">
