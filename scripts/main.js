@@ -233,3 +233,22 @@ if ( options !== null && navigation !== null )
 
 	navigation.style.maxWidth = `${ width - 10 }px`;
 }
+
+//
+// Permet aux utilisateurs sur un téléphone mobile de pouvoir
+//	sélectionner correctement la langue voulue en bloquant
+//	l'action du bouton actif au premier appui.
+//
+const flag = document.querySelector( "#flags button" );
+const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent );
+
+if ( flag != null && mobile )
+{
+	function preventFirstClick( event )
+	{
+		flag.removeEventListener( "click", preventFirstClick );
+		event.preventDefault();
+	}
+
+	flag.addEventListener( "click", preventFirstClick );
+}
