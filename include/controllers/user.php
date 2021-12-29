@@ -15,7 +15,7 @@
 		// Permet d'authentifier un utilisateur au niveau de la
 		//	base de données.
 		//
-		public function authenticate(array $data)
+		public function authenticate(array $data): bool
 		{
 			// On récupère les les valeurs du formulaire.
 			$username = $data["username"] ?? "";
@@ -37,12 +37,11 @@
 				$this->setUsername($username);	// Nom d'utilisateur.
 				$this->setPassword($password);	// Mot de passe.
 
-				// Redirection automatique vers la page d'accueil
-				//	(l'authentification a réussie).
-				http_response_code(302);
-				header("Location: index.php");
-				exit();
+				return true;
 			}
+
+			// L'authentification a échouée.
+			return false;
 		}
 	}
 ?>
