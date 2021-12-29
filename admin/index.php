@@ -49,5 +49,13 @@
 
 			</section>
 		</main>
+
+		<!-- Pied-de-page du site -->
+		<footer>
+			<ul>
+				<!-- Déconnexion de l'interface -->
+				<li><a href="logout.php">Se déconnecter</a></li>
+			</ul>
+		</footer>
 	</body>
 </html>

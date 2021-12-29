@@ -28,10 +28,12 @@ header p
 		l'utilisateur est connecté */
 	top: 1rem;
 	right: 1rem;
-	color: black;
+	color: rgb(var(--theme-background-color));
 	margin: 0;
+	padding: 0.5rem;
 	position: absolute;
 	font-weight: 700;
+	background-color: white;
 }
 
 /* -------------------------*/
@@ -110,4 +112,24 @@ header p
 {
 	/* Animation lors du survol de l'élément */
 	background-color: rgb(var(--theme-color-dark));
+}
+
+/* ------------------------------*/
+/* Section : page de déconnexion */
+/* ----------------------------- */
+#logout
+{
+	/* Corps de la section */
+	top: 50%;
+	left: 50%;
+	border: 3px dashed rgb(var(--theme-color-bright));
+	padding: 1rem;
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+#logout h1
+{
+	/* Titre principal */
+	margin-top: 0;
 }
