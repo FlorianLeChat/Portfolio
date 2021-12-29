@@ -13,18 +13,29 @@
 	// On définit la page actuelle.
 	$file = "admin";
 
-	// On tente de connecter l'utiliser si ce n'est pas
-	//	déjà le cas et si la requête actuelle est une
-	//	requête POST.
+	// On tente de connecter ensuite l'utilisateur si ce
+	//	n'est pas déjà le cas et si la requête actuelle
+	//	 est une requête POST.
 	$message = "";
+	$connected = $user->isConnected();
 
-	if (!$user->isConnected() && $_SERVER["REQUEST_METHOD"] == "POST")
+	if (!$connected && $_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		$user->authenticate($_POST);
+		$connected = $user->authenticate($_POST);
 
 		// Si le script continue ici, alors l'authentification
 		//	semble avoir échouée, on affiche un message d'erreur.
 		$message = "L'authentification a échouée. Veuillez recommencer.";
+	}
+
+	// On vérifie enfin si l'utilisateur est authentifié.
+	// 	Note : l'utilisateur peut être déjà connecté et/ou avoir
+	//		été authentifié lors de l'étape précédente.
+	if ($connected)
+	{
+		http_response_code(302);
+		header("Location: ../admin/");
+		exit();
 	}
 ?>
 
