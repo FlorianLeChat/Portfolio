@@ -34,7 +34,7 @@
 	if ($connected)
 	{
 		http_response_code(302);
-		header("Location: ../admin/");
+		header("Location: ./");
 		exit();
 	}
 ?>
@@ -59,6 +59,7 @@
 		</header>
 
 		<main>
+			<!-- Formulaire de connexion -->
 			<section id="login">
 				<h2>Contenu protégé</h2>
 

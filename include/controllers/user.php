@@ -33,15 +33,23 @@
 			//	de comparer le mot de passe hashé par l'entrée utilisateur.
 			if (gettype($result) == "array" && count($result) > 0 && password_verify($password, $result["password"]))
 			{
-				// Enregistrement de certaines données.
-				$this->setUsername($username);	// Nom d'utilisateur.
-				$this->setPassword($password);	// Mot de passe.
+				// L'authentification a réussie.
+				$this->setUsername($username);
+				$this->setPassword($password);
 
 				return true;
 			}
 
 			// L'authentification a échouée.
 			return false;
+		}
+
+		//
+		// Permet de déconnecter l'utilisateur de l'interface.
+		//
+		public function destroy()
+		{
+			unset($_SESSION["username"]);
 		}
 	}
 ?>
