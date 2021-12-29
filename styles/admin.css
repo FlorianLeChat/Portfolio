@@ -1,0 +1,97 @@
+/* --------------- */
+/* Document entier */
+/* --------------- */
+html
+{
+	/* Variables globales */
+	--theme-color-dark: 140, 14, 14;
+	--theme-color-bright: 217, 0, 0;
+
+	/* Suppression de l'image en fond */
+	background-image: none;
+}
+
+/* ------- */
+/* En-tête */
+/* ------- */
+header h1
+{
+	/* Réduction de la taille de la marge
+		supérieure en raison de la suppression
+		de la barre de navigation */
+	margin-top: 1rem;
+}
+
+/* --------------------------------- */
+/* Section : formulaire de connexion */
+/* --------------------------------- */
+#login
+{
+	/* Corps de la section */
+	/* (Première utilisation des flexbox !) */
+	display: flex;
+	padding: 0 5% 0 5%;
+	min-height: 70vh;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#login > #failed
+{
+	/* Message d'erreur si l'identifiant
+		ou le mot de passe est incorrect */
+	color: rgb(var(--theme-color-bright));
+	margin-top: 2rem;
+	font-weight: 700;
+	line-height: 1.25rem;
+	text-transform: uppercase;
+}
+
+#login > form
+{
+	/* Corps du formulaire */
+	padding: 1.5rem;
+	max-width: 700px;
+	user-select: none;
+	border-radius: 0.25rem;
+	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+}
+
+#login input[required]
+{
+	/* Champs de saisie */
+	width: calc(100% - 2rem);
+	border: none;
+	margin: 0.5rem 0 1rem 0;
+	outline: none;
+	padding: 1rem;
+	box-sizing: border-box;
+	line-height: 1; /* Correction étrange pour le normalisateur CSS */
+	transition: background-color 300ms ease;
+	border-radius: 0.5rem;
+}
+
+#login input[required]:focus
+{
+	/* Animation lors du survol de l'élément */
+	background-color: beige;
+}
+
+#login input[type = "submit"]
+{
+	/* Bouton de validation */
+	color: white;
+	cursor: pointer;
+	border: none;
+	padding: 0.75rem 1.25rem;
+	transition: background-color 250ms ease;
+	border-radius: 0.25rem;
+	background-color: rgb(var(--theme-color-bright));
+}
+
+#login input[type = "submit"]:hover
+{
+	/* Animation lors du survol de l'élément */
+	background-color: rgb(var(--theme-color-dark));
+}
