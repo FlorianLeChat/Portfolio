@@ -62,6 +62,11 @@
 		</header>
 
 		<main>
+			<!-- Vidéo en arrière-plan -->
+			<video autoplay muted loop>
+				<source src="../media/login.mp4" type="video/mp4" />
+			</video>
+
 			<!-- Formulaire de connexion -->
 			<section id="login">
 				<h2>Contenu protégé</h2>

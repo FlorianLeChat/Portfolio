@@ -11,6 +11,18 @@ html
 	background-image: none;
 }
 
+video
+{
+	/* Vidéo en arrière-plan */
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	opacity: 0.15;
+	position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+}
+
 /* ------- */
 /* En-tête */
 /* ------- */
@@ -69,28 +81,18 @@ footer ul
 {
 	/* Corps de la section */
 	display: grid;
+	padding: 3rem 5% 0 5%;
 	grid-template:
-		"a a a" 40px
-		"b c c" 40px
-		"b c c" 40px / 1fr 1fr 1fr;
+		"a a a"
+		"b c c"
+		"b c c" auto / 1fr 1fr 1fr;
 }
 
 #tables > p
 {
 	/* Description de la section */
+	color: rgb(var(--theme-text-color));
 	grid-area: a;
-}
-
-#tables > video
-{
-	/* Vidéo en arrière-plan */
-	right: 0;
-	bottom: 0;
-	z-index: -1;
-	opacity: 0.1;
-	position: fixed;
-	min-width: 100%;
-	min-height: 100%;
 }
 
 #tables ul
