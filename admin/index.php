@@ -53,11 +53,16 @@
 				<source src="../media/landing.mp4" type="video/mp4" />
 			</video>
 
+			<!-- Visualisation et édition des tables -->
 			<section id="tables">
+				<h2>Édition des données</h2>
+
 				<!-- Description de la section -->
 				<p>
 					Voici toutes les tables présentes dans la base de données.
 					Cliquez sur l'une d'en elles pour accéder à son contenu et le modifier librement.
+					Par soucis de préserver les performances du site, la visualisation se fait par tranche de <strong>50</strong> résultats.
+					Pour avoir la suite des résultats d'une table, sélectionnez de nouveau la même catégorie.
 				</p>
 
 				<!-- Sélection de la catégorie -->
@@ -65,7 +70,7 @@
 					<?php
 						$result = $connector->query("SHOW TABLES;")->fetchAll();
 
-						echo("<ul>");
+						echo("<ul id=\"categories\">");
 
 						foreach ($result as $key => $value)
 						{
@@ -73,7 +78,7 @@
 
 							echo(<<<LI
 								<li>
-									<button type="submit" name="language" value="$name">
+									<button type="submit" name="table" value="$name">
 										<span>$name</span>
 									</button>
 								</li>
@@ -83,6 +88,26 @@
 						echo("</ul>");
 					?>
 				</form>
+
+				<!-- Modification des données -->
+				<?php
+					if ($_SERVER["REQUEST_METHOD"] == "POST")
+					{
+						$table = $_POST["table"];
+						$result = $connector->query("SELECT * FROM $table LIMIT 50;")->fetchAll();
+
+						echo("<ul id=\"results\">");
+
+						print_r($result);
+
+						foreach ($result as $key => $value)
+						{
+
+						}
+
+						echo("</ul>");
+					}
+				?>
 			</section>
 		</main>
 
