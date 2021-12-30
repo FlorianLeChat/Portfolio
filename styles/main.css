@@ -69,8 +69,8 @@ noscript
 	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar) */
 ::-webkit-scrollbar
 {
-	/* Taille dynamique */
-	width: 1rem;
+	/* Taille de la barre */
+	width: 0.75rem;
 }
 
 ::-webkit-scrollbar-track
