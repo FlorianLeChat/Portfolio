@@ -48,12 +48,12 @@
 		</header>
 
 		<main>
-			<section id="tables">
-				<!-- Vidéo en arrière-plan -->
-				<video autoplay muted loop>
-					<source src="../audio/data.mp4" type="video/mp4" />
-				</video>
+			<!-- Vidéo en arrière-plan -->
+			<video autoplay muted loop>
+				<source src="../media/landing.mp4" type="video/mp4" />
+			</video>
 
+			<section id="tables">
 				<!-- Description de la section -->
 				<p>
 					Voici toutes les tables présentes dans la base de données.

@@ -35,7 +35,7 @@
 
 	<audio id="jazz" loop>
 		<!-- Musique d'ambiance spéciale à la section -->
-		<source src="audio/jazz.mp3" type="audio/mp3">
+		<source src="media/jazz.mp3" type="audio/mp3">
 	</audio>
 
 	<ul>

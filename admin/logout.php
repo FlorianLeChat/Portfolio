@@ -25,6 +25,11 @@
 
 	<body>
 		<main>
+			<!-- Vidéo en arrière-plan -->
+			<video autoplay muted loop>
+				<source src="../media/logout.mp4" type="video/mp4" />
+			</video>
+
 			<!-- Page de déconnexion -->
 			<section id="logout">
 				<h1>Déconnecté</h1>
