@@ -58,7 +58,7 @@ header p:nth-of-type(2)
 	top: 1rem;
 	right: 1rem;
 	color: rgb(var(--theme-background-color));
-	margin: 0;
+	margin: 0 0 0 6rem;
 	padding: 0.5rem;
 	position: absolute;
 	font-weight: 700;
@@ -81,25 +81,77 @@ footer ul
 {
 	/* Corps de la section */
 	display: grid;
-	padding: 3rem 5% 0 5%;
+	padding: 3rem 10% 0 10%;
+
+	/* Utilisation d'une disposition en grille
+		afin de faciliter la modification des données
+		en provenance de la base de données */
 	grid-template:
-		"a a a"
-		"b c c"
-		"b c c" auto / 1fr 1fr 1fr;
+		"a a a" 5rem
+		"b b b" auto
+		"c d d" auto
+		"c d d" auto / 0.5fr 1fr 1fr;
+}
+
+#tables > h2
+{
+	/* Titre de la section */
+	grid-area: a;
 }
 
 #tables > p
 {
 	/* Description de la section */
 	color: rgb(var(--theme-text-color));
-	grid-area: a;
+	grid-area: b;
+	line-height: 1.25rem;
+	margin-bottom: 2rem;
 }
 
-#tables ul
+/* Catégories des tables */
+#categories
 {
 	/* Liste des catégories */
-	grid-area: b;
-	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+	margin: 1rem;
+	padding: 0;
+	grid-area: c;
+	list-style: none;
+}
+
+#categories li:not(:last-of-type)
+{
+	/* Marge sur tous les items sauf
+		le dernier */
+	margin-bottom: 0.5rem;
+}
+
+#categories button
+{
+	/* Élément de chaque catégorie */
+	color: white;
+	width: 100%;
+	border: 0;
+	margin: 0;
+	cursor: pointer;
+	padding: 1rem;
+	transition: background-color 250ms ease;
+	user-select: none;
+	border-radius: 0.5rem;
+	text-transform: capitalize;
+	background-color: rgb(var(--theme-color-bright));
+}
+
+#categories li button:hover
+{
+	/* Animation de sélection */
+	color: rgb(var(--theme-color-bright));
+	background-color: white;
+}
+
+/* Résultats de la base de données */
+#results
+{
+	grid-area: d;
 }
 
 /* --------------------------------- */
@@ -195,6 +247,6 @@ footer ul
 
 #logout h1
 {
-	/* Titre principal */
+	/* Titre de la section */
 	margin-top: 0;
 }
