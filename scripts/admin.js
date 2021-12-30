@@ -28,7 +28,7 @@ const submit = document.querySelector( "input[type=submit]" );
 
 if ( submit != null )
 {
-	password.addEventListener( "keyup", function ( event )
+	password.addEventListener( "keyup", ( event ) =>
 	{
 		// Source : https://keycode.info/
 		if ( event.key === "Enter" )
