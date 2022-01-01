@@ -57,12 +57,13 @@
 				{
 					// Dans le cas contraire, on utilise un serveur SMTP (OVH) pour envoyer un mail.
 					// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
-					$from = $form->getEmail();
+					// 	Note : le destinataire et l'auteur ont la même adresse mail pour éviter le signalement
+					//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique.
 					$to = "admin@florian-dev.fr";
-					$subject = "Portfolio - " . $form->getSubject();
+					$subject = "Portfolio - " . $form->getSubject() . " - " . $form->getEmail();
 					$message = $form->getContent();
 					$headers = array(
-						"From" => $form->getFirstname() . " " . $form->getLastName() . "<$from>",
+						"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
 						"X-Mailer" => "PHP/" . phpversion()
 					);
 
