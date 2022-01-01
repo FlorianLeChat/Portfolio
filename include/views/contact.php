@@ -7,7 +7,24 @@
 	$contact = $translation->getPhrases("contact");
 	$contact["contact_message"] = str_replace("<br /><br />", " ", $contact["contact_message"]);
 
-	// On réalise ensuite les vérifications liées au formulaire.
+	// On filtre ensuite les résultats pour obtenir le nom de tous
+	//	les sujets du formulaire.
+	$options_html = "";
+	$options_data = array_filter($contact, function($key)
+	{
+		return str_contains($key, "contact_form_subject");
+	}, ARRAY_FILTER_USE_KEY);
+
+	foreach ($options_data as $key => $value)
+	{
+		// Définition du nom de la catégorie.
+		$disabled = $key == "contact_form_subject" ? " disabled" : "";
+
+		// Options présentes dans le sélecteur.
+		$options_html .= "\t\t\t<option value=\"$value\"$disabled>$value</option>\n";
+	}
+
+	// On réalise enfin les vérifications liées au formulaire.
 	//	Note : la page doit avoir été demandée sous requête POST.
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
@@ -58,7 +75,7 @@
 					// Dans le cas contraire, on utilise un serveur SMTP (OVH) pour envoyer un mail.
 					// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
 					// 	Note : le destinataire et l'auteur ont la même adresse mail pour éviter le signalement
-					//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique.
+					//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique côté OVH.
 					$to = "admin@florian-dev.fr";
 					$subject = "Portfolio - " . $form->getSubject() . " - " . $form->getEmail();
 					$message = $form->getContent();
@@ -130,10 +147,10 @@
 
 		<!-- Sujet de la prise de contact -->
 		<label for="subject"><?php echo($contact["contact_form_subject"]); ?></label>
-		<select id="subject" name="subject" >
-			<option value="question"><?php echo($contact["contact_form_subject_1"]); ?></option>
-			<option value="issue"><?php echo($contact["contact_form_subject_2"]); ?></option>
-			<option value="other"><?php echo($contact["contact_form_subject_3"]); ?></option>
+		<select id="subject" name="subject">
+			<?php
+				echo($options_html);
+			?>
 		</select>
 
 		<!-- Contenu du message -->
