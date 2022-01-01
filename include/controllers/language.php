@@ -144,8 +144,6 @@
 					// On réarrange les traductions de la langue sélectionnée et
 					//	on filtre les résultats obtenus précédemment pour s'en servir
 					//	comme « langue de secours ».
-					$translations = array_values($translations);
-
 					$result = array_filter($result, function($value)
 					{
 						return $value["target_language"] == "FR";
@@ -153,6 +151,8 @@
 
 					// On fusionne après la langue de secours et les résultats de la
 					//	langue récupérée pour obtenir une traduction « complète ».
+					$translations = array_values($translations);
+
 					foreach ($translations as $value)
 					{
 						$indice = array_search($value["source_string"], $keys);
@@ -175,9 +175,13 @@
 
 			// On modifie enfin le résultat final pour rendre plus facile la manipulation
 			//	des données par les scripts des vues.
-			foreach ($result as $value)
+			foreach ($result as $key => $value)
 			{
+				// Définition en tableau associatif du type "$table[<source_string>] = <translation>".
 				$result[$value["source_string"]] = $this->formatString($value["translated_string"]);
+
+				// Suppression de l'entrée originale.
+				unset($result[$key]);
 			}
 
 			return $result;
