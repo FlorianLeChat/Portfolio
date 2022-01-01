@@ -163,7 +163,11 @@
 				{
 					// Dans le cas contraire, on la place en mémoire
 					//	après avoir mis la première lettre en majuscule.
-					$field = $this->capitalize($field);
+					// 	(sauf l'adresse mail de la personne).
+					if ($value != "email")
+					{
+						$field = $this->capitalize($field);
+					}
 
 					$this->{"set" . $this->capitalize($value)}($field);	// Exemple : "setFirstName()"
 				}
