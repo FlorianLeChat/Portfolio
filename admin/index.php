@@ -55,6 +55,7 @@
 
 			<!-- Visualisation et édition des tables -->
 			<section id="tables">
+				<!-- Titre de la section -->
 				<h2>Édition des données</h2>
 
 				<!-- Description de la section -->
@@ -91,7 +92,7 @@
 
 				<!-- Modification des données -->
 				<?php
-					if ($_SERVER["REQUEST_METHOD"] == "POST")
+					if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"]))
 					{
 						$table = $_POST["table"];
 						$result = $connector->query("SELECT * FROM $table LIMIT 50;")->fetchAll();
@@ -109,6 +110,44 @@
 					}
 				?>
 			</section>
+
+			<hr />
+
+			<!-- Téléversement de fichiers -->
+			<section id="upload">
+				<!-- Titre de la section -->
+				<h2>Téléversement de fichiers</h2>
+
+				<!-- Description de la section -->
+				<p>
+					Vous pouvez ici téléverser des fichiers.
+				</p>
+
+				<!-- Sélection du dossier -->
+
+				<!-- Bouton de téléversement -->
+				<form method="POST" enctype="multipart/form-data">
+					<div>
+						<!-- Sélection des fichiers -->
+						<input type="file" name="upload" accept="image/*" />
+
+						<h3>Pour ajouter une image, glissez et déposez là dans cette zone ou cliquez ici</h3>
+					</div>
+
+					<div>
+						<!-- Aperçu des fichiers -->
+						<img src="#" alt="Image" />
+
+						<div class="image-title-wrap">
+							<button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+						</div>
+					</div>
+
+					<input type="submit" value="Envoyer" /> <!-- onclick="$('.file-upload-input').trigger( 'click' )"> -->
+				</form>
+			</section>
+
+			<hr />
 		</main>
 
 		<!-- Pied-de-page du site -->
