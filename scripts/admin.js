@@ -26,7 +26,7 @@ if ( clear != null && password != null )
 //
 const submit = document.querySelector( "input[type=submit]" );
 
-if ( submit != null )
+if ( submit != null && password != null )
 {
 	password.addEventListener( "keyup", ( event ) =>
 	{
@@ -57,3 +57,54 @@ if ( time != null )
 	// Exécution initiale lors du chargement de la page.
 	updateTime();
 }
+
+//
+//
+//
+const upload = document.querySelector("#upload div > input[type=file]");
+
+if ( upload != null )
+{
+	upload.addEventListener( "change", ( _event ) =>
+	{
+		//
+		if (upload.files && upload.files[0])
+		{
+			//
+			const reader = new FileReader();
+
+			reader.onload = function(event)
+			{
+				//
+				document.querySelector("#upload > form div:first-of-type").style.display = "none";
+				document.querySelector('#upload > form div:last-of-type').style.display = "block";
+
+				//
+				document.querySelector('#upload > form div:last-of-type').firstElementChild.src = event.target.result;
+
+				//
+				document.querySelector('.image-title').innerHTML = upload.files[0].name;
+			};
+
+			//
+			reader.readAsDataURL(upload.files[0]);
+		}
+		else
+		{
+			//
+			$('.file-upload-input').replaceWith($('.file-upload-input').clone());
+			$('.file-upload-content').hide();
+			$('.image-upload-wrap').show();
+		}
+	})
+}
+
+// 	$('.image-upload-wrap').bind('dragover', function ()
+// 	{
+// 		$('.image-upload-wrap').addClass('image-dropping');
+// 	});
+
+// 	$('.image-upload-wrap').bind('dragleave', function ()
+// 	{
+// 		$('.image-upload-wrap').removeClass('image-dropping');
+// 	};
