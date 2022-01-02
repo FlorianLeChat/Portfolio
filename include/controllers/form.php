@@ -98,7 +98,7 @@
 		// Permet de mettre en majuscule la première lettre d'une
 		//	entrée utilisateur.
 		//
-		public function capitalize(string $input): string
+		private function capitalize(string $input): string
 		{
 			$first = mb_substr($input, 0, 1);	// Première lettre.
 			$rest = mb_substr($input, 1);		// Suite de la chaîne.
