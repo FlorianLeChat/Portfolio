@@ -106,13 +106,3 @@ form.addEventListener( "submit", ( event ) =>
 		return false;
 	}
 } );
-
-//
-// Permet de bloquer le renvoie des formulaires lors du rafraîchissement
-//	de la page par l'utilisateur.
-// 	Source : https://stackoverflow.com/a/45656609
-//
-if ( window.history.replaceState )
-{
-	window.history.replaceState( null, null, window.location.href );
-}
