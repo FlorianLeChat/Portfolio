@@ -28,9 +28,9 @@
 			{
 				$this->setPDO(new PDO($link, $this->getUsername(), $this->getPassword(), $options));
 			}
-			catch (PDOException $error)
+			catch (\PDOException $error)
 			{
-				throw new PDOException($error->getMessage(), (int)$error->getCode());
+				throw new \PDOException($error->getMessage(), (int)$error->getCode());
 			}
 		}
 	}
