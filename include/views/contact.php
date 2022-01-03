@@ -132,17 +132,17 @@
 	<form method="POST" novalidate>
 		<!-- Prénom -->
 		<label for="firstname"><?php echo($contact["contact_form_firstname"]); ?></label>
-		<input type="text" autocomplete="off" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
+		<input type="text" autocomplete="given-name" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
 		<span></span>
 
 		<!-- Nom de famille -->
 		<label for="lastname"><?php echo($contact["contact_form_lastname"]); ?></label>
-		<input type="text" autocomplete="off" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" required />
+		<input type="text" autocomplete="family-name" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" required />
 		<span></span>
 
 		<!-- Adresse email -->
 		<label for="email"><?php echo($contact["contact_form_email"]); ?></label>
-		<input type="email" spellcheck="false" id="email" name="email" placeholder="jeandupont@mail.com" minlength="10" maxlength="40" required />
+		<input type="email" autocomplete="email" spellcheck="false" id="email" name="email" placeholder="jeandupont@mail.com" minlength="10" maxlength="40" required />
 		<span></span>
 
 		<!-- Sujet de la prise de contact -->
