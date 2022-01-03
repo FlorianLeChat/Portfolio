@@ -78,11 +78,11 @@
 				<form method="POST">
 					<!-- Nom d'utilisateur -->
 					<label for="username">Nom d'utilisateur</label>
-					<input type="text" spellcheck="false" id="username" name="username" placeholder="username" required />
+					<input type="text" autocomplete="username" spellcheck="false" id="username" name="username" placeholder="username" required />
 
 					<!-- Mot de passe -->
 					<label for="password">Mot de passe</label>
-					<input type="password" spellcheck="false" id="password" name="password" placeholder="password" required />
+					<input type="password" autocomplete="current-password" spellcheck="false" id="password" name="password" placeholder="password" required />
 
 					<!-- Bouton d'affichage du mot de passe -->
 					<label for="clear">Afficher le mot de passe</label>
