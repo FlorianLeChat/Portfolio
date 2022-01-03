@@ -29,7 +29,7 @@
 	$data = new Portfolio\Controllers\Data();				// Données générales du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
-	$language = htmlspecialchars($_POST["language"] ?? "");
+	$language = htmlentities($_POST["language"] ?? "");
 
 	if (empty($language))
 	{
@@ -50,7 +50,7 @@
 	$language = $translation->getCode(); // Valeur finale de la langue.
 
 	// On récupère enfin la page demandée.
-	$file = htmlspecialchars($_GET["target"] ?? "");
+	$file = htmlentities($_GET["target"] ?? "");
 
 	if (empty($file))
 	{

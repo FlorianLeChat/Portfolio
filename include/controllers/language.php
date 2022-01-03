@@ -42,7 +42,7 @@
 		public function formatString(string $phrase): string
 		{
 			// Conversion de certains caractères pour être lisible en HTML.
-			$phrase = htmlspecialchars($phrase);
+			$phrase = htmlentities($phrase);
 
 			// Remplacement des retours chariot/sauts de ligne SQL par la balise "<br />".
 			$phrase = str_replace("\r\n", "<br />", $phrase);

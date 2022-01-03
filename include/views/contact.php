@@ -45,7 +45,7 @@
 			// 	vérifications au niveau du client ayant demandé la page.
 			// 	Note : Cela est considéré comme une protection contre les
 			//		robots et les utilisateurs malveillants.
-			$ip = htmlspecialchars($_SERVER["REMOTE_ADDR"] ?? "");
+			$ip = htmlentities($_SERVER["REMOTE_ADDR"] ?? "");
 
 			if (filter_var($ip, FILTER_VALIDATE_IP))
 			{
