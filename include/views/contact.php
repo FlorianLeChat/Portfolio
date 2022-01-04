@@ -24,9 +24,10 @@
 		$options_html .= "\t\t\t<option value=\"$value\"$disabled>$value</option>\n";
 	}
 
-	// On réalise enfin les vérifications liées au formulaire.
-	//	Note : la page doit avoir été demandée sous requête POST.
-	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	// On réalise enfin les vérifications liées au formulaire si la
+	//	requête est de type POST et si l'utilisateur n'a pas déjà
+	//	envoyé le formulaire durant sa session personnelle.
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION["form_cooldown"]))
 	{
 		$form = new Portfolio\Controllers\FormValidation();
 
@@ -89,6 +90,10 @@
 					// On écrit par la même occassion ces informations dans la base de
 					//	données pour y accéder plus tard dans l'interface d'administration.
 					$data->addMessage($form);
+
+					// On met en mémoire cette action pour éviter que l'utilisateur puisse
+					//	en envoyer un autre pendant toute la durée de sa session.
+					$_SESSION["form_cooldown"] = true;
 				}
 			}
 		}
