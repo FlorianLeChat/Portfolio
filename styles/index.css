@@ -175,6 +175,22 @@ header a > img:hover
 	column-count: 2;
 }
 
+@media screen and (max-width: 768px)
+{
+	/* On modifie les marges sur les téléphones
+		mobiles */
+	#skills
+	{
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	#skills div
+	{
+		column-gap: 2.5%;
+	}
+}
+
 #skills article
 {
 	/* Marge de remplissage dans chaque article */
@@ -209,6 +225,17 @@ header a > img:hover
 	/* Apparence de la section */
 	border-radius: 1rem;
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
+}
+
+@media screen and (max-width: 768px)
+{
+	/* On modifie les marges sur les téléphones
+		mobiles */
+	#contact
+	{
+		margin-left: 7.5%;
+		margin-right: 7.5%;
+	}
 }
 
 #contact h2
