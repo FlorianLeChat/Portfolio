@@ -183,7 +183,7 @@ window.addEventListener( "scroll", fadeIn );
 //
 const links = document.querySelectorAll( "a" );
 
-if ( window.location.hostname == "www.florian-dev.fr" )
+if ( window.location.hostname.includes( "florian-dev.fr" ) )
 {
 	for ( const link of links.values() )
 	{
