@@ -16,7 +16,7 @@
 		public function __construct()
 		{
 			// On indique les informations de connexions.
-			$link = sprintf("mysql:host=%s;dbname=%s;charset=%s", $this->getHost(), $this->getDatabase(), $this->getCharset());
+			$link = sprintf("mysql:host=%s;dbname=%s;charset=%s;port=%s", $this->getHost(), $this->getDatabase(), $this->getCharset(), $this->getPort());
 			$options = [
 				PDO::ATTR_ERRMODE			 	=> PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE	=> PDO::FETCH_ASSOC,
