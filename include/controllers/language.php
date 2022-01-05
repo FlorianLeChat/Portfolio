@@ -52,7 +52,7 @@
 			// Replacement des caractères "**" en balise "<strong>".
 			// 	Source : https://stackoverflow.com/a/56426710
 			$count = 0;
-			$phrase = preg_replace_callback("/[**]{2}/", function(array $matches)
+			$phrase = preg_replace_callback("/[**]{2}/", function()
 				use (&$count)										// Modification par référence de la variable
 				{
 					++$count;										// Nombre d'itérations
@@ -63,7 +63,7 @@
 			// Replacement des caractères "*" en balise "<em>".
 			// 	Note : en cas de difficulté de compréhension, voir commentaires ci-dessus.
 			$count = 0;
-			$phrase = preg_replace_callback("/\*(?!\*)/", function(array $matches)
+			$phrase = preg_replace_callback("/\*(?!\*)/", function()
 				use (&$count)
 				{
 					++$count;

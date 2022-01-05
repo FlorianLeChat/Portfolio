@@ -47,7 +47,7 @@
 		//
 		// Permet de déconnecter l'utilisateur de l'interface.
 		//
-		public function destroy()
+		public function destroy(): void
 		{
 			unset($_SESSION["username"]);
 		}
