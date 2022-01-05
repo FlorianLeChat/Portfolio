@@ -56,4 +56,17 @@
 	{
 		$file = "index"; // Page par défaut.
 	}
+
+	// Fonction de compatibilité pour PHP 7 et versions inférieures.
+	// Cette fonction est nativement présente sur PHP 8.
+	if (!function_exists("str_contains"))
+	{
+		// Permet de vérifier si une sous-chaîne est présente dans
+		//	une chaîne de caractères spécifiée.
+		// 	Source : https://www.php.net/manual/fr/function.str-contains.php
+		function str_contains(string $source, string $search): bool
+		{
+			return mb_strpos($source, $search) !== false;
+		}
+	}
 ?>
