@@ -4,71 +4,61 @@
 	//
 	namespace Portfolio\Models;
 
+	$credentials = fopen($_SERVER["DOCUMENT_ROOT"] . "/portfolio/config.csv", "r");
+
+	if ($credentials)
+	{
+		// Le fichier de configuration doit exister.
+		$credentials = fgetcsv($credentials);
+	}
+
 	class Database
 	{
-		protected $host = "localhost";
-		protected $database	= "portfolio";
-		protected $username	= "user";
-		protected $password = "RoTIGC!cLNIdml89";	// Devra être actualisé par la suite...
-		protected $charset = "utf8";
 		protected $connector;
 
-		// Adresse du serveur distant.
-		public function setHost(string $host)
-		{
-			$this->host = $host;
-		}
-
+		// Adresse du serveur distant (lecture seule).
 		public function getHost(): string
 		{
-			return $this->host;
+			global $credentials;
+			return $credentials[0];
 		}
 
-		// Nom de la base de données.
-		public function setDatabase(string $database)
-		{
-			$this->database = $database;
-		}
-
+		// Nom de la base de données (lecture seule).
 		public function getDatabase(): string
 		{
-			return $this->database;
+			global $credentials;
+			return $credentials[1];
 		}
 
-		// Nom d'utilisateur.
-		public function setUsername(string $username)
-		{
-			$this->username = $username;
-		}
-
+		// Nom d'utilisateur (lecture seule).
 		public function getUsername(): string
 		{
-			return $this->username;
+			global $credentials;
+			return $credentials[2];
 		}
 
-		// Mot de passe.
-		public function setPassword(string $password)
-		{
-			$this->password = $password;
-		}
-
+		// Mot de passe (lecture seule).
 		public function getPassword(): string
 		{
-			return $this->password;
+			global $credentials;
+			return $credentials[3];
 		}
 
-		// Encodage des caractères.
-		public function setCharset(string $charset)
-		{
-			$this->charset = $charset;
-		}
-
+		// Encodage des caractères (lecture seule).
 		public function getCharset(): string
 		{
-			return $this->charset;
+			global $credentials;
+			return $credentials[4];
 		}
 
-		// Object PDO (connecteur).
+		// Port de connexion (lecture seule).
+		public function getPort(): string
+		{
+			global $credentials;
+			return $credentials[5];
+		}
+
+		// Objet PDO (connecteur).
 		public function setPDO(\PDO $connector)
 		{
 			$this->connector = $connector;

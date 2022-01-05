@@ -28,8 +28,7 @@
 		{
 			// On prépare et on exécute une requête SQL pour récupérer toutes les langues
 			// 	ayant reçu au moins une traduction.
-			$query = $this->connector->prepare("SELECT DISTINCT `target_language` FROM `translations`;");
-			$query->execute();
+			$query = $this->connector->query("SELECT DISTINCT `target_language` FROM `translations`;");
 
 			// On retourne alors la colonne des codes de langues.
 			return array_column($query->fetchAll(), "target_language");
