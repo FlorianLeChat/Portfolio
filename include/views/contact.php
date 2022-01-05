@@ -63,7 +63,7 @@
 
 				// On vérifie le résultat de l'API afin d'autoriser ou non la
 				//	suite du processus de validation du formulaire.
-				if (count($result) > 1 && $result["block"] == "1")
+				if (gettype($result) == "array" && count($result) > 1 && $result["block"] == "1")
 				{
 					// Il semble que le client soit un utilisateur sous une connexion
 					//	« camouflée », alors on redirige la personne ailleurs...
@@ -77,15 +77,18 @@
 					// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
 					// 	Note : le destinataire et l'auteur ont la même adresse mail pour éviter le signalement
 					//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique côté OVH.
-					$to = "admin@florian-dev.fr";
-					$subject = "Portfolio - " . $form->getSubject() . " - " . $form->getEmail();
-					$message = $form->getContent();
-					$headers = array(
-						"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
-						"X-Mailer" => "PHP/" . phpversion()
-					);
+					if (str_contains($_SERVER["SERVER_NAME"], "florian-dev.fr"))
+					{
+						$to = "admin@florian-dev.fr";
+						$subject = "Portfolio - " . $form->getSubject() . " - " . $form->getEmail();
+						$message = $form->getContent();
+						$headers = array(
+							"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
+							"X-Mailer" => "PHP/" . phpversion()
+						);
 
-					mb_send_mail($to, $subject, $message, $headers);
+						mb_send_mail($to, $subject, $message, $headers);
+					}
 
 					// On écrit par la même occassion ces informations dans la base de
 					//	données pour y accéder plus tard dans l'interface d'administration.
