@@ -31,57 +31,169 @@
 		$name = $value["Tables_in_portfolio"];
 		$tables_html .= <<<LI
 			<li>
-				<input type="submit" name="table" value="$name" />
+				<input type="submit" name="show" value="$name" />
 			</li>\n
 		LI;
 	}
 
-	// On vérifie après si la requête actuelle est de type et si
-	//	on demande à ce qu'on affiche le contenu d'une table.
-	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"]))
+	// On vérifie après si la requête actuelle est de type POST.
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		// On récupère toutes les colonnes et les lignes.
-		//	Note : on limite le nombre de récupération à 10 pour éviter
-		//		les problèmes de performances.
-		$table = $_POST["table"];
-		$columns = $connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
-		$rows = $connector->query("SELECT * FROM $table LIMIT 25 OFFSET 0;")->fetchAll();
+		// On tente de récupérer la table sélectionnée actuelle.
+		// 	Note : lors d'une édition ou d'une suppression, l'information
+		//		n'est plus présente en paramètre POST et doit donc être
+		//		récupéré dans les données de la SESSION.
+		$table = $_POST["show"] ?? $_SESSION["selected_table"] ?? "";
 
-		// On fabrique la structure HTML pour l'en-tête de la table.
-		$data_html = "<thead>\n\t<tr>\n";
-
-		foreach ($columns as $key => $value)
+		if (isset($_POST["identifier"]))
 		{
-			$data_html .= "\t\t<th>" . $value["Field"] . "</th>\n";
-		}
-
-		$data_html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";
-
-		// On fabrique la structure HTML pour chaque ligne.
-		$data_html .= "<tbody>\n";
-
-		foreach ($rows as $row)
-		{
-			// Chaque colonne doit être séparé entre elles.
-			$data_html .= "\t<tr>\n";
-
-			foreach ($row as $key => $value)
+			// On récupère l'identifiant unique présumé de la table avant
+			//	d'y récupérer les données associées.
+			$identifier = $_POST["identifier"];
+			$data = array_filter($_POST, function($key)
 			{
-				$data_html .= "\t\t<td><textarea name=\"$key\">$value</textarea></td>\n";
+				global $identifier;
+				return str_contains($key, "_$identifier");
+			}, ARRAY_FILTER_USE_KEY);
+
+			// On supprime l'identifiant du nom des clés de la table visée.
+			// 	Exemple : "source_string_25" => "source_string".
+			foreach ($data as $key => $value)
+			{
+				// Remplacement du nom de la clé.
+				$name = str_replace("_$identifier", "", $key);
+
+				// Ajout d'une nouvelle définition.
+				$data[$name] = $value;
+
+				// Suppression de l'ancienne entrée.
+				unset($data[$key]);
 			}
 
-			$data_html .= "\t\t<td><input type=\"submit\" value=\"Supprimer\" /></td>\n\t</tr>\n";
+			// On réalise un ajout d'un contenu.
+			if (isset($_POST["add"]))
+			{
+				// Génération des champs pour la requête préparée.
+				// Si un meilleur moyen existe, je suis preneur !
+				$fields_data = array_keys($data);
+				$fields_parameters = implode(", ", $fields_data);
+
+				$values_data = array_values($data);
+				$values_parameters = implode(", ", array_fill(0, count($values_data), "?")); // Résultat : "?, ?, ?, ..."
+
+				// Exécution de la requête préparé avec les arguments passés
+				//	du formulaire.
+				// 	Note : une vérification est réalisée afin d'éviter d'obtenir
+				//		une erreur si la clé primaire est dupliquée.
+				$state = $connector->query("SELECT * FROM `$table` WHERE `" . $fields_data[0] . "` = '" . $values_data[0] . "';")->fetch();
+
+				if (!is_array($state) || count($state) <= 0)
+				{
+					// Le résultat ne doit pas être une table ayant des résultats.
+					$query = $connector->prepare("INSERT INTO `$table` (" . $fields_parameters . ") VALUES (" . $values_parameters . ")");
+					$query->execute($values_data);
+				}
+			}
+			// On réalise une édition d'un contenu.
+			elseif (isset($_POST["update"]))
+			{
+
+			}
+			// On réalise la suppression d'un contenu.
+			elseif (isset($_POST["remove"]))
+			{
+
+			}
 		}
 
-		// On fabrique enfin une dernière liste
-		$data_html .= "\t<tr>\n";
-
-		for ($indice = 0; $indice < count($columns); $indice++)
+		// On réalise l'affichage d'un contenu.
+		//	Note : cette action se réalisera automatique après un ajout,
+		//		une édition ou une suppression d'un contenu.
+		if (isset($table))
 		{
-			$data_html .= "\t\t<td><textarea name=\"$key\"></textarea></td>\n";
-		}
+			// On récupère toutes les colonnes et les lignes de la table.
+			//	Note : on limite le nombre de récupération à 10 pour éviter
+			//		les problèmes de performances.
+			$offset = 0;
 
-		$data_html .= "\t\t<td><input type=\"submit\" value=\"Ajouter\" /></td>\n\t</tr>\n</tbody>\n";
+			if ($table == $_SESSION["selected_table"])
+			{
+				// offset calc
+			}
+
+			$rows = $connector->query("SELECT * FROM $table LIMIT 25 OFFSET $offset;")->fetchAll();
+			$columns = $connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
+
+			//
+			$_SESSION["selected_table"] = $table;
+			// $_SESSION["table_offset"] = $_SESSION["table_offset"] ?? 0 + 25;
+
+			// On fabrique la structure HTML pour l'en-tête de la table.
+			$data_html = "<thead>\n\t<tr>\n";
+
+			foreach ($columns as $value)
+			{
+				$data_html .= "\t\t<th>" . $value["Field"] . "</th>\n";
+			}
+
+			$data_html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";
+
+			// On fabrique la structure HTML pour chaque ligne.
+			$indice = 0;
+			$data_html .= "<tbody>\n";
+
+			foreach ($rows as $row)
+			{
+				// Chaque colonne doit être séparé entre elles.
+				// 	Note : les noms des champs de saisies sont composés de façon
+				//		à pouvoir être identifié indépendamment des autres.
+				$identifier = null;
+				$data_html .= "\t<tr>\n";
+
+				foreach ($row as $key => $value)
+				{
+					if ($identifier == null)
+					{
+						// On met en mémoire l'identifiant unique (présumé) de la
+						//	colonne pour l'action du formulaire.
+						$identifier = $indice;
+					}
+
+					$data_html .= "\t\t<td><textarea name=\"" . $key . "_" . $indice . "\">$value</textarea></td>\n";
+				}
+
+				// Création des actionneurs pour le formulaire.
+				$data_html .= <<<TD
+					\t<td>
+						\t<input type="hidden" name="identifier" value="$identifier" />
+						\t<input type="submit" name="update" value="Éditer" />
+					\t</td>
+					\t<td>
+						\t<input type="submit" name="remove" value="Supprimer" />
+					\t</td>\n
+				TD;
+
+				$indice = $indice + 1;
+			}
+
+			// On fabrique une dernière ligne de champs pour ajouter une
+			//	information dans la table.
+			$length = count($rows);
+			$data_html .= "\t<tr>\n";
+
+			for ($indice = 0; $indice < count($columns); $indice++)
+			{
+				$data_html .= "\t\t<td><textarea name=\"" . $columns[$indice]["Field"] . "_" . $length . "\"></textarea></td>\n";
+			}
+
+			// Création des actionneurs pour le formulaire.
+			$data_html .= <<<TD
+				\t<td>
+					\t<input type="hidden" name="identifier" value="$length" />
+					\t<input type="submit" name="add" value="Ajouter" />
+				\t</td>\n\t</tr>\n</tbody>\n
+			TD;
+		}
 	}
 ?>
 
