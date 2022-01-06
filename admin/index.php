@@ -20,6 +20,69 @@
 		header("Location: login.php");
 		exit();
 	}
+
+	// On récupère ensuite toutes les tables présentes dans
+	//	la base de données du site.
+	$tables_html = "";
+	$tables_data = $connector->query("SHOW TABLES;")->fetchAll();
+
+	foreach ($tables_data as $value)
+	{
+		$name = $value["Tables_in_portfolio"];
+		$tables_html .= <<<LI
+			<li>
+				<input type="submit" name="table" value="$name" />
+			</li>\n
+		LI;
+	}
+
+	// On vérifie après si la requête actuelle est de type et si
+	//	on demande à ce qu'on affiche le contenu d'une table.
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"]))
+	{
+		// On récupère toutes les colonnes et les lignes.
+		//	Note : on limite le nombre de récupération à 10 pour éviter
+		//		les problèmes de performances.
+		$table = $_POST["table"];
+		$columns = $connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
+		$rows = $connector->query("SELECT * FROM $table LIMIT 25 OFFSET 0;")->fetchAll();
+
+		// On fabrique la structure HTML pour l'en-tête de la table.
+		$data_html = "<thead>\n\t<tr>\n";
+
+		foreach ($columns as $key => $value)
+		{
+			$data_html .= "\t\t<th>" . $value["Field"] . "</th>\n";
+		}
+
+		$data_html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";
+
+		// On fabrique la structure HTML pour chaque ligne.
+		$data_html .= "<tbody>\n";
+
+		foreach ($rows as $row)
+		{
+			// Chaque colonne doit être séparé entre elles.
+			$data_html .= "\t<tr>\n";
+
+			foreach ($row as $key => $value)
+			{
+				$data_html .= "\t\t<td><textarea name=\"$key\">$value</textarea></td>\n";
+			}
+
+			$data_html .= "\t\t<td><input type=\"submit\" value=\"Supprimer\" /></td>\n\t</tr>\n";
+		}
+
+		// On fabrique enfin une dernière liste
+		$data_html .= "\t<tr>\n";
+
+		for ($indice = 0; $indice < count($columns); $indice++)
+		{
+			$data_html .= "\t\t<td><textarea name=\"$key\"></textarea></td>\n";
+		}
+
+		$data_html .= "\t\t<td><input type=\"submit\" value=\"Ajouter\" /></td>\n\t</tr>\n</tbody>\n";
+	}
 ?>
 
 <html lang="fr">
@@ -67,48 +130,22 @@
 				</p>
 
 				<!-- Sélection de la catégorie -->
-				<form method="POST">
-					<?php
-						$result = $connector->query("SHOW TABLES;")->fetchAll();
-
-						echo("<ul id=\"categories\">");
-
-						foreach ($result as $key => $value)
-						{
-							$name = $value["Tables_in_portfolio"];
-
-							echo(<<<LI
-								<li>
-									<button type="submit" name="table" value="$name">
-										<span>$name</span>
-									</button>
-								</li>
-							LI);
-						}
-
-						echo("</ul>");
-					?>
+				<form method="POST" id="categories">
+					<ul>
+						<?php
+							echo($tables_html);
+						?>
+					</ul>
 				</form>
 
 				<!-- Modification des données -->
-				<?php
-					if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["table"]))
-					{
-						$table = $_POST["table"];
-						$result = $connector->query("SELECT * FROM $table LIMIT 50;")->fetchAll();
-
-						echo("<ul id=\"results\">");
-
-						print_r($result);
-
-						foreach ($result as $key => $value)
-						{
-
-						}
-
-						echo("</ul>");
-					}
-				?>
+				<form method="POST" id="data">
+					<table>
+						<?php
+							echo($data_html ?? "\n");
+						?>
+					</table>
+				</form>
 			</section>
 
 			<hr />
@@ -146,8 +183,6 @@
 					<input type="submit" value="Envoyer" /> <!-- onclick="$('.file-upload-input').trigger( 'click' )"> -->
 				</form>
 			</section>
-
-			<hr />
 		</main>
 
 		<!-- Pied-de-page du site -->
