@@ -207,14 +207,19 @@ footer ul
 	transition: background-color 250ms ease;
 	border-radius: 0.25rem;
 	text-transform: uppercase;
-	background-color: rgb(var(--theme-color-bright));
 }
 
-#data input:hover
-{
-	/* Animation lors du survol de l'élément */
-	background-color: rgb(var(--theme-color-dark));
-}
+/* Ajout d'un élément */
+#data input[name = "add"] 			{ background-color: rgb(37, 208, 102); }
+#data input[name = "add"]:hover 	{ background-color: rgb(28, 158, 77); }
+
+/* Édition d'un élément */
+#data input[name = "update"] 		{ background-color: rgb(255, 158, 0); }
+#data input[name = "update"]:hover 	{ background-color: rgb(158, 103, 13); }
+
+/* Suppression d'un élément */
+#data input[name = "remove"]		{ background-color: rgb(var(--theme-color-bright)); }
+#data input[name = "remove"]:hover	{ background-color: rgb(var(--theme-color-dark)); }
 
 /* ----------------------------------- */
 /* Section : téléversement de fichiers */
