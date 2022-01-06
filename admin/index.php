@@ -83,16 +83,8 @@
 
 				// Exécution de la requête préparé avec les arguments passés
 				//	du formulaire.
-				// 	Note : une vérification est réalisée afin d'éviter d'obtenir
-				//		une erreur si la clé primaire est dupliquée.
-				$state = $connector->query("SELECT * FROM `$table` WHERE `" . $fields_data[0] . "` = '" . $values_data[0] . "';")->fetch();
-
-				if (!is_array($state) || count($state) <= 0)
-				{
-					// Le résultat ne doit pas être une table ayant des résultats.
-					$query = $connector->prepare("INSERT INTO `$table` (" . $fields_parameters . ") VALUES (" . $values_parameters . ")");
-					$query->execute($values_data);
-				}
+				$query = $connector->prepare("INSERT IGNORE INTO `$table` (" . $fields_parameters . ") VALUES (" . $values_parameters . ")");
+				$query->execute($values_data);
 			}
 			// On réalise une édition d'un contenu.
 			elseif (isset($_POST["update"]))
