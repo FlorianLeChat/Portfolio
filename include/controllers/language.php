@@ -87,7 +87,7 @@
 			$result = $query->fetchAll();
 
 			// On vérifie ensuite le résultat de la requête.
-			if (gettype($result) == "array" && count($result) > 0)
+			if (is_array($result) && count($result) > 0)
 			{
 				// Si le résultat est un tableau avec au moins un résultat,
 				//	alors on tente de récupérer la traduction de la langue
@@ -118,7 +118,7 @@
 			$result = $query->fetchAll();
 
 			// On vérifie le résultat de la requête.
-			if (gettype($result) == "array")
+			if (is_array($result))
 			{
 				// On calcule le nombre de résultat unique dans les clés
 				//	de toutes les langues enregistrées.
