@@ -31,7 +31,7 @@
 
 			// On vérifie enfin le résultat de la requête SQL avant
 			//	de comparer le mot de passe hashé par l'entrée utilisateur.
-			if (gettype($result) == "array" && count($result) > 0 && password_verify($password, $result["password"]))
+			if (is_array($result) && count($result) > 0 && password_verify($password, $result["password"]))
 			{
 				// L'authentification a réussie.
 				$this->setUsername($username);

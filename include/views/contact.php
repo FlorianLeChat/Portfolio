@@ -63,7 +63,7 @@
 
 				// On vérifie le résultat de l'API afin d'autoriser ou non la
 				//	suite du processus de validation du formulaire.
-				if (gettype($result) == "array" && count($result) > 1 && $result["block"] == "1")
+				if (is_array($result) && count($result) > 1 && $result["block"] == "1")
 				{
 					// Il semble que le client soit un utilisateur sous une connexion
 					//	« camouflée », alors on redirige la personne ailleurs...
