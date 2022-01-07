@@ -4,7 +4,7 @@
 	//
 
 	// On récupère la traduction du titre de l'overlay.
-	$contribution_title = $translation->getPhrase("contributions_title");
+	$contribution_title = $translation->getPhrase("footer_contributions");
 
 	// On récupère ensuite toutes les contributions
 	//	depuis la base de données.
