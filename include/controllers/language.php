@@ -94,7 +94,7 @@
 				//	actuelle, cependant si elle est manquante, on utilise le
 				//	français comme « langue de secours ».
 				$languages = array_column($result, "target_language");
-				$target_key = array_search($this->getCode(), $languages) || array_search("FR", $languages);
+				$target_key = array_search($this->getCode(), $languages) ?? array_search("FR", $languages);
 
 				return $this->formatString($result[$target_key]["translated_string"]);
 			}
