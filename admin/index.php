@@ -150,21 +150,28 @@
 		if (isset($table))
 		{
 			// On récupère toutes les colonnes et les lignes de la table.
-			//	Note : on limite le nombre de récupération à 10 pour éviter
+			//	Note : on limite le nombre de récupération à 25 pour éviter
 			//		les problèmes de performances.
-			$offset = 0;
+			$offset = $_SESSION["table_offset"] ?? 0;
 
-			if ($table == $_SESSION["selected_table"])
+			if ($table == $_SESSION["selected_table"] ?? "")
 			{
-				// offset calc
+				// Augmentation du décalage des résultats si la table sélectionnée
+				//	et la même que lors de la dernière requête.
+				$offset += 25;
+			}
+			else
+			{
+				// Dans le cas contraire, on réinitialise ce décalage.
+				$offset = 0;
 			}
 
+			$_SESSION["selected_table"] = $table;	// Table sélectionnée.
+			$_SESSION["table_offset"] = $offset;	// Décalage actuel.
+
+			// On exécute les requêtes SQL grâce aux paramètres obtenus précédemment.
 			$rows = $connector->query("SELECT * FROM $table LIMIT 25 OFFSET $offset;")->fetchAll();
 			$columns = $connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
-
-			//
-			$_SESSION["selected_table"] = $table;
-			// $_SESSION["table_offset"] = $_SESSION["table_offset"] ?? 0 + 25;
 
 			// On fabrique la structure HTML pour l'en-tête de la table.
 			$data_html = "<thead>\n\t<tr>\n";
@@ -274,10 +281,14 @@
 
 				<!-- Description de la section -->
 				<p>
-					Voici toutes les tables présentes dans la base de données.
-					Cliquez sur l'une d'en elles pour accéder à son contenu et le modifier librement.
-					Par soucis de préserver les performances du site, la visualisation se fait par tranche de <strong>50</strong> résultats.
-					Pour avoir la suite des résultats d'une table, sélectionnez de nouveau la même catégorie.
+					Voici toutes les tables présentes dans la base de données du site.
+					<br /><br />
+					Tout d'abord, sélectionnez une table afin d'afficher une partie de son contenu.
+					Ensuite, vous aurez la possibilité d'ajouter de nouvelles données, les modifier mais également des les supprimer.
+					Enfin, par soucis de performances générales, la visualisation du contenu des tables se fait par tranche de résultats.
+					<br /><br />
+					Lors de la première requête, vous obtiendrez les <strong>25</strong> premiers résultats puis en allant de nouveau sur cette
+					même table, vous obtiendrez une seconde tranche de résultats et ainsi de suite jusqu'à la fin.
 				</p>
 
 				<!-- Sélection de la catégorie -->
