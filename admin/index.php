@@ -45,11 +45,20 @@
 		//		récupéré dans les données de la SESSION.
 		$table = $_POST["show"] ?? $_SESSION["selected_table"] ?? "";
 
-		if (isset($_POST["identifier"]))
+		// On récupère l'identifiant unique présumé de la table avant
+		//	d'y récupérer les données associées.
+		// 	Note : le numéro se trouve en suffixe du nom de l'action.
+		//	Exemple : "add_25", identifiant 25.
+		$identifier = array_filter($_POST, function($key)
+		{
+			return (str_contains($key, "add_") || str_contains($key, "update_") || str_contains($key, "remove_"));
+		}, ARRAY_FILTER_USE_KEY);
+
+		if (is_array($identifier) && count($identifier) > 0)
 		{
 			// On récupère l'identifiant unique présumé de la table avant
 			//	d'y récupérer les données associées.
-			$identifier = $_POST["identifier"];
+			$identifier = filter_var(array_key_first($identifier), FILTER_SANITIZE_NUMBER_INT);
 			$data = array_filter($_POST, function($key)
 			{
 				global $identifier;
@@ -70,31 +79,68 @@
 				unset($data[$key]);
 			}
 
-			// On réalise un ajout d'un contenu.
-			if (isset($_POST["add"]))
-			{
-				// Génération des champs pour la requête préparée.
-				// Si un meilleur moyen existe, je suis preneur !
-				$fields_data = array_keys($data);
-				$fields_parameters = implode(", ", $fields_data);
+			// On récupère le type de modification sur la base de données.
+			$type = array_key_last($data);
 
-				$values_data = array_values($data);
+			unset($data[$type]);
+
+			// On récupère toutes les clés et les valeurs des données.
+			$fields_data = array_keys($data);
+			$values_data = array_values($data);
+
+			// On réalise un ajout d'un contenu.
+			if ($type == "add")
+			{
+				// Génération des champs pour la requête suivante.
+				$fields_parameters = implode(", ", $fields_data);
 				$values_parameters = implode(", ", array_fill(0, count($values_data), "?")); // Résultat : "?, ?, ?, ..."
 
-				// Exécution de la requête préparé avec les arguments passés
-				//	du formulaire.
-				$query = $connector->prepare("INSERT IGNORE INTO `$table` (" . $fields_parameters . ") VALUES (" . $values_parameters . ")");
+				// Exécution de la requête d'insertion.
+				$query = $connector->prepare("INSERT IGNORE INTO `$table` ($fields_parameters) VALUES ($values_parameters);");
 				$query->execute($values_data);
 			}
 			// On réalise une édition d'un contenu.
-			elseif (isset($_POST["update"]))
+			elseif ($type == "update")
 			{
+				// Génération du champs pour la requête suivante.
+				$length = count($fields_data) - 1;
+				$parameters = "";
 
+				foreach ($fields_data as $key => $value)
+				{
+					$parameters .= $value . " = ?";
+
+					if ($key < $length)
+					{
+						// Seul le dernier paramètre ne possède pas de délimiteur.
+						$parameters .= ", ";
+					}
+				}
+
+				// Récupération de la valeur initiale avant modification.
+				$where_data = $connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
+
+				$where_field = array_key_first($where_data);	// Nom de la première colonne.
+				$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
+
+				$values_data[] = $where_value;					// Insertion dans les paramètres de la requête.
+
+				// Exécution de la requête de mise à jour.
+				$query = $connector->prepare("UPDATE IGNORE `$table` SET $parameters WHERE $where_field = ?;");
+				$query->execute($values_data);
 			}
 			// On réalise la suppression d'un contenu.
-			elseif (isset($_POST["remove"]))
+			elseif ($type == "remove")
 			{
+				// Récupération de la valeur initiale avant modification.
+				$where_data = $connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
 
+				$where_field = array_key_first($where_data);	// Nom de la première colonne.
+				$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
+
+				// Exécution de la requête de suppression.
+				$query = $connector->prepare("DELETE FROM `$table` WHERE $where_field = ?;");
+				$query->execute([$where_value]);
 			}
 		}
 
@@ -139,8 +185,8 @@
 				// Chaque colonne doit être séparé entre elles.
 				// 	Note : les noms des champs de saisies sont composés de façon
 				//		à pouvoir être identifié indépendamment des autres.
-				$identifier = null;
 				$data_html .= "\t<tr>\n";
+				$identifier = null;
 
 				foreach ($row as $key => $value)
 				{
@@ -156,13 +202,13 @@
 
 				// Création des actionneurs pour le formulaire.
 				$data_html .= <<<TD
-					\t<td>
-						\t<input type="hidden" name="identifier" value="$identifier" />
-						\t<input type="submit" name="update" value="Éditer" />
-					\t</td>
-					\t<td>
-						\t<input type="submit" name="remove" value="Supprimer" />
-					\t</td>\n
+						<td>
+							<input type="submit" name="update_$identifier" value="Éditer" />
+						</td>
+						<td>
+							<input type="submit" name="remove_$identifier" value="Supprimer" />
+						</td>
+					</tr>\n
 				TD;
 
 				$indice = $indice + 1;
@@ -180,10 +226,11 @@
 
 			// Création des actionneurs pour le formulaire.
 			$data_html .= <<<TD
-				\t<td>
-					\t<input type="hidden" name="identifier" value="$length" />
-					\t<input type="submit" name="add" value="Ajouter" />
-				\t</td>\n\t</tr>\n</tbody>\n
+					<td>
+						<input type="submit" name="add_$length" value="Ajouter" />
+					</td>
+				</tr>
+			</tbody>\n
 			TD;
 		}
 	}
