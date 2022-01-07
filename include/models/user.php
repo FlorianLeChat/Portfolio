@@ -8,7 +8,6 @@
 	{
 		protected $username = "";
 		protected $password = "";
-		protected $connected = false;
 
 		// Nom d'utilisateur.
 		public function setUsername(string $username)
