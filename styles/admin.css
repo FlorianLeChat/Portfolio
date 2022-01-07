@@ -109,7 +109,7 @@ footer ul
 {
 	/* Description de la section */
 	color: rgb(var(--theme-text-color));
-	margin: 0 0 1rem;
+	margin: 1rem 10% 1rem 10%;
 	padding: 1rem;
 	grid-area: b;
 	line-height: 1.25rem;
