@@ -24,14 +24,6 @@ header > img
 	transform: translateY(-25%);
 }
 
-/* ------------------- */
-/* Barre de navigation */
-/* ------------------- */
-nav > ul
-{
-	max-width: 372px; /* 360 de base + 12 de marge à droite  */
-}
-
 /* ----------------- */
 /* Parcours scolaire */
 /* ----------------- */

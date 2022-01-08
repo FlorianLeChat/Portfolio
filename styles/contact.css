@@ -17,14 +17,6 @@ header > img
 	transform: translateY(-25%);
 }
 
-/* ------------------- */
-/* Barre de navigation */
-/* ------------------- */
-nav > ul
-{
-	max-width: 407px; /* 395 de base + 12 de marge à droite  */
-}
-
 /* --------------------- */
 /* Formulaire de contact */
 /* --------------------- */
