@@ -14,7 +14,7 @@ html
 hr
 {
 	/* Séparateur entre les deux sections */
-	margin: 5%;
+	margin: 3rem 10% 3rem 10%;
 	border-color: rgb(161, 161, 170);
 }
 
@@ -88,15 +88,26 @@ footer ul
 {
 	/* Corps de la section */
 	display: grid;
-	padding: 3rem 5% 0 5%;
+	padding: 3rem 10% 0 10%;
 
 	/* Utilisation d'une disposition en grille
 		afin de faciliter la modification des données
 		en provenance de la base de données */
 	grid-template:
-		"a a" 5rem
+		"a a" 4rem
 		"b b" auto
 		"c d" 0.25fr / 0.15fr 1fr;
+}
+
+@media screen and (max-width: 768px)
+{
+	/* On modifie les marges sur les téléphones
+		mobiles */
+	#tables, hr
+	{
+		padding-left: 5%;
+		padding-right: 5%;
+	}
 }
 
 #tables > h2, #upload > h2
@@ -236,12 +247,36 @@ footer ul
 /* ----------------------------------- */
 /* Section : téléversement de fichiers */
 /* ----------------------------------- */
+#upload
+{
+	/* Corps de la section */
+	margin: auto;
+	padding: 0 10% 0 10%;
+	max-width: 750px;
+}
+
+@media screen and (max-width: 768px)
+{
+	/* On modifie les marges sur les téléphones
+		mobiles */
+	#upload
+	{
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+
+#upload > p
+{
+	/* Description de la section */
+	margin: 1.5rem 0 1.5rem 0;
+}
+
 #upload > form
 {
 	/* Formulaire de la section */
-	width: 600px;
-	margin: 0 auto;
 	padding: 1.5rem;
+	border-radius: 0.25rem;
 	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
 }
 
@@ -250,11 +285,12 @@ footer ul
 {
 	/* Zone d'ajout d'une image */
 	border: 0.25rem dashed rgb(var(--theme-text-color));
+	margin: 1rem 0 1.5rem 0;
 	position: relative;
-	margin-bottom: 1.5rem;
+	transition: background-color 200ms ease-out, border 200ms ease;
 }
 
-#upload > form div:first-of-type:hover, .image-dropping
+#upload > form div:first-of-type:hover
 {
 	/* Effet de sélection */
 	border: 0.25rem dashed white;
@@ -324,49 +360,73 @@ footer ul
 /* Aperçu des fichiers */
 #upload > form div:last-of-type
 {
+	/* Zone de visualisation de l'image */
 	display: none;
-	text-align: center;
 }
 
-
-/* Source: https://speckyboy.com/custom-file-upload-fields/ */
-.image-title-wrap {
-padding: 0 15px 15px 15px;
-color: #222;
+#upload div > img
+{
+	/* Image visualisée */
+	height: 100%;
+	margin: auto;
+	display: block;
+	max-width: 100%;
 }
 
-.file-upload-image {
-max-height: 200px;
-max-width: 200px;
-margin: auto;
-padding: 20px;
+#upload label
+{
+	/* Texte de la sélection du dossier */
+	display: block;
 }
 
-.remove-image {
-width: 200px;
-margin: 0;
-color: #fff;
-background: #cd4535;
-border: none;
-padding: 10px;
-border-radius: 4px;
-border-bottom: 4px solid #b02818;
-transition: all .2s ease;
-outline: none;
-text-transform: uppercase;
-font-weight: 700;
+#upload select
+{
+	/* Sélecteur du dossier de destination */
+	width: 50%;
+	margin: 1rem 0 1rem 0;
+	border: none;
+	outline: none;
+	padding: 0.5rem;
+	box-sizing: border-box;
+	transition: background-color 300ms ease;
+	line-height: 1; /* Correction étrange pour le normalisateur CSS */
+	border-radius: 0.5rem;
 }
 
-.remove-image:hover {
-background: #c13b2a;
-color: #ffffff;
-transition: all .2s ease;
-cursor: pointer;
+#upload select:focus
+{
+	/* Animation lors de la sélection de l'élément */
+	background-color: beige;
 }
 
-.remove-image:active {
-border: 0;
-transition: all .2s ease;
+#upload div > button
+{
+	/* Bouton de suppression de l'image */
+	color: white;
+	border: none;
+	cursor: pointer;
+	bottom: 3rem;
+	outline: none;
+	padding: 0.5rem;
+	position: relative;
+	border-radius: 0.25rem;
+	background-color: rgb(var(--theme-background-color));
+}
+
+@media screen and (pointer: fine) and (hover: hover)
+{
+	/* On affiche un effet de transition pour les affichages
+		sur ordinateurs uniquement */
+	#upload div > button
+	{
+		transition: background-color 200ms ease;
+	}
+
+	#upload div > button:hover
+	{
+		color: rgb(var(--theme-background-color));
+		background-color: white;
+	}
 }
 
 /* --------------------------------- */
@@ -468,5 +528,5 @@ transition: all .2s ease;
 footer ul
 {
 	/* Modification de la marge supérieure */
-	margin-top: 5%;
+	margin-top: 1.5rem;
 }

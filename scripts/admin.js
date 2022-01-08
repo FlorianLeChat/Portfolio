@@ -71,52 +71,45 @@ if ( text != null && table != null && table.children.length > 0 )
 }
 
 //
+// Permet de contrôler les actions de la section de téléversement
+//	de certains fichiers vers le serveur.
 //
-//
-const upload = document.querySelector("#upload div > input[type=file]");
+const upload_zone = document.querySelector( "#upload > form div:first-of-type" );
+const preview_zone = document.querySelector( "#upload > form div:last-of-type" );
+const upload_button = document.querySelector( "#upload div > input[type=file]" );
 
-if ( upload != null )
+if ( upload_zone != null && upload_button != null )
 {
-	upload.addEventListener( "change", ( _event ) =>
+	// On ajoute un déclencheur sur la zone de sélection lorsque
+	//	l'utilisateur ajoute une image.
+	upload_button.addEventListener( "change", ( _event ) =>
 	{
-		//
-		if (upload.files && upload.files[0])
+		// On vérifie si l'image a bien été reçu par le HTML.
+		if ( upload_button.files && upload_button.files[ 0 ] )
 		{
-			//
+			// On invoque une instance pour charger le fichier.
 			const reader = new FileReader();
-
-			reader.onload = function(event)
+			reader.readAsDataURL( upload_button.files[ 0 ] );				// Demande de chargement.
+			reader.onload = function ( event )
 			{
-				//
-				document.querySelector("#upload > form div:first-of-type").style.display = "none";
-				document.querySelector('#upload > form div:last-of-type').style.display = "block";
-
-				//
-				document.querySelector('#upload > form div:last-of-type').firstElementChild.src = event.target.result;
-
-				//
-				document.querySelector('.image-title').innerHTML = upload.files[0].name;
+				// Dès son chargement terminé, on affiche une section
+				//	de visualisation tout en cachant l'ancienne.
+				upload_zone.style.display = "none";							// Zone de téléversement.
+				preview_zone.style.display = "block";						// Zone de visualisation.
+				preview_zone.firstElementChild.src = event.target.result;	// Chemin d'accès vers l'image.
 			};
-
-			//
-			reader.readAsDataURL(upload.files[0]);
 		}
-		else
-		{
-			//
-			$('.file-upload-input').replaceWith($('.file-upload-input').clone());
-			$('.file-upload-content').hide();
-			$('.image-upload-wrap').show();
-		}
-	})
+	} );
 }
 
-// 	$('.image-upload-wrap').bind('dragover', function ()
-// 	{
-// 		$('.image-upload-wrap').addClass('image-dropping');
-// 	});
-
-// 	$('.image-upload-wrap').bind('dragleave', function ()
-// 	{
-// 		$('.image-upload-wrap').removeClass('image-dropping');
-// 	};
+if ( preview_zone.lastElementChild != null )
+{
+	// On ajoute un déclencheur lorsque l'utilisateur clique
+	//	sur le bouton afin de supprimer l'aperçu de l'image.
+	preview_zone.lastElementChild.addEventListener( "click", ( _event ) =>
+	{
+		upload_zone.style.display = "block";
+		preview_zone.style.display = "none";
+		preview_zone.firstElementChild.src = "#";
+	})
+}
