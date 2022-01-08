@@ -15,7 +15,7 @@
 
 	// On récupère les données brutes des projets.
 	$projects_html = "";
-	$projects_data = $data->getProjects(["identifier", "creation_date", "source_url", "languages"]);
+	$projects_data = $public_data->getTableData("projects", ["identifier", "creation_date", "source_url", "languages"]);
 
 	// On récupère toutes les images présentes dans le répertoire
 	//	des images du projet.

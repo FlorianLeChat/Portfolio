@@ -9,7 +9,7 @@
 
 	// On récupère ensuite les plateformes qui doivent être affichées.
 	$plateforms_html = "";
-	$plateforms_data = $data->getPlateforms();
+	$plateforms_data = $public_data->getTableData("plateforms", ["identifier", "hex_color", "target_url"]);
 
 	foreach ($plateforms_data as $value)
 	{
