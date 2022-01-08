@@ -92,7 +92,7 @@
 
 					// On écrit par la même occassion ces informations dans la base de
 					//	données pour y accéder plus tard dans l'interface d'administration.
-					$data->addMessage($form);
+					$public_data->addFormMessage($form);
 
 					// On met en mémoire cette action pour éviter que l'utilisateur puisse
 					//	en envoyer un autre pendant toute la durée de sa session.

@@ -35,54 +35,31 @@
 		}
 	}
 
-	// Classe permettant de récupérer les données générales du site.
-	class Data extends Connector
+	// Classe permettant de récupérer les données publiques du site.
+	class PublicData extends Connector
 	{
 		//
 		// Permet d'ajouter un message reçu depuis le formulaire dans la base
 		//	de données pour y accéder dans l'interface d'administration.
 		//
-		public function addMessage(Form $data): void
+		public function addFormMessage(Form $data): void
 		{
 			$query = $this->connector->prepare("INSERT INTO messages (`firstname`, `lastname`, `email`, `subject`, `content`) VALUES (?, ?, ?, ?, ?);");
 			$query->execute([$data->getFirstname(), $data->getLastname(), $data->getEmail(), $data->getSubject(), $data->getContent()]);
 		}
 
 		//
-		// Permet de récupérer les contributions utilisateurs depuis la base
-		//	de données.
+		// Permet de récupérer des informations les données d'une ou plusieurs
+		//	colonnes présentes dans la base de données.
 		//
-		public function getContributions(): array
-		{
-			$query = $this->connector->prepare("SELECT `firstname`, `lastname`, `details` FROM `contributions` ORDER BY `position` ASC;");
-			$query->execute();
-
-			return $query->fetchAll();
-		}
-
-		//
-		// Permet de récupérer les plateformes de communications depuis la base
-		//	de données.
-		//
-		public function getPlateforms(): array
-		{
-			$query = $this->connector->prepare("SELECT `identifier`, `hex_color`, `target_url` FROM `plateforms` ORDER BY `position` ASC;");
-			$query->execute();
-
-			return $query->fetchAll();
-		}
-
-		//
-		// Permet de récupérer les projets déclarés dans la base de données.
-		//
-		public function getProjects(array $tables, bool $offset_start = true): array
+		public function getTableData(string $table, array $columns, bool $offset_start = false): array
 		{
 			// On tranforme la liste numérique en chaîne de caractère
 			//	comprise par la base de données via une requête SQL.
-			$tables = count($tables) > 1 ? implode(", ", $tables) : $tables[0];
+			$columns = count($columns) > 1 ? implode(", ", $columns) : $columns[0];
 
-			// On effectue ensuite la requête avec les tables demandés.
-			$query = $this->connector->prepare("SELECT $tables FROM `projects` ORDER BY `position` ASC;");
+			// On effectue ensuite la requête avec les colonnes demandées.
+			$query = $this->connector->prepare("SELECT $columns FROM `$table` ORDER BY `position` ASC;");
 			$query->execute();
 
 			$result = $query->fetchAll();
@@ -97,42 +74,6 @@
 			}
 
 			return $result;
-		}
-
-		//
-		// Permet de récupérer les diplômes et certifications depuis la base
-		//	de données.
-		//
-		public function getDegrees(): array
-		{
-			$query = $this->connector->prepare("SELECT `identifier`, `date`, `graduated` FROM `degrees` ORDER BY `position` ASC;");
-			$query->execute();
-
-			return $query->fetchAll();
-		}
-
-		//
-		// Permet de récupérer les expériences professionnelles depuis la base
-		//	de données.
-		//
-		public function getExperiences(): array
-		{
-			$query = $this->connector->prepare("SELECT `identifier`, `date` FROM `experiences` ORDER BY `position` ASC;");
-			$query->execute();
-
-			return $query->fetchAll();
-		}
-
-		//
-		// Permet de récupérer les compétences professionnelles depuis la base
-		//	de données.
-		//
-		public function getSkills(): array
-		{
-			$query = $this->connector->prepare("SELECT `name`, `level` FROM `skills` ORDER BY `position` ASC;");
-			$query->execute();
-
-			return $query->fetchAll();
 		}
 	}
 ?>

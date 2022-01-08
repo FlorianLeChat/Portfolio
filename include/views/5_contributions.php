@@ -9,7 +9,7 @@
 	// On récupère ensuite toutes les contributions
 	//	depuis la base de données.
 	$contributions_html = "";
-	$contributions_data = $data->getContributions();
+	$contributions_data = $public_data->getTableData("contributions", ["firstname", "lastname", "details"]);
 
 	foreach ($contributions_data as $value)
 	{

@@ -26,7 +26,7 @@
 	$translation = new Portfolio\Controllers\Translation();	// Liaison des traductions au connecteur.
 	$translation->connector = $connector;
 
-	$data = new Portfolio\Controllers\Data();				// Données générales du site.
+	$public_data = new Portfolio\Controllers\PublicData();	// Données publiques du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
 	$language = htmlentities($_POST["language"] ?? "");

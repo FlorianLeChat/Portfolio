@@ -11,7 +11,7 @@
 
 	// On récupère ensuite les données brutes des diplômes
 	// 	avant de les fabriquer.
-	$degrees_data = $data->getDegrees();
+	$degrees_data = $public_data->getTableData("degrees", ["identifier", "date", "graduated"]);
 	$degrees_list_html = "";	// Liste des formations
 	$degrees_resume_html = "";	// Résumé des formations
 
@@ -79,8 +79,8 @@
 
 	// On fait la même chose avec les expériences et les
 	//	compétences professionnelles.
-	$experiences_data = $data->getExperiences();
-	$skills_data = $data->getSkills();
+	$experiences_data = $public_data->getTableData("experiences", ["identifier", "date"]);
+	$skills_data = $public_data->getTableData("skills", ["name", "level"]);
 
 	$experiences_html = "";	// Expériences
 	$skills_html = "";		// Compétences
