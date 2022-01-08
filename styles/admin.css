@@ -165,6 +165,18 @@ footer ul
 	background-color: rgba(var(--theme-text-color), 0.25);
 }
 
+#data > p
+{
+	/* Texte initial */
+	top: 50%;
+	margin: 0;
+	padding: 0.5rem;
+	position: relative;
+	word-wrap: break-word;
+	font-size: 1.5rem;
+	transform: translateY(-50%);
+}
+
 #data table
 {
 	/* Tableau containeur */

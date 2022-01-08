@@ -284,7 +284,7 @@
 					Voici toutes les tables présentes dans la base de données du site.
 					<br /><br />
 					Tout d'abord, sélectionnez une table afin d'afficher une partie de son contenu.
-					Ensuite, vous aurez la possibilité d'ajouter de nouvelles données, les modifier mais également des les supprimer.
+					Ensuite, vous aurez la possibilité d'ajouter de nouvelles données, les modifier mais également de les supprimer.
 					Enfin, par soucis de performances générales, la visualisation du contenu des tables se fait par tranche de résultats.
 					<br /><br />
 					Lors de la première requête, vous obtiendrez les <strong>25</strong> premiers résultats puis en allant de nouveau sur cette
@@ -302,6 +302,10 @@
 
 				<!-- Modification des données -->
 				<form method="POST" id="data">
+					<!-- Texte initial -->
+					<p>Aucune table est actuellement sélectionnée.</p>
+
+					<!-- Table des données -->
 					<table>
 						<?php
 							echo($data_html ?? "\n");

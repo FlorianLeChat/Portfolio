@@ -59,6 +59,18 @@ if ( time != null )
 }
 
 //
+// Permet de supprimer le texte initial « Aucune table sélectionnée »
+//	dès lors que l'utilisateur a bien sélectionné une table.
+//
+const text = document.querySelector( "#data > p" );
+const table = document.querySelector( "#data table" );
+
+if ( text != null && table != null && table.children.length > 0 )
+{
+	text.remove();
+}
+
+//
 //
 //
 const upload = document.querySelector("#upload div > input[type=file]");
