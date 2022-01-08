@@ -11,7 +11,7 @@
 
 	// On récupère ensuite les projets.
 	$projects_html = "<div class=\"row\">\n";
-	$projects_data = $data->getProjects(["identifier"]);
+	$projects_data = $public_data->getTableData("projects", ["identifier"], true);
 	$projects_length = count($projects_data);
 
 	foreach ($projects_data as $key => $value)
