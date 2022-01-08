@@ -76,4 +76,163 @@
 			return $result;
 		}
 	}
+
+	// Classe permettant de gérer les données administrateur.
+	class AdminManager extends Connector
+	{
+		//
+		// Permet de créer la structure HTML qui représente toutes les tables
+		//	présentes dans la base de données du site.
+		//
+		public function getHTMLTables(): string
+		{
+			$html = "";
+			$tables = $this->connector->query("SHOW TABLES;")->fetchAll();
+
+			foreach ($tables as $value)
+			{
+				$name = $value["Tables_in_portfolio"];
+				$html .= <<<LI
+					<li>
+						<input type="submit" name="show" value="$name" />
+					</li>\n
+				LI;
+			}
+
+			return $html;
+		}
+
+		//
+		// Permet de filter les données présentes en paramètres POST
+		//	afin de récupérer celles liées à un identifiant unique.
+		//
+		private function filterPostData(string $identifier, array $data): array
+		{
+			// Filtrage des données par l'identifiant présumé.
+			$data = array_filter($data, function($key)
+				use (&$identifier) // Utiliser « global $identifier; » me retourne une valeur étrange...
+				{
+					return str_contains($key, "_$identifier");
+				},
+			ARRAY_FILTER_USE_KEY);
+
+			// Suppression de l'identifiant sur le nom nom des clés.
+			// 	Exemple : "source_string_25" => "source_string".
+			foreach ($data as $key => $value)
+			{
+				// Remplacement du nom de la clé.
+				$name = str_replace("_$identifier", "", $key);
+
+				// Ajout d'une nouvelle définition.
+				$data[$name] = $value;
+
+				// Suppression de l'ancienne entrée.
+				unset($data[$key]);
+			}
+
+			return $data;
+		}
+
+		//
+		// Permet d'effectuer l'insertion d'une ligne quelconque dans
+		//	la base de données.
+		//
+		private function insertRow(string $table, array $fields, array $values): void
+		{
+			// Génération des champs pour la requête suivante.
+			$fields_parameters = implode(", ", $fields);
+			$values_parameters = implode(", ", array_fill(0, count($values), "?")); // Résultat : "?, ?, ?, ..."
+
+			// Exécution de la requête d'insertion.
+			$query = $this->connector->prepare("INSERT IGNORE INTO `$table` ($fields_parameters) VALUES ($values_parameters);");
+			$query->execute($values);
+		}
+
+		//
+		// Permet de mettre à jour les données actuelles d'une ligne quelconque
+		//	dans la base de données.
+		//
+		private function updateRow(string $identifier, string $table, array $fields, array $values): void
+		{
+			// Génération du champs pour la requête suivante.
+			$length = count($fields) - 1;
+			$parameters = "";
+
+			foreach ($fields as $key => $value)
+			{
+				$parameters .= $value . " = ?";
+
+				if ($key < $length)
+				{
+					// Seul le dernier paramètre ne possède pas de délimiteur.
+					$parameters .= ", ";
+				}
+			}
+
+			// Récupération de la valeur initiale avant modification.
+			$where_data = $this->connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
+
+			$where_field = array_key_first($where_data);	// Nom de la première colonne.
+			$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
+
+			$values[] = $where_value;						// Insertion dans les paramètres de la requête.
+
+			// Exécution de la requête de mise à jour.
+			$query = $this->connector->prepare("UPDATE IGNORE `$table` SET $parameters WHERE $where_field = ?;");
+			$query->execute($values);
+		}
+
+		//
+		// Permet de supprimer une ligne quelconque dans la base de données.
+		//
+		private function deleteRow(string $identifier, string $table): void
+		{
+			// Récupération de la valeur initiale avant modification.
+			$where_data = $this->connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
+
+			$where_field = array_key_first($where_data);	// Nom de la première colonne.
+			$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
+
+			// Exécution de la requête de suppression.
+			$query = $this->connector->prepare("DELETE FROM `$table` WHERE $where_field = ?;");
+			$query->execute([$where_value]);
+		}
+
+		//
+		// Permet de gérer les demandes de changements dans la base de données.
+		//
+		public function requestChange(array $identifier, string $table, array $data): void
+		{
+			// On récupère d'abord les données associées à l'identifiant unique
+			//	présumé de la table.
+			$identifier = filter_var(array_key_first($identifier), FILTER_SANITIZE_NUMBER_INT);
+			$data = $this->filterPostData($identifier, $data);
+
+			// On récupère ensuite le type de modification sur la base de données.
+			$type = array_key_last($data);
+
+			unset($data[$type]);
+
+			// On récupère après toutes les clés et les valeurs des données.
+			$fields = array_keys($data);
+			$values = array_values($data);
+
+			// On effectue enfin l'action à réaliser.
+			if ($type == "add")
+			{
+				// Insertion d'une ligne.
+				$this->insertRow($table, $fields, $values);
+			}
+			elseif ($type == "update")
+			{
+				// Mise à jour d'une ligne.
+				$this->updateRow($identifier, $table, $fields, $values);
+			}
+			elseif ($type == "remove")
+			{
+				// Suppression d'une ligne.
+				$this->deleteRow($identifier, $table);
+			}
+		}
+	}
 ?>
