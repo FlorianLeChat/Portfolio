@@ -4,11 +4,13 @@
 	// Point d'entrée de l'environnement des scripts.
 	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/_main.php");
 
-	// Contrôleur permettant d'authentifier un utilisateur.
+	// Création des classes nécessaires.
 	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
 
-	$user = new Portfolio\Controllers\UserAuthentication();
-	$user->connector = $connector;	// Liaison avec la base de données.
+	$user = new Portfolio\Controllers\UserAuthentication();	// Mécanisme d'authentification.
+	$user->connector = $connector;
+
+	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
 
 	// On définit la page actuelle.
 	$file = "admin";
@@ -23,18 +25,7 @@
 
 	// On récupère ensuite toutes les tables présentes dans
 	//	la base de données du site.
-	$tables_html = "";
-	$tables_data = $connector->query("SHOW TABLES;")->fetchAll();
-
-	foreach ($tables_data as $value)
-	{
-		$name = $value["Tables_in_portfolio"];
-		$tables_html .= <<<LI
-			<li>
-				<input type="submit" name="show" value="$name" />
-			</li>\n
-		LI;
-	}
+	$tables_html = $admin->getHTMLTables();
 
 	// On vérifie après si la requête actuelle est de type POST.
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -56,92 +47,8 @@
 
 		if (is_array($identifier) && count($identifier) > 0)
 		{
-			// On récupère l'identifiant unique présumé de la table avant
-			//	d'y récupérer les données associées.
-			$identifier = filter_var(array_key_first($identifier), FILTER_SANITIZE_NUMBER_INT);
-			$data = array_filter($_POST, function($key)
-			{
-				global $identifier;
-				return str_contains($key, "_$identifier");
-			}, ARRAY_FILTER_USE_KEY);
-
-			// On supprime l'identifiant du nom des clés de la table visée.
-			// 	Exemple : "source_string_25" => "source_string".
-			foreach ($data as $key => $value)
-			{
-				// Remplacement du nom de la clé.
-				$name = str_replace("_$identifier", "", $key);
-
-				// Ajout d'une nouvelle définition.
-				$data[$name] = $value;
-
-				// Suppression de l'ancienne entrée.
-				unset($data[$key]);
-			}
-
-			// On récupère le type de modification sur la base de données.
-			$type = array_key_last($data);
-
-			unset($data[$type]);
-
-			// On récupère toutes les clés et les valeurs des données.
-			$fields_data = array_keys($data);
-			$values_data = array_values($data);
-
-			// On réalise un ajout d'un contenu.
-			if ($type == "add")
-			{
-				// Génération des champs pour la requête suivante.
-				$fields_parameters = implode(", ", $fields_data);
-				$values_parameters = implode(", ", array_fill(0, count($values_data), "?")); // Résultat : "?, ?, ?, ..."
-
-				// Exécution de la requête d'insertion.
-				$query = $connector->prepare("INSERT IGNORE INTO `$table` ($fields_parameters) VALUES ($values_parameters);");
-				$query->execute($values_data);
-			}
-			// On réalise une édition d'un contenu.
-			elseif ($type == "update")
-			{
-				// Génération du champs pour la requête suivante.
-				$length = count($fields_data) - 1;
-				$parameters = "";
-
-				foreach ($fields_data as $key => $value)
-				{
-					$parameters .= $value . " = ?";
-
-					if ($key < $length)
-					{
-						// Seul le dernier paramètre ne possède pas de délimiteur.
-						$parameters .= ", ";
-					}
-				}
-
-				// Récupération de la valeur initiale avant modification.
-				$where_data = $connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
-
-				$where_field = array_key_first($where_data);	// Nom de la première colonne.
-				$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
-
-				$values_data[] = $where_value;					// Insertion dans les paramètres de la requête.
-
-				// Exécution de la requête de mise à jour.
-				$query = $connector->prepare("UPDATE IGNORE `$table` SET $parameters WHERE $where_field = ?;");
-				$query->execute($values_data);
-			}
-			// On réalise la suppression d'un contenu.
-			elseif ($type == "remove")
-			{
-				// Récupération de la valeur initiale avant modification.
-				$where_data = $connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
-
-				$where_field = array_key_first($where_data);	// Nom de la première colonne.
-				$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
-
-				// Exécution de la requête de suppression.
-				$query = $connector->prepare("DELETE FROM `$table` WHERE $where_field = ?;");
-				$query->execute([$where_value]);
-			}
+			// On effectue alors une requête de changement.
+			$admin->requestChange($identifier, $table, $_POST);
 		}
 
 		// On réalise l'affichage d'un contenu.
@@ -154,7 +61,7 @@
 			//		les problèmes de performances.
 			$offset = $_SESSION["table_offset"] ?? 0;
 
-			if ($table == $_SESSION["selected_table"] ?? "")
+			if ($table == ($_SESSION["selected_table"] ?? ""))
 			{
 				// Calcul de la prochaine tranche de résultats.
 				$next_chunk = $offset + 25;
