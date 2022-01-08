@@ -81,28 +81,6 @@
 	class AdminManager extends Connector
 	{
 		//
-		// Permet de créer la structure HTML qui représente toutes les tables
-		//	présentes dans la base de données du site.
-		//
-		public function getHTMLTables(): string
-		{
-			$html = "";
-			$tables = $this->connector->query("SHOW TABLES;")->fetchAll();
-
-			foreach ($tables as $value)
-			{
-				$name = $value["Tables_in_portfolio"];
-				$html .= <<<LI
-					<li>
-						<input type="submit" name="show" value="$name" />
-					</li>\n
-				LI;
-			}
-
-			return $html;
-		}
-
-		//
 		// Permet de filter les données présentes en paramètres POST
 		//	afin de récupérer celles liées à un identifiant unique.
 		//
@@ -199,6 +177,47 @@
 		}
 
 		//
+		// Permet de calculer le décalage qui doit être appliqué à la requête SQL
+		//	pour afficher toutes les lignes d'une table.
+		//
+		private function computeOffset(int $count, string $requested_table, string $previous_table = "", int $offset = 0)
+		{
+			// On vérifie si la table précédente est la même que celle demandée.
+			if ($previous_table == $requested_table)
+			{
+				// On calcule alors la prochaine tranche de résultats.
+				$next_chunk = $offset + $count;
+
+				// On récupère ensuite le nombre limite de résultats.
+				$table_size = $this->connector->query("SELECT COUNT(*) FROM `$requested_table`;")->fetch();
+				$table_size = $table_size["COUNT(*)"];
+
+				if ($next_chunk > $table_size)
+				{
+					// Risque de dépassement du nombre de résultats, on calcule le
+					//	nombre restants de résultats. Si cette valeur est nulle, on
+					//	procède à une réinitialisation du compteur.
+					$left = $table_size - $next_chunk;
+					$offset = $left > 0 ? $left : 0;
+				}
+				else
+				{
+					// Il reste encore des résultats pour la prochaine tranche, on
+					//	continue de procéder à un décalage des résultats.
+					$offset = $next_chunk;
+				}
+			}
+			else
+			{
+				// Dans le cas contraire, on réinitialise ce décalage.
+				$offset = 0;
+			}
+
+			// On retourne enfin le décalage calculé.
+			return $offset;
+		}
+
+		//
 		// Permet de gérer les demandes de changements dans la base de données.
 		//
 		public function requestChange(array $identifier, string $table, array $data): void
@@ -233,6 +252,115 @@
 				// Suppression d'une ligne.
 				$this->deleteRow($identifier, $table);
 			}
+		}
+
+		//
+		// Permet de créer la structure HTML qui représente toutes les tables
+		//	présentes dans la base de données du site.
+		//
+		public function generateHTMLTables(): string
+		{
+			$html = "";
+			$tables = $this->connector->query("SHOW TABLES;")->fetchAll();
+
+			foreach ($tables as $value)
+			{
+				$name = $value["Tables_in_portfolio"];
+				$html .= <<<LI
+					<li>
+						<input type="submit" name="show" value="$name" />
+					</li>\n
+				LI;
+			}
+
+			return $html;
+		}
+
+		//
+		// Permet de créer la structure HTML des données (lignes et colonnes)
+		//	représentatives d'une table SQL.
+		//
+		public function generateHTMLData(int $count, string $table): string
+		{
+			// On calcule d'abord un décalage pour limiter les résultats afin
+			//	d'améliorer les performances d'affichage.
+			$offset = $this->computeOffset($count, $_SESSION["selected_table"], $table, $_SESSION["table_offset"]);
+
+			$_SESSION["table_offset"] = $offset;
+			$_SESSION["selected_table"] = $table;
+
+			// On exécute les requêtes SQL grâce aux paramètres obtenus précédemment.
+			$rows = $this->connector->query("SELECT * FROM $table LIMIT $count OFFSET $offset;")->fetchAll();
+			$columns = $this->connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
+
+			// On fabrique après la structure HTML pour l'en-tête de la table.
+			$html = "<thead>\n\t<tr>\n";
+
+			foreach ($columns as $value)
+			{
+				$html .= "\t\t<th>" . $value["Field"] . "</th>\n";
+			}
+
+			$html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";
+
+			// On fabrique ensuite la structure HTML pour chaque ligne.
+			$html .= "<tbody>\n";
+			$indice = 0;
+
+			foreach ($rows as $row)
+			{
+				// Chaque colonne doit être séparé entre elles.
+				// 	Note : les noms des champs de saisies sont composés de façon
+				//		à pouvoir être identifié indépendamment des autres.
+				$html .= "\t<tr>\n";
+				$identifier = null;
+
+				foreach ($row as $key => $value)
+				{
+					if ($identifier == null)
+					{
+						// On met en mémoire l'identifiant unique (présumé) de la
+						//	colonne pour l'action du formulaire.
+						$identifier = $indice;
+					}
+
+					$html .= "\t\t<td><textarea name=\"" . $key . "_" . $indice . "\">$value</textarea></td>\n";
+				}
+
+				// Création des actionneurs pour le formulaire.
+				$html .= <<<TD
+						<td>
+							<input type="submit" name="update_$identifier" value="Éditer" />
+						</td>
+						<td>
+							<input type="submit" name="remove_$identifier" value="Supprimer" />
+						</td>
+					</tr>\n
+				TD;
+
+				$indice = $indice + 1;
+			}
+
+			// On fabrique enfin une dernière ligne de champs pour ajouter une
+			//	information dans la table.
+			$html .= "\t<tr>\n";
+			$length = count($rows);
+
+			for ($indice = 0; $indice < count($columns); $indice++)
+			{
+				$html .= "\t\t<td><textarea name=\"" . $columns[$indice]["Field"] . "_" . $length . "\"></textarea></td>\n";
+			}
+
+			// Création des actionneurs pour le formulaire.
+			$html .= <<<TD
+					<td>
+						<input type="submit" name="add_$length" value="Ajouter" />
+					</td>
+				</tr>
+			</tbody>\n
+			TD;
+
+			return $html;
 		}
 	}
 ?>

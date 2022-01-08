@@ -23,9 +23,9 @@
 		exit();
 	}
 
-	// On récupère ensuite toutes les tables présentes dans
-	//	la base de données du site.
-	$tables_html = $admin->getHTMLTables();
+	// On génère la structure HTML de toutes les tables présentes
+	//	dans la base de données du site.
+	$tables_html = $admin->generateHTMLTables();
 
 	// On vérifie après si la requête actuelle est de type POST.
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -51,119 +51,12 @@
 			$admin->requestChange($identifier, $table, $_POST);
 		}
 
-		// On réalise l'affichage d'un contenu.
-		//	Note : cette action se réalisera automatique après un ajout,
-		//		une édition ou une suppression d'un contenu.
+		// On réalise l'affichage de tout le contenu de la table.
+		//	Note : cette action se réalisera automatique après une action
+		//		sur la base de données.
 		if (isset($table))
 		{
-			// On récupère toutes les colonnes et les lignes de la table.
-			//	Note : on limite le nombre de récupération à 25 pour éviter
-			//		les problèmes de performances.
-			$offset = $_SESSION["table_offset"] ?? 0;
-
-			if ($table == ($_SESSION["selected_table"] ?? ""))
-			{
-				// Calcul de la prochaine tranche de résultats.
-				$next_chunk = $offset + 25;
-
-				// Récupération du nombre limite de résultats.
-				$table_limit = $connector->query("SELECT COUNT(*) FROM `$table`;")->fetch();
-				$table_limit = $table_limit["COUNT(*)"];
-
-				if ($next_chunk > $table_limit)
-				{
-					// Risque de dépassement du nombre de résultats, on calcule le
-					//	nombre restants de résultats. Si cette valeur est nulle, on
-					//	procède à une réinitialisation du compteur.
-					$left = $table_limit - $next_chunk;
-					$offset = $left > 0 ? $left : 0;
-				}
-				else
-				{
-					// Il reste encore des résultats pour la prochaine tranche, on
-					//	continue de procéder à un décalage des résultats.
-					$offset = $next_chunk;
-				}
-			}
-			else
-			{
-				// Dans le cas contraire, on réinitialise ce décalage.
-				$offset = 0;
-			}
-
-			$_SESSION["selected_table"] = $table;	// Table sélectionnée.
-			$_SESSION["table_offset"] = $offset;	// Décalage actuel.
-
-			// On exécute les requêtes SQL grâce aux paramètres obtenus précédemment.
-			$rows = $connector->query("SELECT * FROM $table LIMIT 25 OFFSET $offset;")->fetchAll();
-			$columns = $connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
-
-			// On fabrique la structure HTML pour l'en-tête de la table.
-			$data_html = "<thead>\n\t<tr>\n";
-
-			foreach ($columns as $value)
-			{
-				$data_html .= "\t\t<th>" . $value["Field"] . "</th>\n";
-			}
-
-			$data_html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";
-
-			// On fabrique la structure HTML pour chaque ligne.
-			$indice = 0;
-			$data_html .= "<tbody>\n";
-
-			foreach ($rows as $row)
-			{
-				// Chaque colonne doit être séparé entre elles.
-				// 	Note : les noms des champs de saisies sont composés de façon
-				//		à pouvoir être identifié indépendamment des autres.
-				$data_html .= "\t<tr>\n";
-				$identifier = null;
-
-				foreach ($row as $key => $value)
-				{
-					if ($identifier == null)
-					{
-						// On met en mémoire l'identifiant unique (présumé) de la
-						//	colonne pour l'action du formulaire.
-						$identifier = $indice;
-					}
-
-					$data_html .= "\t\t<td><textarea name=\"" . $key . "_" . $indice . "\">$value</textarea></td>\n";
-				}
-
-				// Création des actionneurs pour le formulaire.
-				$data_html .= <<<TD
-						<td>
-							<input type="submit" name="update_$identifier" value="Éditer" />
-						</td>
-						<td>
-							<input type="submit" name="remove_$identifier" value="Supprimer" />
-						</td>
-					</tr>\n
-				TD;
-
-				$indice = $indice + 1;
-			}
-
-			// On fabrique une dernière ligne de champs pour ajouter une
-			//	information dans la table.
-			$length = count($rows);
-			$data_html .= "\t<tr>\n";
-
-			for ($indice = 0; $indice < count($columns); $indice++)
-			{
-				$data_html .= "\t\t<td><textarea name=\"" . $columns[$indice]["Field"] . "_" . $length . "\"></textarea></td>\n";
-			}
-
-			// Création des actionneurs pour le formulaire.
-			$data_html .= <<<TD
-					<td>
-						<input type="submit" name="add_$length" value="Ajouter" />
-					</td>
-				</tr>
-			</tbody>\n
-			TD;
+			$data_html = $admin->generateHTMLData(25, $table);
 		}
 	}
 ?>
