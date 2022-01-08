@@ -156,9 +156,27 @@
 
 			if ($table == $_SESSION["selected_table"] ?? "")
 			{
-				// Augmentation du décalage des résultats si la table sélectionnée
-				//	et la même que lors de la dernière requête.
-				$offset += 25;
+				// Calcul de la prochaine tranche de résultats.
+				$next_chunk = $offset + 25;
+
+				// Récupération du nombre limite de résultats.
+				$table_limit = $connector->query("SELECT COUNT(*) FROM `$table`;")->fetch();
+				$table_limit = $table_limit["COUNT(*)"];
+
+				if ($next_chunk > $table_limit)
+				{
+					// Risque de dépassement du nombre de résultats, on calcule le
+					//	nombre restants de résultats. Si cette valeur est nulle, on
+					//	procède à une réinitialisation du compteur.
+					$left = $table_limit - $next_chunk;
+					$offset = $left > 0 ? $left : 0;
+				}
+				else
+				{
+					// Il reste encore des résultats pour la prochaine tranche, on
+					//	continue de procéder à un décalage des résultats.
+					$offset = $next_chunk;
+				}
 			}
 			else
 			{
