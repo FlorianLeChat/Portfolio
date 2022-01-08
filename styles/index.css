@@ -1,9 +1,15 @@
 /* ------- */
 /* En-tête */
 /* ------- */
-header a > img
+header a
 {
 	/* Plateformes de communication */
+	display: inline;
+}
+
+header a > img
+{
+	/* Icône de la plateforme */
 	width: 2rem;
 	filter: drop-shadow(0 0 1rem rgb(var(--theme-color-dark)));
 	margin: 4rem 1rem 0 1rem;
