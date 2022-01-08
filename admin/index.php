@@ -6,11 +6,13 @@
 
 	// Création des classes nécessaires.
 	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
+	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/file.php");
+
+	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
+	$upload = new Portfolio\Controllers\FileHandler();		// Gestion des fichiers téléversés.
 
 	$user = new Portfolio\Controllers\UserAuthentication();	// Mécanisme d'authentification.
 	$user->connector = $connector;
-
-	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
 
 	// On définit la page actuelle.
 	$file = "admin";
@@ -26,6 +28,10 @@
 	// On génère la structure HTML de toutes les tables présentes
 	//	dans la base de données du site.
 	$tables_html = $admin->generateHTMLTables();
+
+	// On génère la structure HTML des dossiers où se trouvent
+	//	les images enregistrées sur le serveur.
+	$path_html = $upload->generateHTMLPath();
 
 	// On vérifie après si la requête actuelle est de type POST.
 	if ($_SERVER["REQUEST_METHOD"] == "POST")
@@ -51,12 +57,25 @@
 			$admin->requestChange($identifier, $table, $_POST);
 		}
 
-		// On réalise l'affichage de tout le contenu de la table.
+		// On réalise ensuite l'affichage de tout le contenu de la table.
 		//	Note : cette action se réalisera automatique après une action
 		//		sur la base de données.
-		if (isset($table))
+		if (!empty($table))
 		{
 			$data_html = $admin->generateHTMLData(25, $table);
+		}
+
+		//
+		// On vérifie enfin si l'utilisateur ne tente pas de téléverser un
+		//	fichier sur le serveur afin de le traiter.
+		//
+		if (!empty($_FILES))
+		{
+			$message = $upload->process($_FILES["upload"], $_POST["path"] ?? "");
+
+			// À la fin du traitement, on affiche le message résultat de la fin.
+			// Celui-ci peut indiquer une erreur ou tout simplement un succès.
+			echo("<script type=\"text/javascript\">alert(\"$message\")</script>");
 		}
 	}
 ?>
@@ -154,10 +173,9 @@
 					<!-- Sélection du dossier de destination -->
 					<label for="path">Choisissez l'emplacement de destination.</label>
 					<select id="path" name="path" required>
-						<option value="1">Décoration</option>
-						<option value="2">Question</option>
-						<option value="3">Probl&egrave;me</option>
-						<option value="4">Autre</option>
+						<?php
+							echo($path_html);
+						?>
 					</select>
 
 					<!-- Sélection des fichiers -->
