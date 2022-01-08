@@ -52,6 +52,7 @@
 			{
 				// On effectue une requête HTTP vers un service de détection
 				//	des connexions sous proxy ou/et VPN.
+				// 	Source : lien de récupération d'une clé - https://iphub.info/
 				$header = ["X-Key: api_key"];
 				$request = curl_init();
 

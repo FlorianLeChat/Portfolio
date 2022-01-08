@@ -121,7 +121,7 @@
 				<!-- Modification des données -->
 				<form method="POST" id="data">
 					<!-- Texte initial -->
-					<p>Aucune table est actuellement sélectionnée.</p>
+					<p>Aucune table n'est actuellement sélectionnée.</p>
 
 					<!-- Table des données -->
 					<table>
@@ -141,30 +141,41 @@
 
 				<!-- Description de la section -->
 				<p>
-					Vous pouvez ici téléverser des fichiers.
+					Cette zone permet de téléverser des fichiers vers le serveur.
+					<br /><br />
+					Cela comprend la sélection de l'emplacement, mais aussi la visualisation du fichier qui sera envoyé.
+					<br /><br />
+					Attention, <strong>seules les images</strong> (de n'importe quelle extension) sont autorisées par le serveur.
+					Une limite de poids d'environ 2 MB est également imposée par PHP.
 				</p>
-
-				<!-- Sélection du dossier -->
 
 				<!-- Bouton de téléversement -->
 				<form method="POST" enctype="multipart/form-data">
-					<div>
-						<!-- Sélection des fichiers -->
-						<input type="file" name="upload" accept="image/*" />
+					<!-- Sélection du dossier de destination -->
+					<label for="path">Choisissez l'emplacement de destination.</label>
+					<select id="path" name="path" required>
+						<option value="1">Décoration</option>
+						<option value="2">Question</option>
+						<option value="3">Probl&egrave;me</option>
+						<option value="4">Autre</option>
+					</select>
 
+					<!-- Sélection des fichiers -->
+					<div>
 						<h3>Pour ajouter une image, glissez et déposez là dans cette zone ou cliquez ici</h3>
+
+						<input type="file" name="upload" accept="image/*" required />
 					</div>
 
+					<!-- Aperçu des fichiers -->
 					<div>
-						<!-- Aperçu des fichiers -->
-						<img src="#" alt="Image" />
+						<img src="#" alt="Image téléversé" />
 
-						<div class="image-title-wrap">
-							<button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-						</div>
+						<button type="button">Supprimer l'image</button>
 					</div>
 
-					<input type="submit" value="Envoyer" /> <!-- onclick="$('.file-upload-input').trigger( 'click' )"> -->
+					<!-- Actionneur pour envoyer le fichier -->
+					<input type="submit" value="Envoyer" />
 				</form>
 			</section>
 		</main>
