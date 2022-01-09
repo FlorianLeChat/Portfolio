@@ -11,12 +11,12 @@
 	$plateforms_html = "";
 	$plateforms_data = $public_data->getTableData("plateforms", ["identifier", "hex_color", "target_url"]);
 
-	foreach ($plateforms_data as $value)
+	foreach ($plateforms_data as $plateform)
 	{
-		$url = $value["target_url"];				// Lien cible
-		$color = $value["hex_color"];				// Couleur hexadécimale de l'icône
-		$identifier = $value["identifier"];			// Identifiant de la plateforme
-		$name = ucfirst(strtolower($identifier));	// Nom de la plateforme (basé sur l'identifiant)
+		$url = $plateform["target_url"];				// Lien cible
+		$color = $plateform["hex_color"];				// Couleur hexadécimale de l'icône
+		$identifier = $plateform["identifier"];			// Identifiant de la plateforme
+		$name = ucfirst(strtolower($identifier));		// Nom de la plateforme (basé sur l'identifiant)
 
 		// On assemble enfin les données pour afficher une série
 		// 	de liens vers chaque plateforme.

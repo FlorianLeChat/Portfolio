@@ -136,11 +136,11 @@
 			$length = count($fields) - 1;
 			$parameters = "";
 
-			foreach ($fields as $key => $value)
+			foreach ($fields as $indice => $field)
 			{
-				$parameters .= $value . " = ?";
+				$parameters .= $field . " = ?";
 
-				if ($key < $length)
+				if ($indice < $length)
 				{
 					// Seul le dernier paramètre ne possède pas de délimiteur.
 					$parameters .= ", ";
@@ -263,9 +263,9 @@
 			$html = "";
 			$tables = $this->connector->query("SHOW TABLES;")->fetchAll();
 
-			foreach ($tables as $value)
+			foreach ($tables as $table)
 			{
-				$name = $value["Tables_in_portfolio"];
+				$name = $table["Tables_in_portfolio"];
 				$html .= <<<LI
 					<li>
 						<input type="submit" name="show" value="$name" />
@@ -296,9 +296,9 @@
 			// On fabrique après la structure HTML pour l'en-tête de la table.
 			$html = "<thead>\n\t<tr>\n";
 
-			foreach ($columns as $value)
+			foreach ($columns as $column)
 			{
-				$html .= "\t\t<th>" . $value["Field"] . "</th>\n";
+				$html .= "\t\t<th>" . $column["Field"] . "</th>\n";
 			}
 
 			$html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";

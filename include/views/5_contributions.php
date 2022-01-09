@@ -11,10 +11,10 @@
 	$contributions_html = "";
 	$contributions_data = $public_data->getTableData("contributions", ["firstname", "lastname", "details"]);
 
-	foreach ($contributions_data as $value)
+	foreach ($contributions_data as $contribution)
 	{
-		$name = $value["firstname"] . " " . $value["lastname"];	// Prénom et nom de famille
-		$details = $value["details"];							// Description de la contribution
+		$name = $contribution["firstname"] . " " . $contribution["lastname"];	// Prénom et nom de famille
+		$details = $contribution["details"];									// Description de la contribution
 
 		// On assemble enfin les données sous forme
 		//	d'items dans une liste.
