@@ -152,11 +152,10 @@
 					//	langue récupérée pour obtenir une traduction « complète ».
 					$translations = array_values($translations);
 
-					foreach ($translations as $value)
+					foreach ($translations as $translation)
 					{
-						$indice = array_search($value["source_string"], $keys);
-
-						$result[$indice] = $value;
+						$indice = array_search($translation["source_string"], $keys);
+						$result[$indice] = $translation;
 					}
 				}
 				else
