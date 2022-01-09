@@ -258,7 +258,7 @@ if ( flag != null && mobile )
 //	de la page par l'utilisateur.
 // 	Source : https://stackoverflow.com/a/45656609
 //
-// if ( window.history.replaceState && window.location.hostname != "localhost" )
-// {
-// 	window.history.replaceState( null, null, window.location.href );
-// }
+if ( window.history.replaceState && window.location.hostname != "localhost" )
+{
+	window.history.replaceState( null, null, window.location.href );
+}
