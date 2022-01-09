@@ -180,7 +180,7 @@
 		// Permet de calculer le décalage qui doit être appliqué à la requête SQL
 		//	pour afficher toutes les lignes d'une table.
 		//
-		private function computeOffset(int $count, string $requested_table, string $previous_table = "", int $offset = 0)
+		private function computeOffset(int $count, string $previous_table, string $requested_table, int $offset)
 		{
 			// On vérifie si la table précédente est la même que celle demandée.
 			if ($previous_table == $requested_table)
@@ -284,7 +284,7 @@
 		{
 			// On calcule d'abord un décalage pour limiter les résultats afin
 			//	d'améliorer les performances d'affichage.
-			$offset = $this->computeOffset($count, $_SESSION["selected_table"], $table, $_SESSION["table_offset"]);
+			$offset = $this->computeOffset($count, $_SESSION["selected_table"] ?? "", $table, $_SESSION["table_offset"] ?? 0);
 
 			$_SESSION["table_offset"] = $offset;
 			$_SESSION["selected_table"] = $table;
