@@ -96,13 +96,13 @@ article div.properties > img
 	/* Icône du projet */
 	float: left;
 	height: 4rem;
-	margin-right: 2rem;
+	margin-right: 1rem;
 }
 
 @media screen and (max-width: 768px)
 {
 	/* Alignement des propriétés du projet
-	au centre sur les petits écrans */
+		au centre sur les petits écrans */
 	article div.properties > h2, article div.properties > h3
 	{
 		/* Nom et date */
@@ -131,38 +131,42 @@ article div.images
 article div.images div
 {
 	/* État initial de la galerie photos */
-	width: calc(100% - 2rem);
 	margin: 0.5rem;
 	border: 1px solid rgb(var(--theme-text-color));
-	display: inline-block;
+	display: none;
 	min-width: 170px;
 	max-width: 400px;
 	background-color: rgb(var(--theme-background-color));
 }
 
-@media screen and (min-width: 768px)
+article div.images div:first-of-type
 {
-	/* Adaptation de la taille du conteneur des
-		photos sur les grands écrans */
-	article div.images div
-	{
-		width: calc(50% - 4rem);
-	}
+	/* Seule la première image est affichée. */
+	display: inline-block;
 }
 
-@media screen and (pointer: fine) and (hover: hover)
+article div.images > img
 {
-	/* On affiche un effet de sélection des photos
-		pour les affichages sur ordinateurs uniquement */
-	article div.images div
+	/* Flèches pour naviguer entre les images */
+	width: 100%;
+	height: 3rem;
+	margin: 0.5rem 0 0.5rem 0;
+}
+
+@media screen and (min-width: 768px)
+{
+	/* On affiche une disposition différente
+		sur les ordinateurs uniquement */
+	article div.images > img
 	{
-		transition: border 300ms ease-in-out;
+		width: 5rem;
+		height: 5rem;
+		margin: 0;
 	}
 
-	article div.images div:hover
-	{
-		border: 1px solid white;
-	}
+	/* Flèche gauche et droite */
+	article div.images img:first-of-type { float: left; }
+	article div.images img:last-of-type { float: right; }
 }
 
 article div.images div img
@@ -176,6 +180,7 @@ article div.images div img
 article div.images div p
 {
 	/* Ajustement de la position de la légende */
+	margin: 0;
 	padding: 1rem;
 	word-break: break-word;
 }
