@@ -15,10 +15,10 @@
 	$degrees_list_html = "";	// Liste des formations
 	$degrees_resume_html = "";	// Résumé des formations
 
-	foreach ($degrees_data as $value)
+	foreach ($degrees_data as $degree)
 	{
-		$date = $value["date"];											// Date de la formation
-		$identifier = $value["identifier"];								// Identifiant de la formation
+		$date = $degree["date"];										// Date de la formation
+		$identifier = $degree["identifier"];							// Identifiant de la formation
 
 		// On sépare en deux le titre et le lieu de la formation
 		//	pour obtenir les deux parties voulues.
@@ -66,7 +66,7 @@
 
 		// On vérifie si la formation s'est terminée par
 		//	l'obtention (ou non) d'un diplôme.
-		if ($value["graduated"] == "1")
+		if ($degree["graduated"] == "1")
 		{
 			$degrees_list_html .= <<<IMAGE
 				\n\n\t\t\t\t<!-- Diplôme obtenu -->
@@ -85,10 +85,10 @@
 	$experiences_html = "";	// Expériences
 	$skills_html = "";		// Compétences
 
-	foreach ($experiences_data as $value)
+	foreach ($experiences_data as $experience)
 	{
-		$date = $value["date"];														// Date de l'expérience
-		$identifier = $value["identifier"];											// Identifiant de l'expérience
+		$date = $experience["date"];												// Date de l'expérience
+		$identifier = $experience["identifier"];									// Identifiant de l'expérience
 
 		$company = $experiences["experience_" . $identifier . "_company"];			// Nom de l'entreprise
 		$location = $experiences["experience_" . $identifier . "_location"];		// Lieu de l'expérience
@@ -108,10 +108,10 @@
 		LI;
 	}
 
-	foreach ($skills_data as $value)
+	foreach ($skills_data as $skill)
 	{
-		$name = $value["name"];
-		$level = $value["level"];
+		$name = $skill["name"];
+		$level = $skill["level"];
 
 		$skills_html .= <<<DIV
 			\t\t<div>

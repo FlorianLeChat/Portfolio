@@ -14,15 +14,15 @@
 	$projects_data = $public_data->getTableData("projects", ["identifier"], true);
 	$projects_length = count($projects_data);
 
-	foreach ($projects_data as $key => $value)
+	foreach ($projects_data as $indice => $project)
 	{
 		// On récupère certaines données des projets.
-		$identifier = $value["identifier"];							// Identifiant du projet
+		$identifier = $project["identifier"];							// Identifiant du projet
 		$name = $projects["project_" . $identifier . "_title"];		// Nom du projet
 
 		// On les assemble par la suite sous forme d'articles.
 		$projects_html .= <<<ARTICLE
-			\t\t<!-- Project numéro $key -->
+			\t\t<!-- Project numéro $indice -->
 			\t\t<article data-image="images/projects/bg_$identifier.jpg">
 				\t\t<h3><a href="?target=projects#$identifier">$name</a></h3>
 			\t\t</article>\n
@@ -30,12 +30,12 @@
 
 		// On sépare les projets par groupe de 3 pour obtenir
 		//	la disposition attendue en CSS.
-		if ($key > 0 && $key % 3 == 0)
+		if ($indice > 0 && $indice % 3 == 0)
 		{
 			// Fin d'un groupe.
 			$projects_html .= "\t\t</div>\n";
 
-			if ($key != $projects_length)
+			if ($indice != $projects_length)
 			{
 				// Un nouveau groupe débute après la fin d'un groupe
 				//	précédent sauf si la boucle a atteint la dernière

@@ -148,11 +148,11 @@
 
 			// On créé après la liste des éléments marqués comme étant un
 			//	dossier et non pas un fichier.
-			foreach ($elements as $value)
+			foreach ($elements as $element)
 			{
-				if (is_dir($this->path . $value))
+				if (is_dir($this->path . $element))
 				{
-					$html .= "<option value=\"$value\">$value</option>\n";
+					$html .= "<option value=\"$element\">$element</option>\n";
 				}
 			}
 

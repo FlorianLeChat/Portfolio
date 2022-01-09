@@ -28,18 +28,18 @@
 	// On construit après la structure HTML du sélecteur de langues.
 	$flags_html = "\n";
 
-	foreach ($languages_data as $value)
+	foreach ($languages_data as $language)
 	{
-		$value = strtolower($value);				// Code ISO-3166 en minuscule
-		$code = $value == "en" ? "gb" : $value;		// Ignore les variantes régionales (ex: FR_fr, FR_ca...)
-		$name = $languages["language_$value"];		// Nom de la langue
+		$language = strtolower($language);				// Code ISO-3166 en minuscule
+		$code = $language == "en" ? "gb" : $language;	// Ignore les variantes régionales (ex: FR_fr, FR_ca...)
+		$name = $languages["language_$language"];		// Nom de la langue
 
 		// On itére enfin à travers les langues pour contruire
 		//	les boutons des drapeaux.
 		$flags_html .= <<<FLAG
 			\t\t<li>
 				\t\t<!-- $name -->
-				\t\t<button type="submit" name="language" value="$value">
+				\t\t<button type="submit" name="language" value="$language">
 					\t\t<img src="images/flags/$code.svg" width="21" height="16" draggable="false" alt="$name" />
 					\t\t<span>$name</span>
 				\t\t</button>
