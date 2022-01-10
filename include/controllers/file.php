@@ -32,7 +32,7 @@
 		];
 
 		//
-		// Permet de convertir une taille binaire en taille lisible par l'homme.
+		// Permet de convertir une taille binaire (bytes) en taille lisible par l'homme.
 		// Source : https://browse-tutorials.com/snippet/convert-file-size-bytes-nice-human-readable-format-php
 		//
 		private function formatSize(int $size): string
@@ -58,24 +58,38 @@
 				return $this::ERROR_MESSAGES[$error];
 			}
 
-			// On récupère le nom du fichier (temporaire et réel).
-			$real_name = $file["name"] ?? "";
-			$temporary_name = $file["tmp_name"] ?? "";
+			// On vérifie d'abord si le nom du fichier est valide.
+			$real_name = $file["name"] ?? "";			// Nom réel.
+			$temporary_name = $file["tmp_name"] ?? "";	// Nom temporaire.
+
+			if (mb_strlen($real_name) > 100)
+			{
+				return "Le nom du fichier sélectionné est trop grand.";
+			}
+
+			if (!preg_match("`^[-0-9A-Z_\.]+$`i", $real_name))
+			{
+				return "Le nom du fichier comporte des caractères invalides.";
+			}
+
+			$this->setName($real_name); // Nom validé.
 
 			// On vérifie si le fichier a bien été téléchargé par le serveur.
 			if (!is_uploaded_file($temporary_name))
 			{
-				return "Le fichier sélectionné n'a pas été téléchargé par le serveur.";;
+				return "Le fichier sélectionné n'a pas été téléchargé par le serveur.";
 			}
 
 			// On vérifie ensuite si le répertoire de sauvegarde est manquant ou invalide.
-			if (!is_dir($this::PATH . $path))
+			// Note : si le répertoire est manquant mais valide, on tente de le créer.
+			if (!is_dir($this::PATH . $path) && !mkdir($this::PATH . $path, 0755, true))
 			{
 				return "Le répertoire de stockage « $path » est manquant ou invalide.";
 			}
 
 			// On vérifie après si le fichier ne dépasse par la limite imposée.
 			$size = filesize($temporary_name);
+			$formatted_size = $this->formatSize($size);
 
 			if ($size <= 0)
 			{
@@ -83,8 +97,10 @@
 			}
 			elseif ($size > $this::MAX)
 			{
-				return "Le fichier dépasse la taille limite de " . $this->formatSize($size) . ".";
+				return "Le fichier dépasse la taille limite de $formatted_size.";
 			}
+
+			$this->setSize($size); // Taille validée.
 
 			// On vérifie alors si l'extension du fichier est autorisée.
 			$type = new \finfo(FILEINFO_MIME_TYPE);
@@ -95,6 +111,8 @@
 				return "L'extension du fichier n'est pas autorisée. Liste des extensions autorisées : " . implode(", ", array_keys($this::EXTENSIONS)) . ".";
 			}
 
+			$this->setType($type); // Extension validée.
+
 			// On déplace enfin le fichier temporaire dans le dossier ciblé.
 			$path = $this::PATH . $path . "/" . $real_name;
 
@@ -102,8 +120,6 @@
 			{
 				// Si tout s'est passé correctement, on affiche le
 				//	récapitulatif du téléversement.
-				$formatted_size = $this->formatSize($size);
-
 				return "Nom du fichier : $real_name\nTaille du fichier : $formatted_size\nType du fichier : $type\nChemin d'accès : $path";
 			}
 			else
