@@ -6,11 +6,11 @@
 
 	class Form
 	{
-		protected $firstname;
-		protected $lastname;
-		protected $email;
-		protected $subject;
-		protected $content;
+		protected string $firstname;
+		protected string $lastname;
+		protected string $email;
+		protected string $subject;
+		protected string $content;
 
 		// Prénom de l'utilisateur.
 		public function setFirstname(string $firstname)

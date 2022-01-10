@@ -11,9 +11,20 @@
 	// Classe permettant de traiter un fichier.
 	class FileHandler extends File
 	{
-		public $message = "";							// Message de validation/d'erreur.
-		private $units = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
-		private $path = "../images/";					// Chemin d'accès vers le dossier des images.
+		public string $message = "";							// Message de validation/d'erreur.
+		private const MAX = 2097152;							// Poids maximal d'un fichier.
+		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
+		private const PATH = "../images/";						// Chemin d'accès vers le dossier des images.
+		private const ERROR_MESSAGES = [						// Messages d'erreurs compréhensibles par l'utilisateur.
+			0 => "Il n'y a pas d'erreur, le fichier a été téléchargé avec succès.",
+			1 => "Le poids du fichier téléchargé dépasse la directive « upload_max_filesize » de la configuration php.ini.",
+			2 => "Le poids du fichier téléchargé dépasse la directive « MAX_FILE_SIZE » spécifié dans le formulaire HTML.",
+			3 => "Le fichier téléchargé n'a été que partiellement transféré.",
+			4 => "Aucun fichier n'a été téléchargé.",
+			6 => "Le dossier temporaire est introuvable.",
+			7 => "Impossible d'écrire le fichier sur le disque.",
+			8 => "Une extension PHP a arrêté le téléchargement du fichier.",
+		];
 
 		//
 		// Permet de convertir une taille binaire en taille lisible par l'homme.
@@ -23,7 +34,7 @@
 		{
 			$power = $size > 0 ? floor(log($size, 1024)) : 0;
 
-			return number_format($size / pow(1024, $power), 2, ",", " ") . " " . $this->units[$power];
+			return number_format($size / pow(1024, $power), 2, ",", " ") . " " . $this::UNITS[$power];
 		}
 
 		//
