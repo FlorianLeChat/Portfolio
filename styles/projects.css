@@ -153,6 +153,23 @@ article div.images > img
 	margin: 0.5rem 0 0.5rem 0;
 }
 
+@media screen and (pointer: fine) and (hover: hover)
+{
+	/* On affiche un effet de sélection pour les affichages
+		sur ordinateurs uniquement */
+	article div.images > img
+	{
+		filter: contrast(50%);
+		transition: filter 500ms linear;
+		will-change: transform;
+	}
+
+	article div.images > img:hover
+	{
+		filter: contrast(100%);
+	}
+}
+
 @media screen and (min-width: 1280px)
 {
 	/* On affiche une disposition différente
