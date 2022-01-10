@@ -64,3 +64,53 @@ for ( const arrow of arrows.values() )
 		}
 	} );
 }
+
+//
+// Permet de contrôler la position horizontale et verticale
+// 	des images de sélection des images.
+//	Note : ceci est un correctif temporaire le temps de trouver
+//		la solution en CSS de manière plus propre.
+//
+function updatePosition( _event )
+{
+	// On vérifie la longueur de la zone d'affiche.
+	if ( window.innerWidth > 1280 )
+	{
+		// Si l'écran est assez grand, on met à jour la position
+		//	des deux images.
+		for ( const arrow of arrows.values() )
+		{
+			// Récupération des deux éléments.
+			const left = arrow.firstElementChild;
+			const right = arrow.lastElementChild;
+
+			// Récupération des dimensions du conteneur et de l'image
+			//	pour calculer le décalage à appliquer.
+			const imageHeight = left.offsetHeight;
+			const containerHeight = arrow.offsetHeight;
+
+			const offset = ( containerHeight / 2 ) - ( imageHeight / 2 );
+
+			// Application des décalages aux images.
+			left.style.position = "relative";
+			left.style.top = `${ offset }px`;
+
+			right.style.position = "relative";
+			right.style.top = `${ offset }px`;
+		}
+	}
+	else
+	{
+		// Dans le cas contraire, on supprime nos correctifs
+		//	et on laisse le CSS gérer de son côté.
+		for ( const arrow of arrows.values() )
+		{
+			arrow.firstElementChild.removeAttribute( "style" );
+			arrow.lastElementChild.removeAttribute( "style" );
+		}
+	}
+}
+
+updatePosition(); // Mise à jour au démarrage.
+
+window.addEventListener( "resize", updatePosition ); // Événément à chaque redimensionnement.
