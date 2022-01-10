@@ -151,11 +151,8 @@
 			// On applique ensuite un micro-correctif pour les systèmes Linux.
 			// Pour plus de détails, rendez-vous dans « views/projects.php »
 			//	entre la ligne 25 et 33.
-			if (PHP_OS == "Linux")
-			{
-				$elements = array_diff($elements, array("..", "."));
-				$elements = array_values($elements);
-			}
+			$elements = array_diff($elements, array("..", "."));
+			$elements = array_values($elements);
 
 			// On créé après la liste des éléments marqués comme étant un
 			//	dossier et non pas un fichier.
