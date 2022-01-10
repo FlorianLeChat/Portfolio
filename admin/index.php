@@ -65,17 +65,15 @@
 			$data_html = $admin->generateHTMLData(25, $table);
 		}
 
-		//
 		// On vérifie enfin si l'utilisateur ne tente pas de téléverser un
 		//	fichier sur le serveur afin de le traiter.
-		//
 		if (!empty($_FILES))
 		{
 			$message = $upload->process($_FILES["upload"], $_POST["path"] ?? "");
 
 			// À la fin du traitement, on affiche le message résultat de la fin.
 			// Celui-ci peut indiquer une erreur ou tout simplement un succès.
-			echo("<script type=\"text/javascript\">alert(\"$message\")</script>");
+			echo("<script type=\"text/javascript\">alert(`Traitement terminé.\n\n$message`)</script>");
 		}
 	}
 ?>
@@ -165,14 +163,14 @@
 					Cela comprend la sélection de l'emplacement, mais aussi la visualisation du fichier qui sera envoyé.
 					<br /><br />
 					Attention, <strong>seules les images</strong> (de n'importe quelle extension) sont autorisées par le serveur.
-					Une limite de poids d'environ 2 MB est également imposée par PHP.
+					Une limite de poids de <?php echo(ini_get("upload_max_filesize")); ?>B est également imposée par PHP.
 				</p>
 
 				<!-- Bouton de téléversement -->
 				<form method="POST" enctype="multipart/form-data">
 					<!-- Sélection du dossier de destination -->
 					<label for="path">Choisissez l'emplacement de destination.</label>
-					<select id="path" name="path" required>
+					<select id="path" name="path">
 						<?php
 							echo($path_html);
 						?>
