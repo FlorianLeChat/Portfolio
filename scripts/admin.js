@@ -102,12 +102,13 @@ if ( upload_zone != null && upload_button != null )
 	} );
 }
 
-if ( preview_zone != null && preview_zone.lastElementChild != null )
+if ( upload_button != null && preview_zone != null && preview_zone.lastElementChild != null )
 {
 	// On ajoute un déclencheur lorsque l'utilisateur clique
 	//	sur le bouton afin de supprimer l'aperçu de l'image.
 	preview_zone.lastElementChild.addEventListener( "click", ( _event ) =>
 	{
+		upload_button.value = "";
 		upload_zone.style.display = "block";
 		preview_zone.style.display = "none";
 		preview_zone.firstElementChild.src = "#";
