@@ -13,7 +13,7 @@
 	{
 		public string $message = "";	// Message de validation/d'erreur.
 		private array $length = [];		// Limites de caractères.
-		private array $fields = [		// Champs du formulaire.
+		private const FIELDS = [		// Champs du formulaire.
 			"firstname",
 			"lastname",
 			"email",
@@ -145,7 +145,7 @@
 		{
 			// On itére à travers tous les champs connus pour
 			//	réaliser les vérifications.
-			foreach ($this->fields as $value)
+			foreach ($this::FIELDS as $value)
 			{
 				// On rend propre l'entrée utilisateur avant
 				//	de la vérifier.

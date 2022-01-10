@@ -15,15 +15,20 @@
 		private const MAX = 2097152;							// Poids maximal d'un fichier.
 		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
 		private const PATH = "../images/";						// Chemin d'accès vers le dossier des images.
+		private const EXTENSIONS = [							// Extensions et types MIME autorisés.
+			"jpg" => "image/jpeg", "jpeg" => "image/jpeg",
+			"png" => "image/png",
+			"gif" => "image/gif",
+		];
 		private const ERROR_MESSAGES = [						// Messages d'erreurs compréhensibles par l'utilisateur.
 			0 => "Il n'y a pas d'erreur, le fichier a été téléchargé avec succès.",
 			1 => "Le poids du fichier téléchargé dépasse la directive « upload_max_filesize » de la configuration php.ini.",
-			2 => "Le poids du fichier téléchargé dépasse la directive « MAX_FILE_SIZE » spécifié dans le formulaire HTML.",
+			2 => "Le poids du fichier téléchargé dépasse la directive « MAX_FILE_SIZE » spécifiée dans le formulaire HTML.",
 			3 => "Le fichier téléchargé n'a été que partiellement transféré.",
 			4 => "Aucun fichier n'a été téléchargé.",
 			6 => "Le dossier temporaire est introuvable.",
 			7 => "Impossible d'écrire le fichier sur le disque.",
-			8 => "Une extension PHP a arrêté le téléchargement du fichier.",
+			8 => "Une extension PHP a arrêtée le téléchargement du fichier.",
 		];
 
 		//
@@ -38,104 +43,74 @@
 		}
 
 		//
-		//
+		// Permet de traiter intégralement le téléversement de fichiers.
 		// 	Note : cette fonction n'utilise pas les informations contenu dans
 		//		la variable $_FILE car elles peuvent manipuler facilement par
 		//		l'utilisateur.
 		//
 		public function process(array $file, string $path): string
 		{
-			// array(5) { ["name"]=> string(41) "13739560_1845045812390581_110493324_n.jpg"
-			// ["type"]=> string(10) "image/jpeg" ["tmp_name"]=> string(14) "/tmp/phpJ8d8mZ" ["error"]=> int(0) ["size"]=> int(48281) }
+			// On vérifie d'abord si le téléchargement s'est effectué sans problème.
+			$error = $file["error"];
 
+			if ($error != UPLOAD_ERR_OK)
+			{
+				return $this::ERROR_MESSAGES[$error];
+			}
 
 			// On récupère le nom du fichier (temporaire et réel).
 			$real_name = $file["name"] ?? "";
-			$temp_name = $file["tmp_name"] ?? "";
+			$temporary_name = $file["tmp_name"] ?? "";
 
 			// On vérifie si le fichier a bien été téléchargé par le serveur.
-			if (!is_uploaded_file($temp_name))
+			if (!is_uploaded_file($temporary_name))
 			{
-				$this->message = "Le fichier sélectionné n'a pas été téléchargé par le serveur.";
-				return false;
+				return "Le fichier sélectionné n'a pas été téléchargé par le serveur.";;
 			}
 
-			// On vérifie si le répertoire de sauvegarde est manquant.
-			if (!is_dir($this->path) && !mkdir($this->path, 0755, true))
+			// On vérifie ensuite si le répertoire de sauvegarde est manquant ou invalide.
+			if (!is_dir($this::PATH . $path))
 			{
-				$this->message = "Le répertoire de stockage « " . $this->path . " » est manquant.";
-				return false;
+				return "Le répertoire de stockage « $path » est manquant ou invalide.";
 			}
 
-			// On vérifie si le téléchargement s'est effectué sans problème.
-			// // Messages d'erreurs compréhensible par l'utilisateur final.
-			// const ERROR_MESSAGES = [
-			// 	0 => "Il n'y a pas d'erreur, le fichier a été téléchargé avec succès.",
-			// 	1 => "Le poids du fichier téléchargé dépasse la directive « upload_max_filesize » de la configuration php.ini.",
-			// 	2 => "Le poids du fichier téléchargé dépasse la directive « MAX_FILE_SIZE » spécifié dans le formulaire HTML.",
-			// 	3 => "Le fichier téléchargé n'a été que partiellement transféré.",
-			// 	4 => "Aucun fichier n'a été téléchargé.",
-			// 	6 => "Le dossier temporaire est introuvable.",
-			// 	7 => "Impossible d'écrire le fichier sur le disque.",
-			// 	8 => "Une extension PHP a arrêté le téléchargement du fichier.",
-			// ];
+			// On vérifie après si le fichier ne dépasse par la limite imposée.
+			$size = filesize($temporary_name);
 
-			// if ($error != UPLOAD_ERR_OK)
-			// {
-			// 	return ERROR_MESSAGES[$error];
-			// }
-
-			// On vérifie si le fichier ne dépasse par la limite imposée.
-			$size = filesize($temp_name);
-
-			if ($size == 0)
+			if ($size <= 0)
 			{
-				$this->message = "Le fichier ne contient rien ou vide de tout contenu.";
-				return false;
+				return "Le fichier ne contient rien ou est vide de tout contenu.";
 			}
-			else if ($size > MAX_SIZE)
+			elseif ($size > $this::MAX)
 			{
-				$this->message = "Le fichier dépasse la taille limite de " . formatSize(MAX_SIZE) . ".";
-				return false;
+				return "Le fichier dépasse la taille limite de " . $this->formatSize($size) . ".";
 			}
-
-			// On vérifie le type du fichier.
-			$type = new finfo(FILEINFO_MIME_TYPE);
-			$type = $type ? $type->file($temp_name) : "";
 
 			// On vérifie alors si l'extension du fichier est autorisée.
-			// Note : on évite d'utiliser l'extension/le type envoyé par le client (risque de manipulation).
-			// if (!array_search($type, EXTENSIONS, true))
-			// 	return "L'extension du fichier n'est pas autorisée. Liste des extensions autorisées : " . implode(", ", array_keys(EXTENSIONS)) . ".";
+			$type = new \finfo(FILEINFO_MIME_TYPE);
+			$type = $type ? $type->file($temporary_name) : "";
 
-			// On vérifie alors si les données ont été validées avec succès.
-			// if (is_bool($state))
-			// {
-			// 	$url = STORAGE_FOLDER . "/" . sha1_file($temp_name) . "." . explode("/", $type)[1];
+			if (!array_search($type, $this::EXTENSIONS, true))
+			{
+				return "L'extension du fichier n'est pas autorisée. Liste des extensions autorisées : " . implode(", ", array_keys($this::EXTENSIONS)) . ".";
+			}
 
-			// 	if (move_uploaded_file($temp_name, $url))
-			// 	{
-			// 		// On déplace enfin le fichier en indiquant ses informations.
-			// 		$size = formatSize($size);
+			// On déplace enfin le fichier temporaire dans le dossier ciblé.
+			$path = $this::PATH . $path . "/" . $real_name;
 
-			// 		return <<<RESULT
-			// 			<ul>
-			// 				<li>Nom du fichier : $real_name</li>
-			// 				<li>Taille du fichier : $size</li>
-			// 				<li>Type du fichier : $type</li>
-			// 				<li>URL final : <a href="$url" target="_blank">$_SERVER[HTTP_HOST]/$url</a></li>
-			// 			</ul>
-			// 		RESULT;
-			// 	}
-			// 	else
-			// 	{
-			// 		// Dans le cas contraire, on affiche un message d'erreur.
-			// 		return "Il est impossible de déplacer le fichier temporaire.";
-			// 	}
-			// }
+			if (move_uploaded_file($temporary_name, $path))
+			{
+				// Si tout s'est passé correctement, on affiche le
+				//	récapitulatif du téléversement.
+				$formatted_size = $this->formatSize($size);
 
-			// On retourne le message d'erreur en tout dernière possibilité.
-			return true;
+				return "Nom du fichier : $real_name\nTaille du fichier : $formatted_size\nType du fichier : $type\nChemin d'accès : $path";
+			}
+			else
+			{
+				// Dans le cas contraire, on affiche une erreur.
+				return "Il est impossible de déplacer le fichier temporaire.";
+			}
 		}
 
 		//
@@ -146,7 +121,7 @@
 		{
 			// On lance une analyse du dossier des images du serveur.
 			$html = "";
-			$elements = scandir($this->path);
+			$elements = scandir($this::PATH);
 
 			// On applique ensuite un micro-correctif pour les systèmes Linux.
 			// Pour plus de détails, rendez-vous dans « views/projects.php »
@@ -158,7 +133,7 @@
 			//	dossier et non pas un fichier.
 			foreach ($elements as $element)
 			{
-				if (is_dir($this->path . $element))
+				if (is_dir($this::PATH . $element))
 				{
 					$html .= "<option value=\"$element\">$element</option>\n";
 				}
