@@ -6,8 +6,8 @@
 
 	class User
 	{
-		protected $username = "";
-		protected $password = "";
+		protected string $username = "";
+		protected string $password = "";
 
 		// Nom d'utilisateur.
 		public function setUsername(string $username)

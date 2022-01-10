@@ -6,9 +6,9 @@
 
 	class File
 	{
-		protected $name = "";
-		protected $type = "";
-		protected $size = 0;
+		protected string $name = "";
+		protected string $type = "";
+		protected int $size = 0;
 
 		// Nom du fichier.
 		public function setName(string $name)
