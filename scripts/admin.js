@@ -102,7 +102,7 @@ if ( upload_zone != null && upload_button != null )
 	} );
 }
 
-if ( preview_zone.lastElementChild != null )
+if ( preview_zone != null && preview_zone.lastElementChild != null )
 {
 	// On ajoute un déclencheur lorsque l'utilisateur clique
 	//	sur le bouton afin de supprimer l'aperçu de l'image.
