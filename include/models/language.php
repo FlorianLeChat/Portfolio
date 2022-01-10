@@ -6,7 +6,7 @@
 
 	class Language
 	{
-		protected $code = "FR";
+		protected string $code = "FR";
 
 		// Code ISO-3166 de la langue.
 		public function setCode(string $code)
