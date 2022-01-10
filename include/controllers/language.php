@@ -127,9 +127,9 @@
 
 				// On filtre et on calcule ensuite le nombre de résultats dans
 				//	la langue actuellement sélectionnée.
-				$translations = array_filter($result, function($value)
+				$translations = array_filter($result, function($translation)
 				{
-					return $value["target_language"] == $this->getCode();
+					return $translation["target_language"] == $this->getCode();
 				});
 
 				// On calcule alors le décalage entre le nombre de traductions
@@ -143,9 +143,9 @@
 					// On réarrange les traductions de la langue sélectionnée et
 					//	on filtre les résultats obtenus précédemment pour s'en servir
 					//	comme « langue de secours ».
-					$result = array_filter($result, function($value)
+					$result = array_filter($result, function($translation)
 					{
-						return $value["target_language"] == "FR";
+						return $translation["target_language"] == "FR";
 					});
 
 					// On fusionne après la langue de secours et les résultats de la
