@@ -16,6 +16,7 @@ html
 
 	/* Traitement des textes */
 	color: white;
+	hyphens: auto;
 	text-align: center;
 	font-family: "Open Sans", sans-serif;
 	text-rendering: optimizeSpeed;
@@ -433,7 +434,7 @@ ul#flags:hover li
 #contributions li
 {
 	/* Description de chaque contribution */
-	margin: 0 5% 3rem 5%;
+	margin: 0 10% 3rem 10%;
 	line-height: 1.5rem;
 }
 
