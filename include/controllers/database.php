@@ -237,20 +237,22 @@
 			$values = array_values($data);
 
 			// On effectue enfin l'action à réaliser.
-			if ($type == "add")
+			switch ($type)
 			{
 				// Insertion d'une ligne.
-				$this->insertRow($table, $fields, $values);
-			}
-			elseif ($type == "update")
-			{
+				case "add":
+					$this->insertRow($table, $fields, $values);
+					break;
+
 				// Mise à jour d'une ligne.
-				$this->updateRow($identifier, $table, $fields, $values);
-			}
-			elseif ($type == "remove")
-			{
+				case "update":
+					$this->updateRow($identifier, $table, $fields, $values);
+					break;
+
 				// Suppression d'une ligne.
-				$this->deleteRow($identifier, $table);
+				case "remove":
+					$this->deleteRow($identifier, $table);
+					break;
 			}
 		}
 

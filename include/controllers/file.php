@@ -11,10 +11,8 @@
 	// Classe permettant de traiter un fichier.
 	class FileHandler extends File
 	{
-		public string $message = "";							// Message de validation/d'erreur.
-		private const MAX = 2097152;							// Poids maximal d'un fichier.
-		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
 		private const PATH = "../images/";						// Chemin d'accès vers le dossier des images.
+		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
 		private const EXTENSIONS = [							// Extensions et types MIME autorisés.
 			"jpg" => "image/jpeg", "jpeg" => "image/jpeg",
 			"png" => "image/png",
@@ -32,14 +30,36 @@
 		];
 
 		//
-		// Permet de convertir une taille binaire (bytes) en taille lisible par l'homme.
+		// Permet de convertir une taille binaire (bytes) en taille sous forme
+		//	de chaîne de caractères lisible par l'homme.
 		// Source : https://browse-tutorials.com/snippet/convert-file-size-bytes-nice-human-readable-format-php
 		//
-		private function formatSize(int $size): string
+		private function bytesToString(int $size): string
 		{
 			$power = $size > 0 ? floor(log($size, 1024)) : 0;
 
 			return number_format($size / pow(1024, $power), 2, ",", " ") . " " . $this::UNITS[$power];
+		}
+
+		//
+		// Permet de convertir une taille sous forme de chaîne de caractères
+		//	en taille binaire (bytes).
+		// Source : https://www.php.net/manual/en/function.ini-get.php#96996
+		//
+		private function stringToBytes(string $size): int
+		{
+			switch (substr($size, -1))
+			{
+				case "M": case "m":
+					// Megabytes
+					return (int)$size * 1048576;
+				case "G": case "g":
+					// Gigabytes
+					return (int)$size * 1073741824;
+				default:
+					// Bytes
+					return (int)$size;
+			}
 		}
 
 		//
@@ -66,8 +86,7 @@
 			{
 				return "Le nom du fichier sélectionné est trop grand.";
 			}
-
-			if (!preg_match("`^[-0-9A-Z_\.]+$`i", $real_name))
+			elseif (!preg_match("`^[-0-9A-Z_\.]+$`i", $real_name))
 			{
 				return "Le nom du fichier comporte des caractères invalides.";
 			}
@@ -89,13 +108,14 @@
 
 			// On vérifie après si le fichier ne dépasse par la limite imposée.
 			$size = filesize($temporary_name);
-			$formatted_size = $this->formatSize($size);
+			$max_size = $this->stringToBytes(ini_get("upload_max_filesize"));
+			$formatted_size = $this->bytesToString($size);
 
 			if ($size <= 0)
 			{
 				return "Le fichier ne contient rien ou est vide de tout contenu.";
 			}
-			elseif ($size > $this::MAX)
+			elseif ($size > $max_size)
 			{
 				return "Le fichier dépasse la taille limite de $formatted_size.";
 			}
