@@ -373,7 +373,7 @@ header > img
 #competences hr
 {
 	/* Séparateur avec les expériences */
-	margin: 2rem 0 2rem 0;
+	margin: 2rem 0 1rem 0;
 	border-color: white;
 }
 
@@ -396,10 +396,13 @@ header > img
 	/* Titre de la compétence */
 	top: 4rem;
 	color: rgb(var(--theme-color-dark));
+	width: 5rem;
 	z-index: 5;
 	display: block;
 	position: relative;
 	font-weight: 700;
+	margin-left: 1rem;
+	margin-right: 1rem;
 }
 
 #competences .circle
