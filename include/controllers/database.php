@@ -264,11 +264,12 @@
 		{
 			$html = "";
 			$tables = $this->connector->query("SHOW TABLES;")->fetchAll();
+			$database = $this->getDatabase();
 
 			foreach ($tables as $table)
 			{
-				$name = $table["Tables_in_portfolio"];
 				$html .= <<<LI
+				$name = $table["Tables_in_$database"];
 					<li>
 						<input type="submit" name="show" value="$name" />
 					</li>\n
