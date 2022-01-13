@@ -2,11 +2,11 @@
 
 <?php
 	// Point d'entrée de l'environnement des scripts.
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/_main.php");
+	include_once("../include/controllers/_main.php");
 
 	// Création des classes nécessaires.
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/file.php");
+	include_once($root . "/include/controllers/user.php");
+	include_once($root . "/include/controllers/file.php");
 
 	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
 	$upload = new Portfolio\Controllers\FileHandler();		// Gestion des fichiers téléversés.
@@ -81,7 +81,7 @@
 <html lang="fr">
 	<!-- En-tête du site -->
 	<?php
-		include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/views/1_head.php");
+		include_once($root . "/include/views/1_head.php");
 	?>
 
 	<body>

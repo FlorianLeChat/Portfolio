@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Controllers;
 
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/models/file.php");
+	include_once($root . "/include/models/file.php");
 
 	use Portfolio\Models\File;
 
