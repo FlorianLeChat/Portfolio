@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Controllers;
 
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/models/database.php");
+	include_once($root . "/include/models/database.php");
 
 	use PDO;
 	use Portfolio\Models\Form;
