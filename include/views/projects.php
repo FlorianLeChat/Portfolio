@@ -87,15 +87,15 @@
 
 					// On assemble les données récupérées pour créer la structure HTML
 					//	requise pour la disposition en CSS.
-					$images .= <<<IMAGE
+					$images .= "
 						\t\t<div>
-							\t\t<a href="$image" target="_blank">
-								\t\t<img src="$image" draggable="false" alt="Image - $indice" />
+							\t\t<a href=\"$image\" target=\"_blank\">
+								\t\t<img src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
 							\t\t</a>
 
 							\t\t<p>$label</p>
 						\t\t</div>\n
-					IMAGE;
+					";
 				}
 			}
 		}
@@ -116,12 +116,12 @@
 		$date = $project["creation_date"];
 		$description = $projects["project_" . $identifier . "_description"];
 
-		$projects_html .= <<<ARTICLE
+		$projects_html .= "
 			<!-- Project : $name -->
-			<article id="$identifier">
-				<div class="properties">
+			<article id=\"$identifier\">
+				<div class=\"properties\">
 					<!-- Icône -->
-					<img src="images/projects/logo_$identifier.svg" width="64" height="64" draggable="false" alt="Logo - $name" />
+					<img src=\"images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" />
 
 					<!-- Nom -->
 					<h2>$title</h2>
@@ -136,20 +136,20 @@
 				<hr />
 
 				<!-- Galerie photos -->
-				<div class="images">
-					<img src="images/decorations/arrow_left.svg" alt="" />
+				<div class=\"images\">
+					<img src=\"images/decorations/arrow_left.svg\" alt=\"\" />
 					$images
-					<img src="images/decorations/arrow_right.svg" alt="" />
+					<img src=\"images/decorations/arrow_right.svg\" alt=\"\" />
 				</div>
 
 				<hr />
 
-				<div class="languages">
+				<div class=\"languages\">
 					<!-- Icônes des langages utilisés -->
 					$logos
 				</div>
 			</article>\n\n
-		ARTICLE;
+		";
 	}
 ?>
 

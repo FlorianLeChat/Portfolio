@@ -18,7 +18,7 @@
 
 		// On assemble enfin les données sous forme
 		//	d'items dans une liste.
-		$contributions_html .= <<<LI
+		$contributions_html .= "
 			\t<li>
 				\t<h3>$name</h3>
 
@@ -26,7 +26,7 @@
 					\t$details
 				\t</p>
 			\t</li>\n
-		LI;
+		";
 	}
 ?>
 

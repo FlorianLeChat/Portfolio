@@ -268,12 +268,12 @@
 
 			foreach ($tables as $table)
 			{
-				$html .= <<<LI
 				$name = $table["Tables_in_$database"];
+				$html .= "
 					<li>
-						<input type="submit" name="show" value="$name" />
+						<input type=\"submit\" name=\"show\" value=\"$name\" />
 					</li>\n
-				LI;
+				";
 			}
 
 			return $html;
@@ -331,15 +331,15 @@
 				}
 
 				// Création des actionneurs pour le formulaire.
-				$html .= <<<TD
+				$html .= "
 						<td>
-							<input type="submit" name="update_$identifier" value="Éditer" />
+							<input type=\"submit\" name=\"update_$identifier\" value=\"Éditer\" />
 						</td>
 						<td>
-							<input type="submit" name="remove_$identifier" value="Supprimer" />
+							<input type=\"submit\" name=\"remove_$identifier\" value=\"Supprimer\" />
 						</td>
 					</tr>\n
-				TD;
+				";
 
 				$indice = $indice + 1;
 			}
@@ -355,13 +355,13 @@
 			}
 
 			// Création des actionneurs pour le formulaire.
-			$html .= <<<TD
+			$html .= "
 					<td>
-						<input type="submit" name="add_$length" value="Ajouter" />
+						<input type=\"submit\" name=\"add_$length\" value=\"Ajouter\" />
 					</td>
 				</tr>
 			</tbody>\n
-			TD;
+			";
 
 			return $html;
 		}
