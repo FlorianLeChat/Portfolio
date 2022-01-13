@@ -21,12 +21,12 @@
 		$name = $projects["project_" . $identifier . "_title"];		// Nom du projet
 
 		// On les assemble par la suite sous forme d'articles.
-		$projects_html .= <<<ARTICLE
+		$projects_html .= "
 			\t\t<!-- Project numéro $indice -->
-			\t\t<article data-image="images/projects/bg_$identifier.jpg">
-				\t\t<h3><a href="?target=projects#$identifier">$name</a></h3>
+			\t\t<article data-image=\"images/projects/bg_$identifier.jpg\">
+				\t\t<h3><a href=\"?target=projects#$identifier\">$name</a></h3>
 			\t\t</article>\n
-		ARTICLE;
+		";
 
 		// On sépare les projets par groupe de 3 pour obtenir
 		//	la disposition attendue en CSS.

@@ -37,8 +37,8 @@
 
 		// On assemble les données pour réaliser une liste des
 		//	formation avec des informations générales.
-		$degrees_list_html .= <<<LI
-			\t\t<li data-image="images/skills/$identifier.jpg">
+		$degrees_list_html .= "
+			\t\t<li data-image=\"images/skills/$identifier.jpg\">
 				\t\t<!-- Intitulé de la formation -->
 				\t\t<h4>$title[0]</h4>
 
@@ -51,27 +51,27 @@
 
 				\t\t<!-- Période de formation -->
 				\t\t<p><strong>$date</strong></p>
-		LI;
+		";
 
 		// On réalise la même chose mais avec le résumé de
 		//	chacune des formations.
 		$description = $degrees["degree_" . $identifier . "_description"];	// Description de la formation
-		$degrees_resume_html .= <<<LI
+		$degrees_resume_html .= "
 			\t\t<li>
 				\t\t<p>
 					\t\t$description
 				\t\t</p>
 			\t\t</li>\n
-		LI;
+		";
 
 		// On vérifie si la formation s'est terminée par
 		//	l'obtention (ou non) d'un diplôme.
 		if ($degree["graduated"] == "1")
 		{
-			$degrees_list_html .= <<<IMAGE
+			$degrees_list_html .= "
 				\n\n\t\t\t\t<!-- Diplôme obtenu -->
-				\t\t\t<img src="images/skills/certificate.svg" width="48" height="48" draggable="false" alt="Diplôme obtenu" />
-			IMAGE;
+				\t\t\t<img src=\"images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" />
+			";
 		}
 
 		$degrees_list_html .= "\n\t\t\t</li>\n";
@@ -94,7 +94,7 @@
 		$location = $experiences["experience_" . $identifier . "_location"];		// Lieu de l'expérience
 		$description = $experiences["experience_" . $identifier . "_description"];	// Description de l'expérience
 
-		$experiences_html .= <<<LI
+		$experiences_html .= "
 			\t\t<li>
 				\t\t<!-- Date et descriptif de l'événement -->
 				\t\t<strong>$company | $date</strong>
@@ -105,7 +105,7 @@
 
 				\t\t<em>$location</em>
 			\t\t</li>\n
-		LI;
+		";
 	}
 
 	foreach ($skills_data as $skill)
@@ -113,12 +113,12 @@
 		$name = $skill["name"];
 		$level = $skill["level"];
 
-		$skills_html .= <<<DIV
+		$skills_html .= "
 			\t\t<div>
 				\t\t<span>$name</span>
-				\t\t<div class="circle" data-level="$level"></div>
+				\t\t<div class=\"circle\" data-level=\"$level\"></div>
 			\t\t</div>\n
-		DIV;
+		";
 	}
 ?>
 
