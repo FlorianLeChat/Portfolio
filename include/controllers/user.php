@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Controllers;
 
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/models/user.php");
+	include_once($root . "/include/models/user.php");
 
 	use Portfolio\Models\User;
 

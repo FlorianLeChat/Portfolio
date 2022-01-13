@@ -2,10 +2,10 @@
 
 <?php
 	// Point d'entrée de l'environnement des scripts.
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/_main.php");
+	include_once("../include/controllers/_main.php");
 
 	// Contrôleur permettant d'authentifier un utilisateur.
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/user.php");
+	include_once($root . "/include/controllers/user.php");
 
 	$user = new Portfolio\Controllers\UserAuthentication();
 	$user->connector = $connector;	// Liaison avec la base de données.
@@ -42,7 +42,7 @@
 <html lang="fr">
 	<!-- En-tête du site -->
 	<?php
-		include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/views/1_head.php");
+		include_once($root . "/include/views/1_head.php");
 	?>
 
 	<body>

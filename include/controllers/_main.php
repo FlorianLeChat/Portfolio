@@ -10,13 +10,36 @@
 
 	error_reporting(E_ALL);
 
+	// Fonction de compatibilité pour PHP 7 et versions inférieures.
+	// Cette fonction est nativement présente sur PHP 8.
+	if (!function_exists("str_contains"))
+	{
+		// Permet de vérifier si une sous-chaîne est présente dans
+		//	une chaîne de caractères spécifiée.
+		// 	Source : https://www.php.net/manual/fr/function.str-contains.php
+		function str_contains(string $source, string $search): bool
+		{
+			return mb_strpos($source, $search) !== false;
+		}
+	}
+
 	// On réalise la création de certaines variables cruciales.
-	// 	Note : on utilise la variable globale « $_SERVER["DOCUMENT_ROOT"] » dans notre cas
-	//		afin de permettre d'inclure ces fichiers indépendamment de la position du fichier
-	//		demandeur comme par exemple le dossier « admin » de la page d'administration.
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/language.php");
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/database.php");
-	include_once($_SERVER["DOCUMENT_ROOT"] . "/portfolio/include/controllers/form.php");
+	// 	Note : on réalise certaines manipulations afin de permettre d'inclure
+	//		ces fichiers indépendamment de la position du fichier demandeur comme
+	//		par exemple le dossier « admin » de la page d'administration.
+	$root = parse_url($_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"]);
+	$root = $root["scheme"] . ":" . $root["path"];
+	$root = str_replace("/admin", "", $root);
+
+	if (str_contains($root, ".php"))
+	{
+		// On supprime aussi le nom des fichiers dans le chemin d'accès.
+		$root = dirname($root);
+	}
+
+	include_once($root . "/include/controllers/language.php");
+	include_once($root . "/include/controllers/database.php");
+	include_once($root . "/include/controllers/form.php");
 
 	session_start();
 
@@ -55,18 +78,5 @@
 	if (empty($file))
 	{
 		$file = "index"; // Page par défaut.
-	}
-
-	// Fonction de compatibilité pour PHP 7 et versions inférieures.
-	// Cette fonction est nativement présente sur PHP 8.
-	if (!function_exists("str_contains"))
-	{
-		// Permet de vérifier si une sous-chaîne est présente dans
-		//	une chaîne de caractères spécifiée.
-		// 	Source : https://www.php.net/manual/fr/function.str-contains.php
-		function str_contains(string $source, string $search): bool
-		{
-			return mb_strpos($source, $search) !== false;
-		}
 	}
 ?>
