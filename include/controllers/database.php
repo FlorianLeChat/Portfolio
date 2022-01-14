@@ -290,11 +290,22 @@
 		// Permet de créer la structure HTML des données (lignes et colonnes)
 		//	représentatives d'une table SQL.
 		//
-		public function generateHTMLData(int $count, string $table): string
+		public function generateHTMLData(int $count, string $table, bool $needOffset): string
 		{
 			// On calcule d'abord un décalage pour limiter les résultats afin
 			//	d'améliorer les performances d'affichage.
-			$offset = $this->computeOffset($count, $_SESSION["selected_table"] ?? "", $table, $_SESSION["table_offset"] ?? 0);
+			// 	Note : ce décalage est uniquement appliqué lors d'une visualisation
+			//		et non pas pour les autres actions.
+			if ($needOffset)
+			{
+				// La page a demandé le modifier le décalage.
+				$offset = $this->computeOffset($count, $_SESSION["selected_table"] ?? "", $table, $_SESSION["table_offset"] ?? 0);
+			}
+			else
+			{
+				// Dans le cas contraire, on reprend la dernière tranche.
+				$offset = $_SESSION["table_offset"] ?? 0;
+			}
 
 			$_SESSION["table_offset"] = $offset;
 			$_SESSION["selected_table"] = $table;
