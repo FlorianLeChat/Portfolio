@@ -10,16 +10,27 @@
 
 	error_reporting(E_ALL);
 
-	// Fonction de compatibilité pour PHP 7 et versions inférieures.
-	// Cette fonction est nativement présente sur PHP 8.
+	// Fonctions de compatibilité pour PHP 7 et versions inférieures.
+	// Ces fonctions sont nativement présentes sur PHP 8.
 	if (!function_exists("str_contains"))
 	{
 		// Permet de vérifier si une sous-chaîne est présente dans
 		//	une chaîne de caractères spécifiée.
-		// 	Source : https://www.php.net/manual/fr/function.str-contains.php
+		// 	Source : https://www.php.net/manual/fr/function.str-contains.php#125977
 		function str_contains(string $source, string $search): bool
 		{
 			return mb_strpos($source, $search) !== false;
+		}
+	}
+
+	if (!function_exists("str_starts_with"))
+	{
+		// Permet de vérifier si une sous-chaîne est présente
+		//	au début d'une chaîne de caractères spécifiée.
+		//	Source : https://www.php.net/manual/fr/function.str-starts-with.php#125913
+		function str_starts_with(string $source, string $search)
+		{
+			return strncmp($source, $search, mb_strlen($search)) === 0;
 		}
 	}
 

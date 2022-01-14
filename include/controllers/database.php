@@ -236,6 +236,13 @@
 			$fields = array_keys($data);
 			$values = array_values($data);
 
+			if ($table == "users" && !str_starts_with($values[1], "$2y$"))
+			{
+				// Si c'est une action dans la table utilisateurs, on vérifie si
+				//	le champ de mot passe doit être hashé.
+				$values[1] = password_hash($values[1], PASSWORD_DEFAULT);
+			}
+
 			// On effectue enfin l'action à réaliser.
 			switch ($type)
 			{
