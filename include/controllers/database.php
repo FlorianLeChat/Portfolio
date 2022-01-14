@@ -326,7 +326,6 @@
 
 			// On fabrique ensuite la structure HTML pour chaque ligne.
 			$html .= "<tbody>\n";
-			$indice = 0;
 
 			foreach ($rows as $row)
 			{
@@ -342,10 +341,10 @@
 					{
 						// On met en mémoire l'identifiant unique (présumé) de la
 						//	colonne pour l'action du formulaire.
-						$identifier = $indice;
+						$identifier = $offset;
 					}
 
-					$html .= "\t\t<td><textarea name=\"" . $key . "_" . $indice . "\">$value</textarea></td>\n";
+					$html .= "\t\t<td><textarea name=\"" . $key . "_" . $offset . "\">$value</textarea></td>\n";
 				}
 
 				// Création des actionneurs pour le formulaire.
@@ -359,7 +358,7 @@
 					</tr>\n
 				";
 
-				$indice = $indice + 1;
+				$offset++;
 			}
 
 			// On fabrique enfin une dernière ligne de champs pour ajouter une
