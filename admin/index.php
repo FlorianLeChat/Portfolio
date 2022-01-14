@@ -62,7 +62,7 @@
 		//		sur la base de données.
 		if (!empty($table))
 		{
-			$data_html = $admin->generateHTMLData(25, $table);
+			$data_html = $admin->generateHTMLData(25, $table, empty($identifier));
 		}
 
 		// On vérifie enfin si l'utilisateur ne tente pas de téléverser un
