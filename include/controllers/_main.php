@@ -39,7 +39,14 @@
 	//		ces fichiers indépendamment de la position du fichier demandeur comme
 	//		par exemple le dossier « admin » de la page d'administration.
 	$root = parse_url($_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"]);
-	$root = $root["scheme"] . ":" . $root["path"];
+	$root = $root["path"];
+
+	if (PHP_OS == "Windows")
+	{
+		// Windows a besoin de savoir la lettre du lecteur.
+		$root = $root["scheme"] . ":" . $root;
+	}
+
 	$root = str_replace("/admin", "", $root);
 
 	if (str_contains($root, ".php"))
