@@ -36,10 +36,10 @@
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
 
 	<!-- Polices & feuilles de style CSS -->
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin />
-	<link rel="stylesheet" href="<?php echo($path . "styles/main.css"); ?>" />
-	<link rel="stylesheet" href="<?php echo($path . "styles/$file.css"); ?>" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="<?php echo($path . "styles/main.css"); ?>" media="screen" />
+	<link rel="stylesheet" href="<?php echo($path . "styles/$file.css"); ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
 	<script src="<?php echo($path . "scripts/main.js"); ?>" defer></script>
