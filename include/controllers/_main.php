@@ -55,9 +55,9 @@
 		$root = dirname($root);
 	}
 
-	include_once($root . "/include/controllers/language.php");
-	include_once($root . "/include/controllers/database.php");
-	include_once($root . "/include/controllers/form.php");
+	require_once ($root . "/include/controllers/language.php");
+	require_once ($root . "/include/controllers/database.php");
+	require_once ($root . "/include/controllers/form.php");
 
 	session_start();
 
