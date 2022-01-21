@@ -82,7 +82,7 @@
 			$real_name = $file["name"] ?? "";			// Nom réel.
 			$temporary_name = $file["tmp_name"] ?? "";	// Nom temporaire.
 
-			if (mb_strlen($real_name) > 100)
+			if (mb_strlen($real_name) > 255)
 			{
 				return "Le nom du fichier sélectionné est trop grand.";
 			}
