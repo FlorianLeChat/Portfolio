@@ -80,12 +80,19 @@
 			$input = $this->checkBounds($input, $field);
 
 			// On vérifie si le champ de l'adresse mail est valide.
-			// 	Note : la fonction "filter_var" semble appliquer la même vérification
-			//		qu'en HTML - https://www.php.net/manual/fr/filter.filters.validate.php
-			if ($field == "email" && !filter_var($input, FILTER_VALIDATE_EMAIL))
+			//	Note : en plus de vérifier similairement au HTML la validité
+			//		du champ, on regarde si le nom de domaine de l'adresse
+			//		est connu pour sa validité.
+			if ($field == "email")
 			{
-				// Si le champ est invalide, on retourne une chaîne vide.
-				$input = "";
+				// Séparation du nom d'utilisateur et du nom de domaine.
+				$domain = explode("@", $input)[1] ?? "invalid";
+
+				if (!filter_var($input, FILTER_VALIDATE_EMAIL) || !checkdnsrr($domain, "MX"))
+				{
+					// Si le champ est invalide, on retourne une chaîne vide.
+					$input = "";
+				}
 			}
 
 			// Si la chaîne de caractères est vide, alors on retourne
