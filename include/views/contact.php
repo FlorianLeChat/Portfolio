@@ -95,11 +95,11 @@
 					//	données pour y accéder plus tard dans l'interface d'administration.
 					$public_data->addFormMessage($form);
 				}
-
-				// On met en mémoire cette action pour éviter que l'utilisateur puisse
-				//	en envoyer un autre pendant toute la durée de sa session.
-				$_SESSION["form_cooldown"] = true;
 			}
+
+			// On met en mémoire cette action pour éviter que l'utilisateur (valide ou non)
+			//	puisse en envoyer un autre pendant toute la durée de sa session.
+			$_SESSION["form_cooldown"] = true;
 		}
 	}
 ?>
