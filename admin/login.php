@@ -2,10 +2,10 @@
 
 <?php
 	// Point d'entrée de l'environnement des scripts.
-	require_once ("../include/controllers/_main.php");
+	require_once("../include/controllers/_main.php");
 
 	// Contrôleur permettant d'authentifier un utilisateur.
-	require_once ($root . "/include/controllers/user.php");
+	require_once($root . "/include/controllers/user.php");
 
 	$user = new Portfolio\Controllers\UserAuthentication();
 	$user->connector = $connector;	// Liaison avec la base de données.
@@ -42,7 +42,7 @@
 <html lang="fr">
 	<!-- En-tête du site -->
 	<?php
-		require_once ($root . "/include/views/1_head.php");
+		require_once($root . "/include/views/1_head.php");
 	?>
 
 	<body>
