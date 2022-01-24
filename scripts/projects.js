@@ -28,6 +28,9 @@ for ( const arrow of arrows.values() )
 				previous.style.display = "inline-block";
 				image.style.display = "none";
 
+				// Mise à jour de la position des flèches de contrôle.
+				updatePosition();
+
 				return;
 			}
 
@@ -56,6 +59,9 @@ for ( const arrow of arrows.values() )
 
 				image.style.display = "none";
 				next.style.display = "inline-block";
+
+				// Mise à jour de la position des flèches de contrôle.
+				updatePosition();
 
 				return;
 			}
@@ -111,6 +117,5 @@ function updatePosition( _event )
 	}
 }
 
-updatePosition(); // Mise à jour au démarrage.
-
-window.addEventListener( "resize", updatePosition ); // Événément à chaque redimensionnement.
+window.addEventListener( "load", updatePosition ); // Mise à jour après le chargement complet de la page.
+window.addEventListener( "resize", updatePosition ); // Mise à jour lors de chaque redimensionnement.
