@@ -215,26 +215,6 @@ for ( const link of links.values() )
 }
 
 //
-// Permet de définir la taille maximale de la barre de navigation.
-//
-const options = document.querySelectorAll( "nav li" );
-const navigation = document.querySelector( "nav ul" );
-
-if ( options !== null && navigation !== null )
-{
-	let width = 0;
-
-	for ( const option of options.values() )
-	{
-		const style = window.getComputedStyle( option );
-
-		width += ( option.offsetWidth + parseInt( style.paddingLeft ) + parseInt( style.paddingRight ) );
-	}
-
-	navigation.style.maxWidth = `${ width - 10 }px`;
-}
-
-//
 // Permet aux utilisateurs sur un téléphone mobile de pouvoir
 //	sélectionner correctement la langue voulue en bloquant
 //	l'action du bouton actif au premier appui.
