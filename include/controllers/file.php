@@ -79,8 +79,8 @@
 			}
 
 			// On vérifie d'abord si le nom du fichier est valide.
-			$real_name = $file["name"] ?? "";			// Nom réel.
-			$temporary_name = $file["tmp_name"] ?? "";	// Nom temporaire.
+			$real_name = basename($file["name"] ?? "");		// Nom réel.
+			$temporary_name = $file["tmp_name"] ?? "";		// Nom temporaire.
 
 			if (mb_strlen($real_name) > 255)
 			{
