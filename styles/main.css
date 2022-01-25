@@ -203,8 +203,11 @@ nav ul
 	/* Alignement automatique centrée de la barre
 		(de façon horizontale) */
 	top: 7rem;
+	left: 5%;
+	right: 5%;
 	margin: 0 auto 0 auto;
 	/* left: 50%;
+	right: 0;
 	display: fixed;
 	transform: translatex(-50%); */
 
