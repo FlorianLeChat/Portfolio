@@ -47,7 +47,8 @@
 		$root = $root["scheme"] . ":" . $root;
 	}
 
-	$root = str_replace("/admin", "", $root);
+	// On supprime toutes les parties de l'URL concernant l'administration.
+	$root = preg_replace("/\/admin\/.*$/", "", $root);
 
 	if (str_contains($root, ".php"))
 	{
