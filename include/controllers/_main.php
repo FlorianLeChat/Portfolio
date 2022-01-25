@@ -28,7 +28,7 @@
 		// Permet de vérifier si une sous-chaîne est présente
 		//	au début d'une chaîne de caractères spécifiée.
 		//	Source : https://www.php.net/manual/fr/function.str-starts-with.php#125913
-		function str_starts_with(string $source, string $search)
+		function str_starts_with(string $source, string $search): bool
 		{
 			return strncmp($source, $search, mb_strlen($search)) === 0;
 		}
