@@ -46,7 +46,7 @@
 			// Remplacement des retours chariot/sauts de ligne SQL par la balise "<br />".
 			$phrase = str_replace("\r\n", "<br />", $phrase);
 
-			// Remplacement des urls formattés "[url=<link>](<name>)" par la balise "<a href="<link>"><name>".
+			// Remplacement des urls formattés "[url=<link>](<name>)" par la balise "<a href="<link>"><name></a>".
 			$phrase = preg_replace("/\[url=([^\]]*)]\(([^)]*)\)/", "<a href=\"$1\">$2</a>", $phrase);
 
 			// Replacement des caractères "**" en balise "<strong>".
