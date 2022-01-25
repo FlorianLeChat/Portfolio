@@ -9,7 +9,7 @@
 	use Portfolio\Models\File;
 
 	// Classe permettant de traiter un fichier.
-	class FileHandler extends File
+	final class FileHandler extends File
 	{
 		private const PATH = "../images/";						// Chemin d'accès vers le dossier des images.
 		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
