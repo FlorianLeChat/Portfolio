@@ -36,7 +36,7 @@
 	}
 
 	// Classe permettant de récupérer les données publiques du site.
-	class PublicData extends Connector
+	final class PublicData extends Connector
 	{
 		//
 		// Permet d'ajouter un message reçu depuis le formulaire dans la base
@@ -78,7 +78,7 @@
 	}
 
 	// Classe permettant de gérer les données administrateur.
-	class AdminManager extends Connector
+	final class AdminManager extends Connector
 	{
 		//
 		// Permet de filter les données présentes en paramètres POST

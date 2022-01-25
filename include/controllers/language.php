@@ -9,7 +9,7 @@
 	use Portfolio\Models\Language;
 
 	// Classe permettant de manipuler les traductions.
-	class Translation extends Language
+	final class Translation extends Language
 	{
 		//
 		// Permet de vérifier si une langue existe au niveau de la base de données.

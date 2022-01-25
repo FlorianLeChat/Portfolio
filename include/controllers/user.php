@@ -9,7 +9,7 @@
 	use Portfolio\Models\User;
 
 	// Classe permettant d'authentifier un utilisateur.
-	class UserAuthentication extends User
+	final class UserAuthentication extends User
 	{
 		//
 		// Permet d'authentifier un utilisateur au niveau de la

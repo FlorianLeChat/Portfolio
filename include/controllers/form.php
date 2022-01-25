@@ -9,7 +9,7 @@
 	use Portfolio\Models\Form;
 
 	// Classe permettant de faire les validations du formulaire.
-	class FormValidation extends Form
+	final class FormValidation extends Form
 	{
 		public string $message = "";	// Message de validation/d'erreur.
 		private array $length = [];		// Limites de caractères.
