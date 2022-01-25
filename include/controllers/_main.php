@@ -10,10 +10,6 @@
 
 	error_reporting(E_ALL);
 
-	// On augmente la taille maximale des requêtes POST.
-	ini_set("post_max_size", "64M");
-	ini_set("upload_max_filesize", "32M");
-
 	// Fonctions de compatibilité pour PHP 7 et versions inférieures.
 	// Ces fonctions sont nativement présentes sur PHP 8.
 	if (!function_exists("str_contains"))
