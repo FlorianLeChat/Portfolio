@@ -10,7 +10,9 @@ Ceci est mon premier portfolio et par la même occasion, l'un de mes premiers si
 * JavaScript (*de base*)
 * Maria DB **10.5**
 
-Par soucis de simplicité, l'entièreté  du code est commenté dans ma langue natale (en Français) mais il sera probablement traduit dans un futur proche.
+**N'espérez pas pouvoir héberger le site, car la base de données n'est pas incluse avec le dépôt étant donné qu'elle contient des données personnelles.**
+
+De plus, par soucis de simplicité, l'entièreté du code est commentée dans ma langue natale (en français) mais il sera probablement traduit dans un futur proche.
 
 ![image](https://user-images.githubusercontent.com/26360935/149189264-ad8c7b32-b565-4770-9555-9d531041ec46.png)
 
@@ -26,6 +28,8 @@ This is my first portfolio and at the same time, one of my first websites using 
 * JavaScript (*Vanilla*)
 * Maria DB **10.5**
 
-For the sake of simplicity, the entire code is commented in my native language (French) but it will probably be translated in the near future.
+**Don't expect to be able to host the site, as the database is not included with the repository since it contains personal data.**
+
+Also, for the simplicity, the whole code is commented in my native language (French) but it will probably be translated in the near future.
 
 ![image](https://user-images.githubusercontent.com/26360935/149189055-8a89d23c-c8cb-47d7-aee7-815e47344dd3.png)
