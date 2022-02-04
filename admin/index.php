@@ -2,11 +2,11 @@
 
 <?php
 	// Point d'entrée de l'environnement des scripts.
-	require_once("../include/controllers/_main.php");
+	require_once("../includes/controllers/_main.php");
 
 	// Création des classes nécessaires.
-	require_once($root . "/include/controllers/user.php");
-	require_once($root . "/include/controllers/file.php");
+	require_once($root . "/includes/controllers/user.php");
+	require_once($root . "/includes/controllers/file.php");
 
 	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
 	$upload = new Portfolio\Controllers\FileHandler();		// Gestion des fichiers téléversés.
@@ -81,7 +81,7 @@
 <html lang="fr">
 	<!-- En-tête du site -->
 	<?php
-		require_once($root . "/include/views/1_head.php");
+		require_once($root . "/includes/views/1_head.php");
 	?>
 
 	<body>
