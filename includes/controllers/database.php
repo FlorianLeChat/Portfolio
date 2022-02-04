@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Controllers;
 
-	require_once($root . "/include/models/database.php");
+	require_once($root . "/includes/models/database.php");
 
 	use PDO;
 	use Portfolio\Models\Form;
