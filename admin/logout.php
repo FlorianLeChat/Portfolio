@@ -27,7 +27,7 @@
 		<main>
 			<!-- Vidéo en arrière-plan -->
 			<video autoplay muted loop>
-				<source src="../media/logout.mp4" type="video/mp4" />
+				<source src="../assets/videos/logout.mp4" type="video/mp4" />
 			</video>
 
 			<!-- Page de déconnexion -->

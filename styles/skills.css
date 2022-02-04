@@ -128,14 +128,14 @@ header > img
 	height: 15px;
 	content: "";
 	position: absolute;
-	background-image: url("../images/decorations/timeline_marker.svg");
+	background-image: url("../assets/images/decorations/timeline_marker.svg");
 }
 
 #list li:hover
 {
 	/* Sélection d'une formation */
 	background-size: cover;
-	background-image: url("../images/placeholder.svg");
+	background-image: url("../assets/images/placeholder.svg");
 	background-color: rgb(var(--theme-color-bright));
 	background-repeat: no-repeat;
 	background-position: 15px center;

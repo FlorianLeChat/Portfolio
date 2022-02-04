@@ -87,7 +87,7 @@ header a > img:hover
 
 	/* Fond d'écran de chaque bouton */
 	background-size: cover;
-	background-image: url("../images/placeholder.svg");
+	background-image: url("../assets/images/placeholder.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 }

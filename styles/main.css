@@ -25,7 +25,7 @@ html
 	min-width: var(--html-min-width);
 	scroll-behavior: smooth;
 
-	background-image: url("../images/decorations/wireframes.png");
+	background-image: url("../assets/images/decorations/wireframes.png");
 	background-color: rgb(var(--theme-background-color));
 	background-attachment: fixed;
 }
@@ -354,7 +354,7 @@ ul#flags:hover li
 
 	/* Image de décoration */
 	background-size: 50%;
-	background-image: url("../images/decorations/arrow_up.svg");
+	background-image: url("../assets/images/decorations/arrow_up.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 
