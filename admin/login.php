@@ -64,7 +64,7 @@
 		<main>
 			<!-- Vidéo en arrière-plan -->
 			<video autoplay muted loop>
-				<source src="../media/login.mp4" type="video/mp4" />
+				<source src="../assets/videos/login.mp4" type="video/mp4" />
 			</video>
 
 			<!-- Formulaire de connexion -->

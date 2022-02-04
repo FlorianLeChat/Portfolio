@@ -19,7 +19,7 @@
 
 	// On récupère toutes les images présentes dans le répertoire
 	//	des images du projet.
-	$path = "images/projects/";
+	$path = "assets/images/projects/";
 	$files = scandir($path);
 
 	if (PHP_OS == "Linux")
@@ -107,7 +107,7 @@
 
 		foreach ($languages as $language)
 		{
-			$logos .= "<img src=\"images/languages/$language.svg\" height=\"40\" draggable=\"false\" alt=\"Logo - $language\" />\n";
+			$logos .= "<img src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" alt=\"Logo - $language\" />\n";
 		}
 
 		// On assemble enfin toutes les parties créées précédemment
@@ -121,7 +121,7 @@
 			<article id=\"$identifier\">
 				<div class=\"properties\">
 					<!-- Icône -->
-					<img src=\"images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" />
+					<img src=\"assets/images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" />
 
 					<!-- Nom -->
 					<h2>$title</h2>
@@ -137,9 +137,9 @@
 
 				<!-- Galerie photos -->
 				<div class=\"images\">
-					<img src=\"images/decorations/arrow_left.svg\" alt=\"\" />
+					<img src=\"assets/images/decorations/arrow_left.svg\" alt=\"\" />
 					$images
-					<img src=\"images/decorations/arrow_right.svg\" alt=\"\" />
+					<img src=\"assets/images/decorations/arrow_right.svg\" alt=\"\" />
 				</div>
 
 				<hr />
