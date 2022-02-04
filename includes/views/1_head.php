@@ -46,5 +46,5 @@
 	<script src="<?php echo($path . "scripts/$file.js"); ?>" defer></script>
 
 	<!-- Icône du document (16x16) -->
-	<link rel="icon" href="<?php echo($path . "images/favicon.ico"); ?>" type="image/x-icon" />
+	<link rel="icon" href="<?php echo($path . "assets/images/favicon.ico"); ?>" type="image/x-icon" />
 </head>

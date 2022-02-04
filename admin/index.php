@@ -106,7 +106,7 @@
 		<main>
 			<!-- Vidéo en arrière-plan -->
 			<video autoplay muted loop>
-				<source src="../media/landing.mp4" type="video/mp4" />
+				<source src="../assets/videos/landing.mp4" type="video/mp4" />
 			</video>
 
 			<!-- Visualisation et édition des tables -->

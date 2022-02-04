@@ -38,7 +38,7 @@
 		// On assemble les données pour réaliser une liste des
 		//	formation avec des informations générales.
 		$degrees_list_html .= "
-			\t\t<li data-image=\"images/skills/$identifier.jpg\">
+			\t\t<li data-image=\"assets/images/skills/$identifier.jpg\">
 				\t\t<!-- Intitulé de la formation -->
 				\t\t<h4>$title[0]</h4>
 
@@ -70,7 +70,7 @@
 		{
 			$degrees_list_html .= "
 				\n\n\t\t\t\t<!-- Diplôme obtenu -->
-				\t\t\t<img src=\"images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" />
+				\t\t\t<img src=\"assets/images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" />
 			";
 		}
 

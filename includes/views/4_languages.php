@@ -40,7 +40,7 @@
 			\t\t<li>
 				\t\t<!-- $name -->
 				\t\t<button type=\"submit\" name=\"language\" value=\"$language\">
-					\t\t<img src=\"images/flags/$code.svg\" width=\"21\" height=\"16\" draggable=\"false\" alt=\"$name\" />
+					\t\t<img src=\"assets/images/flags/$code.svg\" width=\"21\" height=\"16\" draggable=\"false\" alt=\"$name\" />
 					\t\t<span>$name</span>
 				\t\t</button>
 			\t\t</li>\n

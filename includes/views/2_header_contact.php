@@ -17,5 +17,5 @@
 	<h2><?php echo($header_contact["header_contact_subtitle"]); ?></h2>
 
 	<!-- Vagues de fin -->
-	<img src="images/decorations/header_waves_purple.svg" alt="" />
+	<img src="assets/images/decorations/header_waves_purple.svg" alt="" />
 </header>

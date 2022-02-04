@@ -23,7 +23,7 @@
 		// On les assemble par la suite sous forme d'articles.
 		$projects_html .= "
 			\t\t<!-- Project numéro $indice -->
-			\t\t<article data-image=\"images/projects/bg_$identifier.jpg\">
+			\t\t<article data-image=\"assets/images/projects/bg_$identifier.jpg\">
 				\t\t<h3><a href=\"?target=projects#$identifier\">$name</a></h3>
 			\t\t</article>\n
 		";
@@ -62,7 +62,7 @@
 <!-- Projets -->
 <section id="projects">
 	<!-- Vagues du début -->
-	<img src="images/decorations/projects_waves_top_blue.svg" alt="" />
+	<img src="assets/images/decorations/projects_waves_top_blue.svg" alt="" />
 
 	<!-- Listes des projets -->
 	<h3>#projects</h3>
@@ -78,7 +78,7 @@
 	</div>
 
 	<!-- Vagues de fin -->
-	<img src="images/decorations/projects_waves_bottom_blue.svg" alt="" />
+	<img src="assets/images/decorations/projects_waves_bottom_blue.svg" alt="" />
 </section>
 
 <!-- Compétences -->
@@ -91,7 +91,7 @@
 
 	<div>
 		<article>
-			<img src="images/skills/school.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_school_image"]); ?>" />
+			<img src="assets/images/skills/school.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_school_image"]); ?>" />
 
 			<h2>
 				<?php echo($skills["skills_school_title"] . "\n"); ?>
@@ -103,7 +103,7 @@
 		</article>
 
 		<article>
-			<img src="images/skills/work.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_work_image"]); ?>" />
+			<img src="assets/images/skills/work.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_work_image"]); ?>" />
 
 			<h2>
 				<?php echo($skills["skills_work_title"] . "\n"); ?>

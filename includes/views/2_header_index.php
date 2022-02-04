@@ -22,7 +22,7 @@
 		// 	de liens vers chaque plateforme.
 		$plateforms_html .= "
 			<a href=\"$url\" title=\"$name\" target=\"_blank\">
-				<img data-color=\"$color\" src=\"images/platforms/$identifier.svg\" width=\"32\" height=\"32\" draggable=\"false\" alt=\"Image - $name\" />
+				<img data-color=\"$color\" src=\"assets/images/platforms/$identifier.svg\" width=\"32\" height=\"32\" draggable=\"false\" alt=\"Image - $name\" />
 			</a>\n
 		";
 	}
@@ -40,5 +40,5 @@
 	<?php echo($plateforms_html); ?>
 
 	<!-- Vagues de fin -->
-	<img src="images/decorations/header_waves_blue.svg" alt="" />
+	<img src="assets/images/decorations/header_waves_blue.svg" alt="" />
 </header>
