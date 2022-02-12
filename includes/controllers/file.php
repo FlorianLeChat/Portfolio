@@ -99,11 +99,17 @@
 				return "Le fichier sélectionné n'a pas été téléchargé par le serveur.";
 			}
 
-			// On vérifie ensuite si le répertoire de sauvegarde est manquant ou invalide.
+			// On vérifie si le répertoire de stockage est manquant ou invalide.
 			// Note : si le répertoire est manquant mais valide, on tente de le créer.
 			if (!is_dir($this::PATH . $path) && !mkdir($this::PATH . $path, 0755, true))
 			{
 				return "Le répertoire de stockage « $path » est manquant ou invalide.";
+			}
+
+			// On vérifie ensuite si ce même répertoire est accessible en écriture.
+			if (!is_writable($this::PATH . $path))
+			{
+				return "Le répertoire de stockage « $path » n'a pas les autorisations en écriture.";
 			}
 
 			// On vérifie après si le fichier ne dépasse par la limite imposée.
