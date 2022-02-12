@@ -5,8 +5,8 @@
 	require_once("../includes/controllers/_main.php");
 
 	// Création des classes nécessaires.
-	require_once($root . "/includes/controllers/user.php");
-	require_once($root . "/includes/controllers/file.php");
+	require_once("../includes/controllers/user.php");
+	require_once("../includes/controllers/file.php");
 
 	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
 	$upload = new Portfolio\Controllers\FileHandler();		// Gestion des fichiers téléversés.
@@ -81,7 +81,7 @@
 <html lang="fr">
 	<!-- En-tête du site -->
 	<?php
-		require_once($root . "/includes/views/1_head.php");
+		require_once("../includes/views/1_head.php");
 	?>
 
 	<body>
