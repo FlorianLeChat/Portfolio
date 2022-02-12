@@ -36,7 +36,7 @@
 
 				<h2>Vous avez bien été déconnecté de l'administration.</h2>
 
-				<a href="./"><strong>Cliquez ici</strong> pour revenir à la page d'accueil.</a>
+				<a href="../"><strong>Cliquez ici</strong> pour revenir à la page d'accueil.</a>
 			</section>
 		</main>
 	</body>
