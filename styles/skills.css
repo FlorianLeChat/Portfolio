@@ -77,6 +77,9 @@ header > img
 	position: relative;
 	user-select: none;
 	background-color: rgb(var(--theme-box-color));
+	background-image: url("../assets/images/placeholder.svg");
+	background-repeat: no-repeat;
+	background-position: -1000% -1000%;
 }
 
 @media screen and (max-width: 1024px)
@@ -135,9 +138,7 @@ header > img
 {
 	/* Sélection d'une formation */
 	background-size: cover;
-	background-image: url("../assets/images/placeholder.svg");
 	background-color: rgb(var(--theme-color-bright));
-	background-repeat: no-repeat;
 	background-position: 15px center;
 }
 
