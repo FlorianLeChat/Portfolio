@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Controllers;
 
-	require_once($root . "/includes/models/file.php");
+	require_once(__DIR__ . "/../models/file.php");
 
 	use Portfolio\Models\File;
 

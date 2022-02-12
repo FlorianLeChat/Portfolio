@@ -35,30 +35,9 @@
 	}
 
 	// On réalise la création de certaines variables cruciales.
-	// 	Note : on réalise certaines manipulations afin de permettre d'inclure
-	//		ces fichiers indépendamment de la position du fichier demandeur comme
-	//		par exemple le dossier « admin » de la page d'administration.
-	$root = parse_url($_SERVER["DOCUMENT_ROOT"] . $_SERVER["REQUEST_URI"]);
-	$root = $root["path"];
-
-	if (PHP_OS == "Windows")
-	{
-		// Windows a besoin de savoir la lettre du lecteur.
-		$root = $root["scheme"] . ":" . $root;
-	}
-
-	// On supprime toutes les parties de l'URL concernant l'administration.
-	$root = preg_replace("/\/admin\/.*$/", "", $root);
-
-	if (str_contains($root, ".php"))
-	{
-		// On supprime aussi le nom des fichiers dans le chemin d'accès.
-		$root = dirname($root);
-	}
-
-	require_once($root . "/includes/controllers/language.php");
-	require_once($root . "/includes/controllers/database.php");
-	require_once($root . "/includes/controllers/form.php");
+	require_once("language.php");
+	require_once("database.php");
+	require_once("form.php");
 
 	session_start();
 
