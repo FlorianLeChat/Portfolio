@@ -5,7 +5,7 @@
 	require_once("../includes/controllers/_main.php");
 
 	// Contrôleur permettant d'authentifier un utilisateur.
-	require_once($root . "/includes/controllers/user.php");
+	require_once("../includes/controllers/user.php");
 
 	$user = new Portfolio\Controllers\UserAuthentication();
 	$user->connector = $connector;	// Liaison avec la base de données.
@@ -20,7 +20,7 @@
 <html lang="fr">
 	<!-- En-tête du site -->
 	<?php
-		require_once($root . "/includes/views/1_head.php");
+		require_once("../includes/views/1_head.php");
 	?>
 
 	<body>

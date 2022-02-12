@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Models;
 
-	$credentials = fopen($root . "/config.csv", "r");
+	$credentials = fopen(__DIR__ . "/../../config.csv", "r");
 
 	if ($credentials)
 	{
