@@ -151,8 +151,6 @@
 			</article>\n\n
 		";
 	}
-?>
 
-<?php
 	echo($projects_html);
 ?>
