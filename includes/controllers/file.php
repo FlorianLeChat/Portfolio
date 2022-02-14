@@ -11,7 +11,7 @@
 	// Classe permettant de traiter un fichier.
 	final class FileHandler extends File
 	{
-		private const PATH = "../assets/images/";						// Chemin d'accès vers le dossier des images.
+		private const PATH = "../assets/images/";				// Chemin d'accès vers le dossier des images.
 		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
 		private const EXTENSIONS = [							// Extensions et types MIME autorisés.
 			"jpg" => "image/jpeg", "jpeg" => "image/jpeg",

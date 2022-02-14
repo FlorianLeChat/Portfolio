@@ -180,7 +180,7 @@
 		// Permet de calculer le décalage qui doit être appliqué à la requête SQL
 		//	pour afficher toutes les lignes d'une table.
 		//
-		private function computeOffset(int $count, string $previous_table, string $requested_table, int $offset)
+		private function computeOffset(int $count, string $previous_table, string $requested_table, int $offset): int
 		{
 			// On vérifie si la table précédente est la même que celle demandée.
 			if ($previous_table == $requested_table)
@@ -322,11 +322,9 @@
 				$html .= "\t\t<th>" . $column["Field"] . "</th>\n";
 			}
 
-			$html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n";
+			$html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n<tbody>\n";
 
 			// On fabrique ensuite la structure HTML pour chaque ligne.
-			$html .= "<tbody>\n";
-
 			foreach ($rows as $row)
 			{
 				// Chaque colonne doit être séparé entre elles.
