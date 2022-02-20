@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Models;
 
-	class File
+	abstract class File
 	{
 		protected string $name = "";
 		protected string $type = "";

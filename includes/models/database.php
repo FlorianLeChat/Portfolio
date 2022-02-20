@@ -12,7 +12,7 @@
 		$credentials = fgetcsv($credentials);
 	}
 
-	class Database
+	abstract class Database
 	{
 		protected $connector;
 
