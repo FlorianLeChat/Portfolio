@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Models;
 
-	class User
+	abstract class User
 	{
 		protected string $username = "";
 		protected string $password = "";

@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Models;
 
-	class Language
+	abstract class Language
 	{
 		protected string $code = "FR";
 

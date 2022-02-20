@@ -4,7 +4,7 @@
 	//
 	namespace Portfolio\Models;
 
-	class Form
+	abstract class Form
 	{
 		protected string $firstname;
 		protected string $lastname;
