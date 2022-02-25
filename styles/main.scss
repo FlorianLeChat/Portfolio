@@ -181,9 +181,7 @@ footer
 /* ------------------- */
 nav
 {
-	/* Corps de la barre (meilleur équivalent des lignes 207
-		à 211 actuellement commentées mais sortant du
-		flux de la page à cause de la position fixée) */
+	/* Corps de la barre */
 	display: flex;
 	justify-content: center;
 
@@ -208,11 +206,6 @@ nav
 			(de façon horizontale) */
 		top: 7rem;
 		margin: 0 5% 0 5%;
-		/* left: 50%;
-		right: 0;
-		margin: 0 auto 0 auto;
-		display: fixed;
-		transform: translatex(-50%); */
 
 		/* Longueur minimale de la barre */
 		min-width: calc($html-min-width - 7rem); /* padding + position gauche/droite */
