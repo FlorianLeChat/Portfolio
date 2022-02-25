@@ -1,19 +1,21 @@
+// ------------------ //
+// Variables globales //
+// ------------------ //
+$html-min-width: 360px;
+
+$theme-color-dark: rgb(12, 87, 157);		// Couleur foncée du thème
+$theme-color-bright: rgb(0, 133, 255);		// Couleur claire du thème
+
+$theme-text-color: rgb(161, 161, 170);		// Couleur de certains paragraphes
+
+$theme-background-color: rgb(24, 24, 27);	// Couleur de fond par défaut
+$theme-box-color: rgb(39, 39, 42);			// Couleur de certains blocs
+
 /* --------------- */
 /* Document entier */
 /* --------------- */
 html
 {
-	/* Variables globales */
-	--html-min-width: 360px;
-
-	--theme-color-dark: 12, 87, 157;		/* Couleur foncée du thème */
-	--theme-color-bright: 0, 133, 255;		/* Couleur claire du thème */
-
-	--theme-text-color: 161, 161, 170;		/* Couleur de certains paragraphes */
-
-	--theme-background-color: 24, 24, 27;	/* Couleur de fond par défaut */
-	--theme-box-color: 39, 39, 42;			/* Couleur de certains blocs */
-
 	/* Traitement des textes */
 	color: white;
 	hyphens: auto;
@@ -22,11 +24,11 @@ html
 	text-rendering: optimizeSpeed;
 
 	/* Disposition et affichage */
-	min-width: var(--html-min-width);
+	min-width: $html-min-width;
 	scroll-behavior: smooth;
 
 	background-image: url("../assets/images/decorations/wireframes.png");
-	background-color: rgb(var(--theme-background-color));
+	background-color: $theme-background-color;
 	background-attachment: fixed;
 }
 
@@ -63,7 +65,7 @@ noscript
 {
 	/* Sélection du texte */
 	color: white;
-	background-color: rgb(var(--theme-color-dark));
+	background-color: $theme-color-dark;
 }
 
 /* Personnalisation de la barre de défilement
@@ -83,13 +85,13 @@ noscript
 ::-webkit-scrollbar-thumb
 {
 	/* Couleur classique de la barre */
-	background-color: rgb(var(--theme-color-dark));
+	background-color: $theme-color-dark;
 }
 
 ::-webkit-scrollbar-thumb:hover
 {
 	/* Couleur de la barre lors d'une sélection */
-	background-color: rgb(var(--theme-box-color));
+	background-color: $theme-box-color;
 }
 
 /* ------- */
@@ -99,20 +101,38 @@ header
 {
 	/* Corps de l'en-tête */
 	padding: 4rem 2.5rem 4rem 2.5rem;
-	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
-}
+	background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
 
-header h1
-{
-	/* Titre de la page */
-	margin: 0;
-	display: inline-block;
-	font-size: 2rem;
-	margin-top: 13rem;
+	h1
+	{
+		/* Titre de la page */
+		margin: 0;
+		display: inline-block;
+		font-size: 2rem;
+		margin-top: 13rem;
 
-	/* Animation à l'arrivée */
-	animation: blink 500ms step-end infinite alternate;;
-	border-right: 0.150rem solid white;
+		/* Animation à l'arrivée */
+		animation: blink 500ms step-end infinite alternate;;
+		border-right: 0.150rem solid white;
+	}
+
+	h2
+	{
+		/* Description succincte */
+		margin-top: 1rem;
+		font-weight: 400;
+	}
+
+	> img
+	{
+		/* Vagues marquant la fin de l'en-tête */
+		left: 0;
+		z-index: -1;
+		position: absolute;
+		min-width: $html-min-width;
+		max-width: 100%; /* Correctif débile pour Firefox */
+		min-height: 400px;
+	}
 }
 
 @keyframes blink
@@ -125,50 +145,35 @@ header h1
 	}
 }
 
-header h2
-{
-	/* Description succincte */
-	margin-top: 1rem;
-	font-weight: 400;
-}
-
-header > img
-{
-	/* Vagues marquant la fin de l'en-tête */
-	left: 0;
-	z-index: -1;
-	position: absolute;
-	min-width: var(--html-min-width);
-	max-width: 100%; /* Correctif débile pour Firefox */
-	min-height: 400px;
-}
-
 /* ------------ */
 /* Pied-de-page */
 /* ------------ */
-footer ul
+footer
 {
-	/* Apparence de la liste */
-	margin: 0;
-	columns: 3;
-	padding: 1rem 10% 1rem 10%;
-	column-gap: 2rem;
-	column-rule: thin dotted white;
-	list-style-type: none;
-}
+	ul
+	{
+		/* Apparence de la liste */
+		margin: 0;
+		columns: 3;
+		padding: 1rem 10% 1rem 10%;
+		column-gap: 2rem;
+		column-rule: thin dotted white;
+		list-style-type: none;
+	}
 
-footer li
-{
-	/* Espacement interne des options */
-	padding: 1rem 0 1rem 0;
-	word-break: break-word;
-}
+	li
+	{
+		/* Espacement interne des options */
+		padding: 1rem 0 1rem 0;
+		word-break: break-word;
+	}
 
-footer a
-{
-	/* Couleur de fond */
-	padding: 0.5rem;
-	background-color: rgb(var(--theme-color-dark));
+	a
+	{
+		/* Couleur de fond */
+		padding: 0.5rem;
+		background-color: $theme-color-dark;
+	}
 }
 
 /* ------------------- */
@@ -181,37 +186,60 @@ nav
 		flux de la page à cause de la position fixée) */
 	display: flex;
 	justify-content: center;
-}
 
-nav ul
-{
-	/* Propriétés principales de la barre */
-	z-index: 5;
-	position: fixed;
-	border-radius: 6rem;
-	backdrop-filter: blur(0.5rem);
-	-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
-	background-color: rgba(var(--theme-color-bright), 0.7);
+	ul
+	{
+		/* Propriétés principales de la barre */
+		z-index: 5;
+		position: fixed;
+		border-radius: 6rem;
+		backdrop-filter: blur(0.5rem);
+		-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
+		background-color: rgba($theme-color-bright, 0.7);
 
-	/* Suppression du style par défaut des listes
-		non ordonnées */
-	list-style-type: none;
+		/* Suppression du style par défaut des listes
+			non ordonnées */
+		list-style-type: none;
 
-	/* Ajustement de l'espacement de la barre */
-	padding: 1.25rem 2.5rem 1.25rem 2.5rem;
+		/* Ajustement de l'espacement de la barre */
+		padding: 1.25rem 2.5rem 1.25rem 2.5rem;
 
-	/* Alignement automatique centrée de la barre
-		(de façon horizontale) */
-	top: 7rem;
-	margin: 0 5% 0 5%;
-	/* left: 50%;
-	right: 0;
-	margin: 0 auto 0 auto;
-	display: fixed;
-	transform: translatex(-50%); */
+		/* Alignement automatique centrée de la barre
+			(de façon horizontale) */
+		top: 7rem;
+		margin: 0 5% 0 5%;
+		/* left: 50%;
+		right: 0;
+		margin: 0 auto 0 auto;
+		display: fixed;
+		transform: translatex(-50%); */
 
-	/* Longueur minimale de la barre */
-	min-width: calc(var(--html-min-width) - 7rem); /* padding + position gauche/droite */
+		/* Longueur minimale de la barre */
+		min-width: calc($html-min-width - 7rem); /* padding + position gauche/droite */
+	}
+
+	li
+	{
+		/* Affichage des textes de la liste */
+		display: inline;
+		padding: 0 0.75rem 0 0.75rem;
+		line-height: 1.5rem;
+		user-select: none;
+	}
+
+	li:first-of-type
+	{
+		/* Suppression de la marge à gauche
+			pour la première option */
+		padding-left: 0;
+	}
+
+	li:last-of-type
+	{
+		/* Suppression de la marge à droite
+			pour la dernière option */
+		padding-right: 0;
+	}
 }
 
 @-moz-document url-prefix()
@@ -221,37 +249,14 @@ nav ul
 		à cause de certains bugs. Source : https://bugzil.la/1578503 */
 	nav ul
 	{
-		background-color: rgba(var(--theme-color-bright), 0.9);
+		background-color: rgba($theme-color-bright, 0.9);
 	}
-}
-
-nav li
-{
-	/* Affichage des textes de la liste */
-	display: inline;
-	padding: 0 0.75rem 0 0.75rem;
-	line-height: 1.5rem;
-	user-select: none;
-}
-
-nav li:first-of-type
-{
-	/* Suppression de la marge à gauche
-		pour la première option */
-	padding-left: 0;
-}
-
-nav li:last-of-type
-{
-	/* Suppression de la marge à droite
-		pour la dernière option */
-	padding-right: 0;
 }
 
 /* ---------------------- */
 /* Sélection de la langue */
 /* ---------------------- */
-#flags
+ul#flags
 {
 	/* Positionnement */
 	top: 0;
@@ -269,27 +274,54 @@ nav li:last-of-type
 	backdrop-filter: blur(0.5rem); /* Ne fonctionne pas sur Firefox */
 	-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
 	background-color: transparent;
-}
 
-#flags li
-{
-	/* État initial d'un item de la liste */
-	padding: 10px;
-	transition: background-color 300ms ease-out;
-}
+	li
+	{
+		/* État initial d'un item de la liste */
+		padding: 10px;
+		transition: background-color 300ms ease-out;
+	}
 
-ul#flags:hover li
-{
-	/* Apparition des items lors du passage
-		de la souris */
-	display: block;
-}
+	&:hover li
+	{
+		/* Apparition des items lors du passage
+			de la souris */
+		display: block;
+	}
 
-#flags li:nth-of-type(n+2)
-{
-	/* Tous les éléments (sauf le premier) sont
-		cachés par défaut */
-	display: none;
+	li:nth-of-type(n+2)
+	{
+		/* Tous les éléments (sauf le premier) sont
+			cachés par défaut */
+		display: none;
+	}
+
+	button
+	{
+		/* Bouton de sélection */
+		border: 0;
+		margin: 0;
+		cursor: pointer;
+		padding: 0;
+		user-select: none;
+		background: none;
+	}
+
+	span
+	{
+		/* Nom de la langue */
+		color: white;
+		display: block;
+		font-size: 0.875rem;
+		margin-top: 0.5rem;
+	}
+
+	img
+	{
+		/* Image représentative de la langue */
+		width: calc(21.33px * 2.5); /* Gardons les proportions originales... */
+		height: calc(16px * 2.5);
+	}
 }
 
 @media screen and (pointer: fine) and (hover: hover)
@@ -298,35 +330,8 @@ ul#flags:hover li
 	{
 		/* Animation de survol d'un item
 			(sélection avec maintien) */
-		background-color: rgb(var(--theme-color-bright));
+		background-color: $theme-color-bright;
 	}
-}
-
-#flags button
-{
-	/* Bouton de sélection */
-	border: 0;
-	margin: 0;
-	cursor: pointer;
-	padding: 0;
-	user-select: none;
-	background: none;
-}
-
-#flags span
-{
-	/* Nom de la langue */
-	color: white;
-	display: block;
-	font-size: 0.875rem;
-	margin-top: 0.5rem;
-}
-
-#flags img
-{
-	/* Image représentative de la langue */
-	width: calc(21.33px * 2.5); /* Gardons les proportions originales... */
-	height: calc(16px * 2.5);
 }
 
 /* -------------------------- */
@@ -350,7 +355,7 @@ ul#flags:hover li
 	/* Apparence */
 	border: none;
 	opacity: 0;
-	background-color: rgb(var(--theme-color-dark));
+	background-color: $theme-color-dark;
 
 	/* Image de décoration */
 	background-size: 50%;
@@ -361,17 +366,17 @@ ul#flags:hover li
 	filter: contrast(50%);
 	transition: filter 300ms linear, opacity 200ms ease-out;
 	will-change: transform; /* MERCI CHROME... : https://stackoverflow.com/a/62403969 */
-}
 
-#scrollTop.show
-{
-	opacity: 1;
-}
+	.show
+	{
+		opacity: 1;
+	}
 
-#scrollTop:hover
-{
-	cursor: pointer;
-	filter: contrast(100%); /* Voir le dernier commentaire */
+	&:hover
+	{
+		cursor: pointer;
+		filter: contrast(100%); /* Voir le dernier commentaire */
+	}
 }
 
 /* ------------------------- */
@@ -388,25 +393,58 @@ ul#flags:hover li
 	height: 100%;
 	position: fixed;
 	overflow-y: scroll;
-	scrollbar-width: none;  /* Cache la barre de défilement (Firefox uniquement) */
+	scrollbar-width: none; 	/* Cache la barre de défilement (Firefox uniquement) */
 
 	/* Apparence de l'overlay */
 	cursor: pointer;
 	display: none;
 	z-index: 15;
 	background-color: rgba(0, 0, 0, 0.95);
-}
 
-#contributions::-webkit-scrollbar
-{
-	display: none;  /* Cache la barre de défilement pour Chrome & co */
-}
+	::-webkit-scrollbar
+	{
+		display: none; 		/* Cache la barre de défilement pour Chrome & co */
+	}
 
-#contributions > h2
-{
-	/* Titre de l'overlay */
-	margin: 6rem 10% 6rem 10%;
-	font-size: 3rem;
+	> h2
+	{
+		/* Titre de l'overlay */
+		margin: 6rem 10% 6rem 10%;
+		font-size: 3rem;
+	}
+
+	> ul
+	{
+		/* Liste des personnes */
+		padding-left: 0;
+		list-style-type: none;
+	}
+
+	li
+	{
+		/* Description de chaque contribution */
+		margin: 0 10% 3rem 10%;
+		line-height: 1.5rem;
+	}
+
+	li:hover
+	{
+		opacity: 1;
+		transition: opacity 500ms ease;
+	}
+
+	h3
+	{
+		/* Identité du contributeur */
+		font-size: 2rem;
+		text-decoration: underline;
+	}
+
+	p
+	{
+		/* Description de la contribution */
+		color: $theme-text-color;
+	}
 }
 
 @media (prefers-reduced-motion: no-preference)
@@ -436,20 +474,6 @@ ul#flags:hover li
 	}
 }
 
-#contributions > ul
-{
-	/* Liste des personnes */
-	padding-left: 0;
-	list-style-type: none;
-}
-
-#contributions li
-{
-	/* Description de chaque contribution */
-	margin: 0 10% 3rem 10%;
-	line-height: 1.5rem;
-}
-
 @media screen and (pointer: fine) and (hover: hover)
 {
 	/* On affiche un effet de sélection pour les affichages
@@ -460,25 +484,6 @@ ul#flags:hover li
 		opacity: 0.5;
 		transition: opacity 500ms ease;
 	}
-}
-
-#contributions li:hover
-{
-	opacity: 1;
-	transition: opacity 500ms ease;
-}
-
-#contributions h3
-{
-	/* Identité du contributeur */
-	font-size: 2rem;
-	text-decoration: underline;
-}
-
-#contributions p
-{
-	/* Description de la contribution */
-	color: rgb(var(--theme-text-color));
 }
 
 /* ----- */
@@ -497,7 +502,7 @@ h2 a:active, article a:active, li > a:active
 {
 	/* Passage progressif en bleu lors de l'appui
 		(active + hover) */
-	background-color: rgb(var(--theme-color-dark));
+	background-color: $theme-color-dark;
 }
 
 h2 a:hover, article a:hover, li > a:hover
