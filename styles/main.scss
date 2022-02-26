@@ -226,20 +226,20 @@ nav
 		padding: 0 0.75rem 0 0.75rem;
 		line-height: 1.5rem;
 		user-select: none;
-	}
 
-	li:first-of-type
-	{
-		// Suppression de la marge à gauche
-		//	pour la première option
-		padding-left: 0;
-	}
+		&:first-of-type
+		{
+			// Suppression de la marge à gauche
+			//	pour la première option
+			padding-left: 0;
+		}
 
-	li:last-of-type
-	{
-		// Suppression de la marge à droite
-		//	pour la dernière option
-		padding-right: 0;
+		&:last-of-type
+		{
+			// Suppression de la marge à droite
+			//	pour la dernière option
+			padding-right: 0;
+		}
 	}
 }
 
