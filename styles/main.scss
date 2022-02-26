@@ -11,19 +11,19 @@ $theme-text-color: rgb(161, 161, 170);		// Couleur de certains paragraphes
 $theme-background-color: rgb(24, 24, 27);	// Couleur de fond par défaut
 $theme-box-color: rgb(39, 39, 42);			// Couleur de certains blocs
 
-/* --------------- */
-/* Document entier */
-/* --------------- */
+// --------------- //
+// Document entier //
+// --------------- //
 html
 {
-	/* Traitement des textes */
+	// Traitement des textes
 	color: white;
 	hyphens: auto;
 	text-align: center;
 	font-family: "Open Sans", sans-serif;
 	text-rendering: optimizeSpeed;
 
-	/* Disposition et affichage */
+	// Disposition et affichage
 	min-width: $html-min-width;
 	scroll-behavior: smooth;
 
@@ -34,21 +34,21 @@ html
 
 section
 {
-	/* Animation d'apparition des sections
-		(voir également côté JavaScript) */
+	// Animation d'apparition des sections
+	//	(voir également côté JavaScript)
 	transition: opacity 700ms ease;
 }
 
 strong
 {
-	/* Éléments de haute importance */
+	// Éléments de haute importance
 	font-size: 1.1rem;
 	text-decoration: underline solid;
 }
 
 noscript
 {
-	/* Avertissement page sans JavaScript */
+	// Avertissement page sans JavaScript
 	top: 1rem;
 	right: 1rem;
 	padding: 0.5rem;
@@ -63,74 +63,74 @@ noscript
 
 ::selection
 {
-	/* Sélection du texte */
+	// Sélection du texte
 	color: white;
 	background-color: $theme-color-dark;
 }
 
-/* Personnalisation de la barre de défilement
-	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar) */
+// Personnalisation de la barre de défilement
+//	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar)
 ::-webkit-scrollbar
 {
-	/* Taille de la barre */
+	// Taille de la barre
 	width: 0.75rem;
 }
 
 ::-webkit-scrollbar-track
 {
-	/* Fond de la barre */
+	// Fond de la barre
 	background-color: whitesmoke;
 }
 
 ::-webkit-scrollbar-thumb
 {
-	/* Couleur classique de la barre */
+	// Couleur classique de la barre
 	background-color: $theme-color-dark;
 }
 
 ::-webkit-scrollbar-thumb:hover
 {
-	/* Couleur de la barre lors d'une sélection */
+	// Couleur de la barre lors d'une sélection
 	background-color: $theme-box-color;
 }
 
-/* ------- */
-/* En-tête */
-/* ------- */
+// ------- //
+// En-tête //
+// ------- //
 header
 {
-	/* Corps de l'en-tête */
+	// Corps de l'en-tête
 	padding: 4rem 2.5rem 4rem 2.5rem;
 	background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
 
 	h1
 	{
-		/* Titre de la page */
+		// Titre de la page
 		margin: 0;
 		display: inline-block;
 		font-size: 2rem;
 		margin-top: 13rem;
 
-		/* Animation à l'arrivée */
+		// Animation à l'arrivée
 		animation: blink 500ms step-end infinite alternate;;
 		border-right: 0.150rem solid white;
 	}
 
 	h2
 	{
-		/* Description succincte */
+		// Description succincte
 		margin-top: 1rem;
 		font-weight: 400;
 	}
 
 	> img
 	{
-		/* Vagues marquant la fin de l'en-tête */
+		// Vagues marquant la fin de l'en-tête
 		left: 0;
 		z-index: -1;
 		position: absolute;
 		min-width: $html-min-width;
-		max-width: 100%; /* Correctif débile pour Firefox */
+		max-width: 100%; // Correctif débile pour Firefox
 		min-height: 400px;
 	}
 }
@@ -139,20 +139,20 @@ header
 {
 	50%
 	{
-		/* Entre chaque affiche d'un caractère,
-			on rend transparent le curseur */
+		// Entre chaque affiche d'un caractère,
+		//	on rend transparent le curseur
 		border-color: transparent;
 	}
 }
 
-/* ------------ */
-/* Pied-de-page */
-/* ------------ */
+// ------------ //
+// Pied-de-page //
+// ------------ //
 footer
 {
 	ul
 	{
-		/* Apparence de la liste */
+		// Apparence de la liste
 		margin: 0;
 		columns: 3;
 		padding: 1rem 10% 1rem 10%;
@@ -163,57 +163,65 @@ footer
 
 	li
 	{
-		/* Espacement interne des options */
+		// Espacement interne des options
 		padding: 1rem 0 1rem 0;
 		word-break: break-word;
 	}
 
 	a
 	{
-		/* Couleur de fond */
+		// Couleur de fond
 		padding: 0.5rem;
 		background-color: $theme-color-dark;
 	}
 }
 
-/* ------------------- */
-/* Barre de navigation */
-/* ------------------- */
+// ------------------- //
+// Barre de navigation //
+// ------------------- //
 nav
 {
-	/* Corps de la barre */
+	// Corps de la barre
 	display: flex;
 	justify-content: center;
 
 	ul
 	{
-		/* Propriétés principales de la barre */
+		// Propriétés principales de la barre
 		z-index: 5;
 		position: fixed;
 		border-radius: 6rem;
 		backdrop-filter: blur(0.5rem);
-		-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
+		-webkit-backdrop-filter: blur(0.5rem); // Correctif débile pour Safari
 		background-color: rgba($theme-color-bright, 0.7);
 
-		/* Suppression du style par défaut des listes
-			non ordonnées */
+		// Suppression du style par défaut des listes
+		//	non ordonnées
 		list-style-type: none;
 
-		/* Ajustement de l'espacement de la barre */
+		// Ajustement de l'espacement de la barre
 		padding: 1.25rem 2.5rem 1.25rem 2.5rem;
 
-		/* Alignement automatique centrée de la barre
-			(de façon horizontale) */
+		// Alignement automatique centrée de la barre
+		//	(de façon horizontale)
 		top: 7rem;
 		margin: 0 5% 0 5%;
 
-		/* Longueur minimale de la barre */
-		min-width: calc($html-min-width - 7rem); /* padding + position gauche/droite */
+		// Longueur minimale de la barre
+		min-width: calc($html-min-width - 7rem); // padding + position gauche/droite
+
+		// Modification de la composante alpha de la couleur sur
+		//	Firefox car `backdrop-filter` est désactivé par défaut
+		//	à cause de certains bugs. Source : https://bugzil.la/1578503
+		@-moz-document url-prefix()
+		{
+			background-color: rgba($theme-color-bright, 0.9);
+		}
 	}
 
 	li
 	{
-		/* Affichage des textes de la liste */
+		// Affichage des textes de la liste
 		display: inline;
 		padding: 0 0.75rem 0 0.75rem;
 		line-height: 1.5rem;
@@ -222,76 +230,75 @@ nav
 
 	li:first-of-type
 	{
-		/* Suppression de la marge à gauche
-			pour la première option */
+		// Suppression de la marge à gauche
+		//	pour la première option
 		padding-left: 0;
 	}
 
 	li:last-of-type
 	{
-		/* Suppression de la marge à droite
-			pour la dernière option */
+		// Suppression de la marge à droite
+		//	pour la dernière option
 		padding-right: 0;
 	}
 }
 
-@-moz-document url-prefix()
-{
-	/* Modification de la composante alpha de la couleur sur
-		Firefox car `backdrop-filter` est désactivé par défaut
-		à cause de certains bugs. Source : https://bugzil.la/1578503 */
-	nav ul
-	{
-		background-color: rgba($theme-color-bright, 0.9);
-	}
-}
-
-/* ---------------------- */
-/* Sélection de la langue */
-/* ---------------------- */
+// ---------------------- //
+// Sélection de la langue //
+// ---------------------- //
 ul#flags
 {
-	/* Positionnement */
+	// Positionnement
 	top: 0;
 	left: 0;
-	position: absolute;
 	z-index: 10;
+	position: absolute;
 
-	/* Dimensions */
+	// Dimensions
 	width: 5rem;
 	margin: 0;
 	padding: 0;
 
-	/* Apparence */
+	// Apparence
 	list-style-type: none;
-	backdrop-filter: blur(0.5rem); /* Ne fonctionne pas sur Firefox */
-	-webkit-backdrop-filter: blur(0.5rem); /* Correctif débile pour Safari */
+	backdrop-filter: blur(0.5rem); // Ne fonctionne pas sur Firefox
+	-webkit-backdrop-filter: blur(0.5rem); // Correctif débile pour Safari
 	background-color: transparent;
 
 	li
 	{
-		/* État initial d'un item de la liste */
+		// État initial d'un item de la liste
 		padding: 10px;
 		transition: background-color 300ms ease-out;
-	}
 
-	&:hover li
-	{
-		/* Apparition des items lors du passage
-			de la souris */
-		display: block;
+		// Animation de survol d'un item
+		//	(sélection avec maintien)
+		&:hover
+		{
+			@media screen and (pointer: fine) and (hover: hover)
+			{
+				background-color: $theme-color-bright;
+			}
+		}
 	}
 
 	li:nth-of-type(n+2)
 	{
-		/* Tous les éléments (sauf le premier) sont
-			cachés par défaut */
+		// Tous les éléments (sauf le premier) sont
+		//	cachés par défaut
 		display: none;
+	}
+
+	&:hover li
+	{
+		// Apparition des items lors du passage
+		//	de la souris
+		display: block;
 	}
 
 	button
 	{
-		/* Bouton de sélection */
+		// Bouton de sélection
 		border: 0;
 		margin: 0;
 		cursor: pointer;
@@ -302,7 +309,7 @@ ul#flags
 
 	span
 	{
-		/* Nom de la langue */
+		// Nom de la langue
 		color: white;
 		display: block;
 		font-size: 0.875rem;
@@ -311,46 +318,36 @@ ul#flags
 
 	img
 	{
-		/* Image représentative de la langue */
-		width: calc(21.33px * 2.5); /* Gardons les proportions originales... */
+		// Image représentative de la langue
+		width: calc(21.33px * 2.5); // Gardons les proportions originales...
 		height: calc(16px * 2.5);
 	}
 }
 
-@media screen and (pointer: fine) and (hover: hover)
-{
-	#flags li:hover
-	{
-		/* Animation de survol d'un item
-			(sélection avec maintien) */
-		background-color: $theme-color-bright;
-	}
-}
-
-/* -------------------------- */
-/* Retour au début de la page */
-/* -------------------------- */
+// -------------------------- //
+// Retour au début de la page //
+// -------------------------- //
 #scrollTop
 {
-	/* Dimensions */
+	// Dimensions
 	width: 3rem;
 	height: 3rem;
 
-	/* Alignement */
+	// Alignement
 	right: 1rem;
 	bottom: 1rem;
 	position: fixed;
 
-	/* Disposition */
+	// Disposition
 	z-index: 5;
 	border-radius: 1rem;
 
-	/* Apparence */
+	// Apparence
 	border: none;
 	opacity: 0;
 	background-color: $theme-color-dark;
 
-	/* Image de décoration */
+	// Image de décoration
 	background-size: 50%;
 	background-image: url("../assets/images/decorations/arrow_up.svg");
 	background-repeat: no-repeat;
@@ -358,9 +355,9 @@ ul#flags
 
 	filter: contrast(50%);
 	transition: filter 300ms linear, opacity 200ms ease-out;
-	will-change: transform; /* MERCI CHROME... : https://stackoverflow.com/a/62403969 */
+	will-change: transform; // MERCI CHROME... : https://stackoverflow.com/a/62403969
 
-	.show
+	&.show
 	{
 		opacity: 1;
 	}
@@ -368,16 +365,16 @@ ul#flags
 	&:hover
 	{
 		cursor: pointer;
-		filter: contrast(100%); /* Voir le dernier commentaire */
+		filter: contrast(100%); // Voir le dernier commentaire
 	}
 }
 
-/* ------------------------- */
-/* Overlay des contributions */
-/* ------------------------- */
+// ------------------------- //
+// Overlay des contributions //
+// ------------------------- //
 #contributions
 {
-	/* Dimensions et position de l'overlay */
+	// Dimensions et position de l'overlay
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -386,9 +383,9 @@ ul#flags
 	height: 100%;
 	position: fixed;
 	overflow-y: scroll;
-	scrollbar-width: none; 	/* Cache la barre de défilement (Firefox uniquement) */
+	scrollbar-width: none; 	// Cache la barre de défilement (Firefox uniquement)
 
-	/* Apparence de l'overlay */
+	// Apparence de l'overlay
 	cursor: pointer;
 	display: none;
 	z-index: 15;
@@ -396,28 +393,60 @@ ul#flags
 
 	::-webkit-scrollbar
 	{
-		display: none; 		/* Cache la barre de défilement pour Chrome & co */
+		display: none; 		// Cache la barre de défilement pour Chrome & co
 	}
 
 	> h2
 	{
-		/* Titre de l'overlay */
+		// Titre de l'overlay
 		margin: 6rem 10% 6rem 10%;
 		font-size: 3rem;
+
+		// Lancement d'une animation de changement de couleur
+		//	en arc-en-ciel (disponible uniquement si l'utilisateur
+		//	n'a pas demandé à réduire les animations)
+		@media (prefers-reduced-motion: no-preference)
+		{
+			animation: rainbow 2.5s linear infinite;
+
+			@keyframes rainbow
+			{
+				0%, 100% { 	color: rgb(255, 0, 0); 	}	// Composante vert
+				8% 	{ 		color: rgb(255, 127, 0);	}
+				16% {		color: rgb(255, 255, 0); 	}
+				25% {		color: rgb(127, 255, 0);	}
+				33%	{		color: rgb(0, 255, 0);		}	// Composante rouge
+				41% {		color: rgb(0, 255, 127);	}
+				50% {		color: rgb(0, 255, 255);	}
+				58% {		color: rgb(0, 127, 255);	}
+				66% {		color: rgb(0, 0, 255);		}	// Composante bleu
+				75% {		color: rgb(127, 0, 255);	}
+				83% {		color: rgb(255, 0, 255);	}
+				91% {		color: rgb(255, 0, 127);	}
+			}
+		}
 	}
 
 	> ul
 	{
-		/* Liste des personnes */
+		// Liste des personnes
 		padding-left: 0;
 		list-style-type: none;
 	}
 
 	li
 	{
-		/* Description de chaque contribution */
+		// Description de chaque contribution
 		margin: 0 10% 3rem 10%;
 		line-height: 1.5rem;
+
+		// Affichage d'un effet de sélection pour les
+		//	ordinateurs uniquement
+		@media screen and (pointer: fine) and (hover: hover)
+		{
+			opacity: 0.5;
+			transition: opacity 500ms ease;
+		}
 	}
 
 	li:hover
@@ -428,63 +457,24 @@ ul#flags
 
 	h3
 	{
-		/* Identité du contributeur */
+		// Identité du contributeur
 		font-size: 2rem;
 		text-decoration: underline;
 	}
 
 	p
 	{
-		/* Description de la contribution */
+		// Description de la contribution
 		color: $theme-text-color;
 	}
 }
 
-@media (prefers-reduced-motion: no-preference)
-{
-	/* Lancement d'une animation de changement de couleur
-		en arc-en-ciel (disponible uniquement si l'utilisateur
-		n'a pas demandé à réduire les animations) */
-	#contributions > h2
-	{
-		animation: rainbow 2.5s linear infinite;
-	}
-
-	@keyframes rainbow
-	{
-		0%, 100% { 	color: rgb(255, 0, 0); 	}	/* Composante vert */
-		8% 	{ 		color: rgb(255, 127, 0);	}
-		16% {		color: rgb(255, 255, 0); 	}
-		25% {		color: rgb(127, 255, 0);	}
-		33%	{		color: rgb(0, 255, 0);		}	/* Composante rouge */
-		41% {		color: rgb(0, 255, 127);	}
-		50% {		color: rgb(0, 255, 255);	}
-		58% {		color: rgb(0, 127, 255);	}
-		66% {		color: rgb(0, 0, 255);		}	/* Composante bleu */
-		75% {		color: rgb(127, 0, 255);	}
-		83% {		color: rgb(255, 0, 255);	}
-		91% {		color: rgb(255, 0, 127);	}
-	}
-}
-
-@media screen and (pointer: fine) and (hover: hover)
-{
-	/* On affiche un effet de sélection pour les affichages
-		sur ordinateurs uniquement */
-	#contributions li
-	{
-		/* Description de chaque contribution */
-		opacity: 0.5;
-		transition: opacity 500ms ease;
-	}
-}
-
-/* ----- */
-/* Liens */
-/* ----- */
+// ----- //
+// Liens //
+// ----- //
 a
 {
-	/* État initial des liens */
+	// État initial des liens
 	color: inherit;
 	display: inline-block;
 	position: relative;
@@ -493,8 +483,8 @@ a
 
 h2 a:active, article a:active, li > a:active
 {
-	/* Passage progressif en bleu lors de l'appui
-		(active + hover) */
+	// Passage progressif en bleu lors de l'appui
+	//	(active + hover)
 	background-color: $theme-color-dark;
 }
 
@@ -505,8 +495,8 @@ h2 a:hover, article a:hover, li > a:hover
 
 h2 a::after, article a::after, li > a::after
 {
-	/* Création d'une ligne qui apparaîtra
-		progressivement lors de la sélection */
+	// Création d'une ligne qui apparaîtra
+	//	progressivement lors de la sélection
 	left: 0;
 	bottom: -2px;
 	position: absolute;
