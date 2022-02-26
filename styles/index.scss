@@ -9,26 +9,26 @@ header
 	{
 		// Plateformes de communication
 		display: inline;
-	}
 
-	a > img
-	{
-		// Icône de la plateforme
-		width: 2rem;
-		filter: drop-shadow(0 0 1rem $theme-color-dark);
-		margin: 4rem 1rem 0 1rem;
-		padding: 0.625rem;
-		transition: transform 300ms ease;
-		border-radius: 1rem;
-		background-color: $theme-color-bright;
-	}
+		img
+		{
+			// Icône de la plateforme
+			width: 2rem;
+			filter: drop-shadow(0 0 1rem $theme-color-dark);
+			margin: 4rem 1rem 0 1rem;
+			padding: 0.625rem;
+			transition: transform 300ms ease;
+			border-radius: 1rem;
+			background-color: $theme-color-bright;
 
-	a > img:hover
-	{
-		// Animation de sélection d'une icône
-		//	(modification de l'échelle)
-		transform: scale(1.2);
-		transition: transform 300ms ease;
+			&:hover
+			{
+				// Animation de sélection d'une icône
+				//	(modification de l'échelle)
+				transform: scale(1.2);
+				transition: transform 300ms ease;
+			}
+		}
 	}
 }
 
@@ -42,8 +42,8 @@ header
 
 	// Note : Le padding haut/bas prend en compte une taille fixe
 	//	pour toujours garder une marge quelque soit la résolution
-	--offset: calc(10% + 5rem);
-	padding: var(--offset) 20% var(--offset) 20%;
+	$offset: calc(10% + 5rem);
+	padding: $offset 20% $offset 20%;
 }
 
 #aboutme > h2, #projects > h2, #skills > h2, #contact > h2
@@ -94,24 +94,21 @@ header
 		background-image: url("../assets/images/placeholder.svg");
 		background-repeat: no-repeat;
 		background-position: center;
-	}
 
-	@media screen and (pointer: fine) and (hover: hover)
-	{
 		// Affichage d'un effet de sélection pour les
 		//	ordinateurs uniquement
-		.row article
+		@media screen and (pointer: fine) and (hover: hover)
 		{
 			// État initial (avant animation)
 			filter: blur(0.75px) grayscale(1);
 			transition: filter 300ms ease-in-out;
-		}
 
-		.row article:hover
-		{
-			// Apparition de la couleur et suppression du flou
-			//	lors du passage de la souris par dessus
-			filter: blur(0) grayscale(0);
+			&:hover
+			{
+				// Apparition de la couleur et suppression du flou
+				//	lors du passage de la souris par dessus
+				filter: blur(0) grayscale(0);
+			}
 		}
 	}
 
@@ -233,59 +230,56 @@ header
 	// Apparence de la section
 	border-radius: 1rem;
 	background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
-}
 
-@media screen and (max-width: 768px)
-{
-	// Modification des marges sur les téléphones
-	//	mobiles
-	#contact
+	@media screen and (max-width: 768px)
 	{
+		// Modification des marges sur les téléphones
+		//	mobiles
 		margin-left: 7.5%;
 		margin-right: 7.5%;
 	}
-}
 
-#contact h2
-{
-	// Premier titre de la section
-	margin-bottom: 2rem;
-}
+	h2
+	{
+		// Premier titre de la section
+		margin-bottom: 2rem;
 
-#contact h3
-{
-	// Deuxième titre de la section
-	margin-top: 0;
-}
+		+ h2
+		{
+			// Souligne du texte (hors titres)
+			text-decoration: underline;
+		}
+	}
 
-#contact h2 + h2
-{
-	// Souligne du texte (hors titres)
-	text-decoration: underline;
-}
+	h3
+	{
+		// Deuxième titre de la section
+		margin-top: 0;
+	}
 
-#contact span
-{
-	// Apparence du bouton de contact
-	color: black;
-	font-weight: 700;
-	border-radius: 0.5rem;
+	span
+	{
+		// Apparence du bouton de contact
+		color: black;
+		font-weight: 700;
+		border-radius: 0.5rem;
 
-	border: none;
-	display: inline-block;
-	padding: 0.75rem 1.5rem 0.75rem 1.5rem;
-	user-select: none;
-	background-color: rgba(255, 255, 255, 0.7);
+		border: none;
+		display: inline-block;
+		padding: 0.75rem 1.5rem 0.75rem 1.5rem;
+		user-select: none;
+		background-color: rgba(255, 255, 255, 0.7);
 
-	// État initial de l'animation
-	transform: translateY(0);
-	transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
-}
+		// État initial de l'animation
+		transform: translateY(0);
+		transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
 
-#contact span:hover
-{
-	// Animation de sélection du bouton
-	cursor: pointer;
-	transform: translateY(-0.25rem);
-	background-color: white;
+		&:hover
+		{
+			// Animation de sélection du bouton
+			cursor: pointer;
+			transform: translateY(-0.25rem);
+			background-color: white;
+		}
+	}
 }
