@@ -42,11 +42,12 @@ for ( const element of elements.values() )
 //	l'envoi des données du formulaire au serveur.
 //
 const result = document.getElementById( "result" );
+const delay = result.innerHTML == "" ? 0 : 10000;
 
 setTimeout( () =>
 {
 	result.style.display = "none";
-}, 10000 );
+}, delay );
 
 //
 // Permet de restreindre l'actionneur pour envoyer les données
