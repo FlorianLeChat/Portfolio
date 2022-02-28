@@ -21,8 +21,8 @@
 		// On assemble enfin les données pour afficher une série
 		// 	de liens vers chaque plateforme.
 		$plateforms_html .= "
-			<a href=\"$url\" title=\"$name\" target=\"_blank\">
-				<img data-color=\"$color\" src=\"assets/images/platforms/$identifier.svg\" width=\"32\" height=\"32\" draggable=\"false\" alt=\"Image - $name\" />
+			<a href=\"$url\" style=\"color: $color\" title=\"$name\" target=\"_blank\">
+				<img src=\"assets/images/platforms/$identifier.svg\" width=\"32\" height=\"32\" draggable=\"false\" alt=\"Image - $name\" />
 			</a>\n
 		";
 	}
