@@ -148,20 +148,20 @@ footer
 		column-gap: 2rem;
 		column-rule: thin dotted white;
 		list-style-type: none;
-	}
 
-	li
-	{
-		// Espacement interne des options.
-		padding: 1rem 0 1rem 0;
-		word-break: break-word;
-	}
+		li
+		{
+			// Espacement interne des options.
+			padding: 1rem 0 1rem 0;
+			word-break: break-word;
 
-	a
-	{
-		// Couleur de fond.
-		padding: 0.5rem;
-		background-color: $theme-color-dark;
+			a
+			{
+				// Couleur de fond.
+				padding: 0.5rem;
+				background-color: $theme-color-dark;
+			}
+		}
 	}
 }
 
@@ -204,26 +204,26 @@ nav
 		{
 			background-color: rgba($theme-color-bright, 0.9);
 		}
-	}
 
-	li
-	{
-		// Affichage des textes de la liste.
-		display: inline;
-		padding: 0 0.75rem 0 0.75rem;
-		line-height: 1.5rem;
-		user-select: none;
-
-		&:first-of-type
+		li
 		{
-			// Suppression de la marge à gauche pour la première option.
-			padding-left: 0;
-		}
+			// Affichage des textes de la liste.
+			display: inline;
+			padding: 0 0.75rem 0 0.75rem;
+			line-height: 1.5rem;
+			user-select: none;
 
-		&:last-of-type
-		{
-			// Suppression de la marge à droite pour la dernière option.
-			padding-right: 0;
+			&:first-of-type
+			{
+				// Suppression de la marge à gauche pour la première option.
+				padding-left: 0;
+			}
+
+			&:last-of-type
+			{
+				// Suppression de la marge à droite pour la dernière option.
+				padding-right: 0;
+			}
 		}
 	}
 }
@@ -250,6 +250,12 @@ ul#flags
 	-webkit-backdrop-filter: blur(0.5rem); // Correctif débile pour Safari.
 	background-color: transparent;
 
+	&:hover li
+	{
+		// Apparition des items lors du passage de la souris.
+		display: block;
+	}
+
 	li
 	{
 		// État initial d'un item de la liste.
@@ -264,45 +270,39 @@ ul#flags
 				background-color: $theme-color-bright;
 			}
 		}
-	}
 
-	li:nth-of-type(n+2)
-	{
-		// Tous les éléments (sauf le premier) sont cachés par défaut.
-		display: none;
-	}
+		&:nth-of-type(n+2)
+		{
+			// Tous les éléments (sauf le premier) sont cachés par défaut.
+			display: none;
+		}
 
-	&:hover li
-	{
-		// Apparition des items lors du passage de la souris.
-		display: block;
-	}
+		button
+		{
+			// Bouton de sélection de la langue.
+			border: 0;
+			margin: 0;
+			cursor: pointer;
+			padding: 0;
+			user-select: none;
+			background: none;
 
-	button
-	{
-		// Bouton de sélection.
-		border: 0;
-		margin: 0;
-		cursor: pointer;
-		padding: 0;
-		user-select: none;
-		background: none;
-	}
+			span
+			{
+				// Nom de la langue.
+				color: white;
+				display: block;
+				font-size: 0.875rem;
+				margin-top: 0.5rem;
+			}
 
-	span
-	{
-		// Nom de la langue.
-		color: white;
-		display: block;
-		font-size: 0.875rem;
-		margin-top: 0.5rem;
-	}
-
-	img
-	{
-		// Image représentative de la langue.
-		width: calc(21.33px * 2.5); // Gardons les proportions originales...
-		height: calc(16px * 2.5);
+			img
+			{
+				// Image représentative de la langue.
+				width: calc(21.33px * 2.5); // Gardons les proportions originales...
+				height: calc(16px * 2.5);
+			}
+		}
 	}
 }
 
@@ -409,44 +409,44 @@ ul#flags
 		}
 	}
 
-	> ul
+	ul
 	{
 		// Liste des personnes.
 		padding-left: 0;
 		list-style-type: none;
-	}
 
-	li
-	{
-		// Description de chaque contribution.
-		margin: 0 10% 3rem 10%;
-		line-height: 1.5rem;
-
-		// Affichage d'un effet de sélection pour les ordinateurs.
-		@media screen and (pointer: fine) and (hover: hover)
+		li
 		{
-			opacity: 0.5;
-			transition: opacity 500ms ease;
+			// Description de chaque contribution.
+			margin: 0 10% 3rem 10%;
+			line-height: 1.5rem;
+
+			// Affichage d'un effet de sélection pour les ordinateurs.
+			@media screen and (pointer: fine) and (hover: hover)
+			{
+				opacity: 0.5;
+				transition: opacity 500ms ease;
+
+				&:hover
+				{
+					opacity: 1;
+					transition: opacity 500ms ease;
+				}
+			}
+
+			h3
+			{
+				// Identité du contributeur.
+				font-size: 2rem;
+				text-decoration: underline;
+			}
+
+			p
+			{
+				// Description de la contribution.
+				color: $theme-text-color;
+			}
 		}
-	}
-
-	li:hover
-	{
-		opacity: 1;
-		transition: opacity 500ms ease;
-	}
-
-	h3
-	{
-		// Identité du contributeur.
-		font-size: 2rem;
-		text-decoration: underline;
-	}
-
-	p
-	{
-		// Description de la contribution.
-		color: $theme-text-color;
 	}
 }
 
@@ -462,34 +462,37 @@ a
 	text-decoration: none;
 }
 
-h2 a:active, article a:active, li > a:active
+h2 a, article a, li > a
 {
-	// Passage progressif en bleu lors de l'appui (active + hover).
-	background-color: $theme-color-dark;
-}
+	&::after
+	{
+		// Création d'une ligne qui apparaîtra progressivement lors de la sélection.
+		left: 0;
+		bottom: -2px;
+		position: absolute;
 
-h2 a:hover, article a:hover, li > a:hover
-{
-	transition: background-color 500ms ease-out;
-}
+		width: 100%;
+		height: 1px;
 
-h2 a::after, article a::after, li > a::after
-{
-	// Création d'une ligne qui apparaîtra progressivement lors de la sélection.
-	left: 0;
-	bottom: -2px;
-	position: absolute;
+		content: "";
+		transform: scale(0);
+	}
 
-	width: 100%;
-	height: 1px;
+	&:active
+	{
+		// Passage progressif en bleu lors de l'appui (active + hover).
+		background-color: $theme-color-dark;
+	}
 
-	content: "";
-	transform: scale(0);
-}
+	&:hover
+	{
+		transition: background-color 500ms ease-out;
 
-h2 a:hover::after, article a:hover::after, li > a:hover::after
-{
-	transform: scale(1);
-	transition: transform 300ms ease;
-	background-color: currentColor;
+		&::after
+		{
+			transform: scale(1);
+			transition: transform 300ms ease;
+			background-color: currentColor;
+		}
+	}
 }

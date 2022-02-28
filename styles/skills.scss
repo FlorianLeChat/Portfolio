@@ -1,42 +1,57 @@
-/* --------------- */
-/* Document entier */
-/* --------------- */
-html
-{
-	/* Variables globales */
-	--theme-color-dark: 28, 158, 77;
-	--theme-color-bright: 37, 208, 102;
-}
+// ------------------ //
+// Variables globales //
+// ------------------ //
+$theme-color-dark: rgb(28, 158, 77);
+$theme-color-bright: rgb(37, 208, 102);
 
+@import "variables";
+@import "main";
+
+// --------------- //
+// Document entier //
+// --------------- //
 hr
 {
-	/* Séparateur entre les deux sections */
+	// Séparateur entre les deux sections.
 	margin: 0 5% 0 5%;
 	border-color: rgb(161, 161, 170);
 }
 
-/* ------- */
-/* En-tête */
-/* ------- */
+// ------- //
+// En-tête //
+// ------- //
 header > img
 {
-	/* Vagues marquant la fin de l'en-tête */
+	// Vagues marquant la fin de l'en-tête.
 	transform: translateY(-25%);
 }
 
-/* ----------------- */
-/* Parcours scolaire */
-/* ----------------- */
+// ----------------- //
+// Parcours scolaire //
+// ----------------- //
 #school
 {
-	/* Corps de la section */
-	color: rgb(var(--theme-text-color));
+	// Corps de la section.
+	color: $theme-text-color;
 	padding: calc(5% + 5rem) 5% 3rem 5%;
+
+	article
+	{
+		// Corps de chaque partie.
+		width: 50vw;
+		display: table-cell;
+
+		h3
+		{
+			// Titre de chaque partie.
+			text-decoration: underline;
+		}
+	}
 }
 
 #school > h2, #work > h2
 {
-	/* Titre de la section */
+	// Titre de la section.
 	color: white;
 	margin: 0 0 4rem;
 	font-size: 1.5rem;
@@ -44,59 +59,134 @@ header > img
 
 #school > h3, #work > h3
 {
-	/* Identifiant de la section */
+	// Identifiant de la section.
 	font-weight: 400;
 	margin-bottom: 0.5rem;
 }
 
-#school article
+// Liste des formations
+#list
 {
-	/* Corps de chaque partie */
-	width: 50vw;
-	display: table-cell;
+	ul
+	{
+		// État initial des formation.
+		padding: 0 0.5rem 0 0;
+		list-style-type: none;
+
+		li
+		{
+			margin: 0 0 0.5rem;
+			padding: 1rem 2rem 1rem 2rem;
+			position: relative;
+			user-select: none;
+			background-color: $theme-box-color;
+			background-image: url("../assets/images/placeholder.svg");
+			background-repeat: no-repeat;
+			background-position: -1000% -1000%;
+
+			&:before
+			{
+				// Barre horizontale à gauche.
+				top: 0;
+				left: 6px;
+				width: 3px;
+				bottom: 0;
+				content: "";
+				position: absolute;
+				background-color: $theme-color-bright;
+			}
+
+			&:after
+			{
+				// Ancre sur la barre.
+				top: calc(50% - 7.5px);
+				left: 0;
+				width: 15px;
+				height: 15px;
+				content: "";
+				position: absolute;
+				background-image: url("../assets/images/decorations/timeline_marker.svg");
+			}
+
+			&:hover
+			{
+				// Sélection d'une formation.
+				background-size: cover;
+				background-color: $theme-color-bright;
+				background-position: 15px center;
+
+				> *
+				{
+					color: transparent;
+				}
+
+				> img
+				{
+					display: none;
+				}
+			}
+
+			h4, h5
+			{
+				// Titre et option du diplôme.
+				color: white;
+				margin: 1rem 0 1rem;
+				font-size: 1.25rem;
+			}
+
+			img
+			{
+				// Image représentant un diplôme.
+				right: 0;
+				width: 3rem;
+				margin: 0.25rem;
+				bottom: 0;
+				position: absolute;
+			}
+		}
+	}
 }
 
-#school article > h3
+// Résumé des formations.
+#summary
 {
-	/* Titre de chaque partie */
-	text-decoration: underline;
-}
+	ul
+	{
+		// Liste non ordonnée
+		padding: 0 0 0 0.5rem;
+		list-style-type: none;
 
-/* Liste des formations */
-#list ul
-{
-	/* État initial des formation */
-	padding: 0 0.5rem 0 0;
-	list-style-type: none;
-}
+		li
+		{
+			height: 250px;
+			display: table;
+			overflow-y: hidden;
+			line-height: 1.5rem;
+			margin-bottom: 0.5rem;
 
-#list li
-{
-	margin: 0 0 0.5rem;
-	padding: 1rem 2rem 1rem 2rem;
-	position: relative;
-	user-select: none;
-	background-color: rgb(var(--theme-box-color));
-	background-image: url("../assets/images/placeholder.svg");
-	background-repeat: no-repeat;
-	background-position: -1000% -1000%;
+			p
+			{
+				// Alignement du texte à la verticale
+				display: table-cell;
+				vertical-align: middle;
+			}
+		}
+	}
 }
 
 @media screen and (max-width: 1024px)
 {
-	/* Modification de la disposition sur
-		les petits écrans (mobiles et tablettes) */
+	// Modification de la disposition sur écrans mobiles et tablettes.
 	article#summary, #list ul
 	{
-		/* Suppression des marges du résumé
-			de la formation */
+		// Suppression des marges du résumé de la formation.
 		margin: 0;
 		padding: 0;
 	}
 
 	#school article
 	{
-		/* Taille automatique des formations */
+		// Taille automatique des formations.
 		width: auto;
 		margin: auto;
 		display: block;
@@ -104,390 +194,295 @@ header > img
 
 	#school article > h3, #summary ul
 	{
-		/* Disparition des titres et du résumé
-			de la formation */
+		// Disparition des titres et du résumé de la formation.
 		display: none;
 	}
 }
 
-#list li:before
-{
-	/* Barre horizontale à gauche */
-	top: 0;
-	left: 6px;
-	width: 3px;
-	bottom: 0;
-	content: "";
-	position: absolute;
-	background-color: rgb(var(--theme-color-bright));
-}
-
-#list li:after
-{
-	/* Ancre sur la barre */
-	top: calc(50% - 7.5px);
-	left: 0;
-	width: 15px;
-	height: 15px;
-	content: "";
-	position: absolute;
-	background-image: url("../assets/images/decorations/timeline_marker.svg");
-}
-
-#list li:hover
-{
-	/* Sélection d'une formation */
-	background-size: cover;
-	background-color: rgb(var(--theme-color-bright));
-	background-position: 15px center;
-}
-
-#list li:hover > *
-{
-	color: transparent;
-}
-
-#list li:hover > img
-{
-	display: none;
-}
-
-#list h4, #list h5
-{
-	/* Titre et option du diplôme */
-	color: white;
-	margin: 1rem 0 1rem;
-	font-size: 1.25rem;
-}
-
-#list img
-{
-	/* Image représentant un diplôme */
-	right: 0;
-	width: 3rem;
-	margin: 0.25rem;
-	bottom: 0;
-	position: absolute;
-}
-
-/* Résumé des formations */
-#summary ul
-{
-	padding: 0 0 0 0.5rem;
-	list-style-type: none;
-}
-
-#summary li
-{
-	height: 250px;
-	display: table;
-	overflow-y: hidden;
-	line-height: 1.5rem;
-	margin-bottom: 0.5rem;
-}
-
-#summary li p
-{
-	/* Alignement du texte à la verticale */
-	display: table-cell;
-	vertical-align: middle;
-}
-
-/* ---------------------------- */
-/* Compétences professionnelles */
-/* ---------------------------- */
+// ---------------------------- //
+// Compétences professionnelles //
+// ---------------------------- //
 #work
 {
-	/* Corps de la section */
+	// Corps de la section.
 	margin: 3rem 5% 0 5%;
-}
 
-@media screen and (min-width: 1024px)
-{
-	/* Modification des marges sur les grands écrans */
-	#work
+	@media screen and (min-width: 1024px)
 	{
+		// Modification des marges sur les grands écrans.
 		margin-left: 12.5%;
 		margin-right: 12.5%;
 	}
+
+	> h3
+	{
+		// Identifiant de la section.
+		color: rgb(161, 161, 170);
+	}
+
+	article
+	{
+		// Corps de chaque article.
+		padding: 2rem;
+		background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
+
+		h3
+		{
+			// Titre de chaque article.
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
+			text-decoration: underline;
+		}
+	}
+
+	> img:first-child
+	{
+		// Vagues marquant le début de la section.
+		left: 0;
+		z-index: -1;
+		position: absolute;
+		transform: translateY(-55%);
+		min-width: $html-min-width;
+		max-width: 100%; // Correctif débile pour Firefox.
+		min-height: 400px;
+	}
+
+	> img:last-child
+	{
+		// Vagues marquant la fin de la section.
+		left: 0;
+		z-index: -1;
+		position: absolute;
+		transform: translateY(-35%);
+		min-width: $html-min-width;
+		max-width: 100%; // Correctif débile pour Firefox.
+		min-height: 400px;
+	}
 }
 
-#work > h3
-{
-	/* Identifiant de la section */
-	color: rgb(161, 161, 170);
-}
-
-#work article
-{
-	/* Corps de chaque article */
-	padding: 2rem;
-	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
-}
-
-#work article h3
-{
-	/* Titre de chaque article */
-	font-size: 1.5rem;
-	margin-bottom: 2rem;
-	text-decoration: underline;
-}
-
-#work > img:first-child
-{
-	/* Vagues marquant le début de la section */
-	left: 0;
-	z-index: -1;
-	position: absolute;
-	transform: translateY(-55%);
-	min-width: var(--html-min-width);
-	max-width: 100%; /* Correctif débile pour Firefox */
-	min-height: 400px;
-}
-
-#work > img:last-child
-{
-	/* Vagues marquant la fin de la section */
-	left: 0;
-	z-index: -1;
-	position: absolute;
-	transform: translateY(-35%);
-	min-width: var(--html-min-width);
-	max-width: 100%; /* Correctif débile pour Firefox */
-	min-height: 400px;
-}
-
-/* Expériences */
+// Expériences.
 #experiences
 {
-	/* Corps de l'article */
+	// Corps de l'article.
 	margin-bottom: 2rem;
-}
 
-#experiences ul
-{
-	/* Liste non ordonnée */
-	padding: 0.5rem 0.5rem 0.5rem 50px;
-	position: relative;
-	list-style-type: none;
-}
-
-#experiences ul::before
-{
-	/* Affichage de la timeline sur la gauche */
-	top: 0;
-	left: 15px;
-	width: 5px;
-	bottom: 0;
-	content: "";
-	position: absolute;
-	background-color: white;
-}
-
-#experiences li
-{
-	/* Corps de chaque expérience */
-	padding: 2rem 2rem;
-	position: relative;
-	border-radius: 0.5rem;
-	margin-bottom: 1rem;
-	background-color: white;
-}
-
-#experiences li::before
-{
-	/* Affichage de l'image indiquant
-		le descriptif de l'expérience */
-	top: 21%;
-	left: -0.5rem;
-	border: 0.5rem solid transparent;
-	content: "";
-	position: absolute;
-	border-left: 0;
-	border-right-color: white;
-}
-
-#experiences li::after
-{
-	/* Affichage de l'indicateur sur la timeline
-		pour indiquer une nouvelle expérience */
-	top: 20%;
-	left: -44px;
-	width: 1rem;
-	height: 1rem;
-	border: 0.25rem solid rgb(var(--theme-color-bright));
-	content: "";
-	position: absolute;
-	border-radius: 50%;
-	background-color: white;
-}
-
-@media screen and (pointer: fine) and (hover: hover)
-{
-	/* On affiche un effet de sélection pour les affichages
-		sur ordinateurs uniquement */
-	#experiences li:hover
+	ul
 	{
-		/* Corps */
-		cursor: pointer;
+		// Liste non ordonnée.
+		padding: 0.5rem 0.5rem 0.5rem 50px;
+		position: relative;
+		list-style-type: none;
+
+		&::before
+		{
+			// Affichage de la timeline sur la gauche.
+			top: 0;
+			left: 15px;
+			width: 5px;
+			bottom: 0;
+			content: "";
+			position: absolute;
+			background-color: white;
+		}
+
+		li
+		{
+			// Corps de chaque expérience.
+			padding: 2rem 2rem;
+			position: relative;
+			border-radius: 0.5rem;
+			margin-bottom: 1rem;
+			background-color: white;
+
+			&::before
+			{
+				// Affichage de l'image indiquant le descriptif de l'expérience.
+				top: 21%;
+				left: -0.5rem;
+				border: 0.5rem solid transparent;
+				content: "";
+				position: absolute;
+				border-left: 0;
+				border-right-color: white;
+			}
+
+			&::after
+			{
+				// Affichage de l'indicateur pour indiquer une nouvelle expérience.
+				top: 20%;
+				left: -44px;
+				width: 1rem;
+				height: 1rem;
+				border: 0.25rem solid $theme-color-bright;
+				content: "";
+				position: absolute;
+				border-radius: 50%;
+				background-color: white;
+			}
+
+
+			@media screen and (pointer: fine) and (hover: hover)
+			{
+				// Affichage d'un effet de sélection pour les ordinateurs.
+				&:hover
+				{
+					// Corps.
+					cursor: pointer;
+				}
+
+				&:hover::after
+				{
+					// Indicateur timeline.
+					border: 0.25rem solid white;
+					background-color: $theme-color-bright;
+				}
+			}
+
+			strong
+			{
+				// Nom de l'entreprise et date de l'expérience.
+				color: $theme-color-dark;
+				font-size: 1.1rem;
+				font-weight: 700;
+			}
+
+			p
+			{
+				// Descriptif de l'expérience.
+				color: $theme-box-color;
+				margin: 1rem 0 0;
+			}
+
+			em
+			{
+				// Date de l'expérience.
+				color: $theme-box-color;
+				display: block;
+				margin-top: 0.5rem;
+			}
+		}
 	}
-
-	#experiences li:hover::after
-	{
-		/* Indicateur timeline */
-		border: 0.25rem solid white;
-		background-color: rgb(var(--theme-color-bright));
-	}
 }
 
-#experiences strong
-{
-	/* Nom de l'entreprise et date
-		de l'expérience */
-	color: rgb(var(--theme-color-dark));
-	font-size: 1.1rem;
-	font-weight: 700;
-}
-
-#experiences p
-{
-	/* Descriptif de l'expérience */
-	color: rgb(var(--theme-box-color));
-	margin: 1rem 0 0;
-}
-
-#experiences em
-{
-	/* Date de l'expérience */
-	color: rgb(var(--theme-box-color));
-	display: block;
-	margin-top: 0.5rem;
-}
-
-/* Compétences */
+// Compétences.
 #competences
 {
-	/* Corps de l'article */
+	// Corps de l'article.
 	margin-bottom: 7.5%;
-}
 
-#competences hr
-{
-	/* Séparateur avec les expériences */
-	margin: 2rem 0 1rem 0;
-	border-color: white;
-}
-
-#competences p
-{
-	/* Descriptif des compétences */
-	line-height: 1.5rem;
-}
-
-#competences > div
-{
-	/* Conteneur de chaque compétence */
-	display: inline-block;
-	user-select: none;
-	margin-right: 2rem;
-}
-
-#competences span
-{
-	/* Titre de la compétence */
-	top: 4rem;
-	color: rgb(var(--theme-color-dark));
-	width: 5rem;
-	z-index: 5;
-	display: block;
-	position: relative;
-	font-weight: 700;
-	margin-left: 1rem;
-	margin-right: 1rem;
-}
-
-#competences .circle
-{
-	/* Apparence du cercle */
-	border: 0.5rem solid rgb(var(--theme-box-color));
-	transition: background-color 300ms ease;
-	border-radius: 50%;
-	background-color: white;
-
-	/* Dimensions et disposition */
-	width: 6rem;
-	height: 6rem;
-}
-
-@media screen and (pointer: fine) and (hover: hover)
-{
-	/* On affiche un effet de sélection pour les affichages
-		sur ordinateurs uniquement */
-	#competences > div
+	hr
 	{
-		/* Corps */
-		cursor: pointer;
+		// Séparateur avec les expériences.
+		margin: 2rem 0 1rem 0;
+		border-color: white;
 	}
 
-	#competences > div:hover span
+	p
 	{
-		/* Texte */
-		color: white;
+		// Descriptif des compétences.
+		line-height: 1.5rem;
 	}
 
-	#competences > div:hover .circle
+	div
 	{
-		/* Cercle */
-		background-color: rgb(var(--theme-color-dark));
-	}
-}
+		// Conteneur de chaque compétence.
+		display: inline-block;
+		user-select: none;
+		margin-right: 2rem;
 
-@media (prefers-reduced-motion: no-preference)
-{
-	/* Lancement d'une animation de rotation (disponible uniquement
-		si l'utilisateur n'a pas demandé à réduire les animations) */
-	#competences .circle
-	{
-		animation: 2s linear spin;
-	}
-
-	@keyframes spin
-	{
-		/* Animation de rotation de 0 à 360 degrés */
-		0%
+		span
 		{
-			transform: rotate(0deg);
+			// Titre de la compétence.
+			top: 4rem;
+			color: $theme-color-dark;
+			width: 5rem;
+			z-index: 5;
+			display: block;
+			position: relative;
+			font-weight: 700;
+			margin-left: 1rem;
+			margin-right: 1rem;
 		}
-		100%
+
+		.circle
 		{
-			transform: rotate(360deg);
+			// Apparence du cercle.
+			border: 0.5rem solid $theme-box-color;
+			transition: background-color 300ms ease;
+			border-radius: 50%;
+			background-color: white;
+
+			// Dimensions et disposition.
+			width: 6rem;
+			height: 6rem;
+
+			@media (prefers-reduced-motion: no-preference)
+			{
+				// Lancement d'une animation de rotation (disponible uniquement
+				// 	si l'utilisateur n'a pas demandé à réduire les animations).
+				animation: 2s linear spin;
+
+				@keyframes spin
+				{
+					// Animation de rotation de 0 à 360 degrés.
+					0%
+					{
+						transform: rotate(0deg);
+					}
+					100%
+					{
+						transform: rotate(360deg);
+					}
+				}
+			}
+
+			&[data-level = "25"]
+			{
+				// Niveau à 25% (débutant).
+				border-top: 0.5rem solid dodgerblue;
+			}
+
+			&[data-level = "50"]
+			{
+				// Niveau à 50% (correct).
+				border-top: 0.5rem solid green;
+				border-left: 0.5rem solid green;
+			}
+
+			&[data-level = "75"]
+			{
+				// Niveau à 75% (bon).
+				border-top: 0.5rem solid orange;
+				border-left: 0.5rem solid orange;
+				border-right: 0.5rem solid orange;
+			}
+
+			&[data-level = "100"]
+			{
+				// Niveau à 100% (excellent).
+				border: 0.5rem solid crimson;
+			}
+		}
+
+		@media screen and (pointer: fine) and (hover: hover)
+		{
+			// Affichage d'un effet de sélection pour les ordinateurs.
+			cursor: pointer;
+
+			&:hover
+			{
+				span
+				{
+					// Titre de la compétence.
+					color: white;
+				}
+
+				.circle
+				{
+					// Cercle représentant le niveau de compétence.
+					background-color: $theme-color-dark;
+				}
+			}
 		}
 	}
-}
-
-#competences .circle[data-level = "25"]
-{
-	/* Niveau à 25% (débutant) */
-	border-top: 0.5rem solid dodgerblue;
-}
-
-#competences .circle[data-level = "50"]
-{
-	/* Niveau à 50% (correct) */
-	border-top: 0.5rem solid green;
-	border-left: 0.5rem solid green;
-}
-
-#competences .circle[data-level = "75"]
-{
-	/* Niveau à 75% (bon) */
-	border-top: 0.5rem solid orange;
-	border-left: 0.5rem solid orange;
-	border-right: 0.5rem solid orange;
-}
-
-#competences .circle[data-level = "100"]
-{
-	/* Niveau à 100% (excellent) */
-	border: 0.5rem solid crimson;
 }
