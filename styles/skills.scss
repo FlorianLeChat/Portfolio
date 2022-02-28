@@ -65,111 +65,105 @@ header > img
 }
 
 // Liste des formations
-#list
+#list ul
 {
-	ul
+	// État initial des formation.
+	padding: 0 0.5rem 0 0;
+	list-style-type: none;
+
+	li
 	{
-		// État initial des formation.
-		padding: 0 0.5rem 0 0;
-		list-style-type: none;
+		margin: 0 0 0.5rem;
+		padding: 1rem 2rem 1rem 2rem;
+		position: relative;
+		user-select: none;
+		background-color: $theme-box-color;
+		background-image: url("../assets/images/placeholder.svg");
+		background-repeat: no-repeat;
+		background-position: -1000% -1000%;
 
-		li
+		&:before
 		{
-			margin: 0 0 0.5rem;
-			padding: 1rem 2rem 1rem 2rem;
-			position: relative;
-			user-select: none;
-			background-color: $theme-box-color;
-			background-image: url("../assets/images/placeholder.svg");
-			background-repeat: no-repeat;
-			background-position: -1000% -1000%;
+			// Barre horizontale à gauche.
+			top: 0;
+			left: 6px;
+			width: 3px;
+			bottom: 0;
+			content: "";
+			position: absolute;
+			background-color: $theme-color-bright;
+		}
 
-			&:before
+		&:after
+		{
+			// Ancre sur la barre.
+			top: calc(50% - 7.5px);
+			left: 0;
+			width: 15px;
+			height: 15px;
+			content: "";
+			position: absolute;
+			background-image: url("../assets/images/decorations/timeline_marker.svg");
+		}
+
+		&:hover
+		{
+			// Sélection d'une formation.
+			background-size: cover;
+			background-color: $theme-color-bright;
+			background-position: 15px center;
+
+			> *
 			{
-				// Barre horizontale à gauche.
-				top: 0;
-				left: 6px;
-				width: 3px;
-				bottom: 0;
-				content: "";
-				position: absolute;
-				background-color: $theme-color-bright;
+				color: transparent;
 			}
 
-			&:after
+			> img
 			{
-				// Ancre sur la barre.
-				top: calc(50% - 7.5px);
-				left: 0;
-				width: 15px;
-				height: 15px;
-				content: "";
-				position: absolute;
-				background-image: url("../assets/images/decorations/timeline_marker.svg");
+				display: none;
 			}
+		}
 
-			&:hover
-			{
-				// Sélection d'une formation.
-				background-size: cover;
-				background-color: $theme-color-bright;
-				background-position: 15px center;
+		h4, h5
+		{
+			// Titre et option du diplôme.
+			color: white;
+			margin: 1rem 0 1rem;
+			font-size: 1.25rem;
+		}
 
-				> *
-				{
-					color: transparent;
-				}
-
-				> img
-				{
-					display: none;
-				}
-			}
-
-			h4, h5
-			{
-				// Titre et option du diplôme.
-				color: white;
-				margin: 1rem 0 1rem;
-				font-size: 1.25rem;
-			}
-
-			img
-			{
-				// Image représentant un diplôme.
-				right: 0;
-				width: 3rem;
-				margin: 0.25rem;
-				bottom: 0;
-				position: absolute;
-			}
+		img
+		{
+			// Image représentant un diplôme.
+			right: 0;
+			width: 3rem;
+			margin: 0.25rem;
+			bottom: 0;
+			position: absolute;
 		}
 	}
 }
 
 // Résumé des formations.
-#summary
+#summary ul
 {
-	ul
+	// Liste non ordonnée
+	padding: 0 0 0 0.5rem;
+	list-style-type: none;
+
+	li
 	{
-		// Liste non ordonnée
-		padding: 0 0 0 0.5rem;
-		list-style-type: none;
+		height: 250px;
+		display: table;
+		overflow-y: hidden;
+		line-height: 1.5rem;
+		margin-bottom: 0.5rem;
 
-		li
+		p
 		{
-			height: 250px;
-			display: table;
-			overflow-y: hidden;
-			line-height: 1.5rem;
-			margin-bottom: 0.5rem;
-
-			p
-			{
-				// Alignement du texte à la verticale
-				display: table-cell;
-				vertical-align: middle;
-			}
+			// Alignement du texte à la verticale
+			display: table-cell;
+			vertical-align: middle;
 		}
 	}
 }
@@ -320,7 +314,6 @@ header > img
 				background-color: white;
 			}
 
-
 			@media screen and (pointer: fine) and (hover: hover)
 			{
 				// Affichage d'un effet de sélection pour les ordinateurs.
@@ -328,13 +321,13 @@ header > img
 				{
 					// Corps.
 					cursor: pointer;
-				}
 
-				&:hover::after
-				{
-					// Indicateur timeline.
-					border: 0.25rem solid white;
-					background-color: $theme-color-bright;
+					&:after
+					{
+						// Indicateur timeline.
+						border: 0.25rem solid white;
+						background-color: $theme-color-bright;
+					}
 				}
 			}
 

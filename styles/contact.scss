@@ -76,7 +76,7 @@ header > img
 			height: 200px;
 		}
 
-		input[type *= "e"], select, textarea
+		input[type *= e], select, textarea
 		{
 			// Champs de saisie et sélecteur de sujets.
 			width: calc(100% - 2rem);
@@ -97,7 +97,7 @@ header > img
 			}
 		}
 
-		input[type = "submit"]
+		input[type = submit]
 		{
 			// Bouton de validation.
 			color: white;
@@ -213,21 +213,21 @@ header > img
 
 	input:valid + span::before, textarea:valid + span::before
 	{
-		// Champ valide
+		// Champ valide.
 		color: green;
 		content: "✓";
 	}
 
 	input:invalid + span::before, textarea:invalid + span::before
 	{
-		// Champ invalide
+		// Champ invalide.
 		color: red;
 		content: "✖";
 	}
 
 	input:invalid, textarea:invalid
 	{
-		// Effet de sélection
+		// Effet de sélection.
 		transition: box-shadow 250ms ease;
 	}
 
