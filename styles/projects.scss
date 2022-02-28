@@ -12,7 +12,7 @@ $theme-color-bright: rgb(255, 158, 0);
 // ------- //
 header > img
 {
-	// Vagues marquant la fin de l'en-tête
+	// Vagues marquant la fin de l'en-tête.
 	transform: translateY(-27.5%);
 }
 
@@ -21,7 +21,7 @@ header > img
 // ------- //
 article
 {
-	// Corps de chaque projet
+	// Corps de chaque projet.
 	margin: 0 5% 1.5rem 5%;
 	padding: 3rem;
 
@@ -32,32 +32,28 @@ article
 	border-radius: 1rem;
 	background-color: $theme-box-color;
 
-	:first-of-type
+	&:first-of-type
 	{
-		// Ajout d'une marge uniquement au
-		// 	premier projet
+		// Ajout d'une marge uniquement au premier projet.
 		margin-top: calc(7.5% + 5rem);
 	}
 
-	:last-of-type
+	&:last-of-type
 	{
-		// Ajout d'une marge uniquement au
-		// 	dernier projet
+		// Ajout d'une marge uniquement au dernier projet.
 		margin-bottom: 5%;
 	}
 
 	@media screen and (min-width: 1024px)
 	{
-		// Modification des marges sur les
-		// 	grands écrans
+		// Modification des marges sur les grands écrans.
 		margin-left: 15%;
 		margin-right: 15%;
 	}
 
 	hr
 	{
-		// Séparateur entre les parties de
-		//	chaque projets
+		// Séparateur entre les parties de chaque projets.
 		margin: 1rem 0 1rem 0;
 		border-color: rgb(63, 63, 70);
 	}
