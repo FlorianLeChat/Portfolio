@@ -5,7 +5,7 @@
 Ceci est mon premier portfolio et par la même occasion, l'un de mes premiers sites web utilisant les technologies du web les plus connues. Il est très probable qu'il comporte de nombreuses fautes de débutant, mais ce projet est voué a évoluer dans le temps.
 
 <ins>Voici les exigences pour exécuter le code</ins> :
-* HTML**5** / CSS**3**
+* HTML**5** / CSS**3** (préprocesseur SASS)
 * PHP **7.4** ou plus récent
 * JavaScript (*de base*)
 * Maria DB **10.5**
@@ -23,7 +23,7 @@ ___
 This is my first portfolio and at the same time, one of my first websites using the most famous web technologies. It is very likely to have many beginner mistakes, but this project is bound to evolve over time.
 
 <ins>Here are the requirements to run the code</ins>:
-* HTML**5** / CSS**3**
+* HTML**5** / CSS**3** (SASS preprocessor)
 * PHP **7.4** or later
 * JavaScript (*Vanilla*)
 * Maria DB **10.5**
