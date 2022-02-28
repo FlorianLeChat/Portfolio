@@ -73,8 +73,9 @@
 	// On récupère enfin la page demandée.
 	$file = htmlentities($_GET["target"] ?? "");
 
-	if (empty($file))
+	if (empty($file) || ($file != "index" && $file != "projects" && $file != "skills" && $file != "contact"))
 	{
-		$file = "index"; // Page par défaut.
+		// Si la variable est vide ou invalide, on cible la page par défaut.
+		$file = "index";
 	}
 ?>
