@@ -1,244 +1,238 @@
-/* --------------- */
-/* Document entier */
-/* --------------- */
-html
-{
-	/* Variables globales */
-	--theme-color-dark: 54, 24, 107;
-	--theme-color-bright: 103, 58, 183;
-}
+// ------------------ //
+// Variables globales //
+// ------------------ //
+$theme-color-dark: rgb(54, 24, 107);
+$theme-color-bright: rgb(103, 58, 183);
 
-/* ------- */
-/* En-tête */
-/* ------- */
+@import "variables";
+@import "main";
+
+// ------- //
+// En-tête //
+// ------- //
 header > img
 {
-	/* Vagues marquant la fin de l'en-tête */
+	// Vagues marquant la fin de l'en-tête.
 	transform: translateY(-25%);
 }
 
-/* --------------------- */
-/* Formulaire de contact */
-/* --------------------- */
+// --------------------- //
+// Formulaire de contact //
+// --------------------- //
 #form
 {
-	/* Corps de la section */
-	color: rgb(var(--theme-text-color));
+	// Corps de la section.
+	color: $theme-text-color;
 	margin: auto;
 	padding: calc(5% + 5rem) 5% 5rem 5%;
 	max-width: 800px;
-}
 
-@media screen and (min-width: 1024px)
-{
-	/* Modification des marges sur
-		les grands écrans */
-	#form
+	@media screen and (min-width: 1024px)
 	{
+		// Modification des marges sur les grands écrans.
 		padding-left: 15%;
 		padding-right: 15%;
 	}
-}
 
-#form > h2
-{
-	/* Titre de la section */
-	color: white;
-	margin: 0 0 4rem;
-	font-size: 1.5rem;
-}
-
-#form > h3
-{
-	/* Identifiant de la section */
-	font-weight: 400;
-	margin-bottom: 0.5rem;
-}
-
-#form > p
-{
-	/* Descriptif de la section */
-	line-height: 1.5rem;
-	margin-bottom: 2.5rem;
-}
-
-#form > form
-{
-	/* Corps du formulaire */
-	padding: 1.5rem;
-	user-select: none;
-	border-radius: 0.25rem;
-	background-image: linear-gradient(to right, rgb(var(--theme-color-dark)), rgb(var(--theme-color-bright)));
-}
-
-#form label
-{
-	/* Libellé de chaque champ de saisie */
-	color: white;
-}
-
-#form #content
-{
-	/* Champ de saisie pour indiquer le message */
-	height: 200px;
-}
-
-#form input[type *= "e"], #form select, #form textarea
-{
-	/* Champs de saisie et sélecteur de sujets */
-	width: calc(100% - 2rem);
-	border: none;
-	resize: vertical;
-	margin: 0.5rem 0 1rem 0;
-	outline: none;
-	padding: 1rem;
-	box-sizing: border-box;
-	transition: background-color 300ms ease;
-	line-height: 1; /* Correction étrange pour le normalisateur CSS */
-	border-radius: 0.5rem;
-}
-
-#form input[type *= "e"]:focus, #form select:focus, #form textarea:focus
-{
-	/* Animation lors de la sélection de l'élément */
-	background-color: beige;
-}
-
-#form input[type = "submit"]
-{
-	/* Bouton de validation */
-	color: white;
-	cursor: pointer;
-	border: none;
-	padding: 0.75rem 1.25rem;
-	transition: background-color 250ms ease;
-	border-radius: 0.25rem;
-	background-color: rgb(var(--theme-color-bright));
-}
-
-#form input[type = "submit"]:hover
-{
-	/* Animation lors du survol de l'élément */
-	background-color: rgb(var(--theme-color-dark));
-}
-
-/* ---------------------- */
-/* Validations JavaScript */
-/* ---------------------- */
-#form > #result
-{
-	/* Message de validation après l'envoi
-		du formulaire */
-	color: rgb(var(--theme-color-bright));
-	font-size: 2rem;
-	font-weight: 700;
-	line-height: 2rem;
-}
-
-#form > #warning
-{
-	/* Messages de vérification pendant le
-		renseignement des informations */
-	color: orange;
-	border: 3px dashed orange;
-	padding: 0.5rem;
-	display: none;
-	line-height: 1.5rem;
-}
-
-#form > #warning.show
-{
-	/* Apparition du message de validation */
-	display: inline-block;
-}
-
-#form > #warning.hide
-{
-	/* Disparition du message de validation */
-	display: none;
-}
-
-@media (prefers-reduced-motion: no-preference)
-{
-	/* Lancement d'une animation d'apparition et de disparition
-		du message de validation (disponible uniquement si
-		l'utilisateur n'a pas demandé à réduire les animations) */
-	#form > #warning.show
+	h2
 	{
-		display: inline-block;
-		animation: 250ms show 0s forwards;
+		// Titre de la section.
+		color: white;
+		margin: 0 0 4rem;
+		font-size: 1.5rem;
 	}
 
-	#form > #warning.hide
+	h3
 	{
-		display: inline-block;
-		animation: 250ms hide 0s forwards;
+		// Identifiant de la section.
+		font-weight: 400;
+		margin-bottom: 0.5rem;
 	}
 
-	@keyframes show
+	p
 	{
-		/* Animation d'apparition du message
-			de validation du formulaire */
-		from
+		// Descriptif de la section.
+		line-height: 1.5rem;
+		margin-bottom: 2.5rem;
+	}
+
+	form
+	{
+		// Corps du formulaire.
+		padding: 1.5rem;
+		user-select: none;
+		border-radius: 0.25rem;
+		background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
+
+		label
 		{
-			border: 3px dashed orange;
-			margin: 0; padding: 0.5rem;
+			// Libellé de chaque champ de saisie.
+			color: white;
 		}
-	}
 
-	@keyframes hide
-	{
-		/* Animation de disparition du message
-			de validation du formulaire */
-		to
+		#content
 		{
+			// Champ de saisie pour indiquer le message.
+			height: 200px;
+		}
+
+		input[type *= "e"], select, textarea
+		{
+			// Champs de saisie et sélecteur de sujets.
+			width: calc(100% - 2rem);
 			border: none;
-			margin: 0; padding: 0; 	/* La vie serait plus belle avec display: none; */
-			opacity: 0; height: 0;
+			resize: vertical;
+			margin: 0.5rem 0 1rem 0;
+			outline: none;
+			padding: 1rem;
+			box-sizing: border-box;
+			transition: background-color 300ms ease;
+			line-height: 1; // Correction étrange pour le normalisateur CSS.
+			border-radius: 0.5rem;
+
+			&:focus, &:focus, &:focus
+			{
+				// Animation lors de la sélection de l'élément.
+				background-color: beige;
+			}
+		}
+
+		input[type = "submit"]
+		{
+			// Bouton de validation.
+			color: white;
+			cursor: pointer;
+			border: none;
+			padding: 0.75rem 1.25rem;
+			transition: background-color 250ms ease;
+			border-radius: 0.25rem;
+			background-color: $theme-color-bright;
+
+			&:hover
+			{
+				// Animation lors du survol de l'élément.
+				background-color: $theme-color-dark;
+			}
 		}
 	}
 }
 
-#form input + span, #form textarea + span
+// ---------------------- //
+// Validations JavaScript //
+// ---------------------- //
+#form
 {
-	/* Icône d'état */
-	position: relative;
-}
+	#result
+	{
+		// Message de validation après l'envoi du formulaire.
+		color: $theme-color-bright;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 2rem;
+	}
 
-#form input + span::before, #form textarea + span::before
-{
-	top: 2px;
-	left: -1.5rem;
-	position: absolute;
-}
+	#warning
+	{
+		// Messages de vérification pendant l'écriture des informations.
+		color: orange;
+		border: 3px dashed orange;
+		padding: 0.5rem;
+		display: none;
+		line-height: 1.5rem;
 
-#form textarea + span::before
-{
-	top: -1.5rem; /* Pourquoi une zone de saisie se comporte différemment ?... */
-	left: -2rem;
-}
+		&.show
+		{
+			// Apparition du message de validation.
+			display: inline-block;
+		}
 
-#form input:valid + span::before, #form textarea:valid + span::before
-{
-	/* Champ valide */
-	color: green;
-	content: "✓";
-}
+		&.hide
+		{
+			// Disparition du message de validation.
+			display: none;
+		}
 
-#form input:invalid + span::before, #form textarea:invalid + span::before
-{
-	/* Champ invalide */
-	color: red;
-	content: "✖";
-}
+		@media (prefers-reduced-motion: no-preference)
+		{
+			// Lancement d'une animation d'apparition et de disparition
+			//	du message de validation (disponible uniquement si
+			//	l'utilisateur n'a pas demandé à réduire les animations).
+			&.show
+			{
+				display: inline-block;
+				animation: 250ms show 0s forwards;
+			}
 
-#form input:invalid, #form textarea:invalid
-{
-	/* Effet de sélection */
-	transition: box-shadow 250ms ease;
-}
+			&.hide
+			{
+				display: inline-block;
+				animation: 250ms hide 0s forwards;
+			}
 
-#form input:focus:invalid, #form textarea:focus:invalid
-{
-	box-shadow: inset 0 0 0 3px red;
+			@keyframes show
+			{
+				// Animation d'apparition du message de validation.
+				from
+				{
+					border: 3px dashed orange;
+					margin: 0; padding: 0.5rem;
+				}
+			}
+
+			@keyframes hide
+			{
+				// Animation de disparition du message de validation.
+				to
+				{
+					border: none;
+					margin: 0; padding: 0; // La vie serait plus belle avec display: none;
+					opacity: 0; height: 0;
+				}
+			}
+		}
+	}
+
+	input + span, textarea + span
+	{
+		// Icône d'état.
+		position: relative;
+
+		&::before
+		{
+			top: 2px;
+			left: -1.5rem;
+			position: absolute;
+		}
+	}
+
+	textarea + span::before
+	{
+		top: -1.5rem; // Pourquoi une zone de saisie se comporte différemment ?...
+		left: -2rem;
+	}
+
+	input:valid + span::before, textarea:valid + span::before
+	{
+		// Champ valide
+		color: green;
+		content: "✓";
+	}
+
+	input:invalid + span::before, textarea:invalid + span::before
+	{
+		// Champ invalide
+		color: red;
+		content: "✖";
+	}
+
+	input:invalid, textarea:invalid
+	{
+		// Effet de sélection
+		transition: box-shadow 250ms ease;
+	}
+
+	input:focus:invalid, textarea:focus:invalid
+	{
+		box-shadow: inset 0 0 0 3px red;
+	}
 }
