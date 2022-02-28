@@ -63,7 +63,7 @@ article
 	// --------------------- //
 	div.properties
 	{
-		> h2
+		h2
 		{
 			// Nom du projet
 			overflow: hidden;
@@ -72,7 +72,7 @@ article
 			margin-bottom: 0;
 		}
 
-		> h3
+		h3
 		{
 			// Date du projet
 			margin-top: 0.5rem;
@@ -80,7 +80,7 @@ article
 			text-indent: 1rem;
 		}
 
-		> p
+		p
 		{
 			// Description du projet
 			color: $theme-text-color;
@@ -88,7 +88,7 @@ article
 			line-height: 1.5rem;
 		}
 
-		> img
+		img
 		{
 			// Icône du projet
 			float: left;
@@ -100,13 +100,15 @@ article
 		{
 			// Alignement des propriétés du projet
 			//	au centre sur les petits écrans.
-			> h2, > h3
+			h2, h3
 			{
+				// Nom et date du projet.
 				text-align: center;
 			}
 
-			> img
+			img
 			{
+				// Icône du projet.
 				float: none;
 				display: block;
 				margin-left: auto;

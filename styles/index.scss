@@ -124,23 +124,23 @@ header
 			display: table;
 			border-spacing: 3rem;
 			border-collapse: separate;
-		}
 
-		.row article
-		{
-			// Cellules de la boite.
-			width: 500px;
-			height: 300px;
+			.row article
+			{
+				// Cellules de la boite.
+				width: 500px;
+				height: 300px;
 
-			display: table-cell;
-			box-sizing: border-box;
+				display: table-cell;
+				box-sizing: border-box;
 
-			table-layout: fixed;
-			vertical-align: middle;
+				table-layout: fixed;
+				vertical-align: middle;
+			}
 		}
 	}
 
-	> img:first-child
+	img:first-child
 	{
 		// Vagues marquant le début de la section.
 		left: 0;
@@ -152,7 +152,7 @@ header
 		min-height: 400px;
 	}
 
-	> img:last-child
+	img:last-child
 	{
 		// Vagues marquant la fin de la section.
 		left: 0;
@@ -175,43 +175,39 @@ header
 	padding-right: 10%;
 	padding-bottom: 7.5%;
 
+	@media screen and (max-width: 768px)
+	{
+		// Modification des marges sur les téléphones mobiles.
+		column-gap: 2.5%;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
 	div
 	{
 		// Ajout de deux colonnes dans le conteneur.
 		column-gap: 7.5%;
 		column-count: 2;
-	}
 
-	@media screen and (max-width: 768px)
-	{
-		// Modification des marges sur les téléphones mobiles.
-		padding-left: 1rem;
-		padding-right: 1rem;
-
-		div
+		article
 		{
-			column-gap: 2.5%;
+			// Marge de remplissage dans chaque article.
+			padding: 1rem;
+
+			img
+			{
+				// Dimensions des images d'illustration.
+				width: 10%;
+				min-width: 4rem;
+			}
+
+			h2
+			{
+				// Apparence du titre de l'article.
+				color: white;
+				word-break: break-word;
+			}
 		}
-	}
-
-	article
-	{
-		// Marge de remplissage dans chaque article.
-		padding: 1rem;
-
-		h2
-		{
-			// Apparence du titre de l'article.
-			color: white;
-			word-break: break-word;
-		}
-	}
-
-	img
-	{
-		// Dimensions des images d'illustration.
-		width: 10%;
-		min-width: 4rem;
 	}
 }
 
