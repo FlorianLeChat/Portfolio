@@ -7,30 +7,27 @@
 // ------- //
 // En-tête //
 // ------- //
-header
+header a
 {
-	a
+	// Plateformes de communication.
+	display: inline;
+
+	img
 	{
-		// Plateformes de communication.
-		display: inline;
+		// Icône de la plateforme.
+		width: 2rem;
+		filter: drop-shadow(0 0 1rem $theme-color-dark);
+		margin: 4rem 1rem 0 1rem;
+		padding: 0.625rem;
+		transition: transform 300ms ease;
+		border-radius: 1rem;
+		background-color: currentColor;
 
-		img
+		&:hover
 		{
-			// Icône de la plateforme.
-			width: 2rem;
-			filter: drop-shadow(0 0 1rem $theme-color-dark);
-			margin: 4rem 1rem 0 1rem;
-			padding: 0.625rem;
+			// Animation de sélection d'une icône (modification de l'échelle).
+			transform: scale(1.2);
 			transition: transform 300ms ease;
-			border-radius: 1rem;
-			background-color: $theme-color-bright;
-
-			&:hover
-			{
-				// Animation de sélection d'une icône (modification de l'échelle).
-				transform: scale(1.2);
-				transition: transform 300ms ease;
-			}
 		}
 	}
 }
