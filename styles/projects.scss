@@ -57,159 +57,160 @@ article
 		margin: 1rem 0 1rem 0;
 		border-color: rgb(63, 63, 70);
 	}
-}
 
-// ------------------- //
-// Projet : propriétés //
-// ------------------- //
-article div.properties > h2
-{
-	// Nom du projet
-	overflow: hidden;
-	font-size: 2rem;
-	text-align: left;
-	margin-bottom: 0;
-}
-
-article div.properties > h3
-{
-	// Date du projet
-	margin-top: 0.5rem;
-	text-align: left;
-	text-indent: 1rem;
-}
-
-article div.properties > p
-{
-	// Description du projet
-	color: rgb(var(--theme-text-color));
-	text-align: justify;
-	line-height: 1.5rem;
-}
-
-article div.properties > img
-{
-	// Icône du projet
-	float: left;
-	height: 4rem;
-	margin-right: 1rem;
-}
-
-@media screen and (max-width: 768px)
-{
-	// Alignement des propriétés du projet
-	//	au centre sur les petits écrans
-	article div.properties > h2, article div.properties > h3
+	// --------------------- //
+	// Espace des propriétés //
+	// --------------------- //
+	div.properties
 	{
-		// Nom et date
+		> h2
+		{
+			// Nom du projet
+			overflow: hidden;
+			font-size: 2rem;
+			text-align: left;
+			margin-bottom: 0;
+		}
+
+		> h3
+		{
+			// Date du projet
+			margin-top: 0.5rem;
+			text-align: left;
+			text-indent: 1rem;
+		}
+
+		> p
+		{
+			// Description du projet
+			color: $theme-text-color;
+			text-align: justify;
+			line-height: 1.5rem;
+		}
+
+		> img
+		{
+			// Icône du projet
+			float: left;
+			height: 4rem;
+			margin-right: 1rem;
+		}
+
+		@media screen and (max-width: 768px)
+		{
+			// Alignement des propriétés du projet
+			//	au centre sur les petits écrans.
+			> h2, > h3
+			{
+				text-align: center;
+			}
+
+			> img
+			{
+				float: none;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+
+	// --------------------------- //
+	// Espace de la galerie photos //
+	// --------------------------- //
+	div.images
+	{
+		// Conteneur de la galerie des photos.
 		text-align: center;
+
+		div
+		{
+			// État initial de la galerie photos.
+			margin: 0.5rem;
+			border: 1px solid $theme-text-color;
+			display: none;
+			min-width: 170px;
+			max-width: 600px;
+			background-color: $theme-background-color;
+
+			&:first-of-type
+			{
+				// Seule la première image est affichée.
+				display: inline-block;
+			}
+
+			img
+			{
+				// Adaptation des dimensions des photos
+				//	sur celles définies par le conteneur.
+				width: 100%;
+				height: auto;
+			}
+
+			p
+			{
+				// Ajustement de la position de la légende.
+				margin: 0;
+				padding: 1rem;
+				word-break: break-word;
+			}
+		}
+
+		> img
+		{
+			// Flèches pour naviguer entre les images.
+			width: 100%;
+			height: 3rem;
+			margin: 0.5rem 0 0.5rem 0;
+			user-select: none;
+
+			@media screen and (pointer: fine) and (hover: hover)
+			{
+				// Affichage d'un effet de sélection pour les ordinateurs.
+				filter: contrast(50%);
+				transition: filter 500ms linear;
+				will-change: transform;
+
+				&:hover
+				{
+					filter: contrast(100%);
+				}
+			}
+
+			@media screen and (min-width: 1280px)
+			{
+				// Affichage d'une disposition différente sur les ordinateurs.
+				width: 5rem;
+				height: 5rem;
+				margin: 0;
+
+				// Flèche gauche et droite.
+				&:first-of-type
+				{
+					float: left;
+				}
+
+				&:last-of-type
+				{
+					float: right;
+				}
+			}
+		}
 	}
 
-	article div.properties > img
+	// ------------------------------ //
+	// Espace des icônes des langages //
+	// ------------------------------ //
+	div.languages
 	{
-		// Icône
-		float: none;
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
+		padding-bottom: 2.5rem;
+
+		img
+		{
+			// Icônes des langages utilisés.
+			float: right;
+			height: 2.5rem;
+			margin-left: 1.5rem;
+		}
 	}
-}
-
-// ----------------------- //
-// Projet : galerie photos //
-// ----------------------- //
-article div.images
-{
-	// Conteneur de la galerie photos
-	text-align: center;
-}
-
-article div.images div
-{
-	// État initial de la galerie photos
-	margin: 0.5rem;
-	border: 1px solid rgb(var(--theme-text-color));
-	display: none;
-	min-width: 170px;
-	max-width: 600px;
-	background-color: rgb(var(--theme-background-color));
-}
-
-article div.images div:first-of-type
-{
-	// Seule la première image est affichée
-	display: inline-block;
-}
-
-article div.images > img
-{
-	// Flèches pour naviguer entre les images
-	width: 100%;
-	height: 3rem;
-	margin: 0.5rem 0 0.5rem 0;
-}
-
-@media screen and (pointer: fine) and (hover: hover)
-{
-	// Affichage d'un effet de sélection pour les affichages
-	//	sur ordinateurs uniquement
-	article div.images > img
-	{
-		filter: contrast(50%);
-		transition: filter 500ms linear;
-		will-change: transform;
-	}
-
-	article div.images > img:hover
-	{
-		filter: contrast(100%);
-	}
-}
-
-@media screen and (min-width: 1280px)
-{
-	// Affichage d'une disposition différente
-	//	sur les ordinateurs uniquement
-	article div.images > img
-	{
-		width: 5rem;
-		height: 5rem;
-		margin: 0;
-	}
-
-	// Flèche gauche et droite
-	article div.images img:first-of-type { float: left; }
-	article div.images img:last-of-type { float: right; }
-}
-
-article div.images div img
-{
-	// Adaptation des dimensions des photos
-	//	à celles du conteneur
-	width: 100%;
-	height: auto;
-}
-
-article div.images div p
-{
-	// Ajustement de la position de la légende
-	margin: 0;
-	padding: 1rem;
-	word-break: break-word;
-}
-
-// ------------------------ //
-// Projet : icônes langages //
-// ------------------------ //
-article div.languages
-{
-	padding-bottom: 2.5rem;
-}
-
-article div.languages img
-{
-	// Icônes des langages utilisés
-	float: right;
-	height: 2.5rem;
-	margin-left: 1.5rem;
 }
