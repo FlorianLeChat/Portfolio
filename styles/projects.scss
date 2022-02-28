@@ -1,10 +1,11 @@
-@import "main";
-
 // ------------------ //
 // Variables globales //
 // ------------------ //
 $theme-color-dark: rgb(158, 103, 13);
 $theme-color-bright: rgb(255, 158, 0);
+
+@import "variables";
+@import "main";
 
 // ------- //
 // En-tête //
