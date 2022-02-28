@@ -22,10 +22,10 @@
 
 		// On les assemble par la suite sous forme d'articles.
 		$projects_html .= "
-			\t\t<!-- Project numéro $indice -->
-			\t\t<article data-image=\"assets/images/projects/bg_$identifier.jpg\">
-				\t\t<h3><a href=\"?target=projects#$identifier\">$name</a></h3>
-			\t\t</article>\n
+			<!-- Project numéro $indice -->
+			<article data-image=\"assets/images/projects/bg_$identifier.jpg\">
+				<h3><a href=\"?target=projects#$identifier\">$name</a></h3>
+			</article>\n
 		";
 
 		// On sépare les projets par groupe de 3 pour obtenir
@@ -33,7 +33,7 @@
 		if ($indice > 0 && $indice % 3 == 0)
 		{
 			// Fin d'un groupe.
-			$projects_html .= "\t\t</div>\n";
+			$projects_html .= "</div>\n";
 
 			if ($indice != $projects_length)
 			{

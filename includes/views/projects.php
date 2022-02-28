@@ -88,13 +88,13 @@
 					// On assemble les données récupérées pour créer la structure HTML
 					//	requise pour la disposition en CSS.
 					$images .= "
-						\t\t<div>
-							\t\t<a href=\"$image\" target=\"_blank\">
-								\t\t<img src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
-							\t\t</a>
+						<div>
+							<a href=\"$image\" target=\"_blank\">
+								<img src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
+							</a>
 
-							\t\t<p>$label</p>
-						\t\t</div>\n
+							<p>$label</p>
+						</div>\n
 					";
 				}
 			}

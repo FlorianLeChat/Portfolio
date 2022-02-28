@@ -37,13 +37,13 @@
 		// On itére enfin à travers les langues pour contruire
 		//	les boutons des drapeaux.
 		$flags_html .= "
-			\t\t<li>
-				\t\t<!-- $name -->
-				\t\t<button type=\"submit\" name=\"language\" value=\"$language\">
-					\t\t<img src=\"assets/images/flags/$code.svg\" width=\"21\" height=\"16\" draggable=\"false\" alt=\"$name\" />
-					\t\t<span>$name</span>
-				\t\t</button>
-			\t\t</li>\n
+			<li>
+				<!-- $name -->
+				<button type=\"submit\" name=\"language\" value=\"$language\">
+					<img src=\"assets/images/flags/$code.svg\" width=\"21\" height=\"16\" draggable=\"false\" alt=\"$name\" />
+					<span>$name</span>
+				</button>
+			</li>\n
 		";
 	}
 ?>

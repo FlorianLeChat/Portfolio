@@ -38,30 +38,30 @@
 		// On assemble les données pour réaliser une liste des
 		//	formation avec des informations générales.
 		$degrees_list_html .= "
-			\t\t<li data-image=\"assets/images/skills/$identifier.jpg\">
-				\t\t<!-- Intitulé de la formation -->
-				\t\t<h4>$title[0]</h4>
+			<li data-image=\"assets/images/skills/$identifier.jpg\">
+				<!-- Intitulé de la formation -->
+				<h4>$title[0]</h4>
 
-				\t\t<h5>$title[1]</h5>
+				<h5>$title[1]</h5>
 
-				\t\t<!-- Lieu de formation -->
-				\t\t<p><em>$location[0]</em></p>
+				<!-- Lieu de formation -->
+				<p><em>$location[0]</em></p>
 
-				\t\t<p>$location[1]</p>
+				<p>$location[1]</p>
 
-				\t\t<!-- Période de formation -->
-				\t\t<p><strong>$date</strong></p>
+				<!-- Période de formation -->
+				<p><strong>$date</strong></p>
 		";
 
 		// On réalise la même chose mais avec le résumé de
 		//	chacune des formations.
 		$description = $degrees["degree_" . $identifier . "_description"];	// Description de la formation
 		$degrees_resume_html .= "
-			\t\t<li>
-				\t\t<p>
-					\t\t$description
-				\t\t</p>
-			\t\t</li>\n
+			<li>
+				<p>
+					$description
+				</p>
+			</li>\n
 		";
 
 		// On vérifie si la formation s'est terminée par
@@ -69,8 +69,8 @@
 		if ($degree["graduated"] == "1")
 		{
 			$degrees_list_html .= "
-				\n\n\t\t\t\t<!-- Diplôme obtenu -->
-				\t\t\t<img src=\"assets/images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" />
+				<!-- Diplôme obtenu -->
+				<img src=\"assets/images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" />
 			";
 		}
 
@@ -95,16 +95,16 @@
 		$description = $experiences["experience_" . $identifier . "_description"];	// Description de l'expérience
 
 		$experiences_html .= "
-			\t\t<li>
-				\t\t<!-- Date et descriptif de l'événement -->
-				\t\t<strong>$company | $date</strong>
+			<li>
+				<!-- Date et descriptif de l'événement -->
+				<strong>$company | $date</strong>
 
-				\t\t<p>
-					\t\t$description
-				\t\t</p>
+				<p>
+					$description
+				</p>
 
-				\t\t<em>$location</em>
-			\t\t</li>\n
+				<em>$location</em>
+			</li>\n
 		";
 	}
 
@@ -114,10 +114,10 @@
 		$level = $skill["level"];
 
 		$skills_html .= "
-			\t\t<div>
-				\t\t<span>$name</span>
-				\t\t<div class=\"circle\" data-level=\"$level\"></div>
-			\t\t</div>\n
+			<div>
+				<span>$name</span>
+				<div class=\"circle\" data-level=\"$level\"></div>
+			</div>\n
 		";
 	}
 ?>
