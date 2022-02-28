@@ -137,30 +137,27 @@ header
 // ------------ //
 // Pied-de-page //
 // ------------ //
-footer
+footer ul
 {
-	ul
+	// Apparence de la liste.
+	margin: 0;
+	columns: 3;
+	padding: 1rem 10% 1rem 10%;
+	column-gap: 2rem;
+	column-rule: thin dotted white;
+	list-style-type: none;
+
+	li
 	{
-		// Apparence de la liste.
-		margin: 0;
-		columns: 3;
-		padding: 1rem 10% 1rem 10%;
-		column-gap: 2rem;
-		column-rule: thin dotted white;
-		list-style-type: none;
+		// Espacement interne des options.
+		padding: 1rem 0 1rem 0;
+		word-break: break-word;
 
-		li
+		a
 		{
-			// Espacement interne des options.
-			padding: 1rem 0 1rem 0;
-			word-break: break-word;
-
-			a
-			{
-				// Couleur de fond.
-				padding: 0.5rem;
-				background-color: $theme-color-dark;
-			}
+			// Couleur de fond.
+			padding: 0.5rem;
+			background-color: $theme-color-dark;
 		}
 	}
 }

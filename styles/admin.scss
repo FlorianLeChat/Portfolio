@@ -134,45 +134,42 @@ footer ul
 }
 
 // Catégories des tables.
-#categories
+#categories ul
 {
-	ul
+	// Liste des catégories.
+	margin: 1rem;
+	padding: 0;
+	grid-area: c;
+	list-style: none;
+
+	li
 	{
-		// Liste des catégories.
-		margin: 1rem;
-		padding: 0;
-		grid-area: c;
-		list-style: none;
-
-		li
+		&:not(:last-of-type)
 		{
-			&:not(:last-of-type)
-			{
-				// Marge sur tous les items sauf le dernier.
-				margin-bottom: 0.5rem;
-			}
+			// Marge sur tous les items sauf le dernier.
+			margin-bottom: 0.5rem;
+		}
 
-			input
-			{
-				// Élément de chaque catégorie.
-				color: white;
-				width: 100%;
-				border: 0;
-				margin: 0;
-				cursor: pointer;
-				padding: 1rem;
-				transition: background-color 250ms ease;
-				user-select: none;
-				border-radius: 0.5rem;
-				text-transform: capitalize;
-				background-color: $theme-color-bright;
+		input
+		{
+			// Élément de chaque catégorie.
+			color: white;
+			width: 100%;
+			border: 0;
+			margin: 0;
+			cursor: pointer;
+			padding: 1rem;
+			transition: background-color 250ms ease;
+			user-select: none;
+			border-radius: 0.5rem;
+			text-transform: capitalize;
+			background-color: $theme-color-bright;
 
-				&:hover
-				{
-					// Animation de sélection.
-					color: $theme-color-bright;
-					background-color: white;
-				}
+			&:hover
+			{
+				// Animation de sélection.
+				color: $theme-color-bright;
+				background-color: white;
 			}
 		}
 	}
@@ -241,18 +238,39 @@ footer ul
 			border-radius: 0.25rem;
 			text-transform: uppercase;
 
-			// Ajout d'un élément.
-			&[name *= "add"] 			{ background-color: rgb(37, 208, 102); }
-			&[name *= "add"]:hover 		{ background-color: rgb(28, 158, 77); }
+			&[name *= add]
+			{
+				// Ajout d'un élément.
+				background-color: rgb(37, 208, 102);
 
-			// Édition d'un élément.
-			&[name *= "update"] 		{ background-color: rgb(255, 158, 0); }
-			&[name *= "update"]:hover 	{ background-color: rgb(158, 103, 13); }
+				&:hover
+				{
+					background-color: rgb(28, 158, 77);
+				}
+			}
 
-			// Suppression d'un élément.
-			&[name *= "remove"]			{ background-color: $theme-color-bright; }
-			&[name *= "remove"]:hover	{ background-color: $theme-color-dark; }
+			&[name *= update]
+			{
+				// Édition d'un élément.
+				background-color: rgb(255, 158, 0);
 
+				&:hover
+				{
+					background-color: rgb(158, 103, 13);
+				}
+			}
+
+			&[name *= remove]
+			{
+				// Suppression d'un élément.
+				background-color: $theme-color-bright;
+
+				&:hover
+				{
+					background-color: $theme-color-dark;
+				}
+
+			}
 		}
 	}
 }
@@ -262,7 +280,7 @@ footer ul
 // ----------------------------------- //
 #upload
 {
-	// Corps de la section
+	// Corps de la section.
 	margin: auto;
 	padding: 0 10% 0 10%;
 	max-width: 750px;
@@ -338,7 +356,7 @@ footer ul
 					text-transform: uppercase;
 				}
 
-				input[type = "file"]
+				input[type = file]
 				{
 					// Actionneur pour ouvrir l'explorateur des fichiers.
 					top: 0;
@@ -353,7 +371,7 @@ footer ul
 
 			&:last-of-type
 			{
-				// Zone de visualisation de l'image
+				// Zone de visualisation de l'image.
 				display: none;
 
 				img
@@ -401,7 +419,7 @@ footer ul
 			}
 		}
 
-		input[type = "submit"]
+		input[type = submit]
 		{
 			// Bouton de téléversement.
 			color: white;
@@ -494,7 +512,7 @@ footer ul
 			}
 		}
 
-		input[type = "submit"]
+		input[type = submit]
 		{
 			// Bouton de validation.
 			color: white;
@@ -507,7 +525,7 @@ footer ul
 
 			&:hover
 			{
-				// Animation lors du survol de l'élément
+				// Animation lors du survol de l'élément.
 				background-color: $theme-color-dark;
 			}
 		}

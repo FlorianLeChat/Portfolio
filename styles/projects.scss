@@ -32,6 +32,13 @@ article
 	border-radius: 1rem;
 	background-color: $theme-box-color;
 
+	@media screen and (min-width: 1024px)
+	{
+		// Modification des marges sur les grands écrans.
+		margin-left: 15%;
+		margin-right: 15%;
+	}
+
 	&:first-of-type
 	{
 		// Ajout d'une marge uniquement au premier projet.
@@ -42,13 +49,6 @@ article
 	{
 		// Ajout d'une marge uniquement au dernier projet.
 		margin-bottom: 5%;
-	}
-
-	@media screen and (min-width: 1024px)
-	{
-		// Modification des marges sur les grands écrans.
-		margin-left: 15%;
-		margin-right: 15%;
 	}
 
 	hr
@@ -65,7 +65,7 @@ article
 	{
 		h2
 		{
-			// Nom du projet
+			// Nom du projet.
 			overflow: hidden;
 			font-size: 2rem;
 			text-align: left;
@@ -74,7 +74,7 @@ article
 
 		h3
 		{
-			// Date du projet
+			// Date du projet.
 			margin-top: 0.5rem;
 			text-align: left;
 			text-indent: 1rem;
@@ -82,7 +82,7 @@ article
 
 		p
 		{
-			// Description du projet
+			// Description du projet.
 			color: $theme-text-color;
 			text-align: justify;
 			line-height: 1.5rem;
@@ -90,7 +90,7 @@ article
 
 		img
 		{
-			// Icône du projet
+			// Icône du projet.
 			float: left;
 			height: 4rem;
 			margin-right: 1rem;
