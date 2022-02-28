@@ -11,12 +11,12 @@ header
 {
 	a
 	{
-		// Plateformes de communication
+		// Plateformes de communication.
 		display: inline;
 
 		img
 		{
-			// Icône de la plateforme
+			// Icône de la plateforme.
 			width: 2rem;
 			filter: drop-shadow(0 0 1rem $theme-color-dark);
 			margin: 4rem 1rem 0 1rem;
@@ -27,8 +27,7 @@ header
 
 			&:hover
 			{
-				// Animation de sélection d'une icône
-				//	(modification de l'échelle)
+				// Animation de sélection d'une icône (modification de l'échelle).
 				transform: scale(1.2);
 				transition: transform 300ms ease;
 			}
@@ -41,18 +40,18 @@ header
 // ------------------------- //
 #aboutme, #skills, #contact
 {
-	// Corps de la section
+	// Corps de la section.
 	color: $theme-text-color;
 
 	// Note : Le padding haut/bas prend en compte une taille fixe
-	//	pour toujours garder une marge quelque soit la résolution
+	//	pour toujours garder une marge quelque soit la résolution.
 	$offset: calc(10% + 5rem);
 	padding: $offset 20% $offset 20%;
 }
 
 #aboutme > h2, #projects > h2, #skills > h2, #contact > h2
 {
-	// Titre de la section
+	// Titre de la section.
 	color: white;
 	margin: 0 0 4rem;
 	font-size: 1.5rem;
@@ -60,14 +59,14 @@ header
 
 #aboutme > h3, #projects > h3, #skills > h3, #contact > h3
 {
-	// Identifiant de la section
+	// Identifiant de la section.
 	font-weight: 400;
 	margin-bottom: 0.5rem;
 }
 
 #aboutme p, #skills p
 {
-	// Description de la section
+	// Description de la section.
 	line-height: 1.25rem;
 }
 
@@ -76,13 +75,13 @@ header
 // ----------------- //
 #projects
 {
-	// Corps de la section
+	// Corps de la section.
 	color: $theme-text-color;
 	background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
 
 	.row article
 	{
-		// Corps de chaque projet
+		// Corps de chaque projet.
 		color: white;
 		font-size: 1.25rem;
 
@@ -93,24 +92,23 @@ header
 		user-select: none;
 		border-radius: 1rem;
 
-		// Fond d'écran de chaque bouton
+		// Fond d'écran de chaque bouton.
 		background-size: cover;
 		background-image: url("../assets/images/placeholder.svg");
 		background-repeat: no-repeat;
 		background-position: center;
 
-		// Affichage d'un effet de sélection pour les
-		//	ordinateurs uniquement
+		// Affichage d'un effet de sélection pour les ordinateurs.
 		@media screen and (pointer: fine) and (hover: hover)
 		{
-			// État initial (avant animation)
+			// État initial (avant animation).
 			filter: blur(0.75px) grayscale(1);
 			transition: filter 300ms ease-in-out;
 
 			&:hover
 			{
 				// Apparition de la couleur et suppression du flou
-				//	lors du passage de la souris par dessus
+				//	lors du passage de la souris par dessus.
 				filter: blur(0) grayscale(0);
 			}
 		}
@@ -118,11 +116,10 @@ header
 
 	@media screen and (min-width: 1024px)
 	{
-		// Affichage d'une disposition différente sur les
-		//	grands écrans d'ordinateur
+		// Affichage d'une disposition différente sur les grands écrans.
 		.container
 		{
-			// Boite simulante un tableau de colonnes/cellules
+			// Boite simulante un tableau de colonnes/cellules.
 			margin: -5rem auto -1rem auto;
 			display: table;
 			border-spacing: 3rem;
@@ -131,7 +128,7 @@ header
 
 		.row article
 		{
-			// Cellules de la boite
+			// Cellules de la boite.
 			width: 500px;
 			height: 300px;
 
@@ -145,25 +142,25 @@ header
 
 	> img:first-child
 	{
-		// Vagues marquant le début de la section
+		// Vagues marquant le début de la section.
 		left: 0;
 		z-index: -1;
 		position: absolute;
 		transform: translateY(-60%);
 		min-width: $html-min-width;
-		max-width: 100%; // Correctif débile pour Firefox
+		max-width: 100%; // Correctif débile pour Firefox.
 		min-height: 400px;
 	}
 
 	> img:last-child
 	{
-		// Vagues marquant la fin de la section
+		// Vagues marquant la fin de la section.
 		left: 0;
 		z-index: -1;
 		position: absolute;
 		transform: translateY(-40%);
 		min-width: $html-min-width;
-		max-width: 100%; // Correctif débile pour Firefox
+		max-width: 100%; // Correctif débile pour Firefox.
 		min-height: 400px;
 	}
 }
@@ -173,23 +170,21 @@ header
 // --------------------- //
 #skills
 {
-	// Modification de la marge de remplissage
-	//	par défaut
+	// Modification de la marge de remplissage par défaut.
 	padding-left: 10%;
 	padding-right: 10%;
 	padding-bottom: 7.5%;
 
 	div
 	{
-		// Ajout de deux colonnes dans le conteneur
+		// Ajout de deux colonnes dans le conteneur.
 		column-gap: 7.5%;
 		column-count: 2;
 	}
 
 	@media screen and (max-width: 768px)
 	{
-		// Modification des marges sur les téléphones
-		//	mobiles
+		// Modification des marges sur les téléphones mobiles.
 		padding-left: 1rem;
 		padding-right: 1rem;
 
@@ -201,12 +196,12 @@ header
 
 	article
 	{
-		// Marge de remplissage dans chaque article
+		// Marge de remplissage dans chaque article.
 		padding: 1rem;
 
 		h2
 		{
-			// Apparence du titre de l'article
+			// Apparence du titre de l'article.
 			color: white;
 			word-break: break-word;
 		}
@@ -214,7 +209,7 @@ header
 
 	img
 	{
-		// Dimensions des images d'illustration
+		// Dimensions des images d'illustration.
 		width: 10%;
 		min-width: 4rem;
 	}
@@ -227,43 +222,42 @@ header
 {
 	// Dimensions de la section (on tente de garder
 	//	les valeurs originales mais en les réduisant
-	//	un peu pour s'adapter aux autres éléments)
+	//	un peu pour s'adapter aux autres éléments).
 	margin: 0 17.5% 7.5% 17.5%;
 	padding: 2rem;
 
-	// Apparence de la section
+	// Apparence de la section.
 	border-radius: 1rem;
 	background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
 
 	@media screen and (max-width: 768px)
 	{
-		// Modification des marges sur les téléphones
-		//	mobiles
+		// Modification des marges sur les téléphones mobiles.
 		margin-left: 7.5%;
 		margin-right: 7.5%;
 	}
 
 	h2
 	{
-		// Premier titre de la section
+		// Premier titre de la section.
 		margin-bottom: 2rem;
 
 		+ h2
 		{
-			// Souligne du texte (hors titres)
+			// Souligne du texte (hors titres).
 			text-decoration: underline;
 		}
 	}
 
 	h3
 	{
-		// Deuxième titre de la section
+		// Deuxième titre de la section.
 		margin-top: 0;
 	}
 
 	span
 	{
-		// Apparence du bouton de contact
+		// Apparence du bouton de contact.
 		color: black;
 		font-weight: 700;
 		border-radius: 0.5rem;
@@ -274,13 +268,13 @@ header
 		user-select: none;
 		background-color: rgba(255, 255, 255, 0.7);
 
-		// État initial de l'animation
+		// État initial de l'animation.
 		transform: translateY(0);
 		transition: transform 150ms cubic-bezier(.4, 0, 1, 1);
 
 		&:hover
 		{
-			// Animation de sélection du bouton
+			// Animation de sélection du bouton.
 			cursor: pointer;
 			transform: translateY(-0.25rem);
 			background-color: white;
