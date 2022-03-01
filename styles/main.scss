@@ -191,6 +191,14 @@ nav
 		top: 7rem;
 		margin: 0 5% 0 5%;
 
+		// Suppression des marges ajoutées lors de la règle précédente pour les
+		//	navigateurs utilisant Safari. Lors de son utilisation avec un conteneur
+		//	flex, il créé un décalage ignoble sans aucune raison.
+		@media not all and (min-resolution: .001dpcm)
+		{
+			margin: 0;
+		}
+
 		// Longueur minimale de la barre
 		min-width: calc($html-min-width - 7rem); // padding + position gauche/droite
 
