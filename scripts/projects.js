@@ -9,8 +9,10 @@ for ( const arrow of arrows.values() )
 	arrow.firstElementChild.addEventListener( "click", ( event ) =>
 	{
 		// On récupère toutes les images de la section où s'est produit le clic.
-		const images = document.querySelectorAll( `article#${ event.path[ 2 ].id } div.images div` );
+		const identifier = event.target.parentNode.parentNode.id;
+		const images = document.querySelectorAll( `article#${ identifier } div.images div` );
 		const length = images.length - 1;
+
 		let indice = 0;
 
 		for ( const image of images.values() )
@@ -42,7 +44,9 @@ for ( const arrow of arrows.values() )
 	arrow.lastElementChild.addEventListener( "click", ( event ) =>
 	{
 		// On récupère toutes les images de la section où s'est produit le clic.
-		const images = document.querySelectorAll( `article#${ event.path[ 2 ].id } div.images div` );
+		const identifier = event.target.parentNode.parentNode.id;
+		const images = document.querySelectorAll( `article#${ identifier } div.images div` );
+
 		let indice = 0;
 
 		for ( const image of images.values() )
