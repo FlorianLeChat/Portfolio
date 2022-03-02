@@ -54,9 +54,9 @@
 
 	if (empty($language))
 	{
-		// La langue est absent des paramètres, on tente de la
-		// 	récupérer en interne via les sessions.
-		$language = $translation->getCode();
+		// La langue est absente des paramètres, on tente de la
+		// 	récupérer via l'en-tête HTTP ou via les sessions.
+		$language = substr(strtoupper($_SERVER["HTTP_ACCEPT_LANGUAGE"] ?? $translation->getCode()), 0, 2);
 	}
 	else
 	{
