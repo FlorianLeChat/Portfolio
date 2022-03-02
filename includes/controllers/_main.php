@@ -58,17 +58,19 @@
 		// 	récupérer via l'en-tête HTTP ou via les sessions.
 		$language = substr(strtoupper($_SERVER["HTTP_ACCEPT_LANGUAGE"] ?? $translation->getCode()), 0, 2);
 	}
+
+	// On vérifie ensuite si la langue est disponible.
+	if ($translation->checkLanguage($language))
+	{
+		// La langue est disponible.
+		$translation->setCode($language);
+	}
 	else
 	{
-		// Dans l'autre cas, on vérifie la langue du paramètre GET
-		//	avant de l'appliquer comme nouvelle langue (après vérification).
-		if ($translation->checkLanguage($language))
-		{
-			$translation->setCode($language);
-		}
+		// Dans le cas contraire, on récupère la dernière
+		//	langue définie.
+		$language = $translation->getCode();
 	}
-
-	$language = $translation->getCode(); // Valeur finale de la langue.
 
 	// On récupère enfin la page demandée.
 	$file = htmlentities($_GET["target"] ?? "");
