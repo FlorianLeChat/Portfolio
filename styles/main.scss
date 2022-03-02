@@ -255,21 +255,15 @@ ul#flags
 	-webkit-backdrop-filter: blur(0.5rem); // Correctif débile pour Safari.
 	background-color: transparent;
 
-	&:hover li
-	{
-		// Apparition des items lors du passage de la souris.
-		display: block;
-	}
-
 	li
 	{
 		// État initial d'un item de la liste.
 		padding: 10px;
 		transition: background-color 300ms ease-out;
 
-		// Animation de survol d'un item (sélection avec maintien).
 		&:hover
 		{
+			// Animation de survol d'un item (sélection avec maintien).
 			@media screen and (pointer: fine) and (hover: hover)
 			{
 				background-color: $theme-color-bright;
@@ -308,6 +302,12 @@ ul#flags
 				height: calc(16px * 2.5);
 			}
 		}
+	}
+
+	&:hover li
+	{
+		// Apparition des items lors du passage de la souris.
+		display: block;
 	}
 }
 
