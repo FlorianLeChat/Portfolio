@@ -46,7 +46,7 @@
 			// 	vérifications au niveau du client ayant demandé la page.
 			// 	Note : Cela est considéré comme une protection contre les
 			//		robots et les utilisateurs malveillants.
-			$ip = htmlentities($_SERVER["HTTP_X_FORWARDED_FOR"] ?? "");
+			$ip = htmlentities($_SERVER["HTTP_X_FORWARDED_FOR"] ?? "", ENT_QUOTES);
 
 			if (filter_var($ip, FILTER_VALIDATE_IP))
 			{

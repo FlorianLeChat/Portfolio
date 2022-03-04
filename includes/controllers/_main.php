@@ -50,7 +50,7 @@
 	$public_data = new Portfolio\Controllers\PublicData();	// Données publiques du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
-	$language = htmlentities($_POST["language"] ?? "");
+	$language = htmlentities($_POST["language"] ?? "", ENT_QUOTES);
 
 	if (empty($language))
 	{
@@ -73,7 +73,7 @@
 	}
 
 	// On récupère enfin la page demandée.
-	$file = htmlentities($_GET["target"] ?? "");
+	$file = htmlentities($_GET["target"] ?? "", ENT_QUOTES);
 
 	if (empty($file) || ($file != "index" && $file != "projects" && $file != "skills" && $file != "contact"))
 	{
