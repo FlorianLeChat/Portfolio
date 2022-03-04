@@ -37,7 +37,7 @@
 			"firstname" => [2, 20],			// Prénom
 			"lastname" => [3, 25],			// Nom de l'utilisateur
 			"email" => [10, 40],			// Adresse email
-			"content" => [20, 4000]			// Message
+			"content" => [50, 4000]			// Message
 		]);
 
 		if ($form->validate($_POST))
@@ -46,7 +46,7 @@
 			// 	vérifications au niveau du client ayant demandé la page.
 			// 	Note : Cela est considéré comme une protection contre les
 			//		robots et les utilisateurs malveillants.
-			$ip = htmlentities($_SERVER["REMOTE_ADDR"] ?? "");
+			$ip = htmlentities($_SERVER["HTTP_X_FORWARDED_FOR"] ?? "");
 
 			if (filter_var($ip, FILTER_VALIDATE_IP))
 			{
@@ -69,7 +69,7 @@
 					// Il semble que le client soit un utilisateur sous une connexion
 					//	« camouflée », alors on redirige la personne ailleurs...
 					http_response_code(418);
-					header("Location: https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+					echo("<meta http-equiv=\"refresh\" content=\"0;URL=https://www.youtube.com/watch?v=dQw4w9WgXcQ\" />");
 					exit();
 				}
 				else
@@ -164,7 +164,7 @@
 
 		<!-- Contenu du message -->
 		<label for="content"><?php echo($contact["contact_form_content"]); ?></label>
-		<textarea id="content" name="content" placeholder="<?php echo($contact["contact_message"]); ?>" minlength="20" maxlength="4000" required></textarea>
+		<textarea id="content" name="content" placeholder="<?php echo($contact["contact_message"]); ?>" minlength="50" maxlength="4000" required></textarea>
 		<span></span>
 
 		<!-- Validation -->
