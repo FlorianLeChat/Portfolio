@@ -70,7 +70,7 @@
 
 			// On convertit certains caractères spéciaux en balises
 			//	HTML lisibles.
-			$input = htmlentities($input);
+			$input = htmlentities($input, ENT_QUOTES);
 
 			// On supprime les espaces en trop en début et à la fin de
 			//	la chaîne de caractères.
