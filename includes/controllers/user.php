@@ -35,7 +35,7 @@
 			{
 				// L'authentification a réussie.
 				$this->setUsername($username);
-				$this->setPassword($password);
+				$this->setPassword($result["password"]);
 
 				return true;
 			}
