@@ -113,7 +113,7 @@
 					<label for="clear">Afficher le mot de passe</label>
 					<input type="checkbox" id="clear" /><br /><br />
 
-					<!-- Bouton d'affichage du mot de passe -->
+					<!-- Se souvenir de la connexion -->
 					<label for="remember_me">Se souvenir de moi</label>
 					<input type="checkbox" id="remember_me" name="remember_me" /><br /><br />
 
