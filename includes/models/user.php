@@ -8,12 +8,14 @@
 	{
 		protected string $username = "";
 		protected string $password = "";
+		protected string $token = "";
 
 		// Nom d'utilisateur.
 		public function setUsername(string $username)
 		{
 			$this->username = $username;
 
+			if (!empty($_SESSION))
 			{
 				// Enregistrement dans la session active.
 				$_SESSION["username"] = $this->username;
@@ -40,6 +42,17 @@
 		public function getPassword(): string
 		{
 			return $this->password;
+		}
+
+		// Jeton d'authentification.
+		public function setToken(string $token)
+		{
+			$this->token = $token;
+		}
+
+		public function getToken(): string
+		{
+			return $this->token;
 		}
 
 		// État de la connexion.
