@@ -13,7 +13,7 @@
 		{
 			$this->code = strtoupper($code);
 
-			if (isset($_SESSION))
+			if (!empty($_SESSION))
 			{
 				// Enregistrement dans la session active.
 				$_SESSION["language"] = $this->code;
@@ -22,7 +22,7 @@
 
 		public function getCode(): string
 		{
-			if (isset($_SESSION) && !empty($_SESSION["language"]))
+			if (!empty($_SESSION["language"]))
 			{
 				// Récupération dans la session active.
 				$this->code = $_SESSION["language"];

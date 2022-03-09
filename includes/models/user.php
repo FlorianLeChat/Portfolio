@@ -14,7 +14,6 @@
 		{
 			$this->username = $username;
 
-			if (isset($_SESSION))
 			{
 				// Enregistrement dans la session active.
 				$_SESSION["username"] = $this->username;
@@ -23,7 +22,7 @@
 
 		public function getUsername(): string
 		{
-			if (isset($_SESSION) && !empty($_SESSION["username"]))
+			if (!empty($_SESSION["username"]))
 			{
 				// Récupération dans la session active.
 				$this->username = $_SESSION["username"];
