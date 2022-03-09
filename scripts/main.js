@@ -177,33 +177,6 @@ fadeIn(); // Note : doit s'exécuter au moins une fois au chargement.
 window.addEventListener( "scroll", fadeIn );
 
 //
-// Permet de supprimer les extensions de certains liens lorsque le site
-//	est déployé sous un environnement de production.
-//	Note : le serveur hebergé possède également un mécanisme de réécriture d'URLs.
-//
-const links = document.querySelectorAll( "a" );
-
-if ( window.location.hostname.includes( "florian-dev.fr" ) )
-{
-	for ( const link of links.values() )
-	{
-		// On fait le remplacement de certaines extensions.
-		let url = link.getAttribute( "href" );
-
-		url = url.replace( ".html", "" );	// Extension HTML
-		url = url.replace( ".php", "" );	// Extension PHP
-
-		if ( url == "" )
-		{
-			// Racine du document (index)
-			url = "/";
-		}
-
-		link.setAttribute( "href", url );
-	}
-}
-
-//
 // Permet de désactiver le mécanisme de glissement d'un lien.
 //
 for ( const link of links.values() )

@@ -58,7 +58,7 @@
 
 		http_response_code(302);
 
-		header("Location: ./");
+		header("Location: index.php");
 
 		exit();
 	}
