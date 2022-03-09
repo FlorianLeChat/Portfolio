@@ -11,6 +11,48 @@
 	// Classe permettant d'authentifier un utilisateur.
 	final class UserAuthentication extends User
 	{
+		// Temps d'expiration du jeton d'authentification (en secondes).
+		private const EXPIRATION_TIME = 60 * 60 * 24 * 31;
+
+		//
+		// Permet de comparer et de valider un jeton d'authentification
+		//	envoyé par un utilisateur connecté précédemment.
+		//
+		public function compareToken(string $token): bool
+		{
+			// On exécute une requête SQL pour récupérer le jeton
+			//	d'authentification enregistré dans la base de données.
+			$query = $this->connector->prepare("SELECT `username`, `password`, `expiry` FROM `users` WHERE `token` = ?;");
+			$query->execute([$token]);
+
+			$result = $query->fetch();
+
+			// On vérifie alors le résultat de la requête.
+			if (is_array($result) && count($result) > 0 && strtotime($result["expiry"]) + $this::EXPIRATION_TIME > time())
+			{
+				// Si elle est valide, on assigne certaines variables
+				//	à l'utilisateur.
+				$this->setUsername($result["username"]);
+				$this->setPassword($result["password"]);
+				$this->setToken($token);
+
+				return true;
+			}
+
+			// Dans le cas contraire, on signale que le jeton est invalide.
+			return false;
+		}
+
+		//
+		// Permet d'enregistrer le jeton d'authentification de l'utilisateur
+		//	dans la base de données.
+		//
+		public function storeToken(string $token): void
+		{
+			$query = $this->connector->prepare("UPDATE `users` SET `token` = ? WHERE `username` = ?;");
+			$query->execute([$token, $this->getUsername()]);
+		}
+
 		//
 		// Permet d'authentifier un utilisateur au niveau de la
 		//	base de données.
@@ -50,6 +92,7 @@
 		public function destroy(): void
 		{
 			unset($_SESSION["username"]);
+			setcookie("generated_token", "", 1);
 		}
 	}
 ?>

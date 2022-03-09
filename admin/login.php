@@ -27,14 +27,39 @@
 		//	semble avoir échouée, on affiche un message d'erreur.
 		$message = "L'authentification a échouée. Veuillez recommencer.";
 	}
+	else
+	{
+		// Dans le cas contraire, on tente de connecter l'utilisateur
+		//	s'il possède un jeton d'authentification.
+		if (isset($_SERVER["HTTPS"]) && !empty($_COOKIE["generated_token"]))
+		{
+			$connected = $user->compareToken($_COOKIE["generated_token"]);
+
+			// La session de token peut avoir expirée depuis, donc on prépare
+			//	un message pour avertir l'utilisateur.
+			$message = "Votre session de connexion a expirée. Une reconnexion est nécessaire.";
+		}
+	}
 
 	// On vérifie enfin si l'utilisateur est authentifié.
 	// 	Note : l'utilisateur peut être déjà connecté et/ou avoir
 	//		été authentifié lors de l'étape précédente.
 	if ($connected)
 	{
+		if (isset($_POST["remember_me"]))
+		{
+			// L'utilisateur peut demander de se souvenir de sa connexion
+			//	lors de sa prochaine venue sur la page.
+			$token = bin2hex(random_bytes(32));
+			$user->storeToken($token);
+
+			setcookie("generated_token", $token, strtotime("+30 days"), "/portfolio/admin/", $_SERVER["HTTP_HOST"], false);
+		}
+
 		http_response_code(302);
+
 		header("Location: ./");
+
 		exit();
 	}
 ?>
@@ -87,6 +112,10 @@
 					<!-- Bouton d'affichage du mot de passe -->
 					<label for="clear">Afficher le mot de passe</label>
 					<input type="checkbox" id="clear" /><br /><br />
+
+					<!-- Bouton d'affichage du mot de passe -->
+					<label for="remember_me">Se souvenir de moi</label>
+					<input type="checkbox" id="remember_me" name="remember_me" /><br /><br />
 
 					<!-- Validation -->
 					<input type="submit" value="Envoyer" />
