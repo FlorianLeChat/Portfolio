@@ -11,14 +11,21 @@
 	// Classe permettant de traiter un fichier.
 	final class FileHandler extends File
 	{
-		private const PATH = "../assets/images/";				// Chemin d'accès vers le dossier des images.
-		private const UNITS = ["B", "KB", "MB", "GB", "TB"];	// Taille d'un fichier informatique.
-		private const EXTENSIONS = [							// Extensions et types MIME autorisés.
+		// Chemin d'accès vers le dossier des images.
+		private const PATH = "../assets/images/";
+
+		// Taille d'un fichier informatique.
+		private const UNITS = ["B", "KB", "MB", "GB", "TB"];
+
+		// Extensions et types MIME autorisés.
+		private const EXTENSIONS = [
 			"jpg" => "image/jpeg", "jpeg" => "image/jpeg",
 			"png" => "image/png",
 			"gif" => "image/gif",
 		];
-		private const ERROR_MESSAGES = [						// Messages d'erreurs compréhensibles par l'utilisateur.
+
+		// Messages d'erreurs compréhensibles par l'utilisateur.
+		private const ERROR_MESSAGES = [
 			0 => "Il n'y a pas d'erreur, le fichier a été téléchargé avec succès.",
 			1 => "Le poids du fichier téléchargé dépasse la directive « upload_max_filesize » de la configuration php.ini.",
 			2 => "Le poids du fichier téléchargé dépasse la directive « MAX_FILE_SIZE » spécifiée dans le formulaire HTML.",
