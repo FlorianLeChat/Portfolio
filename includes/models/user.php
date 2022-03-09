@@ -15,7 +15,7 @@
 		{
 			$this->username = $username;
 
-			if (!empty($_SESSION))
+			if (isset($_SESSION))
 			{
 				// Enregistrement dans la session active.
 				$_SESSION["username"] = $this->username;

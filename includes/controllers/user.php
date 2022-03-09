@@ -91,8 +91,15 @@
 		//
 		public function destroy(): void
 		{
-			unset($_SESSION["username"]);
-			setcookie("generated_token", "", 1);
+			// On supprime le jeton d'authentification de l'utilisateur
+			//	aussi bien côté client que dans la base de données.
+			$this->storeToken("");
+
+			setcookie("generated_token", "", 1, "/portfolio/admin/", $_SERVER["HTTP_HOST"], true);
+
+			// On supprime toutes les informations utilisateurs sauvegardées
+			// 	dans les sessions.
+			unset($_SESSION);
 		}
 	}
 ?>

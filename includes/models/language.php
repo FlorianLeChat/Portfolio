@@ -13,7 +13,7 @@
 		{
 			$this->code = strtoupper($code);
 
-			if (!empty($_SESSION))
+			if (isset($_SESSION))
 			{
 				// Enregistrement dans la session active.
 				$_SESSION["language"] = $this->code;
