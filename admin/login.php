@@ -53,7 +53,7 @@
 			$token = bin2hex(random_bytes(32));
 			$user->storeToken($token);
 
-			setcookie("generated_token", $token, strtotime("+30 days"), "/portfolio/admin/", $_SERVER["HTTP_HOST"], false);
+			setcookie("generated_token", $token, strtotime("+30 days"), "/portfolio/admin/", $_SERVER["HTTP_HOST"], true);
 		}
 
 		http_response_code(302);
