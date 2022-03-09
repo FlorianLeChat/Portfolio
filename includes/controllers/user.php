@@ -12,7 +12,7 @@
 	final class UserAuthentication extends User
 	{
 		// Temps d'expiration du jeton d'authentification (en secondes).
-		private const EXPIRATION_TIME = 60 * 60 * 24 * 31;
+		public const EXPIRATION_TIME = 60 * 60 * 24 * 31;
 
 		//
 		// Permet de comparer et de valider un jeton d'authentification
@@ -22,13 +22,13 @@
 		{
 			// On exécute une requête SQL pour récupérer le jeton
 			//	d'authentification enregistré dans la base de données.
-			$query = $this->connector->prepare("SELECT `username`, `password`, `expiry` FROM `users` WHERE `token` = ?;");
+			$query = $this->connector->prepare("SELECT `username`, `password`, `creation_time` FROM `users` WHERE `access_token` = ?;");
 			$query->execute([$token]);
 
 			$result = $query->fetch();
 
 			// On vérifie alors le résultat de la requête.
-			if (is_array($result) && count($result) > 0 && strtotime($result["expiry"]) + $this::EXPIRATION_TIME > time())
+			if (is_array($result) && count($result) > 0 && strtotime($result["creation_time"]) + $this::EXPIRATION_TIME > time())
 			{
 				// Si elle est valide, on assigne certaines variables
 				//	à l'utilisateur.
@@ -49,7 +49,7 @@
 		//
 		public function storeToken(string $token): void
 		{
-			$query = $this->connector->prepare("UPDATE `users` SET `token` = ? WHERE `username` = ?;");
+			$query = $this->connector->prepare("UPDATE `users` SET `access_token` = ? WHERE `username` = ?;");
 			$query->execute([$token, $this->getUsername()]);
 		}
 
