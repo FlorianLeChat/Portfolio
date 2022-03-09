@@ -11,9 +11,14 @@
 	// Classe permettant de faire les validations du formulaire.
 	final class FormValidation extends Form
 	{
-		public string $message = "";	// Message de validation/d'erreur.
-		private array $length = [];		// Limites de caractères.
-		private const FIELDS = [		// Champs du formulaire.
+		// Message de validation/d'erreur.
+		public string $message = "";
+
+		// Limites de caractères.
+		private array $length = [];
+
+		// Champs du formulaire.
+		private const FIELDS = [
 			"firstname",
 			"lastname",
 			"email",
