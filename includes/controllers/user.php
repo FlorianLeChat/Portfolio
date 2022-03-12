@@ -99,7 +99,7 @@
 
 			// On supprime toutes les informations utilisateurs sauvegardées
 			// 	dans les sessions.
-			unset($_SESSION);
+			unset($_SESSION["username"]);
 		}
 	}
 ?>
