@@ -4,12 +4,6 @@
 	// Point d'entrée de l'environnement des scripts.
 	require_once("../includes/controllers/_main.php");
 
-	// Contrôleur permettant d'authentifier un utilisateur.
-	require_once("../includes/controllers/user.php");
-
-	$user = new Portfolio\Controllers\UserAuthentication();
-	$user->connector = $connector;	// Liaison avec la base de données.
-
 	// On définit ensuite la page actuelle.
 	$file = "admin";
 
