@@ -179,6 +179,8 @@ window.addEventListener( "scroll", fadeIn );
 //
 // Permet de désactiver le mécanisme de glissement d'un lien.
 //
+const links = document.querySelectorAll( "a" );
+
 for ( const link of links.values() )
 {
 	link.addEventListener( "mousedown", ( event ) =>
