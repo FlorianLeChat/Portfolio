@@ -4,16 +4,6 @@
 	// Point d'entrée de l'environnement des scripts.
 	require_once("../includes/controllers/_main.php");
 
-	// Création des classes nécessaires.
-	require_once("../includes/controllers/user.php");
-	require_once("../includes/controllers/file.php");
-
-	$admin = new Portfolio\Controllers\AdminManager();		// Contrôle des données admistrateur.
-	$upload = new Portfolio\Controllers\FileHandler();		// Gestion des fichiers téléversés.
-
-	$user = new Portfolio\Controllers\UserAuthentication();	// Mécanisme d'authentification.
-	$user->connector = $connector;
-
 	// On définit la page actuelle.
 	$file = "admin";
 

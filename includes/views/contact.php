@@ -29,10 +29,6 @@
 	//	envoyé le formulaire durant sa session personnelle.
 	if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION["form_cooldown"]))
 	{
-		$form = new Portfolio\Controllers\FormValidation();
-
-		$form->translation = $translation;	// Traduction
-
 		$form->setLimits([
 			"firstname" => [2, 20],			// Prénom
 			"lastname" => [3, 25],			// Nom de l'utilisateur

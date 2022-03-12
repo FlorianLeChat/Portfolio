@@ -34,20 +34,31 @@
 		}
 	}
 
-	// On réalise la création de certaines variables cruciales.
-	require_once("language.php");
-	require_once("database.php");
-	require_once("form.php");
-
+	// On initialise le système des sessions PHP.
 	session_start();
 
-	$connector = new Portfolio\Controllers\Connector();		// Connexion à la base de données.
+	// On réalise après la création des classes de l'ensemble du site.
+	require_once("user.php");
+	require_once("form.php");
+	require_once("file.php");
+	require_once("database.php");
+	require_once("language.php");
+
+	use Portfolio\Controllers as Raven;
+
+	$user = new Raven\UserAuthentication();		// Authentification des utilisateurs.
+	$form = new Raven\FormValidation();			// Validation des données des formulaires.
+	$admin = new Raven\AdminManager();			// Contrôle des données administrateurs.
+	$upload = new Raven\FileHandler();			// Gestion des fichiers téléversés.
+	$connector = new Raven\Connector();			// Connexion à la base de données.
+	$translation = new Raven\Translation();		// Liaison des traductions au connecteur SQL.
+	$public_data = new Raven\PublicData();		// Données publiques du site.
+
 	$connector = $connector->getPDO();
 
-	$translation = new Portfolio\Controllers\Translation();	// Liaison des traductions au connecteur.
+	$user->connector = $connector;
+	$form->translation = $translation;
 	$translation->connector = $connector;
-
-	$public_data = new Portfolio\Controllers\PublicData();	// Données publiques du site.
 
 	// On récupère ensuite la langue demandée par l'utilisateur.
 	$language = htmlentities($_POST["language"] ?? "", ENT_QUOTES);
@@ -59,7 +70,7 @@
 		$language = substr(strtoupper($_SERVER["HTTP_ACCEPT_LANGUAGE"] ?? $translation->getCode()), 0, 2);
 	}
 
-	// On vérifie ensuite si la langue est disponible.
+	// On vérifie alors si la langue est disponible.
 	if ($translation->checkLanguage($language))
 	{
 		// La langue est disponible.
