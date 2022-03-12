@@ -57,9 +57,7 @@
 		}
 
 		http_response_code(302);
-
 		header("Location: index.php");
-
 		exit();
 	}
 ?>
@@ -108,6 +106,8 @@
 					<!-- Mot de passe -->
 					<label for="password">Mot de passe</label>
 					<input type="password" autocomplete="current-password" spellcheck="false" id="password" name="password" placeholder="password" required />
+
+					<p>Mot de passe oublié ?</p>
 
 					<!-- Bouton d'affichage du mot de passe -->
 					<label for="clear">Afficher le mot de passe</label>
