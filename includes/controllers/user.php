@@ -15,6 +15,34 @@
 		public const EXPIRATION_TIME = 60 * 60 * 24 * 31;
 
 		//
+		// Permet de traiter les demandes de création d'un nouveau mot de passe
+		// 	afin d'accéder à la page d'administration du site.
+		//
+		public function createNewPassword(string $email, string $password): void
+		{
+			// On effectue une requête pour vérifier si l'adresse électronique
+			//	renseignée par l'utilisateur est présente dans la base de données.
+			$query = $this->connector->prepare("SELECT 1 FROM `users` WHERE `email` = ?;");
+			$query->execute([$email]);
+
+			$result = $query->fetch();
+
+			var_dump($result);
+
+			// On vérifie alors si l'adresse électronique est présente dans le
+			//	résultat de la requête SQL.
+			if (is_array($result) && count($result) > 0)
+			{
+				// Si c'est le cas, on "hash" le nouveau mot de passe avant de l'insérer.
+				$query = $this->connector->prepare("UPDATE `users` SET `password` = ? WHERE `email` = ?;");
+				$query->execute([password_hash($password, PASSWORD_DEFAULT), $email]);
+
+				// On supprime le jeton d'authentification par la même occasion.
+				$this->storeToken("");
+			}
+		}
+
+		//
 		// Permet de comparer et de valider un jeton d'authentification
 		//	envoyé par un utilisateur connecté précédemment.
 		//
@@ -65,7 +93,7 @@
 		//
 		public function authenticate(array $data): bool
 		{
-			// On récupère les les valeurs du formulaire.
+			// On récupère d'abord les valeurs du formulaire.
 			$username = $data["username"] ?? "";
 			$password = $data["password"] ?? "";
 

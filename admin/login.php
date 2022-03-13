@@ -7,24 +7,36 @@
 	// On définit la page actuelle.
 	$file = "admin";
 
-	// On tente de connecter ensuite l'utilisateur si ce
-	//	n'est pas déjà le cas et si la requête actuelle
-	//	 est une requête POST.
+	// On vérifie si la requête actuelle est de type POST.
 	$message = "";
 	$connected = $user->isConnected();
 
-	if (!$connected && $_SERVER["REQUEST_METHOD"] == "POST")
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
-		$connected = $user->authenticate($_POST);
+		// Dans ce cas là, on vérifie si l'utilisateur a transmis
+		//	une adresse électronique et un mot de passe. Cela signifie
+		//	qu'il a perdu l'accès au compte administrateur.
+		if (!empty($_POST["email"]) && !empty($_POST["password"]))
+		{
+			$user->createNewPassword($_POST["email"], $_POST["password"]);
+		}
 
-		// Si le script continue ici, alors l'authentification
-		//	semble avoir échouée, on affiche un message d'erreur.
-		$message = "L'authentification a échouée. Veuillez recommencer.";
+		// Si l'utilisateur ne demande pas de nouveau mot de passe,
+		//	on vérifie s'il est actuellement connecté pour tenter
+		//	une authentifier avec les informations à notre disposition.
+		if (!$connected)
+		{
+			$connected = $user->authenticate($_POST);
+
+			// Si le script continue ici, alors l'authentification
+			//	semble avoir échouée, on affiche un message d'erreur.
+			$message = "L'authentification a échouée. Veuillez recommencer.";
+		}
 	}
 	else
 	{
-		// Dans le cas contraire, on tente de connecter l'utilisateur
-		//	s'il possède un jeton d'authentification.
+		// On tente de connecter l'utilisateur s'il possède un jeton
+		//	d'authentification et si la requête n'est pas de type POST.
 		if (isset($_SERVER["HTTPS"]) && !empty($_COOKIE["generated_token"]))
 		{
 			$connected = $user->compareToken($_COOKIE["generated_token"]);
@@ -102,7 +114,8 @@
 					<label for="password">Mot de passe</label>
 					<input type="password" autocomplete="current-password" spellcheck="false" id="password" name="password" placeholder="password" required />
 
-					<p>Mot de passe oublié ?</p>
+					<!-- Récupération du mot de passe -->
+					<a href="javascript:void(0);">Mot de passe oublié ?</a>
 
 					<!-- Bouton d'affichage du mot de passe -->
 					<label for="clear">Afficher le mot de passe</label>

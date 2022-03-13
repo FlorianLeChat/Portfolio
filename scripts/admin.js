@@ -39,6 +39,43 @@ if ( submit != null && password != null )
 }
 
 //
+// Permet de demander la création d'un nouveau mot de passe
+//	administrateur si l'ancien a été perdu.
+//
+const new_password = document.querySelector( "form a" );
+
+if ( new_password != null )
+{
+	new_password.addEventListener( "click", ( event ) =>
+	{
+		// On demande l'adresse électronique et le nouveau mot de passe
+		//	créé par l'utilisateur.
+		const data = new FormData();
+		data.append( "email", prompt( "Saisissez votre adresse électronique." ) );
+		data.append( "password", prompt( "Saisissez un nouveau mot de passe." ) );
+
+		// On effectue ensuite une requête asynchrone à la page
+		//	actuelle pour pouvoir faire des vérifications.
+		fetch( window.location.href,
+			{
+				// Méthode de la requête.
+				method: "POST",
+
+				// Paramètres POST.
+				body: data
+			} )
+			.then( ( response ) =>
+			{
+				// Dès que la requête a été soumise, on avertit l'utilisateur.
+				alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
+			} );
+
+		// On cesse le comportement par défaut du lien.
+		event.preventDefault();
+	} );
+}
+
+//
 // Permet d'actualiser en temps réel l'horloge présente
 //	dans l'en-tête de l'interface d'administration.
 //
@@ -112,5 +149,5 @@ if ( upload_button != null && preview_zone != null && preview_zone.lastElementCh
 		upload_zone.style.display = "block";
 		preview_zone.style.display = "none";
 		preview_zone.firstElementChild.src = "#";
-	})
+	} );
 }
