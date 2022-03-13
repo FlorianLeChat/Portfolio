@@ -1,6 +1,6 @@
 <?php
 	//
-	// Contrôleur de gestion des données utilisateurs.
+	// Contrôleur de gestion des fichiers téléversés.
 	//
 	namespace Portfolio\Controllers;
 

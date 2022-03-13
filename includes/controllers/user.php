@@ -49,7 +49,12 @@
 		//
 		public function storeToken(string $token): void
 		{
-			$query = $this->connector->prepare("UPDATE `users` SET `access_token` = ? WHERE `username` = ?;");
+			// On détermine si l'horodatage présent dans la base de données
+			// 	doit être actualisé ou non (uniquement lors d'une connexion).
+			$timestamp = $token == "" ? "`creation_time`" : "NULL";
+
+			// On effectue juste après la requête de mise à jour.
+			$query = $this->connector->prepare("UPDATE `users` SET `access_token` = ?, `creation_time` = $timestamp WHERE `username` = ?;");
 			$query->execute([$token, $this->getUsername()]);
 		}
 
