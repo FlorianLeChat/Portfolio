@@ -27,8 +27,6 @@
 
 			$result = $query->fetch();
 
-			var_dump($result);
-
 			// On vérifie alors si l'adresse électronique est présente dans le
 			//	résultat de la requête SQL.
 			if (is_array($result) && count($result) > 0)
