@@ -8,6 +8,7 @@
 	{
 		protected string $username = "";
 		protected string $password = "";
+		protected string $email = "";
 		protected string $token = "";
 
 		// Nom d'utilisateur.
@@ -42,6 +43,17 @@
 		public function getPassword(): string
 		{
 			return $this->password;
+		}
+
+		// Adresse électronique.
+		public function setEmail(string $email)
+		{
+			$this->email = $email;
+		}
+
+		public function getEmail(): string
+		{
+			return $this->email;
 		}
 
 		// Jeton d'authentification.
