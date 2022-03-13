@@ -22,7 +22,7 @@
 		{
 			// On exécute une requête SQL pour récupérer le jeton
 			//	d'authentification enregistré dans la base de données.
-			$query = $this->connector->prepare("SELECT `username`, `password`, `creation_time` FROM `users` WHERE `access_token` = ?;");
+			$query = $this->connector->prepare("SELECT * FROM `users` WHERE `access_token` = ?;");
 			$query->execute([$token]);
 
 			$result = $query->fetch();
@@ -34,6 +34,7 @@
 				//	à l'utilisateur.
 				$this->setUsername($result["username"]);
 				$this->setPassword($result["password"]);
+				$this->setEmail($result["email"]);
 				$this->setToken($token);
 
 				return true;
@@ -71,7 +72,7 @@
 			// On effectue ensuite une requête SQL pour vérifier
 			//	si un enregistrement est présent avec les identifiants
 			//	donnés lors de l'étape précédente.
-			$query = $this->connector->prepare("SELECT `password` FROM `users` WHERE `username` = ?;");
+			$query = $this->connector->prepare("SELECT `password`, `email` FROM `users` WHERE `username` = ?;");
 			$query->execute([$username]);
 
 			$result = $query->fetch();
@@ -83,6 +84,7 @@
 				// L'authentification a réussie.
 				$this->setUsername($username);
 				$this->setPassword($result["password"]);
+				$this->setEmail($result["email"]);
 
 				return true;
 			}
