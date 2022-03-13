@@ -46,6 +46,7 @@
 			//	lors de sa prochaine venue sur la page.
 			$token = bin2hex(random_bytes(32));
 			$user->storeToken($token);
+			$user->setToken($token);
 
 			setcookie("generated_token", $token, time() + $user::EXPIRATION_TIME, "/portfolio/admin/", $_SERVER["HTTP_HOST"], true);
 		}
