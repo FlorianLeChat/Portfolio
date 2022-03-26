@@ -54,7 +54,7 @@
 			$result = $query->fetch();
 
 			// On vérifie alors le résultat de la requête.
-			if (is_array($result) && count($result) > 0 && strtotime($result["creation_time"]) + $this::EXPIRATION_TIME > time())
+			if (is_array($result) && count($result) > 0 && strtotime($result["creation_time"]) + self::EXPIRATION_TIME > time())
 			{
 				// Si elle est valide, on assigne certaines variables
 				//	à l'utilisateur.

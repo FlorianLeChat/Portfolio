@@ -45,7 +45,7 @@
 		{
 			$power = $size > 0 ? floor(log($size, 1024)) : 0;
 
-			return number_format($size / pow(1024, $power), 2, ",", " ") . " " . $this::UNITS[$power];
+			return number_format($size / pow(1024, $power), 2, ",", " ") . " " . self::UNITS[$power];
 		}
 
 		//
@@ -82,7 +82,7 @@
 
 			if ($error != UPLOAD_ERR_OK)
 			{
-				return $this::ERROR_MESSAGES[$error];
+				return self::ERROR_MESSAGES[$error];
 			}
 
 			// On vérifie d'abord si le nom du fichier est valide.
@@ -108,13 +108,13 @@
 
 			// On vérifie si le répertoire de stockage est manquant ou invalide.
 			// Note : si le répertoire est manquant mais valide, on tente de le créer.
-			if (!is_dir($this::PATH . $path) && !mkdir($this::PATH . $path, 0755, true))
+			if (!is_dir(self::PATH . $path) && !mkdir(self::PATH . $path, 0755, true))
 			{
 				return "Le répertoire de stockage « $path » est manquant ou invalide.";
 			}
 
 			// On vérifie ensuite si ce même répertoire est accessible en écriture.
-			if (!is_writable($this::PATH . $path))
+			if (!is_writable(self::PATH . $path))
 			{
 				return "Le répertoire de stockage « $path » n'a pas les autorisations en écriture.";
 			}
@@ -139,15 +139,15 @@
 			$type = new \finfo(FILEINFO_MIME_TYPE);
 			$type = $type ? $type->file($temporary_name) : "";
 
-			if (!array_search($type, $this::EXTENSIONS, true))
+			if (!array_search($type, self::EXTENSIONS, true))
 			{
-				return "L'extension du fichier n'est pas autorisée. Liste des extensions autorisées : " . implode(", ", array_keys($this::EXTENSIONS)) . ".";
+				return "L'extension du fichier n'est pas autorisée. Liste des extensions autorisées : " . implode(", ", array_keys(self::EXTENSIONS)) . ".";
 			}
 
 			$this->setType($type); // Extension validée.
 
 			// On déplace enfin le fichier temporaire dans le dossier ciblé.
-			$path = $this::PATH . $path . "/" . $real_name;
+			$path = self::PATH . $path . "/" . $real_name;
 
 			if (move_uploaded_file($temporary_name, $path))
 			{
@@ -170,7 +170,7 @@
 		{
 			// On lance une analyse du dossier des images du serveur.
 			$html = "";
-			$elements = scandir($this::PATH);
+			$elements = scandir(self::PATH);
 
 			// On applique ensuite un micro-correctif pour les systèmes Linux.
 			// Pour plus de détails, rendez-vous dans « views/projects.php »
@@ -182,7 +182,7 @@
 			//	dossier et non pas un fichier.
 			foreach ($elements as $element)
 			{
-				if (is_dir($this::PATH . $element))
+				if (is_dir(self::PATH . $element))
 				{
 					$html .= "<option value=\"$element\">$element</option>\n";
 				}
