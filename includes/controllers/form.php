@@ -157,7 +157,7 @@
 		{
 			// On itére à travers tous les champs connus pour
 			//	réaliser les vérifications.
-			foreach ($this::FIELDS as $value)
+			foreach (self::FIELDS as $value)
 			{
 				// On rend propre l'entrée utilisateur avant
 				//	de la vérifier.
