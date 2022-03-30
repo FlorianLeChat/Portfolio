@@ -20,7 +20,7 @@ function typingEffect( element, speed )
 	// 	chaque lettre avec un délai d'attente.
 	let indice = 0;
 
-	const timer = setInterval( () =>
+	const timer = setInterval( function ()
 	{
 		if ( indice < text.length )
 		{
@@ -66,7 +66,7 @@ window.addEventListener( "resize", adjustZoom );
 const word = "admin";
 let keys = [];
 
-window.addEventListener( "keypress", ( event ) =>
+window.addEventListener( "keypress", function ( event )
 {
 	keys.push( event.key );
 
@@ -90,13 +90,13 @@ const threshold = 200;
 
 if ( scrollTop !== null )
 {
-	scrollTop.addEventListener( "click", ( _event ) =>
+	scrollTop.addEventListener( "click", function ( _event )
 	{
 		document.body.scrollTop = 0;				// Safari uniquement.
 		document.documentElement.scrollTop = 0;		// Chrome, Firefox, IE, etc.
 	} );
 
-	window.addEventListener( "scroll", ( _event ) =>
+	window.addEventListener( "scroll", function ( _event )
 	{
 		if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
 		{
@@ -136,7 +136,7 @@ if ( audio !== null )
 		// On fait également disparaître la barre de défilement du document.
 		document.body.style.overflow = "hidden";
 
-		overlay.addEventListener( "click", ( _event ) =>
+		overlay.addEventListener( "click", function ( _event )
 		{
 			// Si on tente de cliquer sur l'élément, alors on rafraîchit la page
 			// 	en supprimant les paramètres GET ajoutés précédemment.
@@ -183,7 +183,7 @@ const links = document.querySelectorAll( "a" );
 
 for ( const link of links.values() )
 {
-	link.addEventListener( "mousedown", ( event ) =>
+	link.addEventListener( "mousedown", function ( event )
 	{
 		event.preventDefault();
 	} );
