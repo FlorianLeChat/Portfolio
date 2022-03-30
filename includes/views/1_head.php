@@ -53,8 +53,11 @@
 	<link rel="stylesheet" href="<?php echo($path . "styles/$file.css"); ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
-	<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js" defer></script>
 	<script src="https://www.googletagmanager.com/gtag/js?id=G-2J6NTCLNZT" defer></script>
+
+	<!--[if lte IE 9]>
+		<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+	<![endif]-->
 
 	<script src="<?php echo($path . "scripts/main.js"); ?>" defer></script>
 	<script src="<?php echo($path . "scripts/$file.js"); ?>" defer></script>
