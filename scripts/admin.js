@@ -7,7 +7,7 @@ const password = document.getElementById( "password" );
 
 if ( clear != null && password != null )
 {
-	clear.addEventListener( "click", ( _event ) =>
+	clear.addEventListener( "click", function ( _event )
 	{
 		if ( password.type === "password" )
 		{
@@ -28,7 +28,7 @@ const submit = document.querySelector( "input[type=submit]" );
 
 if ( submit != null && password != null )
 {
-	password.addEventListener( "keyup", ( event ) =>
+	password.addEventListener( "keyup", function ( event )
 	{
 		// Source : https://keycode.info/
 		if ( event.key === "Enter" )
@@ -46,7 +46,7 @@ const new_password = document.querySelector( "form a" );
 
 if ( new_password != null )
 {
-	new_password.addEventListener( "click", ( event ) =>
+	new_password.addEventListener( "click", function ( event )
 	{
 		// On demande l'adresse électronique et le nouveau mot de passe
 		//	créé par l'utilisateur.
@@ -64,7 +64,7 @@ if ( new_password != null )
 				// Paramètres POST.
 				body: data
 			} )
-			.then( ( response ) =>
+			.then( function ( _response )
 			{
 				// Dès que la requête a été soumise, on avertit l'utilisateur.
 				alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
@@ -119,7 +119,7 @@ if ( upload_zone != null && upload_button != null )
 {
 	// On ajoute un déclencheur sur la zone de sélection lorsque
 	//	l'utilisateur ajoute une image.
-	upload_button.addEventListener( "change", ( _event ) =>
+	upload_button.addEventListener( "change", function ( _event )
 	{
 		// On vérifie si l'image a bien été reçu par le HTML.
 		if ( upload_button.files && upload_button.files[ 0 ] )
@@ -143,7 +143,7 @@ if ( upload_button != null && preview_zone != null && preview_zone.lastElementCh
 {
 	// On ajoute un déclencheur lorsque l'utilisateur clique
 	//	sur le bouton afin de supprimer l'aperçu de l'image.
-	preview_zone.lastElementChild.addEventListener( "click", ( _event ) =>
+	preview_zone.lastElementChild.addEventListener( "click", function ( _event )
 	{
 		upload_button.value = "";
 		upload_zone.style.display = "block";

@@ -6,7 +6,7 @@ const arrows = document.querySelectorAll( "article div.images" );
 for ( const arrow of arrows.values() )
 {
 	// Afin de revenir à une image précédente.
-	arrow.firstElementChild.addEventListener( "click", ( event ) =>
+	arrow.firstElementChild.addEventListener( "click", function ( event )
 	{
 		// On récupère toutes les images de la section où s'est produit le clic.
 		const identifier = event.target.parentNode.parentNode.id;
@@ -41,7 +41,7 @@ for ( const arrow of arrows.values() )
 	} );
 
 	// Afin de passer à une image suivante.
-	arrow.lastElementChild.addEventListener( "click", ( event ) =>
+	arrow.lastElementChild.addEventListener( "click", function ( event )
 	{
 		// On récupère toutes les images de la section où s'est produit le clic.
 		const identifier = event.target.parentNode.parentNode.id;
