@@ -45,6 +45,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+	<link rel="preconnect" href="https://www.google-analytics.com" />
 
 	<!-- Polices & feuilles de style CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin="anonymous" />
@@ -52,6 +53,7 @@
 	<link rel="stylesheet" href="<?php echo($path . "styles/$file.css"); ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
+	<script src="https://www.googletagmanager.com/gtag/js?id=G-2J6NTCLNZT" defer></script>
 	<script src="<?php echo($path . "scripts/main.js"); ?>" defer></script>
 	<script src="<?php echo($path . "scripts/$file.js"); ?>" defer></script>
 
