@@ -9,7 +9,7 @@ html {
   min-width: 360px;
   scroll-behavior: smooth;
   background-image: url("../assets/images/decorations/wireframes.png");
-  background-color: #18181b;
+  background-color: rgb(24, 24, 27);
   background-attachment: fixed;
 }
 
@@ -36,12 +36,12 @@ noscript {
 
 ::-moz-selection {
   color: white;
-  background-color: #0c579d;
+  background-color: rgb(12, 87, 157);
 }
 
 ::selection {
   color: white;
-  background-color: #0c579d;
+  background-color: rgb(12, 87, 157);
 }
 
 ::-webkit-scrollbar {
@@ -53,16 +53,16 @@ noscript {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #0c579d;
+  background-color: rgb(12, 87, 157);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #27272a;
+  background-color: rgb(39, 39, 42);
 }
 
 header {
   padding: 4rem 2.5rem 4rem 2.5rem;
-  background-image: linear-gradient(to right, #0c579d, #0085ff);
+  background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
 header h1 {
   margin: 0;
@@ -114,7 +114,7 @@ footer ul li {
 }
 footer ul li a {
   padding: 0.5rem;
-  background-color: #0c579d;
+  background-color: rgb(12, 87, 157);
 }
 
 nav {
@@ -179,7 +179,7 @@ ul#flags li {
 }
 @media screen and (pointer: fine) and (hover: hover) {
   ul#flags li:hover {
-    background-color: #0085ff;
+    background-color: rgb(0, 133, 255);
   }
 }
 ul#flags li:nth-of-type(n+2) {
@@ -220,7 +220,7 @@ ul#flags:hover li {
   border-radius: 1rem;
   border: none;
   opacity: 0;
-  background-color: #0c579d;
+  background-color: rgb(12, 87, 157);
   background-size: 50%;
   background-image: url("../assets/images/decorations/arrow_up.svg");
   background-repeat: no-repeat;
@@ -265,78 +265,78 @@ ul#flags:hover li {
   }
   @-webkit-keyframes rainbow {
     0%, 100% {
-      color: red;
+      color: rgb(255, 0, 0);
     }
     8% {
-      color: #ff7f00;
+      color: rgb(255, 127, 0);
     }
     16% {
-      color: yellow;
+      color: rgb(255, 255, 0);
     }
     25% {
-      color: chartreuse;
+      color: rgb(127, 255, 0);
     }
     33% {
-      color: lime;
+      color: rgb(0, 255, 0);
     }
     41% {
-      color: springgreen;
+      color: rgb(0, 255, 127);
     }
     50% {
-      color: aqua;
+      color: rgb(0, 255, 255);
     }
     58% {
-      color: #007fff;
+      color: rgb(0, 127, 255);
     }
     66% {
-      color: blue;
+      color: rgb(0, 0, 255);
     }
     75% {
-      color: #7f00ff;
+      color: rgb(127, 0, 255);
     }
     83% {
-      color: fuchsia;
+      color: rgb(255, 0, 255);
     }
     91% {
-      color: #ff007f;
+      color: rgb(255, 0, 127);
     }
   }
   @keyframes rainbow {
     0%, 100% {
-      color: red;
+      color: rgb(255, 0, 0);
     }
     8% {
-      color: #ff7f00;
+      color: rgb(255, 127, 0);
     }
     16% {
-      color: yellow;
+      color: rgb(255, 255, 0);
     }
     25% {
-      color: chartreuse;
+      color: rgb(127, 255, 0);
     }
     33% {
-      color: lime;
+      color: rgb(0, 255, 0);
     }
     41% {
-      color: springgreen;
+      color: rgb(0, 255, 127);
     }
     50% {
-      color: aqua;
+      color: rgb(0, 255, 255);
     }
     58% {
-      color: #007fff;
+      color: rgb(0, 127, 255);
     }
     66% {
-      color: blue;
+      color: rgb(0, 0, 255);
     }
     75% {
-      color: #7f00ff;
+      color: rgb(127, 0, 255);
     }
     83% {
-      color: fuchsia;
+      color: rgb(255, 0, 255);
     }
     91% {
-      color: #ff007f;
+      color: rgb(255, 0, 127);
     }
   }
 }
@@ -363,7 +363,7 @@ ul#flags:hover li {
   text-decoration: underline;
 }
 #contributions ul li p {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
 }
 
 a {
@@ -383,7 +383,7 @@ h2 a::after, article a::after, form a::after, li > a::after {
   transform: scale(0);
 }
 h2 a:active, article a:active, form a:active, li > a:active {
-  background-color: #0c579d;
+  background-color: rgb(12, 87, 157);
 }
 h2 a:hover, article a:hover, form a:hover, li > a:hover {
   transition: background-color 500ms ease-out;
@@ -396,7 +396,7 @@ h2 a:hover::after, article a:hover::after, form a:hover::after, li > a:hover::af
 
 header a img {
   width: 2rem;
-  filter: drop-shadow(0 0 1rem #0c579d);
+  filter: drop-shadow(0 0 1rem rgb(12, 87, 157));
   margin: 4rem 1rem 0 1rem;
   padding: 0.625rem;
   transition: transform 300ms ease;
@@ -409,7 +409,7 @@ header a img:hover {
 }
 
 #aboutme, #skills, #contact {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
   padding: calc(10% + 5rem) 20% calc(10% + 5rem) 20%;
 }
 
@@ -429,8 +429,8 @@ header a img:hover {
 }
 
 #projects {
-  color: #a1a1aa;
-  background-image: linear-gradient(to right, #0c579d, #0085ff);
+  color: rgb(161, 161, 170);
+  background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
 #projects .row article {
   color: white;
@@ -527,7 +527,7 @@ header a img:hover {
   margin: 0 17.5% 7.5% 17.5%;
   padding: 2rem;
   border-radius: 1rem;
-  background-image: linear-gradient(to right, #0c579d, #0085ff);
+  background-image: linear-gradient(to right, rgb(12, 87, 157), rgb(0, 133, 255));
 }
 @media screen and (max-width: 768px) {
   #contact {

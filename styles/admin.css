@@ -9,7 +9,7 @@ html {
   min-width: 360px;
   scroll-behavior: smooth;
   background-image: url("../assets/images/decorations/wireframes.png");
-  background-color: #18181b;
+  background-color: rgb(24, 24, 27);
   background-attachment: fixed;
 }
 
@@ -36,12 +36,12 @@ noscript {
 
 ::-moz-selection {
   color: white;
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 
 ::selection {
   color: white;
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 
 ::-webkit-scrollbar {
@@ -53,16 +53,16 @@ noscript {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #27272a;
+  background-color: rgb(39, 39, 42);
 }
 
 header {
   padding: 4rem 2.5rem 4rem 2.5rem;
-  background-image: linear-gradient(to right, #8c0e0e, #d90000);
+  background-image: linear-gradient(to right, rgb(140, 14, 14), rgb(217, 0, 0));
 }
 header h1 {
   margin: 0;
@@ -114,7 +114,7 @@ footer ul li {
 }
 footer ul li a {
   padding: 0.5rem;
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 
 nav {
@@ -179,7 +179,7 @@ ul#flags li {
 }
 @media screen and (pointer: fine) and (hover: hover) {
   ul#flags li:hover {
-    background-color: #d90000;
+    background-color: rgb(217, 0, 0);
   }
 }
 ul#flags li:nth-of-type(n+2) {
@@ -220,7 +220,7 @@ ul#flags:hover li {
   border-radius: 1rem;
   border: none;
   opacity: 0;
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
   background-size: 50%;
   background-image: url("../assets/images/decorations/arrow_up.svg");
   background-repeat: no-repeat;
@@ -265,78 +265,78 @@ ul#flags:hover li {
   }
   @-webkit-keyframes rainbow {
     0%, 100% {
-      color: red;
+      color: rgb(255, 0, 0);
     }
     8% {
-      color: #ff7f00;
+      color: rgb(255, 127, 0);
     }
     16% {
-      color: yellow;
+      color: rgb(255, 255, 0);
     }
     25% {
-      color: chartreuse;
+      color: rgb(127, 255, 0);
     }
     33% {
-      color: lime;
+      color: rgb(0, 255, 0);
     }
     41% {
-      color: springgreen;
+      color: rgb(0, 255, 127);
     }
     50% {
-      color: aqua;
+      color: rgb(0, 255, 255);
     }
     58% {
-      color: #007fff;
+      color: rgb(0, 127, 255);
     }
     66% {
-      color: blue;
+      color: rgb(0, 0, 255);
     }
     75% {
-      color: #7f00ff;
+      color: rgb(127, 0, 255);
     }
     83% {
-      color: fuchsia;
+      color: rgb(255, 0, 255);
     }
     91% {
-      color: #ff007f;
+      color: rgb(255, 0, 127);
     }
   }
   @keyframes rainbow {
     0%, 100% {
-      color: red;
+      color: rgb(255, 0, 0);
     }
     8% {
-      color: #ff7f00;
+      color: rgb(255, 127, 0);
     }
     16% {
-      color: yellow;
+      color: rgb(255, 255, 0);
     }
     25% {
-      color: chartreuse;
+      color: rgb(127, 255, 0);
     }
     33% {
-      color: lime;
+      color: rgb(0, 255, 0);
     }
     41% {
-      color: springgreen;
+      color: rgb(0, 255, 127);
     }
     50% {
-      color: aqua;
+      color: rgb(0, 255, 255);
     }
     58% {
-      color: #007fff;
+      color: rgb(0, 127, 255);
     }
     66% {
-      color: blue;
+      color: rgb(0, 0, 255);
     }
     75% {
-      color: #7f00ff;
+      color: rgb(127, 0, 255);
     }
     83% {
-      color: fuchsia;
+      color: rgb(255, 0, 255);
     }
     91% {
-      color: #ff007f;
+      color: rgb(255, 0, 127);
     }
   }
 }
@@ -363,7 +363,7 @@ ul#flags:hover li {
   text-decoration: underline;
 }
 #contributions ul li p {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
 }
 
 a {
@@ -383,7 +383,7 @@ h2 a::after, article a::after, form a::after, li > a::after {
   transform: scale(0);
 }
 h2 a:active, article a:active, form a:active, li > a:active {
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 h2 a:hover, article a:hover, form a:hover, li > a:hover {
   transition: background-color 500ms ease-out;
@@ -400,7 +400,7 @@ html {
 
 hr {
   margin: 3rem 10% 3rem 10%;
-  border-color: #a1a1aa;
+  border-color: rgb(161, 161, 170);
 }
 
 video {
@@ -414,7 +414,7 @@ video {
 }
 
 header {
-  border-bottom: 5px dashed #18181b;
+  border-bottom: 5px dashed rgb(24, 24, 27);
 }
 header h1 {
   margin-top: 4rem;
@@ -422,7 +422,7 @@ header h1 {
 header p:nth-of-type(1) {
   top: 1rem;
   left: 1rem;
-  color: #18181b;
+  color: rgb(24, 24, 27);
   margin: 0;
   position: absolute;
   font-weight: 700;
@@ -430,7 +430,7 @@ header p:nth-of-type(1) {
 header p:nth-of-type(2) {
   top: 1rem;
   right: 1rem;
-  color: #18181b;
+  color: rgb(24, 24, 27);
   margin: 0 0 0 6rem;
   padding: 0.5rem;
   position: absolute;
@@ -460,7 +460,7 @@ footer ul {
   grid-area: a;
 }
 #tables p, #upload p {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
   margin: 1rem 10% 1rem 10%;
   padding: 1rem;
   grid-area: b;
@@ -490,10 +490,10 @@ footer ul {
           user-select: none;
   border-radius: 0.5rem;
   text-transform: capitalize;
-  background-color: #d90000;
+  background-color: rgb(217, 0, 0);
 }
 #categories ul li input:hover {
-  color: #d90000;
+  color: rgb(217, 0, 0);
   background-color: white;
 }
 
@@ -518,7 +518,7 @@ footer ul {
 }
 #data table th:not(:last-child) {
   padding: 0.5rem;
-  background-color: #d90000;
+  background-color: rgb(217, 0, 0);
 }
 #data table textarea {
   height: 2rem;
@@ -542,22 +542,22 @@ footer ul {
   text-transform: uppercase;
 }
 #data table input[name*=add] {
-  background-color: #25d066;
+  background-color: rgb(37, 208, 102);
 }
 #data table input[name*=add]:hover {
-  background-color: #1c9e4d;
+  background-color: rgb(28, 158, 77);
 }
 #data table input[name*=update] {
-  background-color: #ff9e00;
+  background-color: rgb(255, 158, 0);
 }
 #data table input[name*=update]:hover {
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
 }
 #data table input[name*=remove] {
-  background-color: #d90000;
+  background-color: rgb(217, 0, 0);
 }
 #data table input[name*=remove]:hover {
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 
 #upload {
@@ -577,7 +577,7 @@ footer ul {
 #upload form {
   padding: 1.5rem;
   border-radius: 0.25rem;
-  background-image: linear-gradient(to right, #8c0e0e, #d90000);
+  background-image: linear-gradient(to right, rgb(140, 14, 14), rgb(217, 0, 0));
 }
 #upload form label {
   display: block;
@@ -597,17 +597,17 @@ footer ul {
   background-color: beige;
 }
 #upload form div:first-of-type {
-  border: 0.25rem dashed #a1a1aa;
+  border: 0.25rem dashed rgb(161, 161, 170);
   margin: 1rem 0 1.5rem 0;
   position: relative;
   transition: background-color 200ms ease-out, border 200ms ease;
 }
 #upload form div:first-of-type:hover {
   border: 0.25rem dashed white;
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 #upload form div:first-of-type h3 {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
   padding: 4rem 1rem 4rem 1rem;
   text-transform: uppercase;
 }
@@ -640,14 +640,14 @@ footer ul {
   padding: 0.5rem;
   position: relative;
   border-radius: 0.25rem;
-  background-color: #18181b;
+  background-color: rgb(24, 24, 27);
 }
 @media screen and (pointer: fine) and (hover: hover) {
   #upload form div:last-of-type button {
     transition: background-color 200ms ease;
   }
   #upload form div:last-of-type button:hover {
-    color: #18181b;
+    color: rgb(24, 24, 27);
     background-color: white;
   }
 }
@@ -662,8 +662,8 @@ footer ul {
   transition: background-color 300ms ease-out, border 200ms ease;
   font-weight: 700;
   border-radius: 0.25rem;
-  border-bottom: 0.25rem solid #8c0e0e;
-  background-color: #d90000;
+  border-bottom: 0.25rem solid rgb(140, 14, 14);
+  background-color: rgb(217, 0, 0);
 }
 #upload form input[type=submit]:hover {
   cursor: pointer;
@@ -686,7 +686,7 @@ footer ul {
   justify-content: center;
 }
 #login #failed {
-  color: #d90000;
+  color: rgb(217, 0, 0);
   margin-top: 2rem;
   font-weight: 700;
   line-height: 1.25rem;
@@ -704,7 +704,7 @@ footer ul {
           user-select: none;
   margin-bottom: 4rem;
   border-radius: 0.25rem;
-  background-image: linear-gradient(to right, #8c0e0e, #d90000);
+  background-image: linear-gradient(to right, rgb(140, 14, 14), rgb(217, 0, 0));
 }
 #login form a {
   width: 10.25rem;
@@ -734,16 +734,16 @@ footer ul {
   padding: 0.75rem 1.25rem;
   transition: background-color 250ms ease;
   border-radius: 0.25rem;
-  background-color: #d90000;
+  background-color: rgb(217, 0, 0);
 }
 #login form input[type=submit]:hover {
-  background-color: #8c0e0e;
+  background-color: rgb(140, 14, 14);
 }
 
 #logout {
   top: 50%;
   left: 50%;
-  border: 3px dashed #d90000;
+  border: 3px dashed rgb(217, 0, 0);
   padding: 1rem;
   position: absolute;
   transform: translate(-50%, -50%);

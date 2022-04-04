@@ -9,7 +9,7 @@ html {
   min-width: 360px;
   scroll-behavior: smooth;
   background-image: url("../assets/images/decorations/wireframes.png");
-  background-color: #18181b;
+  background-color: rgb(24, 24, 27);
   background-attachment: fixed;
 }
 
@@ -36,12 +36,12 @@ noscript {
 
 ::-moz-selection {
   color: white;
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
 }
 
 ::selection {
   color: white;
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
 }
 
 ::-webkit-scrollbar {
@@ -53,16 +53,16 @@ noscript {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #27272a;
+  background-color: rgb(39, 39, 42);
 }
 
 header {
   padding: 4rem 2.5rem 4rem 2.5rem;
-  background-image: linear-gradient(to right, #9e670d, #ff9e00);
+  background-image: linear-gradient(to right, rgb(158, 103, 13), rgb(255, 158, 0));
 }
 header h1 {
   margin: 0;
@@ -114,7 +114,7 @@ footer ul li {
 }
 footer ul li a {
   padding: 0.5rem;
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
 }
 
 nav {
@@ -179,7 +179,7 @@ ul#flags li {
 }
 @media screen and (pointer: fine) and (hover: hover) {
   ul#flags li:hover {
-    background-color: #ff9e00;
+    background-color: rgb(255, 158, 0);
   }
 }
 ul#flags li:nth-of-type(n+2) {
@@ -220,7 +220,7 @@ ul#flags:hover li {
   border-radius: 1rem;
   border: none;
   opacity: 0;
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
   background-size: 50%;
   background-image: url("../assets/images/decorations/arrow_up.svg");
   background-repeat: no-repeat;
@@ -265,78 +265,78 @@ ul#flags:hover li {
   }
   @-webkit-keyframes rainbow {
     0%, 100% {
-      color: red;
+      color: rgb(255, 0, 0);
     }
     8% {
-      color: #ff7f00;
+      color: rgb(255, 127, 0);
     }
     16% {
-      color: yellow;
+      color: rgb(255, 255, 0);
     }
     25% {
-      color: chartreuse;
+      color: rgb(127, 255, 0);
     }
     33% {
-      color: lime;
+      color: rgb(0, 255, 0);
     }
     41% {
-      color: springgreen;
+      color: rgb(0, 255, 127);
     }
     50% {
-      color: aqua;
+      color: rgb(0, 255, 255);
     }
     58% {
-      color: #007fff;
+      color: rgb(0, 127, 255);
     }
     66% {
-      color: blue;
+      color: rgb(0, 0, 255);
     }
     75% {
-      color: #7f00ff;
+      color: rgb(127, 0, 255);
     }
     83% {
-      color: fuchsia;
+      color: rgb(255, 0, 255);
     }
     91% {
-      color: #ff007f;
+      color: rgb(255, 0, 127);
     }
   }
   @keyframes rainbow {
     0%, 100% {
-      color: red;
+      color: rgb(255, 0, 0);
     }
     8% {
-      color: #ff7f00;
+      color: rgb(255, 127, 0);
     }
     16% {
-      color: yellow;
+      color: rgb(255, 255, 0);
     }
     25% {
-      color: chartreuse;
+      color: rgb(127, 255, 0);
     }
     33% {
-      color: lime;
+      color: rgb(0, 255, 0);
     }
     41% {
-      color: springgreen;
+      color: rgb(0, 255, 127);
     }
     50% {
-      color: aqua;
+      color: rgb(0, 255, 255);
     }
     58% {
-      color: #007fff;
+      color: rgb(0, 127, 255);
     }
     66% {
-      color: blue;
+      color: rgb(0, 0, 255);
     }
     75% {
-      color: #7f00ff;
+      color: rgb(127, 0, 255);
     }
     83% {
-      color: fuchsia;
+      color: rgb(255, 0, 255);
     }
     91% {
-      color: #ff007f;
+      color: rgb(255, 0, 127);
     }
   }
 }
@@ -363,7 +363,7 @@ ul#flags:hover li {
   text-decoration: underline;
 }
 #contributions ul li p {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
 }
 
 a {
@@ -383,7 +383,7 @@ h2 a::after, article a::after, form a::after, li > a::after {
   transform: scale(0);
 }
 h2 a:active, article a:active, form a:active, li > a:active {
-  background-color: #9e670d;
+  background-color: rgb(158, 103, 13);
 }
 h2 a:hover, article a:hover, form a:hover, li > a:hover {
   transition: background-color 500ms ease-out;
@@ -405,7 +405,7 @@ article {
   text-align: right;
   box-shadow: 0 1rem 2rem -1rem rgba(24, 24, 27, 0.3);
   border-radius: 1rem;
-  background-color: #27272a;
+  background-color: rgb(39, 39, 42);
 }
 @media screen and (min-width: 1024px) {
   article {
@@ -421,7 +421,7 @@ article:last-of-type {
 }
 article hr {
   margin: 1rem 0 1rem 0;
-  border-color: #3f3f46;
+  border-color: rgb(63, 63, 70);
 }
 article div.properties h2 {
   overflow: hidden;
@@ -435,7 +435,7 @@ article div.properties h3 {
   text-indent: 1rem;
 }
 article div.properties p {
-  color: #a1a1aa;
+  color: rgb(161, 161, 170);
   text-align: justify;
   line-height: 1.5rem;
 }
@@ -460,11 +460,11 @@ article div.images {
 }
 article div.images div {
   margin: 0.5rem;
-  border: 1px solid #a1a1aa;
+  border: 1px solid rgb(161, 161, 170);
   display: none;
   min-width: 170px;
   max-width: 600px;
-  background-color: #18181b;
+  background-color: rgb(24, 24, 27);
 }
 article div.images div:first-of-type {
   display: inline-block;
