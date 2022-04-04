@@ -3,15 +3,10 @@
 	// Ceci est le fichier permettant de contrôler la vue du sélecteur de langues.
 	//
 
-	// On récupère toutes les langues disponibles avant de
-	//	récupérer leur traduction.
-	$languages = $translation->getPhrases("language");		// Langues
-	$backtotop = $translation->getPhrase("nav_backtotop");	// Bouton retour en haut de page
-
-	$languages_data = $translation->getLanguages();
-
 	// On réorganise la position des drapeaux en prenant compte
 	//	de la langue actuellement active.
+	$languages_data = $translation->getLanguages();
+
 	if ($language != "FR")
 	{
 		// Si la langue active n'est pas le français, alors on
@@ -26,6 +21,7 @@
 	}
 
 	// On construit après la structure HTML du sélecteur de langues.
+	$languages = $translation->getPhrases("language");
 	$flags_html = "\n";
 
 	foreach ($languages_data as $language)
@@ -59,5 +55,5 @@
 	</form>
 
 	<!-- Retour au début de la page -->
-	<button id="scrollTop" title="<?php echo($backtotop); ?>"></button>
+	<a href="#" id="scrollTop"></a>
 </aside>
