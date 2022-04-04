@@ -90,12 +90,6 @@ const threshold = 200;
 
 if ( scrollTop !== null )
 {
-	scrollTop.addEventListener( "click", function ( _event )
-	{
-		document.body.scrollTop = 0;				// Safari uniquement.
-		document.documentElement.scrollTop = 0;		// Chrome, Firefox, IE, etc.
-	} );
-
 	window.addEventListener( "scroll", function ( _event )
 	{
 		if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
