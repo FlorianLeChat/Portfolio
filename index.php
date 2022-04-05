@@ -13,7 +13,7 @@
 
 	<body>
 		<!-- Avertissement page sans JavaScript -->
-		<noscript>Votre navigateur ne supporte pas ou refuse de charger le JavaScript.</noscript>
+		<noscript><?php echo($translation->getPhrase("html_no_javascript")); ?></noscript>
 
 		<!-- En-tête de la page -->
 		<?php
