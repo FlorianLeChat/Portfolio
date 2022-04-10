@@ -40,8 +40,6 @@
 
 	<ul>
 		<!-- Description de chaque contribution -->
-		<?php
-			echo($contributions_html);
-		?>
+		<?= $contributions_html; ?>
 	</ul>
 </section>

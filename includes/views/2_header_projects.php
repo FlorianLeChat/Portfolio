@@ -11,10 +11,10 @@
 <!-- En-tête de la page -->
 <header>
 	<!-- Titre de la catégorie -->
-	<h1><?php echo($header_projects["header_projects_title"]); ?></h1>
+	<h1><?= $header_projects["header_projects_title"]; ?></h1>
 
 	<!-- Description succincte -->
-	<h2><?php echo($header_projects["header_projects_subtitle"]); ?></h2>
+	<h2><?= $header_projects["header_projects_subtitle"]; ?></h2>
 
 	<!-- Vagues de fin -->
 	<img src="assets/images/decorations/header_waves_orange.svg" alt="" />

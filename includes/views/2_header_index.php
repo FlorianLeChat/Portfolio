@@ -31,13 +31,13 @@
 <!-- En-tête de la page -->
 <header>
 	<!-- Prénom & Nom -->
-	<h1><?php echo($header_index["header_index_title"]); ?></h1>
+	<h1><?= $header_index["header_index_title"]; ?></h1>
 
 	<!-- Description succincte -->
-	<h2><?php echo($header_index["header_index_subtitle"]); ?></h2>
+	<h2><?= $header_index["header_index_subtitle"]; ?></h2>
 
 	<!-- Plateformes de communication -->
-	<?php echo($plateforms_html); ?>
+	<?= $plateforms_html; ?>
 
 	<!-- Vagues de fin -->
 	<img src="assets/images/decorations/header_waves_blue.svg" alt="" />

@@ -90,7 +90,7 @@
 			<p>00:00:00</p>
 
 			<!-- Information de connexion -->
-			<p>Connecté en tant que « <?php echo($user->getUsername()); ?> »</p>
+			<p>Connecté en tant que « <?= $user->getUsername(); ?> »</p>
 		</header>
 
 		<main>
@@ -119,9 +119,7 @@
 				<!-- Sélection de la catégorie -->
 				<form method="POST" id="categories">
 					<ul>
-						<?php
-							echo($tables_html);
-						?>
+						<?= $tables_html; ?>
 					</ul>
 				</form>
 
@@ -132,9 +130,7 @@
 
 					<!-- Table des données -->
 					<table>
-						<?php
-							echo($data_html ?? "\n");
-						?>
+						<?= $data_html ?? PHP_EOL; ?>
 					</table>
 				</form>
 			</section>
@@ -153,7 +149,7 @@
 					Cela comprend la sélection de l'emplacement, mais aussi la visualisation du fichier qui sera envoyé.
 					<br /><br />
 					Attention, <strong>seules les images</strong> (de n'importe quelle extension) sont autorisées par le serveur.
-					Une limite de poids de <?php echo(ini_get("upload_max_filesize")); ?>B est également imposée par PHP.
+					Une limite de poids de <?= ini_get("upload_max_filesize"); ?>B est également imposée par PHP.
 				</p>
 
 				<!-- Bouton de téléversement -->
@@ -161,9 +157,7 @@
 					<!-- Sélection du dossier de destination -->
 					<label for="path">Choisissez l'emplacement de destination.</label>
 					<select id="path" name="path">
-						<?php
-							echo($path_html);
-						?>
+						<?= $path_html; ?>
 					</select>
 
 					<!-- Sélection des fichiers -->

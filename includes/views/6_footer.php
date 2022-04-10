@@ -27,12 +27,12 @@
 <footer>
 	<ul>
 		<!-- Overlay des contributions -->
-		<li><a href="<?php echo($query); ?>"><?php echo($footer["footer_contributions"]); ?></a></li>
+		<li><a href="<?= $query; ?>"><?= $footer["footer_contributions"]; ?></a></li>
 
 		<!-- Interface d'administration (back office) -->
-		<li><a href="admin/index.php"><?php echo($footer["footer_admin"]); ?></a></li>
+		<li><a href="admin/index.php"><?= $footer["footer_admin"]; ?></a></li>
 
 		<!-- Dépôt du code source -->
-		<li><a href="https://github.com/FlorianLeChat/Portfolio"><?php echo($footer["footer_github"]); ?></a></li>
+		<li><a href="https://github.com/FlorianLeChat/Portfolio"><?= $footer["footer_github"]; ?></a></li>
 	</ul>
 </footer>

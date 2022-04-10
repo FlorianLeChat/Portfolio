@@ -12,9 +12,9 @@
 
 <nav>
 	<ul>
-		<li><a href="#aboutme"><?php echo($about_me_title); ?></a></li>
-		<li><a href="#projects"><?php echo($header_projects_title); ?></a></li>
-		<li><a href="#skills"><?php echo($header_skills_title); ?></a></li>
-		<li><a href="#contact"><?php echo($contact_title); ?></a></li>
+		<li><a href="#aboutme"><?= $about_me_title; ?></a></li>
+		<li><a href="#projects"><?= $header_projects_title; ?></a></li>
+		<li><a href="#skills"><?= $header_skills_title; ?></a></li>
+		<li><a href="#contact"><?= $contact_title; ?></a></li>
 	</ul>
 </nav>

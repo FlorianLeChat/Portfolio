@@ -22,7 +22,7 @@
 
 	// On construit après la structure HTML du sélecteur de langues.
 	$languages = $translation->getPhrases("language");
-	$flags_html = "\n";
+	$flags_html = PHP_EOL;
 
 	foreach ($languages_data as $language)
 	{
@@ -46,11 +46,9 @@
 
 <aside>
 	<!-- Sélection de la langue -->
-	<form method="POST" action="?target=<?php echo($file); ?>">
+	<form method="POST" action="?target=<?= $file; ?>">
 		<ul id="flags">
-			<?php
-				echo($flags_html);
-			?>
+			<?= $flags_html; ?>
 		</ul>
 	</form>
 

@@ -11,10 +11,10 @@
 <!-- En-tête de la page -->
 <header>
 	<!-- Titre de la catégorie -->
-	<h1><?php echo($header_contact["header_contact_title"]); ?></h1>
+	<h1><?= $header_contact["header_contact_title"]; ?></h1>
 
 	<!-- Description succincte -->
-	<h2><?php echo($header_contact["header_contact_subtitle"]); ?></h2>
+	<h2><?= $header_contact["header_contact_subtitle"]; ?></h2>
 
 	<!-- Vagues de fin -->
 	<img src="assets/images/decorations/header_waves_purple.svg" alt="" />

@@ -51,11 +51,11 @@
 	<h3>#aboutme</h3>
 
 	<h2>
-		<?php echo($about_me["about_me_title"] . "\n"); ?>
+		<?= $about_me["about_me_title"] . PHP_EOL; ?>
 	</h2>
 
 	<p>
-		<?php echo($about_me["about_me_description"] . "\n"); ?>
+		<?= $about_me["about_me_description"] . PHP_EOL; ?>
 	</p>
 </section>
 
@@ -68,13 +68,11 @@
 	<h3>#projects</h3>
 
 	<h2>
-		&#8250; <a href="?target=projects"><?php echo($projects["header_projects_title"]); ?></a> &#8249;
+		&#8250; <a href="?target=projects"><?= $projects["header_projects_title"]; ?></a> &#8249;
 	</h2>
 
 	<div class="container">
-		<?php
-			echo($projects_html);
-		?>
+		<?= $projects_html; ?>
 	</div>
 
 	<!-- Vagues de fin -->
@@ -86,31 +84,31 @@
 	<h3>#skills</h3>
 
 	<h2>
-		&#8250; <a href="?target=skills"><?php echo($skills["header_skills_title"]); ?></a> &#8249;
+		&#8250; <a href="?target=skills"><?= $skills["header_skills_title"]; ?></a> &#8249;
 	</h2>
 
 	<div>
 		<article>
-			<img src="assets/images/skills/school.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_school_image"]); ?>" />
+			<img src="assets/images/skills/school.svg" draggable="false" width="64" height="64" alt="<?= $skills["skills_school_image"]; ?>" />
 
 			<h2>
-				<?php echo($skills["skills_school_title"] . "\n"); ?>
+				<?= $skills["skills_school_title"] . PHP_EOL; ?>
 			</h2>
 
 			<p>
-				<?php echo($skills["skills_school_description"] . "\n"); ?>
+				<?= $skills["skills_school_description"] . PHP_EOL; ?>
 			</p>
 		</article>
 
 		<article>
-			<img src="assets/images/skills/work.svg" draggable="false" width="64" height="64" alt="<?php echo($skills["skills_work_image"]); ?>" />
+			<img src="assets/images/skills/work.svg" draggable="false" width="64" height="64" alt="<?= $skills["skills_work_image"]; ?>" />
 
 			<h2>
-				<?php echo($skills["skills_work_title"] . "\n"); ?>
+				<?= $skills["skills_work_title"] . PHP_EOL; ?>
 			</h2>
 
 			<p>
-				<?php echo($skills["skills_work_description"] . "\n"); ?>
+				<?= $skills["skills_work_description"] . PHP_EOL; ?>
 			</p>
 		</article>
 	</div>
@@ -121,14 +119,14 @@
 	<h3>#contact</h3>
 
 	<h2>
-		&#8250; <a href="?target=contact"><?php echo($contact["contact_title"]); ?></a> &#8249;
+		&#8250; <a href="?target=contact"><?= $contact["contact_title"]; ?></a> &#8249;
 	</h2>
 
 	<h2>
-		<?php echo($contact["contact_message"] . "\n"); ?>
+		<?= $contact["contact_message"] . PHP_EOL; ?>
 	</h2>
 
 	<span>
-		<a href="?target=contact"><?php echo($contact["contact_button"]); ?></a>
+		<a href="?target=contact"><?= $contact["contact_button"]; ?></a>
 	</span>
 </section>
