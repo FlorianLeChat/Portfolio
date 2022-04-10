@@ -11,8 +11,8 @@
 
 <nav>
 	<ul>
-		<li><a href="?target=index"><?php echo($about_me_title); ?></a></li>
-		<li><a href="?target=skills"><?php echo($header_skills_title); ?></a></li>
-		<li><a href="?target=contact"><?php echo($contact_title); ?></a></li>
+		<li><a href="?target=index"><?= $about_me_title; ?></a></li>
+		<li><a href="?target=skills"><?= $header_skills_title; ?></a></li>
+		<li><a href="?target=contact"><?= $contact_title; ?></a></li>
 	</ul>
 </nav>

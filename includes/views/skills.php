@@ -127,32 +127,28 @@
 	<h3>#school</h3>
 
 	<h2>
-		<?php echo($skills["skills_school_title"] . "\n"); ?>
+		<?= $skills["skills_school_title"] . PHP_EOL; ?>
 	</h2>
 
 	<article id="list">
 		<!-- Formations (liste) -->
 		<h3>
-			<?php echo($degrees["degrees_list_title"] . "\n"); ?>
+			<?= $degrees["degrees_list_title"] . PHP_EOL; ?>
 		</h3>
 
 		<ul>
-			<?php
-				echo($degrees_list_html);
-			?>
+			<?= $degrees_list_html;?>
 		</ul>
 	</article>
 
 	<article id="summary">
 		<!-- Formations (résumé descriptif) -->
 		<h3>
-			<?php echo($degrees["degrees_resume_title"] . "\n"); ?>
+			<?= $degrees["degrees_resume_title"] . PHP_EOL; ?>
 		</h3>
 
 		<ul>
-			<?php
-				echo($degrees_resume_html);
-			?>
+			<?= $degrees_resume_html; ?>
 		</ul>
 	</article>
 </section>
@@ -164,36 +160,32 @@
 	<h3>#work</h3>
 
 	<h2>
-		<?php echo($skills["skills_work_title"] . "\n"); ?>
+		<?= $skills["skills_work_title"] . PHP_EOL; ?>
 	</h2>
 
 	<article id="experiences">
 		<h3>
-			<?php echo($experiences["experiences_title"] . "\n"); ?>
+			<?= $experiences["experiences_title"] . PHP_EOL; ?>
 		</h3>
 
 		<ul>
-			<?php
-				echo($experiences_html);
-			?>
+			<?= $experiences_html; ?>
 		</ul>
 	</article>
 
 	<article id="competences">
 		<h3>
-			<?php echo($competences["competences_title"] . "\n"); ?>
+			<?= $competences["competences_title"] . PHP_EOL; ?>
 		</h3>
 
 		<!-- Descriptif des compétences -->
 		<p>
-			<?php echo($competences["competences_description"] . "\n"); ?>
+			<?= $competences["competences_description"] . PHP_EOL; ?>
 		</p>
 
 		<hr />
 
 		<!-- Représentations graphiques des compétences -->
-		<?php
-			echo($skills_html);
-		?>
+		<?= $skills_html; ?>
 	</article>
 </section>

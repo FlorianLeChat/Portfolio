@@ -52,7 +52,7 @@
 
 		// On construit ensuite les images présentes dans la galerie
 		//	des photos (uniquement si le répertoire existe).
-		$images = "\n";
+		$images = PHP_EOL;
 		$indice = 0;
 
 		if (is_dir($path))

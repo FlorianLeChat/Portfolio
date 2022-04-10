@@ -5,7 +5,7 @@
 	require_once("includes/controllers/_main.php");
 ?>
 
-<html lang="<?php echo($language); ?>" prefix="og: https://ogp.me/ns#">
+<html lang="<?= $language; ?>" prefix="og: https://ogp.me/ns#">
 	<!-- En-tête du site -->
 	<?php
 		require_once("includes/views/1_head.php");
@@ -13,7 +13,7 @@
 
 	<body>
 		<!-- Avertissement page sans JavaScript -->
-		<noscript><?php echo($translation->getPhrase("html_no_javascript")); ?></noscript>
+		<noscript><?= $translation->getPhrase("html_no_javascript"); ?></noscript>
 
 		<!-- En-tête de la page -->
 		<?php

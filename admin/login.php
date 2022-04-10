@@ -102,7 +102,7 @@
 				<h2>Contenu protégé</h2>
 
 				<!-- Message d'erreur -->
-				<p id="failed"><?php echo($message); ?></p>
+				<p id="failed"><?= $message; ?></p>
 
 				<!-- Formulaire -->
 				<form method="POST">
