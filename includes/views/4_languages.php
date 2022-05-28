@@ -36,7 +36,7 @@
 			<li>
 				<!-- $name -->
 				<button type=\"submit\" name=\"language\" value=\"$language\">
-					<img src=\"assets/images/flags/$code.svg\" width=\"21\" height=\"16\" draggable=\"false\" alt=\"$name\" />
+					<img src=\"https://raw.githubusercontent.com/lipis/flag-icons/main/flags/4x3/$code.svg\" width=\"21\" height=\"16\" draggable=\"false\" alt=\"$name\" />
 					<span>$name</span>
 				</button>
 			</li>\n
