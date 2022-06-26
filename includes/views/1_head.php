@@ -62,6 +62,7 @@
 	<script src="<?= $path . "scripts/main.js"; ?>" defer></script>
 	<script src="<?= $path . "scripts/$file.js"; ?>" defer></script>
 
-	<!-- Icône du document (16x16) -->
+	<!-- Icône et manifeste du document -->
 	<link rel="icon" href="<?= $path . "assets/images/favicon.ico"; ?>" type="image/x-icon" />
+	<link rel="manifest" href="<?= $path . "manifest.json"; ?>" type="application/json" />
 </head>
