@@ -28,13 +28,13 @@
 	<meta name="theme-color" content="#0085ff" />
 
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="<?= $_SERVER["SERVER_NAME"]; ?>" />
+	<meta property="og:url" content="<?= "http" . (!empty($_SERVER["HTTPS"]) ? "s" : "") . "://" . $_SERVER["HTTP_HOST"] . "/"; ?>" />
 	<meta property="og:title" content="<?= $head["head_title"]; ?>" />
 	<meta property="og:description" content="<?= $head["head_description"]; ?>" />
 	<meta property="og:image" content="https://opengraph.githubassets.com/9705808f387952e68054c08ddbefffa93ca36c7917a948d1707ea5bf4a222fe6/FlorianLeChat/Portfolio" />
 
 	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content="<?= $_SERVER["SERVER_NAME"]; ?>" />
+	<meta property="twitter:url" content="<?= "http" . (!empty($_SERVER["HTTPS"]) ? "s" : "") . "://" . $_SERVER["HTTP_HOST"] . "/"; ?>" />
 	<meta property="twitter:title" content="<?= $head["head_title"]; ?>" />
 	<meta property="twitter:description" content="<?= $head["head_description"]; ?>" />
 	<meta property="twitter:image" content="https://opengraph.githubassets.com/9705808f387952e68054c08ddbefffa93ca36c7917a948d1707ea5bf4a222fe6/FlorianLeChat/Portfolio" />
