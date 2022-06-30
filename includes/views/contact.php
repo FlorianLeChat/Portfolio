@@ -77,7 +77,7 @@
 					if (str_contains($_SERVER["SERVER_NAME"], "florian-dev.fr"))
 					{
 						$to = "admin@florian-dev.fr";
-						$subject = "Portfolio - " . $form->getSubject() . " - " . $form->getEmail();
+						$subject = "Portfolio - " . html_entity_decode($form->getSubject()) . " - " . html_entity_decode($form->getEmail());
 						$message = $form->getContent();
 						$headers = array(
 							"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
