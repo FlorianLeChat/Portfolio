@@ -9,7 +9,7 @@ for ( const element of elements.values() )
 {
 	// On ajoute un événement pour actualiser l'état de validité
 	// 	du champ de saisie à chaque nouveau caractère.
-	element.addEventListener( "input", function ( _event )
+	element.addEventListener( "input", ( _event ) =>
 	{
 		if ( !element.validity.valid )
 		{
@@ -44,7 +44,7 @@ for ( const element of elements.values() )
 const result = document.getElementById( "result" );
 const delay = result.innerHTML == "" ? 0 : 10000;
 
-setTimeout( function ()
+setTimeout( () =>
 {
 	result.style.display = "none";
 }, delay );
@@ -56,7 +56,7 @@ setTimeout( function ()
 const form = document.querySelector( "#form > form" );
 const submit = document.querySelector( "input[type=submit]" );
 
-form.addEventListener( "submit", function ( event )
+form.addEventListener( "submit", ( event ) =>
 {
 	for ( const element of elements.values() )
 	{
@@ -92,7 +92,7 @@ for ( let i = 1; i <= 7; i++ )
 
 generation = generation.join( "" ); // Assemblage de la chaîne de caractères.
 
-form.addEventListener( "submit", function ( event )
+form.addEventListener( "submit", ( event ) =>
 {
 	// Lors de la chaque soumission du formulaire, on demande à l'utilisateur
 	//	de renseigner le code indiqué dans la boite de dialogue.
