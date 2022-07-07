@@ -56,7 +56,7 @@ if ( new_password != null )
 
 		// On effectue ensuite une requête asynchrone à la page
 		//	actuelle pour pouvoir faire des vérifications.
-		fetch( window.location.href,
+		await fetch( window.location.href,
 			{
 				// Méthode de la requête.
 				method: "POST",
@@ -64,13 +64,11 @@ if ( new_password != null )
 				// Paramètres POST.
 				body: data
 			} )
-			.then( () =>
-			{
-				// Dès que la requête a été soumise, on avertit l'utilisateur.
-				alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
-			} );
 
-		// On cesse le comportement par défaut du lien.
+		// On avertit alors l'utilisateur dès que la requête a été soumise.
+		alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
+
+		// On cesse enfin le comportement par défaut du lien.
 		event.preventDefault();
 	} );
 }
