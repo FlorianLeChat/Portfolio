@@ -90,7 +90,7 @@ const threshold = 200;
 
 if ( scrollTop !== null )
 {
-	window.addEventListener( "scroll", ( _event ) =>
+	window.addEventListener( "scroll", () =>
 	{
 		if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
 		{
@@ -130,7 +130,7 @@ if ( audio !== null )
 		// On fait également disparaître la barre de défilement du document.
 		document.body.style.overflow = "hidden";
 
-		overlay.addEventListener( "click", ( _event ) =>
+		overlay.addEventListener( "click", () =>
 		{
 			// Si on tente de cliquer sur l'élément, alors on rafraîchit la page
 			// 	en supprimant les paramètres GET ajoutés précédemment.
