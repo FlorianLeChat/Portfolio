@@ -20,7 +20,7 @@ function typingEffect( element, speed )
 	// 	chaque lettre avec un délai d'attente.
 	let indice = 0;
 
-	const timer = setInterval( function ()
+	const timer = setInterval( () =>
 	{
 		if ( indice < text.length )
 		{
@@ -66,7 +66,7 @@ window.addEventListener( "resize", adjustZoom );
 const word = "admin";
 let keys = [];
 
-window.addEventListener( "keypress", function ( event )
+window.addEventListener( "keypress", ( event ) =>
 {
 	keys.push( event.key );
 
@@ -90,7 +90,7 @@ const threshold = 200;
 
 if ( scrollTop !== null )
 {
-	window.addEventListener( "scroll", function ( _event )
+	window.addEventListener( "scroll", ( _event ) =>
 	{
 		if ( document.body.scrollTop > threshold || document.documentElement.scrollTop > threshold )
 		{
@@ -130,7 +130,7 @@ if ( audio !== null )
 		// On fait également disparaître la barre de défilement du document.
 		document.body.style.overflow = "hidden";
 
-		overlay.addEventListener( "click", function ( _event )
+		overlay.addEventListener( "click", ( _event ) =>
 		{
 			// Si on tente de cliquer sur l'élément, alors on rafraîchit la page
 			// 	en supprimant les paramètres GET ajoutés précédemment.
@@ -177,7 +177,7 @@ const links = document.querySelectorAll( "a" );
 
 for ( const link of links.values() )
 {
-	link.addEventListener( "mousedown", function ( event )
+	link.addEventListener( "mousedown", ( event ) =>
 	{
 		event.preventDefault();
 	} );
