@@ -9,7 +9,7 @@ for ( const element of elements.values() )
 {
 	// On ajoute un événement pour actualiser l'état de validité
 	// 	du champ de saisie à chaque nouveau caractère.
-	element.addEventListener( "input", ( _event ) =>
+	element.addEventListener( "input", () =>
 	{
 		if ( !element.validity.valid )
 		{

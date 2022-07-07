@@ -7,7 +7,7 @@ const password = document.getElementById( "password" );
 
 if ( clear != null && password != null )
 {
-	clear.addEventListener( "click", ( _event ) =>
+	clear.addEventListener( "click", () =>
 	{
 		if ( password.type === "password" )
 		{
@@ -64,7 +64,7 @@ if ( new_password != null )
 				// Paramètres POST.
 				body: data
 			} )
-			.then( ( _response ) =>
+			.then( () =>
 			{
 				// Dès que la requête a été soumise, on avertit l'utilisateur.
 				alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
@@ -119,7 +119,7 @@ if ( upload_zone != null && upload_button != null )
 {
 	// On ajoute un déclencheur sur la zone de sélection lorsque
 	//	l'utilisateur ajoute une image.
-	upload_button.addEventListener( "change", ( _event ) =>
+	upload_button.addEventListener( "change", () =>
 	{
 		// On vérifie si l'image a bien été reçu par le HTML.
 		if ( upload_button.files && upload_button.files[ 0 ] )
@@ -143,7 +143,7 @@ if ( upload_button != null && preview_zone != null && preview_zone.lastElementCh
 {
 	// On ajoute un déclencheur lorsque l'utilisateur clique
 	//	sur le bouton afin de supprimer l'aperçu de l'image.
-	preview_zone.lastElementChild.addEventListener( "click", ( _event ) =>
+	preview_zone.lastElementChild.addEventListener( "click", () =>
 	{
 		upload_button.value = "";
 		upload_zone.style.display = "block";

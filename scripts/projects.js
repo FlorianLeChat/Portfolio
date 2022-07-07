@@ -81,7 +81,7 @@ for ( const arrow of arrows.values() )
 //	Note : ceci est un correctif temporaire le temps de trouver
 //		la solution en CSS de manière plus propre.
 //
-function updatePosition( _event )
+function updatePosition()
 {
 	// On vérifie la longueur de la zone d'affiche.
 	if ( window.innerWidth > 1280 )
