@@ -45,12 +45,13 @@
 	<!-- Pré-connexion des ressources externes -->
 	<link rel="preconnect" href="https://fonts.gstatic.com" />
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+	<link rel="preconnect" href="https://maxcdn.bootstrapcdn.com" />
 	<link rel="preconnect" href="https://www.google-analytics.com" />
 
 	<!-- Polices & feuilles de style CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.3/css/flag-icons.min.css" crossorigin="anonymous" />
 	<link rel="stylesheet" href="<?= $path . "styles/$file.css"; ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
