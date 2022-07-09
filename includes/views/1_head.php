@@ -63,7 +63,13 @@
 	<script src="<?= $path . "scripts/main.js"; ?>" defer></script>
 	<script src="<?= $path . "scripts/$file.js"; ?>" defer></script>
 
-	<!-- Icône et manifeste du document -->
-	<link rel="icon" href="<?= $path . "assets/images/favicon.ico"; ?>" type="image/x-icon" />
-	<link rel="manifest" href="<?= $path . "manifest.json"; ?>" type="application/json" />
+	<!-- Icônes et manifeste du document -->
+	<link rel="icon" type="image/png" sizes="16x16" href="<?= $path . "assets/images/icons/favicon-16.png"; ?>" />
+	<link rel="icon" type="image/png" sizes="32x32" href="<?= $path . "assets/images/icons/favicon-32.png"; ?>" />
+	<link rel="icon" type="image/x-icon" sizes="48x48" href="<?= $path . "assets/images/icons/favicon.ico"; ?>" />
+	<link rel="icon" type="image/png" sizes="192x192" href="<?= $path . "assets/images/icons/favicon-192.png"; ?>" />
+	<link rel="icon" type="image/png" sizes="512x512" href="<?= $path . "assets/images/icons/favicon-512.png"; ?>" />
+
+	<link rel="apple-touch-icon" href="<?= $path . "assets/images/icons/favicon-180.png"; ?>" />
+	<link rel="manifest" href="<?= $path . "manifest.json"; ?>" />
 </head>
