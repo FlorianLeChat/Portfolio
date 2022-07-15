@@ -225,3 +225,17 @@ function gtag()
 
 gtag( "js", new Date() );
 gtag( "config", "G-2J6NTCLNZT" );
+
+//
+// Permet d'implémenter le chargement différé de certaines ressources (images, vidéos, ...).
+// 	Source : https://github.com/verlok/vanilla-lazyload#-getting-started---script
+//
+const lazyLoad = new LazyLoad();
+const resources = document.querySelectorAll( "img, video, [data-bg]" );
+
+for ( const resource of resources )
+{
+	resource.classList.add( "lazy" );
+}
+
+lazyLoad.update();

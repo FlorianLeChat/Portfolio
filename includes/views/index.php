@@ -23,7 +23,7 @@
 		// On les assemble par la suite sous forme d'articles.
 		$projects_html .= "
 			<!-- Project numéro $indice -->
-			<article data-image=\"assets/images/projects/bg_$identifier.jpg\">
+			<article data-bg=\"assets/images/projects/bg_$identifier.jpg\">
 				<h3><a href=\"?target=projects#$identifier\">$name</a></h3>
 			</article>
 		";
