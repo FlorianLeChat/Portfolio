@@ -122,7 +122,12 @@ article
 	div.images
 	{
 		// Conteneur de la galerie des photos.
+		display: flex;
+		column-gap: 2rem;
 		text-align: center;
+		align-items: center;
+		flex-direction: column;
+		justify-content: center;
 
 		div
 		{
@@ -160,7 +165,6 @@ article
 		> img
 		{
 			// Flèches pour naviguer entre les images.
-			width: 100%;
 			height: 3rem;
 			margin: 0.5rem 0 0.5rem 0;
 			user-select: none;
@@ -177,24 +181,18 @@ article
 					filter: contrast(100%);
 				}
 			}
+		}
 
-			@media screen and (min-width: 1280px)
+		@media screen and (min-width: 1280px)
+		{
+			// Affichage d'une disposition différente sur les ordinateurs.
+			flex-direction: row;
+
+			> img
 			{
-				// Affichage d'une disposition différente sur les ordinateurs.
 				width: 5rem;
 				height: 5rem;
 				margin: 0;
-
-				// Flèche gauche et droite.
-				&:first-of-type
-				{
-					float: left;
-				}
-
-				&:last-of-type
-				{
-					float: right;
-				}
 			}
 		}
 	}
