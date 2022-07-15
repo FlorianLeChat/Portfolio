@@ -58,6 +58,7 @@
 
 	<!-- Scripts JavaScript -->
 	<script src="https://www.googletagmanager.com/gtag/js?id=G-2J6NTCLNZT" crossorigin="anonymous" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.2/dist/lazyload.min.js" crossorigin="anonymous" defer></script>
 
 	<!--[if lte IE 9]>
 		<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>

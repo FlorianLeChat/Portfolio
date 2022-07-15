@@ -90,7 +90,7 @@
 					$images .= "
 						<div>
 							<a href=\"$image\" target=\"_blank\">
-								<img src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
+								<img src=\"#\" data-src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
 							</a>
 
 							<p>$label</p>
@@ -107,7 +107,7 @@
 
 		foreach ($languages as $language)
 		{
-			$logos .= "<img src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" alt=\"Logo - $language\" />\n";
+			$logos .= "<img src=\"#\" data-src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" alt=\"Logo - $language\" />";
 		}
 
 		// On assemble enfin toutes les parties créées précédemment
@@ -121,7 +121,7 @@
 			<article id=\"$identifier\">
 				<div class=\"properties\">
 					<!-- Icône -->
-					<img src=\"assets/images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" />
+					<img src=\"#\" data-src=\"assets/images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" />
 
 					<!-- Nom -->
 					<h2>$title</h2>
@@ -137,9 +137,9 @@
 
 				<!-- Galerie photos -->
 				<div class=\"images\">
-					<img src=\"assets/images/decorations/arrow_left.svg\" alt=\"\" />
+					<img src=\"#\" data-src=\"assets/images/decorations/arrow_left.svg\" alt=\"\" />
 					$images
-					<img src=\"assets/images/decorations/arrow_right.svg\" alt=\"\" />
+					<img src=\"#\" data-src=\"assets/images/decorations/arrow_right.svg\" alt=\"\" />
 				</div>
 
 				<hr />
