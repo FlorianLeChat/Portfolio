@@ -10,7 +10,7 @@
 	$contact = $translation->getPhrases("contact");		// Section « Contact »
 
 	// On récupère ensuite les projets.
-	$projects_html = "<div class=\"row\">\n";
+	$projects_html = "<div class=\"row\">";
 	$projects_data = $public_data->getTableData("projects", ["identifier"], true);
 	$projects_length = count($projects_data);
 
@@ -25,7 +25,7 @@
 			<!-- Project numéro $indice -->
 			<article data-image=\"assets/images/projects/bg_$identifier.jpg\">
 				<h3><a href=\"?target=projects#$identifier\">$name</a></h3>
-			</article>\n
+			</article>
 		";
 
 		// On sépare les projets par groupe de 3 pour obtenir
@@ -33,14 +33,14 @@
 		if ($indice > 0 && $indice % 3 == 0)
 		{
 			// Fin d'un groupe.
-			$projects_html .= "</div>\n";
+			$projects_html .= "</div>";
 
 			if ($indice != $projects_length)
 			{
 				// Un nouveau groupe débute après la fin d'un groupe
 				//	précédent sauf si la boucle a atteint la dernière
 				//	valeur de la liste.
-				$projects_html .= "\t\t<div class=\"row\">\n";
+				$projects_html .= "<div class=\"row\">";
 			}
 		}
 	}

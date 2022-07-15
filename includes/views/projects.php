@@ -94,7 +94,7 @@
 							</a>
 
 							<p>$label</p>
-						</div>\n
+						</div>
 					";
 				}
 			}
@@ -148,7 +148,7 @@
 					<!-- Icônes des langages utilisés -->
 					$logos
 				</div>
-			</article>\n\n
+			</article>
 		";
 	}
 

@@ -61,7 +61,7 @@
 				<p>
 					$description
 				</p>
-			</li>\n
+			</li>
 		";
 
 		// On vérifie si la formation s'est terminée par
@@ -74,7 +74,7 @@
 			";
 		}
 
-		$degrees_list_html .= "\n\t\t\t</li>\n";
+		$degrees_list_html .= "</li>";
 	}
 
 	// On fait la même chose avec les expériences et les
@@ -104,7 +104,7 @@
 				</p>
 
 				<em>$location</em>
-			</li>\n
+			</li>
 		";
 	}
 
@@ -117,7 +117,7 @@
 			<div>
 				<span>$name</span>
 				<div class=\"circle\" data-level=\"$level\"></div>
-			</div>\n
+			</div>
 		";
 	}
 ?>

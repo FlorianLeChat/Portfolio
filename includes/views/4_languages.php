@@ -39,7 +39,7 @@
 					<i class=\"fi fi-$code\"></i>
 					<span>$name</span>
 				</button>
-			</li>\n
+			</li>
 		";
 	}
 ?>

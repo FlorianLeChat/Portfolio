@@ -279,7 +279,7 @@
 				$html .= "
 					<li>
 						<input type=\"submit\" name=\"show\" value=\"$name\" />
-					</li>\n
+					</li>
 				";
 			}
 
@@ -315,14 +315,14 @@
 			$columns = $this->connector->query("SHOW COLUMNS FROM $table;")->fetchAll();
 
 			// On fabrique après la structure HTML pour l'en-tête de la table.
-			$html = "<thead>\n\t<tr>\n";
+			$html = "<thead><tr>";
 
 			foreach ($columns as $column)
 			{
-				$html .= "\t\t<th>" . $column["Field"] . "</th>\n";
+				$html .= "<th>" . $column["Field"] . "</th>";
 			}
 
-			$html .= "\t\t<th></th>\n\t<tr/>\n</thead>\n<tbody>\n";
+			$html .= "<th></th><tr/></thead><tbody>";
 
 			// On fabrique ensuite la structure HTML pour chaque ligne.
 			foreach ($rows as $row)
@@ -330,7 +330,7 @@
 				// Chaque colonne doit être séparé entre elles.
 				// 	Note : les noms des champs de saisies sont composés de façon
 				//		à pouvoir être identifié indépendamment des autres.
-				$html .= "\t<tr>\n";
+				$html .= "<tr>";
 				$identifier = null;
 
 				foreach ($row as $key => $value)
@@ -342,7 +342,7 @@
 						$identifier = $offset;
 					}
 
-					$html .= "\t\t<td><textarea name=\"" . $key . "_" . $offset . "\">$value</textarea></td>\n";
+					$html .= "<td><textarea name=\"" . $key . "_" . $offset . "\">$value</textarea></td>";
 				}
 
 				// Création des actionneurs pour le formulaire.
@@ -353,7 +353,7 @@
 						<td>
 							<input type=\"submit\" name=\"remove_$identifier\" value=\"Supprimer\" />
 						</td>
-					</tr>\n
+					</tr>
 				";
 
 				$offset++;
@@ -361,12 +361,12 @@
 
 			// On fabrique enfin une dernière ligne de champs pour ajouter une
 			//	information dans la table.
-			$html .= "\t<tr>\n";
+			$html .= "<tr>";
 			$length = count($rows);
 
 			for ($indice = 0; $indice < count($columns); $indice++)
 			{
-				$html .= "\t\t<td><textarea name=\"" . $columns[$indice]["Field"] . "_" . $length . "\"></textarea></td>\n";
+				$html .= "<td><textarea name=\"" . $columns[$indice]["Field"] . "_" . $length . "\"></textarea></td>";
 			}
 
 			// Création des actionneurs pour le formulaire.
@@ -375,7 +375,7 @@
 						<input type=\"submit\" name=\"add_$length\" value=\"Ajouter\" />
 					</td>
 				</tr>
-			</tbody>\n
+			</tbody>
 			";
 
 			return $html;
