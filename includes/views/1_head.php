@@ -50,14 +50,17 @@
 
 	<!-- Polices & feuilles de style CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin="anonymous" />
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.3/css/flag-icons.min.css" crossorigin="anonymous" />
+
 	<link rel="stylesheet" href="<?= $path . "styles/$file.css"; ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
-	<script src="https://www.googletagmanager.com/gtag/js?id=G-2J6NTCLNZT" defer></script>
+	<script src="https://www.googletagmanager.com/gtag/js?id=G-2J6NTCLNZT" crossorigin="anonymous" defer></script>
 
 	<!--[if lte IE 9]>
+		<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
 	<![endif]-->
 
