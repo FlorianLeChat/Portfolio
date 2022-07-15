@@ -46,7 +46,7 @@ const new_password = document.querySelector( "form a" );
 
 if ( new_password != null )
 {
-	new_password.addEventListener( "click", ( event ) =>
+	new_password.addEventListener( "click", async ( event ) =>
 	{
 		// On demande l'adresse électronique et le nouveau mot de passe
 		//	créé par l'utilisateur.
