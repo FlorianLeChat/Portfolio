@@ -58,6 +58,8 @@
 
 				$result = json_decode(curl_exec($request), true);
 
+				curl_close($request);
+
 				// On vérifie le résultat de l'API afin d'autoriser ou non la
 				//	suite du processus de validation du formulaire.
 				if (is_array($result) && count($result) > 1 && $result["block"] == "1")
