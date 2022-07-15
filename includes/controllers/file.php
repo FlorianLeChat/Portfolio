@@ -184,7 +184,7 @@
 			{
 				if (is_dir(self::PATH . $element))
 				{
-					$html .= "<option value=\"$element\">$element</option>\n";
+					$html .= "<option value=\"$element\">$element</option>";
 				}
 			}
 

@@ -23,7 +23,7 @@
 		$plateforms_html .= "
 			<a href=\"$url\" style=\"color: $color\" title=\"$name\" target=\"_blank\">
 				<img src=\"assets/images/platforms/$identifier.svg\" width=\"32\" height=\"32\" draggable=\"false\" alt=\"Image - $name\" />
-			</a>\n
+			</a>
 		";
 	}
 ?>

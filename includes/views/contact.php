@@ -21,7 +21,7 @@
 		$disabled = $key == "contact_form_subject" ? " disabled" : "";
 
 		// Options présentes dans le sélecteur.
-		$options_html .= "<option value=\"$value\"$disabled>$value</option>\n";
+		$options_html .= "<option value=\"$value\"$disabled>$value</option>";
 	}
 
 	// On réalise enfin les vérifications liées au formulaire si la
