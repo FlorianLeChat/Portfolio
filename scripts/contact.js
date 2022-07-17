@@ -5,7 +5,7 @@
 const warning = document.getElementById( "warning" );
 const elements = document.querySelectorAll( "#form input[type *= e], #form select, #form textarea" );
 
-for ( const element of elements.values() )
+for ( const element of elements )
 {
 	// On ajoute un événement pour actualiser l'état de validité
 	// 	du champ de saisie à chaque nouveau caractère.
@@ -58,7 +58,7 @@ const submit = document.querySelector( "input[type=submit]" );
 
 form.addEventListener( "submit", ( event ) =>
 {
-	for ( const element of elements.values() )
+	for ( const element of elements )
 	{
 		// Si un champ est invalide aux yeux du HTML, alors
 		//	on bloque le comportement par défaut de l'envoi.

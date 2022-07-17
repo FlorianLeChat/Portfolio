@@ -3,7 +3,7 @@
 //
 const arrows = document.querySelectorAll( "article div.images" );
 
-for ( const arrow of arrows.values() )
+for ( const arrow of arrows )
 {
 	// Afin de revenir à une image précédente.
 	arrow.firstElementChild.addEventListener( "click", ( event ) =>
@@ -15,7 +15,7 @@ for ( const arrow of arrows.values() )
 
 		let indice = 0;
 
-		for ( const image of images.values() )
+		for ( const image of images )
 		{
 			// On détermine si le conteneur est actuellement caché ou non.
 			const hidden = window.getComputedStyle( image ).display == "none" || image.style.display == "none";
@@ -49,7 +49,7 @@ for ( const arrow of arrows.values() )
 
 		let indice = 0;
 
-		for ( const image of images.values() )
+		for ( const image of images )
 		{
 			// On détermine si le conteneur est actuellement caché ou non.
 			const hidden = window.getComputedStyle( image ).display == "none" || image.style.display == "none";
