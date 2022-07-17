@@ -30,9 +30,6 @@ for ( const arrow of arrows )
 				previous.style.display = "inline-block";
 				image.style.display = "none";
 
-				// Mise à jour de la position des flèches de contrôle.
-				updatePosition();
-
 				return;
 			}
 
@@ -63,9 +60,6 @@ for ( const arrow of arrows )
 
 				image.style.display = "none";
 				next.style.display = "inline-block";
-
-				// Mise à jour de la position des flèches de contrôle.
-				updatePosition();
 
 				return;
 			}
