@@ -158,7 +158,7 @@ const sections = document.querySelectorAll( "section" );
 
 function fadeIn()
 {
-	for ( const section of sections.values() )
+	for ( const section of sections )
 	{
 		const offset = section.getBoundingClientRect().top - window.innerHeight + 20;
 
@@ -175,7 +175,7 @@ window.addEventListener( "scroll", fadeIn );
 //
 const links = document.querySelectorAll( "a" );
 
-for ( const link of links.values() )
+for ( const link of links )
 {
 	link.addEventListener( "mousedown", ( event ) =>
 	{
