@@ -155,7 +155,7 @@
 		//
 		public function validate(array $data): bool
 		{
-			// On itére à travers tous les champs connus pour
+			// On itère à travers tous les champs connus pour
 			//	réaliser les vérifications.
 			foreach (self::FIELDS as $value)
 			{
