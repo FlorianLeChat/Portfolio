@@ -30,7 +30,7 @@
 		$code = $language == "en" ? "gb" : $language;	// Ignore les variantes régionales (ex: FR_fr, FR_ca...)
 		$name = $languages["language_$language"];		// Nom de la langue
 
-		// On itére enfin à travers les langues pour contruire
+		// On itère enfin à travers les langues pour construire
 		//	les boutons des drapeaux.
 		$flags_html .= "
 			<li>

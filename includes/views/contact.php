@@ -89,7 +89,7 @@
 						mb_send_mail($to, $subject, $message, $headers);
 					}
 
-					// On écrit par la même occassion ces informations dans la base de
+					// On écrit par la même occasion ces informations dans la base de
 					//	données pour y accéder plus tard dans l'interface d'administration.
 					$public_data->addFormMessage($form);
 				}

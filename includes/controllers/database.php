@@ -54,7 +54,7 @@
 		//
 		public function getTableData(string $table, array $columns, bool $offset_start = false): array
 		{
-			// On tranforme la liste numérique en chaîne de caractère
+			// On transforme la liste numérique en chaîne de caractère
 			//	comprise par la base de données via une requête SQL.
 			$columns = count($columns) > 1 ? implode(", ", $columns) : $columns[0];
 
@@ -151,7 +151,7 @@
 			$where_data = $this->connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
 
 			$where_field = array_key_first($where_data);	// Nom de la première colonne.
-			$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
+			$where_value = $where_data[$where_field];		// Valeur de la première colonne.
 
 			$values[] = $where_value;						// Insertion dans les paramètres de la requête.
 
@@ -169,7 +169,7 @@
 			$where_data = $this->connector->query("SELECT * FROM `$table` LIMIT 1 OFFSET $identifier;")->fetch();
 
 			$where_field = array_key_first($where_data);	// Nom de la première colonne.
-			$where_value = $where_data[$where_field];		// Valeur de la première colonbne.
+			$where_value = $where_data[$where_field];		// Valeur de la première colonne.
 
 			// Exécution de la requête de suppression.
 			$query = $this->connector->prepare("DELETE FROM `$table` WHERE $where_field = ?;");

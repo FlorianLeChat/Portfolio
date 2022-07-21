@@ -46,7 +46,7 @@
 
 		if (!empty($url))
 		{
-			// Le projet possède un dépot public !
+			// Le projet possède un dépôt public !
 			$title = "<a href=\"$url\">$name</a>";
 		}
 
