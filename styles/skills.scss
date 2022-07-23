@@ -111,7 +111,7 @@ header > img
 			background-color: $theme-color-bright;
 			background-position: 15px center;
 
-			> *
+			> h4, > h5, > p
 			{
 				color: transparent;
 			}
