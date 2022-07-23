@@ -126,7 +126,5 @@
 		<?= $contact["contact_message"] . PHP_EOL; ?>
 	</h2>
 
-	<span>
-		<a href="?target=contact"><?= $contact["contact_button"]; ?></a>
-	</span>
+	<a href="?target=contact"><?= $contact["contact_button"]; ?></a>
 </section>

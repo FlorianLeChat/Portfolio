@@ -222,7 +222,7 @@ header a img
 		margin-right: 7.5%;
 	}
 
-	h2
+	> h2
 	{
 		// Premier titre de la section.
 		margin-bottom: 2rem;
@@ -234,13 +234,13 @@ header a img
 		}
 	}
 
-	h3
+	> h3
 	{
 		// Deuxième titre de la section.
 		margin-top: 0;
 	}
 
-	span
+	> a
 	{
 		// Apparence du bouton de contact.
 		color: black;
