@@ -90,6 +90,13 @@ header > img
 			line-height: 1; // Correction étrange pour le normalisateur CSS.
 			border-radius: 0.5rem;
 
+			&:invalid ~ input[type=submit]
+			{
+				// Désactivation conditionnelle du bouton de validation.
+				pointer-events: none;
+				background-color: $theme-color-dark;
+			}
+
 			&:focus, &:focus, &:focus
 			{
 				// Animation lors de la sélection de l'élément.
