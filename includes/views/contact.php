@@ -25,9 +25,8 @@
 	}
 
 	// On réalise enfin les vérifications liées au formulaire si la
-	//	requête est de type POST et si l'utilisateur n'a pas déjà
-	//	envoyé le formulaire durant sa session personnelle.
-	if ($_SERVER["REQUEST_METHOD"] == "POST" && !isset($_SESSION["form_cooldown"]))
+	//	requête est de type POST.
+	if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		$form->setLimits([
 			"firstname" => [2, 20],			// Prénom
@@ -38,66 +37,26 @@
 
 		if ($form->validate($_POST))
 		{
-			// Si les informations sont valides, alors on va réaliser des
-			// 	vérifications au niveau du client ayant demandé la page.
-			// 	Note : Cela est considéré comme une protection contre les
-			//		robots et les utilisateurs malveillants.
-			$ip = htmlentities($_SERVER["HTTP_X_FORWARDED_FOR"] ?? "", ENT_QUOTES);
-
-			if (filter_var($ip, FILTER_VALIDATE_IP))
+			// Si les informations sont valides, on utilise un serveur SMTP (OVH) pour envoyer un mail.
+			// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
+			// 	Note : le destinataire et l'auteur ont la même adresse mail pour éviter le signalement
+			//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique côté OVH.
+			if (str_contains($_SERVER["SERVER_NAME"], "florian-dev.fr"))
 			{
-				// On effectue une requête HTTP vers un service de détection
-				//	des connexions sous proxy ou/et VPN.
-				// 	Source : lien de récupération d'une clé - https://iphub.info/
-				$header = ["X-Key: api_key"];
-				$request = curl_init();
+				$to = "admin@florian-dev.fr";
+				$subject = "Portfolio - " . html_entity_decode($form->getSubject()) . " - " . html_entity_decode($form->getEmail());
+				$message = $form->getContent();
+				$headers = array(
+					"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
+					"X-Mailer" => "PHP/" . phpversion()
+				);
 
-				curl_setopt($request, CURLOPT_URL, "https://v2.api.iphub.info/ip/$ip");
-				curl_setopt($request, CURLOPT_HTTPHEADER, $header);
-				curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
-
-				$result = json_decode(curl_exec($request), true);
-
-				curl_close($request);
-
-				// On vérifie le résultat de l'API afin d'autoriser ou non la
-				//	suite du processus de validation du formulaire.
-				if (is_array($result) && count($result) > 1 && $result["block"] == "1")
-				{
-					// Il semble que le client soit un utilisateur sous une connexion
-					//	« camouflée », alors on redirige la personne ailleurs...
-					http_response_code(418);
-					echo("<meta http-equiv=\"refresh\" content=\"0;URL=https://www.youtube.com/watch?v=dQw4w9WgXcQ\" />");
-					exit();
-				}
-				else
-				{
-					// Dans le cas contraire, on utilise un serveur SMTP (OVH) pour envoyer un mail.
-					// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
-					// 	Note : le destinataire et l'auteur ont la même adresse mail pour éviter le signalement
-					//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique côté OVH.
-					if (str_contains($_SERVER["SERVER_NAME"], "florian-dev.fr"))
-					{
-						$to = "admin@florian-dev.fr";
-						$subject = "Portfolio - " . html_entity_decode($form->getSubject()) . " - " . html_entity_decode($form->getEmail());
-						$message = $form->getContent();
-						$headers = array(
-							"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
-							"X-Mailer" => "PHP/" . phpversion()
-						);
-
-						mb_send_mail($to, $subject, $message, $headers);
-					}
-
-					// On écrit par la même occasion ces informations dans la base de
-					//	données pour y accéder plus tard dans l'interface d'administration.
-					$public_data->addFormMessage($form);
-				}
+				mb_send_mail($to, $subject, $message, $headers);
 			}
 
-			// On met en mémoire cette action pour éviter que l'utilisateur (valide ou non)
-			//	puisse en envoyer un autre pendant toute la durée de sa session.
-			$_SESSION["form_cooldown"] = true;
+			// On écrit par la même occasion ces informations dans la base de
+			//	données pour y accéder plus tard dans l'interface d'administration.
+			$public_data->addFormMessage($form);
 		}
 	}
 ?>

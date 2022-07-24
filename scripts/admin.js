@@ -47,10 +47,7 @@ new_password?.addEventListener( "click", async ( event ) =>
 	// On effectue ensuite une requête asynchrone à la page
 	//	actuelle pour pouvoir faire des vérifications.
 	await fetch( window.location.href, {
-		// Méthode de la requête.
 		method: "POST",
-
-		// Paramètres POST.
 		body: data
 	} )
 

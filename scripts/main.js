@@ -227,6 +227,43 @@ gtag( "js", new Date() );
 gtag( "config", "G-2J6NTCLNZT" );
 
 //
+// Permet de vérifier l'authenticité de l'utilisateur via reCAPTCHA
+//	avant de soumettre un formulaire quelconque au serveur.
+// 	Source : https://developers.google.com/recaptcha/docs/v3#programmatically_invoke_the_challenge
+//
+const inputs = document.querySelectorAll( "input[type=submit]" );
+
+for ( const input of inputs )
+{
+	// On récupère et on itère à travers tous les boutons de soumission.
+	input.addEventListener( "click", ( event ) =>
+	{
+		// On cesse d'abord le comportement par défaut.
+		event.preventDefault();
+
+		// On attend ensuite que les services de reCAPTCHA soient chargés.
+		grecaptcha.ready( async () =>
+		{
+			// Une fois terminé, on exécute alors une requête de vérification
+			// 	afin d'obtenir un jeton de vérification auprès de Google.
+			const token = await grecaptcha.execute( "6LfC-xghAAAAAMjvcmOchuTFkF3CjzYnDFyDULWr" );
+
+			// On insère enfin dynamiquement le jeton dans le formulaire
+			//	avant de le soumettre une nouvelle fois.
+			const parent = input.parentElement;
+			const element = document.createElement( "input" );
+
+			element.type = "hidden";
+			element.name = "recaptcha";
+			element.value = token;
+
+			parent.appendChild( element );
+			parent.submit();
+		} );
+	} );
+}
+
+//
 // Permet d'implémenter le chargement différé de certaines ressources (images, vidéos, ...).
 // 	Source : https://github.com/verlok/vanilla-lazyload#-getting-started---script
 //
