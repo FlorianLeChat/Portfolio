@@ -44,7 +44,7 @@
 		$request = curl_init();
 		$recaptcha = $_POST["recaptcha"] ?? "";
 
-		curl_setopt($request, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$token");
+		curl_setopt($request, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
 		curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
 
 		$result = json_decode(curl_exec($request), true);
