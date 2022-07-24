@@ -21,6 +21,13 @@ html
 	background-image: url("../assets/images/decorations/wireframes.png");
 	background-color: $theme-background-color;
 	background-attachment: fixed;
+
+	.grecaptcha-badge
+	{
+		// Badge de Google reCAPTCHA.
+		// 	Source : https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
+		display: none;
+	}
 }
 
 section
