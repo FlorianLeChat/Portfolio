@@ -22,10 +22,10 @@ html
 	background-color: $theme-background-color;
 	background-attachment: fixed;
 
+	// Badge de Google reCAPTCHA.
+	// 	Source : https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
 	.grecaptcha-badge
 	{
-		// Badge de Google reCAPTCHA.
-		// 	Source : https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
 		display: none;
 	}
 }
