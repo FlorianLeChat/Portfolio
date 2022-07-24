@@ -7,8 +7,4 @@ const born = Date.parse( "08 Aug 1999 00:00:00 GMT" );			// Horodatage de ma dat
 const relative = new Date( now - born ).getFullYear() - 1970;	// Nombre d'années séparant les deux dates
 
 const aboutme = document.querySelector( "#aboutme > p" );
-
-if ( aboutme != null )
-{
-	aboutme.innerHTML = aboutme.innerHTML.replace( /[0-9]+/g, relative );
-}
+aboutme.innerHTML = aboutme.innerHTML.replace( /[0-9]+/g, relative );
