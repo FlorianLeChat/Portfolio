@@ -5,38 +5,30 @@
 const clear = document.getElementById( "clear" );
 const password = document.getElementById( "password" );
 
-if ( clear != null && password != null )
+clear?.addEventListener( "click", () =>
 {
-	clear.addEventListener( "click", () =>
+	if ( password.type === "password" )
 	{
-		if ( password.type === "password" )
-		{
-			password.type = "text";
-		}
-		else
-		{
-			password.type = "password";
-		}
-	} );
-}
+		password.type = "text";
+	}
+	else
+	{
+		password.type = "password";
+	}
+} );
 
 //
 // Permet de pouvoir envoyer les données du formulaire de
 //	connexion en appuyant sur la touche "ENTRÉE".
 //
-const submit = document.querySelector( "input[type=submit]" );
-
-if ( submit != null && password != null )
+password?.addEventListener( "keyup", ( event ) =>
 {
-	password.addEventListener( "keyup", ( event ) =>
+	// Source : https://keycode.info/
+	if ( event.key === "Enter" )
 	{
-		// Source : https://keycode.info/
-		if ( event.key === "Enter" )
-		{
-			submit.click();
-		}
-	} );
-}
+		document.querySelector( "input[type=submit]" ).click();
+	}
+} );
 
 //
 // Permet de demander la création d'un nouveau mot de passe
@@ -44,34 +36,30 @@ if ( submit != null && password != null )
 //
 const new_password = document.querySelector( "form a" );
 
-if ( new_password != null )
+new_password?.addEventListener( "click", async ( event ) =>
 {
-	new_password.addEventListener( "click", async ( event ) =>
-	{
-		// On demande l'adresse électronique et le nouveau mot de passe
-		//	créé par l'utilisateur.
-		const data = new FormData();
-		data.append( "email", prompt( "Saisissez votre adresse électronique." ) );
-		data.append( "password", prompt( "Saisissez un nouveau mot de passe." ) );
+	// On demande l'adresse électronique et le nouveau mot de passe
+	//	créé par l'utilisateur.
+	const data = new FormData();
+	data.append( "email", prompt( "Saisissez votre adresse électronique." ) );
+	data.append( "password", prompt( "Saisissez un nouveau mot de passe." ) );
 
-		// On effectue ensuite une requête asynchrone à la page
-		//	actuelle pour pouvoir faire des vérifications.
-		await fetch( window.location.href,
-			{
-				// Méthode de la requête.
-				method: "POST",
+	// On effectue ensuite une requête asynchrone à la page
+	//	actuelle pour pouvoir faire des vérifications.
+	await fetch( window.location.href, {
+		// Méthode de la requête.
+		method: "POST",
 
-				// Paramètres POST.
-				body: data
-			} )
+		// Paramètres POST.
+		body: data
+	} )
 
-		// On avertit alors l'utilisateur dès que la requête a été soumise.
-		alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
+	// On avertit alors l'utilisateur dès que la requête a été soumise.
+	alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
 
-		// On cesse enfin le comportement par défaut du lien.
-		event.preventDefault();
-	} );
-}
+	// On cesse enfin le comportement par défaut du lien.
+	event.preventDefault();
+} );
 
 //
 // Permet d'actualiser en temps réel l'horloge présente
@@ -79,7 +67,7 @@ if ( new_password != null )
 //
 const time = document.querySelector( "header p:first-of-type" );
 
-if ( time != null )
+if ( time !== null )
 {
 	function updateTime()
 	{
@@ -100,9 +88,9 @@ if ( time != null )
 const text = document.querySelector( "#data > p" );
 const table = document.querySelector( "#data table" );
 
-if ( text != null && table != null && table.children.length > 0 )
+if ( table?.children.length > 0 )
 {
-	text.remove();
+	text?.remove();
 }
 
 //
@@ -113,39 +101,33 @@ const upload_zone = document.querySelector( "#upload > form div:first-of-type" )
 const preview_zone = document.querySelector( "#upload > form div:last-of-type" );
 const upload_button = document.querySelector( "#upload div > input[type=file]" );
 
-if ( upload_zone != null && upload_button != null )
+// On ajoute un déclencheur sur la zone de sélection lorsque
+//	l'utilisateur ajoute une image.
+upload_button?.addEventListener( "change", () =>
 {
-	// On ajoute un déclencheur sur la zone de sélection lorsque
-	//	l'utilisateur ajoute une image.
-	upload_button.addEventListener( "change", () =>
+	// On vérifie si l'image a bien été reçu par le HTML.
+	if ( upload_button.files && upload_button.files[ 0 ] )
 	{
-		// On vérifie si l'image a bien été reçu par le HTML.
-		if ( upload_button.files && upload_button.files[ 0 ] )
+		// On invoque une instance pour charger le fichier.
+		const reader = new FileReader();
+		reader.readAsDataURL( upload_button.files[ 0 ] );				// Demande de chargement.
+		reader.onload = ( event ) =>
 		{
-			// On invoque une instance pour charger le fichier.
-			const reader = new FileReader();
-			reader.readAsDataURL( upload_button.files[ 0 ] );				// Demande de chargement.
-			reader.onload = ( event ) =>
-			{
-				// Dès son chargement terminé, on affiche une section
-				//	de visualisation tout en cachant l'ancienne.
-				upload_zone.style.display = "none";							// Zone de téléversement.
-				preview_zone.style.display = "block";						// Zone de visualisation.
-				preview_zone.firstElementChild.src = event.target.result;	// Chemin d'accès vers l'image.
-			};
-		}
-	} );
-}
+			// Dès son chargement terminé, on affiche une section
+			//	de visualisation tout en cachant l'ancienne.
+			upload_zone.style.display = "none";							// Zone de téléversement.
+			preview_zone.style.display = "block";						// Zone de visualisation.
+			preview_zone.firstElementChild.src = event.target.result;	// Chemin d'accès vers l'image.
+		};
+	}
+} );
 
-if ( upload_button != null && preview_zone != null && preview_zone.lastElementChild != null )
+// On ajoute un déclencheur lorsque l'utilisateur clique
+//	sur le bouton afin de supprimer l'aperçu de l'image.
+preview_zone?.lastElementChild.addEventListener( "click", () =>
 {
-	// On ajoute un déclencheur lorsque l'utilisateur clique
-	//	sur le bouton afin de supprimer l'aperçu de l'image.
-	preview_zone.lastElementChild.addEventListener( "click", () =>
-	{
-		upload_button.value = "";
-		upload_zone.style.display = "block";
-		preview_zone.style.display = "none";
-		preview_zone.firstElementChild.src = "#";
-	} );
-}
+	upload_button.value = "";
+	upload_zone.style.display = "block";
+	preview_zone.style.display = "none";
+	preview_zone.firstElementChild.src = "#";
+} );

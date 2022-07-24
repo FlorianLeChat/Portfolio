@@ -191,7 +191,7 @@ for ( const link of links )
 const flag = document.querySelector( "#flags button" );
 const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent );
 
-if ( flag != null && mobile )
+if ( mobile )
 {
 	function preventFirstClick( event )
 	{
@@ -199,7 +199,7 @@ if ( flag != null && mobile )
 		event.preventDefault();
 	}
 
-	flag.addEventListener( "click", preventFirstClick );
+	flag?.addEventListener( "click", preventFirstClick );
 }
 
 //
