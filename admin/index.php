@@ -24,7 +24,7 @@
 	$path_html = $upload->generateHTMLPath();
 
 	// On vérifie après si la requête actuelle est de type POST.
-	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	if ($_SERVER["REQUEST_METHOD"] === "POST")
 	{
 		// On tente de récupérer la table sélectionnée actuelle.
 		// 	Note : lors d'une édition ou d'une suppression, l'information

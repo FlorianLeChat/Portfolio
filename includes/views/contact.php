@@ -26,7 +26,7 @@
 
 	// On réalise enfin les vérifications liées au formulaire si la
 	//	requête est de type POST.
-	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	if ($_SERVER["REQUEST_METHOD"] === "POST")
 	{
 		$form->setLimits([
 			"firstname" => [2, 20],			// Prénom
