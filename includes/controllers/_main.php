@@ -34,15 +34,15 @@
 		}
 	}
 
-	// On vérifie systématiquement le jeton d'authentification transmis
-	//	par Google reCAPTCHA avant le traitement d'un formulaire.
-	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	// Vérification systématique de l'authenticité de l'utilisateur au travers
+	//	des services de Google reCAPTCHA pendant la soumission d'un formulaire.
+	$recaptcha = $_POST["recaptcha"] ?? "";
+
+	if (!empty($recaptcha))
 	{
-		// On récupère le jeton d'authentification avant d'effectuer une requête
-		//	aux services Google pour vérifier l'authenticité de l'utilisateur.
+		// Exécution de la requête de vérification auprès des services Google.
 		$secret = "<secret_key>";
 		$request = curl_init();
-		$recaptcha = $_POST["recaptcha"] ?? "";
 
 		curl_setopt($request, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
 		curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
@@ -51,8 +51,8 @@
 
 		curl_close($request);
 
-		// On vérifie alors le résultat de l'API et on applique les mesures
-		//	adéquates pour empêcher l'exécution du script du formulaire.
+		// Récupération de la réponse et application des mesures adéquates
+		//	afin d'empêcher ou non l'exécution du script du formulaire.
 		if (is_array($result) && ($result["success"] === false || $result["score"] < 0.7))
 		{
 			http_response_code(401);

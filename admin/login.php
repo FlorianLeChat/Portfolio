@@ -11,7 +11,7 @@
 	$message = "";
 	$connected = $user->isConnected();
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST")
+	if ($_SERVER["REQUEST_METHOD"] === "POST")
 	{
 		// Dans ce cas là, on vérifie si l'utilisateur a transmis
 		//	une adresse électronique et un mot de passe. Cela signifie
