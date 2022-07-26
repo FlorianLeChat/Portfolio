@@ -520,7 +520,7 @@ footer ul
 				background-color: beige;
 			}
 
-			&:invalid ~ input[type=submit]
+			&:invalid ~ input[type = submit]
 			{
 				// Désactivation conditionnelle du bouton de validation.
 				pointer-events: none;

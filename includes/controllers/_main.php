@@ -38,7 +38,7 @@
 	//	des services de Google reCAPTCHA pendant la soumission d'un formulaire.
 	$recaptcha = $_POST["recaptcha"] ?? "";
 
-	if (!empty($recaptcha))
+	if ($_SERVER["REQUEST_METHOD"] === "POST")
 	{
 		// Exécution de la requête de vérification auprès des services Google.
 		$secret = "<secret_key>";
