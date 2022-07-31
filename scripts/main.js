@@ -246,7 +246,7 @@ for ( const input of inputs )
 		{
 			// Une fois terminé, on exécute alors une requête de vérification
 			// 	afin d'obtenir un jeton de vérification auprès de Google.
-			const token = await grecaptcha.execute( "6LfC-xghAAAAAMjvcmOchuTFkF3CjzYnDFyDULWr" );
+			const token = await grecaptcha.execute( "<public_key>" );
 
 			// On insère enfin dynamiquement le jeton dans le formulaire
 			//	avant de le soumettre une nouvelle fois.
