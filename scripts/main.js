@@ -224,7 +224,7 @@ function gtag()
 }
 
 gtag( "js", new Date() );
-gtag( "config", "G-2J6NTCLNZT" );
+gtag( "config", "<public_tag>" );
 
 //
 // Permet de vérifier l'authenticité de l'utilisateur via reCAPTCHA
