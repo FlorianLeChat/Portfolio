@@ -57,8 +57,8 @@
 	<link rel="stylesheet" href="<?= $path . "styles/$file.css"; ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
-	<script src="https://www.googletagmanager.com/gtag/js?id=G-2J6NTCLNZT" crossorigin="anonymous" defer></script>
-	<script src="https://www.google.com/recaptcha/api.js?render=6LfC-xghAAAAAMjvcmOchuTFkF3CjzYnDFyDULWr" defer></script>
+	<script src="https://www.googletagmanager.com/gtag/js?id=<public_tag>" crossorigin="anonymous" defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=<public_key>" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.2/dist/lazyload.min.js" crossorigin="anonymous" defer></script>
 
 	<!--[if lte IE 9]>
