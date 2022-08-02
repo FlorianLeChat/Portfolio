@@ -250,15 +250,15 @@ for ( const input of inputs )
 
 			// On insère enfin dynamiquement le jeton dans le formulaire
 			//	avant de le soumettre une nouvelle fois.
-			const parent = input.parentElement;
+			const form = input.form;
 			const element = document.createElement( "input" );
 
 			element.type = "hidden";
 			element.name = "recaptcha";
 			element.value = token;
 
-			parent.appendChild( element );
-			parent.submit();
+			form.appendChild( element );
+			form.submit();
 		} );
 	} );
 }
