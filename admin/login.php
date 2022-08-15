@@ -52,10 +52,12 @@
 	//		été authentifié lors de l'étape précédente.
 	if ($connected)
 	{
-		if (isset($_POST["remember_me"]))
+		if (isset($_POST["remember_me"]) || !empty($_COOKIE["generated_token"]))
 		{
-			// L'utilisateur peut demander de se souvenir de sa connexion
-			//	lors de sa prochaine venue sur la page.
+			// On génère un nouveau jeton d'authentification si l'utilisateur
+			// 	veut rester connecté pour sa prochaine connexion ou s'il possède
+			//	déjà un jeton d'authentification (c'est une mesure de sécurité
+			//	pour éviter certains types d'attaques).
 			$token = bin2hex(random_bytes(32));
 			$user->storeToken($token);
 			$user->setToken($token);
