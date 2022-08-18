@@ -4,13 +4,13 @@
 	"description": "My (first) personal portfolio made during my studies.",
 	"icons": [
 		{
-			"src": "assets/images/icons/favicon-16.png",
-			"type": "image/png",
+			"src": "assets/images/icons/favicon-16.webp",
+			"type": "image/webp",
 			"sizes": "16x16"
 		},
 		{
-			"src": "assets/images/icons/favicon-32.png",
-			"type": "image/png",
+			"src": "assets/images/icons/favicon-32.webp",
+			"type": "image/webp",
 			"sizes": "32x32"
 		},
 		{
@@ -19,18 +19,18 @@
 			"sizes": "48x48"
 		},
 		{
-			"src": "assets/images/icons/favicon-180.png",
-			"type": "image/png",
+			"src": "assets/images/icons/favicon-180.webp",
+			"type": "image/webp",
 			"sizes": "180x180"
 		},
 		{
-			"src": "assets/images/icons/favicon-192.png",
-			"type": "image/png",
+			"src": "assets/images/icons/favicon-192.webp",
+			"type": "image/webp",
 			"sizes": "192x192"
 		},
 		{
-			"src": "assets/images/icons/favicon-512.png",
-			"type": "image/png",
+			"src": "assets/images/icons/favicon-512.webp",
+			"type": "image/webp",
 			"sizes": "512x512"
 		}
 	],

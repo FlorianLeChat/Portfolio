@@ -70,12 +70,12 @@
 	<script src="<?= $path . "scripts/$file.js"; ?>" defer></script>
 
 	<!-- Icônes et manifeste du document -->
-	<link rel="icon" type="image/png" sizes="16x16" href="<?= $path . "assets/images/icons/favicon-16.png"; ?>" />
-	<link rel="icon" type="image/png" sizes="32x32" href="<?= $path . "assets/images/icons/favicon-32.png"; ?>" />
+	<link rel="icon" type="image/webp" sizes="16x16" href="<?= $path . "assets/images/icons/favicon-16.webp"; ?>" />
+	<link rel="icon" type="image/webp" sizes="32x32" href="<?= $path . "assets/images/icons/favicon-32.webp"; ?>" />
 	<link rel="icon" type="image/x-icon" sizes="48x48" href="<?= $path . "assets/images/icons/favicon.ico"; ?>" />
-	<link rel="icon" type="image/png" sizes="192x192" href="<?= $path . "assets/images/icons/favicon-192.png"; ?>" />
-	<link rel="icon" type="image/png" sizes="512x512" href="<?= $path . "assets/images/icons/favicon-512.png"; ?>" />
+	<link rel="icon" type="image/webp" sizes="192x192" href="<?= $path . "assets/images/icons/favicon-192.webp"; ?>" />
+	<link rel="icon" type="image/webp" sizes="512x512" href="<?= $path . "assets/images/icons/favicon-512.webp"; ?>" />
 
-	<link rel="apple-touch-icon" href="<?= $path . "assets/images/icons/favicon-180.png"; ?>" />
+	<link rel="apple-touch-icon" href="<?= $path . "assets/images/icons/favicon-180.webp"; ?>" />
 	<link rel="manifest" href="<?= $path . "manifest.json"; ?>" />
 </head>
