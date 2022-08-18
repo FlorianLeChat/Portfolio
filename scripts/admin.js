@@ -49,7 +49,7 @@ new_password?.addEventListener( "click", async ( event ) =>
 	await fetch( window.location.href, {
 		method: "POST",
 		body: data
-	} )
+	} );
 
 	// On avertit alors l'utilisateur dès que la requête a été soumise.
 	alert( "Si vos informations sont correctes, le nouveau mot de passe devrait être actif." );
