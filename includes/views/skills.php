@@ -38,7 +38,7 @@
 		// On assemble les données pour réaliser une liste des
 		//	formation avec des informations générales.
 		$degrees_list_html .= "
-			<li data-bg=\"assets/images/skills/$identifier.jpg\">
+			<li data-bg=\"assets/images/skills/$identifier.webp\">
 				<!-- Intitulé de la formation -->
 				<h4>$title[0]</h4>
 
