@@ -238,27 +238,33 @@ for ( const input of inputs )
 	// On récupère et on itère à travers tous les boutons de soumission.
 	input.addEventListener( "click", ( event ) =>
 	{
-		// On cesse d'abord le comportement par défaut.
+		// On vérifie tout d'abord si le formulaire possède déjà un
+		//	jeton d'authentification de reCAPTCHA.
+		if ( document.querySelector( "input[name=recaptcha]" ) )
+		{
+			return;
+		}
+
+		// On cesse alors le comportement par défaut.
 		event.preventDefault();
 
 		// On attend ensuite que les services de reCAPTCHA soient chargés.
 		grecaptcha.ready( async () =>
 		{
-			// Une fois terminé, on exécute alors une requête de vérification
+			// Une fois terminé, on exécute une requête de vérification
 			// 	afin d'obtenir un jeton de vérification auprès de Google.
-			const token = await grecaptcha.execute( "<public_key>" );
+			const token = await grecaptcha.execute( "6LfC-xghAAAAAMjvcmOchuTFkF3CjzYnDFyDULWr" );
 
 			// On insère enfin dynamiquement le jeton dans le formulaire
-			//	avant de le soumettre une nouvelle fois.
-			const form = input.form;
+			//	avant de cliquer une nouvelle fois sur le bouton de soumission.
 			const element = document.createElement( "input" );
-
 			element.type = "hidden";
 			element.name = "recaptcha";
 			element.value = token;
 
-			form.appendChild( element );
-			form.submit();
+			input.form.appendChild( element );
+
+			event.target.click();
 		} );
 	} );
 }
