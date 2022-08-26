@@ -93,7 +93,7 @@
 								<img src=\"#\" data-src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
 							</a>
 
-							<p>$label</p>
+							<figcaption>$label</figcaption>
 						</div>
 					";
 				}
