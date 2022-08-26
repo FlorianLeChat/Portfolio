@@ -53,13 +53,13 @@
 	<!-- Polices & feuilles de style CSS -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" crossorigin="anonymous" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.3/css/flag-icons.min.css" crossorigin="anonymous" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@6.6.6/css/flag-icons.min.css" crossorigin="anonymous" />
 	<link rel="stylesheet" href="<?= $path . "styles/$file.css"; ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
 	<script src="https://www.googletagmanager.com/gtag/js?id=<public_tag>" crossorigin="anonymous" defer></script>
 	<script src="https://www.google.com/recaptcha/api.js?render=<public_key>" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.2/dist/lazyload.min.js" crossorigin="anonymous" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js" crossorigin="anonymous" defer></script>
 
 	<!--[if lte IE 9]>
 		<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
