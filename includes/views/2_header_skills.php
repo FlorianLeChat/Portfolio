@@ -17,5 +17,5 @@
 	<h2><?= $header_skills["header_skills_subtitle"]; ?></h2>
 
 	<!-- Vagues de fin -->
-	<img src="#" data-src="assets/images/decorations/header_waves_green.svg" alt="" />
+	<img src="assets/images/decorations/header_waves_green.svg" alt="" />
 </header>
