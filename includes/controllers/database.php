@@ -39,16 +39,6 @@
 	final class PublicData extends Connector
 	{
 		//
-		// Permet d'ajouter un message reçu depuis le formulaire dans la base
-		//	de données pour y accéder dans l'interface d'administration.
-		//
-		public function addFormMessage(Form $data): void
-		{
-			$query = $this->connector->prepare("INSERT INTO messages (`firstname`, `lastname`, `email`, `subject`, `content`) VALUES (?, ?, ?, ?, ?);");
-			$query->execute([$data->getFirstname(), $data->getLastname(), $data->getEmail(), $data->getSubject(), $data->getContent()]);
-		}
-
-		//
 		// Permet de récupérer des informations les données d'une ou plusieurs
 		//	colonnes présentes dans la base de données.
 		//

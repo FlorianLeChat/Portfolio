@@ -23,42 +23,6 @@
 		// Options présentes dans le sélecteur.
 		$options_html .= "<option value=\"$value\"$disabled>$value</option>";
 	}
-
-	// On réalise enfin les vérifications liées au formulaire si la
-	//	requête est de type POST.
-	if ($_SERVER["REQUEST_METHOD"] === "POST")
-	{
-		$form->setLimits([
-			"firstname" => [2, 20],			// Prénom
-			"lastname" => [3, 25],			// Nom de l'utilisateur
-			"email" => [10, 40],			// Adresse email
-			"content" => [50, 4000]			// Message
-		]);
-
-		if ($form->validate($_POST))
-		{
-			// Si les informations sont valides, on utilise un serveur SMTP (OVH) pour envoyer un mail.
-			// 	Source : https://www.cloudbooklet.com/how-to-install-and-setup-sendmail-on-ubuntu/
-			// 	Note : le destinataire et l'auteur ont la même adresse mail pour éviter le signalement
-			//		« SPAM » de certaines boites mail comme Gmail avant une redirection automatique côté OVH.
-			if (str_contains($_SERVER["SERVER_NAME"], "florian-dev.fr"))
-			{
-				$to = "admin@florian-dev.fr";
-				$subject = "Portfolio - " . html_entity_decode($form->getSubject()) . " - " . html_entity_decode($form->getEmail());
-				$message = $form->getContent();
-				$headers = array(
-					"From" => $form->getFirstname() . " " . $form->getLastName() . "<$to>",
-					"X-Mailer" => "PHP/" . phpversion()
-				);
-
-				mb_send_mail($to, $subject, $message, $headers);
-			}
-
-			// On écrit par la même occasion ces informations dans la base de
-			//	données pour y accéder plus tard dans l'interface d'administration.
-			$public_data->addFormMessage($form);
-		}
-	}
 ?>
 
 <!-- Traductions JavaScript -->
@@ -84,21 +48,8 @@
 	<!-- Messages de vérification -->
 	<p id="warning"></p>
 
-	<!-- Message de résultat après envoi -->
-	<p id="result"><?= $form->message ?? ""; ?></p>
-
 	<!-- Formulaire -->
 	<form method="POST" novalidate>
-		<!-- Prénom -->
-		<label for="firstname"><?= $contact["contact_form_firstname"]; ?></label>
-		<input type="text" autocomplete="given-name" spellcheck="false" id="firstname" name="firstname" placeholder="Jean" minlength="2" maxlength="20" required />
-		<span></span>
-
-		<!-- Nom de famille -->
-		<label for="lastname"><?= $contact["contact_form_lastname"]; ?></label>
-		<input type="text" autocomplete="family-name" spellcheck="false" id="lastname" name="lastname" placeholder="Dupont" minlength="3" maxlength="25" required />
-		<span></span>
-
 		<!-- Adresse email -->
 		<label for="email"><?= $contact["contact_form_email"]; ?></label>
 		<input type="email" autocomplete="email" spellcheck="false" id="email" name="email" placeholder="jeandupont@mail.com" minlength="10" maxlength="40" required />

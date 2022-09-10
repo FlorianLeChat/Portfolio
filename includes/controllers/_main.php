@@ -72,7 +72,6 @@
 
 	// On réalise après la création des classes de l'ensemble du site.
 	require_once("user.php");
-	require_once("form.php");
 	require_once("file.php");
 	require_once("database.php");
 	require_once("language.php");
@@ -80,7 +79,6 @@
 	use Portfolio\Controllers as Raven;
 
 	$user = new Raven\UserAuthentication();		// Authentification des utilisateurs.
-	$form = new Raven\FormValidation();			// Validation des données des formulaires.
 	$admin = new Raven\AdminManager();			// Contrôle des données administrateurs.
 	$upload = new Raven\FileHandler();			// Gestion des fichiers téléversés.
 	$connector = new Raven\Connector();			// Connexion à la base de données.
@@ -90,7 +88,6 @@
 	$connector = $connector->getPDO();
 
 	$user->connector = $connector;
-	$form->translation = $translation;
 	$translation->connector = $connector;
 
 	// On récupère ensuite la langue demandée par l'utilisateur.

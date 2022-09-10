@@ -38,18 +38,6 @@ for ( const element of elements )
 }
 
 //
-// Permet de supprimer (après un délai) le message résultant de
-//	l'envoi des données du formulaire au serveur.
-//
-const result = document.getElementById( "result" );
-const delay = result.innerHTML == "" ? 0 : 10000;
-
-setTimeout( () =>
-{
-	result.style.display = "none";
-}, delay );
-
-//
 // Permet de restreindre l'actionneur pour envoyer les données
 // 	du formulaire au serveur.
 //
@@ -70,4 +58,33 @@ form.addEventListener( "submit", ( event ) =>
 			return false;
 		}
 	}
+} );
+
+//
+// Permet d'utiliser Gmail pour envoyer les messages de contact
+//	via le formulaire.
+//
+form.addEventListener( "submit", ( event ) =>
+{
+	// On cesse d'abord le comportement par défaut du bouton.
+	event.preventDefault();
+
+	// On récupère ensuite les données du formulaire.
+	const address = document.querySelector( "input[name = email]" ).value;
+	const subject = document.querySelector( "select[name = subject]" ).value;
+	const message = document.querySelector( "textarea[name = content]" ).value;
+
+	// On détermine après l'adresse de destination des messages.
+	let destination = "admin@" + window.location.hostname;
+	destination = destination.replace( "www.", "" );
+
+	// On créé alors artificiellement un lien cliquable afin d'envoyer
+	// 	les données du formulaire par mail via Gmail.
+	const element = document.createElement( "a" );
+	element.href = `https://mail.google.com/mail/?view=cm&fs=1&to=${ destination }&cc=${ address }&su=${ subject }&body=${ encodeURIComponent( message ) }`;
+	element.target = "_blank";
+	element.click();
+
+	// On réinitialise enfin tous les champs du formulaire.
+	form.reset();
 } );
