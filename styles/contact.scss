@@ -203,11 +203,12 @@ header > img
 	{
 		// Icône d'état.
 		position: relative;
+		font-size: 1.5rem;
 
 		&::before
 		{
-			top: 2px;
-			left: -1.5rem;
+			top: 7px;
+			left: -2rem;
 			position: absolute;
 		}
 	}
