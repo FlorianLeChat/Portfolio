@@ -71,39 +71,3 @@ form.addEventListener( "submit", ( event ) =>
 		}
 	}
 } );
-
-//
-// Permet de générer un pseudo code aléatoire de 7 caractères pour
-// 	éviter le spam par des robots ou des utilisateurs malveillants.
-//
-const characters = [
-	"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-	"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-	"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"
-];
-
-let generation = [];
-
-for ( let i = 1; i <= 7; i++ )
-{
-	// On génère un code aléatoire de 7 caractères.
-	generation.push( characters[ Math.floor( Math.random() * characters.length ) ] );
-}
-
-generation = generation.join( "" ); // Assemblage de la chaîne de caractères.
-
-form.addEventListener( "submit", ( event ) =>
-{
-	// Lors de la chaque soumission du formulaire, on demande à l'utilisateur
-	//	de renseigner le code indiqué dans la boite de dialogue.
-	const entry = prompt( verification_code + " " + generation, "" );
-
-	if ( entry != generation )
-	{
-		alert( code_failed );
-
-		event.preventDefault();
-
-		return false;
-	}
-} );
