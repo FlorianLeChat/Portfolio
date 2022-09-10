@@ -231,7 +231,7 @@ gtag( "config", analytics_identifier );
 //	avant de soumettre un formulaire quelconque au serveur.
 // 	Source : https://developers.google.com/recaptcha/docs/v3#programmatically_invoke_the_challenge
 //
-const inputs = document.querySelectorAll( "input[type=submit]" );
+const inputs = document.querySelectorAll( "[type=submit]" );
 
 for ( const input of inputs )
 {
