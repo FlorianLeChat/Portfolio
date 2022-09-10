@@ -46,7 +46,8 @@
 	if ($_SERVER["REQUEST_METHOD"] === "POST")
 	{
 		// Exécution de la requête de vérification auprès des services Google.
-		$secret = "<secret_key>";
+		$config = parse_ini_file(__DIR__ . "/../../config.ini", true);
+		$secret = $config["ReCAPTCHA"]["secret_key"];
 		$request = curl_init();
 
 		curl_setopt($request, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
