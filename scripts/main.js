@@ -224,7 +224,7 @@ function gtag()
 }
 
 gtag( "js", new Date() );
-gtag( "config", "<public_tag>" );
+gtag( "config", analytics_identifier );
 
 //
 // Permet de vérifier l'authenticité de l'utilisateur via reCAPTCHA
@@ -253,7 +253,7 @@ for ( const input of inputs )
 		{
 			// Une fois terminé, on exécute une requête de vérification
 			// 	afin d'obtenir un jeton de vérification auprès de Google.
-			const token = await grecaptcha.execute( "6LfC-xghAAAAAMjvcmOchuTFkF3CjzYnDFyDULWr" );
+			const token = await grecaptcha.execute( captcha_public_key );
 
 			// On insère enfin dynamiquement le jeton dans le formulaire
 			//	avant de cliquer une nouvelle fois sur le bouton de soumission.
