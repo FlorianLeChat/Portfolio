@@ -4,13 +4,7 @@
 	//
 	namespace Portfolio\Models;
 
-	$credentials = fopen(__DIR__ . "/../../config.csv", "r");
-
-	if ($credentials)
-	{
-		// Le fichier de configuration doit exister.
-		$credentials = fgetcsv($credentials);
-	}
+	$credentials = parse_ini_file(__DIR__ . "/../../config.ini", true)["SQL"];
 
 	abstract class Database
 	{
@@ -20,42 +14,42 @@
 		public function getHost(): string
 		{
 			global $credentials;
-			return $credentials[0];
+			return $credentials["host"];
 		}
 
 		// Nom de la base de données (lecture seule).
 		public function getDatabase(): string
 		{
 			global $credentials;
-			return $credentials[1];
+			return $credentials["database"];
 		}
 
 		// Nom d'utilisateur (lecture seule).
 		public function getUsername(): string
 		{
 			global $credentials;
-			return $credentials[2];
+			return $credentials["username"];
 		}
 
 		// Mot de passe (lecture seule).
 		public function getPassword(): string
 		{
 			global $credentials;
-			return $credentials[3];
+			return $credentials["password"];
 		}
 
 		// Encodage des caractères (lecture seule).
 		public function getCharset(): string
 		{
 			global $credentials;
-			return $credentials[4];
+			return $credentials["charset"];
 		}
 
 		// Port de connexion (lecture seule).
 		public function getPort(): string
 		{
 			global $credentials;
-			return $credentials[5];
+			return $credentials["port"];
 		}
 
 		// Objet PDO (connecteur).
