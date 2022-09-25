@@ -4,17 +4,6 @@
 	//	de l'environnement d'exécution des scripts PHP.
 	//
 
-	// Suppression de l'affichage des erreurs liées aux scripts PHP
-	//	dans un environnement de production.
-	if ($_SERVER["SERVER_NAME"] !== "localhost")
-	{
-		// Environnement de production.
-		ini_set("display_errors", false);
-		ini_set("display_startup_errors", false);
-
-		error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
-	}
-
 	// Fonctions de compatibilité pour PHP 7 et versions inférieures.
 	// Ces fonctions sont nativement présentes sur PHP 8.
 	if (!function_exists("str_contains"))
