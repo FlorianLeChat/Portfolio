@@ -7,7 +7,6 @@
 	require_once(__DIR__ . "/../models/database.php");
 
 	use PDO;
-	use Portfolio\Models\Form;
 	use Portfolio\Models\Database;
 
 	// Classe permettant d'établir la liaison avec la base de données.
@@ -16,7 +15,7 @@
 		public function __construct()
 		{
 			// On indique les informations de connexions.
-			$link = sprintf("mysql:host=%s;dbname=%s;charset=%s;port=%s", $this->getHost(), $this->getDatabase(), $this->getCharset(), $this->getPort());
+			$link = sprintf("mysql:host=%s;dbname=%s;charset=%s;port=%s", SQL_HOST, SQL_DATABASE, SQL_CHARSET, SQL_PORT);
 			$options = [
 				PDO::ATTR_ERRMODE			 	=> PDO::ERRMODE_EXCEPTION,
 				PDO::ATTR_DEFAULT_FETCH_MODE	=> PDO::FETCH_ASSOC,
@@ -26,7 +25,7 @@
 			// On tente ensuite de créer le connecteur avec les informations renseignés.
 			try
 			{
-				$this->setPDO(new PDO($link, $this->getUsername(), $this->getPassword(), $options));
+				$this->setPDO(new PDO($link, SQL_USERNAME, SQL_PASSWORD, $options));
 			}
 			catch (\PDOException $error)
 			{
@@ -261,11 +260,10 @@
 		{
 			$html = "";
 			$tables = $this->connector->query("SHOW TABLES;")->fetchAll();
-			$database = $this->getDatabase();
 
 			foreach ($tables as $table)
 			{
-				$name = $table["Tables_in_$database"];
+				$name = $table["Tables_in_" . SQL_DATABASE];
 				$html .= "
 					<li>
 						<input type=\"submit\" name=\"show\" value=\"$name\" />

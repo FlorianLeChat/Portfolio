@@ -6,9 +6,6 @@
 	// On récupère les traductions depuis la base de données.
 	$head = $translation->getPhrases("head");
 
-	// On récupère ensuite les paramètres du site.
-	$config = parse_ini_file(__DIR__ . "/../../config.ini", true);
-
 	// On détermine le chemin d'accès vers les feuilles de style
 	//	CSS et fichiers JavaScript.
 	//	Note : cette vérification est faite pour inclure ce fichier
@@ -60,8 +57,8 @@
 	<link rel="stylesheet" href="<?= $path . "styles/$file.css"; ?>" media="screen" />
 
 	<!-- Scripts JavaScript -->
-	<script src="https://www.googletagmanager.com/gtag/js?id=<?= $config["Analytics"]["identifier"]; ?>" crossorigin="anonymous" defer></script>
-	<script src="https://www.google.com/recaptcha/api.js?render=<?= $config["ReCAPTCHA"]["public_key"]; ?>" defer></script>
+	<script src="https://www.googletagmanager.com/gtag/js?id=<?= ANALYTICS_TAG; ?>" crossorigin="anonymous" defer></script>
+	<script src="https://www.google.com/recaptcha/api.js?render=<?= CAPTCHA_PUBLIC_KEY; ?>" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.3/dist/lazyload.min.js" crossorigin="anonymous" defer></script>
 
 	<!--[if lte IE 9]>
@@ -74,10 +71,10 @@
 
 	<script>
 		// Clé de sécurité publique pour le service de Google reCAPTCHA.
-		const captcha_public_key = "<?= $config["ReCAPTCHA"]["public_key"] ?>";
+		const captcha_public_key = "<?= CAPTCHA_PUBLIC_KEY; ?>";
 
 		// Identifiant unique pour les mesures de Google Analytics.
-		const analytics_identifier = "<?= $config["Analytics"]["identifier"] ?>";
+		const analytics_identifier = "<?= ANALYTICS_TAG; ?>";
 	</script>
 
 	<!-- Icônes et manifeste du document -->
