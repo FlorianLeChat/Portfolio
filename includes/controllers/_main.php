@@ -4,6 +4,9 @@
 	//	de l'environnement d'exécution des scripts PHP.
 	//
 
+	// Paramètres de configuration du site.
+	require_once(__DIR__ . "/../../config.php");
+
 	// Fonctions de compatibilité pour PHP 7 et versions inférieures.
 	// Ces fonctions sont nativement présentes sur PHP 8.
 	if (!function_exists("str_contains"))
@@ -35,11 +38,9 @@
 	if ($_SERVER["REQUEST_METHOD"] === "POST")
 	{
 		// Exécution de la requête de vérification auprès des services Google.
-		$config = parse_ini_file(__DIR__ . "/../../config.ini", true);
-		$secret = $config["ReCAPTCHA"]["secret_key"];
 		$request = curl_init();
 
-		curl_setopt($request, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptcha");
+		curl_setopt($request, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify?secret=" . CAPTCHA_SECRET_KEY . "&response=$recaptcha");
 		curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
 
 		$result = json_decode(curl_exec($request), true);
