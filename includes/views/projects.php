@@ -103,7 +103,7 @@
 		// On construit après les images qui représentent les logos
 		//	de programmation utilisés par les projets.
 		$logos = "";
-		$languages = json_decode($project["languages"]);
+		$languages = array_reverse(json_decode($project["languages"]));
 
 		foreach ($languages as $language)
 		{
