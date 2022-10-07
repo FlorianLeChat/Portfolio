@@ -107,7 +107,7 @@
 
 		foreach ($languages as $language)
 		{
-			$logos .= "<img src=\"#\" data-src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" alt=\"Logo - $language\" />";
+			$logos .= "<img src=\"#\" data-src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" title=\"$language\" alt=\"Logo - $language\" />";
 		}
 
 		// On assemble enfin toutes les parties créées précédemment
