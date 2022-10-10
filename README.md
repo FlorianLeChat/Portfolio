@@ -6,7 +6,7 @@ Ceci est mon premier portfolio et par la même occasion, l'un de mes premiers si
 
 <ins>Voici les exigences pour exécuter le site Internet</ins> :
 * HTML **5** / CSS **3** (*préprocesseur SASS*)
-* PHP **7.4+**
+* PHP **8.0+**
 * JavaScript (*ES6*)
 * Maria DB **10.5+**
 
@@ -24,7 +24,7 @@ This is my first portfolio and at the same time, one of my first websites using 
 
 <ins>Here are the requirements to run the website</ins>:
 * HTML **5** / CSS **3** (*SASS preprocessor*)
-* PHP **7.4+**
+* PHP **8.0+**
 * JavaScript (*ES6*)
 * Maria DB **10.5+**
 
