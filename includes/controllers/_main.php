@@ -7,30 +7,6 @@
 	// Paramètres de configuration du site.
 	require_once(__DIR__ . "/../../config.php");
 
-	// Fonctions de compatibilité pour PHP 7 et versions inférieures.
-	// Ces fonctions sont nativement présentes sur PHP 8.
-	if (!function_exists("str_contains"))
-	{
-		// Permet de vérifier si une sous-chaîne est présente dans
-		//	une chaîne de caractères spécifiée.
-		// 	Source : https://www.php.net/manual/fr/function.str-contains.php#125977
-		function str_contains(string $source, string $search): bool
-		{
-			return mb_strpos($source, $search) !== false;
-		}
-	}
-
-	if (!function_exists("str_starts_with"))
-	{
-		// Permet de vérifier si une sous-chaîne est présente
-		//	au début d'une chaîne de caractères spécifiée.
-		//	Source : https://www.php.net/manual/fr/function.str-starts-with.php#125913
-		function str_starts_with(string $source, string $search): bool
-		{
-			return strncmp($source, $search, mb_strlen($search)) === 0;
-		}
-	}
-
 	// Vérification systématique de l'authenticité de l'utilisateur au travers
 	//	des services de Google reCAPTCHA pendant la soumission d'un formulaire.
 	$recaptcha = $_POST["recaptcha"] ?? "";
