@@ -164,7 +164,7 @@
 					<div>
 						<h3>Pour ajouter une image, glissez et déposez là dans cette zone ou cliquez ici</h3>
 
-						<input type="file" name="upload" accept="image/*" required />
+						<input type="file" name="upload" accept="audio/*,video/*,image/*" required />
 					</div>
 
 					<!-- Aperçu des fichiers -->
