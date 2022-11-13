@@ -5,7 +5,7 @@
 	require_once("includes/controllers/_main.php");
 ?>
 
-<html lang="<?= $language; ?>" prefix="og: https://ogp.me/ns#">
+<html lang="<?= $language; ?>" dir="auto" prefix="og: https://ogp.me/ns#">
 	<!-- En-tête du site -->
 	<?php
 		require_once("includes/views/1_head.php");

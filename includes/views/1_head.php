@@ -24,7 +24,7 @@
 	<meta name="author" content="Florian Trayon" />
 	<meta name="description" content="<?= $head["head_description"]; ?>" />
 	<meta name="keywords" lang="<?= $language; ?>" content="portfolio, web, html, css, frontend, backend, fullstack" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 	<meta name="theme-color" content="#0085ff" />
 
 	<meta property="og:type" content="website" />
