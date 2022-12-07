@@ -247,6 +247,7 @@ for ( const input of inputs )
 
 		// On cesse alors le comportement par défaut.
 		event.preventDefault();
+		event.stopImmediatePropagation();
 
 		// On attend ensuite que les services de reCAPTCHA soient chargés.
 		grecaptcha.ready( async () =>
