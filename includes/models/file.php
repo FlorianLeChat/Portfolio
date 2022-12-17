@@ -4,7 +4,9 @@
 	//
 	namespace Portfolio\Models;
 
-	abstract class File
+	require_once(__DIR__ . "/../models/database.php");
+
+	abstract class File extends Database
 	{
 		protected string $name = "";
 		protected string $type = "";

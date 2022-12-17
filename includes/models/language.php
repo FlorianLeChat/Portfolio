@@ -4,7 +4,9 @@
 	//
 	namespace Portfolio\Models;
 
-	abstract class Language
+	require_once(__DIR__ . "/../models/database.php");
+
+	abstract class Language extends Database
 	{
 		protected string $code = "FR";
 

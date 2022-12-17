@@ -6,7 +6,7 @@
 
 	abstract class Database
 	{
-		protected $connector;
+		public $connector;
 
 		// Objet PDO (connecteur).
 		public function setPDO(\PDO $connector)

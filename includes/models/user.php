@@ -4,7 +4,9 @@
 	//
 	namespace Portfolio\Models;
 
-	abstract class User
+	require_once(__DIR__ . "/../models/database.php");
+
+	abstract class User extends Database
 	{
 		protected string $username = "";
 		protected string $password = "";
