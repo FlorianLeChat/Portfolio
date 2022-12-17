@@ -77,7 +77,7 @@
 						// Le champ des commentaires existe, on réalise des conversions
 						//	du jeu de caractères pour obtenir une description lisible.
 						$label = mb_convert_encoding($header["Comments"], "byte2le");
-						$label = mb_convert_encoding($label, "HTML-ENTITIES", "byte2be");
+						$label = htmlspecialchars_decode(htmlentities(mb_convert_encoding($label, "UTF-8", "byte2be")));
 					}
 					else
 					{
