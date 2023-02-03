@@ -70,7 +70,7 @@
 		{
 			$degrees_list_html .= "
 				<!-- Diplôme obtenu -->
-				<img src=\"#\" data-src=\"assets/images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" />
+				<img src=\"#\" data-src=\"assets/images/skills/certificate.svg\" width=\"48\" height=\"48\" draggable=\"false\" alt=\"Diplôme obtenu\" decoding=\"async\" />
 			";
 		}
 

@@ -169,7 +169,7 @@
 
 					<!-- Aperçu des fichiers -->
 					<div>
-						<img src="#" alt="Image téléversé" />
+						<img src="#" alt="Image téléversé" decoding="async" />
 
 						<button type="button">Supprimer l'image</button>
 					</div>

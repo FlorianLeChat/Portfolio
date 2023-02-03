@@ -90,7 +90,7 @@
 					$images .= "
 						<div>
 							<a href=\"$image\" target=\"_blank\">
-								<img src=\"#\" data-src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" />
+								<img src=\"#\" data-src=\"$image\" draggable=\"false\" alt=\"Image - $indice\" decoding=\"async\" />
 							</a>
 
 							<figcaption>$label</figcaption>
@@ -107,7 +107,7 @@
 
 		foreach ($languages as $language)
 		{
-			$logos .= "<img src=\"#\" data-src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" title=\"$language\" alt=\"Logo - $language\" />";
+			$logos .= "<img src=\"#\" data-src=\"assets/images/languages/$language.svg\" height=\"40\" draggable=\"false\" title=\"$language\" alt=\"Logo - $language\" decoding=\"async\" />";
 		}
 
 		// On assemble enfin toutes les parties créées précédemment
@@ -121,7 +121,7 @@
 			<article id=\"$identifier\">
 				<div class=\"properties\">
 					<!-- Icône -->
-					<img src=\"#\" data-src=\"assets/images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" />
+					<img src=\"#\" data-src=\"assets/images/projects/logo_$identifier.svg\" width=\"64\" height=\"64\" draggable=\"false\" alt=\"Logo - $name\" decoding=\"async\" />
 
 					<!-- Nom -->
 					<h2>$title</h2>
@@ -137,9 +137,9 @@
 
 				<!-- Galerie photos -->
 				<div class=\"images\">
-					<img src=\"#\" data-src=\"assets/images/decorations/arrow_left.svg\" alt=\"\" />
+					<img src=\"#\" data-src=\"assets/images/decorations/arrow_left.svg\" alt=\"\" decoding=\"async\" />
 					$images
-					<img src=\"#\" data-src=\"assets/images/decorations/arrow_right.svg\" alt=\"\" />
+					<img src=\"#\" data-src=\"assets/images/decorations/arrow_right.svg\" alt=\"\" decoding=\"async\" />
 				</div>
 
 				<hr />
