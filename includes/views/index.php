@@ -62,7 +62,7 @@
 <!-- Projets -->
 <section id="projects">
 	<!-- Vagues du début -->
-	<img src="assets/images/decorations/projects_waves_top_blue.svg" alt="" />
+	<img src="assets/images/decorations/projects_waves_top_blue.svg" alt="" decoding="async" />
 
 	<!-- Listes des projets -->
 	<h3>#projects</h3>
@@ -76,7 +76,7 @@
 	</div>
 
 	<!-- Vagues de fin -->
-	<img src="assets/images/decorations/projects_waves_bottom_blue.svg" alt="" />
+	<img src="assets/images/decorations/projects_waves_bottom_blue.svg" alt="" decoding="async" />
 </section>
 
 <!-- Compétences -->
@@ -89,7 +89,7 @@
 
 	<div>
 		<article>
-			<img src="assets/images/skills/school.svg" draggable="false" width="64" height="64" alt="<?= $skills["skills_school_image"]; ?>" />
+			<img src="assets/images/skills/school.svg" draggable="false" width="64" height="64" alt="<?= $skills["skills_school_image"]; ?>" decoding="async" />
 
 			<h2>
 				<?= $skills["skills_school_title"] . PHP_EOL; ?>
@@ -101,7 +101,7 @@
 		</article>
 
 		<article>
-			<img src="assets/images/skills/work.svg" draggable="false" width="64" height="64" alt="<?= $skills["skills_work_image"]; ?>" />
+			<img src="assets/images/skills/work.svg" draggable="false" width="64" height="64" alt="<?= $skills["skills_work_image"]; ?>" decoding="async" />
 
 			<h2>
 				<?= $skills["skills_work_title"] . PHP_EOL; ?>

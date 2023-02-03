@@ -17,5 +17,5 @@
 	<h2><?= $header_projects["header_projects_subtitle"]; ?></h2>
 
 	<!-- Vagues de fin -->
-	<img src="assets/images/decorations/header_waves_orange.svg" alt="" />
+	<img src="assets/images/decorations/header_waves_orange.svg" alt="" decoding="async" />
 </header>
