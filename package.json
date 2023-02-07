@@ -1,0 +1,36 @@
+{
+  "name": "portfolio",
+  "author": "Florian Trayon (https://github.com/FlorianLeChat)",
+  "license": "MIT",
+  "private": true,
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FlorianLeChat/Portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FlorianLeChat/Portfolio/issues"
+  },
+  "dependencies": {
+    "next": "~13.1",
+    "react": "~18.2",
+    "@next/font": "~13.1"
+  },
+  "devDependencies": {
+    "@types/node": "~18.11",
+    "@types/react": "~18.0",
+    "typescript": "~4.9"
+  },
+  "engines": {
+    "node": ">=19.6",
+    "npm": ">=9.4"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "browserslist": [
+    "defaults"
+  ]
+}
