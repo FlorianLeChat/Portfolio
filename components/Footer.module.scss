@@ -1,0 +1,13 @@
+footer#Footer
+{
+	// Conteneur du pied de page.
+	left: 0;
+	right: 0;
+	height: 7em;
+	position: absolute;
+	box-shadow: 0 -0.1em 1em rgb(0, 0, 0, 0.1);
+	margin-top: 5em;
+	flex-direction: column;
+	justify-content: center;
+	background-color: var(--bg-alt);
+}
