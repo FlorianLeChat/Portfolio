@@ -4,15 +4,20 @@
 //
 
 // Importation des feuilles de style CSS.
-import "@/styles/_global.scss";
-import "@/styles/index.scss";
+import "./_global.scss";
+import "./index.scss";
 
 // Importation des dépendances.
 import Head from "next/head";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 
 // Importation des types.
 import type { AppProps } from "next/app";
+
+// Importation des composants.
+const Header = dynamic( () => import( "@/components/Header" ) );
+const Footer = dynamic( () => import( "@/components/Footer" ) );
 
 export default function App( { Component, pageProps }: AppProps )
 {
@@ -56,16 +61,21 @@ export default function App( { Component, pageProps }: AppProps )
 				<link rel="apple-touch-icon" href={`${ basePath }/assets/favicons/180x180.webp`} />
 				<link rel="manifest" href={`${ basePath }/manifest.json`} />
 			</Head>
-			<main>
-				{/* Avertissement page sans JavaScript */}
-				<noscript>
-					<h1>This website created with <a href="https://nextjs.org/">NextJS</a> requires JavaScript to run.</h1>
-					<h2>Click <a href="https://www.whatismybrowser.com/detect/is-javascript-enabled">here</a> to be redirected to an external site to help you solve this issue.</h2>
-				</noscript>
 
-				{/* Affichage du composant demandé */}
-				<Component {...pageProps} />
-			</main>
+			{/* Avertissement page sans JavaScript */}
+			<noscript>
+				<h1>This website created with <a href="https://nextjs.org/">NextJS</a> requires JavaScript to run.</h1>
+				<h2>Click <a href="https://www.whatismybrowser.com/detect/is-javascript-enabled">here</a> to be redirected to an external site to help you solve this issue.</h2>
+			</noscript>
+
+			{/* Affichage de l'en-tête du site */}
+			<Header />
+
+			{/* Affichage du composant demandé */}
+			<Component {...pageProps} />
+
+			{/* Affichage du pied de page du site */}
+			<Footer />
 		</>
 	);
 }
