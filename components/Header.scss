@@ -1,4 +1,7 @@
-header#Header
+// Importation des variables de thème.
+@import "../pages/_colors";
+
+header
 {
 	// Conteneur de l'en-tête.
 	height: 6em;
@@ -27,7 +30,11 @@ header#Header
 			overflow: hidden;
 			transition: width 0.2s ease-in-out;
 			flex-direction: column;
-			background-color: var(--bg);
+
+			@include themedColor()
+			{
+				background-color: t("background");
+			}
 
 			&[class = display-nav-list]
 			{
@@ -49,14 +56,21 @@ header#Header
 			a
 			{
 				// Liens de navigation.
-				color: var(--fg-alt);
 				padding: 0 0 0.12em 0;
 				position: relative;
+
+				@include themedColor()
+				{
+					color: t("foreground-alt");
+				}
 
 				&:hover
 				{
 					// Effet au survol.
-					color: var(--primary);
+					@include themedColor()
+					{
+						color: t("primary");
+					}
 
 					&::before
 					{
@@ -68,7 +82,10 @@ header#Header
 				&:active
 				{
 					// Effet à la sélection.
-					color: var(--primary-alt);
+					@include themedColor()
+					{
+						color: t("primary-alt");
+					}
 				}
 
 				&::before
@@ -81,7 +98,11 @@ header#Header
 					content: "";
 					position: absolute;
 					transition: width 0.2s ease-out;
-					background-color: var(--primary);
+
+					@include themedColor()
+					{
+						background-color: t("primary");
+					}
 				}
 			}
 		}

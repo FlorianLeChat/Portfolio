@@ -1,13 +1,11 @@
 //
 // Composant de l'en-tête générique du site.
 //
-import styles from "./Header.module.scss";
-
 export default function Header()
 {
 	// Affichage du rendu HTML du composant.
 	return (
-		<header id={styles[ "Header" ]}>
+		<header>
 			{/* En-tête de la page */}
 			<a className="icon-border" href="https://github.com/FlorianLeChat">FT</a>
 

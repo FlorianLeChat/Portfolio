@@ -1,4 +1,7 @@
-footer#Footer
+// Importation des variables de thème.
+@import "../pages/_colors";
+
+footer
 {
 	// Conteneur du pied de page.
 	left: 0;
@@ -9,5 +12,9 @@ footer#Footer
 	margin-top: 5em;
 	flex-direction: column;
 	justify-content: center;
-	background-color: var(--bg-alt);
+
+	@include themedColor()
+	{
+		background-color: t("background-alt");
+	}
 }
