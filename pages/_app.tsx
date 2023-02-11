@@ -8,6 +8,7 @@ import "./_global.scss";
 import "./index.scss";
 import "@/components/Header.scss";
 import "@/components/Footer.scss";
+import "@/components/ScrollTop.scss";
 
 // Importation des dépendances.
 import Head from "next/head";
@@ -21,6 +22,7 @@ import type { AppProps } from "next/app";
 // Importation des composants.
 const Header = dynamic( () => import( "@/components/Header" ) );
 const Footer = dynamic( () => import( "@/components/Footer" ) );
+const ScrollTop = dynamic( () => import( "@/components/ScrollTop" ) );
 
 // Création de la police de caractères Roboto.
 const poppins = Poppins( {
@@ -93,6 +95,9 @@ export default function App( { Component, pageProps }: AppProps )
 
 			{/* Affichage du composant demandé */}
 			<Component {...pageProps} />
+
+			{/* Affichage du bouton de retour en haut de page */}
+			<ScrollTop />
 
 			{/* Affichage du pied de page du site */}
 			<Footer />

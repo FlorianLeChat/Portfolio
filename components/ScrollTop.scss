@@ -1,0 +1,48 @@
+// Importation des variables de thème.
+@import "../pages/_colors";
+
+aside
+{
+	// Conteneur du bouton de retour en haut de page.
+	right: 2rem;
+	bottom: 3rem;
+	z-index: 1;
+	display: flex;
+	position: fixed;
+	transition: transform 200ms ease-in-out;
+	justify-content: flex-end;
+
+	@media (max-width: 1024px)
+	{
+		// Disparition du bouton sur les écrans de taille
+		//	moyenne.
+		display: none;
+	}
+
+	&:active
+	{
+		// Effet de maintien.
+		transform: translateY(0.5rem);
+	}
+
+	a
+	{
+		// Lien de retour en haut de page.
+		padding: 1rem 1.3rem;
+		border-radius: 50%;
+
+		@include themedColor()
+		{
+			color: t("background");
+			background-color: t("primary");
+		}
+
+		&:hover
+		{
+			@include themedColor()
+			{
+				background-color: t("primary-alt");
+			}
+		}
+	}
+}
