@@ -10,8 +10,16 @@ header
 	> a
 	{
 		// Logo du site.
+		width: 3rem;
+		height: 3rem;
 		font-weight: 700;
 		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
+
+		@include themedColor()
+		{
+			color: t("primary");
+			border: 0.2rem solid t("primary");
+		}
 	}
 
 	ul
@@ -41,82 +49,94 @@ header
 				// Affichage du menu de navigation.
 				width: 100%;
 			}
+		}
 
-			li
+		li
+		{
+			// Éléments de la barre de navigation.
+			@media (max-width: 768px)
 			{
-				// Éléments de la barre de navigation.
-				@media (max-width: 768px)
+				// Réduction de la marge entre chaque élément
+				//	sur les écrans de petite taille.
+				margin: 0.5rem 0;
+			}
+
+			a
+			{
+				// Liens de navigation.
+				padding: 0 0 0.15rem 0;
+				position: relative;
+
+				@include themedColor()
 				{
-					// Réduction de la marge entre chaque élément
-					//	sur les écrans de petite taille.
-					margin: 0.5rem 0;
+					color: t("foreground-alt");
 				}
 
-				a
+				&:hover
 				{
-					// Liens de navigation.
-					padding: 0 0 0.15rem 0;
-					position: relative;
+					// Effet au survol.
+					@include themedColor()
+					{
+						color: t("primary");
+					}
+
+					&::before
+					{
+						// Animation de survol.
+						width: 100%;
+					}
+				}
+
+				&:active
+				{
+					// Effet à la sélection.
+					@include themedColor()
+					{
+						color: t("primary-alt");
+					}
+				}
+
+				&::before
+				{
+					// Animation de sélection.
+					width: 0%;
+					bottom: 0;
+					height: 0.15rem;
+					display: inline;
+					content: "";
+					position: absolute;
+					transition: width 200ms ease-out;
+
+					@include themedColor()
+					{
+						background-color: t("primary");
+					}
+				}
+
+				i
+				{
+					// Icône des boutons.
+					width: 1.75rem;
+					height: 1.75rem;
 
 					@include themedColor()
 					{
 						color: t("foreground-alt");
 					}
-
-					&:hover
-					{
-						// Effet au survol.
-						@include themedColor()
-						{
-							color: t("primary");
-						}
-
-						&::before
-						{
-							// Animation de survol.
-							width: 100%;
-						}
-					}
-
-					&:active
-					{
-						// Effet à la sélection.
-						@include themedColor()
-						{
-							color: t("primary-alt");
-						}
-					}
-
-					&::before
-					{
-						// Animation de sélection.
-						width: 0%;
-						bottom: 0;
-						height: 0.15rem;
-						display: inline;
-						content: "";
-						position: absolute;
-						transition: width 200ms ease-out;
-
-						@include themedColor()
-						{
-							background-color: t("primary");
-						}
-					}
 				}
 			}
 		}
+	}
 
-		i
+	i[class *= fa-bars]
+	{
+		// Icône du bouton d'affichage du menu de navigation.
+		display: none;
+
+		@media (max-width: 768px)
 		{
-			// Icône des boutons.
-			width: 1.75rem;
-			height: 1.75rem;
-
-			@include themedColor()
-			{
-				color: t("foreground-alt");
-			}
+			// Affichage de l'icône sur les écrans de petite taille.
+			display: flex;
 		}
 	}
 }
