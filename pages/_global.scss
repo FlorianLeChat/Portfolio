@@ -9,3 +9,168 @@
 
 // Importation des variables de thème.
 @import "_colors";
+
+// Modifications globales.
+html
+{
+	// Document HTML.
+	width: 95%;
+	margin: 0 auto;
+	max-width: 1024px;
+	transition: background-color 100ms linear;
+	line-height: 1.5;
+	scroll-behavior: smooth;
+
+	@include themedColor()
+	{
+		color: t("foreground");
+		background-color: t("background");
+	}
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	// Titres
+	line-height: 1.1;
+
+	@include themedColor()
+	{
+		color: t("foreground-alt");
+	}
+}
+
+h1
+{
+	// Titre principal.
+	font-size: 5rem;
+}
+
+h2
+{
+	// Titre secondaire (sections).
+	font-size: 2rem;
+}
+
+ul
+{
+	// Liste non ordonnée.
+	list-style-type: none;
+}
+
+button
+{
+	// Bouton.
+	margin: 0;
+	border: 0;
+	cursor: pointer;
+	padding: 0;
+	box-shadow: none;
+	box-sizing: border-box;
+}
+
+a
+{
+	// Lien hypertexte.
+	text-decoration: none;
+}
+
+header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
+{
+	// Conteneurs généraux.
+	display: flex;
+	align-items: center;
+}
+
+nav li
+{
+	// Élément de la barre de navigation.
+	margin: 0 0.5rem;
+	font-weight: 500;
+}
+
+section
+{
+	// Conteneur des sections.
+	margin-top: 5rem;
+
+	@media (max-width: 768px)
+	{
+		// Réduction de la marge supérieure pour les
+		//	écrans de petite taille.
+		margin-top: 2.5rem;
+	}
+
+	> h2
+	{
+		// Titre des sections.
+		text-align: center;
+		padding-top: 0.5rem;
+		margin-bottom: 1.5rem;
+		text-transform: uppercase;
+
+		@media (max-width: 768px)
+		{
+			// Réduction de la taille du titre pour les
+			//	écrans de petite taille.
+			font-size: 1.5rem;
+		}
+
+		&::after
+		{
+			// Barre de séparation en dessous du titre.
+			width: 4rem;
+			margin: 0.5rem auto 0 auto;
+			content: "";
+			display: block;
+
+			@include themedColor()
+			{
+				border-bottom: 0.4rem solid t("primary");
+			}
+		}
+	}
+}
+
+::selection
+{
+	// Sélection des textes.
+	@include themedColor()
+	{
+		color: t("background");
+		background: t("primary");
+	}
+}
+
+// Personnalisation de la barre de défilement.
+//	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar).
+::-webkit-scrollbar
+{
+	width: 1rem;
+}
+
+::-webkit-scrollbar-track
+{
+	@include themedColor()
+	{
+		background-color: t("background-alt");
+	}
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 0.5rem;
+
+	@include themedColor()
+	{
+		border: 0.25rem solid t("background");
+		background-color: t("primary");
+	}
+
+	&:hover
+	{
+		@include themedColor()
+		{
+			background-color: t("primary-alt");
+		}
+	}
+}
