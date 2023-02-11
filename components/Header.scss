@@ -4,14 +4,14 @@
 header
 {
 	// Conteneur de l'en-tête.
-	height: 6em;
+	height: 6rem;
 	justify-content: space-between;
 
 	> a
 	{
 		// Logo du site.
 		font-weight: 700;
-		text-shadow: 0 4px 2px rgba(0, 0, 0, 0.2);
+		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
 	}
 
 	nav ul
@@ -21,14 +21,14 @@ header
 		{
 			// Modification de la disposition des éléments
 			//	sur les écrans de petite taille.
-			top: 5em;
+			top: 5rem;
 			left: 0;
 			right: 0;
 			width: 0;
-			padding: 4em 0;
+			padding: 4rem 0;
 			position: absolute;
 			overflow: hidden;
-			transition: width 0.2s ease-in-out;
+			transition: width 200ms ease-in-out;
 			flex-direction: column;
 
 			@include themedColor()
@@ -50,13 +50,13 @@ header
 			{
 				// Réduction de la marge entre chaque élément
 				//	sur les écrans de petite taille.
-				margin: 0.5em 0;
+				margin: 0.5rem 0;
 			}
 
 			a
 			{
 				// Liens de navigation.
-				padding: 0 0 0.12em 0;
+				padding: 0 0 0.15rem 0;
 				position: relative;
 
 				@include themedColor()
@@ -93,11 +93,11 @@ header
 					// Animation de sélection.
 					width: 0%;
 					bottom: 0;
-					height: 0.12em;
+					height: 0.15rem;
 					display: inline;
 					content: "";
 					position: absolute;
-					transition: width 0.2s ease-out;
+					transition: width 200ms ease-out;
 
 					@include themedColor()
 					{
