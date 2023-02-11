@@ -14,7 +14,7 @@ header
 		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
 	}
 
-	nav ul
+	ul
 	{
 		// Liste des liens de navigation.
 		@media (max-width: 768px)
@@ -41,69 +41,81 @@ header
 				// Affichage du menu de navigation.
 				width: 100%;
 			}
-		}
 
-		li
-		{
-			// Éléments de la barre de navigation.
-			@media (max-width: 768px)
+			li
 			{
-				// Réduction de la marge entre chaque élément
-				//	sur les écrans de petite taille.
-				margin: 0.5rem 0;
-			}
-
-			a
-			{
-				// Liens de navigation.
-				padding: 0 0 0.15rem 0;
-				position: relative;
-
-				@include themedColor()
+				// Éléments de la barre de navigation.
+				@media (max-width: 768px)
 				{
-					color: t("foreground-alt");
+					// Réduction de la marge entre chaque élément
+					//	sur les écrans de petite taille.
+					margin: 0.5rem 0;
 				}
 
-				&:hover
+				a
 				{
-					// Effet au survol.
+					// Liens de navigation.
+					padding: 0 0 0.15rem 0;
+					position: relative;
+
 					@include themedColor()
 					{
-						color: t("primary");
+						color: t("foreground-alt");
+					}
+
+					&:hover
+					{
+						// Effet au survol.
+						@include themedColor()
+						{
+							color: t("primary");
+						}
+
+						&::before
+						{
+							// Animation de survol.
+							width: 100%;
+						}
+					}
+
+					&:active
+					{
+						// Effet à la sélection.
+						@include themedColor()
+						{
+							color: t("primary-alt");
+						}
 					}
 
 					&::before
 					{
-						// Animation de survol.
-						width: 100%;
+						// Animation de sélection.
+						width: 0%;
+						bottom: 0;
+						height: 0.15rem;
+						display: inline;
+						content: "";
+						position: absolute;
+						transition: width 200ms ease-out;
+
+						@include themedColor()
+						{
+							background-color: t("primary");
+						}
 					}
 				}
+			}
+		}
 
-				&:active
-				{
-					// Effet à la sélection.
-					@include themedColor()
-					{
-						color: t("primary-alt");
-					}
-				}
+		i
+		{
+			// Icône des boutons.
+			width: 1.75rem;
+			height: 1.75rem;
 
-				&::before
-				{
-					// Animation de sélection.
-					width: 0%;
-					bottom: 0;
-					height: 0.15rem;
-					display: inline;
-					content: "";
-					position: absolute;
-					transition: width 200ms ease-out;
-
-					@include themedColor()
-					{
-						background-color: t("primary");
-					}
-				}
+			@include themedColor()
+			{
+				color: t("foreground-alt");
 			}
 		}
 	}
