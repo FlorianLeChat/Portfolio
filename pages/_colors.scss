@@ -1,0 +1,62 @@
+// Création des thèmes.
+// 	Source : https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995
+$themes:
+(
+	bright:
+	(
+		// Thème clair.
+		background: rgb(245, 246, 247),
+		background-alt: white,
+		foreground: rgb(68, 68, 68),
+		foreground-alt: rgb(34, 34, 34),
+		primary: rgb(48, 108, 196),
+		primary-alt: rgb(24, 93, 199),
+		primary-light: rgba(44, 93, 206, 0.1),
+		container-shadow: 0 2px 4px rgb(0 0 0 / 10%)
+	),
+	dark:
+	(
+		// Thème sombre.
+		background: rgb(3, 2, 23),
+		background-alt: rgb(22 28 41 / 33%),
+		foreground: rgb(189, 189, 221),
+		foreground-alt: rgb(205, 205, 255),
+		primary: rgb(128, 122, 232),
+		primary-alt: rgb(112, 106, 236),
+		primary-light: rgb(18 17 49 / 44%),
+		container-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px rgba(0, 0, 0, 0.06) 0px 2px 4px -1px
+	)
+);
+
+@mixin themedColor()
+{
+	// Itération sur les thèmes.
+	@each $theme, $map in $themes
+	{
+		// Création des classes de thèmes.
+		.theme--#{$theme} &
+		{
+			// Définition des variables de thèmes (non globales).
+			$theme-map: () !global;
+
+			@each $key, $submap in $map
+			{
+				// Création des variables de thèmes.
+				$value: map-get(map-get($themes, $theme), "#{$key}");
+				$theme-map: map-merge($theme-map, ($key: $value)) !global;
+			}
+
+			// Contenu de la classe.
+			@content;
+
+			// Réinitialisation des variables de thèmes locales.
+			$theme-map: null !global;
+		}
+	}
+}
+
+@function t($key)
+{
+	// Récupération des variables de thèmes.
+	@return map-get($theme-map, $key);
+}
