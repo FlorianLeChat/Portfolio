@@ -57,9 +57,15 @@ ul
 	list-style-type: none;
 }
 
-button
+a
 {
-	// Bouton.
+	// Lien hypertexte.
+	text-decoration: none;
+}
+
+header button, section:first-of-type button, section:last-of-type button
+{
+	// Bouton générique.
 	margin: 0;
 	border: 0;
 	cursor: pointer;
@@ -68,17 +74,36 @@ button
 	box-sizing: border-box;
 }
 
-a
+section:first-of-type button, section:last-of-type button
 {
-	// Lien hypertexte.
-	text-decoration: none;
-}
+	// Bouton comprenant un lien cliquable.
+	display: inline-block;
+	padding: 1rem 1.5rem;
+	font-size: 0.8rem;
+	transition: transform 200ms ease-in-out;
+	font-weight: 600;
+	border-radius: 5rem;
 
-header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
-{
-	// Conteneurs généraux.
-	display: flex;
-	align-items: center;
+	@include themedColor()
+	{
+		color: t("$background");
+		background-color: t("primary");
+	}
+
+	&:hover
+	{
+		// Effet de survol.
+		@include themedColor()
+		{
+			background-color: t("primary-alt");
+		}
+	}
+
+	&:active
+	{
+		// Effet de maintien.
+		transform: translateY(-0.5rem);
+	}
 }
 
 nav li
@@ -131,6 +156,66 @@ section
 	}
 }
 
+header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
+{
+	// Conteneurs généraux.
+	display: flex;
+	align-items: center;
+}
+
+header i, section:nth-of-type(2) i
+{
+	// Icônes de la barre de navigation et de la section
+	//	à propos du développeur.
+	margin: 0.25rem;
+	cursor: pointer;
+	z-index: 1;
+	display: flex;
+	position: relative;
+	font-size: 1.25rem;
+	align-items: center;
+	border-radius: 50%;
+	justify-content: center;
+
+	&:hover
+	{
+		// Effet de survol.
+		@include themedColor()
+		{
+			color: t("$background");
+		}
+	}
+
+	&::after
+	{
+		// Arrière-plan de l'icône.
+		width: 0;
+		height: 0;
+		z-index: -1;
+		content: "";
+		position: absolute;
+		transition: width 250ms ease-in-out, height 250ms ease-in-out;
+		border-radius: 50%;
+
+		@include themedColor()
+		{
+			background-color: t("$primary");
+		}
+	}
+
+	&:hover::after
+	{
+		// Sélection de l'arrrière-plan de l'icône.
+		width: 100%;
+		height: 100%;
+
+		@include themedColor()
+		{
+			border: 0.25rem solid t("$primary");
+		}
+	}
+}
+
 ::selection
 {
 	// Sélection des textes.
@@ -145,11 +230,13 @@ section
 //	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar).
 ::-webkit-scrollbar
 {
+	// Conteneur de la barre de défilement.
 	width: 1rem;
 }
 
 ::-webkit-scrollbar-track
 {
+	// Chemin de la barre de défilement.
 	@include themedColor()
 	{
 		background-color: t("background-alt");
@@ -158,6 +245,7 @@ section
 
 ::-webkit-scrollbar-thumb
 {
+	// Boutons haut/bas de la barre de défilement.
 	border-radius: 0.5rem;
 
 	@include themedColor()
@@ -168,6 +256,7 @@ section
 
 	&:hover
 	{
+		// Effet de survol.
 		@include themedColor()
 		{
 			background-color: t("primary-alt");

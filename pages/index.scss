@@ -1,0 +1,287 @@
+// Importation des variables de thème.
+@import "_colors";
+
+section:first-of-type
+{
+	// Informations sur le développeur.
+	margin-top: 6em;
+	justify-content: space-between;
+
+	@media (max-width: 768px)
+	{
+		// Modification de l'apparence de la section sur les
+		// 	écrans de petite taille.
+		margin-top: 2.5em;
+		padding-bottom: 1em;
+		flex-direction: column;
+	}
+
+	h1
+	{
+		// Phrase d'accroche.
+		display: flex;
+		flex-basis: 50%;
+		flex-direction: column;
+
+		@media (max-width: 768px)
+		{
+			// Réduction de la taille de la police de caractères
+			//	sur les écrans de petite taille.
+			width: 100%;
+			font-size: 4rem;
+		}
+
+		@media (max-width: 384px)
+		{
+			// Réduction de la taille de la police de caractères
+			//	sur les écrans de très petite taille.
+			font-size: 3rem;
+		}
+
+		span
+		{
+			// Prénom et nom du développeur.
+			@include themedColor()
+			{
+				color: t("primary");
+			}
+		}
+	}
+
+	article
+	{
+		// Conteneur du résumé.
+		flex-basis: 40%;
+
+		@media (max-width: 768px)
+		{
+			// Modification des marges extérieures sur les
+			//	écrans de petite taille.
+			width: 100%;
+			margin-top: 2.5em;
+		}
+
+		p
+		{
+			// Résumé du développeur.
+			font-size: 1.1rem;
+		}
+
+		button
+		{
+			// Bouton de téléchargement du CV.
+			margin-top: 2.2em;
+		}
+	}
+}
+
+section:nth-of-type(2) article
+{
+	// Conteneur des projets.
+	width: 95%;
+	margin: 2em auto;
+	padding: 2em;
+	display: flex;
+	max-width: 1024px;
+	text-align: center;
+	align-items: center;
+	border-radius: 1em;
+	justify-content: space-between;
+
+	@include themedColor()
+	{
+		box-shadow: t("container-shadow");
+		background-color: t("background-alt");
+	}
+
+	@media (max-width: 1024px)
+	{
+		// Réduction de l'apparence du conteneur sur les
+		//	écrans de taille moyenne.
+		padding: 1.5em;
+		max-width: 450px;
+		flex-direction: column;
+	}
+
+	> h2
+	{
+		// Titre de la section.
+		@media (max-width: 768px)
+		{
+			// Modification des marges du titre sur les
+			//	écrans de petite taille.
+			margin-bottom: 0;
+		}
+	}
+
+	img
+	{
+		// Image de présentation du projet.
+		border-radius: 0.5em;
+
+		@media (max-width: 1024px)
+		{
+			// Réduction des dimensions de l'image sur les
+			//	écrans de taille moyenne.
+			margin: 0 auto;
+			max-width: 100%;
+			max-height: 100%;
+			margin-bottom: 2em;
+		}
+	}
+
+	div
+	{
+		// Conteneur des informations du projet.
+		flex-basis: 50%;
+		margin-left: 2em;
+
+		@media (max-width: 1024px)
+		{
+			// Réduction de l'apparence du conteneur sur les
+			//	écrans de taille moyenne.
+			padding: 0;
+			margin-left: 0;
+		}
+
+		p
+		{
+			// Description du projet.
+			margin: 1.2em 0;
+		}
+
+		ul
+		{
+			// Informations générales du projet.
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+
+			&:first-of-type
+			{
+				// Technologies utilisées.
+				margin: 0 auto;
+
+				li
+				{
+					// Conteneur de chaque technologie.
+					margin: 0.3em 0.2em;
+					padding: 0.4em 0.6em;
+					font-size: 0.8rem;
+					font-weight: 700;
+					border-radius: 5em;
+
+					@include themedColor()
+					{
+						color: t("primary-alt");
+						background-color: t("primary-light");
+					}
+
+					i
+					{
+						// Icône de la technologie.
+						width: 2.2em;
+						height: 2.2em;
+
+						@include themedColor()
+						{
+							color: t("primary");
+							border: 0.15em solid t("primary");
+						}
+					}
+				}
+			}
+
+			&:last-of-type
+			{
+				// Liens vers le code source.
+				margin-top: 1.2em;
+			}
+		}
+	}
+}
+
+section:nth-of-type(3) article
+{
+	// Conteneur des compétences.
+	gap: 1em;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	div
+	{
+		// Conteneur de chaque compétence.
+		width: 10em;
+		height: 10em;
+		display: flex;
+		overflow: hidden;
+		position: relative;
+		font-size: 0.8rem;
+		font-weight: 500;
+		align-items: center;
+		border-radius: 1.5em;
+		flex-direction: column;
+		justify-content: center;
+
+		@include themedColor()
+		{
+			box-shadow: t("container-shadow");
+			background-color: t("background-alt");
+		}
+
+		i
+		{
+			// Icônes des compétences.
+			font-size: 3rem;
+			margin-bottom: 0.2em;
+		}
+
+		&:hover::before
+		{
+			// État initial de l'animation.
+			transform: scaleX(1);
+		}
+
+		&::before
+		{
+			// Animation de survol.
+			left: 0;
+			width: 100%;
+			height: 6px;
+			bottom: 0;
+			content: "";
+			position: absolute;
+			transform: scaleX(0);
+			transition: all 0.2s linear;
+			border-radius: 1.5;
+
+			@include themedColor()
+			{
+				background-color: t("primary-alt");
+			}
+		}
+	}
+}
+
+section:last-of-type ul
+{
+	// Liens vers les réseaux sociaux.
+	flex-wrap: wrap;
+	justify-content: center;
+
+	button
+	{
+		// Boutons vers les réseaux sociaux.
+		margin-right: 0.5em;
+		margin-top: 0.3em;
+
+		i
+		{
+			// Icônes des réseaux sociaux.
+			margin-right: 0.2em;
+		}
+	}
+}
