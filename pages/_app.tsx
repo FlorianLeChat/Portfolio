@@ -6,6 +6,8 @@
 // Importation des feuilles de style CSS.
 import "./_global.scss";
 import "./index.scss";
+import "@/components/Header.scss";
+import "@/components/Footer.scss";
 
 // Importation des dépendances.
 import Head from "next/head";
