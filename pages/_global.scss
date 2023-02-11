@@ -86,7 +86,7 @@ section:first-of-type button, section:last-of-type button
 
 	@include themedColor()
 	{
-		color: t("$background");
+		color: t("background");
 		background-color: t("primary");
 	}
 
@@ -150,7 +150,7 @@ section
 
 			@include themedColor()
 			{
-				border-bottom: 0.4rem solid t("primary");
+				border-bottom: 0.5rem solid t("primary");
 			}
 		}
 	}
@@ -163,7 +163,7 @@ header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
 	align-items: center;
 }
 
-header i, section:nth-of-type(2) i
+header > a, header i, section:nth-of-type(2) i
 {
 	// Icônes de la barre de navigation et de la section
 	//	à propos du développeur.
@@ -222,7 +222,7 @@ header i, section:nth-of-type(2) i
 	@include themedColor()
 	{
 		color: t("background");
-		background: t("primary");
+		background-color: t("primary");
 	}
 }
 
