@@ -12,6 +12,7 @@ import "@/components/Footer.scss";
 // Importation des dépendances.
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { Poppins } from "@next/font/google";
 import { useRouter } from "next/router";
 
 // Importation des types.
@@ -20,6 +21,13 @@ import type { AppProps } from "next/app";
 // Importation des composants.
 const Header = dynamic( () => import( "@/components/Header" ) );
 const Footer = dynamic( () => import( "@/components/Footer" ) );
+
+// Création de la police de caractères Roboto.
+const poppins = Poppins( {
+	weight: [ "400", "500", "600", "700" ],
+	subsets: [ "latin" ],
+	display: "swap"
+} );
 
 export default function App( { Component, pageProps }: AppProps )
 {
@@ -69,6 +77,16 @@ export default function App( { Component, pageProps }: AppProps )
 				<h1>This website created with <a href="https://nextjs.org/">NextJS</a> requires JavaScript to run.</h1>
 				<h2>Click <a href="https://www.whatismybrowser.com/detect/is-javascript-enabled">here</a> to be redirected to an external site to help you solve this issue.</h2>
 			</noscript>
+
+			{/* Injection de règles de style CSS */}
+			<style jsx global>
+				{`
+					html
+					{
+						font-family: ${ poppins.style.fontFamily };
+					}
+				`}
+			</style>
 
 			{/* Affichage de l'en-tête du site */}
 			<Header />
