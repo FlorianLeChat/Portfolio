@@ -46,7 +46,7 @@ export default function App( { Component, pageProps }: AppProps )
 				<meta name="description" content={process.env[ "NEXT_PUBLIC_DESCRIPTION" ]} />
 				<meta name="keywords" content={process.env[ "NEXT_PUBLIC_TAGS" ]} />
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-				<meta name="theme-color" content="#0085ff" />
+				<meta name="theme-color" content="#306cc4" />
 
 				<meta property="og:type" content="website" />
 				<meta property="og:url" content={process.env[ "NEXT_PUBLIC_URL" ]} />
