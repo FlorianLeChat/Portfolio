@@ -9,10 +9,12 @@ import "./index.scss";
 import "@/components/Header.scss";
 import "@/components/Footer.scss";
 import "@/components/ScrollTop.scss";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 // Importation des dépendances.
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import { config } from "@fortawesome/fontawesome-svg-core";
 import { Poppins } from "@next/font/google";
 import { useRouter } from "next/router";
 
@@ -23,6 +25,10 @@ import type { AppProps } from "next/app";
 const Header = dynamic( () => import( "@/components/Header" ) );
 const Footer = dynamic( () => import( "@/components/Footer" ) );
 const ScrollTop = dynamic( () => import( "@/components/ScrollTop" ) );
+
+// Modification de la configuration de Font Awesome.
+// 	Source : https://fontawesome.com/docs/web/use-with/react/use-with
+config.autoAddCss = false;
 
 // Création de la police de caractères Roboto.
 const poppins = Poppins( {
