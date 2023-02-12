@@ -46,7 +46,7 @@ header
 				background-color: getThemedColor("background");
 			}
 
-			&[class = display-nav-list]
+			&[class = show]
 			{
 				// Affichage du menu de navigation.
 				width: 100%;
