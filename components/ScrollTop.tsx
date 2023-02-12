@@ -23,7 +23,7 @@ export default function ScrollTop()
 		window.addEventListener( "scroll", onScroll );
 
 		return () => window.removeEventListener( "scroll", onScroll );
-	} );
+	}, [] );
 
 	// Affichage conditionnel du rendu HTML du composant.
 	if ( showButton )

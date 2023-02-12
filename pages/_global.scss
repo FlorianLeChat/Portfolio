@@ -27,6 +27,7 @@ html
 {
 	// Document HTML.
 	width: 95%;
+	cursor: unset;
 	margin: 0 auto;
 	max-width: 1024px;
 	transition: background-color 100ms linear;
@@ -176,12 +177,11 @@ header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
 	align-items: center;
 }
 
-header > a, header svg, section:nth-of-type(2) svg
+header > a, header button, section:nth-of-type(2) button
 {
-	// Icônes de la barre de navigation et de la section
+	// Boutons de la barre de navigation et de la section
 	//	à propos du développeur.
 	margin: 0.5rem;
-	cursor: pointer;
 	z-index: 1;
 	display: flex;
 	position: relative;
@@ -189,12 +189,12 @@ header > a, header svg, section:nth-of-type(2) svg
 	border-radius: 50%;
 	justify-content: center;
 
-	&:hover
+	&:hover svg
 	{
 		// Effet de survol.
 		@include themedColor()
 		{
-			color: t("$background");
+			color: t("background");
 		}
 	}
 
@@ -206,24 +206,26 @@ header > a, header svg, section:nth-of-type(2) svg
 		z-index: -1;
 		content: "";
 		position: absolute;
-		transition: width 250ms ease-in-out, height 250ms ease-in-out;
 		border-radius: 50%;
+		transition-duration: 250ms;
+		transition-property: width, height, border;
+		transition-timing-function: ease-in-out;
 
 		@include themedColor()
 		{
-			background-color: t("$primary");
+			background-color: t("primary");
 		}
 	}
 
 	&:hover::after
 	{
-		// Sélection de l'arrrière-plan de l'icône.
+		// Sélection de l'arrière-plan de l'icône.
 		width: 100%;
 		height: 100%;
 
 		@include themedColor()
 		{
-			border: 0.25rem solid t("$primary");
+			border: 0.25rem solid t("primary");
 		}
 	}
 }
