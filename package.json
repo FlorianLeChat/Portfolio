@@ -14,12 +14,13 @@
   "dependencies": {
     "next": "~13.1",
     "react": "~18.2",
+    "devicon": "~2.15",
     "@next/font": "~13.1",
     "sanitize.css": "~13.0",
-	"@fortawesome/react-fontawesome": "~0.2",
-	"@fortawesome/fontawesome-svg-core": "~6.3",
-	"@fortawesome/free-solid-svg-icons": "~6.3",
-	"@fortawesome/free-brands-svg-icons": "~6.3"
+    "@fortawesome/react-fontawesome": "~0.2",
+    "@fortawesome/fontawesome-svg-core": "~6.3",
+    "@fortawesome/free-solid-svg-icons": "~6.3",
+    "@fortawesome/free-brands-svg-icons": "~6.3"
 },
   "devDependencies": {
     "@types/node": "~18.11",
