@@ -12,6 +12,7 @@ header
 		// Logo du site.
 		width: 3rem;
 		height: 3rem;
+		margin: 0.5rem;
 		font-size: 1.25rem;
 		font-weight: 700;
 		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
@@ -120,9 +121,10 @@ header
 	svg[class *= fa]
 	{
 		// Icône des boutons.
-		width: 1.5rem;
-		height: 1.5rem;
-		vertical-align: bottom;
+		width: 1.75rem;
+		height: 1.75rem;
+		margin: 0.5rem;
+		vertical-align: middle;
 
 		@include themedColor()
 		{
