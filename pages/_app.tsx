@@ -3,13 +3,8 @@
 // 	Source : https://nextjs.org/docs/advanced-features/custom-app
 //
 
-// Importation des feuilles de style CSS.
+// Importation de la feuille de style CSS globale.
 import "./_global.scss";
-import "./index.scss";
-import "@/components/Header.scss";
-import "@/components/Footer.scss";
-import "@/components/ScrollTop.scss";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 
 // Importation des dépendances.
 import Head from "next/head";
