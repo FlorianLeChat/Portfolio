@@ -40,9 +40,9 @@ section:first-of-type
 		span
 		{
 			// Prénom et nom du développeur.
-			@include themedColor()
+			@include themeColors()
 			{
-				color: t("primary");
+				color: getThemedColor("primary");
 			}
 		}
 	}
@@ -87,10 +87,10 @@ section:nth-of-type(2) article
 	border-radius: 1rem;
 	justify-content: space-between;
 
-	@include themedColor()
+	@include themeColors()
 	{
-		box-shadow: t("container-shadow");
-		background-color: t("background-alt");
+		box-shadow: getThemedColor("container-shadow");
+		background-color: getThemedColor("background-alt");
 	}
 
 	@media (max-width: 1024px)
@@ -170,10 +170,10 @@ section:nth-of-type(2) article
 					font-weight: 700;
 					border-radius: 5rem;
 
-					@include themedColor()
+					@include themeColors()
 					{
-						color: t("primary-alt");
-						background-color: t("primary-light");
+						color: getThemedColor("primary-alt");
+						background-color: getThemedColor("primary-light");
 					}
 				}
 			}
@@ -190,10 +190,10 @@ section:nth-of-type(2) article
 					height: 1.5rem;
 					padding: 0.5rem;
 
-					@include themedColor()
+					@include themeColors()
 					{
-						color: t("primary");
-						border: 0.2rem solid t("primary");
+						color: getThemedColor("primary");
+						border: 0.2rem solid getThemedColor("primary");
 					}
 				}
 			}
@@ -227,10 +227,10 @@ section:nth-of-type(3) article
 		flex-direction: column;
 		justify-content: center;
 
-		@include themedColor()
+		@include themeColors()
 		{
-			box-shadow: t("container-shadow");
-			background-color: t("background-alt");
+			box-shadow: getThemedColor("container-shadow");
+			background-color: getThemedColor("background-alt");
 		}
 
 		i
@@ -253,9 +253,9 @@ section:nth-of-type(3) article
 			transition: transform 200ms linear;
 			border-radius: 1.5;
 
-			@include themedColor()
+			@include themeColors()
 			{
-				background-color: t("primary-alt");
+				background-color: getThemedColor("primary-alt");
 			}
 		}
 

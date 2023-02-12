@@ -29,17 +29,17 @@ aside
 		padding: 1rem 1.3rem;
 		border-radius: 50%;
 
-		@include themedColor()
+		@include themeColors()
 		{
-			color: t("background");
-			background-color: t("primary");
+			color: getThemedColor("background");
+			background-color: getThemedColor("primary");
 		}
 
 		&:hover
 		{
-			@include themedColor()
+			@include themeColors()
 			{
-				background-color: t("primary-alt");
+				background-color: getThemedColor("primary-alt");
 			}
 		}
 	}

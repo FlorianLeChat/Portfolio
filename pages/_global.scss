@@ -34,10 +34,10 @@ html
 	line-height: 1.5;
 	scroll-behavior: smooth;
 
-	@include themedColor()
+	@include themeColors()
 	{
-		color: t("foreground");
-		background-color: t("background");
+		color: getThemedColor("foreground");
+		background-color: getThemedColor("background");
 	}
 }
 
@@ -46,9 +46,9 @@ h1, h2, h3, h4, h5, h6
 	// Titres de niveau 1 à 6.
 	line-height: 1.1;
 
-	@include themedColor()
+	@include themeColors()
 	{
-		color: t("foreground-alt");
+		color: getThemedColor("foreground-alt");
 	}
 }
 
@@ -98,18 +98,18 @@ section:first-of-type button, section:last-of-type button
 	font-weight: 600;
 	border-radius: 5rem;
 
-	@include themedColor()
+	@include themeColors()
 	{
-		color: t("background");
-		background-color: t("primary");
+		color: getThemedColor("background");
+		background-color: getThemedColor("primary");
 	}
 
 	&:hover
 	{
 		// Effet de survol.
-		@include themedColor()
+		@include themeColors()
 		{
-			background-color: t("primary-alt");
+			background-color: getThemedColor("primary-alt");
 		}
 	}
 
@@ -162,9 +162,9 @@ section
 			content: "";
 			display: block;
 
-			@include themedColor()
+			@include themeColors()
 			{
-				border-bottom: 0.5rem solid t("primary");
+				border-bottom: 0.5rem solid getThemedColor("primary");
 			}
 		}
 	}
@@ -192,9 +192,9 @@ header > a, header button, section:nth-of-type(2) button
 	&:hover svg
 	{
 		// Effet de survol.
-		@include themedColor()
+		@include themeColors()
 		{
-			color: t("background");
+			color: getThemedColor("background");
 		}
 	}
 
@@ -211,9 +211,9 @@ header > a, header button, section:nth-of-type(2) button
 		transition-property: width, height, border;
 		transition-timing-function: ease-in-out;
 
-		@include themedColor()
+		@include themeColors()
 		{
-			background-color: t("primary");
+			background-color: getThemedColor("primary");
 		}
 	}
 
@@ -223,9 +223,9 @@ header > a, header button, section:nth-of-type(2) button
 		width: 100%;
 		height: 100%;
 
-		@include themedColor()
+		@include themeColors()
 		{
-			border: 0.25rem solid t("primary");
+			border: 0.25rem solid getThemedColor("primary");
 		}
 	}
 }
@@ -233,10 +233,10 @@ header > a, header button, section:nth-of-type(2) button
 ::selection
 {
 	// Sélection des textes.
-	@include themedColor()
+	@include themeColors()
 	{
-		color: t("background");
-		background-color: t("primary");
+		color: getThemedColor("background");
+		background-color: getThemedColor("primary");
 	}
 }
 
@@ -251,9 +251,9 @@ header > a, header button, section:nth-of-type(2) button
 ::-webkit-scrollbar-track
 {
 	// Chemin de la barre de défilement.
-	@include themedColor()
+	@include themeColors()
 	{
-		background-color: t("background-alt");
+		background-color: getThemedColor("background-alt");
 	}
 }
 
@@ -262,18 +262,18 @@ header > a, header button, section:nth-of-type(2) button
 	// Boutons haut/bas de la barre de défilement.
 	border-radius: 0.5rem;
 
-	@include themedColor()
+	@include themeColors()
 	{
-		border: 0.25rem solid t("background");
-		background-color: t("primary");
+		border: 0.25rem solid getThemedColor("background");
+		background-color: getThemedColor("primary");
 	}
 
 	&:hover
 	{
 		// Effet de survol.
-		@include themedColor()
+		@include themeColors()
 		{
-			background-color: t("primary-alt");
+			background-color: getThemedColor("primary-alt");
 		}
 	}
 }
