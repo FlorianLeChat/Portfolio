@@ -90,13 +90,18 @@ export default function Home()
 
 				<article>
 					<div>
-						{/* <i className="devicon-html5-plain colored"></i> */}
+						<i className="devicon-html5-plain colored"></i>
 						HTML
 					</div>
 
 					<div>
-						{/* <i className="devicon-css3-plain colored"></i> */}
+						<i className="devicon-css3-plain colored"></i>
 						CSS
+					</div>
+
+					<div>
+						<i className="devicon-nodejs-plain colored"></i>
+						NodeJS
 					</div>
 				</article>
 			</section>
