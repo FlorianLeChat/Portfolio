@@ -28,7 +28,7 @@ $themes:
 	)
 );
 
-@mixin themedColor()
+@mixin themeColors()
 {
 	// Itération sur les thèmes.
 	@each $theme, $map in $themes
@@ -55,7 +55,7 @@ $themes:
 	}
 }
 
-@function t($key)
+@function getThemedColor($key)
 {
 	// Récupération des variables de thèmes.
 	@return map-get($theme-map, $key);

@@ -13,8 +13,8 @@ footer
 	flex-direction: column;
 	justify-content: center;
 
-	@include themedColor()
+	@include themeColors()
 	{
-		background-color: t("background-alt");
+		background-color: getThemedColor("background-alt");
 	}
 }

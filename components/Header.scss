@@ -17,10 +17,10 @@ header
 		font-weight: 700;
 		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
 
-		@include themedColor()
+		@include themeColors()
 		{
-			color: t("primary");
-			border: 0.2rem solid t("primary");
+			color: getThemedColor("primary");
+			border: 0.2rem solid getThemedColor("primary");
 		}
 	}
 
@@ -41,9 +41,9 @@ header
 			transition: width 200ms ease-in-out;
 			flex-direction: column;
 
-			@include themedColor()
+			@include themeColors()
 			{
-				background-color: t("background");
+				background-color: getThemedColor("background");
 			}
 
 			&[class = display-nav-list]
@@ -69,17 +69,17 @@ header
 				padding: 0 0 0.15rem 0;
 				position: relative;
 
-				@include themedColor()
+				@include themeColors()
 				{
-					color: t("foreground-alt");
+					color: getThemedColor("foreground-alt");
 				}
 
 				&:hover
 				{
 					// Effet au survol.
-					@include themedColor()
+					@include themeColors()
 					{
-						color: t("primary");
+						color: getThemedColor("primary");
 					}
 
 					&::before
@@ -92,9 +92,9 @@ header
 				&:active
 				{
 					// Effet à la sélection.
-					@include themedColor()
+					@include themeColors()
 					{
-						color: t("primary-alt");
+						color: getThemedColor("primary-alt");
 					}
 				}
 
@@ -109,9 +109,9 @@ header
 					position: absolute;
 					transition: width 200ms ease-out;
 
-					@include themedColor()
+					@include themeColors()
 					{
-						background-color: t("primary");
+						background-color: getThemedColor("primary");
 					}
 				}
 			}
@@ -126,9 +126,9 @@ header
 		margin: 0.5rem;
 		vertical-align: middle;
 
-		@include themedColor()
+		@include themeColors()
 		{
-			color: t("foreground-alt");
+			color: getThemedColor("foreground-alt");
 		}
 
 		&[class *= fa-bars]
