@@ -42,7 +42,7 @@ export default function App( { Component, pageProps }: AppProps )
 	const { basePath } = useRouter();
 
 	// Déclaration des variables d'état.
-	const [ theme, setTheme ] = useState( "" );
+	const [ theme, setTheme ] = useState( "light" );
 
 	// Détection du thème par défaut de l'utilisateur.
 	useEffect( () =>
@@ -54,7 +54,7 @@ export default function App( { Component, pageProps }: AppProps )
 		// 	 stockage local du navigateur de l'utilisateur.
 		const checkUserTheme = () =>
 		{
-			setTheme( localStorage.getItem( "default-theme" ) || theme.matches ? "dark" : "light" );
+			setTheme( localStorage.getItem( "default-theme" ) || ( theme.matches ? "dark" : "light" ) );
 		};
 
 		// On déclenche après la vérification au montage du composant.

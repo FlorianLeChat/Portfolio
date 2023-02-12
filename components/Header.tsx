@@ -2,8 +2,8 @@
 // Composant de l'en-tête générique du site.
 //
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useContext } from "react";
 import { faMoon, faSun, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useState, useContext, useEffect } from "react";
 
 import { ThemeContext } from "@/utils/ThemeContext";
 
@@ -25,6 +25,12 @@ export default function Header()
 	{
 		setShowMenu( !showMenu );
 	}
+
+	// Sauvegarde du thème par défaut dans le stockage local.
+	useEffect( () =>
+	{
+		localStorage.setItem( "default-theme", theme );
+	}, [ theme ] );
 
 	// Affichage du rendu HTML du composant.
 	return (
