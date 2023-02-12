@@ -12,6 +12,7 @@ header
 		// Logo du site.
 		width: 3rem;
 		height: 3rem;
+		font-size: 1.25rem;
 		font-weight: 700;
 		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
 
@@ -112,31 +113,32 @@ header
 						background-color: t("primary");
 					}
 				}
-
-				svg
-				{
-					// Icône des boutons.
-					width: 1.75rem;
-					height: 1.75rem;
-
-					@include themedColor()
-					{
-						color: t("foreground-alt");
-					}
-				}
 			}
 		}
 	}
 
-	i[class *= fa-bars]
+	svg[class *= fa]
 	{
-		// Icône du bouton d'affichage du menu de navigation.
-		display: none;
+		// Icône des boutons.
+		width: 1.5rem;
+		height: 1.5rem;
+		vertical-align: bottom;
 
-		@media (max-width: 768px)
+		@include themedColor()
 		{
-			// Affichage de l'icône sur les écrans de petite taille.
-			display: flex;
+			color: t("foreground-alt");
+		}
+
+		&[class *= fa-bars]
+		{
+			// Icône du bouton d'affichage du menu de navigation.
+			display: none;
+
+			@media (max-width: 768px)
+			{
+				// Affichage de l'icône sur les écrans de petite taille.
+				display: flex;
+			}
 		}
 	}
 }
