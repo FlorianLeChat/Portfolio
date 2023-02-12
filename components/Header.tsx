@@ -1,6 +1,9 @@
 //
 // Composant de l'en-tête générique du site.
 //
+import { faMoon, faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function Header()
 {
 	// Affichage du rendu HTML du composant.
@@ -27,12 +30,12 @@ export default function Header()
 
 				{/* Bouton de basculement en thème sombre/clair */}
 				<button>
-					<i className="icon-normal fas fa-moon"></i>
+					<FontAwesomeIcon icon={faMoon} />
 				</button>
 
 				{/* Bouton pour ouvrir le menu de navigation */}
 				<button>
-					<i className="icon-normal fas fa-bars"></i>
+					<FontAwesomeIcon icon={faBars} />
 				</button>
 			</nav>
 		</header>

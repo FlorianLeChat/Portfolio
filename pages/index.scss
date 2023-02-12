@@ -184,7 +184,7 @@ section:nth-of-type(2) article
 				// Liens vers le code source.
 				margin-top: 1.2em;
 
-				i
+				svg
 				{
 					// Icône de la technologie.
 					width: 3rem;
@@ -232,7 +232,7 @@ section:nth-of-type(3) article
 			background-color: t("background-alt");
 		}
 
-		i
+		svg
 		{
 			// Icônes des compétences.
 			font-size: 3rem;
@@ -278,7 +278,7 @@ section:last-of-type ul
 		margin-right: 0.5em;
 		margin-top: 0.3em;
 
-		i
+		svg
 		{
 			// Icônes des réseaux sociaux.
 			margin-right: 0.25rem;

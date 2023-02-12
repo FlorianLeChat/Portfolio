@@ -1,6 +1,10 @@
 //
 // Route vers la page d'accueil du site.
 //
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
 export default function Home()
 {
 	// Affichage du rendu HTML de la page.
@@ -24,14 +28,14 @@ export default function Home()
 
 					{/* Bouton de téléchargement du CV */}
 					<a href="https://www.google.com/">
-						<button>C.V</button>
+						<button>Télécharger le C.V</button>
 					</a>
 				</article>
 			</section>
 
 			<section id="projects">
 				{/* Section des projets */}
-				<h2>Projects</h2>
+				<h2>Projets</h2>
 
 				<article>
 					{/* Image du projet */}
@@ -67,13 +71,13 @@ export default function Home()
 						<ul>
 							<li>
 								<a href="https://www.google.com/" target="_blank" rel="noopener">
-									<i className="fas fa-code"></i>
+									<FontAwesomeIcon icon={faCode} />
 								</a>
 							</li>
 
 							<li>
 								<a href="https://www.google.com/" target="_blank">
-									<i className="fas fa-external-link-alt"></i>
+									<FontAwesomeIcon icon={faExternalLinkAlt} />
 								</a>
 							</li>
 						</ul>
@@ -82,91 +86,31 @@ export default function Home()
 			</section>
 
 			<section id="skills">
-				<h2>Tech Stack</h2>
+				<h2>Compétences</h2>
 
 				<article>
 					<div>
-						<i className="devicon-html5-plain colored"></i>
+						{/* <i className="devicon-html5-plain colored"></i> */}
 						HTML
 					</div>
 
 					<div>
-						<i className="devicon-css3-plain colored"></i>
+						{/* <i className="devicon-css3-plain colored"></i> */}
 						CSS
-					</div>
-
-					<div>
-						<i className="devicon-javascript-plain colored"></i>
-						JavaScript
-					</div>
-
-					<div>
-						<i className="devicon-react-original colored"></i>
-						React.js
-					</div>
-
-					<div>
-						<i className="devicon-redux-original colored"></i>
-						Redux
-					</div>
-
-					<div>
-						<i className="devicon-nextjs-original colored"></i>
-						Next.js
-					</div>
-
-					<div>
-						<i className="devicon-typescript-plain colored"></i>
-						TypeScript
-					</div>
-
-					<div>
-						<i className="devicon-nodejs-plain colored"></i>
-						Node.js
-					</div>
-
-					<div>
-						<i className="devicon-express-original colored"></i>
-						Express.js
-					</div>
-
-					<div>
-						<i className="devicon-mongodb-plain colored"></i>
-						MongoDB
-					</div>
-
-					<div>
-						<i className="devicon-git-plain colored"></i>
-						Git
-					</div>
-
-					<div>
-						<i className="devicon-linux-plain"></i>
-						Linux
-					</div>
-
-					<div>
-						<i className="devicon-docker-plain colored"></i>
-						Docker
-					</div>
-
-					<div>
-						<i className="devicon-vim-plain colored"></i>
-						Vim
 					</div>
 				</article>
 			</section>
 
 			<section id="contact">
 				{/* Section de contact */}
-				<h2>Restons en contact</h2>
+				<h2>Contact</h2>
 
 				{/* Liens vers les réseaux sociaux */}
 				<ul>
 					<li>
 						<a href="mailto:floriantrayon942@gmail.com">
 							<button>
-								<i className="fas icon fa-envelope"></i>
+								<FontAwesomeIcon icon={faEnvelope} />
 								Courriel
 							</button>
 						</a>
@@ -175,7 +119,7 @@ export default function Home()
 					<li>
 						<a href="https://www.google.com/">
 							<button>
-								<i className="fab icon fa-github"></i>
+								<FontAwesomeIcon icon={faGithub} />
 								GitHub
 							</button>
 						</a>
@@ -184,7 +128,7 @@ export default function Home()
 					<li>
 						<a href="https://www.google.com/">
 							<button>
-								<i className="fab icon fa-linkedin"></i>
+								<FontAwesomeIcon icon={faLinkedin} />
 								LinkedIn
 							</button>
 						</a>
