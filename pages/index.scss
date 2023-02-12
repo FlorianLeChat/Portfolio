@@ -154,6 +154,7 @@ section:nth-of-type(2) article
 			// Informations générales du projet.
 			display: flex;
 			flex-wrap: wrap;
+			align-items: center;
 			justify-content: center;
 
 			&:first-of-type
@@ -185,15 +186,24 @@ section:nth-of-type(2) article
 
 				svg
 				{
-					// Icône de la technologie.
+					// Icône de chaque lien.
 					width: 1.5rem;
 					height: 1.5rem;
 					padding: 0.5rem;
+					border-radius: 50%;
 
 					@include themeColors()
 					{
-						color: getThemedColor("primary");
 						border: 0.2rem solid getThemedColor("primary");
+					}
+
+					&:not(:hover)
+					{
+						// État initial de l'icône (sans effet)
+						@include themeColors()
+						{
+							color: getThemedColor("primary");
+						}
 					}
 				}
 			}
