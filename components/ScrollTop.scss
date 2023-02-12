@@ -7,10 +7,8 @@ aside
 	right: 2rem;
 	bottom: 3rem;
 	z-index: 1;
-	display: flex;
 	position: fixed;
 	transition: transform 200ms ease-in-out;
-	justify-content: flex-end;
 
 	@media (max-width: 1024px)
 	{
