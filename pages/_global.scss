@@ -7,8 +7,20 @@
 @import "sanitize.css/ui-monospace";
 @import "sanitize.css/reduce-motion";
 
+// Importation des dépendances externes.
+@import "../node_modules/devicon/devicon.min.css";
+@import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
+
 // Importation des variables de thème.
 @import "_colors";
+
+// Importation des règles CSS des pages.
+@import "index";
+
+// Importation des règles CSS des composants React.
+@import "../components/Header";
+@import "../components/Footer";
+@import "../components/ScrollTop";
 
 // Modifications globales.
 html
@@ -30,7 +42,7 @@ html
 
 h1, h2, h3, h4, h5, h6
 {
-	// Titres
+	// Titres de niveau 1 à 6.
 	line-height: 1.1;
 
 	@include themedColor()
@@ -47,7 +59,7 @@ h1
 
 h2
 {
-	// Titre secondaire (sections).
+	// Titre secondaire.
 	font-size: 2rem;
 }
 
