@@ -4,15 +4,14 @@
 section:first-of-type
 {
 	// Informations sur le développeur.
-	margin-top: 6em;
+	margin-top: 6rem;
 	justify-content: space-between;
 
 	@media (max-width: 768px)
 	{
 		// Modification de l'apparence de la section sur les
 		// 	écrans de petite taille.
-		margin-top: 2.5em;
-		padding-bottom: 1em;
+		padding-bottom: 1rem;
 		flex-direction: column;
 	}
 
@@ -58,19 +57,19 @@ section:first-of-type
 			// Modification des marges extérieures sur les
 			//	écrans de petite taille.
 			width: 100%;
-			margin-top: 2.5em;
+			margin-top: 2.5rem;
 		}
 
 		p
 		{
 			// Résumé du développeur.
-			font-size: 1.1rem;
+			font-size: 1.15rem;
 		}
 
 		button
 		{
 			// Bouton de téléchargement du CV.
-			margin-top: 2.2em;
+			margin-top: 2rem;
 		}
 	}
 }
@@ -79,13 +78,13 @@ section:nth-of-type(2) article
 {
 	// Conteneur des projets.
 	width: 95%;
-	margin: 2em auto;
-	padding: 2em;
+	margin: 2rem auto;
+	padding: 2rem;
 	display: flex;
 	max-width: 1024px;
 	text-align: center;
 	align-items: center;
-	border-radius: 1em;
+	border-radius: 1rem;
 	justify-content: space-between;
 
 	@include themedColor()
@@ -98,7 +97,7 @@ section:nth-of-type(2) article
 	{
 		// Réduction de l'apparence du conteneur sur les
 		//	écrans de taille moyenne.
-		padding: 1.5em;
+		padding: 1.5rem;
 		max-width: 450px;
 		flex-direction: column;
 	}
@@ -117,7 +116,7 @@ section:nth-of-type(2) article
 	img
 	{
 		// Image de présentation du projet.
-		border-radius: 0.5em;
+		border-radius: 0.5rem;
 
 		@media (max-width: 1024px)
 		{
@@ -126,7 +125,7 @@ section:nth-of-type(2) article
 			margin: 0 auto;
 			max-width: 100%;
 			max-height: 100%;
-			margin-bottom: 2em;
+			margin-bottom: 2rem;
 		}
 	}
 
@@ -134,7 +133,7 @@ section:nth-of-type(2) article
 	{
 		// Conteneur des informations du projet.
 		flex-basis: 50%;
-		margin-left: 2em;
+		margin-left: 2rem;
 
 		@media (max-width: 1024px)
 		{
@@ -147,7 +146,7 @@ section:nth-of-type(2) article
 		p
 		{
 			// Description du projet.
-			margin: 1.2em 0;
+			margin: 1.25rem 0;
 		}
 
 		ul
@@ -165,11 +164,11 @@ section:nth-of-type(2) article
 				li
 				{
 					// Conteneur de chaque technologie.
-					margin: 0.3em 0.2em;
-					padding: 0.4em 0.6em;
-					font-size: 0.8rem;
+					margin: 0.25rem 0.25rem;
+					padding: 0.5rem 0.5rem;
+					font-size: 0.85rem;
 					font-weight: 700;
-					border-radius: 5em;
+					border-radius: 5rem;
 
 					@include themedColor()
 					{
@@ -182,13 +181,14 @@ section:nth-of-type(2) article
 			&:last-of-type
 			{
 				// Liens vers le code source.
-				margin-top: 1.2em;
+				margin-top: 1.25rem;
 
 				svg
 				{
 					// Icône de la technologie.
-					width: 3rem;
-					height: 3rem;
+					width: 1.5rem;
+					height: 1.5rem;
+					padding: 0.5rem;
 
 					@include themedColor()
 					{
@@ -204,7 +204,7 @@ section:nth-of-type(2) article
 section:nth-of-type(3) article
 {
 	// Conteneur des compétences.
-	gap: 1em;
+	gap: 1rem;
 	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
@@ -214,15 +214,15 @@ section:nth-of-type(3) article
 	div
 	{
 		// Conteneur de chaque compétence.
-		width: 10em;
-		height: 10em;
+		width: 9rem;
+		height: 9rem;
 		display: flex;
 		overflow: hidden;
 		position: relative;
-		font-size: 0.8rem;
+		font-size: 0.85rem;
 		font-weight: 500;
 		align-items: center;
-		border-radius: 1.5em;
+		border-radius: 1.5rem;
 		flex-direction: column;
 		justify-content: center;
 
@@ -236,7 +236,7 @@ section:nth-of-type(3) article
 		{
 			// Icônes des compétences.
 			font-size: 3rem;
-			margin-bottom: 0.2em;
+			margin-bottom: 0.25rem;
 		}
 
 		&::before
@@ -275,12 +275,15 @@ section:last-of-type ul
 	button
 	{
 		// Boutons vers les réseaux sociaux.
-		margin-right: 0.5em;
-		margin-top: 0.3em;
+		display: flex;
+		margin-top: 0.3rem;
+		align-items: center;
+		margin-right: 0.5rem;
 
 		svg
 		{
 			// Icônes des réseaux sociaux.
+			height: 1rem;
 			margin-right: 0.25rem;
 		}
 	}

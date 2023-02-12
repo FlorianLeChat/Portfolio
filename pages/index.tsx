@@ -117,7 +117,7 @@ export default function Home()
 					</li>
 
 					<li>
-						<a href="https://www.google.com/">
+						<a href="https://www.google.com/" target="_blank">
 							<button>
 								<FontAwesomeIcon icon={faGithub} />
 								GitHub
@@ -126,7 +126,7 @@ export default function Home()
 					</li>
 
 					<li>
-						<a href="https://www.google.com/">
+						<a href="https://www.google.com/" target="_blank">
 							<button>
 								<FontAwesomeIcon icon={faLinkedin} />
 								LinkedIn
