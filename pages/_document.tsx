@@ -8,8 +8,9 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document()
 {
+	// Affichage du rendu HTML de la page.
 	return (
-		<Html className="theme--bright" lang="en" dir="auto" prefix="og: https://ogp.me/ns#">
+		<Html lang="en" dir="auto" prefix="og: https://ogp.me/ns#">
 			<Head />
 			<body>
 				<Main />

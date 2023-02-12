@@ -2,7 +2,7 @@
 // 	Source : https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995
 $themes:
 (
-	bright:
+	light:
 	(
 		// Thème clair.
 		background: rgb(245, 246, 247),
@@ -34,7 +34,7 @@ $themes:
 	@each $theme, $map in $themes
 	{
 		// Création des classes de thèmes.
-		.theme--#{$theme} &
+		.theme-#{$theme} &
 		{
 			// Définition des variables de thèmes (non globales).
 			$theme-map: () !global;

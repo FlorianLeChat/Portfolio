@@ -30,9 +30,14 @@ html
 	cursor: unset;
 	margin: 0 auto;
 	max-width: 1024px;
-	transition: background-color 100ms linear;
 	line-height: 1.5;
 	scroll-behavior: smooth;
+}
+
+#__next > div
+{
+	// Conteneur principal.
+	transition: background-color 100ms linear;
 
 	@include themeColors()
 	{

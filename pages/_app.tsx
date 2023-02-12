@@ -12,9 +12,13 @@ import dynamic from "next/dynamic";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { Poppins } from "@next/font/google";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 // Importation des types.
 import type { AppProps } from "next/app";
+
+// Importation des fonctions utilitaires.
+import { ThemeContext } from "@/utils/ThemeContext";
 
 // Importation des composants.
 const Header = dynamic( () => import( "@/components/Header" ) );
@@ -34,8 +38,34 @@ const poppins = Poppins( {
 
 export default function App( { Component, pageProps }: AppProps )
 {
-	// Déclaration des constantes.
+	// Création des constantes.
 	const { basePath } = useRouter();
+
+	// Déclaration des variables d'état.
+	const [ theme, setTheme ] = useState( "" );
+
+	// Détection du thème par défaut de l'utilisateur.
+	useEffect( () =>
+	{
+		// On vérifie si le navigateur de l'utilisateur supporte la fonctionnalité.
+		const theme = window.matchMedia( "(prefers-color-scheme: dark)" );
+
+		// On vérifie ensuite le thème par défaut ou celui enregistré dans le
+		// 	 stockage local du navigateur de l'utilisateur.
+		const checkUserTheme = () =>
+		{
+			setTheme( localStorage.getItem( "default-theme" ) || theme.matches ? "dark" : "light" );
+		};
+
+		// On déclenche après la vérification au montage du composant.
+		checkUserTheme();
+
+		// On ajoute enfin deux écouteurs d'événements pour détecter les changements
+		//	du thème par défaut de l'utilisateur.
+		theme.addEventListener( "change", checkUserTheme );
+
+		return () => theme.removeEventListener( "change", checkUserTheme );
+	}, [] );
 
 	// Génération de la structure de la page.
 	return (
@@ -65,14 +95,14 @@ export default function App( { Component, pageProps }: AppProps )
 				<title>{`${ process.env[ "NEXT_PUBLIC_TITLE" ] }`}</title>
 
 				{/* Icônes et manifeste du document */}
-				<link rel="icon" type="image/webp" sizes="16x16" href={`${ basePath }/assets/favicons/16x16.webp`} />
-				<link rel="icon" type="image/webp" sizes="32x32" href={`${ basePath }/assets/favicons/32x32.webp`} />
-				<link rel="icon" type="image/webp" sizes="48x48" href={`${ basePath }/assets/favicons/48x48.webp`} />
-				<link rel="icon" type="image/webp" sizes="192x192" href={`${ basePath }/assets/favicons/192x192.webp`} />
-				<link rel="icon" type="image/webp" sizes="512x512" href={`${ basePath }/assets/favicons/512x512.webp`} />
+				<link rel="icon" type="image/webp" sizes="16x16" href={basePath + "/assets/favicons/16x16.webp"} />
+				<link rel="icon" type="image/webp" sizes="32x32" href={basePath + "/assets/favicons/32x32.webp"} />
+				<link rel="icon" type="image/webp" sizes="48x48" href={basePath + "/assets/favicons/48x48.webp"} />
+				<link rel="icon" type="image/webp" sizes="192x192" href={basePath + "/assets/favicons/192x192.webp"} />
+				<link rel="icon" type="image/webp" sizes="512x512" href={basePath + "/assets/favicons/512x512.webp"} />
 
-				<link rel="apple-touch-icon" href={`${ basePath }/assets/favicons/180x180.webp`} />
-				<link rel="manifest" href={`${ basePath }/manifest.json`} />
+				<link rel="apple-touch-icon" href={basePath + "/assets/favicons/180x180.webp"} />
+				<link rel="manifest" href={basePath + "/manifest.json"} />
 			</Head>
 
 			{/* Avertissement page sans JavaScript */}
@@ -91,17 +121,22 @@ export default function App( { Component, pageProps }: AppProps )
 				`}
 			</style>
 
-			{/* Affichage de l'en-tête du site */}
-			<Header />
+			{/* Utilisation du contexte de thème. */}
+			<ThemeContext.Provider value={{ theme, setTheme }}>
+				<div className={"theme-" + theme}>
+					{/* Affichage de l'en-tête du site */}
+					<Header />
 
-			{/* Affichage du composant demandé */}
-			<Component {...pageProps} />
+					{/* Affichage du composant demandé */}
+					<Component {...pageProps} />
 
-			{/* Affichage du bouton de retour en haut de page */}
-			<ScrollTop />
+					{/* Affichage du bouton de retour en haut de page */}
+					<ScrollTop />
 
-			{/* Affichage du pied de page du site */}
-			<Footer />
+					{/* Affichage du pied de page du site */}
+					<Footer />
+				</div>
+			</ThemeContext.Provider>
 		</>
 	);
 }
