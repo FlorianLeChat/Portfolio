@@ -14,6 +14,13 @@ header
 		margin-right: 3rem;
 	}
 
+	@media (min-width: 768px) and (max-width: 1024px)
+	{
+		// Modification des marges extérieures sur les
+		//	écrans de taille moyenne.
+		margin-right: 1rem;
+	}
+
 	> a
 	{
 		// Logo du site.
