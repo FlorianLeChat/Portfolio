@@ -23,69 +23,64 @@
 @import "../components/ScrollTop";
 
 // Modifications globales.
-html
+body
 {
-	// Document HTML.
+	// Corps de la page.
 	width: 95%;
 	cursor: unset;
 	margin: 0 auto;
 	max-width: 1024px;
+	transition: background-color 100ms linear;
 	line-height: 1.5;
 	scroll-behavior: smooth;
-}
-
-#__next > div
-{
-	// Conteneur principal.
-	transition: background-color 100ms linear;
 
 	@include themeColors()
 	{
 		color: getThemedColor("foreground");
 		background-color: getThemedColor("background");
 	}
+}
 
-	> a
+#__next > a
+{
+	// Animation du logo GitHub.
+	&:hover path:nth-of-type(2)
 	{
-		// Animation du logo GitHub.
-		&:hover path:nth-of-type(2)
-		{
-			// Effet de survol.
-			animation: octocat-wave 560ms ease-in-out;
-
-			@media (max-width: 768px)
-			{
-				// Désactivation de l'animation sur les
-				//	écrans de petite taille.
-				animation: none;
-			}
-		}
-
-		svg
-		{
-			// Délimitation de la zone cliquable.
-			clip-path: polygon(0 0, 100% 0, 100% 100%)
-		}
+		// Effet de survol.
+		animation: octocat-wave 560ms ease-in-out;
 
 		@media (max-width: 768px)
 		{
-			path:nth-of-type(2)
-			{
-				// Animation du logo GitHub au chargement
-				//	de la page sur les écrans de petite taille.
-				animation: octocat-wave 560ms ease-in-out;
-			}
+			// Désactivation de l'animation sur les
+			//	écrans de petite taille.
+			animation: none;
 		}
+	}
 
-		@keyframes octocat-wave
+	svg
+	{
+		// Délimitation de la zone cliquable.
+		clip-path: polygon(0 0, 100% 0, 100% 100%);
+	}
+
+	@media (max-width: 768px)
+	{
+		path:nth-of-type(2)
 		{
-			0% { transform: rotate(0); }
-			20% { transform: rotate(-25deg); }
-			40% { transform: rotate(10deg); }
-			60% { transform: rotate(-25deg); }
-			80% { transform: rotate(10deg); }
-			100% { transform: rotate(0); }
+			// Animation du logo GitHub au chargement
+			//	de la page sur les écrans de petite taille.
+			animation: octocat-wave 560ms ease-in-out;
 		}
+	}
+
+	@keyframes octocat-wave
+	{
+		0% { transform: rotate(0); }
+		20% { transform: rotate(-25deg); }
+		40% { transform: rotate(10deg); }
+		60% { transform: rotate(-25deg); }
+		80% { transform: rotate(10deg); }
+		100% { transform: rotate(0); }
 	}
 }
 

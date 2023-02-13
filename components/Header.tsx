@@ -16,7 +16,17 @@ export default function Header()
 	// Basculement entre les thèmes sombre et clair.
 	function switchTheme()
 	{
-		setTheme( theme === "light" ? "dark" : "light" );
+		const html = document.querySelector( "html" );
+		const target = theme === "light" ? "dark" : "light";
+
+		if ( html )
+		{
+			// On signale à React que le changement de thème doit être
+			//	effectué de manière asynchrone.
+			html.className = "theme-" + target;
+		}
+
+		setTheme( target );
 	}
 
 	// Affichage ou disparition du menu de navigation.
