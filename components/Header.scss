@@ -7,6 +7,13 @@ header
 	height: 6rem;
 	justify-content: space-between;
 
+	@media (max-width: 768px)
+	{
+		// Modification des marges extérieures sur les
+		//	écrans de petite taille.
+		margin-right: 3rem;
+	}
+
 	> a
 	{
 		// Logo du site.
