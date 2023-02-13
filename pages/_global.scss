@@ -61,6 +61,12 @@ body
 	{
 		// Délimitation de la zone cliquable.
 		clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+		@include themeColors()
+		{
+			fill: getThemedColor("primary");
+			color: getThemedColor("background");
+		}
 	}
 
 	@media (max-width: 768px)
