@@ -14,7 +14,7 @@ export default function Header()
 	const [ showMenu, setShowMenu ] = useState( false );
 
 	// Basculement entre les thèmes sombre et clair.
-	function switchTheme()
+	const switchTheme = () =>
 	{
 		const html = document.querySelector( "html" );
 		const target = theme === "light" ? "dark" : "light";
@@ -27,14 +27,14 @@ export default function Header()
 		}
 
 		setTheme( target );
-	}
+	};
 
 	// Affichage ou disparition du menu de navigation.
 	//	Note : ce menu est seulement visible sur les écrans de petite taille.
-	function toggleMenu()
+	const toggleMenu = () =>
 	{
 		setShowMenu( !showMenu );
-	}
+	};
 
 	// Sauvegarde du thème par défaut dans le stockage local.
 	useEffect( () =>
