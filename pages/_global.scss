@@ -54,7 +54,7 @@ body
 		// Effet de survol.
 		animation: octocat-wave 560ms ease-in-out;
 
-		@media (max-width: 768px)
+		@media screen and (max-width: 768px)
 		{
 			// Désactivation de l'animation sur les
 			//	écrans de petite taille.
@@ -74,7 +74,7 @@ body
 		}
 	}
 
-	@media (max-width: 768px)
+	@media screen and (max-width: 768px)
 	{
 		path:nth-of-type(2)
 		{
@@ -191,7 +191,7 @@ section
 	// Conteneur des sections.
 	margin-top: 5rem;
 
-	@media (max-width: 768px)
+	@media screen and (max-width: 768px)
 	{
 		// Réduction de la marge supérieure pour les
 		//	écrans de petite taille.
@@ -206,7 +206,7 @@ section
 		margin-bottom: 1.5rem;
 		text-transform: uppercase;
 
-		@media (max-width: 768px)
+		@media screen and (max-width: 768px)
 		{
 			// Réduction de la taille du titre pour les
 			//	écrans de petite taille.
