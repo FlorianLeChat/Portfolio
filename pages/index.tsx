@@ -108,7 +108,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 					Object.entries( props.projects ).map( ( [ key, value ] ) =>
 					{
 						return (
-							<article>
+							<article key={key}>
 								{/* Image du projet */}
 								<img src={"./assets/images/" + key + ".webp"} alt={value.title} />
 
@@ -123,9 +123,9 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 									{/* Compétences utilisées pour le projet */}
 									<ul>
 										{
-											value.skills.map( ( skill ) =>
+											value.skills.map( ( value, index ) =>
 											{
-												return <li>{skill}</li>;
+												return <li key={index}>{value}</li>;
 											} )
 										}
 									</ul>
@@ -167,10 +167,10 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 				<article>
 					{
 						// Génération des compétences.
-						Object.entries( props.skills ).map( ( skill, index ) =>
+						Object.entries( props.skills ).map( ( skill ) =>
 						{
 							return (
-								<div key={index}>
+								<div key={skill[ 0 ]}>
 									<i className={"devicon-" + skill[ 0 ] + "-plain colored"}></i>
 									{skill[ 1 ]}
 								</div>
