@@ -124,6 +124,11 @@ a
 {
 	// Lien hypertexte.
 	text-decoration: none;
+
+	@include themeColors()
+	{
+		color: getThemedColor("primary");
+	}
 }
 
 header button, section:first-of-type button, section:last-of-type button
@@ -286,6 +291,33 @@ header > a, header button, section:nth-of-type(2) a
 	{
 		color: getThemedColor("background");
 		background-color: getThemedColor("primary");
+	}
+}
+
+// Personnalisation de SweetAlert2.
+.swal2-shown > [aria-hidden]
+{
+	// Flou artistique en arrière-plan.
+	// 	Source : https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
+	filter: blur(0.5rem);
+	transition: filter 100ms;
+}
+
+.swal2-modal
+{
+	// Respect des couleurs du thème.
+	@include themeColors()
+	{
+		color: getThemedColor("foreground");
+		border: 1px solid getThemedColor("primary");
+		background-color: getThemedColor("background");
+	}
+
+	.swal2-radio
+	{
+		// Boutons radio.
+		background: inherit;
+		justify-content: space-evenly;
 	}
 }
 
