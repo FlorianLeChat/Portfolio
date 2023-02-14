@@ -20,6 +20,8 @@ export default function ScrollTop()
 	//	Source : https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
 	useEffect( () =>
 	{
+		onScroll();
+
 		window.addEventListener( "scroll", onScroll );
 
 		return () => window.removeEventListener( "scroll", onScroll );
