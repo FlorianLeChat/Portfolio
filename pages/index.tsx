@@ -1,11 +1,33 @@
 //
 // Route vers la page d'accueil du site.
 //
+import path from "path";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-export default function Home()
+import { ProjectAttributes } from "@/interfaces/Project";
+
+export async function getStaticProps()
+{
+	// On récupère les compétences et les projets depuis
+	// 	le système de fichiers.
+	const directory = path.join( process.cwd(), "public/data" );
+	const projects = await fileSystem.readFile( directory + "/projects.json", "utf8" );
+	const skills = await fileSystem.readFile( directory + "/skills.json", "utf8" );
+
+	return {
+		props: {
+			// On retourne enfin les données sous format
+			//	JSON lors de la génération du site.
+			projects: JSON.parse( projects ),
+			skills: JSON.parse( skills )
+		},
+	};
+}
+
+export default function Home( props: { projects: ProjectAttributes[], skills: string[]; } )
 {
 	// Envoi d'un courriel après sélection de la messagerie.
 	const sendMail = async ( event: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) =>
@@ -71,7 +93,7 @@ export default function Home()
 					</p>
 
 					{/* Bouton de téléchargement du CV */}
-					<a href="https://www.google.com/">
+					<a href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view" target="_blank">
 						<button>Télécharger le C.V</button>
 					</a>
 				</article>
@@ -81,72 +103,80 @@ export default function Home()
 				{/* Section des projets */}
 				<h2>Projets</h2>
 
-				<article>
-					{/* Image du projet */}
-					<img src="./assets/images/test.png" alt="test" />
+				{
+					// Génération des projets.
+					Object.entries( props.projects ).map( ( [ key, value ] ) =>
+					{
+						return (
+							<article>
+								{/* Image du projet */}
+								<img src={"./assets/images/" + key + ".webp"} alt={value.title} />
 
-					{/* Contenu du projet */}
-					<div>
-						{/* Titre du projet */}
-						<h3>Lorem Ipsum</h3>
+								{/* Contenu du projet */}
+								<div>
+									{/* Titre du projet */}
+									<h3>{value.title}</h3>
 
-						{/* Description du projet */}
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-							Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-						</p>
+									{/* Description du projet */}
+									<p>{value.description}</p>
 
-						{/* Compétences utilisées pour le projet */}
-						<ul>
-							<li>JavaScript</li>
-							<li>React.js</li>
-							<li>Redux</li>
-							<li>Jest</li>
-							<li>Cypress</li>
-							<li>Webpack</li>
-							<li>Node.js</li>
-							<li>Express.js</li>
-							<li>MongoDB</li>
-							<li>Redis</li>
-						</ul>
+									{/* Compétences utilisées pour le projet */}
+									<ul>
+										{
+											value.skills.map( ( skill ) =>
+											{
+												return <li>{skill}</li>;
+											} )
+										}
+									</ul>
 
-						{/* Liens du projet */}
-						<ul>
-							<li>
-								<a href="https://www.google.com/" target="_blank" rel="noopener">
-									<FontAwesomeIcon icon={faCode} />
-								</a>
-							</li>
+									{/* Liens du projet */}
+									<ul>
+										{
+											// Dépôt Git (facultatif).
+											value.repository && (
+												<li>
+													<a href={value.repository} target="_blank" rel="noopener">
+														<FontAwesomeIcon icon={faCode} />
+													</a>
+												</li>
+											)
+										}
 
-							<li>
-								<a href="https://www.google.com/" target="_blank">
-									<FontAwesomeIcon icon={faExternalLinkAlt} />
-								</a>
-							</li>
-						</ul>
-					</div>
-				</article>
+										{
+											// Site de démonstration (facultatif).
+											value.demo && (
+												<li>
+													<a href={value.demo} target="_blank">
+														<FontAwesomeIcon icon={faExternalLinkAlt} />
+													</a>
+												</li>
+											)
+										}
+									</ul>
+								</div>
+							</article>
+						);
+					} )
+				}
 			</section>
 
 			<section id="skills">
 				<h2>Compétences</h2>
 
 				<article>
-					<div>
-						<i className="devicon-html5-plain colored"></i>
-						HTML
-					</div>
-
-					<div>
-						<i className="devicon-css3-plain colored"></i>
-						CSS
-					</div>
-
-					<div>
-						<i className="devicon-nodejs-plain colored"></i>
-						NodeJS
-					</div>
+					{
+						// Génération des compétences.
+						Object.entries( props.skills ).map( ( skill, index ) =>
+						{
+							return (
+								<div key={index}>
+									<i className={"devicon-" + skill[ 0 ] + "-plain colored"}></i>
+									{skill[ 1 ]}
+								</div>
+							);
+						} )
+					}
 				</article>
 			</section>
 
@@ -166,7 +196,7 @@ export default function Home()
 					</li>
 
 					<li>
-						<a href="https://www.google.com/" target="_blank">
+						<a href="https://github.com/FlorianLeChat" target="_blank">
 							<button>
 								<FontAwesomeIcon icon={faGithub} />
 								GitHub
@@ -175,7 +205,7 @@ export default function Home()
 					</li>
 
 					<li>
-						<a href="https://www.google.com/" target="_blank">
+						<a href="https://www.linkedin.com/in/florian-trayon/" target="_blank">
 							<button>
 								<FontAwesomeIcon icon={faLinkedin} />
 								LinkedIn
