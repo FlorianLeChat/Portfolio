@@ -7,6 +7,50 @@ import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-s
 
 export default function Home()
 {
+	// Envoi d'un courriel après sélection de la messagerie.
+	const sendMail = async ( event: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) =>
+	{
+		// On cesse d'abord le comportement par défaut du lien.
+		event.preventDefault();
+
+		// On importe ensuite la bibliothèque SweetAlert2.
+		const Swal = ( await import( "sweetalert2" ) ).default;
+
+		// On affiche ensuite la boîte de dialogue pour la sélection de la messagerie.
+		const { value: service } = await Swal.fire( {
+			icon: "question",
+			text: "Pour envoyer un courriel, vous avez le choix entre plusieurs messageries. Sélectionnez celle de votre choix.",
+			title: "Sélection de la messagerie",
+			input: "radio",
+			inputOptions: {
+				"gmail": "GMail (Google)",
+				"default": "Messagerie par défaut"
+			},
+			inputValidator: ( value ) =>
+			{
+				return !value && "Vous devez choisir une messagerie." || null;
+			}
+		} );
+
+		// On ouvre enfin la messagerie sélectionnée.
+		switch ( service )
+		{
+			case "gmail":
+				// On ouvre la messagerie GMail.
+				window.open( "https://mail.google.com/mail/?view=cm&fs=1&to=floriantrayon942@gmail.com", "_blank" );
+				break;
+
+			case "default":
+				// On ouvre la messagerie par défaut.
+				window.open( "mailto:floriantrayon942@gmail.com", "_blank" );
+				break;
+
+			default:
+				// On ne fait rien.
+				break;
+		}
+	};
+
 	// Affichage du rendu HTML de la page.
 	return (
 		<main>
@@ -113,7 +157,7 @@ export default function Home()
 				{/* Liens vers les réseaux sociaux */}
 				<ul>
 					<li>
-						<a href="mailto:floriantrayon942@gmail.com">
+						<a onClick={sendMail}>
 							<button>
 								<FontAwesomeIcon icon={faEnvelope} />
 								Courriel
