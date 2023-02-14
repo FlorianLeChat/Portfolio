@@ -7,14 +7,14 @@ header
 	height: 6rem;
 	justify-content: space-between;
 
-	@media (max-width: 768px)
+	@media screen and (max-width: 768px)
 	{
 		// Modification des marges extérieures sur les
 		//	écrans de petite taille.
 		margin-right: 3rem;
 	}
 
-	@media (min-width: 768px) and (max-width: 1024px)
+	@media screen and (min-width: 768px) and (max-width: 1024px)
 	{
 		// Modification des marges extérieures sur les
 		//	écrans de taille moyenne.
@@ -41,7 +41,7 @@ header
 	ul
 	{
 		// Liste des liens de navigation.
-		@media (max-width: 768px)
+		@media screen and (max-width: 768px)
 		{
 			// Modification de la disposition des éléments
 			//	sur les écrans de petite taille.
@@ -70,7 +70,7 @@ header
 		li
 		{
 			// Éléments de la barre de navigation.
-			@media (max-width: 768px)
+			@media screen and (max-width: 768px)
 			{
 				// Réduction de la marge entre chaque élément
 				//	sur les écrans de petite taille.
@@ -150,7 +150,7 @@ header
 			// Icône du bouton d'affichage du menu de navigation.
 			display: none;
 
-			@media (max-width: 768px)
+			@media screen and (max-width: 768px)
 			{
 				// Affichage de l'icône sur les écrans de petite taille.
 				display: flex;

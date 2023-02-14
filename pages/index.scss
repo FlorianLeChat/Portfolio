@@ -7,7 +7,7 @@ section:first-of-type
 	margin-top: 6rem;
 	justify-content: space-between;
 
-	@media (max-width: 768px)
+	@media screen and (max-width: 768px)
 	{
 		// Modification de l'apparence de la section sur les
 		// 	écrans de petite taille.
@@ -22,7 +22,7 @@ section:first-of-type
 		flex-basis: 50%;
 		flex-direction: column;
 
-		@media (max-width: 768px)
+		@media screen and (max-width: 768px)
 		{
 			// Réduction de la taille de la police de caractères
 			//	sur les écrans de petite taille.
@@ -30,7 +30,7 @@ section:first-of-type
 			font-size: 4rem;
 		}
 
-		@media (max-width: 384px)
+		@media screen and (max-width: 384px)
 		{
 			// Réduction de la taille de la police de caractères
 			//	sur les écrans de très petite taille.
@@ -52,7 +52,7 @@ section:first-of-type
 		// Conteneur du résumé.
 		flex-basis: 40%;
 
-		@media (max-width: 768px)
+		@media screen and (max-width: 768px)
 		{
 			// Modification des marges extérieures sur les
 			//	écrans de petite taille.
@@ -93,7 +93,7 @@ section:nth-of-type(2) article
 		background-color: getThemedColor("background-alt");
 	}
 
-	@media (max-width: 1024px)
+	@media screen and (max-width: 1024px)
 	{
 		// Réduction de l'apparence du conteneur sur les
 		//	écrans de taille moyenne.
@@ -105,7 +105,7 @@ section:nth-of-type(2) article
 	> h2
 	{
 		// Titre de la section.
-		@media (max-width: 768px)
+		@media screen and (max-width: 768px)
 		{
 			// Modification des marges du titre sur les
 			//	écrans de petite taille.
@@ -118,7 +118,7 @@ section:nth-of-type(2) article
 		// Image de présentation du projet.
 		border-radius: 0.5rem;
 
-		@media (max-width: 1024px)
+		@media screen and (max-width: 1024px)
 		{
 			// Réduction des dimensions de l'image sur les
 			//	écrans de taille moyenne.
@@ -135,7 +135,7 @@ section:nth-of-type(2) article
 		flex-basis: 50%;
 		margin-left: 2rem;
 
-		@media (max-width: 1024px)
+		@media screen and (max-width: 1024px)
 		{
 			// Réduction de l'apparence du conteneur sur les
 			//	écrans de taille moyenne.

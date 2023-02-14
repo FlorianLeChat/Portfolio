@@ -10,7 +10,7 @@ aside
 	position: fixed;
 	transition: transform 200ms ease-in-out;
 
-	@media (max-width: 1024px)
+	@media screen and (max-width: 1024px)
 	{
 		// Disparition du bouton sur les écrans de taille
 		//	moyenne.
