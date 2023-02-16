@@ -2,6 +2,7 @@
 // Route vers la page d'accueil du site.
 //
 import path from "path";
+import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { promises as fileSystem } from "fs";
@@ -38,7 +39,8 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 		// On importe ensuite la bibliothèque SweetAlert2.
 		const Swal = ( await import( "sweetalert2" ) ).default;
 
-		// On affiche ensuite la boîte de dialogue pour la sélection de la messagerie.
+		// On affiche ensuite la boîte de dialogue pour la
+		//	sélection de la messagerie.
 		const { value: service } = await Swal.fire( {
 			icon: "question",
 			text: "Pour envoyer un courriel, vous avez le choix entre plusieurs messageries. Sélectionnez celle de votre choix.",
@@ -72,6 +74,31 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 				break;
 		}
 	};
+
+	// Défilement automatique vers les sections par commandes vocales.
+	// 	Source : https://github.com/mdn/dom-examples/blob/44856cc22f47b0203cbcb48127af50744e89aa7e/web-speech-api/speech-color-changer/script.js
+	useEffect( () =>
+	{
+		const recognition = new webkitSpeechRecognition();
+		recognition.start();
+		recognition.onresult = ( event ) =>
+		{
+			// On récupère d'abord le nom de la section.
+			const name = event.results[ 0 ][ 0 ].transcript;
+			const element = document.getElementById( name );
+
+			if ( element )
+			{
+				// On défile enfin vers la section (si elle existe).
+				element.scrollIntoView( { behavior: "smooth" } );
+			}
+		};
+
+		recognition.onspeechend = () =>
+		{
+			recognition.stop();
+		};
+	}, [] );
 
 	// Affichage du rendu HTML de la page.
 	return (
