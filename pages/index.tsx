@@ -136,7 +136,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 											// Dépôt Git (facultatif).
 											value.repository && (
 												<li>
-													<a href={value.repository} target="_blank" rel="noopener">
+													<a href={value.repository} target="_blank" rel="noopener noreferrer">
 														<FontAwesomeIcon icon={faCode} />
 													</a>
 												</li>
@@ -147,7 +147,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 											// Site de démonstration (facultatif).
 											value.demo && (
 												<li>
-													<a href={value.demo} target="_blank">
+													<a href={value.demo} target="_blank" rel="noopener noreferrer">
 														<FontAwesomeIcon icon={faExternalLinkAlt} />
 													</a>
 												</li>
