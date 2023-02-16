@@ -1,0 +1,17 @@
+version: 2
+updates:
+
+  # Maintain dependencies for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates managed by GitHub Actions once a month
+      interval: "monthly"
+
+  # Maintain dependencies for npm
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      # Check for updates managed by npm once a month
+      interval: "monthly"
+    open-pull-requests-limit: 30
