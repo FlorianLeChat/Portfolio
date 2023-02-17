@@ -102,7 +102,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<main>
+		<>
 			<section>
 				{/* Prénom et nom du développeur */}
 				<h1>
@@ -241,6 +241,6 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 					</li>
 				</ul>
 			</section>
-		</main>
+		</>
 	);
 }
