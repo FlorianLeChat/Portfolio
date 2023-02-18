@@ -209,8 +209,8 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 						{
 							return (
 								<div key={skill[ 0 ]}>
-									<i className={"devicon-" + skill[ 0 ] + "-plain colored"}></i>
-									{skill[ 1 ]}
+									<i className={"devicon-" + skill[ 0 ] + ( skill[ 0 ].search( /original|lua/gi ) !== -1 ? "" : " colored" )}></i>
+									<span>{skill[ 1 ]}</span>
 								</div>
 							);
 						} )
