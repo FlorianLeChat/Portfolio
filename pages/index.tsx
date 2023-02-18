@@ -81,6 +81,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 	{
 		const recognition = new webkitSpeechRecognition();
 		recognition.start();
+		recognition.continuous = true;
 		recognition.onresult = ( event ) =>
 		{
 			// On récupère d'abord le nom de la section.
@@ -92,11 +93,6 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 				// On défile enfin vers la section (si elle existe).
 				element.scrollIntoView( { behavior: "smooth" } );
 			}
-		};
-
-		recognition.onspeechend = () =>
-		{
-			recognition.stop();
 		};
 	}, [] );
 

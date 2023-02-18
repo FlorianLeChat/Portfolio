@@ -11,7 +11,7 @@ export default function Document()
 {
 	// Affichage du rendu HTML de la page.
 	return (
-		<Html lang="en" dir="auto" prefix="og: https://ogp.me/ns#">
+		<Html lang="fr" dir="auto" prefix="og: https://ogp.me/ns#">
 			<Head>
 				{/* Scripts JavaScript */}
 				<Script src={`https://www.googletagmanager.com/gtag/js?id=${ process.env[ "NEXT_PUBLIC_ANALYTICS_IDENTIFIER" ] }`} strategy="afterInteractive" />
