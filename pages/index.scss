@@ -271,6 +271,12 @@ section:nth-of-type(3) article
 	align-items: center;
 	justify-content: center;
 
+	&:first-of-type
+	{
+		// Conteneur des options de tri.
+		margin-bottom: 3rem;
+	}
+
 	div
 	{
 		// Conteneur de chaque compétence.

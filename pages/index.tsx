@@ -2,12 +2,13 @@
 // Route vers la page d'accueil du site.
 //
 import path from "path";
-import { useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
+import { SkillAttributes } from "@/interfaces/Skill";
 import { ProjectAttributes } from "@/interfaces/Project";
 
 export async function getStaticProps()
@@ -28,12 +29,21 @@ export async function getStaticProps()
 	};
 }
 
-export default function Home( props: { projects: ProjectAttributes[], skills: string[]; } )
+export default function Home( props: { projects: ProjectAttributes[], skills: SkillAttributes[]; } )
 {
+	// Déclaration des variables d'état.
+	const [ skillFilter, setSkillFilter ] = useState( "all" );
+
 	// Calcul de l'âge en fonction de la date de naissance.
 	const now = new Date().getTime();
 	const born = Date.parse( "08 Aug 1999 00:00:00 GMT" );
 	const relative = new Date( now - born ).getFullYear() - 1970;
+
+	// Mise à jour du filtre des compétences.
+	const updateSkillFilter = ( event: React.ChangeEvent<HTMLInputElement> ) =>
+	{
+		setSkillFilter( event.target.id );
+	};
 
 	// Envoi d'un courriel après sélection de la messagerie.
 	const sendMail = async ( event: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) =>
@@ -202,17 +212,34 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 			<section id="skills">
 				<h2>Compétences</h2>
 
+				<article onChange={updateSkillFilter}>
+					<input type="radio" id="all" name="skills" defaultChecked />
+					<label htmlFor="all">Toutes</label>
+
+					<input type="radio" id="front" name="skills" />
+					<label htmlFor="front">Front-end</label>
+
+					<input type="radio" id="back" name="skills" />
+					<label htmlFor="back">Back-end</label>
+
+					<input type="radio" id="other" name="skills" />
+					<label htmlFor="other">Autres</label>
+				</article>
+
 				<article>
 					{
 						// Génération des compétences.
-						Object.entries( props.skills ).map( ( skill ) =>
+						Object.entries( props.skills ).map( ( [ key, value ] ) =>
 						{
-							return (
-								<div key={skill[ 0 ]}>
-									<i className={"devicon-" + skill[ 0 ] + ( skill[ 0 ].search( /original|lua/gi ) !== -1 ? "" : " colored" )}></i>
-									<span>{skill[ 1 ]}</span>
-								</div>
-							);
+							if ( skillFilter === "all" || value.type.includes( skillFilter ) )
+							{
+								return (
+									<div key={key}>
+										<i className={"devicon-" + key + "-" + value.icon + ( ( key === "lua" || value.icon === "original" ) ? "" : " colored" )}></i>
+										<span>{value.name}</span>
+									</div>
+								);
+							}
 						} )
 					}
 				</article>
