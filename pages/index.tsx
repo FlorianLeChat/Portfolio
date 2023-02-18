@@ -30,6 +30,11 @@ export async function getStaticProps()
 
 export default function Home( props: { projects: ProjectAttributes[], skills: string[]; } )
 {
+	// Calcul de l'âge en fonction de la date de naissance.
+	const now = new Date().getTime();
+	const born = Date.parse( "08 Aug 1999 00:00:00 GMT" );
+	const relative = new Date( now - born ).getFullYear() - 1970;
+
 	// Envoi d'un courriel après sélection de la messagerie.
 	const sendMail = async ( event: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) =>
 	{
@@ -113,16 +118,16 @@ export default function Home( props: { projects: ProjectAttributes[], skills: st
 				{/* Prénom et nom du développeur */}
 				<h1>
 					Bonjour. Je suis
-					<span>Lorem</span>
-					<span>Ipsum.</span>
+					<span>Florian</span>
+					<span>Trayon.</span>
 				</h1>
 
 				<article id="about">
 					{/* Résumé du développeur. */}
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-						Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+						Je suis un développeur (junior) français full-stack de {relative} ans.
+						J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes.
+						Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.
 					</p>
 
 					{/* Bouton de téléchargement du CV */}

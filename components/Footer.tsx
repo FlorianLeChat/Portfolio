@@ -7,7 +7,7 @@ export default function Footer()
 	return (
 		<footer>
 			{/* Lien vers le dépôt GitHub du projet */}
-			<span>Réalisé par <a href="https://github.com/FlorianLeChat">Florian Trayon 🐈</a></span>
+			<span>Conçu par <a href="https://github.com/FlorianLeChat">Florian Trayon 🐈</a></span>
 
 			{/* Date de création du site */}
 			<small>&copy; {new Date().getFullYear()}</small>
