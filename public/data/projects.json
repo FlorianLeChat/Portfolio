@@ -1,21 +1,51 @@
 {
-	"lorem1": {
-		"title": "Lorem Ipsum1",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-		"skills": ["HTML", "CSS", "JavaScript"],
-		"repository": "https://google.com",
-		"demo": "https://google.com"
+	"portfolio": {
+		"title": "Portfolio",
+		"description": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
+		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/Portfolio",
+		"demo": "https://www.florian-dev.fr/portfolio/"
 	},
-	"lorem2": {
-		"title": "Lorem Ipsum2",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-		"skills": ["HTML", "CSS", "JavaScript"],
-		"demo": "https://google.com"
+	"filestorage": {
+		"title": "Simple File Storage",
+		"description": "Un service de stockage de données simplifié et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialités douteuses.",
+		"skills": ["HTML", "CSS", "Bootstrap", "PHP"],
+		"repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
+		"demo": "https://files.florian-dev.fr/"
 	},
-	"lorem3": {
-		"title": "Lorem Ipsum3",
-		"description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-		"skills": ["HTML", "CSS", "JavaScript"],
-		"repository": "https://google.com"
+	"gmodstore": {
+		"title": "GmodStore Downloader",
+		"description": "Une simple page permettant de télécharger des plugins (addons) pour le jeu Garry's Mod depuis le site commercial GmodStore.",
+		"skills": ["HTML", "CSS", "PHP", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/GmodStore-Downloader",
+		"demo": "https://www.florian-dev.fr/gmodstore/"
+	},
+	"youtube": {
+		"title": "YouTube Downloader",
+		"description": "Une simple page permettant de télécharger les vidéos YouTube via YouTube-DL, sans utiliser des sites tiers lents ou malveillants.",
+		"skills": ["HTML", "CSS", "JavaScript", "PHP", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/YouTube-Downloader",
+		"demo": "https://www.florian-dev.fr/youtube/"
+	},
+	"sourceconsole": {
+		"title": "Source Web Console",
+		"description": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
+		"skills": ["HTML", "SASS", "JavaScript", "jQuery", "PHP", "Twig", "MySQL", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/Source-Web-Console",
+		"demo": "https://console.florian-dev.fr/"
+	},
+	"domego": {
+		"title": "Domego",
+		"description": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de PolyTech Sophia Antipolis.",
+		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "MongoDB", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/Domego",
+		"demo": "https://www.florian-dev.fr/domego/"
+	},
+	"assignment": {
+		"title": "Assignment Manager",
+		"description": "Un petit site conçu dans un but pédagogique pour gérer les devoirs et les notes des élèves d'une classe en tant qu'enseignant. Le site n'est pas destiné à être utilisé en production parce qu'il a été conçu durant un laps de temps très court et seulement pour apprendre le framework Angular.",
+		"skills": ["HTML", "CSS", "JavaScript", "NodeJS", "Angular", "MongoDB"],
+		"repository": "https://github.com/FlorianLeChat/Assignment-Manager",
+		"demo": "https://dapper-kheer-98d13d.netlify.app/"
 	}
 }
