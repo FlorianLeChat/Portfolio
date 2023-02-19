@@ -17,7 +17,7 @@ export default function Document()
 				<Script src={`https://www.googletagmanager.com/gtag/js?id=${ process.env[ "NEXT_PUBLIC_ANALYTICS_IDENTIFIER" ] }`} strategy="afterInteractive" />
 
 				{/* Google Analytics */}
-				<Script strategy="afterInteractive">
+				<Script id="google-analytics" strategy="afterInteractive">
 					{`
 						window.dataLayer = window.dataLayer || [];
 
