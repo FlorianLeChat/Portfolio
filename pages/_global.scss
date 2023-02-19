@@ -96,7 +96,7 @@ a
 	}
 }
 
-header button, section:first-of-type button, section:last-of-type button
+header button, section:first-of-type button, section:last-of-type button, section:last-of-type a
 {
 	// Bouton générique.
 	margin: 0;
@@ -107,7 +107,7 @@ header button, section:first-of-type button, section:last-of-type button
 	box-sizing: border-box;
 }
 
-section:first-of-type button, section:last-of-type button
+section:first-of-type button, section:last-of-type button, section:last-of-type a
 {
 	// Bouton comprenant un lien cliquable.
 	display: inline-block;
