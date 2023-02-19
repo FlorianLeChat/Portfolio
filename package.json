@@ -29,7 +29,8 @@
     "@types/react": "~18.0",
     "@types/dom-speech-recognition": "~0.0",
     "sass": "~1.58",
-    "typescript": "~4.9"
+    "typescript": "~4.9",
+    "eslint-config-next": "~13.1"
   },
   "optionalDependencies": {
     "sharp": "~0.31"
@@ -41,7 +42,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "browserslist": [
     "defaults"
