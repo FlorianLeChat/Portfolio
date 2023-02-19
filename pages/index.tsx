@@ -46,7 +46,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 	};
 
 	// Envoi d'un courriel après sélection de la messagerie.
-	const sendMail = async ( event: React.MouseEvent<HTMLAnchorElement, MouseEvent> ) =>
+	const sendMail = async ( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) =>
 	{
 		// On cesse d'abord le comportement par défaut du lien.
 		event.preventDefault();
@@ -252,29 +252,23 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 				{/* Liens vers les réseaux sociaux */}
 				<ul>
 					<li>
-							<button>
-						<a onClick={sendMail} tabIndex={-1}>
-								<FontAwesomeIcon icon={faEnvelope} />
-								Courriel
-							</button>
+						<button onClick={sendMail}>
+							<FontAwesomeIcon icon={faEnvelope} />
+							Courriel
+						</button>
+					</li>
+
+					<li>
+						<a href="https://github.com/FlorianLeChat" target="_blank" rel="noopener noreferrer">
+							<FontAwesomeIcon icon={faGithub} />
+							GitHub
 						</a>
 					</li>
 
 					<li>
-						<a href="https://github.com/FlorianLeChat" target="_blank" rel="noopener noreferrer" tabIndex={-1}>
-							<button>
-								<FontAwesomeIcon icon={faGithub} />
-								GitHub
-							</button>
-						</a>
-					</li>
-
-					<li>
-						<a href="https://www.linkedin.com/in/florian-trayon/" target="_blank" rel="noopener noreferrer" tabIndex={-1}>
-							<button>
-								<FontAwesomeIcon icon={faLinkedin} />
-								LinkedIn
-							</button>
+						<a href="https://www.linkedin.com/in/florian-trayon/" target="_blank" rel="noopener noreferrer">
+							<FontAwesomeIcon icon={faLinkedin} />
+							LinkedIn
 						</a>
 					</li>
 				</ul>

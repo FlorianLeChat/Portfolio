@@ -10,6 +10,12 @@ export default function ScrollTop()
 	// Déclaration des variables d'état.
 	const [ showButton, setShowButton ] = useState( false );
 
+	// Remontée en haut de la page.
+	const scrollToTop = () =>
+	{
+		window.scrollTo( { top: 0, behavior: "smooth" } );
+	};
+
 	// Affichage ou disparition du bouton de remontée en haut de page.
 	const onScroll = () =>
 	{
@@ -33,9 +39,9 @@ export default function ScrollTop()
 		// L'utilisateur se trouve à plus de 200 pixels du haut de la page.
 		return (
 			<aside>
-				<a href="#">
+				<button onClick={scrollToTop}>
 					<FontAwesomeIcon icon={faArrowUp} />
-				</a>
+				</button>
 			</aside>
 		);
 	}

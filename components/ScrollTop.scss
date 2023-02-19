@@ -23,9 +23,10 @@ aside
 		transform: translateY(0.5rem);
 	}
 
-	a
+	button
 	{
 		// Lien de retour en haut de page.
+		cursor: pointer;
 		padding: 1rem 1.3rem;
 		border-radius: 50%;
 

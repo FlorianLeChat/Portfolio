@@ -30,7 +30,8 @@
     "@types/dom-speech-recognition": "~0.0",
     "sass": "~1.58",
     "typescript": "~4.9",
-    "eslint-config-next": "~13.1"
+    "eslint-config-next": "~13.1",
+    "eslint-plugin-jsx-a11y": "~6.6"
   },
   "optionalDependencies": {
     "sharp": "~0.31"
