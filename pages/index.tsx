@@ -31,13 +31,12 @@ export async function getStaticProps()
 
 export default function Home( props: { projects: ProjectAttributes[], skills: SkillAttributes[]; } )
 {
+	// Déclaration des constantes.
+	const date = new Date();
+	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
+
 	// Déclaration des variables d'état.
 	const [ skillFilter, setSkillFilter ] = useState( "all" );
-
-	// Calcul de l'âge en fonction de la date de naissance.
-	const now = new Date().getTime();
-	const born = Date.parse( "08 Aug 1999 00:00:00 GMT" );
-	const relative = new Date( now - born ).getFullYear() - 1970;
 
 	// Mise à jour du filtre des compétences.
 	const updateSkillFilter = ( event: React.ChangeEvent<HTMLInputElement> ) =>
@@ -135,7 +134,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 				<article id="about">
 					{/* Résumé du développeur. */}
 					<p>
-						Je suis un développeur (junior) français full-stack de {relative} ans.
+						Je suis un développeur (junior) français full-stack de {date.getFullYear() - 1970} ans.
 						J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes.
 						Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.
 					</p>
@@ -151,8 +150,8 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 				{/* Section des projets */}
 				<h2>Projets</h2>
 
+				{/* Génération des projets */}
 				{
-					// Génération des projets.
 					Object.entries( props.projects ).map( ( [ key, value ] ) =>
 					{
 						return (
@@ -210,8 +209,10 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 			</section>
 
 			<section id="skills">
+				{/* Section des compétences */}
 				<h2>Compétences</h2>
 
+				{/* Filtre des compétences */}
 				<article onChange={updateSkillFilter}>
 					<input type="radio" id="all" name="skills" defaultChecked />
 					<label htmlFor="all">Toutes</label>
@@ -226,9 +227,9 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 					<label htmlFor="other">Autres</label>
 				</article>
 
+				{/* Génération des compétences */}
 				<article>
 					{
-						// Génération des compétences.
 						Object.entries( props.skills ).map( ( [ key, value ] ) =>
 						{
 							if ( skillFilter === "all" || value.type.includes( skillFilter ) )
