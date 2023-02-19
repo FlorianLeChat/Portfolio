@@ -2,6 +2,7 @@
 // Route vers la page d'accueil du site.
 //
 import path from "path";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -157,7 +158,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 						return (
 							<article key={key}>
 								{/* Image du projet */}
-								<img src={"./assets/images/" + key + ".webp"} alt={value.title} />
+								<Image src={"/assets/images/" + key + ".png"} alt={value.title} width={450} height={250} />
 
 								{/* Contenu du projet */}
 								<div>
