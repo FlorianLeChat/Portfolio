@@ -13,20 +13,6 @@
 		"repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
 		"demo": "https://files.florian-dev.fr/"
 	},
-	"gmodstore": {
-		"title": "GmodStore Downloader",
-		"description": "Une simple page permettant de télécharger des plugins (addons) pour le jeu Garry's Mod depuis le site commercial GmodStore.",
-		"skills": ["HTML", "CSS", "PHP", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/GmodStore-Downloader",
-		"demo": "https://www.florian-dev.fr/gmodstore/"
-	},
-	"youtube": {
-		"title": "YouTube Downloader",
-		"description": "Une simple page permettant de télécharger les vidéos YouTube via YouTube-DL, sans utiliser des sites tiers lents ou malveillants.",
-		"skills": ["HTML", "CSS", "JavaScript", "PHP", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/YouTube-Downloader",
-		"demo": "https://www.florian-dev.fr/youtube/"
-	},
 	"sourceconsole": {
 		"title": "Source Web Console",
 		"description": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",

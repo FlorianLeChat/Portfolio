@@ -168,6 +168,11 @@ section:nth-of-type(2) article
 		// Image de présentation du projet.
 		border-radius: 0.5rem;
 
+		@include themeColors()
+		{
+			border: 1px solid getThemedColor("foreground");
+		}
+
 		@media screen and (max-width: 1024px)
 		{
 			// Réduction des dimensions de l'image sur les
