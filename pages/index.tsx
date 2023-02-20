@@ -3,16 +3,19 @@
 //
 import path from "path";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { promises as fileSystem } from "fs";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
+import i18nextConfig from "@/next-i18next.config";
 import { SkillAttributes } from "@/interfaces/Skill";
 import { ProjectAttributes } from "@/interfaces/Project";
 
-export async function getStaticProps()
+export async function getStaticProps( { locale }: { locale: string; } )
 {
 	// On récupère les compétences et les projets depuis
 	// 	le système de fichiers.
@@ -22,10 +25,13 @@ export async function getStaticProps()
 
 	return {
 		props: {
-			// On retourne enfin les données sous format
+			// On retourne ensuite les données sous format
 			//	JSON lors de la génération du site.
 			projects: JSON.parse( projects ),
-			skills: JSON.parse( skills )
+			skills: JSON.parse( skills ),
+
+			// On retourne enfin les traductions de la page.
+			...( await serverSideTranslations( locale ?? i18nextConfig.i18n.defaultLocale ) )
 		},
 	};
 }
@@ -34,6 +40,8 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 {
 	// Déclaration des constantes.
 	const date = new Date();
+	const { t } = useTranslation();
+
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
 	// Déclaration des variables d'état.
@@ -58,16 +66,16 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 		//	sélection de la messagerie.
 		const { value: service } = await Swal.fire( {
 			icon: "question",
-			text: "Pour envoyer un courriel, vous avez le choix entre plusieurs messageries. Sélectionnez celle de votre choix.",
-			title: "Sélection de la messagerie",
+			text: t( "modals.mailer_description" ),
+			title: t( "modals.mailer_title" ),
 			input: "radio",
 			inputOptions: {
-				google: "GMail (Google)",
-				default: "Messagerie par défaut"
+				google: t( "modals.mailer_google" ),
+				default: t( "modals.mailer_default" )
 			},
 			inputValidator: ( value ) =>
 			{
-				return !value && "Vous devez choisir une messagerie." || null;
+				return !value && t( "modals.mailer_error" ) || null;
 			}
 		} );
 
@@ -127,29 +135,25 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 			<section>
 				{/* Prénom et nom du développeur */}
 				<h1>
-					Bonjour. Je suis
-					<span>Florian</span>
-					<span>Trayon.</span>
+					{t( "pages.index.hello_title" )}
+					<span>{t( "pages.index.developer_firstname" )}</span>
+					<span>{t( "pages.index.developer_surname" )}.</span>
 				</h1>
 
 				<article id="about">
 					{/* Résumé du développeur. */}
-					<p>
-						Je suis un développeur (junior) français full-stack de {date.getFullYear() - 1970} ans.
-						J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes.
-						Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.
-					</p>
+					<p>{t( "pages.index.developer_description", { age: date.getFullYear() - 1970 } )}</p>
 
 					{/* Bouton de téléchargement du CV */}
 					<a href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view" target="_blank" rel="noopener noreferrer">
-						<button>Télécharger le C.V</button>
+						<button>{t( "pages.index.download_resume" )}</button>
 					</a>
 				</article>
 			</section>
 
 			<section id="projects">
 				{/* Section des projets */}
-				<h2>Projets</h2>
+				<h2>{t( "pages.index.header_projects" )}</h2>
 
 				{/* Génération des projets */}
 				{
@@ -166,7 +170,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 									<h3>{value.title}</h3>
 
 									{/* Description du projet */}
-									<p>{value.description}</p>
+									<p>{t( "projects." + key )}</p>
 
 									{/* Compétences utilisées pour le projet */}
 									<ul>
@@ -211,21 +215,21 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 
 			<section id="skills">
 				{/* Section des compétences */}
-				<h2>Compétences</h2>
+				<h2>{t( "pages.index.header_skills" )}</h2>
 
 				{/* Filtre des compétences */}
 				<article onChange={updateSkillFilter}>
 					<input type="radio" id="all" name="skills" defaultChecked />
-					<label htmlFor="all">Toutes</label>
+					<label htmlFor="all">{t( "pages.index.filter_all" )}</label>
 
 					<input type="radio" id="front" name="skills" />
-					<label htmlFor="front">Front-end</label>
+					<label htmlFor="front">{t( "pages.index.filter_front" )}</label>
 
 					<input type="radio" id="back" name="skills" />
-					<label htmlFor="back">Back-end</label>
+					<label htmlFor="back">{t( "pages.index.filter_back" )}</label>
 
 					<input type="radio" id="other" name="skills" />
-					<label htmlFor="other">Autres</label>
+					<label htmlFor="other">{t( "pages.index.filter_other" )}</label>
 				</article>
 
 				{/* Génération des compétences */}
@@ -249,14 +253,14 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 
 			<section id="contact">
 				{/* Section de contact */}
-				<h2>Contact</h2>
+				<h2>{t( "pages.index.header_contact" )}</h2>
 
 				{/* Liens vers les réseaux sociaux */}
 				<ul>
 					<li>
 						<button onClick={sendMail}>
 							<FontAwesomeIcon icon={faEnvelope} />
-							Courriel
+							{t( "pages.index.footer_mail" )}
 						</button>
 					</li>
 

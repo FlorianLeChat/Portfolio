@@ -2,11 +2,15 @@
 // Composant permettant de remonter en haut de page.
 //
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 export default function ScrollTop()
 {
+	// Déclaration des constantes.
+	const { t } = useTranslation();
+
 	// Déclaration des variables d'état.
 	const [ showButton, setShowButton ] = useState( false );
 

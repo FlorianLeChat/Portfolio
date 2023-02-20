@@ -1,6 +1,7 @@
 //
 // Composant de l'en-tête générique du site.
 //
+import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useState, useContext, useEffect } from "react";
@@ -9,8 +10,11 @@ import { ThemeContext } from "@/utils/ThemeContext";
 
 export default function Header()
 {
-	// Déclaration des variables d'état.
+	// Déclaration des constantes.
+	const { t } = useTranslation();
 	const { theme, setTheme } = useContext( ThemeContext );
+
+	// Déclaration des variables d'état.
 	const [ showMenu, setShowMenu ] = useState( false );
 
 	// Basculement entre les thèmes sombre et clair.
@@ -46,21 +50,21 @@ export default function Header()
 	return (
 		<header>
 			{/* En-tête de la page */}
-			<a href="https://github.com/FlorianLeChat">FT</a>
+			<a href="https://github.com/FlorianLeChat">{t( "pages.index.developer_firstname" )[ 0 ] + t( "pages.index.developer_surname" )[ 0 ]}</a>
 
 			<nav>
 				{/* Liens de navigation */}
 				<ul className={showMenu ? "show" : ""}>
 					<li>
-						<a href="#projects">Projets</a>
+						<a href="#projects">{t( "pages.index.header_projects" )}</a>
 					</li>
 
 					<li>
-						<a href="#skills">Compétences</a>
+						<a href="#skills">{t( "pages.index.header_skills" )}</a>
 					</li>
 
 					<li>
-						<a href="#contact">Contact</a>
+						<a href="#contact">{t( "pages.index.header_contact" )}</a>
 					</li>
 				</ul>
 

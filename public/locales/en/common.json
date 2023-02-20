@@ -1,0 +1,35 @@
+{
+	"modals": {
+		"mailer_title": "Mailbox selection",
+		"mailer_description": "To send an email, you can choose between several mailboxes. Select your preferred one.",
+		"mailer_error": "You have to choose a mailbox.",
+		"mailer_google": "Gmail (Google)",
+		"mailer_default": "Default mailbox"
+	},
+	"projects":
+	{
+		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
+		"filestorage": "A simplified and fast data storage service allowing to emancipate from the current big companies such as Google Drive or OneDrive with questionable privacy policies.",
+		"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
+		"domego": "The dematerialized version of an educational and serious board game with the same name to learn the steps of a public building construction operation. This project is unfinished but currently maintained by students of PolyTech Nice-Sophia Antipolis.",
+		"assignment": "A small website designed for educational purposes to manage the homework and grades of students in a class as a teacher. The website is not intended to be used in production because it was designed in a very short time and only to learn the Angular framework."
+	},
+	"pages": {
+		"index": {
+			"header_projects": "Projects",
+			"header_skills": "Skills",
+			"header_contact": "Contact",
+			"footer_mail": "Mail",
+			"filter_all": "All",
+			"filter_front": "Front-end",
+			"filter_back": "Back-end",
+			"filter_other": "Other",
+			"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
+			"developer_firstname": "Florian",
+			"developer_surname": "Trayon",
+			"developer_description": "I'm a {{age}} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
+			"hello_title": "Hi. I am",
+			"download_resume": "Download the resume"
+		}
+	}
+}
