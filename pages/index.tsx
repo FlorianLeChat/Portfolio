@@ -170,7 +170,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 									<h3>{value.title}</h3>
 
 									{/* Description du projet */}
-									<p>{t( "projects." + key )}</p>
+									<p>{t( `projects.${ key }` )}</p>
 
 									{/* Compétences utilisées pour le projet */}
 									<ul>
