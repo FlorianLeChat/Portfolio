@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { Poppins } from "@next/font/google";
 import { useRouter } from "next/router";
+import { appWithTranslation } from "next-i18next";
 
 // Importation des types.
 import type { AppProps } from "next/app";
@@ -30,7 +31,7 @@ const poppins = Poppins( {
 	display: "swap"
 } );
 
-export default function App( { Component, pageProps }: AppProps )
+const Portfolio = ( { Component, pageProps }: AppProps ) =>
 {
 	// Création des constantes.
 	const { basePath } = useRouter();
@@ -95,4 +96,6 @@ export default function App( { Component, pageProps }: AppProps )
 			</Layout>
 		</>
 	);
-}
+};
+
+export default appWithTranslation( Portfolio );

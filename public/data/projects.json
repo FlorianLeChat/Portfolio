@@ -1,35 +1,30 @@
 {
 	"portfolio": {
 		"title": "Portfolio",
-		"description": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
 		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Portfolio",
 		"demo": "https://www.florian-dev.fr/portfolio/"
 	},
 	"filestorage": {
 		"title": "Simple File Storage",
-		"description": "Un service de stockage de données simplifié et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialités douteuses.",
 		"skills": ["HTML", "CSS", "Bootstrap", "PHP"],
 		"repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
 		"demo": "https://files.florian-dev.fr/"
 	},
 	"sourceconsole": {
 		"title": "Source Web Console",
-		"description": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
 		"skills": ["HTML", "SASS", "JavaScript", "jQuery", "PHP", "Twig", "MySQL", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Source-Web-Console",
 		"demo": "https://console.florian-dev.fr/"
 	},
 	"domego": {
 		"title": "Domego",
-		"description": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de PolyTech Sophia Antipolis.",
 		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "MongoDB", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Domego",
 		"demo": "https://www.florian-dev.fr/domego/"
 	},
 	"assignment": {
 		"title": "Assignment Manager",
-		"description": "Un petit site conçu dans un but pédagogique pour gérer les devoirs et les notes des élèves d'une classe en tant qu'enseignant. Le site n'est pas destiné à être utilisé en production parce qu'il a été conçu durant un laps de temps très court et seulement pour apprendre le framework Angular.",
 		"skills": ["HTML", "CSS", "JavaScript", "NodeJS", "Angular", "MongoDB"],
 		"repository": "https://github.com/FlorianLeChat/Assignment-Manager",
 		"demo": "https://dapper-kheer-98d13d.netlify.app/"
