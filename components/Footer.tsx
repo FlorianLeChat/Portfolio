@@ -9,7 +9,7 @@ export default function Footer()
 	return (
 		<footer>
 			{/* Lien vers le dépôt GitHub du projet */}
-			<span><Trans i18nKey="pages.index.footer_madeby" components={{ a: <a href="https://github.com/FlorianLeChat" /> }} /></span>
+			<span><Trans i18nKey="pages.index.footer_madeby" components={{ a: <a href="https://github.com/FlorianLeChat">...</a> }} /></span>
 
 			{/* Date de création du site */}
 			<small>&copy; {new Date().getFullYear()}</small>
