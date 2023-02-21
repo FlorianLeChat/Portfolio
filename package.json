@@ -31,6 +31,7 @@
     "@types/node": "~18.13",
     "@types/react": "~18.0",
     "@types/dom-speech-recognition": "~0.0",
+    "pm2": "~5.2",
     "sass": "~1.58",
     "typescript": "~4.9",
     "eslint-config-next": "~13.1",
@@ -43,11 +44,17 @@
     "node": ">=19.6",
     "npm": ">=9.4"
   },
+  "overrides": {
+    "uuid": "~9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "lint": "next lint && eslint . --config .eslintrc.json --ext .js,.jsx,.ts,.tsx",
     "build": "next build",
-    "start": "next start",
+    "start": "pm2 start --name portfolio next -- start -p 3000",
+    "stop": "pm2 delete portfolio",
+    "restart": "pm2 restart portfolio",
+    "reload": "pm2 reload portfolio"
   },
   "browserslist": [
     "defaults"
