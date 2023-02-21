@@ -25,6 +25,7 @@
 			"filter_back": "Back-end",
 			"filter_other": "Autres",
 			"footer_madeby": "Conçu par <a>Florian Trayon 🐈</a>",
+			"footer_recaptcha": "Ce site est protégé par reCAPTCHA et les <a1>politiques de confidentialité</a1> et les <a2>conditions d'utilisation</a2> de Google s'appliquent.",
 			"developer_firstname": "Florian",
 			"developer_surname": "Trayon",
 			"developer_description": "Je suis un développeur (junior) français full-stack de {{age}} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
