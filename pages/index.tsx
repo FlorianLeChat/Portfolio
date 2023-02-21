@@ -191,7 +191,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 						return (
 							<article key={key}>
 								{/* Image du projet */}
-								<Image src={"/assets/images/" + key + ".png"} alt={value.title} width={450} height={250} />
+								<Image src={`${ basePath }/assets/images/${ key }.png`} alt={value.title} width={450} height={250} />
 
 								{/* Contenu du projet */}
 								<div>
