@@ -5,7 +5,6 @@
 // Importation des dépendances.
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useTranslation } from "next-i18next";
 import { useState, useEffect, useTransition } from "react";
 
 // Importation des fonctions utilitaires.
@@ -19,7 +18,6 @@ const ScrollTop = dynamic( () => import( "@/components/ScrollTop" ) );
 export default function Layout( { children }: { children: React.ReactNode; } )
 {
 	// Déclaration des constantes.
-	const { t } = useTranslation();
 	const router = useRouter();
 	const shouldHide = router.pathname === "/404" || router.pathname === "/500" || router.pathname === "/_offline";
 	const [ _, startTransition ] = useTransition();
