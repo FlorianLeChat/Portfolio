@@ -19,8 +19,13 @@ export default function Document( props: DocumentProps )
 	return (
 		<Html lang={props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale} dir="auto" prefix="og: https://ogp.me/ns#">
 			<Head>
+				{/* Pré-connexion des ressources externes */}
+				<link rel="preconnect" href="https://www.google.com" />
+				<link rel="preconnect" href="https://www.gstatic.com" />
+
 				{/* Scripts JavaScript */}
 				<Script src={`https://www.googletagmanager.com/gtag/js?id=${ process.env[ "NEXT_PUBLIC_ANALYTICS_IDENTIFIER" ] }`} strategy="afterInteractive" />
+				<Script src={`https://www.google.com/recaptcha/api.js?render=${ process.env[ "NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY" ] }`} strategy="afterInteractive" />
 
 				{/* Google Analytics */}
 				<Script id="google-analytics" strategy="afterInteractive">

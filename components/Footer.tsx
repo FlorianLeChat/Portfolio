@@ -13,6 +13,9 @@ export default function Footer()
 
 			{/* Date de création du site */}
 			<small>&copy; {new Date().getFullYear()}</small>
+
+			{/* Avertissement de Google reCAPTCHA */}
+			<small><Trans i18nKey="pages.index.footer_recaptcha" components={{ a1: <a href="https://policies.google.com/privacy">...</a>, a2: <a href="https://policies.google.com/terms">...</a> }} /></small>
 		</footer>
 	);
 }

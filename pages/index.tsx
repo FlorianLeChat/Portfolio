@@ -3,6 +3,7 @@
 //
 import path from "path";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
@@ -41,6 +42,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 	// Déclaration des constantes.
 	const date = new Date();
 	const { t } = useTranslation();
+	const { basePath } = useRouter();
 
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
@@ -98,10 +100,10 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 		}
 	};
 
-	// Défilement automatique vers les sections par commandes vocales.
-	// 	Source : https://github.com/mdn/dom-examples/blob/44856cc22f47b0203cbcb48127af50744e89aa7e/web-speech-api/speech-color-changer/script.js
 	useEffect( () =>
 	{
+		// Défilement automatique des sections via commandes vocales.
+		// 	Source : https://github.com/mdn/dom-examples/blob/44856cc22f47b0203cbcb48127af50744e89aa7e/web-speech-api/speech-color-changer/script.js
 		const recognition = new webkitSpeechRecognition();
 		recognition.start();
 		recognition.continuous = true;
@@ -117,7 +119,34 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 				element.scrollIntoView( { behavior: "smooth" } );
 			}
 		};
-	}, [] );
+
+		// Vérification de la validité de l'utilisateur via les
+		//	services de Google reCAPTCHA.
+		if ( process.env[ "NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY" ] )
+		{
+			// On vérifie d'abord que le service de reCAPTCHA est disponible.
+			if ( !window.grecaptcha )
+			{
+				return;
+			}
+
+			// On attend ensuite que les services de reCAPTCHA soient chargés.
+			window.grecaptcha.ready( async () =>
+			{
+				// On génère alors un jeton d'authentification...
+				const token = await window.grecaptcha.execute( process.env[ "NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY" ] ?? "", { action: "create" } );
+
+				// ... avant de l'envoyer au serveur.
+				fetch( `${ basePath }/api/recaptcha`, {
+					method: "POST",
+					body: JSON.stringify( { token: token } ),
+					headers: {
+						"Content-type": "application/json; charset=UTF-8"
+					}
+				} );
+			} );
+		}
+	}, [ basePath ] );
 
 	// Affichage du rendu HTML de la page.
 	return (
