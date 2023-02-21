@@ -6,6 +6,9 @@
 // Importation de la feuille de style CSS globale.
 import "./_global.scss";
 
+// Importation du normalisateur TypeScript.
+import "@total-typescript/ts-reset";
+
 // Importation des dépendances.
 import Head from "next/head";
 import dynamic from "next/dynamic";
