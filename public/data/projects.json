@@ -7,7 +7,7 @@
 	},
 	"filestorage": {
 		"title": "Simple File Storage",
-		"skills": ["HTML", "CSS", "Bootstrap", "PHP"],
+		"skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"],
 		"repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
 		"demo": "https://files.florian-dev.fr/"
 	},

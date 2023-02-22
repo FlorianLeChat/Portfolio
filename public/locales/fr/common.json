@@ -11,7 +11,7 @@
 		"portfolio": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
 		"filestorage": "Un service de stockage de données simplifié et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialités douteuses.",
 		"sourceconsole": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
-		"domego": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de PolyTech Nice-Sophia Antipolis.",
+		"domego": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de Polytech Nice-Sophia Antipolis.",
 		"assignment": "Un petit site conçu dans un but pédagogique pour gérer les devoirs et les notes des élèves d'une classe en tant qu'enseignant. Le site n'est pas destiné à être utilisé en production parce qu'il a été conçu durant un laps de temps très court et seulement pour apprendre le framework Angular."
 	},
 	"pages": {
@@ -25,7 +25,7 @@
 			"filter_back": "Back-end",
 			"filter_other": "Autres",
 			"footer_madeby": "Conçu par <a>Florian Trayon 🐈</a>",
-			"footer_recaptcha": "Ce site est protégé par reCAPTCHA et les <a1>politiques de confidentialité</a1> et les <a2>conditions d'utilisation</a2> de Google s'appliquent.",
+			"footer_recaptcha": "Ce site est protégé par reCAPTCHA sur lequel s'appliquent les <a1>politiques de confidentialité</a1> et les <a2>conditions d'utilisation</a2> de Google.",
 			"developer_firstname": "Florian",
 			"developer_surname": "Trayon",
 			"developer_description": "Je suis un développeur (junior) français full-stack de {{age}} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
