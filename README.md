@@ -2,30 +2,30 @@
 
 ## In French
 
-Ceci est mon premier portfolio et par la même occasion, l'un de mes premiers sites web utilisant les technologies du web les plus connues. Il est très probable qu'il comporte de nombreuses fautes de débutant, mais ce projet est voué a évoluer dans le temps.
+Ceci est mon portfolio tout simplement ! Au départ, il s'agissait de mon tout premier site Internet réalisé durant mes études et utilisant HTML, CSS, JavaScript ainsi que PHP sans aucun framework particulier. Plusieurs mois ont défilés et j'ai décidé de le refaire complètement en adoptant un nouveau design inspiré de [ce portfolio](https://github.com/rajshekhar26/rajshekhar26.github.io) avec NextJS ainsi que des technologies beaucoup plus modernes.
 
 <ins>Voici les exigences pour exécuter le site Internet</ins> :
-* PHP **8.2+**
-* MariaDB **10.5+**
+* NodeJS **19.6+**
+* npm **9.4+**
 
-**N'espérez pas pouvoir héberger le site, car la base de données n'est pas incluse avec le dépôt étant donné qu'elle contient des données personnelles.**
+**Pour essayer le projet, il suffit d'installer l'ensemble des dépendances nécessaires avec la commande `npm install` puis de lancer le serveur de développement avec la commande `npm run dev`. Une image Docker est aussi disponible pour tester ce projet pour les personnes les plus expérimentées ! 🐳**
 
-Par soucis de simplicité, l'entièreté du code est commentée dans ma langue natale (en français) mais il sera probablement traduit dans un futur proche.
+Les anciennes versions de mon portfolio sont également disponibles sur les autres branches GitHub : `no-next-js` (dernière version utilisant PHP), `no-gmail` (version PHP ayant encore un formulaire de contact sans GMail), `no-sass` (version PHP sans l'utilisation du préprocesseur SASS) et `no-php` (version utilisant seulement HTML, CSS et JavaScript).
 
-![image](https://user-images.githubusercontent.com/26360935/149189264-ad8c7b32-b565-4770-9555-9d531041ec46.png)
+![image](https://user-images.githubusercontent.com/26360935/220702548-5d333d02-e5a2-48bf-bdbf-afc08492f035.png)
 
 ___
 
 ## In English
 
-This is my first portfolio and at the same time, one of my first websites using the most famous web technologies. It is very likely to have many beginner mistakes, but this project is bound to evolve over time.
+This is my portfolio! At the beginning, it was my very first website made during my studies and using HTML, CSS, JavaScript and PHP without any framework. Several months later, I decided to redo it completely by adopting a new design inspired by [this portfolio](https://github.com/rajshekhar26/rajshekhar26.github.io) with NextJS and much more modern technologies.
 
 <ins>Here are the requirements to run the website</ins>:
-* PHP **8.2+**
-* MariaDB **10.5+**
+* NodeJS **19.6+**
+* npm **9.4+**
 
-**Don't expect to be able to host the site, as the database is not included with the repository since it contains personal data.**
+**To test the project, you simply have to install all the necessary dependencies with `npm install` command and then launch the development server with `npm run dev` command. A Docker image is also available to test this project for the most skilled people! 🐳**
 
-To keep it simple, the whole code is commented in my native language (French) but it will probably be translated in the near future.
+Older versions of my portfolio are also available on the other GitHub branches: `no-next-js` (latest version using PHP), `no-gmail` (PHP version still having a contact form without GMail), `no-sass` (PHP version without using the SASS preprocessor) and `no-php` (version using only HTML, CSS and JavaScript).
 
-![image](https://user-images.githubusercontent.com/26360935/149189055-8a89d23c-c8cb-47d7-aee7-815e47344dd3.png)
+![image](https://user-images.githubusercontent.com/26360935/220702663-5cd0eb29-097f-484f-8c82-2f1023459d9c.png)
