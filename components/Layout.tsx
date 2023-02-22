@@ -44,7 +44,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 				//	effectué de manière asynchrone.
 				startTransition( () =>
 				{
-					html.className = "theme-" + target;
+					html.className = `theme-${ target }`;
 				} );
 			}
 
@@ -70,9 +70,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 				{!shouldHide && <Header />}
 
 				{/* Affichage du composant enfant */}
-				<main>
-					{children}
-				</main>
+				<main>{children}</main>
 
 				{/* Affichage du bouton de retour en haut de page */}
 				{!shouldHide && <ScrollTop />}

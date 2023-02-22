@@ -21,8 +21,8 @@ export async function getStaticProps( { locale }: { locale: string; } )
 	// On récupère les compétences et les projets depuis
 	// 	le système de fichiers.
 	const directory = path.join( process.cwd(), "public/data" );
-	const projects = await fileSystem.readFile( directory + "/projects.json", "utf8" );
-	const skills = await fileSystem.readFile( directory + "/skills.json", "utf8" );
+	const projects = await fileSystem.readFile( `${ directory }/projects.json`, "utf8" );
+	const skills = await fileSystem.readFile( `${ directory }/skills.json`, "utf8" );
 
 	return {
 		props: {
@@ -270,7 +270,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 							{
 								return (
 									<div key={key}>
-										<i className={"devicon-" + key + "-" + value.icon + ( ( key === "lua" || value.icon === "original" ) ? "" : " colored" )}></i>
+										<i className={`devicon-${ key }-${ value.icon + ( ( key === "lua" || value.icon === "original" ) ? "" : " colored" ) }`}></i>
 										<span>{value.name}</span>
 									</div>
 								);

@@ -27,7 +27,7 @@ export default function Header()
 		{
 			// On signale à React que le changement de thème doit être
 			//	effectué de manière asynchrone.
-			html.className = "theme-" + target;
+			html.className = `theme-${ target }`;
 		}
 
 		setTheme( target );
