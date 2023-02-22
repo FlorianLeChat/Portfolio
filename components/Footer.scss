@@ -6,10 +6,12 @@ footer
 	// Conteneur du pied de page.
 	left: 0;
 	right: 0;
-	height: 7rem;
+	padding: 1rem;
 	position: absolute;
+	text-align: center;
 	box-shadow: 0 -0.1rem 1rem rgb(0, 0, 0, 0.1);
 	margin-top: 5rem;
+	min-height: 7rem;
 	flex-direction: column;
 	justify-content: center;
 
