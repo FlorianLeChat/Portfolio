@@ -11,7 +11,7 @@
 		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
 		"filestorage": "A simplified and fast data storage service allowing to emancipate from the current big companies such as Google Drive or OneDrive with questionable privacy policies.",
 		"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
-		"domego": "The dematerialized version of an educational and serious board game with the same name to learn the steps of a public building construction operation. This project is unfinished but currently maintained by students of PolyTech Nice-Sophia Antipolis.",
+		"domego": "The dematerialized version of an educational and serious board game with the same name to learn the steps of a public building construction operation. This project is unfinished but currently maintained by students of Polytech Nice-Sophia Antipolis.",
 		"assignment": "A small website designed for educational purposes to manage the homework and grades of students in a class as a teacher. The website is not intended to be used in production because it was designed in a very short time and only to learn the Angular framework."
 	},
 	"pages": {
