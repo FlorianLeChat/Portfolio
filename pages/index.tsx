@@ -103,7 +103,13 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 	useEffect( () =>
 	{
 		// Défilement automatique des sections via commandes vocales.
+		//	Note : cette fonctionnalité n'est pas disponible sur Firefox.
 		// 	Source : https://github.com/mdn/dom-examples/blob/44856cc22f47b0203cbcb48127af50744e89aa7e/web-speech-api/speech-color-changer/script.js
+		if ( !window.webkitSpeechRecognition )
+		{
+			return;
+		}
+
 		const recognition = new webkitSpeechRecognition();
 		recognition.start();
 		recognition.continuous = true;
