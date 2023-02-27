@@ -112,7 +112,6 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 
 		const recognition = new webkitSpeechRecognition();
 		recognition.start();
-		recognition.continuous = true;
 		recognition.onresult = ( event ) =>
 		{
 			// On récupère d'abord la transcription de la commande
@@ -131,7 +130,27 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 					break;
 				}
 			}
+
+			// On relance enfin la reconnaissance vocale après avoir
+			// 	attendu la fin de l'ancienne séquence de reconnaissance.
+			setTimeout( () =>
+			{
+				recognition.start();
+			}, 50 );
 		};
+
+		recognition.onerror = ( event ) =>
+		{
+			// On vérifie d'abord si la reconnaissance vocale a échoué
+			//	à cause d'un manque de reconnaissance.
+			if ( event.error === "no-speech" )
+			{
+				// Si c'est le cas, on attend quelques instants avant
+				// 	de la relancer.
+				setTimeout( () =>
+				{
+					recognition.start();
+				}, 50 );
 			}
 		};
 
