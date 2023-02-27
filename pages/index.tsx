@@ -115,14 +115,23 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 		recognition.continuous = true;
 		recognition.onresult = ( event ) =>
 		{
-			// On récupère d'abord le nom de la section.
+			// On récupère d'abord la transcription de la commande
+			//	ainsi que tous les titres des sections.
 			const name = event.results[ 0 ][ 0 ].transcript;
-			const element = document.getElementById( name );
+			const elements = document.querySelectorAll( "section > h2" );
 
-			if ( element )
+			for ( const element of elements )
 			{
-				// On défile enfin vers la section (si elle existe).
-				element.scrollIntoView( { behavior: "smooth" } );
+				// On vérifie ensuite si le titre de la section
+				//	correspond à la commande vocale.
+				if ( element.textContent?.toLocaleLowerCase().includes( name ) )
+				{
+					// On défile alors vers la section (si elle existe).
+					element.scrollIntoView( { behavior: "smooth" } );
+					break;
+				}
+			}
+		};
 			}
 		};
 
