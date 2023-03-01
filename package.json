@@ -20,7 +20,7 @@
     "@next/font": "~13.1",
     "sweetalert2": "<11.4.9",
     "sanitize.css": "~13.0",
-    "next-i18next": "~13.0",
+    "next-i18next": "~13.1",
     "react-i18next": "~12.1",
     "@fortawesome/react-fontawesome": "~0.2",
     "@fortawesome/fontawesome-svg-core": "~6.3",
