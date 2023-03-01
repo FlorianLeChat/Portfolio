@@ -88,27 +88,31 @@ header
 					color: getThemedColor("foreground-alt");
 				}
 
-				&:hover
+				@media (hover: hover) and (pointer: fine)
 				{
-					// Effet au survol.
-					@include themeColors()
-					{
-						color: getThemedColor("primary");
-					}
-
-					&::before
+					// Animation de survol et de sélection
+					//	sur les écrans à pointeur (souris).
+					&:hover
 					{
 						// Animation de survol.
-						width: 100%;
-					}
-				}
+						@include themeColors()
+						{
+							color: getThemedColor("primary");
+						}
 
-				&:active
-				{
-					// Effet à la sélection.
-					@include themeColors()
+						&::before
+						{
+							width: 100%;
+						}
+					}
+
+					&:active
 					{
-						color: getThemedColor("primary-alt");
+						// Animation de sélection.
+						@include themeColors()
+						{
+							color: getThemedColor("primary-alt");
+						}
 					}
 				}
 

@@ -208,15 +208,6 @@ header > a, header button, section:nth-of-type(2) a
 	border-radius: 50%;
 	justify-content: center;
 
-	&:hover, &:hover svg
-	{
-		// Effet de survol.
-		@include themeColors()
-		{
-			color: getThemedColor("background");
-		}
-	}
-
 	&::after
 	{
 		// Arrière-plan de l'icône.
@@ -236,15 +227,27 @@ header > a, header button, section:nth-of-type(2) a
 		}
 	}
 
-	&:hover::after
+	@media (hover: hover) and (pointer: fine)
 	{
-		// Sélection de l'arrière-plan de l'icône.
-		width: 100%;
-		height: 100%;
-
-		@include themeColors()
+		// Animation de survol de l'icône sur les écrans
+		// 	à pointeur (souris).
+		&:hover, &:hover svg
 		{
-			border: 0.25rem solid getThemedColor("primary");
+			@include themeColors()
+			{
+				color: getThemedColor("background");
+			}
+		}
+
+		&:hover::after
+		{
+			width: 100%;
+			height: 100%;
+
+			@include themeColors()
+			{
+				border: 0.25rem solid getThemedColor("primary");
+			}
 		}
 	}
 }
