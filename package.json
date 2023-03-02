@@ -12,7 +12,7 @@
     "url": "https://github.com/FlorianLeChat/Portfolio/issues"
   },
   "dependencies": {
-    "next": "~13.1",
+    "next": "~13.2",
     "react": "~18.2",
     "devicon": "~2.15",
     "i18next": "~22.4",
