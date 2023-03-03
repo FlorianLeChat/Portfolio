@@ -13,7 +13,7 @@ import "@total-typescript/ts-reset";
 import Head from "next/head";
 import dynamic from "next/dynamic";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { Poppins } from "@next/font/google";
+import { Poppins } from "next/font/google";
 import { useRouter } from "next/router";
 import { appWithTranslation } from "next-i18next";
 
