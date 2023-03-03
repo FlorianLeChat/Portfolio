@@ -36,7 +36,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 		const checkUserTheme = () =>
 		{
 			const html = document.querySelector( "html" );
-			const target = localStorage.getItem( "default-theme" ) || ( theme.matches ? "dark" : "light" );
+			const target = localStorage.getItem( "current-theme" ) ?? ( theme.matches ? "dark" : "light" );
 
 			if ( html )
 			{
@@ -49,6 +49,8 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 			}
 
 			setTheme( target );
+
+			localStorage.setItem( "current-theme", target );
 		};
 
 		// On déclenche après la vérification au montage du composant.
