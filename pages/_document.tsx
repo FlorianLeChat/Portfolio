@@ -16,7 +16,7 @@ import type { DocumentProps } from "next/document";
 export default function Document( props: DocumentProps )
 {
 	// Déclaration des constantes.
-	const url = new URL( props.__NEXT_DATA__.page, process.env[ "NEXT_PUBLIC_URL" ] ?? "" );
+	const url = new URL( process.env[ "NEXT_PUBLIC_BASE_PATH" ] + props.__NEXT_DATA__.page, process.env[ "NEXT_PUBLIC_URL" ] );
 	const locale = props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale;
 
 	// Affichage du rendu HTML de la page.
