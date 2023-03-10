@@ -15,10 +15,29 @@ import type { DocumentProps } from "next/document";
 
 export default function Document( props: DocumentProps )
 {
+	// Déclaration des constantes.
+	const url = new URL( props.__NEXT_DATA__.page, process.env[ "NEXT_PUBLIC_URL" ] ?? "" );
+	const locale = props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale;
+
 	// Affichage du rendu HTML de la page.
 	return (
-		<Html lang={props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale} dir="auto" prefix="og: https://ogp.me/ns#">
+		<Html lang={locale} dir="auto" prefix="og: https://ogp.me/ns#">
 			<Head>
+				{/* Informations pour les moteurs de recherche */}
+				<meta property="og:type" content="website" />
+				<meta property="og:url" content={url.href} />
+				<meta property="og:locale" content={locale} />
+				<meta property="og:title" content={process.env[ "NEXT_PUBLIC_TITLE" ]} />
+				<meta property="og:description" content={process.env[ "NEXT_PUBLIC_DESCRIPTION" ]} />
+				<meta property="og:image" content={process.env[ "NEXT_PUBLIC_BANNER" ]} />
+
+				<meta property="twitter:card" content="summary_large_image" />
+				<meta property="twitter:url" content={url.href} />
+				<meta property="twitter:title" content={process.env[ "NEXT_PUBLIC_TITLE" ]} />
+				<meta property="twitter:description" content={process.env[ "NEXT_PUBLIC_DESCRIPTION" ]} />
+				<meta property="twitter:image" content={process.env[ "NEXT_PUBLIC_BANNER" ]} />
+				<meta property="twitter:creator" content={process.env[ "NEXT_PUBLIC_TWITTER" ]} />
+
 				{/* Pré-connexion des ressources externes */}
 				<link rel="preconnect" href="https://www.google.com" />
 				<link rel="preconnect" href="https://www.gstatic.com" />
