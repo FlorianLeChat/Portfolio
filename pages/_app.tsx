@@ -51,18 +51,6 @@ const Portfolio = ( { Component, pageProps }: AppProps ) =>
 				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 				<meta name="theme-color" content="#306cc4" />
 
-				<meta property="og:type" content="website" />
-				<meta property="og:url" content={process.env[ "NEXT_PUBLIC_URL" ]} />
-				<meta property="og:title" content={process.env[ "NEXT_PUBLIC_TITLE" ]} />
-				<meta property="og:description" content={process.env[ "NEXT_PUBLIC_DESCRIPTION" ]} />
-				<meta property="og:image" content={process.env[ "NEXT_PUBLIC_BANNER" ]} />
-
-				<meta property="twitter:card" content="summary_large_image" />
-				<meta property="twitter:url" content={process.env[ "NEXT_PUBLIC_URL" ]} />
-				<meta property="twitter:title" content={process.env[ "NEXT_PUBLIC_TITLE" ]} />
-				<meta property="twitter:description" content={process.env[ "NEXT_PUBLIC_DESCRIPTION" ]} />
-				<meta property="twitter:image" content={process.env[ "NEXT_PUBLIC_BANNER" ]} />
-
 				{/* Titre du document */}
 				<title>{`${ process.env[ "NEXT_PUBLIC_TITLE" ] }`}</title>
 
