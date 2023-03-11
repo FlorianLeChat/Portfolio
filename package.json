@@ -34,6 +34,7 @@
     "pm2": "~5.2",
     "sass": "~1.58",
     "typescript": "~4.9",
+    "next-sitemap": "~4.0",
     "eslint-config-next": "~13.2",
     "@total-typescript/ts-reset": "~0.3"
   },
@@ -50,7 +51,7 @@
   "scripts": {
     "dev": "next dev",
     "lint": "eslint . --config .eslintrc.json --ext .js,.jsx,.ts,.tsx",
-    "build": "next build",
+    "build": "next build && next-sitemap",
     "start": "pm2 start --name portfolio next -- start -p 3000",
     "stop": "pm2 delete portfolio",
     "restart": "pm2 restart portfolio",
