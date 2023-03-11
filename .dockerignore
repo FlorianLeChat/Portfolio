@@ -1,4 +1,5 @@
 *.md
+*.d.ts
 .env
 .next
 .git*
