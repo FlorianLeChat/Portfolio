@@ -280,6 +280,15 @@ section:nth-of-type(3) article
 	{
 		// Conteneur des options de tri.
 		margin: 0 1rem 3rem 1rem;
+
+		// Couleur de fond des options de tri.
+		input[type = radio]
+		{
+			@include themeColors()
+			{
+				accent-color: getThemedColor("primary");
+			}
+		}
 	}
 
 	div
