@@ -18,4 +18,4 @@ updates:
     ignore:
       # Ignore all "SweetAlert2" dependency updates
       # https://github.com/advisories/GHSA-qq6h-5g6j-q3cm
-      - "sweetalert2"
+      - dependency-name: "sweetalert2"
