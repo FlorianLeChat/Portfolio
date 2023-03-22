@@ -15,3 +15,7 @@ updates:
       # Check for updates managed by npm once a month
       interval: "monthly"
     open-pull-requests-limit: 30
+    ignore:
+      # Ignore all "SweetAlert2" dependency updates
+      # https://github.com/advisories/GHSA-qq6h-5g6j-q3cm
+      - "sweetalert2"
