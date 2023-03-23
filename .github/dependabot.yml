@@ -16,6 +16,7 @@ updates:
       interval: "monthly"
     open-pull-requests-limit: 30
     ignore:
-      # Ignore all "SweetAlert2" dependency updates
       # https://github.com/advisories/GHSA-qq6h-5g6j-q3cm
       - dependency-name: "sweetalert2"
+      # https://github.com/i18next/react-i18next/issues/1601
+      - dependency-name: "next-i18next"
