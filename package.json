@@ -37,7 +37,7 @@
     "@total-typescript/ts-reset": "~0.4"
   },
   "optionalDependencies": {
-    "sharp": "~0.31"
+    "sharp": "~0.32"
   },
   "engines": {
     "node": ">=19.6",
