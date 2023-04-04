@@ -12,7 +12,6 @@ import { promises as fileSystem } from "fs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-import i18nextConfig from "@/next-i18next.config";
 import { SkillAttributes } from "@/interfaces/Skill";
 import { ProjectAttributes } from "@/interfaces/Project";
 
@@ -32,8 +31,8 @@ export async function getStaticProps( { locale }: { locale: string; } )
 			skills: JSON.parse( skills ),
 
 			// On retourne enfin les traductions de la page.
-			...( await serverSideTranslations( locale ?? i18nextConfig.i18n.defaultLocale ) )
 		},
+			...( await serverSideTranslations( locale ) )
 	};
 }
 
@@ -173,7 +172,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 				// ... avant de l'envoyer au serveur.
 				fetch( `${ basePath }/api/recaptcha`, {
 					method: "POST",
-					body: JSON.stringify( { token: token } ),
+					body: JSON.stringify( { token } ),
 					headers: {
 						"Content-type": "application/json; charset=UTF-8"
 					}
