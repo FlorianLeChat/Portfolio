@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect, useTransition } from "react";
 
 // Importation des fonctions utilitaires.
-import { ThemeContext } from "@/utils/ThemeContext";
+import ThemeContext from "@/utils/ThemeContext";
 
 // Importation des composants.
 const Header = dynamic( () => import( "@/components/Header" ) );

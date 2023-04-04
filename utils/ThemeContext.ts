@@ -4,4 +4,13 @@
 //
 import { createContext } from "react";
 
-export const ThemeContext = createContext( { theme: "light", setTheme: ( _: string ) => { } } );
+const ThemeContext = createContext( {
+	theme: "light",
+	setTheme: ( _: string ) =>
+	{
+		// Cette fonction est définie par une variable d'état
+		//  dans le mécanisme de changement de thème.
+	}
+} );
+
+export default ThemeContext;
