@@ -6,11 +6,11 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { promises as fileSystem } from "fs";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { faCode, faExternalLinkAlt, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState, ChangeEvent, MouseEvent } from "react";
 
 import { SkillAttributes } from "@/interfaces/Skill";
 import { ProjectAttributes } from "@/interfaces/Project";
@@ -31,12 +31,12 @@ export async function getStaticProps( { locale }: { locale: string; } )
 			skills: JSON.parse( skills ),
 
 			// On retourne enfin les traductions de la page.
-		},
 			...( await serverSideTranslations( locale ) )
+		}
 	};
 }
 
-export default function Home( props: { projects: ProjectAttributes[], skills: SkillAttributes[]; } )
+export default function Home( { projects, skills }: { projects: ProjectAttributes[]; skills: SkillAttributes[]; } )
 {
 	// Déclaration des constantes.
 	const date = new Date();
@@ -49,13 +49,13 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 	const [ skillFilter, setSkillFilter ] = useState( "all" );
 
 	// Mise à jour du filtre des compétences.
-	const updateSkillFilter = ( event: React.ChangeEvent<HTMLInputElement> ) =>
+	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) =>
 	{
 		setSkillFilter( event.target.id );
 	};
 
 	// Envoi d'un courriel après sélection de la messagerie.
-	const sendMail = async ( event: React.MouseEvent<HTMLButtonElement, MouseEvent> ) =>
+	const sendMail = async ( event: MouseEvent<HTMLButtonElement> ) =>
 	{
 		// On cesse d'abord le comportement par défaut du lien.
 		event.preventDefault();
@@ -308,6 +308,8 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 									</div>
 								);
 							}
+
+							return null;
 						} )
 					}
 				</article>

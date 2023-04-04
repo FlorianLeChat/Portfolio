@@ -13,7 +13,7 @@ const withPWA = require( "next-pwa" )( {
 		image: "",
 		font: "",
 		audio: "",
-		video: "",
+		video: ""
 	}
 } );
 
