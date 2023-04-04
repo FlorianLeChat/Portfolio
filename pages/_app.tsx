@@ -34,7 +34,7 @@ const poppins = Poppins( {
 	display: "swap"
 } );
 
-const Portfolio = ( { Component, pageProps }: AppProps ) =>
+function Portfolio( { Component, pageProps }: AppProps )
 {
 	// Création des constantes.
 	const { basePath } = useRouter();
@@ -87,6 +87,6 @@ const Portfolio = ( { Component, pageProps }: AppProps ) =>
 			</Layout>
 		</>
 	);
-};
+}
 
 export default appWithTranslation( Portfolio );

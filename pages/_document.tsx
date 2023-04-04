@@ -13,12 +13,12 @@ import { Html, Main, Head, NextScript } from "next/document";
 // Importation des types.
 import type { DocumentProps } from "next/document";
 
-export default function Document( props: DocumentProps )
+export default function Document( { __NEXT_DATA__ }: DocumentProps )
 {
 	// Déclaration des constantes.
-	const url = new URL( process.env[ "NEXT_PUBLIC_BASE_PATH" ] + props.__NEXT_DATA__.page, process.env[ "NEXT_PUBLIC_URL" ] );
-	const locale = props.__NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale;
 	const { env } = process;
+	const locale = __NEXT_DATA__.locale ?? i18nextConfig.i18n.defaultLocale;
+	const url = new URL( env.NEXT_PUBLIC_BASE_PATH + __NEXT_DATA__.page, env.NEXT_PUBLIC_URL );
 
 	// Affichage du rendu HTML de la page.
 	return (

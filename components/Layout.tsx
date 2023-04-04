@@ -5,7 +5,7 @@
 // Importation des dépendances.
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
-import { useState, useEffect, useTransition } from "react";
+import { useState, useEffect, useMemo, useTransition, ReactNode } from "react";
 
 // Importation des fonctions utilitaires.
 import ThemeContext from "@/utils/ThemeContext";
@@ -15,7 +15,7 @@ const Header = dynamic( () => import( "@/components/Header" ) );
 const Footer = dynamic( () => import( "@/components/Footer" ) );
 const ScrollTop = dynamic( () => import( "@/components/ScrollTop" ) );
 
-export default function Layout( { children }: { children: React.ReactNode; } )
+export default function Layout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
 	const router = useRouter();

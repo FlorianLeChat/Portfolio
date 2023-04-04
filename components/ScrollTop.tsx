@@ -45,9 +45,7 @@ export default function ScrollTop()
 			</aside>
 		);
 	}
-	else
-	{
-		// L'utilisateur se trouve à moins de 200 pixels du haut de la page.
-		return <></>;
-	}
+
+	// L'utilisateur se trouve à moins de 200 pixels du haut de la page.
+	return null;
 }

@@ -28,13 +28,13 @@ module.exports = {
 	autoLastmod: false,
 	alternateRefs: [
 		{
-			href: url + "/en",
-			hreflang: "en",
+			href: `${ url }/en`,
+			hreflang: "en"
 		},
 		{
-			href: url + "/fr",
-			hreflang: "fr",
-		},
+			href: `${ url }/fr`,
+			hreflang: "fr"
+		}
 	],
 	generateIndexSitemap: false
 };
