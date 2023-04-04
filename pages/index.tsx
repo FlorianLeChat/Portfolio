@@ -209,7 +209,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 
 					{/* Bouton de téléchargement du CV */}
 					<a href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view" target="_blank" rel="noopener noreferrer">
-						<button>{t( "pages.index.download_resume" )}</button>
+						<button type="button">{t( "pages.index.download_resume" )}</button>
 					</a>
 				</article>
 			</section>
@@ -321,7 +321,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 				{/* Liens vers les réseaux sociaux */}
 				<ul>
 					<li>
-						<button onClick={sendMail}>
+						<button type="button" onClick={sendMail}>
 							<FontAwesomeIcon icon={faEnvelope} />
 							{t( "pages.index.footer_mail" )}
 						</button>

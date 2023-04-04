@@ -39,7 +39,7 @@ export default function ScrollTop()
 		// L'utilisateur se trouve à plus de 200 pixels du haut de la page.
 		return (
 			<aside>
-				<button onClick={scrollToTop}>
+				<button type="button" onClick={scrollToTop}>
 					<FontAwesomeIcon icon={faArrowUp} />
 				</button>
 			</aside>

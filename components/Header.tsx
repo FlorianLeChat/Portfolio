@@ -65,12 +65,12 @@ export default function Header()
 				</ul>
 
 				{/* Bouton de basculement en thème sombre/clair */}
-				<button onClick={switchTheme}>
+				<button type="button" onClick={switchTheme}>
 					<FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
 				</button>
 
 				{/* Bouton pour ouvrir le menu de navigation */}
-				<button onClick={toggleMenu}>
+				<button type="button" onClick={toggleMenu}>
 					<FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
 				</button>
 			</nav>
