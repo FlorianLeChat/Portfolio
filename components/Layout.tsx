@@ -30,14 +30,14 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 	useEffect( () =>
 	{
 		// On vérifie si le navigateur de l'utilisateur supporte la fonctionnalité.
-		const theme = window.matchMedia( "(prefers-color-scheme: dark)" );
+		const scheme = window.matchMedia( "(prefers-color-scheme: dark)" );
 
 		// On vérifie ensuite le thème par défaut ou celui enregistré dans le
 		//  stockage local du navigateur de l'utilisateur.
 		const checkUserTheme = () =>
 		{
 			const html = document.querySelector( "html" );
-			const target = localStorage.getItem( "current-theme" ) ?? ( theme.matches ? "dark" : "light" );
+			const target = localStorage.getItem( "current-theme" ) ?? ( scheme.matches ? "dark" : "light" );
 
 			if ( html )
 			{
@@ -61,7 +61,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 		//  du thème par défaut de l'utilisateur.
 		scheme.addEventListener( "change", checkUserTheme );
 
-		return () => theme.removeEventListener( "change", checkUserTheme );
+		return () => scheme.removeEventListener( "change", checkUserTheme );
 	}, [] );
 
 	// Affichage du rendu HTML du composant.
