@@ -26,7 +26,7 @@ export default function Header()
 		if ( html )
 		{
 			// On signale à React que le changement de thème doit être
-			//	effectué de manière asynchrone.
+			//  effectué de manière asynchrone.
 			html.className = `theme-${ target }`;
 		}
 
@@ -36,7 +36,7 @@ export default function Header()
 	};
 
 	// Affichage ou disparition du menu de navigation.
-	//	Note : ce menu est seulement visible sur les écrans de petite taille.
+	//  Note : ce menu est seulement visible sur les écrans de petite taille.
 	const toggleMenu = () =>
 	{
 		setShowMenu( !showMenu );

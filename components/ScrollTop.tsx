@@ -23,7 +23,7 @@ export default function ScrollTop()
 	};
 
 	// Détection du défilement de la page.
-	//	Source : https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
+	//  Source : https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
 	useEffect( () =>
 	{
 		onScroll();

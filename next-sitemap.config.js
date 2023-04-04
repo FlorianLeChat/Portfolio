@@ -11,7 +11,7 @@ module.exports = {
 	transform: async ( _config, path ) =>
 	{
 		// Modification de la priorité de la page d'accueil
-		// 	pour qu'elle soit prioritaire dans les résultats de recherche.
+		//  pour qu'elle soit prioritaire dans les résultats de recherche.
 		if ( path === "/" )
 		{
 			return {

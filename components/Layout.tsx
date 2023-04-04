@@ -32,7 +32,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 		const theme = window.matchMedia( "(prefers-color-scheme: dark)" );
 
 		// On vérifie ensuite le thème par défaut ou celui enregistré dans le
-		// 	 stockage local du navigateur de l'utilisateur.
+		//  stockage local du navigateur de l'utilisateur.
 		const checkUserTheme = () =>
 		{
 			const html = document.querySelector( "html" );
@@ -41,7 +41,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 			if ( html )
 			{
 				// On signale à React que le changement de thème doit être
-				//	effectué de manière asynchrone.
+				//  effectué de manière asynchrone.
 				startTransition( () =>
 				{
 					html.className = `theme-${ target }`;
@@ -57,8 +57,8 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 		checkUserTheme();
 
 		// On ajoute enfin deux écouteurs d'événements pour détecter les changements
-		//	du thème par défaut de l'utilisateur.
-		theme.addEventListener( "change", checkUserTheme );
+		//  du thème par défaut de l'utilisateur.
+		scheme.addEventListener( "change", checkUserTheme );
 
 		return () => theme.removeEventListener( "change", checkUserTheme );
 	}, [] );
