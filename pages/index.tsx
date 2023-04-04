@@ -99,14 +99,14 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 	useEffect( () =>
 	{
 		// Défilement automatique des sections via commandes vocales.
-		if ( !window.webkitSpeechRecognition )
 		//  Note : cette fonctionnalité n'est pas disponible sur Firefox.
 		//  Source : https://github.com/mdn/dom-examples/blob/44856cc22f47b0203cbcb48127af50744e89aa7e/web-speech-api/speech-color-changer/script.js
+		if ( typeof window.webkitSpeechRecognition === "undefined" )
 		{
 			return;
 		}
 
-		const recognition = new webkitSpeechRecognition();
+		const recognition = new window.webkitSpeechRecognition();
 		recognition.start();
 		recognition.onresult = ( event ) =>
 		{
@@ -153,13 +153,7 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 		//  services de Google reCAPTCHA.
 		if ( process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY )
 		{
-			// On vérifie d'abord que le service de reCAPTCHA est disponible.
-			if ( !window.grecaptcha )
-			{
-				return;
-			}
-
-			// On attend ensuite que les services de reCAPTCHA soient chargés.
+			// On attend d'abord que les services de reCAPTCHA soient chargés.
 			window.grecaptcha.ready( async () =>
 			{
 				// On génère alors un jeton d'authentification...
