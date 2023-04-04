@@ -9,7 +9,7 @@ const withPWA = require( "next-pwa" )( {
 	disable: process.env.NODE_ENV === "development",
 	fallbacks: {
 		// Source : https://github.com/shadowwalker/next-pwa/issues/400
-		document: process.env[ "NEXT_PUBLIC_BASE_PATH" ] + "/_offline",
+		document: `${ process.env.NEXT_PUBLIC_BASE_PATH }/_offline`,
 		image: "",
 		font: "",
 		audio: "",
@@ -19,7 +19,7 @@ const withPWA = require( "next-pwa" )( {
 
 module.exports = withPWA( {
 	i18n,
-	basePath: process.env[ "NEXT_PUBLIC_BASE_PATH" ],
+	basePath: process.env.NEXT_PUBLIC_BASE_PATH,
 	poweredByHeader: false,
 	reactStrictMode: true,
 	async redirects()

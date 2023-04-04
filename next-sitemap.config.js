@@ -1,6 +1,6 @@
 // @ts-check
 
-const url = ( process.env[ "NEXT_PUBLIC_URL" ] ?? "" ) + process.env[ "NEXT_PUBLIC_BASE_PATH" ];
+const url = ( process.env.NEXT_PUBLIC_URL ?? "" ) + process.env.NEXT_PUBLIC_BASE_PATH;
 
 /**
  * @type {import("next-sitemap").IConfig}
