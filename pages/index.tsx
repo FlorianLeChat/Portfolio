@@ -168,7 +168,7 @@ export default function Home( props: { projects: ProjectAttributes[], skills: Sk
 			window.grecaptcha.ready( async () =>
 			{
 				// On génère alors un jeton d'authentification...
-				const token = await window.grecaptcha.execute( process.env[ "NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY" ] ?? "", { action: "create" } );
+				const token = await window.grecaptcha.execute( process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "", { action: "create" } );
 
 				// ... avant de l'envoyer au serveur.
 				fetch( `${ basePath }/api/recaptcha`, {
