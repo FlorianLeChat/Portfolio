@@ -24,6 +24,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 
 	// Déclaration des variables d'état.
 	const [ theme, setTheme ] = useState( "light" );
+	const switcher = useMemo( () => ( { theme, setTheme } ), [ theme ] );
 
 	// Détection du thème par défaut de l'utilisateur.
 	useEffect( () =>
@@ -67,7 +68,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 	return (
 		<>
 			{/* Utilisation du contexte de thème. */}
-			<ThemeContext.Provider value={{ theme, setTheme }}>
+			<ThemeContext.Provider value={switcher}>
 				{/* Affichage de l'en-tête du site */}
 				{!shouldHide && <Header />}
 
