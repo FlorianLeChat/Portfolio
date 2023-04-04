@@ -20,7 +20,7 @@ export default function Layout( { children }: { children: React.ReactNode; } )
 	// Déclaration des constantes.
 	const router = useRouter();
 	const shouldHide = router.pathname === "/404" || router.pathname === "/500" || router.pathname === "/_offline";
-	const [ _, startTransition ] = useTransition();
+	const [ , startTransition ] = useTransition();
 
 	// Déclaration des variables d'état.
 	const [ theme, setTheme ] = useState( "light" );
