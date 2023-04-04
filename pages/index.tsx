@@ -74,10 +74,7 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 				google: t( "modals.mailer_google" ),
 				default: t( "modals.mailer_default" )
 			},
-			inputValidator: ( value ) =>
-			{
-				return !value && t( "modals.mailer_error" ) || null;
-			}
+			inputValidator: ( value ) => ( !value && t( "modals.mailer_error" ) ) || null
 		} );
 
 		// On ouvre enfin la messagerie sélectionnée.
@@ -118,7 +115,7 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 			const name = event.results[ 0 ][ 0 ].transcript;
 			const elements = document.querySelectorAll( "section > h2" );
 
-			for ( const element of elements )
+			elements.forEach( ( element ) =>
 			{
 				// On vérifie ensuite si le titre de la section
 				//  correspond à la commande vocale.
@@ -126,9 +123,8 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 				{
 					// On défile alors vers la section (si elle existe).
 					element.scrollIntoView( { behavior: "smooth" } );
-					break;
 				}
-			}
+			} );
 
 			// On relance enfin la reconnaissance vocale après avoir
 			//  attendu la fin de l'ancienne séquence de reconnaissance.
@@ -188,9 +184,9 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 			{/* Source : https://tholman.com/github-corners/ */}
 			<a href="https://github.com/FlorianLeChat/Portfolio" target="_blank" rel="noopener noreferrer">
 				<svg width="80" height="80" viewBox="0 0 250 250" style={{ position: "absolute", top: 0, border: 0, right: 0 }}>
-					<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-					<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style={{ transformOrigin: "130px 106px" }}></path>
-					<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor"></path>
+					<path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
+					<path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style={{ transformOrigin: "130px 106px" }} />
+					<path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" />
 				</svg>
 			</a>
 
@@ -219,59 +215,53 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 
 				{/* Génération des projets */}
 				{
-					Object.entries( props.projects ).map( ( [ key, value ] ) =>
-					{
-						return (
-							<article key={key}>
-								{/* Image du projet */}
-								<Image src={`${ basePath }/assets/images/${ key }.png`} alt={value.title} width={450} height={250} />
+					Object.entries( projects ).map( ( [ key, value ] ) => (
+						<article key={key}>
+							{/* Image du projet */}
+							<Image src={`${ basePath }/assets/images/${ key }.png`} alt={value.title} width={450} height={250} />
 
-								{/* Contenu du projet */}
-								<div>
-									{/* Titre du projet */}
-									<h3>{value.title}</h3>
+							{/* Contenu du projet */}
+							<div>
+								{/* Titre du projet */}
+								<h3>{value.title}</h3>
 
-									{/* Description du projet */}
-									<p>{t( `projects.${ key }` )}</p>
+								{/* Description du projet */}
+								<p>{t( `projects.${ key }` )}</p>
 
-									{/* Compétences utilisées pour le projet */}
-									<ul>
-										{
-											value.skills.map( ( value, index ) =>
-											{
-												return <li key={index}>{value}</li>;
-											} )
-										}
-									</ul>
+								{/* Compétences utilisées pour le projet */}
+								<ul>
+									{
+										value.skills.map( ( skill, index ) => <li key={index}>{skill}</li> )
+									}
+								</ul>
 
-									{/* Liens du projet */}
-									<ul>
-										{
-											// Dépôt Git (facultatif).
-											value.repository && (
-												<li>
-													<a href={value.repository} target="_blank" rel="noopener noreferrer">
-														<FontAwesomeIcon icon={faCode} />
-													</a>
-												</li>
-											)
-										}
+								{/* Liens du projet */}
+								<ul>
+									{
+										// Dépôt Git (facultatif).
+										value.repository && (
+											<li>
+												<a href={value.repository} target="_blank" rel="noopener noreferrer">
+													<FontAwesomeIcon icon={faCode} />
+												</a>
+											</li>
+										)
+									}
 
-										{
-											// Site de démonstration (facultatif).
-											value.demo && (
-												<li>
-													<a href={value.demo} target="_blank" rel="noopener noreferrer">
-														<FontAwesomeIcon icon={faExternalLinkAlt} />
-													</a>
-												</li>
-											)
-										}
-									</ul>
-								</div>
-							</article>
-						);
-					} )
+									{
+										// Site de démonstration (facultatif).
+										value.demo && (
+											<li>
+												<a href={value.demo} target="_blank" rel="noopener noreferrer">
+													<FontAwesomeIcon icon={faExternalLinkAlt} />
+												</a>
+											</li>
+										)
+									}
+								</ul>
+							</div>
+						</article>
+					) )
 				}
 			</section>
 
@@ -297,13 +287,13 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 				{/* Génération des compétences */}
 				<article>
 					{
-						Object.entries( props.skills ).map( ( [ key, value ] ) =>
+						Object.entries( skills ).map( ( [ key, value ] ) =>
 						{
 							if ( skillFilter === "all" || value.type.includes( skillFilter ) )
 							{
 								return (
 									<div key={key}>
-										<i className={`devicon-${ key }-${ value.icon + ( ( key === "lua" || value.icon === "original" ) ? "" : " colored" ) }`}></i>
+										<i className={`devicon-${ key }-${ value.icon + ( ( key === "lua" || value.icon === "original" ) ? "" : " colored" ) }`} />
 										<span>{value.name}</span>
 									</div>
 								);
