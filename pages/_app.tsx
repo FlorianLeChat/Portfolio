@@ -1,6 +1,6 @@
 //
 // Page utilisée pour générer le contenu statique HTML de la page.
-// 	Source : https://nextjs.org/docs/advanced-features/custom-app
+//  Source : https://nextjs.org/docs/advanced-features/custom-app
 //
 
 // Importation de la feuille de style CSS globale.
@@ -24,7 +24,7 @@ import type { AppProps } from "next/app";
 const Layout = dynamic( () => import( "@/components/Layout" ) );
 
 // Modification de la configuration de Font Awesome.
-// 	Source : https://fontawesome.com/docs/web/use-with/react/use-with
+//  Source : https://fontawesome.com/docs/web/use-with/react/use-with
 config.autoAddCss = false;
 
 // Création de la police de caractères Roboto.
