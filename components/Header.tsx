@@ -46,7 +46,9 @@ export default function Header()
 	return (
 		<header>
 			{/* En-tête de la page */}
-			<a href="https://github.com/FlorianLeChat">{t( "pages.index.developer_firstname" )[ 0 ] + t( "pages.index.developer_surname" )[ 0 ]}</a>
+			<a href="https://github.com/FlorianLeChat">
+				{t( "pages.index.developer_firstname" )[ 0 ] + t( "pages.index.developer_surname" )[ 0 ]}
+			</a>
 
 			<nav>
 				{/* Liens de navigation */}

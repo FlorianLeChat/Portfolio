@@ -13,7 +13,7 @@
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"quotes": ["error", "double"],
 		"new-cap": ["error", { "capIsNew": false, "newIsCapExceptions": ["webkitSpeechRecognition"] }],
-		"max-len": ["warn", { "code": 115, "ignoreStrings": true, "ignoreComments": true, "ignoreTemplateLiterals": true }],
+		"max-len": ["warn", { "code": 125, "ignoreComments": true }],
 		"no-tabs": ["error", { "allowIndentationTabs": true }],
 		"eol-last": ["error", "never"],
 		"no-shadow": "off",
@@ -38,9 +38,11 @@
 		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
 
 		"react/jsx-indent": ["error", "tab"],
+		"react/jsx-indent-props": ["error", "tab"],
 		"react/react-in-jsx-scope": "off",
 		"react/no-array-index-key": "off",
 		"react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
+		"react/jsx-max-props-per-line": ["error", { "maximum": 6 }],
 		"react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
 		"react/jsx-props-no-spreading": ["error", { "exceptions": ["Component"] }],
 		"react/jsx-one-expression-per-line": "off"
