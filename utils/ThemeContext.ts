@@ -4,7 +4,7 @@
 //
 import { createContext } from "react";
 
-const ThemeContext = createContext( {
+export const ThemeContext = createContext( {
 	theme: "light",
 	setTheme: ( _: string ) =>
 	{
@@ -12,5 +12,3 @@ const ThemeContext = createContext( {
 		//  dans le mécanisme de changement de thème.
 	}
 } );
-
-export default ThemeContext;

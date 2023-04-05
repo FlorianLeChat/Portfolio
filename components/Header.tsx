@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useContext } from "react";
 import { faMoon, faSun, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 
-import ThemeContext from "@/utils/ThemeContext";
+import { ThemeContext } from "@/utils/ThemeContext";
 
 export default function Header()
 {
