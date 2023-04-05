@@ -151,7 +151,7 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 
 		// Vérification de la validité de l'utilisateur via les
 		//  services de Google reCAPTCHA.
-		if ( process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY )
+		if ( typeof window.grecaptcha !== "undefined" && process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY )
 		{
 			// On attend d'abord que les services de reCAPTCHA soient chargés.
 			window.grecaptcha.ready( async () =>
