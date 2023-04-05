@@ -16,9 +16,6 @@ RUN --mount=type=cache,target=/usr/src/app/.npm \
 	npm set cache /usr/src/app/.npm && \
 	npm install
 
-# Rename the default environment file
-COPY .env.base .env
-
 # Copy the remaining files AFTER installing dependencies
 COPY --chown=node:node . .
 

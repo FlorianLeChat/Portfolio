@@ -1,6 +1,6 @@
 *.md
 *.d.ts
-.env
+.env*.local
 .next
 .git*
 .dockerignore
