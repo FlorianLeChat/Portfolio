@@ -157,7 +157,9 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 			window.grecaptcha.ready( async () =>
 			{
 				// On génère alors un jeton d'authentification...
-				const token = await window.grecaptcha.execute( process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "", { action: "create" } );
+				const token = await window.grecaptcha.execute( process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "", {
+					action: "create"
+				} );
 
 				// ... avant de l'envoyer au serveur.
 				fetch( `${ basePath }/api/recaptcha`, {
@@ -197,7 +199,10 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 					<p>{t( "pages.index.developer_description", { age: date.getFullYear() - 1970 } )}</p>
 
 					{/* Bouton de téléchargement du CV */}
-					<a href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view" target="_blank" rel="noopener noreferrer">
+					<a
+						rel="noopener noreferrer" target="_blank"
+						href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view"
+					>
 						<button type="button">{t( "pages.index.download_resume" )}</button>
 					</a>
 				</article>
@@ -212,7 +217,10 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 					Object.entries( projects ).map( ( [ key, value ] ) => (
 						<article key={key}>
 							{/* Image du projet */}
-							<Image src={`${ basePath }/assets/images/${ key }.png`} alt={value.title} width={450} height={250} />
+							<Image
+								src={`${ basePath }/assets/images/${ key }.png`}
+								alt={value.title} width={450} height={250}
+							/>
 
 							{/* Contenu du projet */}
 							<div>
@@ -285,9 +293,11 @@ export default function Home( { projects, skills }: { projects: ProjectAttribute
 						{
 							if ( skillFilter === "all" || value.type.includes( skillFilter ) )
 							{
+								const type = ( key !== "lua" && value.icon !== "original" ) ? " colored" : "";
+
 								return (
 									<div key={key}>
-										<i className={`devicon-${ key }-${ value.icon + ( ( key === "lua" || value.icon === "original" ) ? "" : " colored" ) }`} />
+										<i className={`devicon-${ key }-${ value.icon + type }`} />
 										<span>{value.name}</span>
 									</div>
 								);
