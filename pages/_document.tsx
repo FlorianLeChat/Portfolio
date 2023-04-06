@@ -44,11 +44,11 @@ export default function Document( { __NEXT_DATA__ }: DocumentProps )
 				<link rel="preconnect" href="https://www.gstatic.com" />
 
 				{/* Scripts JavaScript */}
-				<Script src={recaptchaUrl.href} strategy="afterInteractive" />
-				<Script src={analyticsUrl.href} strategy="afterInteractive" />
+				<Script src={recaptchaUrl.href} strategy="lazyOnload" />
+				<Script src={analyticsUrl.href} strategy="lazyOnload" />
 
 				{/* Google Analytics */}
-				<Script id="google-analytics" strategy="afterInteractive">
+				<Script id="google-analytics" strategy="lazyOnload">
 					{`
 						window.dataLayer = window.dataLayer || [];
 
