@@ -22,6 +22,7 @@
 		"comma-dangle": ["error", "never"],
 		"no-unused-vars": "off",
 		"global-require": "off",
+		"linebreak-style": "off",
 		"no-multi-assign": "off",
 		"space-in-parens": ["error", "always"],
 		"object-curly-newline": ["error", { "ObjectExpression": { "consistent": true } }],
