@@ -20,12 +20,28 @@ main > a
 	svg
 	{
 		// Délimitation de la zone cliquable.
+		top: 0;
+		right: 0;
+		position: absolute;
 		clip-path: polygon(0 0, 100% 0, 100% 100%);
 
 		@include themeColors()
 		{
 			fill: getThemedColor("primary");
 			color: getThemedColor("background");
+		}
+
+		path:nth-of-type(2)
+		{
+			// Bras du logo GitHub.
+			fill: currentColor;
+			transform-origin: 130px 106px
+		}
+
+		path:nth-of-type(3)
+		{
+			// Corps du logo GitHub.
+			fill: currentColor;
 		}
 	}
 
