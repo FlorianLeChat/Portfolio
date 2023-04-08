@@ -107,3 +107,33 @@ test( "Disponibilité du C.V", async ( { page } ) =>
 	// Vérification du titre de la page.
 	await expect( page ).toHaveTitle( /CV.pdf/ );
 } );
+
+//
+// Permet de vérifier que le filtrage des compétences fonctionne.
+//
+test( "Filtrage des compétences", async ( { page } ) =>
+{
+	// Récupération du nombre de compétences avant le filtrage.
+	const selector = "#skills article:last-of-type div";
+	const count = await page.locator( selector ).count();
+
+	// Filtrage par compétence « Front-end ».
+	await page.getByLabel( "Front-end" ).check();
+
+	expect( await page.locator( selector ).count() ).toBeLessThan( count );
+
+	// Filtrage par compétence « Back-end ».
+	await page.getByLabel( "Back-end" ).check();
+
+	expect( await page.locator( selector ).count() ).toBeLessThan( count );
+
+	// Filtrage par compétence « Other ».
+	await page.getByLabel( "Other" ).check();
+
+	expect( await page.locator( selector ).count() ).toBeLessThan( count );
+
+	// Filtrage par compétence « All ».
+	await page.getByLabel( "All" ).check();
+
+	expect( await page.locator( selector ).count() ).toBe( count );
+} );
