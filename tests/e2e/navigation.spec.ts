@@ -18,9 +18,7 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 	await expect( page ).toHaveTitle( "Florian Trayon - Portfolio" );
 
 	// Vérification du titre principal.
-	await expect( page.getByRole( "heading", {
-		name: "Hi. I am Florian Trayon."
-	} ) ).toHaveText( "Hi. I amFlorianTrayon." );
+	await expect( page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } ) ).toBeVisible();
 
 	// Vérification de la présence des liens de navigation.
 	await expect( page.locator( "nav > ul a" ) ).toHaveText( [ "Projects", "Skills", "Contact" ] );
@@ -96,16 +94,20 @@ test( "Retour en haut de page", async ( { page, isMobile } ) =>
 //
 // Permet de vérifier que le téléchargement du C.V. fonctionne.
 //
-test( "Disponibilité du C.V", async ( { page } ) =>
+test( "Disponibilité du C.V", async ( { page, context } ) =>
 {
+	// Préparation à l'ouverte d'une nouvelle page.
+	const drivePromise = context.waitForEvent( "page" );
+
 	// Clic sur le bouton de téléchargement du C.V.
 	await page.getByRole( "button", { name: "Download the resume" } ).click();
 
-	// Accès à la page de téléchargement du C.V.
-	await page.goto( "https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view" );
+	// Attente de l'ouverture de la nouvelle page.
+	const drivePage = await drivePromise;
+	await drivePage.waitForLoadState();
 
-	// Vérification du titre de la page.
-	await expect( page ).toHaveTitle( /CV.pdf/ );
+	// Vérification du titre de la nouvelle page.
+	await expect( drivePage ).toHaveTitle( /CV.pdf/ );
 } );
 
 //
