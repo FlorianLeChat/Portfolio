@@ -7,6 +7,7 @@ const config: PlaywrightTestConfig = {
 		baseURL,
 		trace: "on-first-retry"
 	},
+	retries: 1,
 	timeout: 30 * 1000,
 	testDir: path.join( __dirname, "tests/e2e" ),
 	outputDir: "test-results/",
@@ -16,6 +17,7 @@ const config: PlaywrightTestConfig = {
 		timeout: 30 * 1000,
 		reuseExistingServer: !process.env.CI
 	},
+	fullyParallel: true,
 	projects: [
 		{
 			name: "Desktop Chrome",
