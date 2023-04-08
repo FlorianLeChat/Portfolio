@@ -1,13 +1,19 @@
 import { test, expect } from "@playwright/test";
 
 //
+// Permet d'accéder à la page d'accueil avant chaque test.
+//
+test.beforeEach( async ( { page } ) =>
+{
+	// Accès à la page d'accueil.
+	await page.goto( "/" );
+} );
+
+//
 // Permet de vérifier que le site est accessible et que les contenus sont bien présents.
 //
 test( "Vérification de certains contenus", async ( { page } ) =>
 {
-	// Accès à la page d'accueil.
-	await page.goto( "/" );
-
 	// Vérification du titre de la page.
 	await expect( page ).toHaveTitle( "Florian Trayon - Portfolio" );
 
@@ -28,9 +34,6 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 //
 test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 {
-	// Accès à la page d'accueil.
-	await page.goto( "/" );
-
 	// Vérification de la présence de la classe initiale « theme-light ».
 	await expect( page.locator( "html" ) ).toHaveClass( "theme-light" );
 
@@ -44,10 +47,13 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 //
 // Permet de vérifier que la navigation par l'en-tête fonctionne.
 //
-test( "Navigation par l'en-tête", async ( { page } ) =>
+test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 {
-	// Accès à la page d'accueil.
-	await page.goto( "/" );
+	if ( isMobile )
+	{
+		// Clic sur le bouton d'ouverture du menu.
+		await page.getByRole( "button" ).nth( 1 ).click();
+	}
 
 	// Clic sur le lien « Projets ».
 	await page.getByRole( "link", { name: "Projects" } ).click();
@@ -65,16 +71,13 @@ test( "Navigation par l'en-tête", async ( { page } ) =>
 //
 // Permet de vérifier que le retour en haut de page fonctionne.
 //
-test( "Retour en haut de page", async ( { page } ) =>
+test( "Retour en haut de page", async ( { page, isMobile } ) =>
 {
-	// Accès à la page d'accueil.
-	await page.goto( "/" );
+	// Ignorer le test sur les mobiles.
+	test.skip( isMobile );
 
-	// Simule un défilement vers le bas de la page.
-	await page.evaluate( () =>
-	{
-		window.scroll( 0, document.body.scrollHeight );
-	} );
+	// Simule un défilement vers la section « Contact ».
+	await page.getByRole( "link", { name: "Contact" } ).click();
 
 	// Attente d'une seconde pour laisser le temps au défilement de se faire.
 	await page.waitForTimeout( 1000 );
@@ -95,9 +98,6 @@ test( "Retour en haut de page", async ( { page } ) =>
 //
 test( "Disponibilité du C.V", async ( { page } ) =>
 {
-	// Accès à la page d'accueil.
-	await page.goto( "/" );
-
 	// Clic sur le bouton de téléchargement du C.V.
 	await page.getByRole( "button", { name: "Download the resume" } ).click();
 
