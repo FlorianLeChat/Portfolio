@@ -5,17 +5,17 @@ const baseURL = `http://localhost:${ process.env.PORT ?? 3000 }`;
 const config: PlaywrightTestConfig = {
 	use: {
 		baseURL,
-		trace: "on-first-retry"
+		trace: "retain-on-failure"
 	},
+	expect: { timeout: 10000 },
 	workers: 1,
-	retries: 1,
-	timeout: 30 * 1000,
+	retries: process.env.CI ? 2 : 0,
 	testDir: path.join( __dirname, "tests/e2e" ),
+	reporter: process.env.CI ? "github" : "html",
 	outputDir: "test-results/",
 	webServer: {
 		url: baseURL,
 		command: "npm run dev",
-		timeout: 30 * 1000,
 		reuseExistingServer: !process.env.CI
 	},
 	projects: [
