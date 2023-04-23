@@ -1,12 +1,12 @@
 // @ts-check
 
-const url = ( process.env.NEXT_PUBLIC_URL ?? "" ) + process.env.NEXT_PUBLIC_BASE_PATH;
+const join = require( "path" ).join;
 
 /**
  * @type {import("next-sitemap").IConfig}
  */
 module.exports = {
-	siteUrl: url,
+	siteUrl: process.env.NEXT_PUBLIC_URL,
 	exclude: [ "/fr*", "/sitemap.xml" ],
 	transform: async ( _config, path ) =>
 	{
@@ -28,11 +28,11 @@ module.exports = {
 	autoLastmod: false,
 	alternateRefs: [
 		{
-			href: `${ url }/en`,
+			href: join( process.env.NEXT_PUBLIC_URL ?? "", "/en" ),
 			hreflang: "en"
 		},
 		{
-			href: `${ url }/fr`,
+			href: join( process.env.NEXT_PUBLIC_URL ?? "", "/fr" ),
 			hreflang: "fr"
 		}
 	],
