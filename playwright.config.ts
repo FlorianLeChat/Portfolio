@@ -1,4 +1,4 @@
-import path from "path";
+import { join } from "path";
 import { PlaywrightTestConfig, devices } from "@playwright/test";
 
 const baseURL = `http://localhost:${ process.env.PORT ?? 3000 }`;
@@ -10,7 +10,7 @@ const config: PlaywrightTestConfig = {
 	expect: { timeout: 10000 },
 	workers: 1,
 	retries: process.env.CI ? 2 : 0,
-	testDir: path.join( __dirname, "tests/e2e" ),
+	testDir: join( __dirname, "tests/e2e" ),
 	reporter: process.env.CI ? "github" : "html",
 	outputDir: "test-results/",
 	webServer: {
