@@ -1,5 +1,8 @@
 // @ts-check
 
+const path = require( "path" );
+const basePath = path.basename( process.env.NEXT_PUBLIC_URL ?? "" );
+
 /**
  * @type {import("next").NextConfig}
  */
@@ -9,7 +12,7 @@ const withPWA = require( "next-pwa" )( {
 	disable: process.env.NODE_ENV === "development",
 	fallbacks: {
 		// Source : https://github.com/shadowwalker/next-pwa/issues/400
-		document: `${ process.env.NEXT_PUBLIC_BASE_PATH }/_offline`,
+		document: path.join( basePath, "_offline" ),
 		image: "",
 		font: "",
 		audio: "",
@@ -24,7 +27,7 @@ const withBundleAnalyzer = require( "@next/bundle-analyzer" )( {
 
 module.exports = withBundleAnalyzer( withPWA( {
 	i18n,
-	basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+	basePath: "/" + basePath,
 	poweredByHeader: false,
 	reactStrictMode: true,
 	async redirects()
