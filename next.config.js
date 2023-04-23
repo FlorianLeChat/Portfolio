@@ -1,7 +1,7 @@
 // @ts-check
 
 const path = require( "path" );
-const basePath = path.basename( process.env.NEXT_PUBLIC_URL ?? "" );
+const basePath = new URL( process.env.NEXT_PUBLIC_URL ?? "" ).pathname;
 
 /**
  * @type {import("next").NextConfig}
@@ -27,7 +27,7 @@ const withBundleAnalyzer = require( "@next/bundle-analyzer" )( {
 
 module.exports = withBundleAnalyzer( withPWA( {
 	i18n,
-	basePath: "/" + basePath,
+	basePath: basePath === "/" ? "" : ( basePath.endsWith( "/" ) ? basePath.slice( 0, -1 ) : basePath ),
 	poweredByHeader: false,
 	reactStrictMode: true,
 	async redirects()
