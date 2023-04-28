@@ -4,7 +4,7 @@
 import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useTransition } from "react";
 
 import { ThemeContext } from "@/utils/ThemeContext";
 
@@ -15,6 +15,7 @@ export default function Header()
 	const { theme, setTheme } = useContext( ThemeContext );
 
 	// Déclaration des variables d'état.
+	const [ , startTransition ] = useTransition();
 	const [ showMenu, setShowMenu ] = useState( false );
 
 	// Basculement entre les thèmes sombre et clair.
@@ -25,9 +26,7 @@ export default function Header()
 
 		if ( html )
 		{
-			// On signale à React que le changement de thème doit être
-			//  effectué de manière asynchrone.
-			html.className = `theme-${ target }`;
+			html.className = `theme-${ target } ${ target === "dark" ? "c_darkmode" : "" }`;
 		}
 
 		setTheme( target );
@@ -60,7 +59,12 @@ export default function Header()
 				html.className = `theme-${ target } ${ target === "dark" ? "c_darkmode" : "" }`;
 			}
 
-			setTheme( target );
+			startTransition( () =>
+			{
+				// On réalise ce changement de manière asynchrone pour éviter
+				//  un blocage du thread principal.
+				setTheme( target );
+			} );
 
 			localStorage.setItem( "current-theme", target );
 		};

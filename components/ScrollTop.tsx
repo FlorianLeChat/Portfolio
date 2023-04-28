@@ -3,11 +3,12 @@
 //
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 export default function ScrollTop()
 {
 	// Déclaration des variables d'état.
+	const [ , startTransition ] = useTransition();
 	const [ showButton, setShowButton ] = useState( false );
 
 	// Remontée en haut de la page.
@@ -26,7 +27,12 @@ export default function ScrollTop()
 	//  Source : https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
 	useEffect( () =>
 	{
-		onScroll();
+		startTransition( () =>
+		{
+			// On réalise ce changement de manière asynchrone pour éviter
+			//  un blocage du thread principal.
+			onScroll();
+		} );
 
 		window.addEventListener( "scroll", onScroll );
 
