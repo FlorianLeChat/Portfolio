@@ -3,8 +3,8 @@
 //
 import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useContext } from "react";
 import { faMoon, faSun, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useState, useEffect, useContext } from "react";
 
 import { ThemeContext } from "@/utils/ThemeContext";
 
@@ -41,6 +41,39 @@ export default function Header()
 	{
 		setShowMenu( !showMenu );
 	};
+
+	// Détection du thème par défaut de l'utilisateur.
+	useEffect( () =>
+	{
+		// On vérifie si le navigateur de l'utilisateur supporte la fonctionnalité.
+		const scheme = window.matchMedia( "(prefers-color-scheme: dark)" );
+
+		// On vérifie ensuite le thème par défaut ou celui enregistré dans le
+		//  stockage local du navigateur de l'utilisateur.
+		const checkUserTheme = () =>
+		{
+			const html = document.querySelector( "html" );
+			const target = localStorage.getItem( "current-theme" ) ?? ( scheme.matches ? "dark" : "light" );
+
+			if ( html )
+			{
+				html.className = `theme-${ target } ${ target === "dark" ? "c_darkmode" : "" }`;
+			}
+
+			setTheme( target );
+
+			localStorage.setItem( "current-theme", target );
+		};
+
+		// On déclenche après la vérification au montage du composant.
+		checkUserTheme();
+
+		// On ajoute enfin deux écouteurs d'événements pour détecter les changements
+		//  du thème par défaut de l'utilisateur.
+		scheme.addEventListener( "change", checkUserTheme );
+
+		return () => scheme.removeEventListener( "change", checkUserTheme );
+	}, [ setTheme ] );
 
 	// Affichage du rendu HTML du composant.
 	return (
