@@ -33,13 +33,13 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 {
 	// Vérification de la présence de la classe initiale « theme-light ».
-	await expect( page.locator( "html" ) ).toHaveClass( "theme-light" );
+	await expect( page.locator( "html" ) ).toHaveClass( /theme-light/ );
 
 	// Clic sur le bouton de basculement de thème.
 	await page.getByRole( "button" ).first().click();
 
 	// Vérification de la présence de la classe « theme-dark ».
-	await expect( page.locator( "html" ) ).toHaveClass( "theme-dark" );
+	await expect( page.locator( "html" ) ).toHaveClass( /theme-dark/ );
 } );
 
 //
