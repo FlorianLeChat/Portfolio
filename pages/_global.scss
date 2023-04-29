@@ -10,6 +10,7 @@
 // Importation des dépendances externes.
 @import "../node_modules/devicon/devicon.min.css";
 @import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
+@import "../node_modules/vanilla-cookieconsent/dist/cookieconsent.css";
 
 // Importation des variables de thème.
 @import "_colors";
@@ -330,6 +331,113 @@ header > a, header button, section:nth-of-type(2) a
 		@include themeColors()
 		{
 			background-color: getThemedColor("primary-alt");
+		}
+	}
+}
+
+// Personnalisation de la bannière de consentement.
+//  Source : https://cookieconsent.orestbida.com/advanced/ui-customization.html#color-schemes
+#cc-main
+{
+	.cm
+	{
+		// Conteneur de la bannière de consentement.
+		@include themeColors()
+		{
+			background-color: getThemedColor("background");
+		}
+	}
+
+	.cm__title, .pm__title, .pm__section-title
+	{
+		// Titres de la bannière de consentement.
+		@include themeColors()
+		{
+			color: getThemedColor("foreground");
+		}
+	}
+
+	.cm__desc, .pm__section-desc
+	{
+		// Descriptions de la bannière de consentement.
+		@include themeColors()
+		{
+			color: getThemedColor("foreground");
+		}
+	}
+
+	.cm__btn, .pm__btn, .pm__close-btn
+	{
+		// Boutons de la bannière de consentement.
+		@include themeColors()
+		{
+			color: getThemedColor("background");
+			border-color: getThemedColor("primary");
+			background-color: getThemedColor("primary");
+		}
+
+		&::before
+		{
+			// Croix 1 de fermeture de la bannière de consentement.
+			@include themeColors()
+			{
+				background-color: getThemedColor("background");
+			}
+		}
+
+		&::after
+		{
+			// Croix 2 de fermeture de la bannière de consentement.
+			@include themeColors()
+			{
+				background-color: getThemedColor("background");
+			}
+		}
+
+		&:hover
+		{
+			// Effet de survol.
+			@include themeColors()
+			{
+				background-color: getThemedColor("primary-alt");
+			}
+		}
+	}
+
+	.toggle__icon
+	{
+		// Bascule (inactif) de la bannière de consentement.
+		@include themeColors()
+		{
+			background-color: getThemedColor("foreground");
+		}
+	}
+
+	.toggle__icon-on:before
+	{
+		// Bascule (actif) de la bannière de consentement.
+		@include themeColors()
+		{
+			border-color: getThemedColor("primary");
+		}
+	}
+
+	.cc__link:hover, a:hover
+	{
+		// Liens de la bannière de consentement.
+		@include themeColors()
+		{
+			color: getThemedColor("primary");
+		}
+	}
+
+	.section__toggle:checked:not(:disabled) ~ .toggle__icon
+	{
+		// Arrière-plan des bascules (actives) de la bannière de consentement.
+		@include themeColors()
+		{
+			background-color: getThemedColor("primary");
+			box-shadow: 0 0 0 1px getThemedColor("primary");
 		}
 	}
 }
