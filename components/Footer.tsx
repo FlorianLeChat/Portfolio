@@ -8,18 +8,18 @@ export default function Footer()
 	// Affichage du rendu HTML du composant.
 	return (
 		<footer>
-			{/* Lien vers le dépôt GitHub du projet */}
 			<span>
+				{/* Lien vers le dépôt GitHub du projet */}
 				<Trans
 					i18nKey="pages.index.footer_madeby"
 					components={{
 						a: <a href="https://github.com/FlorianLeChat">...</a>
 					}}
 				/>
-			</span>
 
-			{/* Date de création du site */}
-			<small>&copy; {new Date().getFullYear()}</small>
+				{/* Date de création du site */}
+				<small>&copy; {new Date().getFullYear()}</small>
+			</span>
 
 			{/* Avertissement de Google reCAPTCHA */}
 			<small>
