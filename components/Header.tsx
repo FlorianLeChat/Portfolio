@@ -3,7 +3,7 @@
 //
 import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun, faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext, useTransition } from "react";
 
 import { ThemeContext } from "@/utils/ThemeContext";
@@ -106,6 +106,11 @@ export default function Header()
 				{/* Bouton de basculement en thème sombre/clair */}
 				<button type="button" onClick={switchTheme}>
 					<FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
+				</button>
+
+				{/* Préférences des cookies */}
+				<button type="button" data-cc="show-preferencesModal">
+					<FontAwesomeIcon icon={faCookieBite} />
 				</button>
 
 				{/* Bouton pour ouvrir le menu de navigation */}
