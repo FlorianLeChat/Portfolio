@@ -10,14 +10,14 @@ header
 	@media screen and (max-width: 768px)
 	{
 		// Modification des marges extérieures sur les
-		//	écrans de petite taille.
+		//  écrans de petite taille.
 		margin-right: 3rem;
 	}
 
 	@media screen and (min-width: 768px) and (max-width: 1024px)
 	{
 		// Modification des marges extérieures sur les
-		//	écrans de taille moyenne.
+		//  écrans de taille moyenne.
 		margin-right: 1rem;
 	}
 
@@ -44,7 +44,7 @@ header
 		@media screen and (max-width: 768px)
 		{
 			// Modification de la disposition des éléments
-			//	sur les écrans de petite taille.
+			//  sur les écrans de petite taille.
 			top: 5rem;
 			left: 0;
 			right: 0;
@@ -73,7 +73,7 @@ header
 			@media screen and (max-width: 768px)
 			{
 				// Réduction de la marge entre chaque élément
-				//	sur les écrans de petite taille.
+				//  sur les écrans de petite taille.
 				margin: 0.5rem 0;
 			}
 
@@ -91,7 +91,7 @@ header
 				@media (hover: hover) and (pointer: fine)
 				{
 					// Animation de survol et de sélection
-					//	sur les écrans à pointeur (souris).
+					//  sur les écrans à pointeur (souris).
 					&:hover
 					{
 						// Animation de survol.

@@ -12,7 +12,7 @@ main > a
 		@media screen and (max-width: 768px)
 		{
 			// Désactivation de l'animation sur les
-			//	écrans de petite taille.
+			//  écrans de petite taille.
 			animation: none;
 		}
 	}
@@ -50,7 +50,7 @@ main > a
 		path:nth-of-type(2)
 		{
 			// Animation du logo GitHub au chargement
-			//	de la page sur les écrans de petite taille.
+			//  de la page sur les écrans de petite taille.
 			animation: octocat-wave 560ms ease-in-out;
 		}
 	}
@@ -75,7 +75,7 @@ section:first-of-type
 	@media screen and (max-width: 768px)
 	{
 		// Modification de l'apparence de la section sur les
-		// 	écrans de petite taille.
+		//  écrans de petite taille.
 		padding-bottom: 1rem;
 		flex-direction: column;
 	}
@@ -90,7 +90,7 @@ section:first-of-type
 		@media screen and (max-width: 768px)
 		{
 			// Réduction de la taille de la police de caractères
-			//	sur les écrans de petite taille.
+			//  sur les écrans de petite taille.
 			width: 100%;
 			font-size: 4rem;
 		}
@@ -98,7 +98,7 @@ section:first-of-type
 		@media screen and (max-width: 384px)
 		{
 			// Réduction de la taille de la police de caractères
-			//	sur les écrans de très petite taille.
+			//  sur les écrans de très petite taille.
 			font-size: 3rem;
 		}
 
@@ -120,7 +120,7 @@ section:first-of-type
 		@media screen and (max-width: 768px)
 		{
 			// Modification des marges extérieures sur les
-			//	écrans de petite taille.
+			//  écrans de petite taille.
 			width: 100%;
 			margin-top: 2.5rem;
 		}
@@ -162,7 +162,7 @@ section:nth-of-type(2) article
 	@media screen and (max-width: 1024px)
 	{
 		// Réduction de l'apparence du conteneur sur les
-		//	écrans de taille moyenne.
+		//  écrans de taille moyenne.
 		padding: 1.5rem;
 		max-width: 450px;
 		flex-direction: column;
@@ -174,7 +174,7 @@ section:nth-of-type(2) article
 		@media screen and (max-width: 768px)
 		{
 			// Modification des marges du titre sur les
-			//	écrans de petite taille.
+			//  écrans de petite taille.
 			margin-bottom: 0;
 		}
 	}
@@ -192,7 +192,7 @@ section:nth-of-type(2) article
 		@media screen and (max-width: 1024px)
 		{
 			// Réduction des dimensions de l'image sur les
-			//	écrans de taille moyenne.
+			//  écrans de taille moyenne.
 			margin: 0 auto;
 			max-width: 100%;
 			max-height: 100%;
@@ -209,7 +209,7 @@ section:nth-of-type(2) article
 		@media screen and (max-width: 1024px)
 		{
 			// Réduction de l'apparence du conteneur sur les
-			//	écrans de taille moyenne.
+			//  écrans de taille moyenne.
 			padding: 0;
 			margin-left: 0;
 		}
