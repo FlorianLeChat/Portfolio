@@ -32,5 +32,61 @@
 			"hello_title": "Bonjour. Je suis",
 			"download_resume": "Télécharger le C.V"
 		}
+	},
+	"consentModal": {
+		"title": "Voulez-vous un cookie ?",
+		"description": "Notre site Internet utilise des cookies de suivi pour comprendre comment vous interagissez avec lui. Le suivi ne sera activé que si vous l'acceptez explicitement.",
+		"acceptAllBtn": "Tout accepter",
+		"acceptNecessaryBtn": "Tout refuser",
+		"showPreferencesBtn": "Gérer les préférences"
+	},
+	"preferencesModal": {
+		"title": "Préférences en matière de cookies",
+		"acceptAllBtn": "Tout accepter",
+		"acceptNecessaryBtn": "Tout refuser",
+		"savePreferencesBtn": "Sauvegarder les préférences",
+		"closeIconLabel": "Fermer",
+		"sections": [
+			{
+				"title": "Utilisation des cookies 📢",
+				"description": "Nous utilisons des cookies pour assurer les fonctionnalités de base du site Internet et pour améliorer votre expérience en ligne."
+			},
+			{
+				"title": "Cookies strictement nécessaires",
+				"description": "Ces cookies sont essentiels au bon fonctionnement du site Internet. Sans ces cookies, le site ne fonctionnerait pas correctement.",
+				"linkedCategory": "necessary"
+			},
+			{
+				"title": "Cookies de performance et d'analyse",
+				"description": "Ces cookies permettent au site Internet de se souvenir des choix que vous avez faits dans le passé.",
+				"linkedCategory": "analytics",
+				"cookieTable": {
+					"headers": {
+						"name": "Nom",
+						"domain": "Service",
+						"description": "Description",
+						"expiration": "Expiration"
+					},
+					"body": [
+						{
+							"name": "_ga",
+							"domain": "Google Analytics",
+							"description": "Cookie mis en place par <a href=\"https://support.google.com/analytics/answer/10089681\">Google Analytics</a>.",
+							"expiration": "Expire après 12 jours"
+						},
+						{
+							"name": "_gid",
+							"domain": "Google Analytics",
+							"description": "Cookie mis en place par <a href=\"https://support.google.com/analytics/answer/10089681\">Google Analytics</a>.",
+							"expiration": "Session"
+						}
+					]
+				}
+			},
+			{
+				"title": "Plus d'informations",
+				"description": "Pour toute question relative à notre politique en matière de cookies et à vos choix, veuillez <a class=\"cc-link\" href=\"#contact\">nous contacter</a>."
+			}
+		]
 	}
 }
