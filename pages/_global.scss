@@ -339,6 +339,9 @@ header > a, header button, section:nth-of-type(2) a
 //  Source : https://cookieconsent.orestbida.com/advanced/ui-customization.html#color-schemes
 #cc-main
 {
+	// Conteneur principal des éléments enfants.
+	font-family: inherit;
+
 	.cm
 	{
 		// Conteneur de la bannière de consentement.
@@ -348,18 +351,18 @@ header > a, header button, section:nth-of-type(2) a
 		}
 	}
 
-	.cm__title, .pm__title, .pm__section-title
+	.cm__title
 	{
-		// Titres de la bannière de consentement.
+		// Titre de la bannière de consentement.
 		@include themeColors()
 		{
 			color: getThemedColor("foreground");
 		}
 	}
 
-	.cm__desc, .pm__section-desc
+	.cm__desc
 	{
-		// Descriptions de la bannière de consentement.
+		// Description de la bannière de consentement.
 		@include themeColors()
 		{
 			color: getThemedColor("foreground");
@@ -401,15 +404,6 @@ header > a, header button, section:nth-of-type(2) a
 			{
 				background-color: getThemedColor("primary-alt");
 			}
-		}
-	}
-
-	.toggle__icon
-	{
-		// Bascule (inactif) de la bannière de consentement.
-		@include themeColors()
-		{
-			background-color: getThemedColor("foreground");
 		}
 	}
 
