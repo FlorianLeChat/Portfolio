@@ -154,7 +154,7 @@ section
 	@media screen and (max-width: 768px)
 	{
 		// Réduction de la marge supérieure pour les
-		//	écrans de petite taille.
+		//  écrans de petite taille.
 		margin-top: 2.5rem;
 	}
 
@@ -169,7 +169,7 @@ section
 		@media screen and (max-width: 768px)
 		{
 			// Réduction de la taille du titre pour les
-			//	écrans de petite taille.
+			//  écrans de petite taille.
 			font-size: 1.5rem;
 		}
 
@@ -199,7 +199,7 @@ header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
 header > a, header button, section:nth-of-type(2) a
 {
 	// Boutons de la barre de navigation et de la section
-	//	à propos du développeur.
+	//  à propos du développeur.
 	margin: 0.5rem;
 	z-index: 1;
 	display: flex;
@@ -230,7 +230,7 @@ header > a, header button, section:nth-of-type(2) a
 	@media (hover: hover) and (pointer: fine)
 	{
 		// Animation de survol de l'icône sur les écrans
-		// 	à pointeur (souris).
+		//  à pointeur (souris).
 		&:hover, &:hover svg
 		{
 			@include themeColors()
@@ -263,7 +263,7 @@ header > a, header button, section:nth-of-type(2) a
 }
 
 // Badge de Google reCAPTCHA.
-// 	Source : https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
+//  Source : https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
 .grecaptcha-badge
 {
 	display: none;
@@ -273,7 +273,7 @@ header > a, header button, section:nth-of-type(2) a
 .swal2-shown > [aria-hidden]
 {
 	// Flou artistique en arrière-plan.
-	// 	Source : https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
+	//  Source : https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
 	filter: blur(0.5rem);
 	transition: filter 100ms;
 }
@@ -297,7 +297,7 @@ header > a, header button, section:nth-of-type(2) a
 }
 
 // Personnalisation de la barre de défilement.
-//	(Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar).
+//  (Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar).
 ::-webkit-scrollbar
 {
 	// Conteneur de la barre de défilement.
