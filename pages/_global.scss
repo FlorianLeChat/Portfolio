@@ -279,6 +279,35 @@ header > a, header button, section:nth-of-type(2) a
 	transition: filter 100ms;
 }
 
+.swal2-validation-message
+{
+	// Message d'erreur.
+	@include themeColors()
+	{
+		color: getThemedColor("foreground");
+		background: getThemedColor("background-alt");
+	}
+}
+
+.swal2-styled.swal2-confirm
+{
+	// Bouton de confirmation.
+	@include themeColors()
+	{
+		color: getThemedColor("background");
+		background: getThemedColor("primary");
+	}
+
+	&:focus
+	{
+		// Effet de maintien.
+		@include themeColors()
+		{
+			box-shadow: 0 0 0 3px rgba(getThemedColor("primary"), 0.5);
+		}
+	}
+}
+
 .swal2-modal
 {
 	// Respect des couleurs du thème.
