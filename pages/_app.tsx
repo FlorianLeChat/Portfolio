@@ -11,11 +11,14 @@ import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
 import Head from "next/head";
+import Script from "next/script";
 import dynamic from "next/dynamic";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { Poppins } from "next/font/google";
 import { useRouter } from "next/router";
+import * as CookieConsent from "vanilla-cookieconsent";
 import { appWithTranslation } from "next-i18next";
+import { useEffect, useState } from "react";
 
 // Importation des types.
 import type { AppProps } from "next/app";
@@ -37,8 +40,74 @@ const poppins = Poppins( {
 function Portfolio( { Component, pageProps }: AppProps )
 {
 	// Création des constantes.
-	const { basePath } = useRouter();
-	const favicons = `${ basePath }/assets/favicons`;
+	const router = useRouter();
+	const favicons = `${ router.basePath }/assets/favicons`;
+	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
+	analyticsUrl.searchParams.append( "id", process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" );
+
+	// Déclaration des variables d'état.
+	const [ analytics, setAnalytics ] = useState( false );
+
+	// Affichage du consentement des cookies.
+	//  Source : https://cookieconsent.orestbida.com/reference/api-reference.html
+	useEffect( () =>
+	{
+		CookieConsent.run(
+			{
+				// Désactivation de l'interaction avec la page.
+				disablePageInteraction: true,
+
+				// Paramètres internes des cookies.
+				cookie: {
+					path: router.basePath
+				},
+
+				// Paramètres de l'interface utilisateur.
+				guiOptions: {
+					consentModal: {
+						layout: "bar",
+						position: "bottom center"
+					}
+				},
+
+				// Configuration des catégories de cookies.
+				categories: {
+					necessary: {
+						enabled: true,
+						readOnly: true
+					},
+					analytics: {
+						autoClear: {
+							cookies: [
+								{
+									name: /^(_ga|_gid)/
+								}
+							]
+						}
+					}
+				},
+
+				// Configuration des traductions.
+				language: {
+					default: router.locale ?? "en",
+					translations: {
+						en: "./locales/en/common.json",
+						fr: "./locales/fr/common.json"
+					}
+				},
+
+				// Exécution des actions de consentement.
+				onConsent: ( { cookie } ) => (
+					cookie.categories.find( ( category: string ) => category === "analytics" ) && setAnalytics( true )
+				),
+
+				// Exécution des actions de changement.
+				onChange: ( { cookie } ) => (
+					cookie.categories.find( ( category: string ) => category === "analytics" ) && setAnalytics( true )
+				)
+			}
+		);
+	}, [ router.basePath, router.locale ] );
 
 	// Génération de la structure de la page.
 	return (
@@ -63,8 +132,28 @@ function Portfolio( { Component, pageProps }: AppProps )
 				<link rel="icon" type="image/webp" sizes="512x512" href={`${ favicons }/512x512.webp`} />
 
 				<link rel="apple-touch-icon" href={`${ favicons }/180x180.webp`} />
-				<link rel="manifest" href={`${ basePath }/manifest.json`} />
+				<link rel="manifest" href={`${ router.basePath }/manifest.json`} />
 			</Head>
+
+			{/* Google Analytics */}
+			{analytics && (
+				<>
+					<Script src={analyticsUrl.href} strategy="lazyOnload" />
+					<Script id="google-analytics" strategy="lazyOnload">
+						{`
+							window.dataLayer = window.dataLayer || [];
+
+							function gtag()
+							{
+								dataLayer.push( arguments );
+							}
+
+							gtag( "js", new Date() );
+							gtag( "config", "${ process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" }" );
+						`}
+					</Script>
+				</>
+			)}
 
 			{/* Avertissement page sans JavaScript */}
 			<noscript>

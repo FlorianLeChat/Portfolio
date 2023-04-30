@@ -16,10 +16,7 @@ export default function Document( { __NEXT_DATA__ }: DocumentProps )
 	// Déclaration des constantes.
 	const websiteUrl = join( process.env.NEXT_PUBLIC_URL ?? "", __NEXT_DATA__.page );
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
-	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
-
 	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "" );
-	analyticsUrl.searchParams.append( "id", process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" );
 
 	// Affichage du rendu HTML de la page.
 	return (
@@ -46,22 +43,6 @@ export default function Document( { __NEXT_DATA__ }: DocumentProps )
 
 				{/* Scripts JavaScript */}
 				<Script src={recaptchaUrl.href} strategy="lazyOnload" />
-				<Script src={analyticsUrl.href} strategy="lazyOnload" />
-
-				{/* Google Analytics */}
-				<Script id="google-analytics" strategy="lazyOnload">
-					{`
-						window.dataLayer = window.dataLayer || [];
-
-						function gtag()
-						{
-							dataLayer.push( arguments );
-						}
-
-						gtag( "js", new Date() );
-						gtag( "config", "${ process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" }" );
-					`}
-				</Script>
 			</Head>
 			<body>
 				<Main />
