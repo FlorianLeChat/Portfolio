@@ -285,7 +285,7 @@ header > a, header button, section:nth-of-type(2) a
 	@include themeColors()
 	{
 		color: getThemedColor("foreground");
-		background: getThemedColor("background-alt");
+		background-color: getThemedColor("background-alt");
 	}
 }
 
@@ -295,7 +295,7 @@ header > a, header button, section:nth-of-type(2) a
 	@include themeColors()
 	{
 		color: getThemedColor("background");
-		background: getThemedColor("primary");
+		background-color: getThemedColor("primary");
 	}
 
 	&:focus
@@ -314,7 +314,7 @@ header > a, header button, section:nth-of-type(2) a
 	@include themeColors()
 	{
 		color: getThemedColor("foreground");
-		border: 1px solid getThemedColor("primary");
+		border: 1px solid rgba(getThemedColor("primary"), 0.5);
 		background-color: getThemedColor("background");
 	}
 
@@ -371,41 +371,165 @@ header > a, header button, section:nth-of-type(2) a
 	// Conteneur principal des éléments enfants.
 	font-family: inherit;
 
-	.cm
+	.cm, .pm
 	{
 		// Conteneur de la bannière de consentement.
 		@include themeColors()
 		{
+			border: 1px solid rgba(getThemedColor("primary"), 0.5);
 			background-color: getThemedColor("background");
 		}
 	}
 
-	.cm__title
+	.pm__header, .pm__footer
 	{
-		// Titre de la bannière de consentement.
+		// En-tête et pied de page du gestionnaire des préférences.
+		@include themeColors()
+		{
+			border-color: rgba(getThemedColor("primary"), 0.25);
+		}
+	}
+
+	.pm__body
+	{
+		// Corps du gestionnaire des préférences.
+		&::-webkit-scrollbar
+		{
+			@extend ::-webkit-scrollbar;
+		}
+
+		&::-webkit-scrollbar-track
+		{
+			@extend ::-webkit-scrollbar-track;
+		}
+
+		&::-webkit-scrollbar-thumb
+		{
+			@extend ::-webkit-scrollbar-thumb;
+		}
+	}
+
+	.pm__section:not(:first-child)
+	{
+		// Section pour plus d'informations.
+		@include themeColors()
+		{
+			border-color: rgba(getThemedColor("primary"), 0.25);
+		}
+
+		&:hover
+		{
+			// Effet de survol.
+			@include themeColors()
+			{
+				background-color: getThemedColor("background-alt");
+			}
+		}
+	}
+
+	.pm__section--toggle
+	{
+		// Conteneurs généraux du gestionnaire des préférences.
+		@include themeColors()
+		{
+			background-color: getThemedColor("background");
+		}
+
+		.pm__section-desc-wrapper
+		{
+			// Conteneur contenant les descriptions des cookies.
+			@include themeColors()
+			{
+				border-color: rgba(getThemedColor("primary"), 0.25);
+			}
+		}
+	}
+
+	.cm__title, .pm__title, .pm__section-title
+	{
+		// Titres de la bannière de consentement.
 		@include themeColors()
 		{
 			color: getThemedColor("foreground");
 		}
 	}
 
-	.cm__desc
+	.cm__desc, .pm__section-desc
 	{
-		// Description de la bannière de consentement.
+		// Descriptions de la bannière de consentement.
 		@include themeColors()
 		{
 			color: getThemedColor("foreground");
+		}
+	}
+
+	button.pm__section-title
+	{
+		// Boutons de la bannière de consentement.
+		@include themeColors()
+		{
+			border-color: rgba(getThemedColor("primary"), 0.25);
+			background-color: getThemedColor("background");
+		}
+
+		&:hover
+		{
+			// Effet de survol.
+			@include themeColors()
+			{
+				border-color: rgba(getThemedColor("primary-alt"), 0.25);
+				background-color: getThemedColor("background-alt");
+			}
+		}
+	}
+
+	.pm__table-th, .pm__table-tr
+	{
+		// Textes du tableau de la liste des cookies.
+		@include themeColors()
+		{
+			color: getThemedColor("foreground");
+		}
+
+		&:hover
+		{
+			// Effet de survol.
+			@include themeColors()
+			{
+				background-color: getThemedColor("background-alt");
+			}
 		}
 	}
 
 	.cm__btn, .pm__btn, .pm__close-btn
 	{
-		// Boutons de la bannière de consentement.
+		// Boutons d'acception, de refus ou de fermeture
+		//  de la bannière de consentement.
 		@include themeColors()
 		{
 			color: getThemedColor("background");
 			border-color: getThemedColor("primary");
 			background-color: getThemedColor("primary");
+		}
+
+		&.cm__btn--secondary, &.pm__btn--secondary
+		{
+			// Boutons de sauvegarde ou d'ouverture du
+			//  gestionnaire de préférences.
+			@include themeColors()
+			{
+				border-color: getThemedColor("foreground");
+				background-color: getThemedColor("foreground");
+			}
+
+			&:hover
+			{
+				// Effet de survol.
+				@include themeColors()
+				{
+					background-color: getThemedColor("foreground-alt");
+				}
+			}
 		}
 
 		&::before
@@ -436,18 +560,9 @@ header > a, header button, section:nth-of-type(2) a
 		}
 	}
 
-	.toggle__icon-on:before
-	{
-		// Bascule (actif) de la bannière de consentement.
-		@include themeColors()
-		{
-			border-color: getThemedColor("primary");
-		}
-	}
-
 	.cc__link, a
 	{
-		// Liens de la bannière de consentement.
+		// Liens du gestionnaire des préférences.
 		@include themeColors()
 		{
 			color: getThemedColor("foreground-alt");
@@ -463,13 +578,45 @@ header > a, header button, section:nth-of-type(2) a
 		}
 	}
 
-	.section__toggle:checked:not(:disabled) ~ .toggle__icon
+	.section__toggle:checked
 	{
-		// Arrière-plan des bascules (actives) de la bannière de consentement.
-		@include themeColors()
+		// Arrière-plan des bascules du gestionnaire des préférences.
+		&:disabled ~ .toggle__icon
 		{
-			background-color: getThemedColor("primary");
-			box-shadow: 0 0 0 1px getThemedColor("primary");
+			// Bascules désactivées.
+			@include themeColors()
+			{
+				box-shadow: 0 0 0 1px rgba(getThemedColor("primary"), 0.25);
+				background-color: rgba(getThemedColor("primary"), 0.25);
+			}
+
+			.toggle__icon-on:before
+			{
+				// Icône de la bascule.
+				@include themeColors()
+				{
+					border-color: rgba(getThemedColor("primary"), 0.5);
+				}
+			}
+		}
+
+		&:not(:disabled) ~ .toggle__icon
+		{
+			// Bascules actives.
+			@include themeColors()
+			{
+				box-shadow: 0 0 0 1px getThemedColor("primary");
+				background-color: getThemedColor("primary");
+			}
+
+			.toggle__icon-on:before
+			{
+				// Icône de la bascule.
+				@include themeColors()
+				{
+					border-color: getThemedColor("primary");
+				}
+			}
 		}
 	}
 }
