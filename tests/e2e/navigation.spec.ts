@@ -43,6 +43,21 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 } );
 
 //
+// Permet de vérifier que le consentement des cookies fonctionne.
+//
+test( "Affichage du consentement des cookies", async ( { page } ) =>
+{
+	// Clic sur le bouton du consentement des cookies.
+	await page.getByRole( "button" ).nth( 1 ).click();
+
+	// Sauvegarde des préférences actuelles.
+	await page.getByRole( "button", { name: "Save preferences" } ).click();
+
+	// Vérification de la page actuelle.
+	await expect( page ).toHaveURL( "/" );
+} );
+
+//
 // Permet de vérifier que la navigation par l'en-tête fonctionne.
 //
 test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
