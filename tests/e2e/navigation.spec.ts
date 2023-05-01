@@ -50,7 +50,7 @@ test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 	if ( isMobile )
 	{
 		// Clic sur le bouton d'ouverture du menu.
-		await page.getByRole( "button" ).nth( 1 ).click();
+		await page.getByRole( "button" ).nth( 2 ).click();
 	}
 
 	// Clic sur le lien « Projets ».
