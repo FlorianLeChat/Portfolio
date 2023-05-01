@@ -40,10 +40,9 @@ const poppins = Poppins( {
 function Portfolio( { Component, pageProps }: AppProps )
 {
 	// Création des constantes.
-	const router = useRouter();
-	const favicons = `${ router.basePath }/assets/favicons`;
+	const { basePath, locale } = useRouter();
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
-	analyticsUrl.searchParams.append( "id", process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" );
+	const favicons = `${ basePath }/assets/favicons`;
 
 	// Déclaration des variables d'état.
 	const [ analytics, setAnalytics ] = useState( false );
@@ -65,7 +64,7 @@ function Portfolio( { Component, pageProps }: AppProps )
 
 				// Paramètres internes des cookies.
 				cookie: {
-					path: router.basePath
+					path: basePath
 				},
 
 				// Paramètres de l'interface utilisateur.
@@ -95,10 +94,10 @@ function Portfolio( { Component, pageProps }: AppProps )
 
 				// Configuration des traductions.
 				language: {
-					default: router.locale ?? "en",
+					default: locale ?? "en",
 					translations: {
-						en: "./locales/en/common.json",
-						fr: "./locales/fr/common.json"
+						en: `${ basePath }/locales/en/common.json`,
+						fr: `${ basePath }/locales/fr/common.json`
 					}
 				},
 
@@ -113,7 +112,7 @@ function Portfolio( { Component, pageProps }: AppProps )
 				)
 			}
 		);
-	}, [ router.basePath, router.locale ] );
+	}, [ basePath, locale ] );
 
 	// Génération de la structure de la page.
 	return (
@@ -138,7 +137,7 @@ function Portfolio( { Component, pageProps }: AppProps )
 				<link rel="icon" type="image/webp" sizes="512x512" href={`${ favicons }/512x512.webp`} />
 
 				<link rel="apple-touch-icon" href={`${ favicons }/180x180.webp`} />
-				<link rel="manifest" href={`${ router.basePath }/manifest.json`} />
+				<link rel="manifest" href={`${ basePath }/manifest.json`} />
 			</Head>
 
 			{/* Google Analytics */}
