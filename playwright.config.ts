@@ -5,7 +5,8 @@ const baseURL = `http://localhost:${ process.env.PORT ?? 3000 }`;
 const config: PlaywrightTestConfig = {
 	use: {
 		baseURL,
-		trace: "retain-on-failure"
+		trace: "retain-on-failure",
+		video: "retain-on-failure"
 	},
 	expect: { timeout: 10000 },
 	workers: 1,
