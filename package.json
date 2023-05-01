@@ -35,7 +35,7 @@
     "sass": "~1.60",
     "typescript": "~5.0",
     "next-sitemap": "~4.0",
-    "@playwright/test": "~1.32",
+    "@playwright/test": "~1.33",
     "eslint-config-next": "~13.2",
     "eslint-config-airbnb": "~19.0",
     "@typescript-eslint/parser": "~5.57",
