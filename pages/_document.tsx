@@ -42,7 +42,7 @@ export default function Document( { __NEXT_DATA__ }: DocumentProps )
 				<link rel="preconnect" href="https://www.gstatic.com" />
 
 				{/* Scripts JavaScript */}
-				<Script src={recaptchaUrl.href} strategy="lazyOnload" />
+				<Script src={recaptchaUrl.href} strategy="beforeInteractive" />
 			</Head>
 			<body>
 				<Main />
