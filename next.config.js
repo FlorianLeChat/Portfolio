@@ -25,7 +25,7 @@ const withBundleAnalyzer = require( "@next/bundle-analyzer" )( {
 	openAnalyzer: false,
 } );
 
-module.exports = withBundleAnalyzer( withPWA( {
+module.exports = withPWA( withBundleAnalyzer( {
 	i18n,
 	basePath: basePath === "/" ? "" : ( basePath.endsWith( "/" ) ? basePath.slice( 0, -1 ) : basePath ),
 	poweredByHeader: false,
