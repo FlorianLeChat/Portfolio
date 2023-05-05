@@ -4,7 +4,8 @@
 		"project": ["./tsconfig.json"]
 	},
 	"globals": {
-		"JSX": "readonly"
+		"JSX": "readonly",
+		"NodeJS": "readonly"
 	},
 	"extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/strict", "plugin:jsx-a11y/strict", "airbnb"],
 	"plugins": ["@typescript-eslint"],
