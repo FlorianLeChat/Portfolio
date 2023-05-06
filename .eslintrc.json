@@ -22,22 +22,19 @@
 		"brace-style": ["error", "allman"],
 		"comma-dangle": ["error", "never"],
 		"no-unused-vars": "off",
-		"global-require": "off",
 		"linebreak-style": "off",
-		"no-multi-assign": "off",
 		"space-in-parens": ["error", "always"],
 		"object-curly-newline": ["error", { "ObjectExpression": { "consistent": true } }],
 		"array-bracket-spacing": ["error", "always"],
 		"template-curly-spacing": ["error", "always"],
 		"computed-property-spacing": ["error", "always"],
 
-		"import/order": "off",
 		"import/extensions": ["error", "never"],
 		"import/prefer-default-export": "off",
 		"import/no-extraneous-dependencies": ["error", { "bundledDependencies": false }],
 
 		"@typescript-eslint/no-shadow": "error",
-		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+		"@typescript-eslint/no-unused-vars": "error",
 
 		"react/jsx-indent": ["error", "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
