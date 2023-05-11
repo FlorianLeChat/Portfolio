@@ -2,13 +2,13 @@
 
 # Use an customized image of Node.js
 # https://hub.docker.com/_/node
-FROM node:19-alpine
+FROM node:lts-alpine
 
 # Set the working directory to the website files
 WORKDIR /usr/src/app
 
 # Copy only files required to install dependencies
-COPY package*.json ./
+COPY package*.json .
 
 # Install all dependencies
 # Use cache mount to speed up installation of existing dependencies
