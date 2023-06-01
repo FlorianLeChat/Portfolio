@@ -20,7 +20,7 @@
     "sanitize.css": "~13.0",
     "next-i18next": "<=12.1.0",
     "@next/bundle-analyzer": "~13.4",
-    "vanilla-cookieconsent": "3.0.0-rc.13",
+    "vanilla-cookieconsent": "3.0.0-rc.14",
     "@fortawesome/react-fontawesome": "~0.2",
     "@fortawesome/fontawesome-svg-core": "~6.4",
     "@fortawesome/free-solid-svg-icons": "~6.4",
