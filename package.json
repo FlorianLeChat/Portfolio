@@ -33,7 +33,7 @@
     "@types/dom-speech-recognition": "~0.0",
     "pm2": "~5.3",
     "sass": "~1.62",
-    "typescript": "~5.0",
+    "typescript": "~5.1",
     "next-sitemap": "~4.1",
     "@playwright/test": "~1.33",
     "eslint-config-next": "~13.3",
