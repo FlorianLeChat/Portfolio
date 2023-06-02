@@ -1,6 +1,9 @@
 //
 // Composant de l'en-tête générique du site.
 //
+
+"use client";
+
 import { useTranslation } from "next-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
