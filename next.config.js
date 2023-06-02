@@ -20,12 +20,8 @@ const withPWA = require( "next-pwa" )( {
 	}
 } );
 
-const withBundleAnalyzer = require( "@next/bundle-analyzer" )( {
-	enabled: process.env.ANALYZE === "true",
-	openAnalyzer: false,
-} );
 
-module.exports = withPWA( withBundleAnalyzer( {
+module.exports = withPWA( {
 	i18n,
 	basePath: basePath === "/" ? "" : ( basePath.endsWith( "/" ) ? basePath.slice( 0, -1 ) : basePath ),
 	poweredByHeader: false,
@@ -41,4 +37,4 @@ module.exports = withPWA( withBundleAnalyzer( {
 			}
 		];
 	}
-} ) );
+} );
