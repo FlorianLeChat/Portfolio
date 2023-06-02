@@ -16,9 +16,9 @@
 @import "colors";
 
 // Importation des règles CSS des composants React.
-@import "../components/header";
-@import "../components/footer";
-@import "../components/scroll-top";
+@import "./header";
+@import "./footer";
+@import "./scroll-top";
 
 // Modifications globales.
 html
