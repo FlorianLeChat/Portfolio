@@ -10,7 +10,6 @@ import "./_global.scss";
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
-import Head from "next/head";
 import Script from "next/script";
 import dynamic from "next/dynamic";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -42,7 +41,6 @@ function Portfolio( { Component, pageProps }: AppProps )
 	// Création des constantes.
 	const { basePath, locale } = useRouter();
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
-	const favicons = `${ basePath }/assets/favicons`;
 
 	// Déclaration des variables d'état.
 	const [ analytics, setAnalytics ] = useState( false );
@@ -117,29 +115,6 @@ function Portfolio( { Component, pageProps }: AppProps )
 	// Génération de la structure de la page.
 	return (
 		<>
-			<Head>
-				{/* Méta-données du document */}
-				<meta charSet="utf-8" />
-				<meta name="author" content={process.env.NEXT_PUBLIC_AUTHOR} />
-				<meta name="description" content={process.env.NEXT_PUBLIC_DESCRIPTION} />
-				<meta name="keywords" content={process.env.NEXT_PUBLIC_TAGS} />
-				<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-				<meta name="theme-color" content="#306cc4" />
-
-				{/* Titre du document */}
-				<title>{`${ process.env.NEXT_PUBLIC_TITLE }`}</title>
-
-				{/* Icônes et manifeste du document */}
-				<link rel="icon" type="image/webp" sizes="16x16" href={`${ favicons }/16x16.webp`} />
-				<link rel="icon" type="image/webp" sizes="32x32" href={`${ favicons }/32x32.webp`} />
-				<link rel="icon" type="image/webp" sizes="48x48" href={`${ favicons }/48x48.webp`} />
-				<link rel="icon" type="image/webp" sizes="192x192" href={`${ favicons }/192x192.webp`} />
-				<link rel="icon" type="image/webp" sizes="512x512" href={`${ favicons }/512x512.webp`} />
-
-				<link rel="apple-touch-icon" href={`${ favicons }/180x180.webp`} />
-				<link rel="manifest" href={`${ basePath }/manifest.json`} />
-			</Head>
-
 			{/* Google Analytics */}
 			{analytics && (
 				<>
