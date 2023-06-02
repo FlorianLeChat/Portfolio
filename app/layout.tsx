@@ -13,6 +13,7 @@ import { ThemeProvider } from "@/utils/ThemeContext";
 // Importation des composants.
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
+const Analytics = lazy( () => import( "./components/analytics" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 
 export default function RootLayout( { children }: { children: ReactNode; } )
@@ -25,6 +26,10 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 	return (
 		<html lang="fr">
 			{/* Scripts JavaScript */}
+			{/* Google Analytics */}
+			<Analytics />
+
+			{/* Google reCAPTCHA */}
 			<Script src={recaptchaUrl.href} strategy="beforeInteractive" />
 
 			{/* Corps de la page */}
