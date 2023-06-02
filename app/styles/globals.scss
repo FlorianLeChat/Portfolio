@@ -13,15 +13,12 @@
 @import "../node_modules/vanilla-cookieconsent/dist/cookieconsent.css";
 
 // Importation des variables de thème.
-@import "_colors";
-
-// Importation des règles CSS des pages.
-@import "index";
+@import "colors";
 
 // Importation des règles CSS des composants React.
-@import "../components/Header";
-@import "../components/Footer";
-@import "../components/ScrollTop";
+@import "../components/header";
+@import "../components/footer";
+@import "../components/scroll-top";
 
 // Modifications globales.
 html
