@@ -1,5 +1,5 @@
 //
-// Structure HTML principale des pages du site.
+// Structure HTML générale des pages du site.
 //  Source : https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 //
 

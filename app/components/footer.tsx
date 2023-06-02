@@ -1,9 +1,6 @@
 //
 // Composant du pied de page générique du site.
 //
-
-"use client";
-
 import { Trans } from "next-i18next";
 
 export default function Footer()
