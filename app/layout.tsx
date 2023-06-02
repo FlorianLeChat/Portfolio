@@ -5,6 +5,7 @@
 
 // Importation des dépendances.
 import Script from "next/script";
+import { Poppins } from "next/font/google";
 import { lazy, ReactNode } from "react";
 
 // Importation des fonctions utilitaires.
@@ -16,6 +17,13 @@ const Footer = lazy( () => import( "./components/footer" ) );
 const Analytics = lazy( () => import( "./components/analytics" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 
+// Création de la police de caractères Poppins.
+const poppins = Poppins( {
+	weight: [ "400", "500", "600", "700" ],
+	subsets: [ "latin" ],
+	display: "swap"
+} );
+
 export default function RootLayout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
@@ -24,8 +32,7 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang="fr">
-			{/* Scripts JavaScript */}
+		<html lang="fr" className={poppins.className}>
 			{/* Google Analytics */}
 			<Analytics />
 
