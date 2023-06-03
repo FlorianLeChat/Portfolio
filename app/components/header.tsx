@@ -29,7 +29,13 @@ export default function Header()
 
 		if ( html )
 		{
-			html.className = `theme-${ target } ${ target === "dark" ? "c_darkmode" : "" }`;
+			html.classList.remove( "theme-light", "theme-dark", "c_darkmode" );
+			html.classList.add( `theme-${ target }` );
+
+			if ( target === "dark" )
+			{
+				html.classList.add( "c_darkmode" );
+			}
 		}
 
 		setTheme( target );
@@ -59,7 +65,13 @@ export default function Header()
 
 			if ( html )
 			{
-				html.className = `theme-${ target } ${ target === "dark" ? "c_darkmode" : "" }`;
+				html.classList.remove( "theme-light", "theme-dark", "c_darkmode" );
+				html.classList.add( `theme-${ target }` );
+
+				if ( target === "dark" )
+				{
+					html.classList.add( "c_darkmode" );
+				}
 			}
 
 			startTransition( () =>
