@@ -17,14 +17,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
-// Importation des fonctions utilitaires.
-import { getBasePath } from "@/utils/NextRouter";
-import { useTranslation } from "@/utils/ServerTranslations";
-
 // Importation des types.
 import type { Metadata } from "next";
 import { SkillAttributes } from "@/interfaces/Skill";
 import { ProjectAttributes } from "@/interfaces/Project";
+
+// Importation des fonctions utilitaires.
+import { getBasePath } from "./utilities/NextRouter";
+import { useTranslation } from "./utilities/ServerTranslations";
 
 // Modification de la configuration de Font Awesome.
 //  Source : https://fontawesome.com/docs/web/use-with/react/use-with

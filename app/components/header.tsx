@@ -10,6 +10,8 @@ import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-
 import { useState, useEffect, useContext, useTransition } from "react";
 
 import { ThemeContext } from "@/utils/ThemeContext";
+import { getBasePath } from "../utilities/NextRouter";
+import { useTranslation } from "../utilities/ClientTranslations";
 
 export default function Header()
 {
