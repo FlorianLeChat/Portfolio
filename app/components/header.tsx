@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useTranslation } from "next-i18next";
+import { useTranslation } from "@/utils/ClientTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect, useContext, useTransition } from "react";
