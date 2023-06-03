@@ -5,8 +5,8 @@
 Ceci est mon portfolio tout simplement ! Au départ, il s'agissait de mon tout premier site Internet réalisé durant mes études et utilisant HTML, CSS, JavaScript ainsi que PHP sans aucun framework particulier. Plusieurs mois ont défilés et j'ai décidé de le refaire complètement en adoptant un nouveau design inspiré de [ce portfolio](https://github.com/rajshekhar26/cleanfolio) avec NextJS ainsi que des technologies beaucoup plus modernes.
 
 <ins>Voici les exigences pour exécuter le site Internet</ins> :
-* NodeJS **19.6+**
-* npm **9.4+**
+* NodeJS **18.0+**
+* npm **8.6+**
 
 **Pour essayer le projet, il suffit d'installer l'ensemble des dépendances nécessaires avec la commande `npm install` puis de lancer le serveur de développement avec la commande `npm run dev`. Une image Docker est aussi disponible pour tester ce projet pour les personnes les plus expérimentées ! 🐳**
 
@@ -21,8 +21,8 @@ ___
 This is my portfolio! At the beginning, it was my very first website made during my studies and using HTML, CSS, JavaScript and PHP without any framework. Several months later, I decided to redo it completely by adopting a new design inspired by [this portfolio](https://github.com/rajshekhar26/cleanfolio) with NextJS and much more modern technologies.
 
 <ins>Here are the requirements to run the website</ins>:
-* NodeJS **19.6+**
-* npm **9.4+**
+* NodeJS **18.0+**
+* npm **8.6+**
 
 **To test the project, you simply have to install all the necessary dependencies with `npm install` command and then launch the development server with `npm run dev` command. A Docker image is also available to test this project for the most skilled people! 🐳**
 
