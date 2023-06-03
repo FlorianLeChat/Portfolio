@@ -1,6 +1,6 @@
 //
 // Permet de récupérer les traductions côté client.
-//  Source : https://locize.com/blog/next-13-app-dir-i18n/
+//  Sources : https://locize.com/blog/next-13-app-dir-i18n/ et https://github.com/i18next/next-13-app-dir-i18next-no-locale-path-example
 //
 
 "use client";
