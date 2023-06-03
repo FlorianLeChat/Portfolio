@@ -5,15 +5,15 @@
 "use client";
 
 import Script from "next/script";
-import { useRouter } from "next/router";
+import { getBasePath } from "@/utils/NextRouter";
 import * as CookieConsent from "vanilla-cookieconsent";
 import { useState, useEffect } from "react";
 
 export default function Analytics()
 {
 	// Déclaration des constantes.
+	const basePath = getBasePath();
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
-	const { basePath, locale } = useRouter();
 
 	// Déclaration des variables d'état.
 	const [ analytics, setAnalytics ] = useState( false );
@@ -65,7 +65,8 @@ export default function Analytics()
 
 				// Configuration des traductions.
 				language: {
-					default: locale ?? "en",
+					default: "en",
+					autoDetect: "document",
 					translations: {
 						en: `${ basePath }/locales/en/common.json`,
 						fr: `${ basePath }/locales/fr/common.json`
@@ -83,7 +84,7 @@ export default function Analytics()
 				)
 			}
 		);
-	}, [ basePath, locale ] );
+	}, [ basePath ] );
 
 	// Affichage du rendu HTML du composant.
 	if ( analytics )

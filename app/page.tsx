@@ -13,7 +13,7 @@ import "@total-typescript/ts-reset";
 import path from "path";
 import Image from "next/image";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { getBasePath } from "@/utils/NextMigration";
+import { getBasePath } from "@/utils/NextRouter";
 import { useTranslation } from "@/utils/ServerTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
