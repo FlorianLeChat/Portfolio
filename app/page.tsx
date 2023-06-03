@@ -13,11 +13,13 @@ import "@total-typescript/ts-reset";
 import path from "path";
 import Image from "next/image";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { getBasePath } from "@/utils/NextRouter";
-import { useTranslation } from "@/utils/ServerTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+
+// Importation des fonctions utilitaires.
+import { getBasePath } from "@/utils/NextRouter";
+import { useTranslation } from "@/utils/ServerTranslations";
 
 // Importation des types.
 import type { Metadata } from "next";
