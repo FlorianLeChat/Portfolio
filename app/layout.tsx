@@ -8,10 +8,7 @@ import Script from "next/script";
 import { dir } from "i18next";
 import { cookies } from "next/headers";
 import { Poppins } from "next/font/google";
-import { lazy, ReactNode } from "react";
-
-// Importation des fonctions utilitaires.
-import { ThemeProvider } from "@/utils/ThemeContext";
+import { Suspense, lazy, ReactNode } from "react";
 
 // Importation des composants.
 const Header = lazy( () => import( "./components/header" ) );
@@ -29,13 +26,16 @@ const poppins = Poppins( {
 export default function RootLayout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
-	const language = cookies().get( "NEXT_LANGUAGE" )?.value ?? "en";
+	const cookiesList = cookies();
+	const language = cookiesList.get( "NEXT_LANGUAGE" )?.value ?? "en";
+	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
+
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
 	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "" );
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang="fr" dir={dir( language )} className={poppins.className}>
+		<html lang={language} dir={dir( language )} className={`${ poppins.className } theme-${ theme }`}>
 			{/* Google Analytics */}
 			<Analytics />
 
