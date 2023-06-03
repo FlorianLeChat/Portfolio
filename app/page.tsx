@@ -13,8 +13,8 @@ import "@total-typescript/ts-reset";
 import path from "path";
 import Image from "next/image";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { cookies } from "next/headers";
-import { useRouter } from "next/router";
+import { getBasePath } from "@/utils/NextMigration";
+import { useTranslation } from "@/utils/ServerTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 	viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
 	manifest: "manifest.json",
 	themeColor: "#306cc4",
+	metadataBase: new URL( process.env.NEXT_PUBLIC_URL ?? "" ),
 	icons: {
 		icon: [
 			{
@@ -97,23 +98,28 @@ export const metadata: Metadata = {
 	}
 };
 
+// Récupération des projets et des compétences.
+const directory = path.join( process.cwd(), "public/data" );
+const getProjects = async () =>
+{
+	const projects = await fileSystem.readFile( `${ directory }/projects.json`, "utf8" );
+	return JSON.parse( projects ) as ProjectAttributes[];
+};
+
+const getSkills = async () =>
+{
+	const skills = await fileSystem.readFile( `${ directory }/skills.json`, "utf8" );
+	return JSON.parse( skills ) as SkillAttributes[];
+};
+
 // Affichage de la page.
 export default async function Page()
 {
-	// Récupération des traductions.
-	const language = cookies().get( "NEXT_LANGUAGE" )?.value ?? "fr";
-
-	// Récupération des projets et des compétences.
-	const { basePath } = useRouter();
-	const directory = path.join( process.cwd(), "public/data" );
-	const projects = fileSystem.readFile( `${ directory }/projects.json`, "utf8" )
-		.then( ( data ) => JSON.parse( data ) as ProjectAttributes[] );
-
-	const skills = fileSystem.readFile( `${ directory }/skills.json`, "utf8" )
-		.then( ( data ) => JSON.parse( data ) as SkillAttributes[] );
-
-	// Calcul de l'âge à partir de la date de naissance.
+	// Déclaration des constantes.
+	const basePath = getBasePath();
+	const { t } = await useTranslation();
 	const date = new Date();
+
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
 	// Affichage du rendu HTML de la page.
@@ -165,7 +171,7 @@ export default async function Page()
 
 				{/* Génération des projets */}
 				{
-					Object.entries( projects ).map( ( [ key, value ] ) => (
+					Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
 						<article key={key}>
 							{/* Image du projet */}
 							<Image
