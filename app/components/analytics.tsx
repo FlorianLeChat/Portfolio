@@ -111,6 +111,5 @@ export default function Analytics()
 		);
 	}
 
-	// Aucun rendu HTML.
 	return null;
 }
