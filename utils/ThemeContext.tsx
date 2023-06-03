@@ -2,6 +2,9 @@
 // Permet de gérer le basculement entre les thèmes clair et sombre.
 //  Source : https://betterprogramming.pub/a-complete-guide-to-implementing-dark-mode-in-react-47af893b22eb
 //
+
+"use client";
+
 import { useMemo, useState, createContext, ReactNode, Dispatch, SetStateAction } from "react";
 
 // Création et exportation du contexte.
