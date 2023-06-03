@@ -5,6 +5,8 @@
 
 // Importation des dépendances.
 import Script from "next/script";
+import { dir } from "i18next";
+import { cookies } from "next/headers";
 import { Poppins } from "next/font/google";
 import { lazy, ReactNode } from "react";
 
@@ -27,12 +29,13 @@ const poppins = Poppins( {
 export default function RootLayout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
+	const language = cookies().get( "NEXT_LANGUAGE" )?.value ?? "en";
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
 	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "" );
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang="fr" className={poppins.className}>
+		<html lang="fr" dir={dir( language )} className={poppins.className}>
 			{/* Google Analytics */}
 			<Analytics />
 
