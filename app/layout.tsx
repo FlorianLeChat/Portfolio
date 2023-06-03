@@ -4,7 +4,6 @@
 //
 
 // Importation des dépendances.
-import Script from "next/script";
 import { dir } from "i18next";
 import { cookies } from "next/headers";
 import { Poppins } from "next/font/google";
@@ -14,7 +13,9 @@ import { Suspense, lazy, ReactNode } from "react";
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
 const Analytics = lazy( () => import( "./components/analytics" ) );
+const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
+const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
 // Création de la police de caractères Poppins.
 const poppins = Poppins( {
@@ -30,18 +31,9 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 	const language = cookiesList.get( "NEXT_LANGUAGE" )?.value ?? "en";
 	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
 
-	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
-	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "" );
-
 	// Affichage du rendu HTML de la page.
 	return (
 		<html lang={language} dir={dir( language )} className={`${ poppins.className } theme-${ theme }`}>
-			{/* Google Analytics */}
-			<Analytics />
-
-			{/* Google reCAPTCHA */}
-			<Script src={recaptchaUrl.href} strategy="beforeInteractive" />
-
 			{/* Corps de la page */}
 			<body>
 				{/* Avertissement page sans JavaScript */}
@@ -53,20 +45,29 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 					</h2>
 				</noscript>
 
-				{/* Contexte de basculement des thèmes */}
-				<ThemeProvider>
+				{/* Écran de chargement de la page */}
+				<Suspense>
 					{/* Affichage de l'en-tête du site */}
 					<Header />
 
 					{/* Affichage du composant enfant */}
 					<main>{children}</main>
 
+					{/* Google Analytics */}
+					<Analytics />
+
+					{/* Google reCAPTCHA */}
+					<Recaptcha />
+
+					{/* Reconnaissance vocale */}
+					<SpeechRecognition />
+
 					{/* Affichage du bouton de retour en haut de page */}
 					<ScrollTop />
 
 					{/* Affichage du pied de page du site */}
 					<Footer />
-				</ThemeProvider>
+				</Suspense>
 			</body>
 		</html>
 	);
