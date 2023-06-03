@@ -1,7 +1,7 @@
 //
 // Composant du pied de page générique du site.
 //
-import { Trans } from "next-i18next";
+import { Trans } from "react-i18next/TransWithoutContext";
 
 export default function Footer()
 {
