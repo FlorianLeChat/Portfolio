@@ -35,7 +35,8 @@ export default function Analytics()
 
 				// Paramètres internes des cookies.
 				cookie: {
-					path: basePath
+					path: basePath,
+					name: "NEXT_ANALYTICS"
 				},
 
 				// Paramètres de l'interface utilisateur.
@@ -68,8 +69,8 @@ export default function Analytics()
 					default: "en",
 					autoDetect: "browser",
 					translations: {
-						en: `${ basePath }/locales/en/common.json`,
-						fr: `${ basePath }/locales/fr/common.json`
+						en: `${ basePath }/locales/en.json`,
+						fr: `${ basePath }/locales/fr.json`
 					}
 				},
 
