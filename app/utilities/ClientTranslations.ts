@@ -15,8 +15,10 @@ i18next
 	.use( initReactI18next )
 	.use( resourcesToBackend( ( locale: string ) => import( `@/public/locales/${ locale }.json` ) ) )
 	.init( {
+		returnNull: false,
 		fallbackLng: "en",
-		supportedLngs: [ "en", "fr" ]
+		supportedLngs: [ "en", "fr" ],
+		returnEmptyString: false
 	} );
 
 // Fonction de récupération des traductions.
