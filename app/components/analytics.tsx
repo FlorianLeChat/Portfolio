@@ -88,7 +88,7 @@ export default function Analytics()
 		);
 	}, [ basePath ] );
 
-	// Affichage du rendu HTML du composant.
+	// Affichage conditionnel du rendu HTML du composant.
 	if ( analytics )
 	{
 		return (
