@@ -1,5 +1,5 @@
 //
-// Composant du pied de page générique du site.
+// Composant du pied de page du site.
 //
 import { Trans } from "react-i18next/TransWithoutContext";
 

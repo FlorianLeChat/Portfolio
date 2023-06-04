@@ -12,6 +12,7 @@ import { Suspense, lazy, ReactNode } from "react";
 // Importation des composants.
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
+const Loading = lazy( () => import( "./components/loading" ) );
 const Analytics = lazy( () => import( "./components/analytics" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
@@ -46,7 +47,7 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 				</noscript>
 
 				{/* Écran de chargement de la page */}
-				<Suspense>
+				<Suspense fallback={<Loading />}>
 					{/* Affichage de l'en-tête du site */}
 					<Header />
 

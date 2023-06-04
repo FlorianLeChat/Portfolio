@@ -1,0 +1,38 @@
+// Animation de chargement (cercle rotatif et texte de transition).
+// 	Source : https://web.dev/code-splitting-suspense/#suspending-multiple-components
+div.loading
+{
+	// Texte de transition au-dessus du cercle rotatif.
+	gap: 1rem;
+	height: 100vh;
+	display: flex;
+	font-size: 2rem;
+	font-weight: bold;
+	align-items: center;
+	flex-direction: column;
+	text-transform: uppercase;
+	justify-content: center;
+
+	&::after
+	{
+		// Conteneur et animation du cercle rotatif.
+		width: 3rem;
+		height: 3rem;
+		content: "";
+		display: block;
+		animation: loader 1.2s linear infinite;
+		border-radius: 50%;
+
+		@include themeColors()
+		{
+			border: 5px solid getThemedColor("primary");
+			border-color: getThemedColor("primary") transparent getThemedColor("primary") transparent;
+		}
+	}
+}
+
+@keyframes loader
+{
+	0% { transform: rotate(0); }
+	100% { transform: rotate(360deg); }
+}
