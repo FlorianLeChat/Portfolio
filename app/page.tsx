@@ -12,6 +12,7 @@ import "@total-typescript/ts-reset";
 // Importation des dépendances.
 import path from "path";
 import Image from "next/image";
+import { lazy } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
@@ -19,12 +20,15 @@ import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 // Importation des types.
 import type { Metadata } from "next";
-import { SkillAttributes } from "@/interfaces/Skill";
-import { ProjectAttributes } from "@/interfaces/Project";
+import type { SkillAttributes } from "@/interfaces/Skill";
+import type { ProjectAttributes } from "@/interfaces/Project";
 
 // Importation des fonctions utilitaires.
 import { getBasePath } from "./utilities/NextRouter";
 import { useTranslation } from "./utilities/ServerTranslations";
+
+// Importation des composants.
+const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
 
 // Modification de la configuration de Font Awesome.
 //  Source : https://fontawesome.com/docs/web/use-with/react/use-with
@@ -32,6 +36,7 @@ config.autoAddCss = false;
 
 // Déclaration des propriétés de la page.
 export const metadata: Metadata = {
+	// Méta-données du document.
 	title: process.env.NEXT_PUBLIC_TITLE,
 	authors: [ { name: process.env.NEXT_PUBLIC_AUTHOR, url: "https://github.com/FlorianLeChat" } ],
 	description: process.env.NEXT_PUBLIC_DESCRIPTION,
@@ -40,6 +45,8 @@ export const metadata: Metadata = {
 	manifest: "manifest.json",
 	themeColor: "#306cc4",
 	metadataBase: new URL( process.env.NEXT_PUBLIC_URL ?? "" ),
+
+	// Icônes du document.
 	icons: {
 		icon: [
 			{
@@ -76,6 +83,8 @@ export const metadata: Metadata = {
 			}
 		]
 	},
+
+	// Informations pour les moteurs de recherche.
 	openGraph: {
 		url: process.env.NEXT_PUBLIC_URL,
 		type: "website",
@@ -87,6 +96,8 @@ export const metadata: Metadata = {
 			}
 		]
 	},
+
+	// Informations pour la plate-forme Twitter.
 	twitter: {
 		card: "summary_large_image",
 		title: process.env.NEXT_PUBLIC_TITLE,
@@ -225,6 +236,9 @@ export default async function Page()
 					) )
 				}
 			</section>
+
+			{/* Section des compétences */}
+			<SkillFilter skills={await getSkills()} />
 		</>
 	);
 }
