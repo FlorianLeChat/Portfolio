@@ -31,7 +31,7 @@
 
 		"import/extensions": ["error", "never"],
 		"import/prefer-default-export": "off",
-		"import/no-extraneous-dependencies": ["error", { "bundledDependencies": false }],
+		"import/no-extraneous-dependencies": "off",
 
 		"@typescript-eslint/no-shadow": "error",
 		"@typescript-eslint/no-unused-vars": "error",
