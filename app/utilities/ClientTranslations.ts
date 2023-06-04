@@ -6,6 +6,7 @@
 "use client";
 
 import i18next from "i18next";
+import { useEffect } from "react";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next, useTranslation as defaultUseTranslation } from "react-i18next";
 
@@ -27,11 +28,14 @@ export function useTranslation()
 	const { i18n } = ret;
 	const language = client ? navigator.language.slice( 0, 2 ) : "en";
 
-	if ( client && i18n.resolvedLanguage !== language )
+	// Si la langue du navigateur est différente de celle de i18next, on la change.
+	useEffect( () =>
 	{
-		// Si la langue du navigateur est différente de celle de i18next, on la change.
-		i18n.changeLanguage( language );
-	}
+		if ( client && i18n.resolvedLanguage !== language )
+		{
+			i18n.changeLanguage( language );
+		}
+	}, [ client, i18n, language ] );
 
 	// On retourne enfin les traductions.
 	return ret;
