@@ -1,5 +1,5 @@
 //
-// Composant de l'en-tête générique du site.
+// Composant de l'en-tête du site.
 //
 
 "use client";

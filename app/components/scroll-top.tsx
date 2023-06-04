@@ -1,5 +1,5 @@
 //
-// Composant permettant de remonter en haut de page.
+// Composant de retour en haut de page du site.
 //
 
 "use client";
