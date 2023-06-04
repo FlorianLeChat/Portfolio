@@ -4,8 +4,8 @@
 //
 
 import { cookies } from "next/headers";
-import resourcesToBackend from "i18next-resources-to-backend";
 import { createInstance } from "i18next";
+import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
 
 export async function useTranslation()
@@ -20,8 +20,10 @@ export async function useTranslation()
 		.use( resourcesToBackend( ( locale: string ) => import( `@/public/locales/${ locale }.json` ) ) )
 		.init( {
 			lng: language,
+			returnNull: false,
 			fallbackLng: "en",
-			supportedLngs: [ "en", "fr" ]
+			supportedLngs: [ "en", "fr" ],
+			returnEmptyString: false
 		} );
 
 	// On retourne enfin l'instance contenant les traductions.

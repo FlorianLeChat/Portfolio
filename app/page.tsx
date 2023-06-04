@@ -29,6 +29,7 @@ import { useTranslation } from "./utilities/ServerTranslations";
 
 // Importation des composants.
 const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
+const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
 
 // Modification de la configuration de Font Awesome.
 //  Source : https://fontawesome.com/docs/web/use-with/react/use-with
@@ -239,6 +240,9 @@ export default async function Page()
 
 			{/* Section des compétences */}
 			<SkillFilter skills={await getSkills()} />
+
+			{/* Section de contact */}
+			<ContactMailer />
 		</>
 	);
 }
