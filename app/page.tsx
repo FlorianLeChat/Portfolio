@@ -6,20 +6,15 @@
 // Importation de la feuille de style.
 import "./page.scss";
 
-// Importation du normalisateur TypeScript.
-import "@total-typescript/ts-reset";
-
 // Importation des dépendances.
 import path from "path";
 import Image from "next/image";
 import { lazy } from "react";
-import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 
 // Importation des types.
-import type { Metadata } from "next";
 import type { SkillAttributes } from "@/interfaces/Skill";
 import type { ProjectAttributes } from "@/interfaces/Project";
 
@@ -30,87 +25,6 @@ import { useTranslation } from "./utilities/ServerTranslations";
 // Importation des composants.
 const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
 const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
-
-// Modification de la configuration de Font Awesome.
-//  Source : https://fontawesome.com/docs/web/use-with/react/use-with
-config.autoAddCss = false;
-
-// Déclaration des propriétés de la page.
-export const metadata: Metadata = {
-	// Méta-données du document.
-	title: process.env.NEXT_PUBLIC_TITLE,
-	authors: [ { name: process.env.NEXT_PUBLIC_AUTHOR, url: "https://github.com/FlorianLeChat" } ],
-	description: process.env.NEXT_PUBLIC_DESCRIPTION,
-	keywords: process.env.NEXT_PUBLIC_TAGS,
-	viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
-	manifest: "manifest.json",
-	themeColor: "#306cc4",
-	metadataBase: new URL( process.env.NEXT_PUBLIC_URL ?? "" ),
-
-	// Icônes du document.
-	icons: {
-		icon: [
-			{
-				url: "assets/favicons/16x16.webp",
-				type: "image/webp",
-				sizes: "16x16"
-			},
-			{
-				url: "assets/favicons/32x32.webp",
-				type: "image/webp",
-				sizes: "32x32"
-			},
-			{
-				url: "assets/favicons/48x48.webp",
-				type: "image/webp",
-				sizes: "48x48"
-			},
-			{
-				url: "assets/favicons/192x192.webp",
-				type: "image/webp",
-				sizes: "192x192"
-			},
-			{
-				url: "assets/favicons/512x512.webp",
-				type: "image/webp",
-				sizes: "512x512"
-			}
-		],
-		apple: [
-			{
-				url: "assets/favicons/180x180.webp",
-				type: "image/webp",
-				sizes: "180x180"
-			}
-		]
-	},
-
-	// Informations pour les moteurs de recherche.
-	openGraph: {
-		url: process.env.NEXT_PUBLIC_URL,
-		type: "website",
-		title: process.env.NEXT_PUBLIC_TITLE,
-		description: process.env.NEXT_PUBLIC_DESCRIPTION,
-		images: [
-			{
-				url: process.env.NEXT_PUBLIC_BANNER ?? ""
-			}
-		]
-	},
-
-	// Informations pour la plate-forme Twitter.
-	twitter: {
-		card: "summary_large_image",
-		title: process.env.NEXT_PUBLIC_TITLE,
-		creator: process.env.NEXT_PUBLIC_TWITTER,
-		description: process.env.NEXT_PUBLIC_DESCRIPTION,
-		images: [
-			{
-				url: process.env.NEXT_PUBLIC_BANNER ?? ""
-			}
-		]
-	}
-};
 
 // Récupération des projets et des compétences.
 const directory = path.join( process.cwd(), "public/data" );

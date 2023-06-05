@@ -3,11 +3,18 @@
 //  Source : https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 //
 
+// Importation du normalisateur TypeScript.
+import "@total-typescript/ts-reset";
+
 // Importation des dépendances.
 import { dir } from "i18next";
+import { config } from "@fortawesome/fontawesome-svg-core";
 import { cookies } from "next/headers";
 import { Poppins } from "next/font/google";
 import { Suspense, lazy, ReactNode } from "react";
+
+// Importation des types.
+import type { Metadata } from "next";
 
 // Importation des composants.
 const Header = lazy( () => import( "./components/header" ) );
@@ -17,6 +24,87 @@ const Analytics = lazy( () => import( "./components/analytics" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
+
+// Déclaration des propriétés de la page.
+export const metadata: Metadata = {
+	// Méta-données du document.
+	title: process.env.NEXT_PUBLIC_TITLE,
+	authors: [ { name: process.env.NEXT_PUBLIC_AUTHOR, url: "https://github.com/FlorianLeChat" } ],
+	description: process.env.NEXT_PUBLIC_DESCRIPTION,
+	keywords: process.env.NEXT_PUBLIC_TAGS,
+	viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+	manifest: "manifest.json",
+	themeColor: "#306cc4",
+	metadataBase: new URL( process.env.NEXT_PUBLIC_URL ?? "" ),
+
+	// Icônes du document.
+	icons: {
+		icon: [
+			{
+				url: "assets/favicons/16x16.webp",
+				type: "image/webp",
+				sizes: "16x16"
+			},
+			{
+				url: "assets/favicons/32x32.webp",
+				type: "image/webp",
+				sizes: "32x32"
+			},
+			{
+				url: "assets/favicons/48x48.webp",
+				type: "image/webp",
+				sizes: "48x48"
+			},
+			{
+				url: "assets/favicons/192x192.webp",
+				type: "image/webp",
+				sizes: "192x192"
+			},
+			{
+				url: "assets/favicons/512x512.webp",
+				type: "image/webp",
+				sizes: "512x512"
+			}
+		],
+		apple: [
+			{
+				url: "assets/favicons/180x180.webp",
+				type: "image/webp",
+				sizes: "180x180"
+			}
+		]
+	},
+
+	// Informations pour les moteurs de recherche.
+	openGraph: {
+		url: process.env.NEXT_PUBLIC_URL,
+		type: "website",
+		title: process.env.NEXT_PUBLIC_TITLE,
+		description: process.env.NEXT_PUBLIC_DESCRIPTION,
+		images: [
+			{
+				url: process.env.NEXT_PUBLIC_BANNER ?? ""
+			}
+		]
+	},
+
+	// Informations pour la plate-forme Twitter.
+	twitter: {
+		card: "summary_large_image",
+		title: process.env.NEXT_PUBLIC_TITLE,
+		creator: process.env.NEXT_PUBLIC_TWITTER,
+		description: process.env.NEXT_PUBLIC_DESCRIPTION,
+		images: [
+			{
+				url: process.env.NEXT_PUBLIC_BANNER ?? ""
+			}
+		]
+	}
+};
+
+// Modification de la configuration de Font Awesome.
+//  Source : https://fontawesome.com/docs/web/use-with/react/use-with
+config.autoAddCss = false;
 
 // Création de la police de caractères Poppins.
 const poppins = Poppins( {
