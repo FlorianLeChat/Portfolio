@@ -11,7 +11,7 @@ import { dir } from "i18next";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { cookies } from "next/headers";
 import { Poppins } from "next/font/google";
-import { Suspense, lazy, ReactNode } from "react";
+import { Suspense, lazy, type ReactNode } from "react";
 
 // Importation des types.
 import type { Metadata } from "next";
