@@ -19,7 +19,7 @@ export default function Header()
 
 	// Déclaration des variables d'état.
 	const [ theme, setTheme ] = useState( "light" );
-	const [ checked, setChecked ] = useState( false );
+	const [ passed, setPassed ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
 
 	// Basculement entre les thèmes sombre et clair.
@@ -30,7 +30,7 @@ export default function Header()
 		if ( html )
 		{
 			// On récupère d'abord le thème préféré de l'utilisateur.
-			const target = ( forceDark || theme === "light" ) ? "dark" : "light";
+			const target = ( forceDark || ( theme === "light" && passed ) ) ? "dark" : "light";
 
 			// On supprime alors l'ensemble des classes de thème
 			//  avant d'ajouter celle correspondant au thème cible.
@@ -49,7 +49,7 @@ export default function Header()
 			// On enregistre enfin le thème cible dans les cookies du navigateur.
 			document.cookie = `NEXT_THEME=${ target }; path=${ basePath }`;
 		}
-	}, [ theme, basePath ] );
+	}, [ passed, theme, basePath ] );
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
@@ -65,9 +65,9 @@ export default function Header()
 		const scheme = window.matchMedia( "(prefers-color-scheme: dark)" );
 
 		// On applique alors le thème sombre si nécessaire au montage du composant.
-		if ( !checked )
+		if ( !passed )
 		{
-			setChecked( true );
+			setPassed( true );
 			switchTheme( scheme.matches );
 		}
 
@@ -76,7 +76,7 @@ export default function Header()
 		scheme.addEventListener( "change", ( event ) => switchTheme( event.matches ) );
 
 		return () => scheme.removeEventListener( "change", ( event ) => switchTheme( event.matches ) );
-	}, [ switchTheme, checked ] );
+	}, [ switchTheme, passed ] );
 
 	// Affichage du rendu HTML du composant.
 	return (

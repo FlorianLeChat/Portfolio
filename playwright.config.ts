@@ -7,9 +7,10 @@ const baseURL = `http://localhost:${ port }`;
 export default defineConfig(
 	{
 		use: {
-			baseURL,
 			trace: "retain-on-failure",
-			video: "retain-on-failure"
+			video: "retain-on-failure",
+			locale: "en-GB",
+			baseURL
 		},
 		expect: { timeout: 10000 },
 		workers: 1,
