@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useState, ChangeEvent } from "react";
+import { type ChangeEvent, useState } from "react";
 import type { SkillAttributes } from "@/interfaces/Skill";
 import { useTranslation } from "../utilities/ClientTranslations";
 
