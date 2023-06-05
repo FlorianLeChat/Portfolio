@@ -16,17 +16,17 @@ export async function POST( request: NextRequest )
 	}
 
 	// On vérifie ensuite si le corps de la requête est vide ou non.
-	const { length } = await request.text();
+	const body = await request.text();
 
-	if ( length === 0 )
+	if ( body.length === 0 )
 	{
 		return new NextResponse( null, { status: 400 } );
 	}
 
 	// On vérifie également si le jeton d'authentification est valide ou non.
-	const { token } = await request.json() as { token: string; };
+	const { token } = JSON.parse( body ) as { token?: string; };
 
-	if ( token.length === 0 )
+	if ( !token )
 	{
 		return new NextResponse( null, { status: 400 } );
 	}
