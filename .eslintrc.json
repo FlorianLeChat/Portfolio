@@ -35,6 +35,7 @@
 
 		"@typescript-eslint/no-shadow": "error",
 		"@typescript-eslint/no-unused-vars": "error",
+		"@next/next/no-before-interactive-script-outside-document": "off", // https://github.com/vercel/next.js/pull/50261
 
 		"react/jsx-indent": ["error", "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
