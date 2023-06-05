@@ -1,11 +1,10 @@
 // @ts-check
 
-const path = require( "path" );
-const basePath = new URL( process.env.NEXT_PUBLIC_URL ?? "" ).pathname;
-
 /**
  * @type {import("next").NextConfig}
  */
+const path = require( "path" );
+const basePath = new URL( process.env.NEXT_PUBLIC_URL ?? "" ).pathname;
 const withPWA = require( "next-pwa" )( {
 	dest: "public",
 	disable: process.env.NODE_ENV === "development",
@@ -18,7 +17,6 @@ const withPWA = require( "next-pwa" )( {
 		video: ""
 	}
 } );
-
 
 module.exports = withPWA( {
 	basePath: basePath === "/" ? "" : ( basePath.endsWith( "/" ) ? basePath.slice( 0, -1 ) : basePath ),
