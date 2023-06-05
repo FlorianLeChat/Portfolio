@@ -15,7 +15,7 @@ export default function Header()
 {
 	// Déclaration des constantes.
 	const { t } = useTranslation();
-	const basePath = getBasePath();
+	const basePath = getBasePath( true );
 
 	// Déclaration des variables d'état.
 	const [ theme, setTheme ] = useState( "light" );
@@ -47,7 +47,7 @@ export default function Header()
 			}
 
 			// On enregistre enfin le thème cible dans les cookies du navigateur.
-			document.cookie = `NEXT_THEME=${ target }; path=${ basePath === "/" ? "" : basePath }`;
+			document.cookie = `NEXT_THEME=${ target }; path=${ basePath }`;
 		}
 	}, [ theme, basePath ] );
 
