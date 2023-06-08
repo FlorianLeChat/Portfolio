@@ -9,9 +9,9 @@ import "@total-typescript/ts-reset";
 // Importation des dépendances.
 import { dir } from "i18next";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { cookies } from "next/headers";
 import { Poppins } from "next/font/google";
 import { Suspense, lazy, type ReactNode } from "react";
+import { headers, cookies } from "next/headers";
 
 // Importation des types.
 import type { Metadata } from "next";
@@ -116,9 +116,8 @@ const poppins = Poppins( {
 export default function RootLayout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
-	const cookiesList = cookies();
-	const language = cookiesList.get( "NEXT_LANGUAGE" )?.value ?? "en";
-	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
+	const theme = ( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
+	const language = headers().get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
 
 	// Affichage du rendu HTML de la page.
 	return (

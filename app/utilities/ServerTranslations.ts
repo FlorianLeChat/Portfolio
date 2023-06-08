@@ -3,7 +3,7 @@
 //  Sources : https://locize.com/blog/next-13-app-dir-i18n/ et https://github.com/i18next/next-13-app-dir-i18next-no-locale-path-example
 //
 
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
@@ -11,10 +11,10 @@ import { initReactI18next } from "react-i18next/initReactI18next";
 export async function useTranslation()
 {
 	// On récupère la langue utilisée par l'utilisateur.
-	const language = cookies().get( "NEXT_LANGUAGE" )?.value ?? "en";
-	const instance = createInstance();
+	const language = headers().get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
 
 	// On initialise l'instance de traduction i18next.
+	const instance = createInstance();
 	await instance
 		.use( initReactI18next )
 		.use( resourcesToBackend( ( locale: string ) => import( `@/public/locales/${ locale }.json` ) ) )
