@@ -1,0 +1,569 @@
+// ------------------ //
+// Variables globales //
+// ------------------ //
+@import "../../styles/legacy";
+
+$theme-color-dark: rgb(140, 14, 14);
+$theme-color-bright: rgb(217, 0, 0);
+
+// --------------- //
+// Document entier //
+// --------------- //
+html
+{
+	// Suppression de l'image en fond.
+	background-image: none;
+}
+
+hr
+{
+	// Séparateur entre les deux sections.
+	margin: 3rem 10% 3rem 10%;
+	border-color: rgb(161, 161, 170);
+}
+
+video
+{
+	// Vidéo en arrière-plan.
+	right: 0;
+	bottom: 0;
+	z-index: -1;
+	opacity: 0.15;
+	position: fixed;
+	min-width: 100%;
+	min-height: 100%;
+}
+
+// ------- //
+// En-tête //
+// ------- //
+header
+{
+	// Bordure en dessous de l'en-tête.
+	border-bottom: 5px dashed $theme-background-color;
+
+	h1
+	{
+		// Réduction de la taille de la marge supérieure en raison
+		// 	de la suppression de la barre de navigation.
+		margin-top: 4rem;
+	}
+
+	p:nth-of-type(1)
+	{
+		// Horloge actuelle du client.
+		top: 1rem;
+		left: 1rem;
+		color: $theme-background-color;
+		margin: 0;
+		position: absolute;
+		font-weight: 700;
+	}
+
+	p:nth-of-type(2)
+	{
+		// Information de connexion lorsque l'utilisateur est connecté.
+		top: 1rem;
+		right: 1rem;
+		color: $theme-background-color;
+		margin: 0 0 0 6rem;
+		padding: 0.5rem;
+		position: absolute;
+		font-weight: 700;
+		background-color: white;
+	}
+}
+
+// ------------ //
+// Pied-de-page //
+// ------------ //
+footer ul
+{
+	// Réduction du nombre de colonnes.
+	columns: 1;
+
+	// Modification de la marge supérieure.
+	margin-top: 1.5rem;
+}
+
+// ----------------------------- //
+// Section : édition des données //
+// ----------------------------- //
+#tables
+{
+	// Corps de la section.
+	display: grid;
+	padding: 3rem 10% 0 10%;
+
+	// Utilisation d'une disposition en grille afin de faciliter
+	// 	la modification des données en provenance de la base de données.
+	grid-template:
+		"a a" 4rem
+		"b b" auto
+		"c d" 0.25fr / 0.15fr 1fr;
+}
+
+@media screen and (max-width: 768px)
+{
+	// Modification des marges sur les téléphones mobiles.
+	#tables, hr
+	{
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
+
+#tables, #upload
+{
+	h2
+	{
+		// Titre de la section.
+		grid-area: a;
+	}
+
+	p
+	{
+		// Description de la section.
+		color: $theme-text-color;
+		margin: 1rem 10% 1rem 10%;
+		padding: 1rem;
+		grid-area: b;
+		line-height: 1.25rem;
+	}
+}
+
+// Catégories des tables.
+#categories ul
+{
+	// Liste des catégories.
+	margin: 1rem;
+	padding: 0;
+	grid-area: c;
+	list-style: none;
+
+	li
+	{
+		&:not(:last-of-type)
+		{
+			// Marge sur tous les items sauf le dernier.
+			margin-bottom: 0.5rem;
+		}
+
+		input
+		{
+			// Élément de chaque catégorie.
+			color: white;
+			width: 100%;
+			border: 0;
+			margin: 0;
+			cursor: pointer;
+			padding: 1rem;
+			transition: background-color 250ms ease;
+			user-select: none;
+			border-radius: 0.5rem;
+			text-transform: capitalize;
+			background-color: $theme-color-bright;
+
+			&:hover
+			{
+				// Animation de sélection.
+				color: $theme-color-bright;
+				background-color: white;
+			}
+		}
+	}
+}
+
+// Résultats de la base de données.
+#data
+{
+	// Lignes et colonnes.
+	margin: 1rem;
+	overflow: auto;
+	grid-area: d;
+	background-color: rgba($theme-text-color, 0.25);
+
+	p
+	{
+		// Texte initial.
+		top: 50%;
+		margin: 0;
+		padding: 0.5rem;
+		position: relative;
+		word-wrap: break-word;
+		font-size: 1.5rem;
+		transform: translateY(-50%);
+	}
+
+	table
+	{
+		// Tableau conteneur.
+		padding: 0.5rem;
+		border-spacing: 0.25rem;
+
+		th:not(:last-child)
+		{
+			// En-tête des colonnes (sauf la dernière).
+			padding: 0.5rem;
+			background-color: $theme-color-bright;
+		}
+
+		textarea
+		{
+			// Lignes.
+			height: 2rem;
+			resize: vertical;
+			border: none;
+			outline: none;
+			min-height: 2rem;
+			max-height: 20rem;
+			transition: background-color 300ms ease;
+
+			&:focus
+			{
+				// Sélection d'une ligne.
+				background-color: beige;
+			}
+		}
+
+		input
+		{
+			// Actions multiples.
+			color: white;
+			cursor: pointer;
+			border: none;
+			padding: 0.5rem;
+			transition: background-color 250ms ease;
+			border-radius: 0.25rem;
+			text-transform: uppercase;
+
+			&[name *= add]
+			{
+				// Ajout d'un élément.
+				background-color: rgb(37, 208, 102);
+
+				&:hover
+				{
+					background-color: rgb(28, 158, 77);
+				}
+			}
+
+			&[name *= update]
+			{
+				// Édition d'un élément.
+				background-color: rgb(255, 158, 0);
+
+				&:hover
+				{
+					background-color: rgb(158, 103, 13);
+				}
+			}
+
+			&[name *= remove]
+			{
+				// Suppression d'un élément.
+				background-color: $theme-color-bright;
+
+				&:hover
+				{
+					background-color: $theme-color-dark;
+				}
+
+			}
+		}
+	}
+}
+
+// ----------------------------------- //
+// Section : téléversement de fichiers //
+// ----------------------------------- //
+#upload
+{
+	// Corps de la section.
+	margin: auto;
+	padding: 0 10% 0 10%;
+	max-width: 750px;
+
+	@media screen and (max-width: 768px)
+	{
+		// Modification des marges sur les téléphones mobiles.
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+
+	p
+	{
+		// Description de la section.
+		margin: 1.5rem 0 1.5rem 0;
+	}
+
+	form
+	{
+		// Formulaire de la section.
+		padding: 1.5rem;
+		border-radius: 0.25rem;
+		background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
+
+		label
+		{
+			// Texte de la sélection du dossier.
+			display: block;
+		}
+
+		select
+		{
+			// Sélecteur du dossier de destination.
+			width: 50%;
+			margin: 1rem 0 1rem 0;
+			border: none;
+			outline: none;
+			padding: 0.5rem;
+			box-sizing: border-box;
+			transition: background-color 300ms ease;
+			line-height: 1; // Correction étrange pour le normalisateur CSS.
+			border-radius: 0.5rem;
+
+			&:focus
+			{
+				// Animation lors de la sélection de l'élément.
+				background-color: beige;
+			}
+		}
+
+		div
+		{
+			&:first-of-type
+			{
+				// Zone d'ajout d'une image.
+				border: 0.25rem dashed $theme-text-color;
+				margin: 1rem 0 1.5rem 0;
+				position: relative;
+				transition: background-color 200ms ease-out, border 200ms ease;
+
+				&:hover
+				{
+					// Effet de sélection.
+					border: 0.25rem dashed white;
+					background-color: $theme-color-dark;
+				}
+
+				h3
+				{
+					// Texte dans la zone de sélection.
+					color: $theme-text-color;
+					padding: 4rem 1rem 4rem 1rem;
+					text-transform: uppercase;
+				}
+
+				input[type = file]
+				{
+					// Actionneur pour ouvrir l'explorateur des fichiers.
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					cursor: pointer;
+					opacity: 0;
+					position: absolute;
+				}
+			}
+
+			&:last-of-type
+			{
+				// Zone de visualisation de l'image.
+				display: none;
+
+				img
+				{
+					// Image visualisée.
+					height: 100%;
+					margin: auto;
+					display: block;
+					max-width: 100%;
+					min-width: 200px;
+					min-height: 200px;
+				}
+
+				button
+				{
+					// Bouton de suppression de l'image.
+					color: white;
+					border: none;
+					cursor: pointer;
+					bottom: 3rem;
+					outline: none;
+					padding: 0.5rem;
+					position: relative;
+					border-radius: 0.25rem;
+					background-color: $theme-background-color;
+
+					@media screen and (pointer: fine) and (hover: hover)
+					{
+						// Affichage d'un effet de transition pour les ordinateurs.
+						transition: background-color 200ms ease;
+
+						&:hover
+						{
+							color: $theme-background-color;
+							background-color: white;
+						}
+					}
+				}
+			}
+
+			&:hover h3
+			{
+				// Effet de sélection.
+				color: white;
+			}
+		}
+
+		input[type = submit]
+		{
+			// Bouton de téléversement.
+			color: white;
+			border: none;
+			outline: none;
+			padding: 0.5rem;
+			transition: background-color 300ms ease-out, border 200ms ease;
+			font-weight: 700;
+			border-radius: 0.25rem;
+			border-bottom: 0.25rem solid $theme-color-dark;
+			background-color: $theme-color-bright;
+
+			&:hover
+			{
+				// Animation au survol.
+				cursor: pointer;
+				transition: background-color 300ms ease-out;
+				background-color: red;
+			}
+
+			@media screen and (pointer: fine) and (hover: hover)
+			{
+				// Affichage d'un effet de transition pour les ordinateurs.
+				&:active
+				{
+					border: 0;
+					transition: border 200ms ease;
+				}
+			}
+		}
+	}
+}
+
+// --------------------------------- //
+// Section : formulaire de connexion //
+// --------------------------------- //
+#login
+{
+	// Corps de la section.
+	display: flex;
+	padding: 0 5% 0 5%;
+	min-height: 60vh;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+
+	#failed
+	{
+		// Message d'erreur si les identifiants sont incorrects.
+		color: $theme-color-bright;
+		margin-top: 2rem;
+		font-weight: 700;
+		line-height: 1.25rem;
+		text-transform: uppercase;
+	}
+
+	h2
+	{
+		// Titre du formulaire.
+		margin: 4rem 0 0;
+	}
+
+	form
+	{
+		// Corps du formulaire.
+		padding: 1.5rem;
+		max-width: 700px;
+		user-select: none;
+		margin-bottom: 4rem;
+		border-radius: 0.25rem;
+		background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
+
+		a
+		{
+			// Récupération du mot de passe.
+			width: 10.25rem;
+			margin: -0.5rem 0 1.5rem 1.5rem;
+			display: block;
+			text-align: left;
+			font-style: italic;
+		}
+
+		input[required]
+		{
+			// Champs de saisie.
+			width: calc(100% - 2rem);
+			border: none;
+			margin: 0.5rem 0 1rem 0;
+			outline: none;
+			padding: 1rem;
+			box-sizing: border-box;
+			transition: background-color 300ms ease;
+			line-height: 1; // Correction étrange pour le normalisateur CSS.
+			border-radius: 0.5rem;
+
+			&:focus
+			{
+				// Animation lors du survol de l'élément.
+				background-color: beige;
+			}
+
+			&:invalid ~ input[type = submit]
+			{
+				// Désactivation conditionnelle du bouton de validation.
+				pointer-events: none;
+				background-color: $theme-color-dark;
+			}
+		}
+
+		input[type = submit]
+		{
+			// Bouton de validation.
+			color: white;
+			cursor: pointer;
+			border: none;
+			padding: 0.75rem 1.25rem;
+			transition: background-color 250ms ease;
+			border-radius: 0.25rem;
+			background-color: $theme-color-bright;
+
+			&:hover
+			{
+				// Animation lors du survol de l'élément.
+				background-color: $theme-color-dark;
+			}
+		}
+	}
+}
+
+// ----------------------------- //
+// Section : page de déconnexion //
+// ----------------------------- //
+#logout
+{
+	// Corps de la section.
+	top: 50%;
+	left: 50%;
+	border: 3px dashed $theme-color-bright;
+	padding: 1rem;
+	position: absolute;
+	transform: translate(-50%, -50%);
+
+	h1
+	{
+		// Titre de la section.
+		margin-top: 0;
+	}
+}
