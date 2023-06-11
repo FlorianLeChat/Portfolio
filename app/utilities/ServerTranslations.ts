@@ -22,7 +22,7 @@ export async function useTranslation()
 			lng: language,
 			returnNull: false,
 			fallbackLng: "en",
-			supportedLngs: [ "en", "fr" ],
+			supportedLngs: [ "en", "fr", "es", "jp" ],
 			returnEmptyString: false
 		} );
 
