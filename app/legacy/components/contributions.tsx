@@ -13,11 +13,6 @@ export default async function Contributions()
 		<section id="contributions">
 			<h2>{t( "pages.legacy.footer.contributions" )}</h2>
 
-			<audio id="jazz" loop>
-				{/* Musique d'ambiance spéciale à la section */}
-				<source src="assets/sounds/jazz.mp3" type="audio/mp3" />
-			</audio>
-
 			<ul>
 				{/* Description de chaque contribution */}
 				<li>
