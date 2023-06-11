@@ -41,7 +41,7 @@ export default async function LanguageSelector()
 			</ul>
 
 			{/* Retour au début de la page */}
-			<a href="#" id="scrollTop" data-bg="assets/images/decorations/arrow_up.svg" />
+			<button type="button" id="scrollTop" data-bg="assets/images/decorations/arrow_up.svg">...</button>
 		</aside>
 	);
 }

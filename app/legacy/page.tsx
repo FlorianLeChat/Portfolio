@@ -9,6 +9,10 @@ import "./page.scss";
 import Image from "next/image";
 import { Trans } from "react-i18next/TransWithoutContext";
 
+// Importation des images statiques.
+import UpperWaves from "@/public/assets/images/decorations/projects_waves_top_blue.svg";
+import LowerWaves from "@/public/assets/images/decorations/projects_waves_bottom_blue.svg";
+
 // Importation des fonctions utilitaires.
 import { getBasePath } from "../utilities/NextRouter";
 import { useTranslation } from "../utilities/ServerTranslations";
@@ -38,7 +42,7 @@ export default async function Page()
 			{/* Projets */}
 			<section id="projects">
 				{/* Vagues du début */}
-				<img src={`${ basePath }/assets/images/decorations/projects_waves_top_blue.svg`} alt="" />
+				<Image src={UpperWaves} alt="" priority />
 
 				{/* Listes des projets */}
 				<h3>#projects</h3>
@@ -86,7 +90,7 @@ export default async function Page()
 				</div>
 
 				{/* Vagues de fin */}
-				<img src={`${ basePath }/assets/images/decorations/projects_waves_bottom_blue.svg`} alt="" />
+				<Image src={LowerWaves} alt="" priority />
 			</section>
 
 			{/* Compétences */}
