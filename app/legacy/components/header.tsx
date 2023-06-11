@@ -2,13 +2,19 @@
 // Composant de l'en-tête de l'ancienne version du site.
 //
 import Image from "next/image";
-import { getBasePath } from "../../utilities/NextRouter";
+
+import CV from "@/public/assets/images/platforms/cv.svg";
+import GitHub from "@/public/assets/images/platforms/github.svg";
+import Discord from "@/public/assets/images/platforms/discord.svg";
+import Twitter from "@/public/assets/images/platforms/twitter.svg";
+import LinkedIn from "@/public/assets/images/platforms/linkedin.svg";
+import LowerWaves from "@/public/assets/images/decorations/header_waves_blue.svg";
+
 import { useTranslation } from "../../utilities/ServerTranslations";
 
 export default async function Header()
 {
 	// Déclaration des constantes.
-	const basePath = getBasePath();
 	const { t } = await useTranslation();
 
 	// Affichage du rendu HTML du composant.
@@ -27,9 +33,8 @@ export default async function Header()
 			>
 				{/* Discord */}
 				<Image
-					src={`${ basePath }/assets/images/platforms/discord.svg`}
-					alt="Discord" width="32" height="32"
-					style={{ color: "currentcolor" }}
+					src={Discord} style={{ color: "currentcolor" }}
+					alt="Discord" width="32" height="32" priority
 				/>
 			</a>
 
@@ -39,9 +44,8 @@ export default async function Header()
 			>
 				{/* GitHub */}
 				<Image
-					src={`${ basePath }/assets/images/platforms/github.svg`}
-					alt="GitHub" width="32" height="32"
-					style={{ color: "currentcolor" }}
+					src={GitHub} style={{ color: "currentcolor" }}
+					alt="GitHub" width="32" height="32" priority
 				/>
 			</a>
 
@@ -51,9 +55,8 @@ export default async function Header()
 			>
 				{/* Twitter */}
 				<Image
-					src={`${ basePath }/assets/images/platforms/twitter.svg`}
-					alt="Twitter" width="32" height="32"
-					style={{ color: "currentcolor" }}
+					src={Twitter} style={{ color: "currentcolor" }}
+					alt="Twitter" width="32" height="32" priority
 				/>
 			</a>
 
@@ -63,9 +66,8 @@ export default async function Header()
 			>
 				{/* LinkedIn */}
 				<Image
-					src={`${ basePath }/assets/images/platforms/linkedin.svg`}
-					alt="LinkedIn" width="32" height="32"
-					style={{ color: "currentcolor" }}
+					src={LinkedIn} style={{ color: "currentcolor" }}
+					alt="LinkedIn" width="32" height="32" priority
 				/>
 			</a>
 
@@ -75,15 +77,16 @@ export default async function Header()
 			>
 				{/* Curriculum Vitæ */}
 				<Image
-					src={`${ basePath }/assets/images/platforms/cv.svg`}
-					alt="CV" width="32" height="32"
-					style={{ color: "currentcolor" }}
-
+					src={CV} style={{ color: "currentcolor" }}
+					alt="CV" width="32" height="32" priority
 				/>
 			</a>
 
 			{/* Vagues de fin */}
-			<img src="assets/images/decorations/header_waves_blue.svg" alt="" />
+			<Image
+				src={LowerWaves} style={{ color: "currentcolor" }}
+				alt="" priority
+			/>
 		</header>
 	);
 }
