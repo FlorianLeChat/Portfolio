@@ -17,7 +17,7 @@ i18next
 	.init( {
 		returnNull: false,
 		fallbackLng: "en",
-		supportedLngs: [ "en", "fr" ],
+		supportedLngs: [ "en", "fr", "es", "jp" ],
 		returnEmptyString: false
 	} );
 

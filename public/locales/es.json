@@ -1,0 +1,46 @@
+
+{
+	"pages": {
+		"legacy": {
+			"header": {
+				"index_subtitle": "Desarrollador web (Front\/Back-End)",
+				"projects_title": "Mis proyectos",
+				"skills_title": "Mis habilidades"
+			},
+			"language": {
+				"en": "Inglés",
+				"es": "Español",
+				"fr": "Francés",
+				"jp": "Japonés"
+			},
+			"footer": {
+				"admin": "Administración",
+				"github": "Código fuente",
+				"contributions": "Contribuciones"
+			},
+			"index": {
+				"about_me": {
+					"title": "Acerca de mí",
+					"description": "¡Bienvenido a mi portafolio!\r\n\r\nSoy Florian, un desarrollador francés de {{age}} años. Soy principalmente un desarrollador *back-end* (NodeJS, PHP, ...) pero estoy realmente interesado en aprender *front-end* (HTML, CSS, JavaScript, ...) y diseño UI\/UX.\r\n\r\nTambién tengo experiencia en scripts y lenguajes de programación como Lua, Python y C# (con .NET Core). Esto incluye, por supuesto, un sólido conocimiento de los sistemas de copia de seguridad SQLite y MySQL utilizados también en la web.\r\n\r\nPuedes conocer más sobre mí, mis experiencias, mis proyectos y mis habilidades a través de este Portafolio."
+				},
+				"skills": {
+					"school": {
+						"title": "Formación y calificaciones",
+						"image": "Imagen de una escuela.",
+						"description": "<a>Haga clic aquí</a> para saber más sobre mi formación y los títulos y certificados que he obtenido hasta la fecha."
+					},
+					"work": {
+						"title": "Competencias profesionales",
+						"image": "Imagen que representa un trabajo.",
+						"description": "<a>Haga clic aquí</a> para saber más sobre mis habilidades adquiridas durante mi aprendizaje autodidacta pero también durante las prácticas."
+					}
+				},
+				"contact": {
+					"title": "Contacte con",
+					"button": "Formulario de contacto",
+					"message": "¿Un proyecto? ¿Una petición?\r\n\r\nPor favor, póngase en contacto conmigo."
+				}
+			}
+		}
+	}
+}
