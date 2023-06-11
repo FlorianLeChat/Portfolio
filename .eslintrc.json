@@ -18,6 +18,7 @@
 		"no-tabs": ["error", { "allowIndentationTabs": true }],
 		"eol-last": ["error", "never"],
 		"no-shadow": "off",
+		"camelcase": ["error", { "ignoreImports": true }],
 		"no-plusplus": "off",
 		"brace-style": ["error", "allman"],
 		"comma-dangle": ["error", "never"],

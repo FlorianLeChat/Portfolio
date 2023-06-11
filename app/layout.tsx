@@ -10,8 +10,8 @@ import "@total-typescript/ts-reset";
 import { dir } from "i18next";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { Poppins } from "next/font/google";
-import { Suspense, lazy, type ReactNode } from "react";
 import { headers, cookies } from "next/headers";
+import { Suspense, lazy, type ReactNode } from "react";
 
 // Importation des types.
 import type { Metadata } from "next";
@@ -135,10 +135,10 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 
 				{/* Écran de chargement de la page */}
 				<Suspense fallback={<Loading />}>
-					{/* Affichage de l'en-tête du site */}
+					{/* En-tête */}
 					<Header />
 
-					{/* Affichage du composant enfant */}
+					{/* Composant enfant */}
 					<main>{children}</main>
 
 					{/* Google Analytics */}
@@ -150,10 +150,10 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 					{/* Reconnaissance vocale */}
 					<SpeechRecognition />
 
-					{/* Affichage du bouton de retour en haut de page */}
+					{/* Bouton de retour en haut de page */}
 					<ScrollTop />
 
-					{/* Affichage du pied de page du site */}
+					{/* Pied de page */}
 					<Footer />
 				</Suspense>
 			</body>
