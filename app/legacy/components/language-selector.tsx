@@ -1,7 +1,11 @@
 //
 // Composant du sélecteur de langue de l'ancienne version du site.
 //
+
+import { lazy } from "react";
 import { useTranslation } from "@/utilities/ServerTranslations";
+
+const ScrollTop = lazy( () => import( "./scroll-top" ) );
 
 export default async function LanguageSelector()
 {
@@ -41,7 +45,7 @@ export default async function LanguageSelector()
 			</ul>
 
 			{/* Retour au début de la page */}
-			<button type="button" id="scrollTop" data-bg="assets/images/decorations/arrow_up.svg">...</button>
+			<ScrollTop />
 		</aside>
 	);
 }
