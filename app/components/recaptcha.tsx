@@ -6,7 +6,7 @@
 
 import Script from "next/script";
 import { useEffect } from "react";
-import { getBasePath } from "../utilities/NextRouter";
+import { getBasePath } from "@/utilities/NextRouter";
 
 export default function SpeechRecognition()
 {

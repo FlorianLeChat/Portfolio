@@ -8,8 +8,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useCallback } from "react";
 import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
 
-import { getBasePath } from "../utilities/NextRouter";
-import { useTranslation } from "../utilities/ClientTranslations";
+import { getBasePath } from "@/utilities/NextRouter";
+import { useTranslation } from "@/utilities/ClientTranslations";
 
 export default function Header()
 {

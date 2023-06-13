@@ -10,12 +10,12 @@ import Image from "next/image";
 import { Trans } from "react-i18next/TransWithoutContext";
 
 // Importation des images statiques.
-import UpperWaves from "@/public/assets/images/decorations/projects_waves_top_blue.svg";
-import LowerWaves from "@/public/assets/images/decorations/projects_waves_bottom_blue.svg";
+import UpperWaves from "@/images/decorations/projects_waves_top_blue.svg";
+import LowerWaves from "@/images/decorations/projects_waves_bottom_blue.svg";
 
 // Importation des fonctions utilitaires.
-import { getBasePath } from "../utilities/NextRouter";
-import { useTranslation } from "../utilities/ServerTranslations";
+import { getBasePath } from "@/utilities/NextRouter";
+import { useTranslation } from "@/utilities/ServerTranslations";
 
 // Affichage de la page.
 export default async function Page()
