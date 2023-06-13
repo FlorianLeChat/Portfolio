@@ -23,6 +23,7 @@ export default async function Page()
 {
 	// Déclaration des constantes.
 	const basePath = getBasePath();
+	const assets = `${ basePath }/assets/images/projects`;
 	const { t } = await useTranslation();
 	const date = new Date();
 
@@ -54,19 +55,19 @@ export default async function Page()
 
 				<div className="container">
 					<div className="row">
-						<article data-bg={`${ basePath }/assets/images/projects/bg_discordbot.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_discordbot.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#discordbot">Florian&#39;s Bot</Link>
 							</h3>
 						</article>
 
-						<article data-bg={`${ basePath }/assets/images/projects/bg_raven.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_raven.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#raven">Raven Framework</Link>
 							</h3>
 						</article>
 
-						<article data-bg={`${ basePath }/assets/images/projects/bg_facepunch.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_facepunch.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#facepunch">Facepunch Commits Monitor</Link>
 							</h3>
@@ -74,19 +75,19 @@ export default async function Page()
 					</div>
 
 					<div className="row">
-						<article data-bg={`${ basePath }/assets/images/projects/bg_steam.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_steam.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#steam">Steam Collection Download Size Calculator</Link>
 							</h3>
 						</article>
 
-						<article data-bg={`${ basePath }/assets/images/projects/bg_pythonrpg.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_pythonrpg.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#pythonrpg">Python RPG</Link>
 							</h3>
 						</article>
 
-						<article data-bg={`${ basePath }/assets/images/projects/bg_phpstorage.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_phpstorage.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#phpstorage">Simple File Storage</Link>
 							</h3>
@@ -94,13 +95,13 @@ export default async function Page()
 					</div>
 
 					<div className="row">
-						<article data-bg={`${ basePath }/assets/images/projects/bg_sourceconsole.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_sourceconsole.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#sourceconsole">Source Web Console</Link>
 							</h3>
 						</article>
 
-						<article data-bg={`${ basePath }/assets/images/projects/bg_domego.webp`}>
+						<article style={{ backgroundImage: `url(${ assets }/bg_domego.webp)` }}>
 							<h3>
 								<Link href="/legacy/projects#domego">Domego</Link>
 							</h3>
