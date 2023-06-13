@@ -6,6 +6,7 @@
 import "./page.scss";
 
 // Importation des dépendances.
+import Link from "next/link";
 import Image from "next/image";
 import { Trans } from "react-i18next/TransWithoutContext";
 
@@ -48,43 +49,61 @@ export default async function Page()
 				<h3>#projects</h3>
 
 				<h2>
-					&#8250; <a href="?target=projects">{t( "pages.legacy.header.projects.title" )}</a> &#8249;
+					&#8250; <Link href="/legacy/projects">{t( "pages.legacy.header.projects.title" )}</Link> &#8249;
 				</h2>
 
 				<div className="container">
 					<div className="row">
 						<article data-bg={`${ basePath }/assets/images/projects/bg_discordbot.webp`}>
-							<h3><a href="?target=projects#discordbot">Florian&#39;s Bot</a></h3>
+							<h3>
+								<Link href="/legacy/projects#discordbot">Florian&#39;s Bot</Link>
+							</h3>
 						</article>
 
 						<article data-bg={`${ basePath }/assets/images/projects/bg_raven.webp`}>
-							<h3><a href="?target=projects#raven">Framework Raven</a></h3>
+							<h3>
+								<Link href="/legacy/projects#raven">Raven Framework</Link>
+							</h3>
 						</article>
 
 						<article data-bg={`${ basePath }/assets/images/projects/bg_facepunch.webp`}>
-							<h3><a href="?target=projects#facepunch">Facepunch Commits Monitor</a></h3>
+							<h3>
+								<Link href="/legacy/projects#facepunch">Facepunch Commits Monitor</Link>
+							</h3>
 						</article>
 					</div>
+
 					<div className="row">
 						<article data-bg={`${ basePath }/assets/images/projects/bg_steam.webp`}>
-							<h3><a href="?target=projects#steam">Steam Collection Download Size Calculator</a></h3>
+							<h3>
+								<Link href="/legacy/projects#steam">Steam Collection Download Size Calculator</Link>
+							</h3>
 						</article>
 
 						<article data-bg={`${ basePath }/assets/images/projects/bg_pythonrpg.webp`}>
-							<h3><a href="?target=projects#pythonrpg">Python RPG</a></h3>
+							<h3>
+								<Link href="/legacy/projects#pythonrpg">Python RPG</Link>
+							</h3>
 						</article>
 
 						<article data-bg={`${ basePath }/assets/images/projects/bg_phpstorage.webp`}>
-							<h3><a href="?target=projects#phpstorage">Simple File Storage</a></h3>
+							<h3>
+								<Link href="/legacy/projects#phpstorage">Simple File Storage</Link>
+							</h3>
 						</article>
 					</div>
+
 					<div className="row">
 						<article data-bg={`${ basePath }/assets/images/projects/bg_sourceconsole.webp`}>
-							<h3><a href="?target=projects#sourceconsole">Source Web Console</a></h3>
+							<h3>
+								<Link href="/legacy/projects#sourceconsole">Source Web Console</Link>
+							</h3>
 						</article>
 
 						<article data-bg={`${ basePath }/assets/images/projects/bg_domego.webp`}>
-							<h3><a href="?target=projects#domego">Domego</a></h3>
+							<h3>
+								<Link href="/legacy/projects#domego">Domego</Link>
+							</h3>
 						</article>
 					</div>
 				</div>
@@ -98,7 +117,7 @@ export default async function Page()
 				<h3>#skills</h3>
 
 				<h2>
-					&#8250; <a href="?target=skills">{t( "pages.legacy.header.skills.title" )}</a> &#8249;
+					&#8250; <Link href="/legacy/skills">{t( "pages.legacy.header.skills.title" )}</Link> &#8249;
 				</h2>
 
 				<div>
@@ -114,7 +133,7 @@ export default async function Page()
 							<Trans
 								i18nKey="pages.legacy.index.skills.school.description"
 								components={{
-									a: <strong><a href="?target=skills&name=school">...</a></strong>
+									a: <strong><Link href="/legacy/skills#school">...</Link></strong>
 								}}
 							/>
 						</p>
@@ -132,7 +151,7 @@ export default async function Page()
 							<Trans
 								i18nKey="pages.legacy.index.skills.work.description"
 								components={{
-									a: <strong><a href="?target=skills&name=work">...</a></strong>
+									a: <strong><Link href="/legacy/skills#work">...</Link></strong>
 								}}
 							/>
 						</p>
@@ -145,12 +164,12 @@ export default async function Page()
 				<h3>#contact</h3>
 
 				<h2>
-					&#8250; <a href="?target=contact">{t( "pages.legacy.index.contact.title" )}</a> &#8249;
+					&#8250; <Link href="/legacy/contact">{t( "pages.legacy.index.contact.title" )}</Link> &#8249;
 				</h2>
 
 				<h2>{t( "pages.legacy.index.contact.message" )}</h2>
 
-				<a href="?target=contact">{t( "pages.legacy.index.contact.button" )}</a>
+				<Link href="/legacy/contact">{t( "pages.legacy.index.contact.button" )}</Link>
 			</section>
 		</>
 	);

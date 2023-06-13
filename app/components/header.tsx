@@ -4,6 +4,7 @@
 
 "use client";
 
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useCallback } from "react";
 import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
@@ -90,15 +91,15 @@ export default function Header()
 				{/* Liens de navigation */}
 				<ul className={showMenu ? "show" : ""}>
 					<li>
-						<a href="#projects">{t( "pages.index.header_projects" )}</a>
+						<Link href="/legacy/projects">{t( "pages.index.header_projects" )}</Link>
 					</li>
 
 					<li>
-						<a href="#skills">{t( "pages.index.header_skills" )}</a>
+						<Link href="/legacy/skills">{t( "pages.index.header_skills" )}</Link>
 					</li>
 
 					<li>
-						<a href="#contact">{t( "pages.index.header_contact" )}</a>
+						<Link href="/legacy/contact">{t( "pages.index.header_contact" )}</Link>
 					</li>
 				</ul>
 
