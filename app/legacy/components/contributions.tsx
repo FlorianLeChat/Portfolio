@@ -1,7 +1,7 @@
 //
 // Composant de l'overlay des contributions de l'ancienne version du site.
 //
-import { useTranslation } from "../../utilities/ServerTranslations";
+import { useTranslation } from "@/utilities/ServerTranslations";
 
 export default async function Contributions()
 {

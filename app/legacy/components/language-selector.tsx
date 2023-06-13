@@ -1,7 +1,7 @@
 //
 // Composant du sélecteur de langue de l'ancienne version du site.
 //
-import { useTranslation } from "../../utilities/ServerTranslations";
+import { useTranslation } from "@/utilities/ServerTranslations";
 
 export default async function LanguageSelector()
 {

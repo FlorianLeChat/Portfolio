@@ -8,7 +8,7 @@ import Script from "next/script";
 import * as CookieConsent from "vanilla-cookieconsent";
 import { useState, useEffect } from "react";
 
-import { getBasePath } from "../utilities/NextRouter";
+import { getBasePath } from "@/utilities/NextRouter";
 
 export default function Analytics()
 {

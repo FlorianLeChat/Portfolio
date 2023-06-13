@@ -3,14 +3,14 @@
 //
 import Image from "next/image";
 
-import CV from "@/public/assets/images/platforms/cv.svg";
-import GitHub from "@/public/assets/images/platforms/github.svg";
-import Discord from "@/public/assets/images/platforms/discord.svg";
-import Twitter from "@/public/assets/images/platforms/twitter.svg";
-import LinkedIn from "@/public/assets/images/platforms/linkedin.svg";
-import LowerWaves from "@/public/assets/images/decorations/header_waves_blue.svg";
+import CV from "@/images/platforms/cv.svg";
+import GitHub from "@/images/platforms/github.svg";
+import Discord from "@/images/platforms/discord.svg";
+import Twitter from "@/images/platforms/twitter.svg";
+import LinkedIn from "@/images/platforms/linkedin.svg";
+import LowerWaves from "@/images/decorations/header_waves_blue.svg";
 
-import { useTranslation } from "../../utilities/ServerTranslations";
+import { useTranslation } from "@/utilities/ServerTranslations";
 
 export default async function Header()
 {

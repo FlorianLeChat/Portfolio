@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useTranslation } from "../../utilities/ClientTranslations";
+import { useTranslation } from "@/utilities/ClientTranslations";
 
 export default function Footer()
 {
