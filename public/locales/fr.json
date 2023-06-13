@@ -70,12 +70,12 @@
 					"school": {
 						"title": "Parcours scolaire & diplômes",
 						"image": "Image représentant une école.",
-						"description": "<a>Cliquez ici</a> pour en savoir plus sur mon parcours scolaire ainsi que les diplômes et certificats que j'ai pu obtenir jusqu'à aujourd'hui."
+						"description": "<s><a>Cliquez ici</a></s> pour en savoir plus sur mon parcours scolaire ainsi que les diplômes et certificats que j'ai pu obtenir jusqu'à aujourd'hui."
 					},
 					"work": {
 						"title": "Compétences professionnelles",
 						"image": "Image représentant un travail.",
-						"description": "<a>Cliquez ici</a> pour en savoir plus sur mes compétences acquises durant mon apprentissage en autodidacte mais aussi lors de stages en milieu professionnel."
+						"description": "<s><a>Cliquez ici</a></s> pour en savoir plus sur mes compétences acquises durant mon apprentissage en autodidacte mais aussi lors de stages en milieu professionnel."
 					}
 				},
 				"contact": {

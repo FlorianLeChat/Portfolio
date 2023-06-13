@@ -134,7 +134,8 @@ export default async function Page()
 							<Trans
 								i18nKey="pages.legacy.index.skills.school.description"
 								components={{
-									a: <strong><Link href="/legacy/skills#school">...</Link></strong>
+									s: <strong />,
+									a: <Link href="/legacy/skills#school">...</Link>
 								}}
 							/>
 						</p>
@@ -152,7 +153,8 @@ export default async function Page()
 							<Trans
 								i18nKey="pages.legacy.index.skills.work.description"
 								components={{
-									a: <strong><Link href="/legacy/skills#work">...</Link></strong>
+									s: <strong />,
+									a: <Link href="/legacy/skills#work">...</Link>
 								}}
 							/>
 						</p>

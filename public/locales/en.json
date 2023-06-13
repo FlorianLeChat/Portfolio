@@ -64,18 +64,18 @@
 			"index": {
 				"about_me": {
 					"title": "About me",
-					"description": "Welcome to my portfolio!\r\n\r\nI'm Florian, a {{age}} years old French developer. I'm mainly a *back-end* developer (NodeJS, PHP, ...) but I'm really interested in learning *front-end* (HTML, CSS, JavaScript, ...) and UI\/UX design.\r\n\r\nI also have experience in scripting and programming languages such as Lua, Python and C# (with .NET Core). This obviously includes a solid knowledge of SQLite and MySQL backup systems also used in the web.\r\n\r\nYou can learn more about me, my experiences, my projects and my skills through this Portfolio."
+					"description": "Welcome to my portfolio! I'm Florian, a {{age}} years old French developer. I'm mainly a *back-end* developer (NodeJS, PHP, ...) but I'm really interested in learning *front-end* (HTML, CSS, JavaScript, ...) and UI\/UX design.\r\n\r\nI also have experience in scripting and programming languages such as Lua, Python and C# (with .NET Core). This obviously includes a solid knowledge of SQLite and MySQL backup systems also used in the web.\r\n\r\nYou can learn more about me, my experiences, my projects and my skills through this Portfolio."
 				},
 				"skills": {
 					"school": {
 						"title": "Educational background & degrees",
 						"image": "Image representing a school.",
-						"description": "<a>Click here</a> to find out more about my educational background including degrees and certificates I have obtained until today."
+						"description": "<s><a>Click here</a><s> to find out more about my educational background including degrees and certificates I have obtained until today."
 					},
 					"work": {
 						"title": "Professional skills",
 						"image": "Image representing work.",
-						"description": "<a>Click here</a> to find out more about my skills acquired during my self-directed learning and also during work placements in a professional environment."
+						"description": "<s><a>Click here</a><s> to find out more about my skills acquired during my self-directed learning and also during work placements in a professional environment."
 					}
 				},
 				"contact": {
