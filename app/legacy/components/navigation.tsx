@@ -14,7 +14,7 @@ export default async function Navigation()
 		<nav>
 			<ul>
 				<li>
-					<a href="#aboutme">{t( "pages.legacy.index.about_me.title" )}</a>
+					<Link href="/legacy">{t( "pages.legacy.index.about_me.title" )}</Link>
 				</li>
 
 				<li>
