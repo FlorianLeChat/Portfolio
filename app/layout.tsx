@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 	description: process.env.NEXT_PUBLIC_DESCRIPTION,
 	keywords: process.env.NEXT_PUBLIC_TAGS,
 	viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
-	manifest: "manifest.json",
+	manifest: new URL( "manifest.json", process.env.NEXT_PUBLIC_URL ),
 	themeColor: "#306cc4",
 	metadataBase: new URL( process.env.NEXT_PUBLIC_URL ?? "" ),
 
@@ -41,34 +41,34 @@ export const metadata: Metadata = {
 	icons: {
 		icon: [
 			{
-				url: "assets/favicons/16x16.webp",
+				url: new URL( "assets/favicons/16x16.webp", process.env.NEXT_PUBLIC_URL ),
 				type: "image/webp",
 				sizes: "16x16"
 			},
 			{
-				url: "assets/favicons/32x32.webp",
+				url: new URL( "assets/favicons/32x32.webp", process.env.NEXT_PUBLIC_URL ),
 				type: "image/webp",
 				sizes: "32x32"
 			},
 			{
-				url: "assets/favicons/48x48.webp",
+				url: new URL( "assets/favicons/48x48.webp", process.env.NEXT_PUBLIC_URL ),
 				type: "image/webp",
 				sizes: "48x48"
 			},
 			{
-				url: "assets/favicons/192x192.webp",
+				url: new URL( "assets/favicons/192x192.webp", process.env.NEXT_PUBLIC_URL ),
 				type: "image/webp",
 				sizes: "192x192"
 			},
 			{
-				url: "assets/favicons/512x512.webp",
+				url: new URL( "assets/favicons/512x512.webp", process.env.NEXT_PUBLIC_URL ),
 				type: "image/webp",
 				sizes: "512x512"
 			}
 		],
 		apple: [
 			{
-				url: "assets/favicons/180x180.webp",
+				url: new URL( "assets/favicons/180x180.webp", process.env.NEXT_PUBLIC_URL ),
 				type: "image/webp",
 				sizes: "180x180"
 			}
