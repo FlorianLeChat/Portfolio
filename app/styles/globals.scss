@@ -8,9 +8,9 @@
 @import "sanitize.css/reduce-motion";
 
 // Importation des dépendances externes.
-@import "../node_modules/devicon/devicon.min.css";
-@import "../node_modules/@fortawesome/fontawesome-svg-core/styles.css";
-@import "../node_modules/vanilla-cookieconsent/dist/cookieconsent.css";
+@import "devicon/devicon.min";
+@import "vanilla-cookieconsent/dist/cookieconsent";
+@import "@fortawesome/fontawesome-svg-core/styles";
 
 // Importation des variables de thème.
 @import "colors";
