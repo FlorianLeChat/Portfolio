@@ -11,6 +11,8 @@ import Image from "next/image";
 import { Trans } from "react-i18next/TransWithoutContext";
 
 // Importation des images statiques.
+import Work from "@/images/skills/work.svg";
+import School from "@/images/skills/school.svg";
 import UpperWaves from "@/images/decorations/projects_waves_top_blue.svg";
 import LowerWaves from "@/images/decorations/projects_waves_bottom_blue.svg";
 
@@ -123,10 +125,7 @@ export default async function Page()
 
 				<div>
 					<article>
-						<Image
-							src={`${ basePath }/assets/images/skills/school.svg`}
-							alt={t( "pages.legacy.index.skills.school.image" )} width="64" height="64"
-						/>
+						<Image src={School} alt={t( "pages.legacy.index.skills.school.image" )} width="64" height="64" />
 
 						<h2>{t( "pages.legacy.index.skills.school.title" )}</h2>
 
@@ -142,10 +141,7 @@ export default async function Page()
 					</article>
 
 					<article>
-						<Image
-							src={`${ basePath }/assets/images/skills/work.svg`}
-							alt={t( "pages.legacy.index.skills.work.image" )} width="64" height="64"
-						/>
+						<Image src={Work} alt={t( "pages.legacy.index.skills.work.image" )} width="64" height="64" />
 
 						<h2>{t( "pages.legacy.index.skills.work.title" )}</h2>
 
