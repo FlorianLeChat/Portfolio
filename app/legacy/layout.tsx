@@ -6,7 +6,6 @@ import { lazy, type ReactNode } from "react";
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
 const Navigation = lazy( () => import( "./components/navigation" ) );
-const Contributions = lazy( () => import( "./components/contributions" ) );
 const LanguageSelector = lazy( () => import( "./components/language-selector" ) );
 
 // Création de la police de caractères Open Sans.
@@ -33,9 +32,6 @@ export default function LegacyLayout( { children }: { children: ReactNode; } )
 
 				{/* Contenu de la page */}
 				{children}
-
-				{/* Contributions */}
-				<Contributions />
 			</main>
 
 			{/* Pied de page */}

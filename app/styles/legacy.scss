@@ -174,9 +174,11 @@ footer ul
 		padding: 1rem 0 1rem 0;
 		word-break: break-word;
 
-		a
+		a, button
 		{
 			// Couleur de fond.
+			border: none;
+			cursor: pointer;
 			padding: 0.5rem;
 			background-color: $theme-color-dark;
 		}
@@ -300,8 +302,8 @@ ul#flags
 		button
 		{
 			// Bouton de sélection de la langue.
-			border: 0;
 			margin: 0;
+			border: none;
 			cursor: pointer;
 			padding: 0;
 			user-select: none;
@@ -395,12 +397,10 @@ ul#flags
 	scrollbar-width: none; // Cache la barre de défilement (Firefox uniquement).
 
 	// Apparence de l'overlay.
-	cursor: pointer;
-	display: none;
 	z-index: 15;
 	background-color: rgba(0, 0, 0, 0.95);
 
-	::-webkit-scrollbar
+	&::-webkit-scrollbar
 	{
 		display: none; // Cache la barre de défilement pour Chrome et autres.
 	}
@@ -480,7 +480,7 @@ ul#flags
 // ----- //
 // Liens //
 // ----- //
-a
+a, footer button
 {
 	// État initial des liens.
 	color: inherit;
@@ -489,7 +489,7 @@ a
 	text-decoration: none;
 }
 
-h2 a, article a, form a, li > a
+h2 a, article a, form a, li > a, footer button
 {
 	&::after
 	{

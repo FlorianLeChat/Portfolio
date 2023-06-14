@@ -1,15 +1,18 @@
 //
 // Composant de l'overlay des contributions de l'ancienne version du site.
 //
-import { useTranslation } from "@/utilities/ServerTranslations";
 
-export default async function Contributions()
+"use client";
+
+import { useTranslation } from "@/utilities/ClientTranslations";
+
+export default function Contributions( { visible }: { visible: boolean; } )
 {
 	// Déclaration des constantes.
-	const { t } = await useTranslation();
+	const { t } = useTranslation();
 
-	// Affichage du rendu HTML du composant.
-	return (
+	// Affichage conditionnel du rendu HTML du composant.
+	return visible ? (
 		<section id="contributions">
 			<h2>{t( "pages.legacy.footer.contributions" )}</h2>
 
@@ -18,7 +21,7 @@ export default async function Contributions()
 				<li>
 					<h3>Zélie Exposito</h3>
 					<p>
-						Remerciements pour le soutien moral ainsi que la traduction japonaise de la page principale.
+						Remerciements pour le soutien moral ainsi que la traduction japonaise de la page d&#39;accueil.
 					</p>
 				</li>
 				<li>
@@ -30,5 +33,5 @@ export default async function Contributions()
 				</li>
 			</ul>
 		</section>
-	);
+	) : null;
 }
