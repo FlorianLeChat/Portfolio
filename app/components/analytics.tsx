@@ -89,27 +89,22 @@ export default function Analytics()
 	}, [ basePath ] );
 
 	// Affichage conditionnel du rendu HTML du composant.
-	if ( analytics )
-	{
-		return (
-			<>
-				<Script src={analyticsUrl.href} strategy="lazyOnload" />
-				<Script id="google-analytics" strategy="lazyOnload">
-					{`
-						window.dataLayer = window.dataLayer || [];
+	return analytics ? (
+		<>
+			<Script src={analyticsUrl.href} strategy="lazyOnload" />
+			<Script id="google-analytics" strategy="lazyOnload">
+				{`
+					window.dataLayer = window.dataLayer || [];
 
-						function gtag()
-						{
-							dataLayer.push( arguments );
-						}
+					function gtag()
+					{
+						dataLayer.push( arguments );
+					}
 
-						gtag( "js", new Date() );
-						gtag( "config", "${ process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" }" );
-					`}
-				</Script>
-			</>
-		);
-	}
-
-	return null;
+					gtag( "js", new Date() );
+					gtag( "config", "${ process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" }" );
+				`}
+			</Script>
+		</>
+	) : null;
 }
