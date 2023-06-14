@@ -15,7 +15,7 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default function LegacyLayout( { children }: { children: ReactNode; } )
+export default function Layout( { children }: { children: ReactNode; } )
 {
 	// Affichage du rendu HTML de la page.
 	return (
