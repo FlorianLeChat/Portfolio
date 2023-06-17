@@ -10,10 +10,10 @@ import Discord from "@/images/platforms/discord.svg";
 import Twitter from "@/images/platforms/twitter.svg";
 import LinkedIn from "@/images/platforms/linkedin.svg";
 
-import LowerBlueWaves from "@/images/decorations/header_waves_blue.svg";
-import LowerGreenWaves from "@/images/decorations/header_waves_green.svg";
-import LowerOrangeWaves from "@/images/decorations/header_waves_orange.svg";
-import LowerPurpleWaves from "@/images/decorations/header_waves_purple.svg";
+import BlueWaves from "@/images/decorations/header_waves_blue.svg";
+import GreenWaves from "@/images/decorations/header_waves_green.svg";
+import OrangeWaves from "@/images/decorations/header_waves_orange.svg";
+import PurpleWaves from "@/images/decorations/header_waves_purple.svg";
 
 import { useTranslation } from "@/utilities/ServerTranslations";
 
@@ -93,7 +93,7 @@ export default async function Header()
 						</a>
 
 						{/* Vagues de fin */}
-						<Image src={LowerBlueWaves} alt="" priority />
+						<Image src={BlueWaves} alt="" priority />
 					</>
 				)
 			}
@@ -109,7 +109,7 @@ export default async function Header()
 						<h2>{t( "pages.legacy.header.projects.subtitle" )}</h2>
 
 						{/* Vagues de fin */}
-						<Image src={LowerOrangeWaves} alt="" priority />
+						<Image src={OrangeWaves} alt="" priority />
 					</>
 				)
 			}
@@ -125,7 +125,7 @@ export default async function Header()
 						<h2>{t( "pages.legacy.header.skills.subtitle" )}</h2>
 
 						{/* Vagues de fin */}
-						<Image src={LowerGreenWaves} alt="" priority />
+						<Image src={GreenWaves} alt="" priority />
 					</>
 				)
 			}
@@ -141,7 +141,7 @@ export default async function Header()
 						<h2>{t( "pages.legacy.header.contact.subtitle" )}</h2>
 
 						{/* Vagues de fin */}
-						<Image src={LowerPurpleWaves} alt="" priority />
+						<Image src={PurpleWaves} alt="" priority />
 					</>
 				)
 			}

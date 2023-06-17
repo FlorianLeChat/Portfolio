@@ -133,6 +133,8 @@ header a img
 	{
 		// Vagues marquant le début de la section.
 		left: 0;
+		width: auto;
+		height: auto;
 		z-index: -1;
 		position: absolute;
 		transform: translateY(-60%);
@@ -145,6 +147,8 @@ header a img
 	{
 		// Vagues marquant la fin de la section.
 		left: 0;
+		width: auto;
+		height: auto;
 		z-index: -1;
 		position: absolute;
 		transform: translateY(-40%);

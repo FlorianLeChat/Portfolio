@@ -13,8 +13,8 @@ import { Trans } from "react-i18next/TransWithoutContext";
 // Importation des images statiques.
 import Work from "@/images/skills/work.svg";
 import School from "@/images/skills/school.svg";
-import UpperWaves from "@/images/decorations/projects_waves_top_blue.svg";
-import LowerWaves from "@/images/decorations/projects_waves_bottom_blue.svg";
+import TopWaves from "@/images/decorations/projects_waves_top_blue.svg";
+import BottomWaves from "@/images/decorations/projects_waves_bottom_blue.svg";
 
 // Importation des fonctions utilitaires.
 import { getBasePath } from "@/utilities/NextRouter";
@@ -53,7 +53,7 @@ export default async function Page()
 			{/* Projets */}
 			<section id="projects">
 				{/* Vagues du début */}
-				<Image src={UpperWaves} alt="" priority />
+				<Image src={TopWaves} alt="" priority />
 
 				{/* Listes des projets */}
 				<h3>#projects</h3>
@@ -119,7 +119,7 @@ export default async function Page()
 				</div>
 
 				{/* Vagues de fin */}
-				<Image src={LowerWaves} alt="" priority />
+				<Image src={BottomWaves} alt="" priority />
 			</section>
 
 			{/* Compétences */}
