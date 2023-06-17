@@ -40,7 +40,14 @@ export default async function Page()
 
 				<h2>{t( "pages.legacy.index.about_me.title" )}</h2>
 
-				<p>{t( "pages.legacy.index.about_me.description", { age: date.getFullYear() - 1970 } )}</p>
+				<Trans
+					i18nKey="pages.legacy.index.about_me.description"
+					tOptions={{ age: date.getFullYear() - 1970 }}
+					components={{
+						i: <i />,
+						br: <br />
+					}}
+				/>
 			</section>
 
 			{/* Projets */}
@@ -133,7 +140,7 @@ export default async function Page()
 							<Trans
 								i18nKey="pages.legacy.index.skills.school.description"
 								components={{
-									s: <strong />,
+									b: <strong />,
 									a: <Link href="/legacy/skills#school">...</Link>
 								}}
 							/>
@@ -149,7 +156,7 @@ export default async function Page()
 							<Trans
 								i18nKey="pages.legacy.index.skills.work.description"
 								components={{
-									s: <strong />,
+									b: <strong />,
 									a: <Link href="/legacy/skills#work">...</Link>
 								}}
 							/>
@@ -166,7 +173,14 @@ export default async function Page()
 					&#8250; <Link href="/legacy/contact">{t( "pages.legacy.index.contact.title" )}</Link> &#8249;
 				</h2>
 
-				<h2>{t( "pages.legacy.index.contact.message" )}</h2>
+				<h2>
+					<Trans
+						i18nKey="pages.legacy.index.contact.message"
+						components={{
+							br: <br />
+						}}
+					/>
+				</h2>
 
 				<Link href="/legacy/contact">{t( "pages.legacy.index.contact.button" )}</Link>
 			</section>

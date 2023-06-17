@@ -7,6 +7,7 @@ import "./page.scss";
 
 // Importation des dépendances.
 import Image from "next/image";
+import { Trans } from "react-i18next/TransWithoutContext";
 
 // Importation des images statiques.
 import ArrowLeft from "@/images/decorations/arrow_left.svg";
@@ -14,7 +15,6 @@ import ArrowRight from "@/images/decorations/arrow_right.svg";
 
 // Importation des fonctions utilitaires.
 import { getBasePath } from "@/utilities/NextRouter";
-import { useTranslation } from "@/utilities/ServerTranslations";
 
 // Affichage de la page.
 export default async function Page()
@@ -22,7 +22,6 @@ export default async function Page()
 	// Déclaration des constantes.
 	const basePath = getBasePath();
 	const assets = `${ basePath }/assets/images`;
-	const { t } = await useTranslation();
 
 	// Affichage du rendu HTML de la page.
 	return (
@@ -43,7 +42,16 @@ export default async function Page()
 					<h3><em>2016</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.discordbot" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.discordbot"
+							components={{
+								i: <i />,
+								b: <strong />,
+								a: <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">...</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -162,7 +170,23 @@ export default async function Page()
 					<h3><em>2017</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.raven" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.raven"
+							components={{
+								i: <i />,
+								b: <strong />,
+								a1: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://store.steampowered.com/app/4000/Garrys_Mod/"
+								>...</a>,
+								a2: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://steamcommunity.com/app/4000/workshop/"
+								>...</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -302,7 +326,23 @@ export default async function Page()
 					<h3><em>2021</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.facepunch" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.facepunch"
+							components={{
+								i: <i />,
+								b: <strong />,
+								a1: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://facepunch.com/"
+								>...</a>,
+								a2: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://commits.facepunch.com/"
+								>...</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -381,7 +421,16 @@ export default async function Page()
 					<h3><em>2021</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.steam" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.steam"
+							components={{
+								i: <i />,
+								b: <strong />,
+								a: <a target="_blank" rel="noopener noreferrer" href="https://steamcommunity.com/">...</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -446,7 +495,15 @@ export default async function Page()
 					<h3><em>2021</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.pythonrpg" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.pythonrpg"
+							components={{
+								i: <i />,
+								b: <strong />
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -520,7 +577,23 @@ export default async function Page()
 					<h3><em>2021</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.phpstorage" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.phpstorage"
+							components={{
+								i: <i />,
+								b: <strong />,
+								a1: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage"
+								>...</a>,
+								a2: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://www.google.com/intl/en/drive/"
+								>...</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -633,7 +706,19 @@ export default async function Page()
 					<h3><em>2022</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.sourceconsole" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.sourceconsole"
+							components={{
+								i: <i />,
+								b: <strong />,
+								a: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://developer.valvesoftware.com/wiki/Source"
+								>..</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
@@ -762,7 +847,18 @@ export default async function Page()
 					<h3><em>2022</em></h3>
 
 					{/* Description */}
-					<p>{t( "pages.legacy.projects.domego" )}</p>
+					<p>
+						<Trans
+							i18nKey="pages.legacy.projects.domego"
+							components={{
+								b: <strong />,
+								a: <a
+									target="_blank" rel="noopener noreferrer"
+									href="https://www.i2m.u-bordeaux.fr/Projets/Autres-projets2/Domego"
+								>..</a>
+							}}
+						/>
+					</p>
 				</div>
 
 				<hr />
