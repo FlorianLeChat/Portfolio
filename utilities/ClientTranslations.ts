@@ -24,20 +24,38 @@ i18next
 // Fonction de récupération des traductions.
 export function useTranslation()
 {
-	// On récupère d'abord la langue du navigateur.
+	// On détermine d'abord si on est côté client ou côté serveur.
 	const ret = defaultUseTranslation();
 	const client = typeof window !== "undefined";
 	const { i18n } = ret;
-	const language = client ? navigator.language.slice( 0, 2 ) : "en";
+
+	// On définit ensuite la langue par défaut.
+	let language = "en";
+
+	if ( client )
+	{
+		// On analyse après l'ensemble des cookies enregistrés côté client.
+		const cookies = document.cookie.split( "; " ).reduce( ( accumulator: Record<string, string>, cookie: string ) =>
+		{
+			const [ key, value ] = cookie.split( "=" );
+
+			accumulator[ key ] = value;
+
+			return accumulator;
+		}, {} );
+
+		// On récupère alors la langue du navigateur ou des cookies.
+		language = cookies.NEXT_LANGUAGE ? cookies.NEXT_LANGUAGE : navigator.language.slice( 0, 2 );
+	}
 
 	// Si la langue du navigateur est différente de celle de i18next, on la change.
 	useEffect( () =>
 	{
-		if ( client && i18n.resolvedLanguage !== language )
+		if ( i18n.resolvedLanguage !== language )
 		{
 			i18n.changeLanguage( language );
 		}
-	}, [ client, i18n, language ] );
+	}, [ i18n, language ] );
 
 	// On retourne enfin les traductions.
 	return ret;
