@@ -17,7 +17,7 @@ import ArrowRight from "@/images/decorations/arrow_right.svg";
 import { getBasePath } from "@/utilities/NextRouter";
 
 // Affichage de la page.
-export default async function Page()
+export default function Page()
 {
 	// Déclaration des constantes.
 	const basePath = getBasePath();
@@ -109,7 +109,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/discordbot_gallery_4.jpg`}
-								alt="Image 4" width="64" height="64"
+								alt="Image 4" width="603" height="378"
 							/>
 						</a>
 
@@ -123,7 +123,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/discordbot_gallery_5.jpg`}
-								alt="Image 5" width="64" height="64"
+								alt="Image 5" width="289" height="405"
 							/>
 						</a>
 
@@ -202,7 +202,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/raven_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="528" height="399"
 							/>
 						</a>
 
@@ -216,7 +216,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/raven_gallery_2.jpg`}
-								alt="Image 2" width="64" height="64"
+								alt="Image 2" width="1920" height="1080"
 							/>
 						</a>
 
@@ -230,7 +230,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/raven_gallery_3.jpg`}
-								alt="Image 3" width="64" height="64"
+								alt="Image 3" width="617" height="1079"
 							/>
 						</a>
 
@@ -244,7 +244,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/raven_gallery_4.jpg`}
-								alt="Image 4" width="64" height="64"
+								alt="Image 4" width="981" height="829"
 							/>
 						</a>
 
@@ -258,7 +258,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/raven_gallery_5.jpg`}
-								alt="Image 5" width="64" height="64"
+								alt="Image 5" width="196" height="150"
 							/>
 						</a>
 
@@ -272,7 +272,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/raven_gallery_6.jpg`}
-								alt="Image 6" width="64" height="64"
+								alt="Image 6" width="1920" height="1080"
 							/>
 						</a>
 
@@ -358,7 +358,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/facepunch_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="396" height="360"
 							/>
 						</a>
 
@@ -372,7 +372,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/facepunch_gallery_2.jpg`}
-								alt="Image 2" width="64" height="64"
+								alt="Image 2" width="391" height="553"
 							/>
 						</a>
 
@@ -446,7 +446,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/steam_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="881" height="363"
 							/>
 						</a>
 
@@ -519,7 +519,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/pythonrpg_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="665" height="502"
 							/>
 						</a>
 
@@ -533,7 +533,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/pythonrpg_gallery_2.jpg`}
-								alt="Image 2" width="64" height="64"
+								alt="Image 2" width="964" height="498"
 							/>
 						</a>
 
@@ -609,7 +609,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/phpstorage_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="791" height="529"
 							/>
 						</a>
 
@@ -623,7 +623,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/phpstorage_gallery_2.jpg`}
-								alt="Image 2" width="64" height="64"
+								alt="Image 2" width="785" height="562"
 							/>
 						</a>
 
@@ -637,7 +637,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/phpstorage_gallery_3.jpg`}
-								alt="Image 3" width="64" height="64"
+								alt="Image 3" width="659" height="723"
 							/>
 						</a>
 
@@ -734,7 +734,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/sourceconsole_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="1338" height="850"
 							/>
 						</a>
 
@@ -748,7 +748,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/sourceconsole_gallery_2.jpg`}
-								alt="Image 2" width="64" height="64"
+								alt="Image 2" width="1338" height="850"
 							/>
 						</a>
 
@@ -762,7 +762,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/sourceconsole_gallery_3.jpg`}
-								alt="Image 3" width="64" height="64"
+								alt="Image 3" width="1338" height="850"
 							/>
 						</a>
 
@@ -776,7 +776,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/sourceconsole_gallery_4.jpg`}
-								alt="Image 4" width="64" height="64"
+								alt="Image 4" width="1338" height="850"
 							/>
 						</a>
 
@@ -874,7 +874,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/domego_gallery_1.jpg`}
-								alt="Image 1" width="64" height="64"
+								alt="Image 1" width="1362" height="937"
 							/>
 						</a>
 
@@ -888,7 +888,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/domego_gallery_2.jpg`}
-								alt="Image 2" width="64" height="64"
+								alt="Image 2" width="1362" height="937"
 							/>
 						</a>
 
@@ -902,7 +902,7 @@ export default async function Page()
 						>
 							<Image
 								src={`${ assets }/projects/domego_gallery_3.jpg`}
-								alt="Image 3" width="64" height="64"
+								alt="Image 3" width="1362" height="880"
 							/>
 						</a>
 
