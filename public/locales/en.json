@@ -106,17 +106,20 @@
 						"description": "Learning of HTML, CSS (<b>SASS</b>, <b>SCSS</b>), PHP (<b>PDO</b>, <b>Twig</b>), JavaScript (<b>jQuery</b>, <b>AJAX</b>). Introduction to design (<i>graphic design, responsive, ergonomics</i>) and project management (<i>methodology, organization</i>)."
 					},
 					"hutinel": {
-						"title": "Baccalauréat Professionnel - Digital Electronic Systems<br><br>\"AVM\" option : Audio Visual Multimedia",
+						"title": "Baccalauréat Professionnel - Digital Electronic Systems",
+						"option": "\"AVM\" option : Audio Visual Multimedia",
 						"location": "Lycée professionnel Alfred Hutinel<br><br>Cannes-La-Bocca, France",
 						"description": "Installation, commissioning and troubleshooting of audio-visual products, computer equipment (for companies\/ships) and fire prevention systems."
 					},
 					"jules": {
-						"title": "Brevet de Technicien Supérieur (BTS) - Digital Systems<br><br>Option B: electronics and communications",
+						"title": "Brevet de Technicien Supérieur (BTS) - Digital Systems",
+						"option": "Option B: electronics and communications",
 						"location": "Lycée général et technologique Jules Ferry<br><br>Cannes, France",
 						"description": "Analog and digital electronics, <b>RS232</b>, <b>I2C</b> link. Realization of a project \"<i>CubeSat</i>\" mixing several electronic parts (sensors, communication link) and computing (<i>LabView</i>, <i>FlowCode</i>)."
 					},
 					"valrose": {
-						"title": "Degree - Science and Technology<br><br>Computer science program",
+						"title": "Degree - Science and Technology",
+						"option": "Computer science program",
 						"location": "Université Côte d'Azur, Valrose Campus (Faculty of Science and Engineering)<br><br>Nice, France",
 						"description": "Discovery of algorithmic models with <b>Python</b>, <b>C</b>, <b>C++</b>. Introduction to the Web with <b>HTML</b> and <b>CSS</b> (with <i>Bootstrap</i>). Creation of graphical software for mathematical operations."
 					}
