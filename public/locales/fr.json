@@ -106,17 +106,20 @@
 						"description": "Apprentissage du HTML, CSS (<b>SASS</b>, <b>SCSS</b>), PHP (<b>PDO</b>, <b>Twig</b>), JavaScript (<b>jQuery</b>, <b>AJAX</b>). Initiation au design (<i>charte graphique, responsive, ergonomie</i>) et à la gestion de projets (<i>méthodologie, organisationnelle</i>)."
 					},
 					"hutinel": {
-						"title": "Baccalauréat Professionnel - Systèmes électroniques numériques<br><br>Option « AVM » : Audio Visuel Multimédia",
+						"title": "Baccalauréat Professionnel - Systèmes électroniques numériques",
+						"option": "Option « AVM » : Audio Visuel Multimédia",
 						"location": "Lycée professionnel Alfred Hutinel<br><br>Cannes-La-Bocca, France",
 						"description": "Installation, mise en service et dépannage de produits audio-visuel, d'équipements informatiques (pour entreprise\/embarqué sur des navires) et de systèmes de prévention anti-incendie."
 					},
 					"jules": {
-						"title": "Brevet de Technicien Supérieur (BTS) - Systèmes numériques<br><br>Option B : électronique et communications",
+						"title": "Brevet de Technicien Supérieur (BTS) - Systèmes numériques",
+						"option": "Option B : électronique et communications",
 						"location": "Lycée général et technologique Jules Ferry<br><br>Cannes, France",
 						"description": "Électronique de type analogique et numérique, liaison <b>RS232</b>, <b>I2C</b>. Réalisation d'un projet « <i>CubeSat</i> » mêlant plusieurs parties électroniques (capteurs, liaison de communication) et informatiques (<i>LabView</i>, <i>FlowCode</i>)."
 					},
 					"valrose": {
-						"title": "Licence - Sciences et Technologies<br><br>Parcours informatique",
+						"title": "Licence - Sciences et Technologies",
+						"option": "Parcours informatique",
 						"location": "Université Côte d'Azur, Campus Valrose (Faculté des Sciences et Ingénierie)<br><br>Nice, France",
 						"description": "Découverte des modèles algorithmiques avec <b>Python</b>, <b>C</b>, <b>C++</b>. Initiation au Web avec <b>HTML</b> et <b>CSS</b> (avec <i>Bootstrap</i>). Créations de logiciels graphiques pour des opérations mathématiques."
 					}
