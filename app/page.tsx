@@ -26,7 +26,7 @@ import FileStorage from "@/images/filestorage.png";
 import SourceConsole from "@/images/sourceconsole.png";
 
 // Importation des fonctions utilitaires.
-import { useTranslation } from "./utilities/ServerTranslations";
+import { useTranslation } from "@/utilities/ServerTranslations";
 
 // Importation des composants.
 const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
