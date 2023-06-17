@@ -8,10 +8,12 @@ import { createInstance } from "i18next";
 import resourcesToBackend from "i18next-resources-to-backend";
 import { initReactI18next } from "react-i18next/initReactI18next";
 
+import { getLanguage } from "@/utilities/NextRouter";
+
 export async function useTranslation()
 {
-	// On récupère la langue utilisée par l'utilisateur.
-	const language = headers().get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
+	// On récupère la langue sélectionné par l'utilisateur.
+	const language = getLanguage( headers() );
 
 	// On initialise l'instance de traduction i18next.
 	const instance = createInstance();
