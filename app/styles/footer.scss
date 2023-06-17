@@ -21,5 +21,19 @@ footer
 	{
 		// Notes complémentaires.
 		margin-left: 0.25rem;
+
+		&:nth-of-type(2)
+		{
+			// Redirection vers l'ancienne version du site.
+			gap: 0.25rem;
+			display: flex;
+			align-items: center;
+
+			svg
+			{
+				// Icône de PHP.
+				font-size: 1.25rem;
+			}
+		}
 	}
 }

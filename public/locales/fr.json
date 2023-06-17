@@ -24,6 +24,7 @@
 			"filter_front": "Front-end",
 			"filter_back": "Back-end",
 			"filter_other": "Autres",
+			"footer_legacy": "<a>Version classique</a>",
 			"footer_madeby": "Conçu par <a>Florian Trayon 🐈</a>",
 			"footer_recaptcha": "Ce site est protégé par reCAPTCHA sur lequel s'appliquent les <a1>politiques de confidentialité</a1> et les <a2>conditions d'utilisation</a2> de Google.",
 			"developer_firstname": "Florian",
