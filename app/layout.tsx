@@ -124,7 +124,7 @@ export default function RootLayout( { children }: { children: ReactNode; } ): JS
 	// Déclaration des constantes.
 	const headersList = headers();
 	const language = headersList.get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
-	const legacy = headersList.get( "Referer" )?.includes( "legacy" ) ?? false;
+	const legacy = headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
 	const theme = ( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
 	const font = legacy ? openSans : poppins;
 
