@@ -72,8 +72,8 @@ export default async function Header()
 			</a>
 
 			<a
-				style={{ color: "white" }} title="CV" target="_blank"
-				href="assets/docs/cv.pdf"
+				style={{ color: "white" }} rel="noopener noreferrer" target="_blank"
+				href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view"
 			>
 				{/* Curriculum Vitæ */}
 				<Image
