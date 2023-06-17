@@ -3,9 +3,15 @@
 	"pages": {
 		"legacy": {
 			"header": {
-				"index_subtitle": "Desarrollador web (Front\/Back-End)",
-				"projects_title": "Mis proyectos",
-				"skills_title": "Mis habilidades"
+				"index": {
+					"subtitle": "Desarrollador web (Front\/Back-End)"
+				},
+				"projects": {
+					"title": "Mis proyectos"
+				},
+				"skills": {
+					"title": "Mis habilidades"
+				}
 			},
 			"language": {
 				"en": "Inglés",
@@ -27,12 +33,12 @@
 					"school": {
 						"title": "Formación y calificaciones",
 						"image": "Imagen de una escuela.",
-						"description": "<s><a>Haga clic aquí</a></s> para saber más sobre mi formación y los títulos y certificados que he obtenido hasta la fecha."
+						"description": "<b><a>Haga clic aquí</a></b> para saber más sobre mi formación y los títulos y certificados que he obtenido hasta la fecha."
 					},
 					"work": {
 						"title": "Competencias profesionales",
 						"image": "Imagen que representa un trabajo.",
-						"description": "<s><a>Haga clic aquí</a></s> para saber más sobre mis habilidades adquiridas durante mi aprendizaje autodidacta pero también durante las prácticas."
+						"description": "<b><a>Haga clic aquí</a></b> para saber más sobre mis habilidades adquiridas durante mi aprendizaje autodidacta pero también durante las prácticas."
 					}
 				},
 				"contact": {
