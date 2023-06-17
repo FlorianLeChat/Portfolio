@@ -64,35 +64,35 @@
 			"index": {
 				"about_me": {
 					"title": "About me",
-					"description": "Welcome to my portfolio! I'm Florian, a {{age}} years old French developer. I'm mainly a *back-end* developer (NodeJS, PHP, ...) but I'm really interested in learning *front-end* (HTML, CSS, JavaScript, ...) and UI\/UX design.\r\n\r\nI also have experience in scripting and programming languages such as Lua, Python and C# (with .NET Core). This obviously includes a solid knowledge of SQLite and MySQL backup systems also used in the web.\r\n\r\nYou can learn more about me, my experiences, my projects and my skills through this Portfolio."
+					"description": "Welcome to my portfolio!<br><br>I'm Florian, a {{age}} years old French developer. I'm mainly a <i>back-end</i> developer (NodeJS, PHP, ...) but I'm really interested in learning <i>front-end</i> (HTML, CSS, JavaScript, ...) and UI\/UX design.<br><br>I also have experience in scripting and programming languages such as Lua, Python and C# (with .NET Core). This obviously includes a solid knowledge of SQLite and MySQL backup systems also used in the web.<br><br>You can learn more about me, my experiences, my projects and my skills through this Portfolio."
 				},
 				"skills": {
 					"school": {
 						"title": "Educational background & degrees",
 						"image": "Image representing a school.",
-						"description": "<s><a>Click here</a><s> to find out more about my educational background including degrees and certificates I have obtained until today."
+						"description": "<b><a>Click here</a></b> to find out more about my educational background including degrees and certificates I have obtained until today."
 					},
 					"work": {
 						"title": "Professional skills",
 						"image": "Image representing work.",
-						"description": "<s><a>Click here</a><s> to find out more about my skills acquired during my self-directed learning and also during work placements in a professional environment."
+						"description": "<b><a>Click here</a></b> to find out more about my skills acquired during my self-directed learning and also during work placements in a professional environment."
 					}
 				},
 				"contact": {
 					"title": "Contact",
 					"button": "Contact form",
-					"message": "A project? A question?\r\n\r\nContact me!"
+					"message": "A project? A question?<br><br>Contact me!"
 				}
 			},
 			"projects": {
-				"discordbot": "This project a program simulating a robot (or automated user) to perform administration tasks on servers of the <a>Discord</a> communication platform. The robot runs through **NodeJS** using the **npm** *DiscordJS* dependency to be able to communicate with the public *API* of Discord. In order to accomplish some administration actions, the program has to communicate with a **MySQL** database.",
-				"raven": "This project is a toolkit to assist the creation of **Lua** scripts for the *sandbox* video game <a1>Garry's Mod</a1>. These tools have been developed both using the video game API called **gLua** and with more complex systems in **C++** to take advantage of the outstanding performance of the Source graphics engine. The source code of the framework is not open but is partly available on the <a2>Steam Workshop</a2>. Some systems of the framework interact directly with a database like **SQLite** and **MySQL**.",
-				"facepunch": "This project is a graphical application whose purpose is to track the **Git** changes (*commits*) made by the video game studio named <a1>Facepunch</a1>. The program has been developed with **.NET 6** and **Windows Forms** in **C#** and allows to follow in real time the changes made to some video games created by the studio. These changes are visible and publicly accessible through the *API* and the <a2>public website</a2> of the company.",
-				"steam": "This project is a command line application to calculate the size of some objects on the <a>Steam community</a>. The platform is world famous for its dematerialized video game store called *Steam* but also for its almost infinite objects library created by gamers of all types (also called the *Workshop*). The program is conceived to calculate the total size of a *collection* where users can select multiple objects to deploy them in some compatible video games. The website's UI is outdated and not very ergonomic, so the program helps to fill the information deficit by providing a quick and intuitive access to the users. To be able to work, the program written in **C#** thanks to **.NET 6** which uses directly the *API* of the website to retrieve the general information of an object.",
-				"pythonrpg": "This project is a program simulating an text-based *RPG* (role-playing game) environment. This program can read narrative stories created from scratch by users and give the players the possibility to interact with them thanks to an basic action\/consequence system. The program was created to experiment with the syntax and mechanisms of **Python**, so it is considered to be a demonstration version, but functional before anything else.",
-				"phpstorage": "This project will be an web-based file management interface inspired by the numerous data storage services like <a1>OneDrive</a1>, <a2>Google Drive</a2>, etc. The website will use modern technologies and tools such as *Bootstrap* (**HTML\/SASS**), *React* (**TypeScript**) but also *Symfony* (**PHP\/MongoDB**) to manage efficiently and securely the files saved by the user. This project will aim to combine all my knowledge during my years of courses and experiences in the domain to offer a high-quality website for people who want to host their data locally without depending on public providers with suspicious privacy policies.",
-				"sourceconsole": "This project is an web administration interface for server owners hosting online games using the <a>Source engine</a>. Usually, server owners have to use a *SSH* and *FTP* front-end to handle some redundant and outdated management tasks. The project proposes to provide an ergonomic interface which connects directly to the server of the owner in order to perform graphically the desired actions and without having to know the numerous commands necessary to manage online servers. The website was created through modern web technologies (**jQuery**, **SASS**, **MySQL**, **PHP 8**, ...) and currently constitutes one of the most successful projects.",
-				"domego": "This project is a serious educational board game which can be played on an web interface and played online with other players. <a>Domego</a> was initially invented on a physical support, this interface intends to reproduce its mechanics on an website to offer players from all horizons the possibility to play together. Thanks to the use of innovative technologies (**TypeScript**, **React**, **Express**, **MongoDB**, etc.), the project gives players a degree of control over the rules and behavior of the game to explore all the opportunities. Due to lack of time and the end of my studies, the project is in an advanced state of development but not yet finished."
+				"discordbot": "This project a program simulating a robot (or automated user) to perform administration tasks on servers of the <a>Discord</a> communication platform. The robot runs through <b>NodeJS</b> using the <b>npm</b> <i>DiscordJS</i> dependency to be able to communicate with the public <i>API</i> of Discord. In order to accomplish some administration actions, the program has to communicate with a <b>MySQL</b> database.",
+				"raven": "This project is a toolkit to assist the creation of <b>Lua</b> scripts for the <i>sandbox</i> video game <a1>Garry's Mod</a1>. These tools have been developed both using the video game API called <b>gLua</b> and with more complex systems in <b>C++</b> to take advantage of the outstanding performance of the Source graphics engine. The source code of the framework is not open but is partly available on the <a2>Steam Workshop</a2>. Some systems of the framework interact directly with a database like <b>SQLite</b> and <b>MySQL</b>.",
+				"facepunch": "This project is a graphical application whose purpose is to track the <b>Git</b> changes (<i>commits</i>) made by the video game studio named <a1>Facepunch</a1>. The program has been developed with <b>.NET 6</b> and <b>Windows Forms</b> in <b>C#</b> and allows to follow in real time the changes made to some video games created by the studio. These changes are visible and publicly accessible through the <i>API</i> and the <a2>public website</a2> of the company.",
+				"steam": "This project is a command line application to calculate the size of some objects on the <a>Steam community</a>. The platform is world famous for its dematerialized video game store called <i>Steam</i> but also for its almost infinite objects library created by gamers of all types (also called the <i>Workshop</i>). The program is conceived to calculate the total size of a <i>collection</i> where users can select multiple objects to deploy them in some compatible video games. The website's UI is outdated and not very ergonomic, so the program helps to fill the information deficit by providing a quick and intuitive access to the users. To be able to work, the program written in <b>C#</b> thanks to <b>.NET 6</b> which uses directly the <i>API</i> of the website to retrieve the general information of an object.",
+				"pythonrpg": "This project is a program simulating an text-based <i>RPG</i> (role-playing game) environment. This program can read narrative stories created from scratch by users and give the players the possibility to interact with them thanks to an basic action\/consequence system. The program was created to experiment with the syntax and mechanisms of <b>Python</b>, so it is considered to be a demonstration version, but functional before anything else.",
+				"phpstorage": "This project will be an web-based file management interface inspired by the numerous data storage services like <a1>OneDrive</a1>, <a2>Google Drive</a2>, etc. The website will use modern technologies and tools such as <i>Bootstrap</i> (<b>HTML\/SASS</b>), <i>React</i> (<b>TypeScript</b>) but also <i>Symfony</i> (<b>PHP\/MongoDB</b>) to manage efficiently and securely the files saved by the user. This project will aim to combine all my knowledge during my years of courses and experiences in the domain to offer a high-quality website for people who want to host their data locally without depending on public providers with suspicious privacy policies.",
+				"sourceconsole": "This project is an web administration interface for server owners hosting online games using the <a>Source engine</a>. Usually, server owners have to use a <i>SSH</i> and <i>FTP</i> front-end to handle some redundant and outdated management tasks. The project proposes to provide an ergonomic interface which connects directly to the server of the owner in order to perform graphically the desired actions and without having to know the numerous commands necessary to manage online servers. The website was created through modern web technologies (<b>jQuery</b>, <b>SASS</b>, <b>MySQL</b>, <b>PHP 8</b>, ...) and currently constitutes one of the most successful projects.",
+				"domego": "This project is a serious educational board game which can be played on an web interface and played online with other players. <a>Domego</a> was initially invented on a physical support, this interface intends to reproduce its mechanics on an website to offer players from all horizons the possibility to play together. Thanks to the use of innovative technologies (<b>TypeScript</b>, <b>React</b>, <b>Express</b>, <b>MongoDB</b>, etc.), the project gives players a degree of control over the rules and behavior of the game to explore all the opportunities. Due to lack of time and the end of my studies, the project is in an advanced state of development but not yet finished."
 			},
 			"skills": {
 				"title": "Skills",
@@ -102,23 +102,23 @@
 					"resume_title": "Summary of courses",
 					"carlone": {
 						"title": "Professional degree - Applied Multimedia Computing",
-						"location": "Université Côte d'Azur, Campus Carlone (Computer Science Department)\r\n\r\nNice, France",
-						"description": "Learning of HTML, CSS (**SASS**, **SCSS**), PHP (**PDO**, **Twig**), JavaScript (**jQuery**, **AJAX**). Introduction to design (*graphic design, responsive, ergonomics*) and project management (*methodology, organization*)."
+						"location": "Université Côte d'Azur, Campus Carlone (Computer Science Department)<br><br>Nice, France",
+						"description": "Learning of HTML, CSS (<b>SASS</b>, <b>SCSS</b>), PHP (<b>PDO</b>, <b>Twig</b>), JavaScript (<b>jQuery</b>, <b>AJAX</b>). Introduction to design (<i>graphic design, responsive, ergonomics</i>) and project management (<i>methodology, organization</i>)."
 					},
 					"hutinel": {
-						"title": "Baccalauréat Professionnel - Digital Electronic Systems\r\n\r\n\"AVM\" option : Audio Visual Multimedia",
-						"location": "Lycée professionnel Alfred Hutinel\r\n\r\nCannes-La-Bocca, France",
+						"title": "Baccalauréat Professionnel - Digital Electronic Systems<br><br>\"AVM\" option : Audio Visual Multimedia",
+						"location": "Lycée professionnel Alfred Hutinel<br><br>Cannes-La-Bocca, France",
 						"description": "Installation, commissioning and troubleshooting of audio-visual products, computer equipment (for companies\/ships) and fire prevention systems."
 					},
 					"jules": {
-						"title": "Brevet de Technicien Supérieur (BTS) - Digital Systems\r\n\r\nOption B: electronics and communications",
-						"location": "Lycée général et technologique Jules Ferry\r\n\r\nCannes, France",
-						"description": "Analog and digital electronics, **RS232**, **I2C** link. Realization of a project \" *CubeSat* \" mixing several electronic parts (sensors, communication link) and computing (*LabView*, *FlowCode*)."
+						"title": "Brevet de Technicien Supérieur (BTS) - Digital Systems<br><br>Option B: electronics and communications",
+						"location": "Lycée général et technologique Jules Ferry<br><br>Cannes, France",
+						"description": "Analog and digital electronics, <b>RS232</b>, <b>I2C</b> link. Realization of a project \"<i>CubeSat</i>\" mixing several electronic parts (sensors, communication link) and computing (<i>LabView</i>, <i>FlowCode</i>)."
 					},
 					"valrose": {
-						"title": "Degree - Science and Technology\r\n\r\nComputer science program",
-						"location": "Université Côte d'Azur, Valrose Campus (Faculty of Science and Engineering)\r\n\r\nNice, France",
-						"description": "Discovery of algorithmic models with **Python**, **C**, **C++**. Introduction to the Web with **HTML** and **CSS** (with *Bootstrap*). Creation of graphical software for mathematical operations."
+						"title": "Degree - Science and Technology<br><br>Computer science program",
+						"location": "Université Côte d'Azur, Valrose Campus (Faculty of Science and Engineering)<br><br>Nice, France",
+						"description": "Discovery of algorithmic models with <b>Python</b>, <b>C</b>, <b>C++</b>. Introduction to the Web with <b>HTML</b> and <b>CSS</b> (with <i>Bootstrap</i>). Creation of graphical software for mathematical operations."
 					}
 				},
 				"jobs": {
@@ -129,7 +129,7 @@
 				}
 			},
 			"contact": {
-				"description": "Here is the contact form allowing you to send me a message, which will be sent directly to my personal inbox. In order to answer you, this form asks you to fill in a valid email address so that I can answer you, it will not be stored or used for malicious purposes. Without this, your message will obviously remain a dead letter. Do you find this means of communication too... *archaic*? Don't forget that more modern means of communication are available on the homepage (Discord, Twitter, LinkedIn, ...).",
+				"description": "Here is the contact form allowing you to send me a message, which will be sent directly to my personal inbox. In order to answer you, this form asks you to fill in a valid email address so that I can answer you, it will not be stored or used for malicious purposes. Without this, your message will obviously remain a dead letter. Do you find this means of communication too... <i>archaic</i>? Don't forget that more modern means of communication are available on the homepage (Discord, Twitter, LinkedIn, ...).",
 				"form": {
 					"content": "Content",
 					"email": "Email address",
