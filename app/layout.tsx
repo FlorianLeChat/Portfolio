@@ -135,10 +135,11 @@ export default function RootLayout( { children }: { children: ReactNode; } ): JS
 			<body>
 				{/* Avertissement page sans JavaScript */}
 				<noscript>
-					<h1>This website created with <a href="https://nextjs.org/">NextJS</a> requires JavaScript to run.</h1>
+					<h1>Your browser does not support or refuses to load JavaScript.</h1>
+
 					<h2>
-						Click <a href="https://www.whatismybrowser.com/detect/is-javascript-enabled">here</a>
-						to be redirected to an external site to help you solve this issue.
+						Click <a href="https://www.whatismybrowser.com/detect/is-javascript-enabled">here</a> to
+						be redirected to an external site to help you solve this issue.
 					</h2>
 				</noscript>
 
