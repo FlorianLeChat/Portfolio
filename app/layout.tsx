@@ -16,6 +16,9 @@ import { Suspense, lazy, type ReactNode } from "react";
 // Importation des types.
 import type { Metadata } from "next";
 
+// Importation des fonctions utilitaires.
+import { getLanguage } from "@/utilities/NextRouter";
+
 // Importation des composants.
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
@@ -123,7 +126,7 @@ export default function RootLayout( { children }: { children: ReactNode; } ): JS
 {
 	// Déclaration des constantes.
 	const headersList = headers();
-	const language = headersList.get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
+	const language = getLanguage( headers() );
 	const legacy = headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
 	const theme = ( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
 	const font = legacy ? openSans : poppins;
