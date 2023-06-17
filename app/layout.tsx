@@ -9,8 +9,8 @@ import "@total-typescript/ts-reset";
 // Importation des dépendances.
 import { dir } from "i18next";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { Poppins } from "next/font/google";
 import { headers, cookies } from "next/headers";
+import { Poppins, Open_Sans } from "next/font/google";
 import { Suspense, lazy, type ReactNode } from "react";
 
 // Importation des types.
@@ -106,22 +106,31 @@ export const metadata: Metadata = {
 //  Source : https://fontawesome.com/docs/web/use-with/react/use-with
 config.autoAddCss = false;
 
-// Création de la police de caractères Poppins.
+// Création des polices de caractères Poppins et Open Sans.
 const poppins = Poppins( {
 	weight: [ "400", "500", "600", "700" ],
 	subsets: [ "latin" ],
 	display: "swap"
 } );
 
-export default function RootLayout( { children }: { children: ReactNode; } )
+const openSans = Open_Sans( {
+	weight: [ "400", "700" ],
+	subsets: [ "latin" ],
+	display: "swap"
+} );
+
+export default function RootLayout( { children }: { children: ReactNode; } ): JSX.Element
 {
 	// Déclaration des constantes.
+	const headersList = headers();
+	const language = headersList.get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
+	const legacy = headersList.get( "Referer" )?.includes( "legacy" ) ?? false;
 	const theme = ( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
-	const language = headers().get( "Accept-Language" )?.substring( 0, 2 ) ?? "en";
+	const font = legacy ? openSans : poppins;
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={language} dir={dir( language )} className={`${ poppins.className } theme-${ theme }`}>
+		<html lang={language} dir={dir( language )} className={`${ font.className } theme-${ theme }`}>
 			{/* Corps de la page */}
 			<body>
 				{/* Avertissement page sans JavaScript */}
@@ -134,28 +143,30 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 				</noscript>
 
 				{/* Écran de chargement de la page */}
-				<Suspense fallback={<Loading />}>
-					{/* En-tête */}
-					<Header />
+				{legacy ? children : (
+					<Suspense fallback={<Loading />}>
+						{/* En-tête */}
+						<Header />
 
-					{/* Composant enfant */}
-					<main>{children}</main>
+						{/* Composant enfant */}
+						<main>{children}</main>
 
-					{/* Google Analytics */}
-					<Analytics />
+						{/* Google Analytics */}
+						<Analytics />
 
-					{/* Google reCAPTCHA */}
-					<Recaptcha />
+						{/* Google reCAPTCHA */}
+						<Recaptcha />
 
-					{/* Reconnaissance vocale */}
-					<SpeechRecognition />
+						{/* Reconnaissance vocale */}
+						<SpeechRecognition />
 
-					{/* Bouton de retour en haut de page */}
-					<ScrollTop />
+						{/* Bouton de retour en haut de page */}
+						<ScrollTop />
 
-					{/* Pied de page */}
-					<Footer />
-				</Suspense>
+						{/* Pied de page */}
+						<Footer />
+					</Suspense>
+				)}
 			</body>
 		</html>
 	);
