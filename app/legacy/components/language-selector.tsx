@@ -5,8 +5,10 @@
 "use client";
 
 import { lazy } from "react";
-import { useTranslation } from "@/utilities/ClientTranslations";
 import { useRouter, usePathname } from "next/navigation";
+
+import { getBasePath } from "@/utilities/NextRouter";
+import { useTranslation } from "@/utilities/ClientTranslations";
 
 const ScrollTop = lazy( () => import( "./scroll-top" ) );
 
@@ -16,10 +18,15 @@ export default function LanguageSelector()
 	const { t } = useTranslation();
 	const router = useRouter();
 	const pathname = usePathname();
+	const basePath = getBasePath( true );
 
 	// Change la langue actuellement sur le site.
 	const switchLanguage = ( language: string ) =>
 	{
+		// On enregistre la langue dans les cookies.
+		document.cookie = `NEXT_LANGUAGE=${ language }; path=${ basePath }`;
+
+		// On actualise la page en demandant le changement de langue.
 		router.replace( `${ pathname }?language=${ language }` );
 		router.refresh();
 	};
