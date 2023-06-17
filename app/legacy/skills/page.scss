@@ -226,30 +226,6 @@ header > img
 			text-decoration: underline;
 		}
 	}
-
-	> img:first-child
-	{
-		// Vagues marquant le début de la section.
-		left: 0;
-		z-index: -1;
-		position: absolute;
-		transform: translateY(-55%);
-		min-width: $html-min-width;
-		max-width: 100%; // Correctif débile pour Firefox.
-		min-height: 400px;
-	}
-
-	> img:last-child
-	{
-		// Vagues marquant la fin de la section.
-		left: 0;
-		z-index: -1;
-		position: absolute;
-		transform: translateY(-35%);
-		min-width: $html-min-width;
-		max-width: 100%; // Correctif débile pour Firefox.
-		min-height: 400px;
-	}
 }
 
 // Expériences.

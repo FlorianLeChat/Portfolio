@@ -138,6 +138,8 @@ header
 	{
 		// Vagues marquant la fin de l'en-tête.
 		left: 0;
+		width: auto;
+		height: auto;
 		z-index: -1;
 		position: absolute;
 		min-width: $html-min-width;
