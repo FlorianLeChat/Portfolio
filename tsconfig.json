@@ -7,7 +7,7 @@
 	    "paths": {
 			"@/*": ["./*"],
 			"@/images/*": ["./public/assets/images/*"],
-			"@/utilities/*": ["./app/utilities/*"]
+			"@/utilities/*": ["./utilities/*"]
 		},
         "noEmit": true,
         "strict": true,
