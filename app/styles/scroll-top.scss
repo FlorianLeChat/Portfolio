@@ -1,8 +1,7 @@
 aside
 {
 	// Conteneur du bouton de retour en haut de page.
-	right: 2rem;
-	bottom: 3rem;
+	inset: auto 2rem 3rem auto;
 	z-index: 1;
 	position: fixed;
 	transition: transform 200ms ease-in-out;

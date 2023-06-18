@@ -207,16 +207,14 @@ header > img
 
 		&::before
 		{
-			top: 7px;
-			left: -2rem;
+			inset: 7px auto auto -2rem;
 			position: absolute;
 		}
 	}
 
 	textarea + span::before
 	{
-		top: -1.5rem; // Pourquoi une zone de saisie se comporte différemment ?...
-		left: -2rem;
+		inset: -1.5rem auto auto -2rem; // Pourquoi une zone de saisie se comporte différemment ?...
 	}
 
 	input:valid + span::before, textarea:valid + span::before

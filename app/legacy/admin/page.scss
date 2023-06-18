@@ -25,8 +25,7 @@ hr
 video
 {
 	// Vidéo en arrière-plan.
-	right: 0;
-	bottom: 0;
+	inset: auto 0 0;
 	z-index: -1;
 	opacity: 0.15;
 	position: fixed;
@@ -52,8 +51,7 @@ header
 	p:nth-of-type(1)
 	{
 		// Horloge actuelle du client.
-		top: 1rem;
-		left: 1rem;
+		inset: 1rem 1rem;
 		color: $theme-background-color;
 		margin: 0;
 		position: absolute;
@@ -63,8 +61,7 @@ header
 	p:nth-of-type(2)
 	{
 		// Information de connexion lorsque l'utilisateur est connecté.
-		top: 1rem;
-		right: 1rem;
+		inset: 1rem 1rem auto;
 		color: $theme-background-color;
 		margin: 0 0 0 6rem;
 		padding: 0.5rem;
@@ -358,8 +355,7 @@ footer ul
 				input[type = file]
 				{
 					// Actionneur pour ouvrir l'explorateur des fichiers.
-					top: 0;
-					left: 0;
+					inset: 0 0;
 					width: 100%;
 					height: 100%;
 					cursor: pointer;
@@ -554,8 +550,7 @@ footer ul
 #logout
 {
 	// Corps de la section.
-	top: 50%;
-	left: 50%;
+	inset: 50% 50%;
 	border: 3px dashed $theme-color-bright;
 	padding: 1rem;
 	position: absolute;
