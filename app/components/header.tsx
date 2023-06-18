@@ -53,10 +53,7 @@ export default function Header()
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
-	const toggleMenu = () =>
-	{
-		setShowMenu( !showMenu );
-	};
+	const toggleMenu = () => setShowMenu( !showMenu );
 
 	// Détection du thème par défaut de l'utilisateur.
 	useEffect( () =>
