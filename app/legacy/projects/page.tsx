@@ -7,14 +7,14 @@ import "./page.scss";
 
 // Importation des dépendances.
 import Image from "next/image";
+import { lazy } from "react";
 import { Trans } from "react-i18next/TransWithoutContext";
-
-// Importation des images statiques.
-import ArrowLeft from "@/images/decorations/arrow_left.svg";
-import ArrowRight from "@/images/decorations/arrow_right.svg";
 
 // Importation des fonctions utilitaires.
 import { getBasePath } from "@/utilities/NextRouter";
+
+// Importation des composants.
+const PhotoGallery = lazy( () => import( "../components/photo-gallery" ) );
 
 // Affichage de la page.
 export default function Page()
@@ -57,81 +57,38 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/discordbot_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/discordbot_gallery_1.jpg`}
-								alt="Image 1" width="502" height="855"
-							/>
-						</a>
-
-						<figcaption>Suivi des actualités</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/discordbot_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/discordbot_gallery_2.jpg`}
-								alt="Image 2" width="314" height="160"
-							/>
-						</a>
-
-						<figcaption>Réponses automatiques</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/discordbot_gallery_3.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/discordbot_gallery_3.jpg`}
-								alt="Image 3" width="365" height="581"
-							/>
-						</a>
-
-						<figcaption>Journalisation interne</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/discordbot_gallery_4.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/discordbot_gallery_4.jpg`}
-								alt="Image 4" width="603" height="378"
-							/>
-						</a>
-
-						<figcaption>Commandes personnalisées</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/discordbot_gallery_5.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/discordbot_gallery_5.jpg`}
-								alt="Image 5" width="289" height="405"
-							/>
-						</a>
-
-						<figcaption>Messages de statut aléatoires</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="discordbot"
+					photos={
+						[
+							{
+								width: 502,
+								height: 855,
+								caption: "Suivi des actualités"
+							},
+							{
+								width: 314,
+								height: 160,
+								caption: "Réponses automatiques"
+							},
+							{
+								width: 365,
+								height: 581,
+								caption: "Journalisation interne"
+							},
+							{
+								width: 603,
+								height: 378,
+								caption: "Commandes personnalisées"
+							},
+							{
+								width: 289,
+								height: 405,
+								caption: "Messages de statut aléatoires"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -192,95 +149,43 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/raven_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/raven_gallery_1.jpg`}
-								alt="Image 1" width="528" height="399"
-							/>
-						</a>
-
-						<figcaption>Communications écrites entre joueurs</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/raven_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/raven_gallery_2.jpg`}
-								alt="Image 2" width="1920" height="1080"
-							/>
-						</a>
-
-						<figcaption>Liste des joueurs connectés</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/raven_gallery_3.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/raven_gallery_3.jpg`}
-								alt="Image 3" width="617" height="1079"
-							/>
-						</a>
-
-						<figcaption>Éléments interactifs avec l&#39;environnement</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/raven_gallery_4.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/raven_gallery_4.jpg`}
-								alt="Image 4" width="981" height="829"
-							/>
-						</a>
-
-						<figcaption>Choix d&#39;un rôle</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/raven_gallery_5.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/raven_gallery_5.jpg`}
-								alt="Image 5" width="196" height="150"
-							/>
-						</a>
-
-						<figcaption>Système d&#39;armements</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/raven_gallery_6.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/raven_gallery_6.jpg`}
-								alt="Image 6" width="1920" height="1080"
-							/>
-						</a>
-
-						<figcaption>Entités et PNJs dynamiques</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="raven"
+					photos={
+						[
+							{
+								width: 528,
+								height: 399,
+								caption: "Communications écrites entre joueurs"
+							},
+							{
+								width: 1920,
+								height: 1080,
+								caption: "Liste des joueurs connectés"
+							},
+							{
+								width: 617,
+								height: 1079,
+								caption: "Éléments interactifs avec l'environnement"
+							},
+							{
+								width: 981,
+								height: 829,
+								caption: "Choix d'un rôle"
+							},
+							{
+								width: 196,
+								height: 150,
+								caption: "Système d'armements"
+							},
+							{
+								width: 1920,
+								height: 1080,
+								caption: "Entités et PNJs dynamiques"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -348,39 +253,23 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/facepunch_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/facepunch_gallery_1.jpg`}
-								alt="Image 1" width="396" height="360"
-							/>
-						</a>
-
-						<figcaption>Choix du répertoire et définition de l&#39;interval de vérification</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/facepunch_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/facepunch_gallery_2.jpg`}
-								alt="Image 2" width="391" height="553"
-							/>
-						</a>
-
-						<figcaption>Affichage des actualités dans la barre de navigation Windows</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="facepunch"
+					photos={
+						[
+							{
+								width: 396,
+								height: 360,
+								caption: "Choix du répertoire et définition de l'interval de vérification"
+							},
+							{
+								width: 391,
+								height: 553,
+								caption: "Affichage des actualités dans la barre de navigation Windows"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -436,25 +325,18 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/steam_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/steam_gallery_1.jpg`}
-								alt="Image 1" width="881" height="363"
-							/>
-						</a>
-
-						<figcaption>Informations détaillées de l&#39;objet</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="steam"
+					photos={
+						[
+							{
+								width: 881,
+								height: 363,
+								caption: "Informations détaillées de l'objet"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -509,39 +391,23 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/pythonrpg_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/pythonrpg_gallery_1.jpg`}
-								alt="Image 1" width="665" height="502"
-							/>
-						</a>
-
-						<figcaption>Plusieurs modes de lecture</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/pythonrpg_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/pythonrpg_gallery_2.jpg`}
-								alt="Image 2" width="964" height="498"
-							/>
-						</a>
-
-						<figcaption>Histoires riches et détaillées</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="pythonrpg"
+					photos={
+						[
+							{
+								width: 665,
+								height: 502,
+								caption: "Plusieurs modes de lecture"
+							},
+							{
+								width: 964,
+								height: 498,
+								caption: "Histoires riches et détaillées"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -599,53 +465,28 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/phpstorage_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/phpstorage_gallery_1.jpg`}
-								alt="Image 1" width="791" height="529"
-							/>
-						</a>
-
-						<figcaption>Interface de téléversement simplifiée</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/phpstorage_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/phpstorage_gallery_2.jpg`}
-								alt="Image 2" width="785" height="562"
-							/>
-						</a>
-
-						<figcaption>Système d&#39;administration des fichiers</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/phpstorage_gallery_3.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/phpstorage_gallery_3.jpg`}
-								alt="Image 3" width="659" height="723"
-							/>
-						</a>
-
-						<figcaption>Création d&#39;une nouvelle version avec Bootstrap</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="phpstorage"
+					photos={
+						[
+							{
+								width: 791,
+								height: 529,
+								caption: "Interface de téléversement simplifiée"
+							},
+							{
+								width: 785,
+								height: 562,
+								caption: "Système d'administration des fichiers"
+							},
+							{
+								width: 659,
+								height: 723,
+								caption: "Création d'une nouvelle version avec Bootstrap"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -724,67 +565,33 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/sourceconsole_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/sourceconsole_gallery_1.jpg`}
-								alt="Image 1" width="1338" height="850"
-							/>
-						</a>
-
-						<figcaption>Page d&#39;accueil avec présentation des fonctionnalités</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/sourceconsole_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/sourceconsole_gallery_2.jpg`}
-								alt="Image 2" width="1338" height="850"
-							/>
-						</a>
-
-						<figcaption>Tableau de bord de visualisation</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/sourceconsole_gallery_3.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/sourceconsole_gallery_3.jpg`}
-								alt="Image 3" width="1338" height="850"
-							/>
-						</a>
-
-						<figcaption>Statistiques d&#39;utilisation des serveurs</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/sourceconsole_gallery_4.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/sourceconsole_gallery_4.jpg`}
-								alt="Image 4" width="1338" height="850"
-							/>
-						</a>
-
-						<figcaption>Compte utilisateur pour modifier les paramètres</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="sourceconsole"
+					photos={
+						[
+							{
+								width: 1338,
+								height: 850,
+								caption: "Page d'accueil avec présentation des fonctionnalités"
+							},
+							{
+								width: 1338,
+								height: 850,
+								caption: "Tableau de bord de visualisation"
+							},
+							{
+								width: 1338,
+								height: 850,
+								caption: "Statistiques d'utilisation des serveurs"
+							},
+							{
+								width: 1338,
+								height: 850,
+								caption: "Compte utilisateur pour modifier les paramètres"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
@@ -864,53 +671,28 @@ export default function Page()
 				<hr />
 
 				{/* Galerie photos */}
-				<div className="images">
-					<Image src={ArrowLeft} alt="" />
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/domego_gallery_1.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/domego_gallery_1.jpg`}
-								alt="Image 1" width="1362" height="937"
-							/>
-						</a>
-
-						<figcaption>Page d&#39;accueil avec la liste des parties</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/domego_gallery_2.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/domego_gallery_2.jpg`}
-								alt="Image 2" width="1362" height="937"
-							/>
-						</a>
-
-						<figcaption>Sélection des r&ocirc;les avec communications textuelles</figcaption>
-					</div>
-
-					<div>
-						<a
-							rel="noopener noreferrer" target="_blank"
-							href={`${ assets }/projects/domego_gallery_3.jpg`}
-						>
-							<Image
-								src={`${ assets }/projects/domego_gallery_3.jpg`}
-								alt="Image 3" width="1362" height="880"
-							/>
-						</a>
-
-						<figcaption>Choix du mode de jeu : joueur ou spectateur</figcaption>
-					</div>
-
-					<Image src={ArrowRight} alt="" />
-				</div>
+				<PhotoGallery
+					project="domego"
+					photos={
+						[
+							{
+								width: 1362,
+								height: 937,
+								caption: "Page d'accueil avec la liste des parties"
+							},
+							{
+								width: 1362,
+								height: 937,
+								caption: "Sélection des rôles avec communications textuelles"
+							},
+							{
+								width: 1362,
+								height: 880,
+								caption: "Choix du mode de jeu : joueur ou spectateur"
+							}
+						]
+					}
+				/>
 
 				<hr />
 
