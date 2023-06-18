@@ -42,10 +42,8 @@ header
 		{
 			// Modification de la disposition des éléments
 			//  sur les écrans de petite taille.
-			top: 5rem;
-			left: 0;
-			right: 0;
 			width: 0;
+			inset: 5rem 0 0;
 			padding: 4rem 0;
 			position: absolute;
 			overflow: hidden;

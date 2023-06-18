@@ -27,8 +27,7 @@ main > a
 	svg
 	{
 		// Délimitation de la zone cliquable.
-		top: 0;
-		right: 0;
+		inset: 0 0 auto auto;
 		position: fixed;
 		clip-path: polygon(0 0, 100% 0, 100% 100%);
 
@@ -345,15 +344,13 @@ section:nth-of-type(3) article
 		&::before
 		{
 			// État initial de l'animation.
-			left: 0;
+			inset: auto 0 0;
 			width: 100%;
 			height: 6px;
-			bottom: 0;
 			content: "";
 			position: absolute;
 			transform: scaleX(0);
 			transition: transform 200ms linear;
-			border-radius: 1.5;
 
 			@include themeColors()
 			{

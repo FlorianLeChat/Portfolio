@@ -83,10 +83,8 @@ header > img
 		&:before
 		{
 			// Barre horizontale à gauche.
-			top: 0;
-			left: 6px;
+			inset: 0 6px;
 			width: 3px;
-			bottom: 0;
 			content: "";
 			position: absolute;
 			background-color: $theme-color-bright;
@@ -95,8 +93,7 @@ header > img
 		&:after
 		{
 			// Ancre sur la barre.
-			top: calc(50% - 7.5px);
-			left: 0;
+			inset: calc(50% - 7.5px) 0;
 			width: 15px;
 			height: 15px;
 			content: "";
@@ -133,10 +130,9 @@ header > img
 		img
 		{
 			// Image représentant un diplôme.
-			right: 0;
+			inset: auto 0 0 auto;
 			width: 3rem;
 			margin: 0.25rem;
-			bottom: 0;
 			position: absolute;
 		}
 	}
@@ -244,10 +240,8 @@ header > img
 		&::before
 		{
 			// Affichage de la timeline sur la gauche.
-			top: 0;
-			left: 15px;
+			inset: 0 15px;
 			width: 5px;
-			bottom: 0;
 			content: "";
 			position: absolute;
 			background-color: white;
@@ -265,8 +259,7 @@ header > img
 			&::before
 			{
 				// Affichage de l'image indiquant le descriptif de l'expérience.
-				top: 21%;
-				left: -0.5rem;
+				inset: 21% auto auto -0.5rem;
 				border: 0.5rem solid transparent;
 				content: "";
 				position: absolute;
@@ -277,8 +270,7 @@ header > img
 			&::after
 			{
 				// Affichage de l'indicateur pour indiquer une nouvelle expérience.
-				top: 20%;
-				left: -44px;
+				inset: 20% -44px;
 				width: 1rem;
 				height: 1rem;
 				border: 0.25rem solid $theme-color-bright;
