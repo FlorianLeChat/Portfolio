@@ -122,7 +122,7 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default function RootLayout( { children }: { children: ReactNode; } ): JSX.Element
+export default function RootLayout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
 	const headersList = headers();
