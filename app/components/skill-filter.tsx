@@ -17,10 +17,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[]; } 
 	const [ skillFilter, setSkillFilter ] = useState( "all" );
 
 	// Mise à jour du filtre des compétences.
-	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) =>
-	{
-		setSkillFilter( event.target.id );
-	};
+	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) => setSkillFilter( event.target.id );
 
 	// L'utilisateur se trouve à plus de 200 pixels du haut de la page.
 	return (

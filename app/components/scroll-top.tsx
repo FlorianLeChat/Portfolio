@@ -14,16 +14,10 @@ export default function ScrollTop()
 	const [ showButton, setShowButton ] = useState( false );
 
 	// Remontée en haut de la page.
-	const scrollToTop = () =>
-	{
-		window.scrollTo( { top: 0, behavior: "smooth" } );
-	};
+	const scrollToTop = () => window.scrollTo( { top: 0, behavior: "smooth" } );
 
 	// Affichage ou disparition du bouton de remontée en haut de page.
-	const onScroll = () =>
-	{
-		setShowButton( window.scrollY > 200 );
-	};
+	const onScroll = () => setShowButton( window.scrollY > 200 );
 
 	// Détection du défilement de la page.
 	//  Source : https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
