@@ -4,8 +4,8 @@
 
 "use client";
 
-import { lazy } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import { useState, lazy, type MouseEvent } from "react";
 
 import { getBasePath } from "@/utilities/NextRouter";
 import { useTranslation } from "@/utilities/ClientTranslations";
@@ -20,13 +20,29 @@ export default function LanguageSelector()
 	const pathname = usePathname();
 	const basePath = getBasePath( true );
 
+	// Déclaration des variables d'état.
+	const [ firstTime, setFirstTime ] = useState( true );
+
 	// Change la langue actuellement sur le site.
-	const switchLanguage = ( language: string ) =>
+	const switchLanguage = ( event: MouseEvent<HTMLButtonElement>, language: string ) =>
 	{
-		// On enregistre la langue dans les cookies.
+		// On empêche le clic sur la liste des langues la première fois
+		//  sur mobile pour éviter de changer la langue par erreur.
+		const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test( navigator.userAgent );
+
+		if ( mobile && firstTime )
+		{
+			event.preventDefault();
+
+			setFirstTime( false );
+
+			return;
+		}
+
+		// On enregistre ensuite la langue dans les cookies.
 		document.cookie = `NEXT_LANGUAGE=${ language }; path=${ basePath }`;
 
-		// On actualise la page en demandant le changement de langue.
+		// On actualise enfin la page en demandant le changement de langue.
 		router.replace( `${ pathname }?language=${ language }` );
 		router.refresh();
 	};
@@ -37,14 +53,14 @@ export default function LanguageSelector()
 			{/* Sélection de la langue */}
 			<ul id="flags">
 				<li>
-					<button type="button" onClick={() => switchLanguage( "fr" )}>
+					<button type="button" onClick={( event ) => switchLanguage( event, "fr" )}>
 						<i className="fi fi-fr" />
 						<span>{t( "pages.legacy.language.fr" )}</span>
 					</button>
 				</li>
 
 				<li>
-					<button type="button" onClick={() => switchLanguage( "en" )}>
+					<button type="button" onClick={( event ) => switchLanguage( event, "en" )}>
 						<i className="fi fi-gb" />
 						<span>{t( "pages.legacy.language.en" )}</span>
 					</button>
@@ -52,14 +68,14 @@ export default function LanguageSelector()
 
 				<li>
 
-					<button type="button" onClick={() => switchLanguage( "es" )}>
+					<button type="button" onClick={( event ) => switchLanguage( event, "es" )}>
 						<i className="fi fi-es" />
 						<span>{t( "pages.legacy.language.es" )}</span>
 					</button>
 				</li>
 
 				<li>
-					<button type="button" onClick={() => switchLanguage( "jp" )}>
+					<button type="button" onClick={( event ) => switchLanguage( event, "jp" )}>
 						<i className="fi fi-jp" />
 						<span>{t( "pages.legacy.language.jp" )}</span>
 					</button>
