@@ -17,7 +17,7 @@ import { getBasePath } from "@/utilities/NextRouter";
 const PhotoGallery = lazy( () => import( "../components/photo-gallery" ) );
 
 // Affichage de la page.
-export default function Page()
+export default async function Page()
 {
 	// Déclaration des constantes.
 	const basePath = getBasePath();
