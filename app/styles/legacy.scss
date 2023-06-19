@@ -490,7 +490,7 @@ h2 a, article a, form a, li > a, footer button
 	&::after
 	{
 		// Création d'une ligne qui apparaîtra progressivement lors de la sélection.
-		inset: 0 -2px;
+		inset: auto -2px 0;
 		position: absolute;
 
 		width: 100%;
