@@ -45,7 +45,7 @@ export function useTranslation()
 		}, {} );
 
 		// On récupère alors la langue du navigateur ou des cookies.
-		language = cookies.NEXT_LANGUAGE ? cookies.NEXT_LANGUAGE : navigator.language.slice( 0, 2 );
+		language = cookies.NEXT_LANGUAGE && navigator.language.slice( 0, 2 );
 	}
 
 	// Si la langue du navigateur est différente de celle de i18next, on la change.
