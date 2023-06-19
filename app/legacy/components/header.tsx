@@ -2,6 +2,7 @@
 // Composant de l'en-tête de l'ancienne version du site.
 //
 import Image from "next/image";
+import { lazy } from "react";
 import { headers } from "next/headers";
 
 import CV from "@/images/platforms/cv.svg";
@@ -17,6 +18,8 @@ import PurpleWaves from "@/images/decorations/header_waves_purple.svg";
 
 import { useTranslation } from "@/utilities/ServerTranslations";
 
+const TypingEffect = lazy( () => import( "./typing-effect" ) );
+
 export default async function Header()
 {
 	// Déclaration des constantes.
@@ -31,7 +34,7 @@ export default async function Header()
 				route.endsWith( "/legacy" ) && (
 					<>
 						{/* Prénom & Nom */}
-						<h1>Florian Trayon</h1>
+						<TypingEffect text="Florian Trayon" />
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.index.subtitle" )}</h2>
@@ -103,7 +106,7 @@ export default async function Header()
 				route.endsWith( "/projects" ) && (
 					<>
 						{/* Titre de la catégorie */}
-						<h1>{t( "pages.legacy.header.projects.title" )}</h1>
+						<TypingEffect text={t( "pages.legacy.header.projects.title" )} />
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.projects.subtitle" )}</h2>
@@ -119,7 +122,7 @@ export default async function Header()
 				route.endsWith( "/skills" ) && (
 					<>
 						{/* Titre de la catégorie */}
-						<h1>{t( "pages.legacy.header.skills.title" )}</h1>
+						<TypingEffect text={t( "pages.legacy.header.skills.title" )} />
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.skills.subtitle" )}</h2>
@@ -135,7 +138,7 @@ export default async function Header()
 				route.endsWith( "/contact" ) && (
 					<>
 						{/* Titre de la catégorie */}
-						<h1>{t( "pages.legacy.header.contact.title" )}</h1>
+						<TypingEffect text={t( "pages.legacy.header.contact.title" )} />
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.contact.subtitle" )}</h2>
