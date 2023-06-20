@@ -108,7 +108,7 @@ export default function Page()
 
 				<input
 					type="email" autoComplete="email" spellCheck="false"
-					id="email" name="email" placeholder="jeandupont@mail.com"
+					id="email" placeholder="jeandupont@mail.com"
 					minLength={10} maxLength={40} onInput={checkField} required
 				/>
 
@@ -116,7 +116,8 @@ export default function Page()
 
 				{/* Sujet de la prise de contact */}
 				<label htmlFor="subject">{t( "pages.legacy.contact.form.subject" )}</label>
-				<select id="subject" name="subject" onInput={checkField}>
+
+				<select id="subject" onInput={checkField}>
 					<option disabled>{t( "pages.legacy.contact.form.subject" )}</option>
 					<option>{t( "pages.legacy.contact.form.subject_1" )}</option>
 					<option>{t( "pages.legacy.contact.form.subject_2" )}</option>
@@ -127,7 +128,7 @@ export default function Page()
 				<label htmlFor="content">{t( "pages.legacy.contact.form.content" )}</label>
 
 				<textarea
-					id="content" name="content" minLength={50} maxLength={4000} onInput={checkField} required
+					id="content" minLength={50} maxLength={4000} onInput={checkField} required
 					placeholder={t( "pages.legacy.index.contact.message" ).replaceAll( "<br>", "\n" )}
 				/>
 
