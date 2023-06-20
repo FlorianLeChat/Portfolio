@@ -36,7 +36,10 @@
 
 		"@typescript-eslint/no-shadow": "error",
 		"@typescript-eslint/no-unused-vars": "error",
+
 		"@next/next/no-before-interactive-script-outside-document": "off", // https://github.com/vercel/next.js/pull/50261
+
+		"jsx-a11y/label-has-associated-control": ["error", { "assert": "either" } ], // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/718
 
 		"react/jsx-indent": ["error", "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
