@@ -26,7 +26,13 @@ export default async function Header()
 	const { t } = await useTranslation();
 	const route = headers().get( "X-Invoke-Path" ) ?? "";
 
-	// Affichage du rendu HTML du composant.
+	// Suppression de l'affichage sur la page de déconnexion de l'administration.
+	if ( route.endsWith( "/admin/logout" ) )
+	{
+		return null;
+	}
+
+	// Affichage conditionnel du rendu HTML du composant.
 	return (
 		<header>
 			{
@@ -145,6 +151,41 @@ export default async function Header()
 
 						{/* Vagues de fin */}
 						<Image src={PurpleWaves} alt="" priority />
+					</>
+				)
+			}
+
+			{
+				// Page de connexion à l'administration.
+				route.endsWith( "/admin/login" ) && (
+					<>
+						{/* Titre de la catégorie */}
+						<TypingEffect text="Authentification" />
+
+						{/* Description succincte */}
+						<h2>Pour accéder à cette ressource, vous devez vous identifier.</h2>
+
+						{/* Heure actuelle */}
+						<p>00:00:00</p>
+					</>
+				)
+			}
+
+			{
+				// Page principale de l'administration.
+				route.endsWith( "/admin" ) && (
+					<>
+						{/* Titre de la catégorie */}
+						<TypingEffect text="Administration" />
+
+						{/* Description succincte */}
+						<h2>Gestion du contenu dynamique de la base de données</h2>
+
+						{/* Heure actuelle */}
+						<p>00:00:00</p>
+
+						{/* Information de connexion */}
+						<p>Connecté en tant que « getUsername(); »</p>
 					</>
 				)
 			}
