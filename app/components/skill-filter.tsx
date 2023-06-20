@@ -17,7 +17,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[]; } 
 	const [ skillFilter, setSkillFilter ] = useState( "all" );
 
 	// Mise à jour du filtre des compétences.
-	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) => setSkillFilter( event.target.id );
+	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) => setSkillFilter( event.currentTarget.id );
 
 	// L'utilisateur se trouve à plus de 200 pixels du haut de la page.
 	return (
@@ -26,17 +26,17 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[]; } 
 			<h2>{t( "pages.index.header_skills" )}</h2>
 
 			{/* Filtre des compétences */}
-			<article onChange={updateSkillFilter}>
-				<input type="radio" id="all" name="skills" defaultChecked />
+			<article>
+				<input type="radio" id="all" onChange={updateSkillFilter} checked={skillFilter === "all"} />
 				<label htmlFor="all">{t( "pages.index.filter_all" )}</label>
 
-				<input type="radio" id="front" name="skills" />
+				<input type="radio" id="front" onChange={updateSkillFilter} checked={skillFilter === "front"} />
 				<label htmlFor="front">{t( "pages.index.filter_front" )}</label>
 
-				<input type="radio" id="back" name="skills" />
+				<input type="radio" id="back" onChange={updateSkillFilter} checked={skillFilter === "back"} />
 				<label htmlFor="back">{t( "pages.index.filter_back" )}</label>
 
-				<input type="radio" id="other" name="skills" />
+				<input type="radio" id="other" onChange={updateSkillFilter} checked={skillFilter === "other"} />
 				<label htmlFor="other">{t( "pages.index.filter_other" )}</label>
 			</article>
 
