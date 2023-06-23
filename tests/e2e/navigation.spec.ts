@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 //
-// Permet d'accéder à la page d'accueil avant chaque test.
+// Accès à la page d'accueil avant chaque test.
 //
 test.beforeEach( async ( { page } ) =>
 {
@@ -10,7 +10,7 @@ test.beforeEach( async ( { page } ) =>
 } );
 
 //
-// Permet de vérifier que le site est accessible et que les contenus sont bien présents.
+// Vérification de l'accessibilité du site et des contenus associés.
 //
 test( "Vérification de certains contenus", async ( { page } ) =>
 {
@@ -28,7 +28,7 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 } );
 
 //
-// Permet de vérifier que le basculement des thèmes de couleurs fonctionne.
+// Vérification du basculement des thèmes de couleurs.
 //
 test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 {
@@ -43,7 +43,7 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 } );
 
 //
-// Permet de vérifier que le consentement des cookies fonctionne.
+// Vérification de l'affichage du consentement des cookies.
 //
 test( "Affichage du consentement des cookies", async ( { page } ) =>
 {
@@ -58,7 +58,7 @@ test( "Affichage du consentement des cookies", async ( { page } ) =>
 } );
 
 //
-// Permet de vérifier que la navigation par l'en-tête fonctionne.
+// Vérification de la navigation par l'en-tête.
 //
 test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 {
@@ -82,7 +82,7 @@ test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 } );
 
 //
-// Permet de vérifier que le retour en haut de page fonctionne.
+// Vérification du retour en haut de page via le bouton dédié.
 //
 test( "Retour en haut de page", async ( { page, isMobile } ) =>
 {
@@ -107,7 +107,7 @@ test( "Retour en haut de page", async ( { page, isMobile } ) =>
 } );
 
 //
-// Permet de vérifier que le téléchargement du C.V. fonctionne.
+// Vérification de l'accès de téléchargement vers le C.V.
 //
 test( "Disponibilité du C.V", async ( { page, context } ) =>
 {
@@ -126,7 +126,7 @@ test( "Disponibilité du C.V", async ( { page, context } ) =>
 } );
 
 //
-// Permet de vérifier que le filtrage des compétences fonctionne.
+// Vérification du filtrage des compétences.
 //
 test( "Filtrage des compétences", async ( { page } ) =>
 {

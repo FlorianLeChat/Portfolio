@@ -1,5 +1,5 @@
 //
-// Permet de récupérer les traductions côté serveur.
+// Récupération des traductions i18next côté serveur.
 //  Sources : https://locize.com/blog/next-13-app-dir-i18n/ et https://github.com/i18next/next-13-app-dir-i18next-no-locale-path-example
 //
 
