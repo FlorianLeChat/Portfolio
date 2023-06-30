@@ -96,9 +96,9 @@ export default function Analytics()
 				{`
 					window.dataLayer = window.dataLayer || [];
 
-					function gtag()
+					function gtag( ...args )
 					{
-						dataLayer.push( arguments );
+						window.dataLayer.push( ...args );
 					}
 
 					gtag( "js", new Date() );
