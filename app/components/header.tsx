@@ -15,7 +15,7 @@ export default function Header()
 {
 	// Déclaration des constantes.
 	const { t } = useTranslation();
-	const basePath = getBasePath( true );
+	const basePath = getBasePath();
 
 	// Déclaration des variables d'état.
 	const [ theme, setTheme ] = useState( "light" );
