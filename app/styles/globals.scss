@@ -369,9 +369,19 @@ header > a, header button, section:nth-of-type(2) a
 	// Conteneur principal des éléments enfants.
 	font-family: inherit;
 
-	.cm, .pm
+	.cm
 	{
 		// Conteneur de la bannière de consentement.
+		@include themeColors()
+		{
+			border-top: 1px solid rgba(getThemedColor("primary"), 0.5);
+			background-color: getThemedColor("background");
+		}
+	}
+
+	.pm
+	{
+		// Conteneur du gestionnaire des préférences.
 		@include themeColors()
 		{
 			border: 1px solid rgba(getThemedColor("primary"), 0.5);
