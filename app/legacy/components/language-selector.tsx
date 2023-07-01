@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState, lazy, type MouseEvent } from "react";
 
 import { getBasePath } from "@/utilities/NextRouter";
@@ -17,7 +17,6 @@ export default function LanguageSelector()
 	// Déclaration des constantes.
 	const { t } = useTranslation();
 	const router = useRouter();
-	const pathname = usePathname();
 	const basePath = getBasePath( true );
 
 	// Déclaration des variables d'état.
@@ -43,7 +42,7 @@ export default function LanguageSelector()
 		document.cookie = `NEXT_LANGUAGE=${ language }; path=${ basePath }`;
 
 		// On actualise enfin la page en demandant le changement de langue.
-		router.replace( `${ pathname }?language=${ language }` );
+		router.replace( `?language=${ language }` );
 		router.refresh();
 	};
 
