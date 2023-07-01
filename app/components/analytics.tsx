@@ -36,7 +36,7 @@ export default function Analytics()
 
 				// Paramètres internes des cookies.
 				cookie: {
-					path: getBasePath( true ),
+					path: getBasePath(),
 					name: "NEXT_ANALYTICS"
 				},
 
