@@ -34,6 +34,7 @@
 			"download_resume": "Télécharger le C.V"
 		},
 		"legacy": {
+			"deprecated": "Vous êtes actuellement dans l'ancienne version du site, les informations affichées ne sont plus mises à jour et servent uniquement d'archive.",
 			"header": {
 				"index": {
 					"subtitle": "Développeur Web (Front\/Back-End)"

@@ -34,6 +34,7 @@
 			"download_resume": "Download the resume"
 		},
 		"legacy": {
+			"deprecated": "You are currently in the legacy website version. Current data is no longer updated and only serves as a historical archive.",
 			"header": {
 				"index": {
 					"subtitle": "Web Developer (Front\/Back-End)"

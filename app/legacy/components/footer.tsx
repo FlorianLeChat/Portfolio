@@ -64,6 +64,11 @@ export default function Footer()
 					</li>
 				</ul>
 			</footer>
+
+			{/* Bannière de dépréciation */}
+			<section id="deprecated">
+				<p>{t( "pages.legacy.deprecated" )}</p>
+			</section>
 		</>
 	);
 }

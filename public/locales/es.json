@@ -2,6 +2,7 @@
 {
 	"pages": {
 		"legacy": {
+			"deprecated": "Actualmente se encuentra en la versión antigua del sitio. La información mostrada ya no está actualizada y sólo sirve de archivo.",
 			"header": {
 				"index": {
 					"subtitle": "Desarrollador web (Front\/Back-End)"
