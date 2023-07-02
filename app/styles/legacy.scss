@@ -17,6 +17,9 @@ $theme-text-color: rgb(161, 161, 170);				// Couleur de certains paragraphes
 $theme-background-color: rgb(24, 24, 27);			// Couleur de fond par défaut
 $theme-box-color: rgb(39, 39, 42);					// Couleur de certains blocs
 
+$deprecated-box-color: rgb(51, 51, 51);			// Couleur de fond du bloc de dépréciation
+$deprecated-text-color: rgb(245, 154, 35);			// Couleur du texte du bloc de dépréciation
+
 // --------------- //
 // Document entier //
 // --------------- //
@@ -60,7 +63,7 @@ strong
 noscript
 {
 	// Avertissement page sans JavaScript.
-	inset: 1rem 1rem auto;
+	inset: 1rem 1rem auto auto;
 	padding: 0.5rem;
 	margin-left: 6rem;
 
@@ -69,6 +72,13 @@ noscript
 
 	color: white;
 	background-color: red;
+
+	> h1, > h2
+	{
+		// Titres de la page.
+		margin: 0;
+		font-size: 1rem;
+	}
 }
 
 ::selection
@@ -344,7 +354,7 @@ ul#flags
 	height: 3rem;
 
 	// Alignement.
-	inset: auto 1rem 1rem auto;
+	inset: auto 1rem 3.5rem auto;
 	position: fixed;
 
 	// Disposition.
@@ -516,5 +526,26 @@ h2 a, article a, form a, li > a, footer button
 			transition: transform 300ms ease;
 			background-color: currentColor;
 		}
+	}
+}
+
+// ----------------------- //
+// Bandeau de dépréciation //
+// ----------------------- //
+#deprecated
+{
+	bottom: 0;
+	padding: 0.5rem;
+	position: sticky;
+	font-size: 1.25rem;
+	background-size: 100px 100px;
+	background-image: linear-gradient(45deg, $deprecated-text-color 12.5%, $deprecated-box-color 12.5%, $deprecated-box-color 37.5%, $deprecated-text-color 37.5%, $deprecated-text-color 62.5%, $deprecated-box-color 62.5%, $deprecated-box-color 87.5%, $deprecated-text-color 87.5%);
+	background-position: 50px 50px;
+
+	p
+	{
+		margin: 0;
+		display: inline;
+		background-color: $deprecated-box-color;
 	}
 }
