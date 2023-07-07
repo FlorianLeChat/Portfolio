@@ -7,7 +7,6 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
-import { dir } from "i18next";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { headers, cookies } from "next/headers";
 import { Poppins, Open_Sans } from "next/font/google";
@@ -127,14 +126,13 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 	// Déclaration des constantes.
 	const headersList = headers();
 	const cookiesList = cookies();
-	const language = getLanguage( headersList, cookiesList );
 	const legacy = headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
 	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
 	const font = legacy ? openSans : poppins;
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={language} dir={dir( language )} className={`${ font.className } theme-${ theme }`}>
+		<html lang={getLanguage( headersList, cookiesList )} className={`${ font.className } theme-${ theme }`}>
 			{/* Corps de la page */}
 			<body>
 				{/* Avertissement page sans JavaScript */}
