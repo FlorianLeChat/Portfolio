@@ -34,7 +34,7 @@ export default function Header()
 
 			// On supprime alors l'ensemble des classes de thème
 			//  avant d'ajouter celle correspondant au thème cible.
-			html.classList.remove( "theme-light", "theme-dark", "c_darkmode" );
+			html.classList.remove( "theme-light", "theme-dark", "cc--darkmode" );
 			html.classList.add( `theme-${ target }` );
 
 			setTheme( target );
@@ -43,7 +43,7 @@ export default function Header()
 			//  de la fenêtre du consentement des cookies.
 			if ( target === "dark" )
 			{
-				html.classList.add( "c_darkmode" );
+				html.classList.add( "cc--darkmode" );
 			}
 
 			// On enregistre enfin le thème cible dans les cookies du navigateur.
