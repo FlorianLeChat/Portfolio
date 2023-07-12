@@ -127,7 +127,7 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 	const headersList = headers();
 	const cookiesList = cookies();
 	const legacy = headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
-	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark c_darkmode" : "light";
+	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark cc--darkmode" : "light";
 	const font = legacy ? openSans : poppins;
 
 	// Affichage du rendu HTML de la page.
