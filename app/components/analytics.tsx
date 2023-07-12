@@ -5,7 +5,7 @@
 "use client";
 
 import Script from "next/script";
-import * as CookieConsent from "vanilla-cookieconsent";
+import { run } from "vanilla-cookieconsent";
 import { useState, useEffect } from "react";
 
 import { getBasePath } from "@/utilities/NextRouter";
@@ -23,7 +23,7 @@ export default function Analytics()
 	//  Source : https://cookieconsent.orestbida.com/reference/api-reference.html
 	useEffect( () =>
 	{
-		CookieConsent.run(
+		run(
 			{
 				// Activation automatique de la fenêtre de consentement.
 				autoShow: process.env.NODE_ENV === "production",
@@ -59,6 +59,15 @@ export default function Analytics()
 							cookies: [
 								{
 									name: /^(_ga|_gid)/
+								}
+							]
+						}
+					},
+					security: {
+						autoClear: {
+							cookies: [
+								{
+									name: /^(OTZ|__Secure-ENID|SOCS|CONSENT|AEC)/
 								}
 							]
 						}
