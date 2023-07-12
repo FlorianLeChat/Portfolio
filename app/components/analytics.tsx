@@ -77,7 +77,7 @@ export default function Analytics()
 				// Configuration des traductions.
 				language: {
 					default: "en",
-					autoDetect: "browser",
+					autoDetect: "document",
 					translations: {
 						en: `${ basePath }/locales/en.json`,
 						fr: `${ basePath }/locales/fr.json`
