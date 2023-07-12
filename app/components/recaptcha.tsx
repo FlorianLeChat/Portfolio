@@ -5,8 +5,15 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect } from "react";
 import { getBasePath } from "@/utilities/NextRouter";
+import type { CookieValue } from "vanilla-cookieconsent";
+import { useState, useEffect, useCallback } from "react";
+
+declare global
+{
+	// Déclaration du contexte global du navigateur.
+	interface Window { setupRecaptcha: () => void; }
+}
 
 export default function SpeechRecognition()
 {
@@ -14,9 +21,19 @@ export default function SpeechRecognition()
 	const basePath = getBasePath();
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
 	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "" );
+	recaptchaUrl.searchParams.append( "onload", "setupRecaptcha" );
+
+	// Déclaration des variables d'état.
+	const [ recaptcha, setRecaptcha ] = useState( false );
+
+	// Activation des services Google reCAPTCHA au consentement des cookies.
+	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue; }> ) =>
+	{
+		setRecaptcha( event.detail?.cookie.categories.some( ( category: string ) => category === "security" ) ?? false );
+	}, [] );
 
 	// Vérification de la validité de l'utilisateur via Google reCAPTCHA.
-	useEffect( () =>
+	const setupRecaptcha = useCallback( () =>
 	{
 		// On vérifie d'abord si le navigateur a chargé les scripts nécessaires
 		//  et si la clé publique est définie.
@@ -44,8 +61,19 @@ export default function SpeechRecognition()
 		} );
 	}, [ basePath ] );
 
+	// Détection des changements de consentement des cookies.
+	useEffect( () =>
+	{
+		// Ajout de la fonction d'installation des services de reCAPTCHA
+		//  dans le contexte global du navigateur.
+		window.setupRecaptcha = setupRecaptcha;
+
+		// Ajout de l'écouteur d'événement pour le consentement des cookies.
+		window.addEventListener( "cc:onConsent", onConsent );
+
+		return () => window.removeEventListener( "cc:onConsent", onConsent );
+	}, [ onConsent, setupRecaptcha ] );
+
 	// Affichage du rendu HTML du composant.
-	return (
-		<Script src={recaptchaUrl.href} strategy="beforeInteractive" />
-	);
+	return ( recaptcha && <Script src={recaptchaUrl.href} strategy="lazyOnload" /> );
 }

@@ -169,7 +169,41 @@
 			{
 				"title": "Cookies strictement nécessaires",
 				"description": "Ces cookies sont essentiels au bon fonctionnement du site Internet. Sans ces cookies, le site ne fonctionnerait pas correctement.",
-				"linkedCategory": "necessary"
+				"linkedCategory": "necessary",
+				"cookieTable": {
+					"headers": {
+						"name": "Nom",
+						"domain": "Service",
+						"description": "Description",
+						"expiration": "Expiration"
+					},
+					"body": [
+						{
+							"name": "__cf_bm",
+							"domain": "Cloudflare",
+							"description": "Cookie mis en place par <a href=\"https://www.cloudflare.com/\">Cloudflare</a>.",
+							"expiration": "Expire après 30 minutes."
+						},
+						{
+							"name": "NEXT_COOKIE",
+							"domain": "Cookie Consent",
+							"description": "Cookie mis en place par <a href=\"https://cookieconsent.orestbida.com/\">Cookie Consent</a>.",
+							"expiration": "Expire après 6 mois."
+						},
+						{
+							"name": "NEXT_THEME",
+							"domain": "NextJS",
+							"description": "Cookie mis en place par le site Internet.",
+							"expiration": "Expire à la fin de la session."
+						},
+						{
+							"name": "NEXT_LANGUAGE",
+							"domain": "NextJS",
+							"description": "Cookie mis en place par le site Internet.",
+							"expiration": "Expire à la fin de la session."
+						}
+					]
+				}
 			},
 			{
 				"title": "Cookies de performance et d'analyse",
@@ -186,14 +220,59 @@
 						{
 							"name": "_ga",
 							"domain": "Google Analytics",
-							"description": "Cookie mis en place par <a href=\"https://support.google.com/analytics/answer/10089681\">Google Analytics</a>.",
-							"expiration": "Expire après 12 jours"
+							"description": "Cookie mis en place par <a href=\"https://analytics.google.com/analytics/web/\">Google Analytics</a>.",
+							"expiration": "Expire après 2 ans."
+						}
+					]
+				}
+			},
+			{
+				"title": "Cookies de sécurité",
+				"description": "Ces cookies permettent d'authentifier les utilisateurs, d'empêcher l'utilisation frauduleuse des informations de connexion et de protéger les internautes qui interagissent avec le site Internet.",
+				"linkedCategory": "security",
+				"cookieTable": {
+					"headers": {
+						"name": "Nom",
+						"domain": "Service",
+						"description": "Description",
+						"expiration": "Expiration"
+					},
+					"body": [
+						{
+							"name": "OTZ",
+							"domain": "Google reCAPTCHA",
+							"description": "Cookie mis en place par <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"expiration": "Expire après 1 mois."
 						},
 						{
-							"name": "_gid",
-							"domain": "Google Analytics",
-							"description": "Cookie mis en place par <a href=\"https://support.google.com/analytics/answer/10089681\">Google Analytics</a>.",
-							"expiration": "Session"
+							"name": "__Secure-ENID",
+							"domain": "Google reCAPTCHA",
+							"description": "Cookie mis en place par <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"expiration": "Expire après 1 an."
+						},
+						{
+							"name": "SOCS",
+							"domain": "Google reCAPTCHA",
+							"description": "Cookie mis en place par <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"expiration": "Expire après 13 mois."
+						},
+						{
+							"name": "CONSENT",
+							"domain": "Google reCAPTCHA",
+							"description": "Cookie mis en place par <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"expiration": "Expire après 2 ans."
+						},
+						{
+							"name": "DV",
+							"domain": "Google reCAPTCHA",
+							"description": "Cookie mis en place par <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"expiration": "Expire après 1 jour."
+						},
+						{
+							"name": "AEC",
+							"domain": "Google reCAPTCHA",
+							"description": "Cookie mis en place par <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"expiration": "Expire après 6 mois."
 						}
 					]
 				}
