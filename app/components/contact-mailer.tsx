@@ -44,12 +44,12 @@ export default function Home()
 		{
 			case "google":
 				// On ouvre la messagerie GMail.
-				window.open( "https://mail.google.com/mail/?view=cm&fs=1&to=floriantrayon942@gmail.com", "_blank" );
+				window.open( "https://mail.google.com/mail/?view=cm&fs=1&to=contact@florian-dev.fr", "_blank" );
 				break;
 
 			case "default":
 				// On ouvre la messagerie par défaut.
-				window.open( "mailto:floriantrayon942@gmail.com", "_blank" );
+				window.open( "mailto:contact@florian-dev.fr", "_blank" );
 				break;
 
 			default:
