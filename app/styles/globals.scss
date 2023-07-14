@@ -451,6 +451,24 @@ header > a, header button, section:nth-of-type(2) a
 				border-color: rgba(getThemedColor("primary"), 0.25);
 			}
 		}
+
+		.pm__section-arrow
+		{
+			// Flèches de chaque section.
+			@include themeColors()
+			{
+				background-color: getThemedColor("primary");
+			}
+
+			svg
+			{
+				// Icône de la flèche.
+				@include themeColors()
+				{
+					stroke: getThemedColor("background");
+				}
+			}
+		}
 	}
 
 	.cm__title, .pm__title, .pm__section-title
@@ -540,30 +558,21 @@ header > a, header button, section:nth-of-type(2) a
 			}
 		}
 
-		&::before
-		{
-			// Croix gauche de fermeture de la bannière de consentement.
-			@include themeColors()
-			{
-				background-color: getThemedColor("background");
-			}
-		}
-
-		&::after
-		{
-			// Croix droite de fermeture de la bannière de consentement.
-			@include themeColors()
-			{
-				background-color: getThemedColor("background");
-			}
-		}
-
 		&:hover
 		{
 			// Effet de survol.
 			@include themeColors()
 			{
 				background-color: getThemedColor("primary-alt");
+			}
+		}
+
+		svg
+		{
+			// Croix de fermeture de la bannière de consentement.
+			@include themeColors()
+			{
+				stroke: getThemedColor("background");
 			}
 		}
 	}
@@ -586,29 +595,38 @@ header > a, header button, section:nth-of-type(2) a
 		}
 	}
 
-	.section__toggle:checked
+	.section__toggle
 	{
-		// Arrière-plan des bascules du gestionnaire des préférences.
-		&:disabled ~ .toggle__icon
+		// Bascules du gestionnaire des préférences.
+		~ .toggle__icon
 		{
-			// Bascules désactivées.
+			// Bascules inactives.
 			@include themeColors()
 			{
 				box-shadow: 0 0 0 1px rgba(getThemedColor("primary"), 0.25);
-				background-color: rgba(getThemedColor("primary"), 0.25);
+				background-color: getThemedColor("background");
 			}
 
-			.toggle__icon-on:before
+			.toggle__icon-circle
 			{
-				// Icône de la bascule.
+				// Cercle de la bascule.
 				@include themeColors()
 				{
-					border-color: rgba(getThemedColor("primary"), 0.5);
+					background-color: getThemedColor("primary");
+				}
+
+				.toggle__icon-off svg
+				{
+					// Icône de la bascule.
+					@include themeColors()
+					{
+						stroke: getThemedColor("background");
+					}
 				}
 			}
 		}
 
-		&:not(:disabled) ~ .toggle__icon
+		&:checked ~ .toggle__icon
 		{
 			// Bascules actives.
 			@include themeColors()
@@ -617,12 +635,49 @@ header > a, header button, section:nth-of-type(2) a
 				background-color: getThemedColor("primary");
 			}
 
-			.toggle__icon-on:before
+			.toggle__icon-circle
 			{
-				// Icône de la bascule.
+				// Cercle de la bascule.
 				@include themeColors()
 				{
-					border-color: getThemedColor("primary");
+					background-color: getThemedColor("background");
+				}
+
+				.toggle__icon-on svg
+				{
+					// Icône de la bascule.
+					@include themeColors()
+					{
+						stroke: getThemedColor("primary");
+					}
+				}
+			}
+		}
+
+		&:checked:disabled ~ .toggle__icon
+		{
+			// Bascules désactivées mais actives.
+			@include themeColors()
+			{
+				box-shadow: 0 0 0 1px rgba(getThemedColor("primary"), 0.25);
+				background-color: rgba(getThemedColor("primary"), 0.25);
+			}
+
+			.toggle__icon-circle
+			{
+				// Cercle de la bascule.
+				@include themeColors()
+				{
+					background-color: getThemedColor("background");
+				}
+
+				.toggle__icon-on svg
+				{
+					// Icône de la bascule.
+					@include themeColors()
+					{
+						stroke: rgba(getThemedColor("primary"), 0.25);
+					}
 				}
 			}
 		}
