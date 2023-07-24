@@ -1,101 +1,35 @@
 //
-// Composant du consentement des cookies pour Google Analytics.
+// Composant des services de suivi via Google Analytics.
 //
 
 "use client";
 
 import Script from "next/script";
-import { run } from "vanilla-cookieconsent";
-import { useState, useEffect } from "react";
-
-import { getBasePath } from "@/utilities/NextRouter";
+import type { CookieValue } from "vanilla-cookieconsent";
+import { useState, useEffect, useCallback } from "react";
 
 export default function Analytics()
 {
 	// Déclaration des constantes.
-	const basePath = getBasePath();
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
 
 	// Déclaration des variables d'état.
 	const [ analytics, setAnalytics ] = useState( false );
 
-	// Affichage du consentement des cookies.
-	//  Source : https://cookieconsent.orestbida.com/reference/api-reference.html
+	// Activation des services Google Analytics au consentement des cookies.
+	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue; }> ) =>
+	{
+		setAnalytics( event.detail?.cookie.categories.some( ( category: string ) => category === "analytics" ) ?? false );
+	}, [] );
+
+	// Détection des changements de consentement des cookies.
 	useEffect( () =>
 	{
-		run(
-			{
-				// Activation automatique de la fenêtre de consentement.
-				autoShow: process.env.NODE_ENV === "production",
+		// Ajout de l'écouteur d'événement pour le consentement des cookies.
+		window.addEventListener( "cc:onConsent", onConsent );
 
-				// Désactivation de l'interaction avec la page.
-				disablePageInteraction: true,
-
-				// Disparition du mécanisme pour les robots.
-				hideFromBots: process.env.NODE_ENV === "production",
-
-				// Paramètres internes des cookies.
-				cookie: {
-					path: getBasePath(),
-					name: "NEXT_ANALYTICS"
-				},
-
-				// Paramètres de l'interface utilisateur.
-				guiOptions: {
-					consentModal: {
-						layout: "bar",
-						position: "bottom center"
-					}
-				},
-
-				// Configuration des catégories de cookies.
-				categories: {
-					necessary: {
-						enabled: true,
-						readOnly: true
-					},
-					analytics: {
-						autoClear: {
-							cookies: [
-								{
-									name: /^(_ga|_gid)/
-								}
-							]
-						}
-					},
-					security: {
-						autoClear: {
-							cookies: [
-								{
-									name: /^(OTZ|__Secure-ENID|SOCS|CONSENT|AEC)/
-								}
-							]
-						}
-					}
-				},
-
-				// Configuration des traductions.
-				language: {
-					default: "en",
-					autoDetect: "document",
-					translations: {
-						en: `${ basePath }/locales/en.json`,
-						fr: `${ basePath }/locales/fr.json`
-					}
-				},
-
-				// Exécution des actions de consentement.
-				onConsent: ( { cookie } ) => (
-					cookie.categories.find( ( category: string ) => category === "analytics" ) && setAnalytics( true )
-				),
-
-				// Exécution des actions de changement.
-				onChange: ( { cookie } ) => (
-					cookie.categories.find( ( category: string ) => category === "analytics" ) && setAnalytics( true )
-				)
-			}
-		);
-	}, [ basePath ] );
+		return () => window.removeEventListener( "cc:onConsent", onConsent );
+	}, [ onConsent, setAnalytics ] );
 
 	// Affichage conditionnel du rendu HTML du composant.
 	return analytics ? (
