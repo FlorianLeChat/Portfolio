@@ -5,9 +5,8 @@ import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST( request: NextRequest )
 {
-	// On vérifie d'abord si on se trouve actuellement dans un environnement
-	//  de développement ou de production et si la clé secrète de l'API
-	//  de Google reCAPTCHA a été définie ou non.
+	// On vérifie d'abord si la clé secrète de l'API de Google reCAPTCHA
+	//  a été définie ou non.
 	const secret = process.env.CAPTCHA_SECRET_KEY;
 
 	if ( !secret )

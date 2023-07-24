@@ -25,6 +25,7 @@ const Loading = lazy( () => import( "./components/loading" ) );
 const Analytics = lazy( () => import( "./components/analytics" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
+const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
 // Déclaration des propriétés de la page.
@@ -153,6 +154,9 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 
 						{/* Composant enfant */}
 						<main>{children}</main>
+
+						{/* Consentement des cookies */}
+						<CookieConsent />
 
 						{/* Google Analytics */}
 						<Analytics />
