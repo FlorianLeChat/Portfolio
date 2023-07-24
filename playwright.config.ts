@@ -20,7 +20,7 @@ export default defineConfig(
 		outputDir: "test-results/",
 		webServer: {
 			port,
-			command: "npm run dev",
+			command: "next start",
 			reuseExistingServer: !process.env.CI
 		},
 		projects: [
