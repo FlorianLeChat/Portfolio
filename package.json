@@ -53,7 +53,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "test": "playwright test",
+    "test": "npm run build && playwright test",
     "lint": "eslint . --config .eslintrc.json --ext .js,.jsx,.ts,.tsx",
     "build": "next build",
     "start": "pm2 start --name portfolio next -- start -p 3000",
