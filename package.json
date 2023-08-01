@@ -20,7 +20,7 @@
     "sanitize.css": "~13.0",
     "normalize.css": "~8.0",
     "react-i18next": "~13.0",
-    "vanilla-cookieconsent": "3.0.0-rc.15",
+    "vanilla-cookieconsent": "3.0.0-rc.16",
     "i18next-resources-to-backend": "~1.1",
     "@fortawesome/react-fontawesome": "~0.2",
     "@fortawesome/fontawesome-svg-core": "~6.4",
