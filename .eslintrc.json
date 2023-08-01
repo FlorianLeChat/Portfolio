@@ -44,6 +44,7 @@
 		"react/react-in-jsx-scope": "off",
 		"react/no-array-index-key": "off",
 		"react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
+		"react-hooks/rules-of-hooks": "off", // https://github.com/vercel/next.js/issues/52566
 		"react/jsx-max-props-per-line": ["error", { "maximum": 6 }],
 		"react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
 		"react/jsx-props-no-spreading": ["error", { "exceptions": ["Component"] }],
