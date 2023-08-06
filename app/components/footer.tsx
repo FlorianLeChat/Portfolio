@@ -25,15 +25,19 @@ export default function Footer()
 			</span>
 
 			{/* Avertissement de Google reCAPTCHA */}
-			<small>
-				<Trans
-					i18nKey="pages.index.footer_recaptcha"
-					components={{
-						a1: <a href="https://policies.google.com/privacy">...</a>,
-						a2: <a href="https://policies.google.com/terms">...</a>
-					}}
-				/>
-			</small>
+			{
+				( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" ) && (
+					<small>
+						<Trans
+							i18nKey="pages.index.footer_recaptcha"
+							components={{
+								a1: <a href="https://policies.google.com/privacy">...</a>,
+								a2: <a href="https://policies.google.com/terms">...</a>
+							}}
+						/>
+					</small>
+				)
+			}
 
 			{/* Lien vers l'ancienne version du site */}
 			<small>

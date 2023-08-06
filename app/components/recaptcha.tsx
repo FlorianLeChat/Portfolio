@@ -15,12 +15,18 @@ declare global
 	interface Window { setupRecaptcha: () => void; }
 }
 
-export default function SpeechRecognition()
+export default function Recaptcha()
 {
+	// Vérification de l'activation du service.
+	if ( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false" )
+	{
+		return null;
+	}
+
 	// Déclaration des constantes.
 	const basePath = getBasePath();
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
-	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "" );
+	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY ?? "" );
 	recaptchaUrl.searchParams.append( "onload", "setupRecaptcha" );
 
 	// Déclaration des variables d'état.
@@ -35,9 +41,8 @@ export default function SpeechRecognition()
 	// Vérification de la validité de l'utilisateur via Google reCAPTCHA.
 	const setupRecaptcha = useCallback( () =>
 	{
-		// On vérifie d'abord si le navigateur a chargé les scripts nécessaires
-		//  et si la clé publique est définie.
-		if ( typeof window.grecaptcha === "undefined" || !process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY )
+		// On vérifie d'abord si le navigateur a chargé les scripts nécessaires.
+		if ( typeof window.grecaptcha === "undefined" )
 		{
 			return;
 		}
@@ -46,7 +51,7 @@ export default function SpeechRecognition()
 		window.grecaptcha.ready( async () =>
 		{
 			// On génère alors un jeton d'authentification...
-			const token = await window.grecaptcha.execute( process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY ?? "", {
+			const token = await window.grecaptcha.execute( process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY ?? "", {
 				action: "create"
 			} );
 
