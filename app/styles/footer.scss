@@ -16,23 +16,23 @@ footer
 		background-color: getThemedColor("background-alt");
 	}
 
-	small
+	> span a
 	{
 		// Notes complémentaires.
-		margin-left: 0.25rem;
+		margin-right: 0.25rem;
+	}
 
-		&:nth-of-type(2)
+	> small:last-of-type
+	{
+		// Redirection vers l'ancienne version du site.
+		gap: 0.25rem;
+		display: flex;
+		align-items: center;
+
+		svg
 		{
-			// Redirection vers l'ancienne version du site.
-			gap: 0.25rem;
-			display: flex;
-			align-items: center;
-
-			svg
-			{
-				// Icône de PHP.
-				font-size: 1.25rem;
-			}
+			// Icône de PHP.
+			font-size: 1.25rem;
 		}
 	}
 }

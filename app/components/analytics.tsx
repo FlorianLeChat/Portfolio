@@ -10,6 +10,12 @@ import { useState, useEffect, useCallback } from "react";
 
 export default function Analytics()
 {
+	// Vérification de l'activation du service.
+	if ( process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "false" )
+	{
+		return null;
+	}
+
 	// Déclaration des constantes.
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
 
@@ -45,7 +51,7 @@ export default function Analytics()
 					}
 
 					gtag( "js", new Date() );
-					gtag( "config", "${ process.env.NEXT_PUBLIC_ANALYTICS_IDENTIFIER ?? "" }" );
+					gtag( "config", "${ process.env.NEXT_PUBLIC_ANALYTICS_TAG ?? "" }" );
 				`}
 			</Script>
 		</>

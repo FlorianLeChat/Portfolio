@@ -5,11 +5,8 @@ import { type NextRequest, NextResponse } from "next/server";
 
 export async function POST( request: NextRequest )
 {
-	// On vérifie d'abord si la clé secrète de l'API de Google reCAPTCHA
-	//  a été définie ou non.
-	const secret = process.env.CAPTCHA_SECRET_KEY;
-
-	if ( !secret )
+	// On vérifie d'abord si le service reCAPTCHA est activé ou non.
+	if ( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false" )
 	{
 		return new NextResponse( null, { status: 401 } );
 	}
@@ -33,7 +30,7 @@ export async function POST( request: NextRequest )
 	// On effectue alors une requête à l'API de Google reCAPTCHA à des fins de
 	//  statistiques et de vérification de la validité du jeton d'authentification.
 	await fetch(
-		`https://www.google.com/recaptcha/api/siteverify?secret=${ secret }&response=${ token }`,
+		`https://www.google.com/recaptcha/api/siteverify?secret=${ process.env.RECAPTCHA_SECRET_KEY }&response=${ token }`,
 		{ method: "POST" }
 	);
 
