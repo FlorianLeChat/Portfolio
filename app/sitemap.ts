@@ -2,12 +2,12 @@
 // Route vers le fichier du plan du site.
 //  Source : https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
 //
-import type { MetadataRoute } from "next";
+import { generateMetadata } from "./layout";
 
-export default function Sitemap(): MetadataRoute.Sitemap
+export default async function Sitemap()
 {
 	// Déclaration des constantes.
-	const url = process.env.NEXT_PUBLIC_URL ?? "";
+	const url = ( await generateMetadata() ).metadataBase.href;
 	const date = new Date();
 	const legacy = new URL( "/legacy", url ).href;
 

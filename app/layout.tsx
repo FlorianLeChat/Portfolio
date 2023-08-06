@@ -12,9 +12,6 @@ import { headers, cookies } from "next/headers";
 import { Poppins, Open_Sans } from "next/font/google";
 import { Suspense, lazy, type ReactNode } from "react";
 
-// Importation des types.
-import type { Metadata } from "next";
-
 // Importation des fonctions utilitaires.
 import { getLanguage } from "@/utilities/NextRouter";
 
@@ -29,81 +26,100 @@ const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
 // Déclaration des propriétés de la page.
-export const metadata: Metadata = {
-	// Méta-données du document.
-	title: process.env.NEXT_PUBLIC_TITLE,
-	authors: [ { name: process.env.NEXT_PUBLIC_AUTHOR, url: "https://github.com/FlorianLeChat" } ],
-	description: process.env.NEXT_PUBLIC_DESCRIPTION,
-	keywords: process.env.NEXT_PUBLIC_TAGS,
-	viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
-	manifest: new URL( "manifest.json", process.env.NEXT_PUBLIC_URL ),
-	themeColor: "#306cc4",
-	metadataBase: new URL( process.env.NEXT_PUBLIC_URL ?? "" ),
+export async function generateMetadata()
+{
+	// On récupère d'abord les informations du dépôt GitHub.
+	const repository = await ( await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio", {
+		cache: "force-cache"
+	} ) ).json() as Record<string, string>;
 
-	// Icônes du document.
-	icons: {
-		icon: [
-			{
-				url: new URL( "assets/favicons/16x16.webp", process.env.NEXT_PUBLIC_URL ),
-				type: "image/webp",
-				sizes: "16x16"
-			},
-			{
-				url: new URL( "assets/favicons/32x32.webp", process.env.NEXT_PUBLIC_URL ),
-				type: "image/webp",
-				sizes: "32x32"
-			},
-			{
-				url: new URL( "assets/favicons/48x48.webp", process.env.NEXT_PUBLIC_URL ),
-				type: "image/webp",
-				sizes: "48x48"
-			},
-			{
-				url: new URL( "assets/favicons/192x192.webp", process.env.NEXT_PUBLIC_URL ),
-				type: "image/webp",
-				sizes: "192x192"
-			},
-			{
-				url: new URL( "assets/favicons/512x512.webp", process.env.NEXT_PUBLIC_URL ),
-				type: "image/webp",
-				sizes: "512x512"
-			}
-		],
-		apple: [
-			{
-				url: new URL( "assets/favicons/180x180.webp", process.env.NEXT_PUBLIC_URL ),
-				type: "image/webp",
-				sizes: "180x180"
-			}
-		]
-	},
+	// On récupère ensuite les informations de l'auteur.
+	const author = await ( await fetch( "https://api.github.com/users/FlorianLeChat", {
+		cache: "force-cache"
+	} ) ).json() as Record<string, string>;
 
-	// Informations pour les moteurs de recherche.
-	openGraph: {
-		url: process.env.NEXT_PUBLIC_URL,
-		type: "website",
-		title: process.env.NEXT_PUBLIC_TITLE,
-		description: process.env.NEXT_PUBLIC_DESCRIPTION,
-		images: [
-			{
-				url: process.env.NEXT_PUBLIC_BANNER ?? ""
-			}
-		]
-	},
+	// On détermine certaines métadonnées récurrentes.
+	const banner = `https://opengraph.githubassets.com/master/${ repository.full_name }`;
+	const title = `${ author.name } - ${ repository.name }`;
+	const url = process.env.NEXT_PUBLIC_ENV === "production" ? repository.homepage : "http://localhost:3000/";
 
-	// Informations pour la plate-forme Twitter.
-	twitter: {
-		card: "summary_large_image",
-		title: process.env.NEXT_PUBLIC_TITLE,
-		creator: process.env.NEXT_PUBLIC_TWITTER,
-		description: process.env.NEXT_PUBLIC_DESCRIPTION,
-		images: [
-			{
-				url: process.env.NEXT_PUBLIC_BANNER ?? ""
-			}
-		]
-	}
-};
+	// On retourne enfin les métadonnées récupérées récemment.
+	return {
+		// Méta-données du document.
+		title,
+		authors: [ { name: author.name, url: repository.html_url } ],
+		description: repository.description,
+		keywords: repository.topics,
+		viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
+		manifest: new URL( "manifest.json", url ),
+		themeColor: "#306cc4",
+		metadataBase: new URL( url ),
+
+		// Icônes du document.
+		icons: {
+			icon: [
+				{
+					url: new URL( "assets/favicons/16x16.webp", url ),
+					type: "image/webp",
+					sizes: "16x16"
+				},
+				{
+					url: new URL( "assets/favicons/32x32.webp", url ),
+					type: "image/webp",
+					sizes: "32x32"
+				},
+				{
+					url: new URL( "assets/favicons/48x48.webp", url ),
+					type: "image/webp",
+					sizes: "48x48"
+				},
+				{
+					url: new URL( "assets/favicons/192x192.webp", url ),
+					type: "image/webp",
+					sizes: "192x192"
+				},
+				{
+					url: new URL( "assets/favicons/512x512.webp", url ),
+					type: "image/webp",
+					sizes: "512x512"
+				}
+			],
+			apple: [
+				{
+					url: new URL( "assets/favicons/180x180.webp", url ),
+					type: "image/webp",
+					sizes: "180x180"
+				}
+			]
+		},
+
+		// Informations pour les moteurs de recherche.
+		openGraph: {
+			url,
+			type: "website",
+			title,
+			description: repository.description,
+			images: [
+				{
+					url: banner
+				}
+			]
+		},
+
+		// Informations pour la plate-forme Twitter.
+		twitter: {
+			card: "summary_large_image",
+			title,
+			creator: author.twitter_username,
+			description: repository.description,
+			images: [
+				{
+					url: banner
+				}
+			]
+		}
+	};
+}
 
 // Modification de la configuration de Font Awesome.
 //  Source : https://fontawesome.com/docs/web/use-with/react/use-with
@@ -122,11 +138,12 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default function RootLayout( { children }: { children: ReactNode; } )
+export default async function RootLayout( { children }: { children: ReactNode; } )
 {
 	// Déclaration des constantes.
 	const headersList = headers();
 	const cookiesList = cookies();
+	const metadata = await generateMetadata();
 	const legacy = headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
 	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark cc--darkmode" : "light";
 	const font = legacy ? openSans : poppins;
@@ -148,7 +165,7 @@ export default function RootLayout( { children }: { children: ReactNode; } )
 
 				{/* Écran de chargement de la page */}
 				{legacy ? children : (
-					<Suspense fallback={<Loading />}>
+					<Suspense fallback={<Loading title={metadata.title} />}>
 						{/* En-tête */}
 						<Header />
 
