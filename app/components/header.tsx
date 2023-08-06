@@ -4,18 +4,15 @@
 
 "use client";
 
+import { useTranslation } from "@/utilities/ClientTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useCallback } from "react";
 import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
-
-import { getBasePath } from "@/utilities/NextRouter";
-import { useTranslation } from "@/utilities/ClientTranslations";
 
 export default function Header()
 {
 	// Déclaration des constantes.
 	const { t } = useTranslation();
-	const basePath = getBasePath();
 
 	// Déclaration des variables d'état.
 	const [ theme, setTheme ] = useState( "light" );
@@ -47,9 +44,9 @@ export default function Header()
 			}
 
 			// On enregistre enfin le thème cible dans les cookies du navigateur.
-			document.cookie = `NEXT_THEME=${ target }; path=${ basePath }`;
+			document.cookie = `NEXT_THEME=${ target }; path=${ process.env.__NEXT_ROUTER_BASEPATH }`;
 		}
-	}, [ passed, theme, basePath ] );
+	}, [ passed, theme ] );
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.

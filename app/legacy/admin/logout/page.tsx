@@ -5,9 +5,6 @@
 // Importation des dépendances.
 import Link from "next/link";
 
-// Importation des fonctions utilitaires.
-import { getBasePath } from "@/utilities/NextRouter";
-
 // Affichage de la page.
 export default function Page()
 {
@@ -16,7 +13,7 @@ export default function Page()
 		<>
 			{/* Vidéo en arrière-plan */}
 			<video autoPlay muted loop>
-				<source src={`${ getBasePath() }/assets/videos/logout.mp4`} type="video/mp4" />
+				<source src={`${ process.env.__NEXT_ROUTER_BASEPATH }/assets/videos/logout.mp4`} type="video/mp4" />
 			</video>
 
 			{/* Page de déconnexion */}

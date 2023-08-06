@@ -11,12 +11,10 @@ import type { PhotoAttributes } from "@/interfaces/Photo";
 import ArrowLeft from "@/images/decorations/arrow_left.svg";
 import ArrowRight from "@/images/decorations/arrow_right.svg";
 
-import { getBasePath } from "@/utilities/NextRouter";
-
 export default function PhotoGallery( { project, photos }: { project: string, photos: PhotoAttributes[]; } )
 {
 	// Déclaration des constantes.
-	const assets = `${ getBasePath() }/assets/images/projects`;
+	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;
 	const length = photos.length - 1;
 
 	// Déclaration des variables d'état.

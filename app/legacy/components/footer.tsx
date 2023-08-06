@@ -6,8 +6,6 @@
 
 import Link from "next/link";
 import { lazy, useState } from "react";
-
-import { getBasePath } from "@/utilities/NextRouter";
 import { useTranslation } from "@/utilities/ClientTranslations";
 
 const Contributions = lazy( () => import( "./contributions" ) );
@@ -15,7 +13,6 @@ const Contributions = lazy( () => import( "./contributions" ) );
 export default function Footer()
 {
 	// Déclaration des constantes.
-	const basePath = getBasePath();
 	const { t } = useTranslation();
 
 	// Déclaration des variables d'état.
@@ -25,7 +22,7 @@ export default function Footer()
 	const openOverlay = () =>
 	{
 		// On lance d'abord la musique de fond.
-		const audio = new Audio( `${ basePath }/assets/sounds/jazz.mp3` );
+		const audio = new Audio( `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/sounds/jazz.mp3` );
 		audio.volume = 0.1;
 		audio.play();
 

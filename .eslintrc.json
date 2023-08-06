@@ -25,6 +25,7 @@
 		"no-unused-vars": "off",
 		"linebreak-style": "off",
 		"space-in-parens": ["error", "always"],
+		"no-underscore-dangle": ["error", { "allow": ["__NEXT_ROUTER_BASEPATH"] }], // https://github.com/vercel/next.js/issues/52201#issuecomment-1620629437
 		"object-curly-newline": ["error", { "ObjectExpression": { "consistent": true } }],
 		"array-bracket-spacing": ["error", "always"],
 		"template-curly-spacing": ["error", "always"],

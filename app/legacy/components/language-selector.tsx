@@ -6,8 +6,6 @@
 
 import { useRouter } from "next/navigation";
 import { useState, lazy, type MouseEvent } from "react";
-
-import { getBasePath } from "@/utilities/NextRouter";
 import { useTranslation } from "@/utilities/ClientTranslations";
 
 const ScrollTop = lazy( () => import( "./scroll-top" ) );
@@ -17,7 +15,6 @@ export default function LanguageSelector()
 	// Déclaration des constantes.
 	const { t } = useTranslation();
 	const router = useRouter();
-	const basePath = getBasePath( true );
 
 	// Déclaration des variables d'état.
 	const [ firstTime, setFirstTime ] = useState( true );
@@ -39,7 +36,7 @@ export default function LanguageSelector()
 		}
 
 		// On enregistre ensuite la langue dans les cookies.
-		document.cookie = `NEXT_LANGUAGE=${ language }; path=${ basePath }`;
+		document.cookie = `NEXT_LANGUAGE=${ language }; path=${ process.env.__NEXT_ROUTER_BASEPATH }`;
 
 		// On actualise enfin la page en demandant le changement de langue.
 		router.replace( `?language=${ language }` );

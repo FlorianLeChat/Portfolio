@@ -3,23 +3,6 @@ import { ReadonlyHeaders } from "next/dist/server/web/spec-extension/adapters/he
 import { ReadonlyRequestCookies } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 
 //
-// Récupération du répertoire de base de l'application.
-//  Note : ceci n'est pas encore implémenté dans le routeur de Next.js.
-//  Source : https://nextjs.org/docs/app/building-your-application/upgrading/app-router-migration#step-5-migrating-routing-hooks
-//
-export const getBasePath = ( trailingSlash?: boolean ) =>
-{
-	const basePath = new URL( process.env.NEXT_PUBLIC_URL ?? "" ).pathname;
-
-	if ( trailingSlash )
-	{
-		return basePath.endsWith( "/" ) ? basePath : `${ basePath }/`;
-	}
-
-	return basePath.endsWith( "/" ) ? basePath.slice( 0, -1 ) : basePath;
-};
-
-//
 // Récupération de la langue sélectionnée par l'utilisateur.
 //  Note : ceci n'est plus implémenté dans le routeur de Next.js.
 //
