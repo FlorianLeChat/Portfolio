@@ -5,7 +5,6 @@
 "use client";
 
 import Script from "next/script";
-import { getBasePath } from "@/utilities/NextRouter";
 import type { CookieValue } from "vanilla-cookieconsent";
 import { useState, useEffect, useCallback } from "react";
 
@@ -24,7 +23,6 @@ export default function Recaptcha()
 	}
 
 	// Déclaration des constantes.
-	const basePath = getBasePath();
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
 	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY ?? "" );
 	recaptchaUrl.searchParams.append( "onload", "setupRecaptcha" );
@@ -56,7 +54,7 @@ export default function Recaptcha()
 			} );
 
 			// On envoie enfin le jeton au serveur pour vérification.
-			fetch( `${ basePath }/api/recaptcha`, {
+			fetch( `${ process.env.__NEXT_ROUTER_BASEPATH }/api/recaptcha`, {
 				body: JSON.stringify( { token } ),
 				method: "POST",
 				headers: {
@@ -64,7 +62,7 @@ export default function Recaptcha()
 				}
 			} );
 		} );
-	}, [ basePath ] );
+	}, [] );
 
 	// Détection des changements de consentement des cookies.
 	useEffect( () =>

@@ -6,13 +6,9 @@
 
 import { run } from "vanilla-cookieconsent";
 import { useEffect } from "react";
-import { getBasePath } from "@/utilities/NextRouter";
 
 export default function CookieConsent()
 {
-	// Déclaration des constantes.
-	const basePath = getBasePath();
-
 	// Affichage du consentement des cookies.
 	//  Source : https://cookieconsent.orestbida.com/reference/api-reference.html
 	useEffect( () =>
@@ -31,7 +27,7 @@ export default function CookieConsent()
 
 				// Paramètres internes des cookies.
 				cookie: {
-					path: basePath,
+					path: process.env.__NEXT_ROUTER_BASEPATH,
 					name: "NEXT_ANALYTICS"
 				},
 
@@ -74,13 +70,13 @@ export default function CookieConsent()
 					default: "en",
 					autoDetect: "document",
 					translations: {
-						en: `${ basePath }/locales/en.json`,
-						fr: `${ basePath }/locales/fr.json`
+						en: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/en.json`,
+						fr: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/fr.json`
 					}
 				}
 			}
 		);
-	}, [ basePath ] );
+	}, [] );
 
 	// Affichage du rendu HTML du composant.
 	return null;

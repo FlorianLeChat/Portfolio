@@ -13,15 +13,13 @@ import { Trans } from "react-i18next/TransWithoutContext";
 import Certificate from "@/images/skills/certificate.svg";
 
 // Importation des fonctions utilitaires.
-import { getBasePath } from "@/utilities/NextRouter";
 import { useTranslation } from "@/utilities/ServerTranslations";
 
 // Affichage de la page.
 export default async function Page()
 {
 	// Déclaration des constantes.
-	const basePath = getBasePath();
-	const assets = `${ basePath }/assets/images/skills`;
+	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/skills`;
 	const { t } = await useTranslation();
 
 	// Affichage du rendu HTML de la page.

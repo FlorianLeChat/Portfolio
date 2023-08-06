@@ -10,9 +10,6 @@ import Image from "next/image";
 import { lazy } from "react";
 import { Trans } from "react-i18next/TransWithoutContext";
 
-// Importation des fonctions utilitaires.
-import { getBasePath } from "@/utilities/NextRouter";
-
 // Importation des composants.
 const PhotoGallery = lazy( () => import( "../components/photo-gallery" ) );
 
@@ -20,8 +17,7 @@ const PhotoGallery = lazy( () => import( "../components/photo-gallery" ) );
 export default async function Page()
 {
 	// Déclaration des constantes.
-	const basePath = getBasePath();
-	const assets = `${ basePath }/assets/images`;
+	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images`;
 
 	// Affichage du rendu HTML de la page.
 	return (

@@ -17,15 +17,13 @@ import TopWaves from "@/images/decorations/projects_waves_top_blue.svg";
 import BottomWaves from "@/images/decorations/projects_waves_bottom_blue.svg";
 
 // Importation des fonctions utilitaires.
-import { getBasePath } from "@/utilities/NextRouter";
 import { useTranslation } from "@/utilities/ServerTranslations";
 
 // Affichage de la page.
 export default async function Page()
 {
 	// Déclaration des constantes.
-	const basePath = getBasePath();
-	const assets = `${ basePath }/assets/images/projects`;
+	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;
 	const { t } = await useTranslation();
 	const date = new Date();
 

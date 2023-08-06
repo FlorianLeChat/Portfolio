@@ -2,9 +2,6 @@
 // Route vers la page de connexion à l'administration de l'ancienne version du site.
 //
 
-// Importation des fonctions utilitaires.
-import { getBasePath } from "@/utilities/NextRouter";
-
 // Affichage de la page.
 export default function Page()
 {
@@ -13,7 +10,7 @@ export default function Page()
 		<>
 			{/* Vidéo en arrière-plan */}
 			<video autoPlay muted loop>
-				<source src={`${ getBasePath() }/assets/videos/login.mp4`} type="video/mp4" />
+				<source src={`${ process.env.__NEXT_ROUTER_BASEPATH }/assets/videos/login.mp4`} type="video/mp4" />
 			</video>
 
 			{/* Formulaire de connexion */}

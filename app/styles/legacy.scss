@@ -546,6 +546,8 @@ h2 a, article a, form a, li > a, footer button
 	{
 		margin: 0;
 		display: inline;
+		padding: 0 0.25rem;
+		line-height: 1.75rem;
 		background-color: $deprecated-box-color;
 	}
 }
