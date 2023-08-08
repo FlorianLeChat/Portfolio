@@ -19,7 +19,6 @@ updates:
       dependencies:
         patterns:
           - "*"
-    open-pull-requests-limit: 30
     ignore:
       # https://github.com/advisories/GHSA-qq6h-5g6j-q3cm
       - dependency-name: "sweetalert2"
