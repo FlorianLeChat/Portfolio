@@ -38,8 +38,13 @@ export async function generateMetadata()
 		cache: "force-cache"
 	} ) ).json() as Record<string, string>;
 
+	// On récupère après les informations du dernier commit GitHub.
+	const commits = await ( await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master", {
+		cache: "force-cache"
+	} ) ).json() as Record<string, string>;
+
 	// On détermine certaines métadonnées récurrentes.
-	const banner = `https://opengraph.githubassets.com/master/${ repository.full_name }`;
+	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
 	const title = `${ author.name } - ${ repository.name }`;
 	const url = process.env.NEXT_PUBLIC_APP_ENV === "production" ? repository.homepage : "http://localhost:3000/";
 
@@ -110,7 +115,7 @@ export async function generateMetadata()
 		twitter: {
 			card: "summary_large_image",
 			title,
-			creator: author.twitter_username,
+			creator: `@${ author.twitter_username }`,
 			description: repository.description,
 			images: [
 				{
