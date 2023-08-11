@@ -7,8 +7,8 @@ const baseURL = `http://localhost:${ port }`;
 export default defineConfig(
 	{
 		use: {
-			trace: "retain-on-failure",
-			video: "retain-on-failure",
+			trace: process.env.CI ? "off" : "on-first-retry",
+			video: process.env.CI ? "off" : "on-first-retry",
 			locale: "en-GB",
 			baseURL
 		},
