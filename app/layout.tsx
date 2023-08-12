@@ -43,12 +43,12 @@ export async function generateMetadata()
 		cache: "force-cache"
 	} ) ).json() as Record<string, string>;
 
-	// On détermine certaines métadonnées récurrentes.
+	// On détermine certaines méta-données récurrentes.
 	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
 	const title = `${ author.name } - ${ repository.name }`;
 	const url = process.env.NEXT_PUBLIC_APP_ENV === "production" ? repository.homepage : "http://localhost:3000/";
 
-	// On retourne enfin les métadonnées récupérées récemment.
+	// On retourne enfin les méta-données récupérées récemment.
 	return {
 		// Méta-données du document.
 		title,
@@ -158,16 +158,6 @@ export default async function RootLayout( { children }: { children: ReactNode; }
 		<html lang={getLanguage( headersList, cookiesList )} className={`${ font.className } theme-${ theme }`}>
 			{/* Corps de la page */}
 			<body>
-				{/* Avertissement page sans JavaScript */}
-				<noscript>
-					<h1>Your browser does not support or refuses to load JavaScript.</h1>
-
-					<h2>
-						Click <a href="https://www.whatismybrowser.com/detect/is-javascript-enabled">here</a> to
-						be redirected to an external site to help you solve this issue.
-					</h2>
-				</noscript>
-
 				{/* Écran de chargement de la page */}
 				{legacy ? children : (
 					<Suspense fallback={<Loading title={metadata.title} />}>
