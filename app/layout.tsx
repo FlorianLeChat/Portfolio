@@ -113,7 +113,6 @@ export async function generateMetadata()
 
 		// Informations pour la plate-forme Twitter.
 		twitter: {
-			card: "summary_large_image",
 			title,
 			creator: `@${ author.twitter_username }`,
 			description: repository.description,
