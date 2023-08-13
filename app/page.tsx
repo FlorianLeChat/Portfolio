@@ -18,13 +18,6 @@ import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import type { SkillAttributes } from "@/interfaces/Skill";
 import type { ProjectAttributes } from "@/interfaces/Project";
 
-// Importation des images statiques.
-import Domego from "@/images/domego.png";
-import Portfolio from "@/images/portfolio.png";
-import Assignment from "@/images/assignment.png";
-import FileStorage from "@/images/filestorage.png";
-import SourceConsole from "@/images/sourceconsole.png";
-
 // Importation des fonctions utilitaires.
 import { useTranslation } from "@/utilities/ServerTranslations";
 
@@ -46,41 +39,11 @@ const getSkills = async () =>
 	return JSON.parse( skills ) as SkillAttributes[];
 };
 
-// Récupération de l'image statique correspondant au nom d'un projet.
-const getImage = ( name: string ) =>
-{
-	switch ( name )
-	{
-		// Domego.
-		case "domego":
-			return Domego;
-
-		// Portfolio.
-		case "portfolio":
-			return Portfolio;
-
-		// Assignment Manager.
-		case "assignment":
-			return Assignment;
-
-		// Simple File Storage.
-		case "filestorage":
-			return FileStorage;
-
-		// Source Web Console.
-		case "sourceconsole":
-			return SourceConsole;
-
-		// Aucune image.
-		default:
-			return "";
-	}
-};
-
 // Affichage de la page.
 export default async function Page()
 {
 	// Déclaration des constantes.
+	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images`;
 	const { t } = await useTranslation();
 	const date = new Date();
 
@@ -135,7 +98,7 @@ export default async function Page()
 							<article key={key}>
 								{/* Image du projet */}
 								<Image
-									src={getImage( key )}
+									src={`${ assets }/${ key }.png`}
 									alt={value.title} width={450} height={250}
 								/>
 

@@ -4,10 +4,20 @@
 		"icon": "plain",
 		"type": "front"
 	},
+	"arduino": {
+		"name": "Arduino",
+		"icon": "plain",
+		"type": "other"
+	},
 	"bootstrap": {
 		"name": "Bootstrap",
 		"icon": "plain",
 		"type": "front"
+	},
+	"centos": {
+		"name": "CentOS",
+		"icon": "plain",
+		"type": "other"
 	},
 	"csharp": {
 		"name": "C#",
@@ -34,9 +44,19 @@
 		"icon": "plain",
 		"type": "back"
 	},
+	"dotnetcore": {
+		"name": ".NET",
+		"icon": "plain",
+		"type": ["other"]
+	},
 	"git": {
 		"name": "Git",
 		"icon": "plain",
+		"type": "other"
+	},
+	"github": {
+		"name": "GitHub",
+		"icon": "original",
 		"type": "other"
 	},
 	"html5": {
@@ -56,6 +76,16 @@
 	},
 	"jira": {
 		"name": "Jira",
+		"icon": "plain",
+		"type": "other"
+	},
+	"jquery": {
+		"name": "jQuery",
+		"icon": "plain",
+		"type": "front"
+	},
+	"labview": {
+		"name": "LabView",
 		"icon": "plain",
 		"type": "other"
 	},
@@ -99,10 +129,20 @@
 		"icon": "plain",
 		"type": "front"
 	},
+	"redis": {
+		"name": "Redis",
+		"icon": "plain",
+		"type": "back"
+	},
 	"sass": {
 		"name": "Sass",
 		"icon": "plain",
 		"type": "front"
+	},
+	"spring": {
+		"name": "Spring Boot",
+		"icon": "plain",
+		"type": "back"
 	},
 	"svelte": {
 		"name": "Svelte",
@@ -118,5 +158,10 @@
 		"name": "TypeScript",
 		"icon": "plain",
 		"type": ["front", "back"]
+	},
+	"wordpress": {
+		"name": "WordPress",
+		"icon": "plain",
+		"type": ["front", "back", "other"]
 	}
 }
