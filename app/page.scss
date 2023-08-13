@@ -145,140 +145,154 @@ section:first-of-type
 	}
 }
 
-section:nth-of-type(2) article
+section:nth-of-type(2) div
 {
 	// Conteneur des projets.
-	width: 95%;
-	margin: 2rem auto;
-	padding: 2rem;
-	display: flex;
-	max-width: 1024px;
-	text-align: center;
-	align-items: center;
-	border-radius: 1rem;
-	justify-content: space-between;
+	overflow-x: auto;
+	max-height: 30rem;
 
-	@include themeColors()
+	article
 	{
-		box-shadow: getThemedColor("container-shadow");
-		background-color: getThemedColor("background-alt");
-	}
-
-	@media screen and (max-width: 1024px)
-	{
-		// Réduction de l'apparence du conteneur sur les
-		//  écrans de taille moyenne.
-		padding: 1.5rem;
-		max-width: 450px;
-		flex-direction: column;
-	}
-
-	> h2
-	{
-		// Titre de la section.
-		@media screen and (max-width: 768px)
-		{
-			// Modification des marges du titre sur les
-			//  écrans de petite taille.
-			margin-bottom: 0;
-		}
-	}
-
-	img
-	{
-		// Image de présentation du projet.
-		border-radius: 0.5rem;
+		// Conteneur d'un projet quelconque.
+		width: 95%;
+		margin: 2rem auto;
+		padding: 2rem;
+		display: flex;
+		max-width: 1024px;
+		text-align: center;
+		align-items: center;
+		border-radius: 1rem;
+		justify-content: space-between;
 
 		@include themeColors()
 		{
-			border: 1px solid getThemedColor("foreground");
+			box-shadow: getThemedColor("container-shadow");
+			background-color: getThemedColor("background-alt");
 		}
-
-		@media screen and (max-width: 1024px)
-		{
-			// Réduction des dimensions de l'image sur les
-			//  écrans de taille moyenne.
-			margin: 0 auto;
-			max-width: 100%;
-			max-height: 100%;
-			margin-bottom: 2rem;
-		}
-	}
-
-	div
-	{
-		// Conteneur des informations du projet.
-		flex-basis: 50%;
-		margin-left: 2rem;
 
 		@media screen and (max-width: 1024px)
 		{
 			// Réduction de l'apparence du conteneur sur les
 			//  écrans de taille moyenne.
-			padding: 0;
-			margin-left: 0;
+			padding: 1.5rem;
+			max-width: 450px;
+			flex-direction: column;
 		}
 
-		p
+		> h2
 		{
-			// Description du projet.
-			margin: 1.25rem 0;
-		}
-
-		ul
-		{
-			// Informations générales du projet.
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			justify-content: center;
-
-			&:first-of-type
+			// Titre de la section.
+			@media screen and (max-width: 768px)
 			{
-				// Technologies utilisées.
-				margin: 0 auto;
+				// Modification des marges du titre sur les
+				//  écrans de petite taille.
+				margin-bottom: 0;
+			}
+		}
 
-				li
-				{
-					// Conteneur de chaque technologie.
-					margin: 0.25rem 0.25rem;
-					padding: 0.5rem 0.5rem;
-					font-size: 0.85rem;
-					font-weight: 700;
-					border-radius: 5rem;
+		img
+		{
+			// Image de présentation du projet.
+			border-radius: 0.5rem;
 
-					@include themeColors()
-					{
-						color: getThemedColor("primary-alt");
-						background-color: getThemedColor("primary-light");
-					}
-				}
+			@include themeColors()
+			{
+				border: 1px solid getThemedColor("foreground");
 			}
 
-			&:last-of-type
+			@media screen and (max-width: 1024px)
 			{
-				// Liens vers le code source.
-				margin-top: 1.25rem;
+				// Réduction des dimensions de l'image sur les
+				//  écrans de taille moyenne.
+				margin: 0 auto;
+				max-width: 100%;
+				max-height: 100%;
+				margin-bottom: 2rem;
+			}
+		}
 
-				svg
+		div
+		{
+			// Conteneur des informations du projet.
+			flex-basis: 50%;
+			margin-left: 2rem;
+
+			@media screen and (max-width: 1024px)
+			{
+				// Réduction de l'apparence du conteneur sur les
+				//  écrans de taille moyenne.
+				padding: 0;
+				margin-left: 0;
+			}
+
+			p
+			{
+				// Description du projet.
+				margin: 1.25rem 0;
+			}
+
+			ul
+			{
+				// Informations générales du projet.
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+
+				&:first-of-type
 				{
-					// Icône de chaque lien.
-					width: 1.5rem;
-					height: 1.5rem;
-					padding: 0.5rem;
-					border-radius: 50%;
+					// Technologies utilisées.
+					margin: 0 auto;
 
-					@include themeColors()
+					@media screen and (max-width: 768px)
 					{
-						border: 0.2rem solid getThemedColor("primary");
+						// Disparition de la liste sur les écrans
+						//  de petite taille.
+						display: none;
 					}
 
-					&:not(:hover)
+					li
 					{
-						// État initial de l'icône (sans effet)
+						// Conteneur de chaque technologie.
+						margin: 0.25rem 0.25rem;
+						padding: 0.5rem 0.5rem;
+						font-size: 0.85rem;
+						font-weight: 700;
+						border-radius: 5rem;
+
 						@include themeColors()
 						{
-							color: getThemedColor("primary");
+							color: getThemedColor("primary-alt");
+							background-color: getThemedColor("primary-light");
+						}
+					}
+				}
+
+				&:last-of-type
+				{
+					// Liens vers le code source.
+					margin-top: 1.25rem;
+
+					svg
+					{
+						// Icône de chaque lien.
+						width: 1.5rem;
+						height: 1.5rem;
+						padding: 0.5rem;
+						border-radius: 50%;
+
+						@include themeColors()
+						{
+							border: 0.2rem solid getThemedColor("primary");
+						}
+
+						&:not(:hover)
+						{
+							// État initial de l'icône (sans effet)
+							@include themeColors()
+							{
+								color: getThemedColor("primary");
+							}
 						}
 					}
 				}
@@ -294,7 +308,10 @@ section:nth-of-type(3) article
 	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
+	overflow-x: auto;
+    max-height: 19.5rem;
 	align-items: center;
+	padding-bottom: 0.5rem;
 	justify-content: center;
 
 	&:first-of-type
