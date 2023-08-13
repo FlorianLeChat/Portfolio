@@ -129,58 +129,60 @@ export default async function Page()
 				<h2>{t( "pages.index.header_projects" )}</h2>
 
 				{/* Génération des projets */}
-				{
-					Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
-						<article key={key}>
-							{/* Image du projet */}
-							<Image
-								src={getImage( key )}
-								alt={value.title} width={450} height={250}
-							/>
+				<div>
+					{
+						Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
+							<article key={key}>
+								{/* Image du projet */}
+								<Image
+									src={getImage( key )}
+									alt={value.title} width={450} height={250}
+								/>
 
-							{/* Contenu du projet */}
-							<div>
-								{/* Titre du projet */}
-								<h3>{value.title}</h3>
+								{/* Contenu du projet */}
+								<div>
+									{/* Titre du projet */}
+									<h3>{value.title}</h3>
 
-								{/* Description du projet */}
-								<p>{t( `projects.${ key }` )}</p>
+									{/* Description du projet */}
+									<p>{t( `projects.${ key }` )}</p>
 
-								{/* Compétences utilisées pour le projet */}
-								<ul>
-									{
-										value.skills.map( ( skill, index ) => <li key={index}>{skill}</li> )
-									}
-								</ul>
+									{/* Compétences utilisées pour le projet */}
+									<ul>
+										{
+											value.skills.map( ( skill, index ) => <li key={index}>{skill}</li> )
+										}
+									</ul>
 
-								{/* Liens du projet */}
-								<ul>
-									{
-										// Dépôt Git (facultatif).
-										value.repository && (
-											<li>
-												<a href={value.repository} target="_blank" rel="noopener noreferrer">
-													<FontAwesomeIcon icon={faCode} />
-												</a>
-											</li>
-										)
-									}
+									{/* Liens du projet */}
+									<ul>
+										{
+											// Dépôt Git (facultatif).
+											value.repository && (
+												<li>
+													<a href={value.repository} target="_blank" rel="noopener noreferrer">
+														<FontAwesomeIcon icon={faCode} />
+													</a>
+												</li>
+											)
+										}
 
-									{
-										// Site de démonstration (facultatif).
-										value.demo && (
-											<li>
-												<a href={value.demo} target="_blank" rel="noopener noreferrer">
-													<FontAwesomeIcon icon={faExternalLinkAlt} />
-												</a>
-											</li>
-										)
-									}
-								</ul>
-							</div>
-						</article>
-					) )
-				}
+										{
+											// Site de démonstration (facultatif).
+											value.demo && (
+												<li>
+													<a href={value.demo} target="_blank" rel="noopener noreferrer">
+														<FontAwesomeIcon icon={faExternalLinkAlt} />
+													</a>
+												</li>
+											)
+										}
+									</ul>
+								</div>
+							</article>
+						) )
+					}
+				</div>
 			</section>
 
 			{/* Section des compétences */}
