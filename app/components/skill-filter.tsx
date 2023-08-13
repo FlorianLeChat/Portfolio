@@ -47,11 +47,11 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[]; } 
 					{
 						if ( skillFilter === "all" || value.type.includes( skillFilter ) )
 						{
-							const type = ( key !== "lua" && value.icon !== "original" ) ? " colored" : "";
+							const colored = ( key !== "lua" && key !== "wordpress" && value.icon !== "original" );
 
 							return (
 								<div key={key}>
-									<i className={`devicon-${ key }-${ value.icon + type }`} />
+									<i className={`devicon-${ key }-${ value.icon + ( colored ? " colored" : "" ) }`} />
 									<span>{value.name}</span>
 								</div>
 							);
