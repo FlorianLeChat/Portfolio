@@ -52,7 +52,7 @@ export async function generateMetadata()
 	return {
 		// Méta-données du document.
 		title,
-		authors: [ { name: author.name, url: repository.html_url } ],
+		authors: [ { name: author.name, url: author.html_url } ],
 		description: repository.description,
 		keywords: repository.topics,
 		viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
