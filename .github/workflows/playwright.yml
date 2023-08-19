@@ -1,12 +1,6 @@
 name: Playwright Tests
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-  schedule:
-    - cron: 0 6 * * 1
+on: workflow_call
 
 jobs:
   test:

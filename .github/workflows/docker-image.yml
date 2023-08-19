@@ -1,16 +1,27 @@
 name: Docker Image CI
 
 on:
-  workflow_run:
-    types: [ completed ]
+  push:
     branches: [ master ]
-    workflows: [ CodeQL, Dependency Review, ESLint, Playwright Tests ]
-  workflow_call:
+  pull_request:
+    branches: [ master ]
+  schedule:
+    - cron: 0 6 * * 1
 
 jobs:
+  codeql:
+    uses: ./.github/workflows/codeql.yml
+
+  playwright:
+    uses: ./.github/workflows/playwright.yml
+
+  eslint:
+    uses: ./.github/workflows/eslint.yml
+
   build-image:
+    if: ${{ github.event_name != 'schedule' }}}
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    needs: [codeql, playwright, eslint]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -34,7 +45,7 @@ jobs:
       - name: Build Docker Image and push
         uses: docker/build-push-action@v4
         with:
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name == 'push' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           context: .
