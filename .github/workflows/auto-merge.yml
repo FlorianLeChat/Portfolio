@@ -2,8 +2,9 @@ name: Dependabot auto-merge
 
 on:
   pull_request:
+    branches-ignore: [ master ]
   pull_request_review:
-    types: [submitted]
+    types: [ submitted ]
 
 permissions:
   contents: write
