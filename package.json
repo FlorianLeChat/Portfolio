@@ -14,11 +14,11 @@
   "dependencies": {
     "next": "~13.4",
     "devicon": "~2.15",
-    "flag-icons": "~6.9",
+    "flag-icons": "~6.11",
     "sweetalert2": "<11.4.9",
     "sanitize.css": "~13.0",
     "normalize.css": "~8.0",
-    "react-i18next": "~13.0",
+    "react-i18next": "~13.2",
     "vanilla-cookieconsent": "3.0.0-rc.16",
     "i18next-resources-to-backend": "~1.1",
     "@fortawesome/react-fontawesome": "~0.2",
@@ -27,16 +27,16 @@
     "@fortawesome/free-brands-svg-icons": "~6.4"
   },
   "devDependencies": {
-    "@types/node": "~20.4",
+    "@types/node": "~20.5",
     "@types/react": "~18.2",
     "@types/grecaptcha": "~3.0",
     "@types/dom-speech-recognition": "~0.0",
-    "typescript": "~5.1",
-    "@playwright/test": "~1.36",
+    "typescript": "~5.2",
+    "@playwright/test": "~1.37",
     "eslint-config-next": "~13.4",
     "eslint-config-airbnb": "~19.0",
-    "@total-typescript/ts-reset": "~0.4",
-    "@typescript-eslint/eslint-plugin": "~6.3"
+    "@total-typescript/ts-reset": "~0.5",
+    "@typescript-eslint/eslint-plugin": "~6.5"
   },
   "optionalDependencies": {
     "sharp": "~0.32"
