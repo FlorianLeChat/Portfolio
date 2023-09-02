@@ -25,21 +25,15 @@ export default defineConfig(
 		},
 		projects: [
 			{
-				name: "Desktop Chrome",
+				name: "Google Chrome",
 				use: {
 					...devices[ "Desktop Chrome" ]
 				}
 			},
 			{
-				name: "Desktop Firefox",
+				name: "Microsoft Edge",
 				use: {
-					...devices[ "Desktop Firefox" ]
-				}
-			},
-			{
-				name: "Desktop Safari",
-				use: {
-					...devices[ "Desktop Safari" ]
+					...devices[ "Desktop Edge" ]
 				}
 			},
 			{
@@ -47,10 +41,6 @@ export default defineConfig(
 				use: {
 					...devices[ "Pixel 5" ]
 				}
-			},
-			{
-				name: "Mobile Safari",
-				use: devices[ "iPhone 13" ]
 			}
 		]
 	} as PlaywrightTestConfig
