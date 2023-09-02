@@ -5,6 +5,5 @@
  */
 module.exports = ( {
 	basePath: "",
-	poweredByHeader: false,
-	reactStrictMode: true
+	poweredByHeader: false
 } );
