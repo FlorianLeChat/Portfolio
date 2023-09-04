@@ -7,7 +7,7 @@
 		"JSX": "readonly",
 		"NodeJS": "readonly"
 	},
-	"extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/strict", "plugin:jsx-a11y/strict", "airbnb"],
+	"extends": ["next/core-web-vitals", "plugin:@typescript-eslint/recommended", "plugin:@typescript-eslint/strict", "plugin:jsx-a11y/strict", "airbnb", "prettier"],
 	"plugins": ["@typescript-eslint"],
 	"parser": "@typescript-eslint/parser",
 	"rules": {
