@@ -21,7 +21,7 @@ export const getLanguage = ( headers: ReadonlyHeaders, cookies: ReadonlyRequestC
 	const queryString = decodeURIComponent( headers.get( "X-Invoke-Query" ) ?? "" );
 
 	// On traite la chaîne de requête pour récupérer les paramètres.
-	const parameters = JSON.parse( queryString.length > 0 ? queryString : "{}" ) as { language?: string; };
+	const parameters = JSON.parse( queryString.length > 0 ? queryString : "{}" ) as { language?: string };
 
 	// On retourne alors la langue sélectionnée par l'utilisateur
 	//  ou la langue par défaut du navigateur.

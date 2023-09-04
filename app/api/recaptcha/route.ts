@@ -20,7 +20,7 @@ export async function POST( request: NextRequest )
 	}
 
 	// On vérifie également si le jeton d'authentification est valide ou non.
-	const { token } = JSON.parse( body ) as { token?: string; };
+	const { token } = JSON.parse( body ) as { token?: string };
 
 	if ( !token )
 	{

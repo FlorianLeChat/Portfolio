@@ -11,7 +11,7 @@ import type { PhotoAttributes } from "@/interfaces/Photo";
 import ArrowLeft from "@/images/decorations/arrow_left.svg";
 import ArrowRight from "@/images/decorations/arrow_right.svg";
 
-export default function PhotoGallery( { project, photos }: { project: string, photos: PhotoAttributes[]; } )
+export default function PhotoGallery( { project, photos }: { project: string; photos: PhotoAttributes[] } )
 {
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;

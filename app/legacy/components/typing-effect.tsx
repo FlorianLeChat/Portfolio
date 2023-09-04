@@ -6,7 +6,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function TypingEffect( { text }: { text: string; } )
+export default function TypingEffect( { text }: { text: string } )
 {
 	// Déclaration des variables d'état.
 	const [ indice, setIndice ] = useState( 0 );
