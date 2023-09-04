@@ -6,7 +6,7 @@
 
 import { useTranslation } from "@/utilities/ClientTranslations";
 
-export default function Contributions( { visible }: { visible: boolean; } )
+export default function Contributions( { visible }: { visible: boolean } )
 {
 	// Déclaration des constantes.
 	const { t } = useTranslation();

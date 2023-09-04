@@ -143,7 +143,7 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default async function RootLayout( { children }: { children: ReactNode; } )
+export default async function RootLayout( { children }: { children: ReactNode } )
 {
 	// Déclaration des constantes.
 	const headersList = headers();

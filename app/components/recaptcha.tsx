@@ -31,7 +31,7 @@ export default function Recaptcha()
 	const [ recaptcha, setRecaptcha ] = useState( false );
 
 	// Activation des services Google reCAPTCHA au consentement des cookies.
-	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue; }> ) =>
+	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue }> ) =>
 	{
 		setRecaptcha( event.detail?.cookie.categories.some( ( category: string ) => category === "security" ) ?? false );
 	}, [] );

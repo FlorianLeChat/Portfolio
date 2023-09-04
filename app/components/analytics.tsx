@@ -23,7 +23,7 @@ export default function Analytics()
 	const [ analytics, setAnalytics ] = useState( false );
 
 	// Activation des services Google Analytics au consentement des cookies.
-	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue; }> ) =>
+	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue }> ) =>
 	{
 		setAnalytics( event.detail?.cookie.categories.some( ( category: string ) => category === "analytics" ) ?? false );
 	}, [] );

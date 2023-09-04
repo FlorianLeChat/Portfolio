@@ -10,7 +10,7 @@ const SectionFade = lazy( () => import( "./components/section-fade" ) );
 const AdminAccess = lazy( () => import( "./components/admin-access" ) );
 const LanguageSelector = lazy( () => import( "./components/language-selector" ) );
 
-export default function Layout( { children }: { children: ReactNode; } )
+export default function Layout( { children }: { children: ReactNode } )
 {
 	// Déclaration des constantes.
 	const admin = headers().get( "X-Invoke-Path" )?.includes( "admin" ) ?? false;
