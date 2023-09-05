@@ -25,7 +25,9 @@ export default function Page()
 	const [ warningMessage, setWarningMessage ] = useState( "" );
 
 	// Vérification de l'état de validité du champ de saisie.
-	const checkField = ( event: FormEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement> ) =>
+	const checkField = (
+		event: FormEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+	) =>
 	{
 		// On récupère d'abord l'élément qui a déclenché l'événement.
 		const element = event.currentTarget;

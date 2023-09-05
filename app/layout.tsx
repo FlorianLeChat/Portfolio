@@ -29,19 +29,25 @@ const SpeechRecognition = lazy( () => import( "./components/speech-recognition" 
 export async function generateMetadata()
 {
 	// On récupère d'abord les informations du dépôt GitHub.
-	const repository = await ( await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio", {
-		cache: "force-cache"
-	} ) ).json() as Record<string, string>;
+	const repository = ( await (
+		await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio", {
+			cache: "force-cache"
+		} )
+	).json() ) as Record<string, string>;
 
 	// On récupère ensuite les informations de l'auteur.
-	const author = await ( await fetch( "https://api.github.com/users/FlorianLeChat", {
-		cache: "force-cache"
-	} ) ).json() as Record<string, string>;
+	const author = ( await (
+		await fetch( "https://api.github.com/users/FlorianLeChat", {
+			cache: "force-cache"
+		} )
+	).json() ) as Record<string, string>;
 
 	// On récupère après les informations du dernier commit GitHub.
-	const commits = await ( await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master", {
-		cache: "force-cache"
-	} ) ).json() as Record<string, string>;
+	const commits = ( await (
+		await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master", {
+			cache: "force-cache"
+		} )
+	).json() ) as Record<string, string>;
 
 	// On détermine certaines méta-données récurrentes.
 	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;

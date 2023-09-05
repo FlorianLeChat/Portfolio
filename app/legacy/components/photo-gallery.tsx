@@ -11,7 +11,11 @@ import type { PhotoAttributes } from "@/interfaces/Photo";
 import ArrowLeft from "@/images/decorations/arrow_left.svg";
 import ArrowRight from "@/images/decorations/arrow_right.svg";
 
-export default function PhotoGallery( { project, photos }: { project: string; photos: PhotoAttributes[] } )
+export default function PhotoGallery( {
+	project, photos
+}: {
+	project: string; photos: PhotoAttributes[];
+} )
 {
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;
@@ -21,7 +25,9 @@ export default function PhotoGallery( { project, photos }: { project: string; ph
 	const [ photoIndex, setPhotoIndex ] = useState( 0 );
 
 	// Limite la valeur entre deux limites.
-	const clamp = ( value: number, min: number, max: number ) => Math.min( Math.max( value, min ), max );
+	const clamp = ( value: number, min: number, max: number ) => (
+		Math.min( Math.max( value, min ), max )
+	);
 
 	// Affichage de la photo précédente dans la galerie.
 	const previous = () => setPhotoIndex( clamp( photoIndex - 1, 0, length ) );

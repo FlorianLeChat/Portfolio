@@ -23,16 +23,22 @@ export default function Page()
 
 				{/* Description de la section */}
 				<p>
-					Voici toutes les tables présentes dans la base de données du site.
-					<br /><br />
-					Tout d&#39;abord, sélectionnez une table afin d&#39;afficher une partie de son contenu.
-					Ensuite, vous aurez la possibilité d&#39;ajouter de nouvelles données, les modifier
-					mais également de les supprimer. Enfin, par soucis de performances générales,
-					la visualisation du contenu des tables se fait par tranche de résultats.
-					<br /><br />
-					Lors de la première requête, vous obtiendrez les <strong>25</strong> premiers résultats
-					puis en allant de nouveau sur cette même table, vous obtiendrez une seconde tranche de
-					résultats et ainsi de suite jusqu&#39;à la fin.
+					Voici toutes les tables présentes dans la base de données du
+					site.
+					<br />
+					<br />
+					Tout d&#39;abord, sélectionnez une table afin d&#39;afficher
+					une partie de son contenu. Ensuite, vous aurez la
+					possibilité d&#39;ajouter de nouvelles données, les modifier
+					mais également de les supprimer. Enfin, par soucis de
+					performances générales, la visualisation du contenu des
+					tables se fait par tranche de résultats.
+					<br />
+					<br />
+					Lors de la première requête, vous obtiendrez les{" "}
+					<strong>25</strong> premiers résultats puis en allant de
+					nouveau sur cette même table, vous obtiendrez une seconde
+					tranche de résultats et ainsi de suite jusqu&#39;à la fin.
 				</p>
 
 				{/* Sélection de la catégorie */}
@@ -63,12 +69,18 @@ export default function Page()
 
 				{/* Description de la section */}
 				<p>
-					Cette zone permet de téléverser des fichiers vers le serveur.
-					<br /><br />
-					Cela comprend la sélection de l&#39;emplacement, mais aussi la visualisation du fichier qui sera envoyé.
-					<br /><br />
-					Attention, <strong>seules les images</strong> (de n&#39;importe quelle extension)
-					sont autorisées par le serveur. Une limite de poids de !!! B est également imposée par PHP.
+					Cette zone permet de téléverser des fichiers vers le
+					serveur.
+					<br />
+					<br />
+					Cela comprend la sélection de l&#39;emplacement, mais aussi
+					la visualisation du fichier qui sera envoyé.
+					<br />
+					<br />
+					Attention, <strong>seules les images</strong> (de
+					n&#39;importe quelle extension) sont autorisées par le
+					serveur. Une limite de poids de !!! B est également imposée
+					par PHP.
 				</p>
 
 				{/* Bouton de téléversement */}
