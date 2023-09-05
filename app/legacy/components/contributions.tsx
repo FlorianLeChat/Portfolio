@@ -22,15 +22,18 @@ export default function Contributions( { visible }: { visible: boolean } )
 					<h3>Zélie Exposito</h3>
 
 					<p>
-						Remerciements pour le soutien moral ainsi que la traduction japonaise de la page d&#39;accueil.
+						Remerciements pour le soutien moral ainsi que la
+						traduction japonaise de la page d&#39;accueil.
 					</p>
 				</li>
 				<li>
 					<h3>Esteban Ramirez</h3>
 
 					<p>
-						Remerciements pour l&#39;aide à la création du design du site, aux tests utilisateurs
-						à la fin de la réalisation mais également à la traduction espagnol de la page d&#39;accueil.
+						Remerciements pour l&#39;aide à la création du design du
+						site, aux tests utilisateurs à la fin de la réalisation
+						mais également à la traduction espagnol de la page
+						d&#39;accueil.
 					</p>
 				</li>
 			</ul>

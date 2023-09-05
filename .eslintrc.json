@@ -14,7 +14,6 @@
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 		"quotes": ["error", "double"],
 		"new-cap": ["error", { "capIsNew": false, "newIsCapExceptions": ["webkitSpeechRecognition"] }],
-		"max-len": ["warn", { "code": 125, "ignoreComments": true }],
 		"no-tabs": ["error", { "allowIndentationTabs": true }],
 		"eol-last": ["error", "never"],
 		"no-shadow": "off",
@@ -26,7 +25,7 @@
 		"linebreak-style": "off",
 		"space-in-parens": ["error", "always"],
 		"no-underscore-dangle": ["error", { "allow": ["__NEXT_ROUTER_BASEPATH"] }], // https://github.com/vercel/next.js/issues/52201#issuecomment-1620629437
-		"object-curly-newline": ["error", { "ObjectExpression": { "consistent": true } }],
+		"object-curly-newline": ["error", { "ImportDeclaration": { "minProperties": 0 }}],
 		"array-bracket-spacing": ["error", "always"],
 		"template-curly-spacing": ["error", "always"],
 		"computed-property-spacing": ["error", "always"],
