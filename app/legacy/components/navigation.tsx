@@ -35,10 +35,12 @@ export default async function Navigation()
 						<li>
 							<a href="#projects">{t( "pages.legacy.header.projects.title" )}</a>
 						</li>
-					) : !route.endsWith( "/projects" ) && (
-						<li>
-							<Link href="/legacy/projects">{t( "pages.legacy.header.projects.title" )}</Link>
-						</li>
+					) : (
+						!route.endsWith( "/projects" ) && (
+							<li>
+								<Link href="/legacy/projects">{t( "pages.legacy.header.projects.title" )}</Link>
+							</li>
+						)
 					)
 				}
 
@@ -48,10 +50,12 @@ export default async function Navigation()
 						<li>
 							<a href="#skills">{t( "pages.legacy.header.skills.title" )}</a>
 						</li>
-					) : !route.endsWith( "/skills" ) && (
-						<li>
-							<Link href="/legacy/skills">{t( "pages.legacy.header.skills.title" )}</Link>
-						</li>
+					) : (
+						!route.endsWith( "/skills" ) && (
+							<li>
+								<Link href="/legacy/skills">{t( "pages.legacy.header.skills.title" )}</Link>
+							</li>
+						)
 					)
 				}
 
@@ -61,10 +65,12 @@ export default async function Navigation()
 						<li>
 							<a href="#contact">{t( "pages.legacy.index.contact.title" )}</a>
 						</li>
-					) : !route.endsWith( "/contact" ) && (
-						<li>
-							<Link href="/legacy/contact">{t( "pages.legacy.index.contact.title" )}</Link>
-						</li>
+					) : (
+						!route.endsWith( "/contact" ) && (
+							<li>
+								<Link href="/legacy/contact">{t( "pages.legacy.index.contact.title" )}</Link>
+							</li>
+						)
 					)
 				}
 			</ul>
