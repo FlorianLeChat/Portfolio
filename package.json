@@ -36,7 +36,6 @@
     "@playwright/test": "~1.37",
     "eslint-config-next": "~13.4",
     "eslint-config-airbnb": "~19.0",
-    "eslint-config-prettier": "~9.0",
     "@total-typescript/ts-reset": "~0.5",
     "@typescript-eslint/eslint-plugin": "~6.5"
   },
