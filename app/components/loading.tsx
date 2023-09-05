@@ -5,9 +5,5 @@
 export default function Loading( { title }: { title: string } )
 {
 	// Affichage du rendu HTML du composant.
-	return (
-		<div className="loading">
-			📚 {title}
-		</div>
-	);
+	return <div className="loading">📚 {title}</div>;
 }

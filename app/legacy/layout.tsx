@@ -24,7 +24,7 @@ export default function Layout( { children }: { children: ReactNode } )
 			<main>
 				{
 					// Éléments à afficher uniquement sur les pages publiques.
-					( !admin ) && (
+					!admin && (
 						<>
 							{/* Navigation */}
 							<Navigation />
@@ -41,7 +41,7 @@ export default function Layout( { children }: { children: ReactNode } )
 
 			{
 				// Éléments à afficher uniquement sur les pages publiques.
-				( !admin ) && (
+				!admin && (
 					<>
 						{/* Effets visuels des sections */}
 						<SectionFade />

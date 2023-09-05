@@ -14,68 +14,66 @@ export default function CookieConsent()
 	useEffect( () =>
 	{
 		// Définition de l'environnement de production.
-		run(
-			{
-				// Activation automatique de la fenêtre de consentement.
-				autoShow: process.env.NEXT_PUBLIC_ENV === "production",
+		run( {
+			// Activation automatique de la fenêtre de consentement.
+			autoShow: process.env.NEXT_PUBLIC_ENV === "production",
 
-				// Désactivation de l'interaction avec la page.
-				disablePageInteraction: true,
+			// Désactivation de l'interaction avec la page.
+			disablePageInteraction: true,
 
-				// Disparition du mécanisme pour les robots.
-				hideFromBots: process.env.NEXT_PUBLIC_ENV === "production",
+			// Disparition du mécanisme pour les robots.
+			hideFromBots: process.env.NEXT_PUBLIC_ENV === "production",
 
-				// Paramètres internes des cookies.
-				cookie: {
-					path: process.env.__NEXT_ROUTER_BASEPATH,
-					name: "NEXT_ANALYTICS"
+			// Paramètres internes des cookies.
+			cookie: {
+				path: process.env.__NEXT_ROUTER_BASEPATH,
+				name: "NEXT_ANALYTICS"
+			},
+
+			// Paramètres de l'interface utilisateur.
+			guiOptions: {
+				consentModal: {
+					layout: "bar",
+					position: "bottom center"
+				}
+			},
+
+			// Configuration des catégories de cookies.
+			categories: {
+				necessary: {
+					enabled: true,
+					readOnly: true
 				},
-
-				// Paramètres de l'interface utilisateur.
-				guiOptions: {
-					consentModal: {
-						layout: "bar",
-						position: "bottom center"
+				analytics: {
+					autoClear: {
+						cookies: [
+							{
+								name: /^(_ga|_gid)/
+							}
+						]
 					}
 				},
-
-				// Configuration des catégories de cookies.
-				categories: {
-					necessary: {
-						enabled: true,
-						readOnly: true
-					},
-					analytics: {
-						autoClear: {
-							cookies: [
-								{
-									name: /^(_ga|_gid)/
-								}
-							]
-						}
-					},
-					security: {
-						autoClear: {
-							cookies: [
-								{
-									name: /^(OTZ|__Secure-ENID|SOCS|CONSENT|AEC)/
-								}
-							]
-						}
-					}
-				},
-
-				// Configuration des traductions.
-				language: {
-					default: "en",
-					autoDetect: "document",
-					translations: {
-						en: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/en.json`,
-						fr: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/fr.json`
+				security: {
+					autoClear: {
+						cookies: [
+							{
+								name: /^(OTZ|__Secure-ENID|SOCS|CONSENT|AEC)/
+							}
+						]
 					}
 				}
+			},
+
+			// Configuration des traductions.
+			language: {
+				default: "en",
+				autoDetect: "document",
+				translations: {
+					en: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/en.json`,
+					fr: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/fr.json`
+				}
 			}
-		);
+		} );
 	}, [] );
 
 	// Affichage du rendu HTML du composant.
