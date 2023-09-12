@@ -64,7 +64,10 @@ export async function generateMetadata()
 		keywords: repository.topics,
 		viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
 		manifest: new URL( "manifest.json", url ),
-		themeColor: "#306cc4",
+		themeColor: [
+			{ media: "(prefers-color-scheme: light)", color: "#306cc4" },
+			{ media: "(prefers-color-scheme: dark)", color: "#807ae8" }
+		],
 		metadataBase: new URL( url ),
 
 		// Icônes du document.
