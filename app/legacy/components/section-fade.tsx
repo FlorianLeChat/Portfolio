@@ -14,7 +14,7 @@ export default function SectionFade()
 		document.querySelectorAll( "section" ).forEach( ( section ) =>
 		{
 			const offset = section.getBoundingClientRect().top - window.innerHeight + 20;
-			const element = document.querySelector( `#${ section.id }` ) as HTMLElement | null;
+			const element: HTMLElement | null = document.querySelector( `#${ section.id }` );
 
 			if ( element )
 			{
