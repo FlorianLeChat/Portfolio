@@ -16,14 +16,15 @@
 		"new-cap": ["error", { "capIsNew": false, "newIsCapExceptions": ["webkitSpeechRecognition"] }],
 		"no-tabs": ["error", { "allowIndentationTabs": true }],
 		"eol-last": ["error", "never"],
-		"no-shadow": "off",
+		"no-shadow": "off", // -> @typescript-eslint/no-shadow
 		"camelcase": ["error", { "ignoreImports": true }],
 		"no-plusplus": "off",
 		"brace-style": ["error", "allman"],
 		"comma-dangle": ["error", "never"],
-		"no-unused-vars": "off",
+		"no-unused-vars": "off", // -> @typescript-eslint/no-unused-vars
 		"linebreak-style": "off",
 		"space-in-parens": ["error", "always"],
+		"operator-linebreak": ["error", "before", { "overrides": { "=": "after" } }],
 		"no-underscore-dangle": ["error", { "allow": ["__NEXT_ROUTER_BASEPATH"] }], // https://github.com/vercel/next.js/issues/52201#issuecomment-1620629437
 		"object-curly-newline": ["error", { "ImportDeclaration": { "minProperties": 0 }}],
 		"array-bracket-spacing": ["error", "always"],
@@ -41,7 +42,7 @@
 
 		"react/jsx-indent": ["error", "tab"],
 		"react/jsx-indent-props": ["error", "tab"],
-		"react/react-in-jsx-scope": "off",
+		"react/react-in-jsx-scope": "off", // https://stackoverflow.com/a/61160875
 		"react/no-array-index-key": "off",
 		"react/no-unknown-property": ["error", { "ignore": ["jsx", "global"] }],
 		"react-hooks/rules-of-hooks": "off", // https://github.com/vercel/next.js/issues/52566

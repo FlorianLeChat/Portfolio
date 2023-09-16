@@ -16,9 +16,10 @@ import { Suspense, lazy, type ReactNode } from "react";
 import { getLanguage } from "@/utilities/NextRouter";
 
 // Importation des composants.
+import Loading from "./loading";
+
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
-const Loading = lazy( () => import( "./components/loading" ) );
 const Analytics = lazy( () => import( "./components/analytics" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
@@ -44,15 +45,21 @@ export async function generateMetadata()
 
 	// On récupère après les informations du dernier commit GitHub.
 	const commits = ( await (
-		await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master", {
-			cache: "force-cache"
-		} )
+		await fetch(
+			"https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master",
+			{
+				cache: "force-cache"
+			}
+		)
 	).json() ) as Record<string, string>;
 
 	// On détermine certaines méta-données récurrentes.
 	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
 	const title = `${ author.name } - ${ repository.name }`;
-	const url = process.env.NEXT_PUBLIC_APP_ENV === "production" ? repository.homepage : "http://localhost:3000/";
+	const url =
+		process.env.NEXT_PUBLIC_APP_ENV === "production"
+			? repository.homepage
+			: "http://localhost:3000/";
 
 	// On retourne enfin les méta-données récupérées récemment.
 	return {
@@ -152,23 +159,32 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default async function RootLayout( { children }: { children: ReactNode } )
+export default async function Layout( { children }: { children: ReactNode } )
 {
 	// Déclaration des constantes.
 	const headersList = headers();
 	const cookiesList = cookies();
 	const metadata = await generateMetadata();
-	const legacy = headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
-	const theme = ( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark" ? "dark cc--darkmode" : "light";
+	const legacy =
+		headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
+	const theme =
+		( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark"
+			? "dark cc--darkmode"
+			: "light";
 	const font = legacy ? openSans : poppins;
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={getLanguage( headersList, cookiesList )} className={`${ font.className } theme-${ theme }`}>
+		<html
+			lang={getLanguage( headersList, cookiesList )}
+			className={`${ font.className } theme-${ theme }`}
+		>
 			{/* Corps de la page */}
 			<body>
 				{/* Écran de chargement de la page */}
-				{legacy ? children : (
+				{legacy ? (
+					children
+				) : (
 					<Suspense fallback={<Loading title={metadata.title} />}>
 						{/* En-tête */}
 						<Header />
