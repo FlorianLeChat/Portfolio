@@ -18,6 +18,19 @@ import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import type { SkillAttributes } from "@/interfaces/Skill";
 import type { ProjectAttributes } from "@/interfaces/Project";
 
+// Importation des images statiques.
+import Genio from "@/images/genio.png";
+import Domego from "@/images/domego.png";
+import Portfolio from "@/images/portfolio.png";
+import GamesOnWeb from "@/images/gamesonweb2023.png";
+import Assignment from "@/images/assignment.png";
+import FileStorage from "@/images/filestorage.png";
+import SourceConsole from "@/images/sourceconsole.png";
+import MangaParadise from "@/images/mangaparadise.png";
+import DigitalIdentity from "@/images/digitalidentity.png";
+import SteamDownloader from "@/images/steamdownloader.png";
+import FacepunchMonitor from "@/images/facepunchmonitor.png";
+
 // Importation des fonctions utilitaires.
 import { useTranslation } from "@/utilities/ServerTranslations";
 import { generateMetadata } from "./layout";
@@ -28,23 +41,75 @@ const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
 
 // Récupération des projets et des compétences.
 const directory = path.join( process.cwd(), "public/data" );
-const getProjects = async () =>
-{
-	const projects = await fileSystem.readFile( `${ directory }/projects.json`, "utf8" );
-	return JSON.parse( projects ) as ProjectAttributes[];
-};
+const getProjects = async () => JSON.parse(
+	await fileSystem.readFile( `${ directory }/projects.json`, "utf8" )
+) as ProjectAttributes[];
 
-const getSkills = async () =>
+const getSkills = async () => JSON.parse(
+	await fileSystem.readFile( `${ directory }/skills.json`, "utf8" )
+) as SkillAttributes[];
+
+// Récupération de l'image statique correspondant au nom d'un projet.
+//  Note : cette astuce est utilisée pour le chargement progressif des images.
+//  Source : https://nextjs.org/docs/app/api-reference/components/image#placeholder
+const getImage = ( name: string ) =>
 {
-	const skills = await fileSystem.readFile( `${ directory }/skills.json`, "utf8" );
-	return JSON.parse( skills ) as SkillAttributes[];
+	switch ( name )
+	{
+		// Domego.
+		case "genio":
+			return Genio;
+
+		// Domego.
+		case "domego":
+			return Domego;
+
+		// Portfolio.
+		case "portfolio":
+			return Portfolio;
+
+		// Games On Web 2023.
+		case "gamesonweb2023":
+			return GamesOnWeb;
+
+		// Assignment Manager.
+		case "assignment":
+			return Assignment;
+
+		// Simple File Storage.
+		case "filestorage":
+			return FileStorage;
+
+		// Source Web Console.
+		case "sourceconsole":
+			return SourceConsole;
+
+		// Manga Paradise.
+		case "mangaparadise":
+			return MangaParadise;
+
+		// Digital Identity.
+		case "digitalidentity":
+			return DigitalIdentity;
+
+		// Steam Collection Download Size Calculator
+		case "steamdownloader":
+			return SteamDownloader;
+
+		// Facepunch Commits Monitor
+		case "facepunchmonitor":
+			return FacepunchMonitor;
+
+		// Aucune image.
+		default:
+			return "";
+	}
 };
 
 // Affichage de la page.
 export default async function Page()
 {
 	// Déclaration des constantes.
-	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images`;
 	const github = ( await generateMetadata() ).source;
 	const { t } = await useTranslation();
 	const date = new Date();
@@ -95,58 +160,71 @@ export default async function Page()
 
 				{/* Génération des projets */}
 				<div>
-					{
-						Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
-							<article key={key}>
-								{/* Image du projet */}
-								<Image
-									src={`${ assets }/${ key }.png`}
-									alt={value.title} width={450} height={250}
-								/>
+					{Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
+						<article key={key}>
+							{/* Image du projet */}
+							<Image
+								src={getImage( key )}
+								alt={value.title}
+								width={450}
+								height={375}
+								placeholder="blur"
+							/>
 
-								{/* Contenu du projet */}
-								<div>
-									{/* Titre du projet */}
-									<h3>{value.title}</h3>
+							{/* Contenu du projet */}
+							<div>
+								{/* Titre du projet */}
+								<h3>{value.title}</h3>
 
-									{/* Description du projet */}
-									<p>{t( `projects.${ key }` )}</p>
+								{/* Description du projet */}
+								<p>{t( `projects.${ key }` )}</p>
 
-									{/* Compétences utilisées pour le projet */}
-									<ul>
-										{
-											value.skills.map( ( skill, index ) => <li key={index}>{skill}</li> )
-										}
-									</ul>
+								{/* Compétences utilisées pour le projet */}
+								<ul>
+									{value.skills.map( ( skill, index ) => (
+										<li key={index}>{skill}</li>
+									) )}
+								</ul>
 
-									{/* Liens du projet */}
-									<ul>
-										{
-											// Dépôt Git (facultatif).
-											value.repository && (
-												<li>
-													<a href={value.repository} target="_blank" rel="noopener noreferrer">
-														<FontAwesomeIcon icon={faCode} />
-													</a>
-												</li>
-											)
-										}
+								{/* Liens du projet */}
+								<ul>
+									{
+										// Dépôt Git (facultatif).
+										value.repository && (
+											<li>
+												<a
+													rel="noopener noreferrer"
+													href={value.repository}
+													target="_blank"
+												>
+													<FontAwesomeIcon
+														icon={faCode}
+													/>
+												</a>
+											</li>
+										)
+									}
 
-										{
-											// Site de démonstration (facultatif).
-											value.demo && (
-												<li>
-													<a href={value.demo} target="_blank" rel="noopener noreferrer">
-														<FontAwesomeIcon icon={faExternalLinkAlt} />
-													</a>
-												</li>
-											)
-										}
-									</ul>
-								</div>
-							</article>
-						) )
-					}
+									{
+										// Site de démonstration (facultatif).
+										value.demo && (
+											<li>
+												<a
+													rel="noopener noreferrer"
+													href={value.demo}
+													target="_blank"
+												>
+													<FontAwesomeIcon
+														icon={faExternalLinkAlt}
+													/>
+												</a>
+											</li>
+										)
+									}
+								</ul>
+							</div>
+						</article>
+					) )}
 				</div>
 			</section>
 
