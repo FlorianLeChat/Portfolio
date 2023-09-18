@@ -3,6 +3,11 @@
 
 main > a
 {
+	// Lien vers le dépôt GitHub.
+	inset: 0 0 auto auto;
+	position: fixed;
+	clip-path: polygon(0 0, 100% 0, 100% 100%);
+
 	@media screen and (max-width: 320px)
 	{
 		// Suppression du logo GitHub sur les écrans
@@ -27,10 +32,6 @@ main > a
 	svg
 	{
 		// Délimitation de la zone cliquable.
-		inset: 0 0 auto auto;
-		position: fixed;
-		clip-path: polygon(0 0, 100% 0, 100% 100%);
-
 		@include themeColors()
 		{
 			fill: getThemedColor("primary");
