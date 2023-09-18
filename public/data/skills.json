@@ -154,6 +154,11 @@
 		"icon": "original",
 		"type": "back"
 	},
+	"tailwindcss": {
+		"name": "TailwindCSS",
+		"icon": "plain",
+		"type": "front"
+	},
 	"typescript": {
 		"name": "TypeScript",
 		"icon": "plain",
