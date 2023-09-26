@@ -3,7 +3,7 @@
 /**
  * @type {import("next").NextConfig}
  */
-module.exports = ( {
+module.exports = {
 	basePath: "",
 	poweredByHeader: false
-} );
+};
