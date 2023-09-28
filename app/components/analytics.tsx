@@ -10,12 +10,6 @@ import { useState, useEffect, useCallback } from "react";
 
 export default function Analytics()
 {
-	// Vérification de l'activation du service.
-	if ( process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "false" )
-	{
-		return null;
-	}
-
 	// Déclaration des constantes.
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
 
@@ -23,10 +17,17 @@ export default function Analytics()
 	const [ analytics, setAnalytics ] = useState( false );
 
 	// Activation des services Google Analytics au consentement des cookies.
-	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue }> ) =>
-	{
-		setAnalytics( event.detail?.cookie.categories.some( ( category: string ) => category === "analytics" ) ?? false );
-	}, [] );
+	const onConsent = useCallback(
+		( event: CustomEventInit<{ cookie: CookieValue }> ) =>
+		{
+			setAnalytics(
+				event.detail?.cookie.categories.some(
+					( category: string ) => category === "analytics"
+				) ?? false
+			);
+		},
+		[]
+	);
 
 	// Détection des changements de consentement des cookies.
 	useEffect( () =>
@@ -36,6 +37,12 @@ export default function Analytics()
 
 		return () => window.removeEventListener( "cc:onConsent", onConsent );
 	}, [ onConsent, setAnalytics ] );
+
+	// Vérification de l'activation du service.
+	if ( process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "false" )
+	{
+		return null;
+	}
 
 	// Affichage conditionnel du rendu HTML du composant.
 	return analytics ? (
