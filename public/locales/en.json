@@ -155,7 +155,7 @@
 		}
 	},
 	"consentModal": {
-		"title": "Do you want a cookie?",
+		"title": "Do you want a cookie? 🍪",
 		"description": "Our website uses tracking cookies to understand how you interact with it. The tracking will be enabled only if you accept explicitly.",
 		"acceptAllBtn": "Accept all",
 		"acceptNecessaryBtn": "Reject all",
@@ -184,12 +184,6 @@
 						"expiration": "Expiration"
 					},
 					"body": [
-						{
-							"name": "__cf_bm",
-							"domain": "Cloudflare",
-							"description": "Cookie set by <a href=\"https://www.cloudflare.com/\">Cloudflare</a>.",
-							"expiration": "Expires after 30 minutes."
-						},
 						{
 							"name": "NEXT_COOKIE",
 							"domain": "Cookie Consent",
