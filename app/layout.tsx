@@ -7,7 +7,6 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
-import { config } from "@fortawesome/fontawesome-svg-core";
 import { headers, cookies } from "next/headers";
 import { Poppins, Open_Sans } from "next/font/google";
 import { Suspense, lazy, type ReactNode } from "react";
@@ -141,10 +140,6 @@ export async function generateMetadata()
 		}
 	};
 }
-
-// Modification de la configuration de Font Awesome.
-//  Source : https://fontawesome.com/docs/web/use-with/react/use-with
-config.autoAddCss = false;
 
 // Création des polices de caractères Poppins et Open Sans.
 const poppins = Poppins( {
