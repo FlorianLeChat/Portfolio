@@ -32,7 +32,6 @@ export default function Analytics()
 	// Détection des changements de consentement des cookies.
 	useEffect( () =>
 	{
-		// Ajout de l'écouteur d'événement pour le consentement des cookies.
 		window.addEventListener( "cc:onConsent", onConsent );
 
 		return () => window.removeEventListener( "cc:onConsent", onConsent );
