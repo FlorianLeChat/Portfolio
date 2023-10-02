@@ -4,22 +4,29 @@
 
 "use client";
 
-import { type ChangeEvent, useState } from "react";
-import type { SkillAttributes } from "@/interfaces/Skill";
+import { type ChangeEvent } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+
 import { useTranslation } from "@/utilities/ClientTranslations";
+import type { SkillAttributes } from "@/interfaces/Skill";
 
 export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 {
 	// Déclaration des constantes.
-	const { t } = useTranslation();
+	const parameters = useSearchParams();
+	const router = useRouter();
+	const filter = parameters.get( "filter" ) ?? "";
 
 	// Déclaration des variables d'état.
-	const [ skillFilter, setSkillFilter ] = useState( "all" );
+	const { t } = useTranslation();
 
 	// Mise à jour du filtre des compétences.
 	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) =>
 	{
-		setSkillFilter( event.currentTarget.id );
+		const url = new URLSearchParams( parameters );
+		url.set( "filter", event.currentTarget.id );
+
+		router.push( url ? `?${ url.toString() }` : url );
 	};
 
 	// Affichage du rendu HTML du composant.
@@ -30,39 +37,69 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 
 			{/* Filtre des compétences */}
 			<article>
-				<input type="radio" id="all" name="skills" onChange={updateSkillFilter} checked={skillFilter === "all"} />
+				<input
+					id="all"
+					type="radio"
+					name="skills"
+					checked={filter === "all" || filter === ""}
+					onChange={updateSkillFilter}
+				/>
 				<label htmlFor="all">{t( "pages.index.filter_all" )}</label>
 
-				<input type="radio" id="front" name="skills" onChange={updateSkillFilter} />
+				<input
+					id="front"
+					type="radio"
+					name="skills"
+					checked={filter === "front"}
+					onChange={updateSkillFilter}
+				/>
 				<label htmlFor="front">{t( "pages.index.filter_front" )}</label>
 
-				<input type="radio" id="back" name="skills" onChange={updateSkillFilter} />
+				<input
+					id="back"
+					type="radio"
+					name="skills"
+					checked={filter === "back"}
+					onChange={updateSkillFilter}
+				/>
 				<label htmlFor="back">{t( "pages.index.filter_back" )}</label>
 
-				<input type="radio" id="other" name="skills" onChange={updateSkillFilter} />
+				<input
+					id="other"
+					type="radio"
+					name="skills"
+					checked={filter === "other"}
+					onChange={updateSkillFilter}
+				/>
 				<label htmlFor="other">{t( "pages.index.filter_other" )}</label>
 			</article>
 
 			{/* Génération des compétences */}
 			<article>
+				{Object.entries( skills ).map( ( [ key, value ] ) =>
 				{
-					Object.entries( skills ).map( ( [ key, value ] ) =>
+					if ( filter === "all" || value.type.includes( filter ) )
 					{
-						if ( skillFilter === "all" || value.type.includes( skillFilter ) )
-						{
-							const colored = ( key !== "lua" && key !== "wordpress" && value.icon !== "original" );
+						const colored =
+							key !== "lua"
+							&& key !== "wordpress"
+							&& value.icon !== "original";
 
-							return (
-								<div key={key}>
-									<i className={`devicon-${ key }-${ value.icon + ( colored ? " colored" : "" ) }`} />
-									<span>{value.name}</span>
-								</div>
-							);
-						}
+						return (
+							<div key={key}>
+								<i
+									className={`devicon-${ key }-${
+										value.icon + ( colored ? " colored" : "" )
+									}`}
+								/>
 
-						return null;
-					} )
-				}
+								<span>{value.name}</span>
+							</div>
+						);
+					}
+
+					return null;
+				} )}
 			</article>
 		</section>
 	);
