@@ -41,7 +41,7 @@ export default function Footer()
 		};
 
 		// On change enfin l'URL de la page.
-		router.push( url ? `?${ url.toString() }` : url );
+		router.push( url ? `?${ url.toString() }` : url, { scroll: false } );
 	}, [ parameters, router ] );
 
 	// Affichage de l'overlay à l'ouverture de la page.
