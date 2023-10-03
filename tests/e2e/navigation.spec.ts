@@ -18,13 +18,23 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 	await expect( page ).toHaveTitle( "Florian Trayon - Portfolio" );
 
 	// Vérification du titre principal.
-	await expect( page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } ) ).toBeVisible();
+	await expect(
+		page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } )
+	).toBeVisible();
 
 	// Vérification de la présence des liens de navigation.
-	await expect( page.locator( "nav > ul a" ) ).toHaveText( [ "Projects", "Skills", "Contact" ] );
+	await expect( page.locator( "nav > ul a" ) ).toHaveText( [
+		"Projects",
+		"Skills",
+		"Contact"
+	] );
 
 	// Vérification de la présence des liens de contact.
-	await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [ "Mail", "GitHub", "LinkedIn" ] );
+	await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [
+		"Mail",
+		"GitHub",
+		"LinkedIn"
+	] );
 } );
 
 //
@@ -135,22 +145,26 @@ test( "Filtrage des compétences", async ( { page } ) =>
 	const count = await page.locator( selector ).count();
 
 	// Filtrage par compétence « Front-end ».
-	await page.getByLabel( "Front-end" ).check();
+	await page.getByLabel( "Front-end" ).click();
+	await expect( page ).toHaveURL( "?filter=front" );
 
 	expect( await page.locator( selector ).count() ).toBeLessThan( count );
 
 	// Filtrage par compétence « Back-end ».
-	await page.getByLabel( "Back-end" ).check();
+	await page.getByLabel( "Back-end" ).click();
+	await expect( page ).toHaveURL( "?filter=back" );
 
 	expect( await page.locator( selector ).count() ).toBeLessThan( count );
 
-	// Filtrage par compétence « Other ».
-	await page.getByLabel( "Other" ).check();
+	// Filtrage par compétence « Other »
+	await page.getByLabel( "Other" ).click();
+	await expect( page ).toHaveURL( "?filter=other" );
 
 	expect( await page.locator( selector ).count() ).toBeLessThan( count );
 
 	// Filtrage par compétence « All ».
-	await page.getByLabel( "All" ).check();
+	await page.getByLabel( "All" ).click();
+	await expect( page ).toHaveURL( "?filter=all" );
 
 	expect( await page.locator( selector ).count() ).toBe( count );
 } );

@@ -78,7 +78,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 			<article>
 				{Object.entries( skills ).map( ( [ key, value ] ) =>
 				{
-					if ( filter === "all" || value.type.includes( filter ) )
+					if ( filter === "" || filter === "all" || value.type.includes( filter ) )
 					{
 						const colored =
 							key !== "lua"
