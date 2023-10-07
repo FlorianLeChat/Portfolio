@@ -91,7 +91,11 @@ export default function Footer()
 
 					{/* Dépôt du code source */}
 					<li>
-						<a href="https://github.com/FlorianLeChat/Portfolio">
+						<a
+							rel="noopener noreferrer"
+							href="https://github.com/FlorianLeChat/Portfolio"
+							target="_blank"
+						>
 							{t( "pages.legacy.footer.github" )}
 						</a>
 					</li>

@@ -4,49 +4,62 @@
 
 "use client";
 
+import { faSun,
+	faMoon,
+	faBars,
+	faTimes,
+	faCookieBite } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "@/utilities/ClientTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useCallback } from "react";
-import { faMoon, faSun, faBars, faTimes, faCookieBite } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header()
 {
-	// Déclaration des constantes.
-	const { t } = useTranslation();
-
 	// Déclaration des variables d'état.
+	const { t } = useTranslation();
 	const [ theme, setTheme ] = useState( "light" );
 	const [ passed, setPassed ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
 
 	// Basculement entre les thèmes sombre et clair.
-	const switchTheme = useCallback( ( forceDark?: boolean ) =>
-	{
-		const html = document.querySelector( "html" );
-
-		if ( html )
+	const switchTheme = useCallback(
+		( forceDark?: boolean ) =>
 		{
-			// On récupère d'abord le thème préféré de l'utilisateur.
-			const target = ( forceDark || ( theme === "light" && passed ) ) ? "dark" : "light";
+			const html = document.querySelector( "html" );
 
-			// On supprime alors l'ensemble des classes de thème
-			//  avant d'ajouter celle correspondant au thème cible.
-			html.classList.remove( "theme-light", "theme-dark", "cc--darkmode" );
-			html.classList.add( `theme-${ target }` );
-
-			setTheme( target );
-
-			// On ajoute ensuite une classe spécifique pour le thème sombre
-			//  de la fenêtre du consentement des cookies.
-			if ( target === "dark" )
+			if ( html )
 			{
-				html.classList.add( "cc--darkmode" );
-			}
+				// On récupère d'abord le thème préféré de l'utilisateur.
+				const target =
+					forceDark || ( theme === "light" && passed )
+						? "dark"
+						: "light";
 
-			// On enregistre enfin le thème cible dans les cookies du navigateur.
-			document.cookie = `NEXT_THEME=${ target }; path=${ process.env.__NEXT_ROUTER_BASEPATH }`;
-		}
-	}, [ passed, theme ] );
+				// On supprime alors l'ensemble des classes de thème
+				//  avant d'ajouter celle correspondant au thème cible.
+				html.classList.remove(
+					"theme-light",
+					"theme-dark",
+					"cc--darkmode"
+				);
+
+				html.classList.add( `theme-${ target }` );
+
+				setTheme( target );
+
+				// On ajoute ensuite une classe spécifique pour le thème sombre
+				//  de la fenêtre du consentement des cookies.
+				if ( target === "dark" )
+				{
+					html.classList.add( "cc--darkmode" );
+				}
+
+				// On enregistre enfin le thème cible dans les cookies du navigateur.
+				document.cookie = `NEXT_THEME=${ target }; path=${ process.env.__NEXT_ROUTER_BASEPATH }`;
+			}
+		},
+		[ passed, theme ]
+	);
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
@@ -76,15 +89,22 @@ export default function Header()
 	return (
 		<header>
 			{/* En-tête de la page */}
-			<a href="https://github.com/FlorianLeChat">
-				{t( "pages.index.developer_firstname" )[ 0 ] + t( "pages.index.developer_surname" )[ 0 ]}
+			<a
+				rel="noopener noreferrer"
+				href="https://github.com/FlorianLeChat"
+				target="_blank"
+			>
+				{t( "pages.index.developer_firstname" )[ 0 ]
+					+ t( "pages.index.developer_surname" )[ 0 ]}
 			</a>
 
 			<nav>
 				{/* Liens de navigation */}
 				<ul className={showMenu ? "show" : ""}>
 					<li>
-						<a href="#projects">{t( "pages.index.header_projects" )}</a>
+						<a href="#projects">
+							{t( "pages.index.header_projects" )}
+						</a>
 					</li>
 
 					<li>
@@ -98,7 +118,9 @@ export default function Header()
 
 				{/* Bouton de basculement en thème sombre/clair */}
 				<button type="button" onClick={() => switchTheme()}>
-					<FontAwesomeIcon icon={theme === "light" ? faMoon : faSun} />
+					<FontAwesomeIcon
+						icon={theme === "light" ? faMoon : faSun}
+					/>
 				</button>
 
 				{/* Préférences des cookies */}

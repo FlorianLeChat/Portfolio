@@ -187,7 +187,7 @@
 						{
 							"name": "NEXT_COOKIE",
 							"domain": "Cookie Consent",
-							"description": "Cookie set by <a href=\"https://cookieconsent.orestbida.com/\">Cookie Consent</a>.",
+							"description": "Cookie set by <a href=\"https://cookieconsent.orestbida.com/\" target=\"_blank\">Cookie Consent</a>.",
 							"expiration": "Expires after 6 months."
 						},
 						{
@@ -220,7 +220,7 @@
 						{
 							"name": "_ga",
 							"domain": "Google Analytics",
-							"description": "Cookie set by <a href=\"https://support.google.com/analytics/answer/10089681\">Google Analytics</a>.",
+							"description": "Cookie set by <a href=\"https://support.google.com/analytics/answer/10089681\" target=\"_blank\">Google Analytics</a>.",
 							"expiration": "Expires after 12 days"
 						}
 					]
@@ -241,37 +241,37 @@
 						{
 							"name": "OTZ",
 							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
 							"expiration": "Expires after 1 month."
 						},
 						{
 							"name": "__Secure-ENID",
 							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
 							"expiration": "Expires after 1 year."
 						},
 						{
 							"name": "SOCS",
 							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
 							"expiration": "Expires after 13 months."
 						},
 						{
 							"name": "CONSENT",
 							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
 							"expiration": "Expires after 2 years."
 						},
 						{
 							"name": "DV",
 							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
 							"expiration": "Expires after 1 day."
 						},
 						{
 							"name": "AEC",
 							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\">Google reCAPTCHA</a>.",
+							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
 							"expiration": "Expires after 6 months."
 						}
 					]
@@ -279,7 +279,7 @@
 			},
 			{
 				"title": "More information",
-				"description": "For any queries in relation to our policy on cookies and your choices, please <a class=\"cc-link\" href=\"#contact\">contact us</a>."
+				"description": "For any queries in relation to our policy on cookies and your choices, please contact us using our website support."
 			}
 		]
 	}
