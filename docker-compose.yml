@@ -1,28 +1,28 @@
 version: "3.8"
 
 services:
-  # https://github.com/FlorianLeChat/Portfolio
-  node:
-    image: portfolio
-    restart: always
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      retries: 3
-      timeout: 5s
-    deploy:
-      resources:
-        limits:
-          cpus: "1"
-          memory: 512M
-        reservations:
-          cpus: "0.25"
-          memory: 128M
-      restart_policy:
-        window: 60s
-        condition: on-failure
-        max_attempts: 5
-    build:
-      context: .
-      dockerfile: ./Dockerfile
-    ports:
-      - 3000:3000
+    # https://github.com/FlorianLeChat/Portfolio
+    node:
+        image: portfolio
+        restart: always
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:3000"]
+            retries: 3
+            timeout: 5s
+        deploy:
+            resources:
+                limits:
+                    cpus: "1"
+                    memory: 512M
+                reservations:
+                    cpus: "0.25"
+                    memory: 128M
+            restart_policy:
+                window: 60s
+                condition: on-failure
+                max_attempts: 5
+        build:
+            context: .
+            dockerfile: ./Dockerfile
+        ports:
+            - 3000:3000
