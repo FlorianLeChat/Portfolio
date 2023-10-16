@@ -22,4 +22,4 @@ const sentryConfig = {
 	authToken: process.env.SENTRY_AUTH_TOKEN
 };
 
-module.exports = withSentryConfig( nextConfig, sentryConfig );
+module.exports = process.env.SENTRY_ENABLED === "true" ? withSentryConfig( nextConfig, sentryConfig ) : nextConfig;
