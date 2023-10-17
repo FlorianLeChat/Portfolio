@@ -157,13 +157,10 @@ const openSans = Open_Sans( {
 export default async function Layout( { children }: { children: ReactNode } )
 {
 	// Déclaration des constantes.
-	const headersList = headers();
-	const cookiesList = cookies();
 	const metadata = await generateMetadata();
-	const legacy =
-		headersList.get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
+	const legacy = headers().get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
 	const theme =
-		( cookiesList.get( "NEXT_THEME" )?.value ?? "light" ) === "dark"
+		( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark"
 			? "dark cc--darkmode"
 			: "light";
 	const font = legacy ? openSans : poppins;
@@ -171,7 +168,7 @@ export default async function Layout( { children }: { children: ReactNode } )
 	// Affichage du rendu HTML de la page.
 	return (
 		<html
-			lang={getLanguage( headersList, cookiesList )}
+			lang={getLanguage()}
 			className={`${ font.className } theme-${ theme }`}
 		>
 			{/* Corps de la page */}
