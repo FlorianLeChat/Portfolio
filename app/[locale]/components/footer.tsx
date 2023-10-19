@@ -5,9 +5,9 @@
 "use client";
 
 import Link from "next/link";
-import { Trans } from "react-i18next/TransWithoutContext";
 import { faPhp } from "@fortawesome/free-brands-svg-icons";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer()
@@ -18,25 +18,25 @@ export default function Footer()
 		return null;
 	}
 
+	// Déclaration des variables d'état.
+	const t = useTranslations( "global" );
+
 	// Affichage du rendu HTML du composant.
 	return (
 		<footer>
 			<span>
 				{/* Lien vers le dépôt GitHub du projet */}
-				<Trans
-					i18nKey="pages.index.footer_madeby"
-					components={{
-						a: (
-							<a
-								rel="noopener noreferrer"
-								href="https://github.com/FlorianLeChat"
-								target="_blank"
-							>
-								...
-							</a>
-						)
-					}}
-				/>
+				{t.rich( "pages.index.footer_madeby", {
+					a: ( chunks ) => (
+						<a
+							rel="noopener noreferrer"
+							href="https://github.com/FlorianLeChat"
+							target="_blank"
+						>
+							{chunks}
+						</a>
+					)
+				} )}
 
 				{/* Date de création du site */}
 				<small>&copy; {new Date().getFullYear()}</small>
@@ -45,29 +45,26 @@ export default function Footer()
 			{/* Avertissement de Google reCAPTCHA */}
 			{process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" && (
 				<small>
-					<Trans
-						i18nKey="pages.index.footer_recaptcha"
-						components={{
-							a1: (
-								<a
-									rel="noopener noreferrer"
-									href="https://policies.google.com/privacy"
-									target="_blank"
-								>
-									...
-								</a>
-							),
-							a2: (
-								<a
-									rel="noopener noreferrer"
-									href="https://policies.google.com/terms"
-									target="_blank"
-								>
-									...
-								</a>
-							)
-						}}
-					/>
+					{t.rich( "pages.index.footer_recaptcha", {
+						a1: ( chunks ) => (
+							<a
+								rel="noopener noreferrer"
+								href="https://policies.google.com/privacy"
+								target="_blank"
+							>
+								{chunks}
+							</a>
+						),
+						a2: ( chunks ) => (
+							<a
+								rel="noopener noreferrer"
+								href="https://policies.google.com/terms"
+								target="_blank"
+							>
+								{chunks}
+							</a>
+						)
+					} )}
 				</small>
 			)}
 
@@ -75,12 +72,9 @@ export default function Footer()
 			<small>
 				<FontAwesomeIcon icon={faPhp} />
 
-				<Trans
-					i18nKey="pages.index.footer_legacy"
-					components={{
-						a: <Link href="/legacy" />
-					}}
-				/>
+				{t.rich( "pages.index.footer_legacy", {
+					a: ( chunks ) => <Link href="/legacy">{chunks}</Link>
+				} )}
 			</small>
 		</footer>
 	);

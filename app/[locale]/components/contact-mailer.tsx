@@ -6,15 +6,14 @@
 
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import type { MouseEvent } from "react";
+import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-
-import { useTranslation } from "@/utilities/ClientTranslations";
 
 export default function Home()
 {
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "global" );
 
 	// Envoi d'un courriel après sélection de la messagerie.
 	const sendMail = async ( event: MouseEvent<HTMLButtonElement> ) =>
@@ -44,7 +43,10 @@ export default function Home()
 		{
 			case "google":
 				// On ouvre la messagerie GMail.
-				window.open( "https://mail.google.com/mail/?view=cm&fs=1&to=contact@florian-dev.fr", "_blank" );
+				window.open(
+					"https://mail.google.com/mail/?view=cm&fs=1&to=contact@florian-dev.fr",
+					"_blank"
+				);
 				break;
 
 			case "default":
@@ -74,14 +76,22 @@ export default function Home()
 				</li>
 
 				<li>
-					<a href="https://github.com/FlorianLeChat" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://github.com/FlorianLeChat"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<FontAwesomeIcon icon={faGithub} />
 						GitHub
 					</a>
 				</li>
 
 				<li>
-					<a href="https://www.linkedin.com/in/florian-trayon/" target="_blank" rel="noopener noreferrer">
+					<a
+						href="https://www.linkedin.com/in/florian-trayon/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<FontAwesomeIcon icon={faLinkedin} />
 						LinkedIn
 					</a>

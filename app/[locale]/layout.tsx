@@ -7,11 +7,11 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
+import { notFound } from "next/navigation";
 import { Poppins, Open_Sans } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 import { Suspense, lazy, type ReactNode } from "react";
-
-// Importation des fonctions utilitaires.
-import { getLanguage } from "@/utilities/NextRouter";
 
 // Importation des composants.
 import Loading from "./loading";
@@ -141,6 +141,25 @@ export async function generateMetadata()
 	};
 }
 
+// Déclaration des paramètres statiques de la page.
+export function generateStaticParams()
+{
+	return [ "en", "fr" ].map( ( locale ) => ( { locale } ) );
+}
+
+// Récupération des traductions de la page.
+async function getMessages( locale: string )
+{
+	try
+	{
+		return ( await import( `../../public/locales/${ locale }.json` ) ).default;
+	}
+	catch ( error )
+	{
+		return notFound();
+	}
+}
+
 // Création des polices de caractères Poppins et Open Sans.
 const poppins = Poppins( {
 	weight: [ "400", "500", "600", "700" ],
@@ -154,15 +173,25 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default async function Layout( { children }: { children: ReactNode } )
+export default async function Layout( {
+	children,
+	params: { locale }
+}: {
+	children: ReactNode;
+	params: { locale: string };
+} )
 {
 	// Déclaration des constantes.
+	const messages = await getMessages( locale );
 	const metadata = await generateMetadata();
+
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
 
 	// Affichage du rendu HTML de la page.
 	return (
 		<html
-			lang={getLanguage()}
+			lang={locale}
 			className={poppins.className}
 			data-modern-font={poppins.className}
 			data-legacy-font={openSans.className}
@@ -171,32 +200,39 @@ export default async function Layout( { children }: { children: ReactNode } )
 			<body>
 				{/* Écran de chargement de la page */}
 				<Suspense fallback={<Loading title={metadata.title} />}>
-					{/* Basculement entre les thèmes */}
-					<ThemeProvider>
-						{/* En-tête */}
-						<Header />
+					{/* Utilisation des traductions */}
+					<NextIntlClientProvider
+						locale={locale}
+						messages={messages}
+						timeZone="Europe/Paris"
+					>
+						{/* Basculement entre les thèmes */}
+						<ThemeProvider>
+							{/* En-tête */}
+							<Header />
 
-						{/* Composant enfant */}
-						{children}
+							{/* Composant enfant */}
+							{children}
 
-						{/* Consentement des cookies */}
-						<CookieConsent />
+							{/* Consentement des cookies */}
+							<CookieConsent />
 
-						{/* Google Analytics */}
-						<Analytics />
+							{/* Google Analytics */}
+							<Analytics />
 
-						{/* Google reCAPTCHA */}
-						<Recaptcha />
+							{/* Google reCAPTCHA */}
+							<Recaptcha />
 
-						{/* Reconnaissance vocale */}
-						<SpeechRecognition />
+							{/* Reconnaissance vocale */}
+							<SpeechRecognition />
 
-						{/* Bouton de retour en haut de page */}
-						<ScrollTop />
+							{/* Bouton de retour en haut de page */}
+							<ScrollTop />
 
-						{/* Pied de page */}
-						<Footer />
-					</ThemeProvider>
+							{/* Pied de page */}
+							<Footer />
+						</ThemeProvider>
+					</NextIntlClientProvider>
 				</Suspense>
 			</body>
 		</html>

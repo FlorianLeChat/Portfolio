@@ -2,7 +2,7 @@
 // Route vers le fichier du plan du site.
 //  Source : https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap
 //
-import { generateMetadata } from "./layout";
+import { generateMetadata } from "./[locale]/layout";
 
 export default async function Sitemap()
 {

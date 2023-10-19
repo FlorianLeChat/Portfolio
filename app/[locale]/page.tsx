@@ -10,9 +10,12 @@ import "./page.scss";
 import path from "path";
 import Image from "next/image";
 import { lazy } from "react";
+import { redirect } from "next/navigation";
+import { useLocale } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import { unstable_setRequestLocale, getTranslator } from "next-intl/server";
 
 // Importation des types.
 import type { SkillAttributes } from "@/interfaces/Skill";
@@ -32,7 +35,6 @@ import SteamDownloader from "@/images/steamdownloader.png";
 import FacepunchMonitor from "@/images/facepunchmonitor.png";
 
 // Importation des fonctions utilitaires.
-import { useTranslation } from "@/utilities/ServerTranslations";
 import { generateMetadata } from "./layout";
 
 // Importation des composants.
@@ -107,8 +109,18 @@ const getImage = ( name: string ) =>
 };
 
 // Affichage de la page.
-export default async function Page()
+export default async function Page( {
+	params: { locale }
+}: {
+	params: { locale: string };
+} )
 {
+	// Vérification de la langue demandée.
+	if ( locale !== "en" && locale !== "fr" )
+	{
+		redirect( "/legacy" );
+	}
+
 	// Déclaration des constantes.
 	const github = ( await generateMetadata() ).source;
 	const date = new Date();
@@ -116,7 +128,10 @@ export default async function Page()
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
 	// Déclaration des variables d'état.
-	const { t } = await useTranslation();
+	const t = await getTranslator( useLocale(), "global" );
+
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
 
 	// Affichage du rendu HTML de la page.
 	return (
@@ -144,7 +159,7 @@ export default async function Page()
 				</h1>
 
 				<article id="about">
-					{/* Résumé du développeur. */}
+					{/* Résumé du développeur */}
 					<p>
 						{t( "pages.index.developer_description", {
 							age: date.getFullYear() - 1970
