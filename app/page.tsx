@@ -169,9 +169,9 @@ export default async function Page()
 				<h2>{t( "pages.index.header_projects" )}</h2>
 
 				{/* Génération des projets */}
-				<div>
+				<ul>
 					{Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
-						<article key={key}>
+						<li key={key}>
 							{/* Image du projet */}
 							<Image
 								src={getImage( key )}
@@ -192,7 +192,7 @@ export default async function Page()
 								{/* Compétences utilisées pour le projet */}
 								<ul>
 									{value.skills.map( ( skill ) => (
-										<li key={key}>{skill}</li>
+										<li key={skill}>{skill}</li>
 									) )}
 								</ul>
 
@@ -233,9 +233,9 @@ export default async function Page()
 									}
 								</ul>
 							</div>
-						</article>
+						</li>
 					) )}
-				</div>
+				</ul>
 			</section>
 
 			{/* Section des compétences */}
