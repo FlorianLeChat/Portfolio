@@ -4,11 +4,17 @@
 
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useCallback } from "react";
 
 export default function AdminAccess()
 {
+	// Vérification de la version du site.
+	if ( usePathname().includes( "/admin" ) )
+	{
+		return null;
+	}
+
 	// Déclaration des constantes.
 	const word = "admin";
 	const router = useRouter();
@@ -17,17 +23,20 @@ export default function AdminAccess()
 	const [ keys, setKeys ] = useState( "" );
 
 	// Enregistrement des touches pressées.
-	const addKeys = useCallback( ( event: KeyboardEvent ) =>
-	{
-		// On vérifie d'abord si la touche pressée est une lettre.
-		const key = event.key.toLowerCase();
-
-		if ( key.match( /[a-z]/i ) )
+	const addKeys = useCallback(
+		( event: KeyboardEvent ) =>
 		{
-			// Si c'est le cas, on ajoute la lettre à la suite de mots alignés.
-			setKeys( keys + key );
-		}
-	}, [ keys ] );
+			// On vérifie d'abord si la touche pressée est une lettre.
+			const key = event.key.toLowerCase();
+
+			if ( key.match( /[a-z]/i ) )
+			{
+				// Si c'est le cas, on ajoute la lettre à la suite de mots alignés.
+				setKeys( keys + key );
+			}
+		},
+		[ keys ]
+	);
 
 	// Récupération des touches pressées.
 	useEffect( () =>
