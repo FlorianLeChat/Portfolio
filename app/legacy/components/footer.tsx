@@ -6,9 +6,8 @@
 
 import Link from "next/link";
 import { useTranslation } from "@/utilities/ClientTranslations";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
-
 import { lazy, useEffect, useCallback } from "react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
 const Contributions = lazy( () => import( "./contributions" ) );
 
@@ -51,27 +50,26 @@ export default function Footer()
 		router.push( url ? `?${ url.toString() }` : url, { scroll: false } );
 	}, [ parameters, router ] );
 
-	// Affichage de l'overlay à l'ouverture de la page.
+	// Ouverture de l'overlay si l'URL contient le paramètre « overlay ».
+	const autoPlay = useCallback( () =>
+	{
+		if ( parameters.get( "overlay" ) === "1" )
+		{
+			openOverlay();
+
+			window.removeEventListener( "mousedown", autoPlay );
+		}
+	}, [ parameters, openOverlay ] );
+
+	// Affichage de l'overlay après un clic sur la page.
+	//  Note : Google Chrome demande une interaction de l'utilisateur pour
+	//   pouvoir jouer automatiquement une musique : https://developer.chrome.com/blog/autoplay/
 	useEffect( () =>
 	{
-		// On exécute la fonction d'ouverture de l'overlay
-		//  si l'URL contient le paramètre « overlay » et
-		//  après un clic de l'utilisateur.
-		//  Source : https://developer.chrome.com/blog/autoplay/
-		const autoPlay = () =>
-		{
-			if ( parameters.get( "overlay" ) === "1" )
-			{
-				openOverlay();
-
-				window.removeEventListener( "mousemove", autoPlay );
-			}
-		};
-
 		window.addEventListener( "mousedown", autoPlay );
 
 		return () => window.removeEventListener( "mousedown", autoPlay );
-	}, [ openOverlay, parameters ] );
+	}, [ openOverlay, autoPlay, parameters ] );
 
 	// Affichage du rendu HTML du composant.
 	return (
