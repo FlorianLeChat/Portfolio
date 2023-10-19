@@ -1,16 +1,21 @@
 //
 // Composant de la barre de navigation de l'ancienne version du site.
 //
-import Link from "next/link";
-import { headers } from "next/headers";
-import { useTranslation } from "@/utilities/ServerTranslations";
 
-export default async function Navigation()
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useTranslation } from "@/utilities/ClientTranslations";
+
+export default function Navigation()
 {
 	// Déclaration des constantes.
-	const { t } = await useTranslation();
-	const route = headers().get( "X-Invoke-Path" ) ?? "";
-	const home = route.endsWith( "/legacy" );
+	const pathname = usePathname();
+	const landing = pathname.endsWith( "/legacy" );
+
+	// Déclaration des variables d'état.
+	const { t } = useTranslation();
 
 	// Affichage du rendu HTML du composant.
 	return (
@@ -18,27 +23,35 @@ export default async function Navigation()
 			<ul>
 				{
 					// Page d'accueil.
-					home ? (
+					landing ? (
 						<li>
-							<a href="#aboutme">{t( "pages.legacy.index.about_me.title" )}</a>
+							<a href="#aboutme">
+								{t( "pages.legacy.index.about_me.title" )}
+							</a>
 						</li>
 					) : (
 						<li>
-							<Link href="/legacy">{t( "pages.legacy.index.about_me.title" )}</Link>
+							<Link href="/legacy">
+								{t( "pages.legacy.index.about_me.title" )}
+							</Link>
 						</li>
 					)
 				}
 
 				{
 					// Page des projets.
-					home ? (
+					landing ? (
 						<li>
-							<a href="#projects">{t( "pages.legacy.header.projects.title" )}</a>
+							<a href="#projects">
+								{t( "pages.legacy.header.projects.title" )}
+							</a>
 						</li>
 					) : (
-						!route.endsWith( "/projects" ) && (
+						!pathname.endsWith( "/projects" ) && (
 							<li>
-								<Link href="/legacy/projects">{t( "pages.legacy.header.projects.title" )}</Link>
+								<Link href="/legacy/projects">
+									{t( "pages.legacy.header.projects.title" )}
+								</Link>
 							</li>
 						)
 					)
@@ -46,14 +59,18 @@ export default async function Navigation()
 
 				{
 					// Page des compétences.
-					home ? (
+					landing ? (
 						<li>
-							<a href="#skills">{t( "pages.legacy.header.skills.title" )}</a>
+							<a href="#skills">
+								{t( "pages.legacy.header.skills.title" )}
+							</a>
 						</li>
 					) : (
-						!route.endsWith( "/skills" ) && (
+						!pathname.endsWith( "/skills" ) && (
 							<li>
-								<Link href="/legacy/skills">{t( "pages.legacy.header.skills.title" )}</Link>
+								<Link href="/legacy/skills">
+									{t( "pages.legacy.header.skills.title" )}
+								</Link>
 							</li>
 						)
 					)
@@ -61,14 +78,18 @@ export default async function Navigation()
 
 				{
 					// Page de contact.
-					home ? (
+					landing ? (
 						<li>
-							<a href="#contact">{t( "pages.legacy.index.contact.title" )}</a>
+							<a href="#contact">
+								{t( "pages.legacy.index.contact.title" )}
+							</a>
 						</li>
 					) : (
-						!route.endsWith( "/contact" ) && (
+						!pathname.endsWith( "/contact" ) && (
 							<li>
-								<Link href="/legacy/contact">{t( "pages.legacy.index.contact.title" )}</Link>
+								<Link href="/legacy/contact">
+									{t( "pages.legacy.index.contact.title" )}
+								</Link>
 							</li>
 						)
 					)
