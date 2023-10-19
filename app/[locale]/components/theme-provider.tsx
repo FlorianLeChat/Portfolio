@@ -85,7 +85,6 @@ function Theme( { children = null }: ThemeProviderProps )
 		const element = document.documentElement;
 		element.classList.remove( "light", "dark", "cc--darkmode" );
 		element.classList.add( value );
-		element.style.colorScheme = value;
 
 		if ( value === "dark" )
 		{
@@ -162,8 +161,6 @@ function Theme( { children = null }: ThemeProviderProps )
 						{
 							// Application du thème choisi par l'utilisateur.
 							classes.add(theme)
-
-							element.style.colorScheme = theme;
 						}
 						else
 						{
@@ -171,8 +168,6 @@ function Theme( { children = null }: ThemeProviderProps )
 							const target = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
 							classes.add(target);
-
-							element.style.colorScheme = target;
 
 							sessionStorage.setItem("${ storageKey }", target);
 						}
