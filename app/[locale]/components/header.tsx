@@ -10,7 +10,7 @@ import { faSun,
 	faTimes,
 	faCookieBite } from "@fortawesome/free-solid-svg-icons";
 import { usePathname } from "next/navigation";
-import { useTranslation } from "@/utilities/ClientTranslations";
+import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 
@@ -25,7 +25,7 @@ export default function Header()
 	}
 
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "global" );
 	const { theme, setTheme } = useTheme();
 	const [ mounted, setMounted ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );

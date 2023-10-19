@@ -4,10 +4,10 @@
 
 "use client";
 
+import { useTranslations } from "next-intl";
 import { type ChangeEvent } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 
-import { useTranslation } from "@/utilities/ClientTranslations";
 import type { SkillAttributes } from "@/interfaces/Skill";
 
 export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
@@ -18,7 +18,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 	const filter = parameters.get( "filter" ) ?? "";
 
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "global" );
 
 	// Mise à jour du filtre des compétences.
 	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) =>

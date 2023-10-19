@@ -5,5 +5,6 @@
 import { getRequestConfig } from "next-intl/server";
 
 export default getRequestConfig( async ( { locale } ) => ( {
+	timeZone: "Europe/Paris",
 	messages: ( await import( `../public/locales/${ locale }.json` ) ).default
 } ) );
