@@ -9,12 +9,19 @@ import { faSun,
 	faBars,
 	faTimes,
 	faCookieBite } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 import { useTranslation } from "@/utilities/ClientTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect, useCallback } from "react";
 
 export default function Header()
 {
+	// Vérification de la version du site.
+	if ( usePathname().startsWith( "/legacy" ) )
+	{
+		return null;
+	}
+
 	// Déclaration des variables d'état.
 	const { t } = useTranslation();
 	const [ theme, setTheme ] = useState( "light" );

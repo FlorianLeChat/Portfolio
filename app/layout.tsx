@@ -7,7 +7,7 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
-import { headers, cookies } from "next/headers";
+import { cookies } from "next/headers";
 import { Poppins, Open_Sans } from "next/font/google";
 import { Suspense, lazy, type ReactNode } from "react";
 
@@ -158,7 +158,6 @@ export default async function Layout( { children }: { children: ReactNode } )
 {
 	// Déclaration des constantes.
 	const metadata = await generateMetadata();
-	const legacy = headers().get( "X-Invoke-Path" )?.includes( "legacy" ) ?? false;
 	const theme =
 		( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark"
 			? "dark cc--darkmode"
@@ -175,35 +174,31 @@ export default async function Layout( { children }: { children: ReactNode } )
 			{/* Corps de la page */}
 			<body>
 				{/* Écran de chargement de la page */}
-				{legacy ? (
-					children
-				) : (
-					<Suspense fallback={<Loading title={metadata.title} />}>
-						{/* En-tête */}
-						<Header />
+				<Suspense fallback={<Loading title={metadata.title} />}>
+					{/* En-tête */}
+					<Header />
 
-						{/* Composant enfant */}
-						<main>{children}</main>
+					{/* Composant enfant */}
+					{children}
 
-						{/* Consentement des cookies */}
-						<CookieConsent />
+					{/* Consentement des cookies */}
+					<CookieConsent />
 
-						{/* Google Analytics */}
-						<Analytics />
+					{/* Google Analytics */}
+					<Analytics />
 
-						{/* Google reCAPTCHA */}
-						<Recaptcha />
+					{/* Google reCAPTCHA */}
+					<Recaptcha />
 
-						{/* Reconnaissance vocale */}
-						<SpeechRecognition />
+					{/* Reconnaissance vocale */}
+					<SpeechRecognition />
 
-						{/* Bouton de retour en haut de page */}
-						<ScrollTop />
+					{/* Bouton de retour en haut de page */}
+					<ScrollTop />
 
-						{/* Pied de page */}
-						<Footer />
-					</Suspense>
-				)}
+					{/* Pied de page */}
+					<Footer />
+				</Suspense>
 			</body>
 		</html>
 	);
