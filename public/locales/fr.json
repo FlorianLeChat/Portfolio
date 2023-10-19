@@ -1,156 +1,158 @@
 {
-	"modals": {
-		"mailer_title": "Sélection de la messagerie",
-		"mailer_description": "Pour envoyer un courriel, vous avez le choix entre plusieurs messageries. Sélectionnez celle de votre choix.",
-		"mailer_error": "Vous devez choisir une messagerie.",
-		"mailer_google": "Gmail (Google)",
-		"mailer_default": "Messagerie par défaut"
-	},
-	"projects":
-	{
-		"portfolio": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
-		"steamdownloader": "Une application en ligne de commande permettant de calculer la taille totale d'une collection d'objets créée sur la plate-forme Steam au travers de leur API publique.",
-		"facepunchmonitor": "Une application graphique créée afin de suivre les changements effectués en temps réel sur les jeux produits par le studio de jeux vidéos appelé Facepunch Studios à partir de leur API publique.",
-		"filestorage": "Un service de stockage de données simplifié et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialités douteuses.",
-		"sourceconsole": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
-		"domego": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de Polytech Nice-Sophia Antipolis.",
-		"assignment": "Un petit site conçu dans un but pédagogique pour gérer les devoirs et les notes des élèves d'une classe en tant qu'enseignant. Le site n'est pas destiné à être utilisé en production parce qu'il a été conçu durant un laps de temps très court et seulement pour apprendre le framework Angular.",
-		"mangaparadise": "Un site vitrine conçu bénévolement pour l'association Manga Paradise, une association de passionnés de mangas et de culture japonaise. Le site a été conçu dans le but de remplacer leur ancien site qui était obsolète et qui n'était plus maintenu.",
-		"digitalidentity": "Un projet de recherche universitaire visant à améliorer le suivi actuel de présence et d'absence des étudiants aux cours. Le site offre des moyens de remplacer les moyens existants comme l'émargement de présence via un QR Code, l'ajout de justificatifs d'absences mais aussi l'obtention d'attestations de présence.",
-		"gamesonweb2023": "Un jeu créé à l'occasion du concours « Games On Web » édition 2023 et ayant comme thème « Be green » sous fond de développement durable. Le jeu est un jeu en 3D où le joueur conduit sur une route sans fin et doit éviter les obstacles qui apparaissent sur son passage.",
-		"genio": "Un projet universitaire ayant pour but de créer un site innovant permettant de créer des arbres généalogiques afin de se démarquer des sites existants comme Geneanet ou MyHeritage. Ce projet comporte plusieurs fonctionnalités comme le partage d'arbres ou l'importation des fichiers GEDCOM."
-	},
-	"pages": {
-		"index": {
-			"header_projects": "Projets",
-			"header_skills": "Compétences",
-			"header_contact": "Contact",
-			"footer_mail": "Courriel",
-			"filter_all": "Toutes",
-			"filter_front": "Front-end",
-			"filter_back": "Back-end",
-			"filter_other": "Autres",
-			"footer_legacy": "<a>Version classique</a>",
-			"footer_madeby": "Conçu par <a>Florian Trayon 🐈</a>",
-			"footer_recaptcha": "Ce site est protégé par reCAPTCHA sur lequel s'appliquent les <a1>politiques de confidentialité</a1> et les <a2>conditions d'utilisation</a2> de Google.",
-			"developer_firstname": "Florian",
-			"developer_surname": "Trayon",
-			"developer_description": "Je suis un développeur (junior) français full-stack de {{age}} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
-			"hello_title": "Bonjour. Je suis",
-			"download_resume": "Télécharger le C.V"
+	"global": {
+		"modals": {
+			"mailer_title": "Sélection de la messagerie",
+			"mailer_description": "Pour envoyer un courriel, vous avez le choix entre plusieurs messageries. Sélectionnez celle de votre choix.",
+			"mailer_error": "Vous devez choisir une messagerie.",
+			"mailer_google": "Gmail (Google)",
+			"mailer_default": "Messagerie par défaut"
 		},
-		"legacy": {
-			"deprecated": "Vous êtes actuellement dans l'ancienne version du site, les informations affichées ne sont plus mises à jour et servent uniquement d'archive.",
-			"header": {
-				"index": {
-					"subtitle": "Développeur Web (Front\/Back-End)"
-				},
-				"projects": {
-					"title": "Mes projets",
-					"subtitle": "Mes réalisations personnelles les plus abouties"
-				},
-				"skills": {
-					"title": "Mes compétences",
-					"subtitle": "Mon parcours scolaire et mes compétences professionnelles"
-				},
-				"contact": {
-					"title": "Mes moyens de contact",
-					"subtitle": "Les moyens permettant de me contacter directement"
-				}
-			},
-			"footer": {
-				"admin": "Administration",
-				"github": "Code source",
-				"contributions": "Contributions"
-			},
-			"language": {
-				"en": "Anglais",
-				"es": "Espagnol",
-				"fr": "Français",
-				"jp": "Japonais"
-			},
+		"projects":
+		{
+			"portfolio": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
+			"steamdownloader": "Une application en ligne de commande permettant de calculer la taille totale d'une collection d'objets créée sur la plate-forme Steam au travers de leur API publique.",
+			"facepunchmonitor": "Une application graphique créée afin de suivre les changements effectués en temps réel sur les jeux produits par le studio de jeux vidéos appelé Facepunch Studios à partir de leur API publique.",
+			"filestorage": "Un service de stockage de données simplifié et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialités douteuses.",
+			"sourceconsole": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
+			"domego": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de Polytech Nice-Sophia Antipolis.",
+			"assignment": "Un petit site conçu dans un but pédagogique pour gérer les devoirs et les notes des élèves d'une classe en tant qu'enseignant. Le site n'est pas destiné à être utilisé en production parce qu'il a été conçu durant un laps de temps très court et seulement pour apprendre le framework Angular.",
+			"mangaparadise": "Un site vitrine conçu bénévolement pour l'association Manga Paradise, une association de passionnés de mangas et de culture japonaise. Le site a été conçu dans le but de remplacer leur ancien site qui était obsolète et qui n'était plus maintenu.",
+			"digitalidentity": "Un projet de recherche universitaire visant à améliorer le suivi actuel de présence et d'absence des étudiants aux cours. Le site offre des moyens de remplacer les moyens existants comme l'émargement de présence via un QR Code, l'ajout de justificatifs d'absences mais aussi l'obtention d'attestations de présence.",
+			"gamesonweb2023": "Un jeu créé à l'occasion du concours « Games On Web » édition 2023 et ayant comme thème « Be green » sous fond de développement durable. Le jeu est un jeu en 3D où le joueur conduit sur une route sans fin et doit éviter les obstacles qui apparaissent sur son passage.",
+			"genio": "Un projet universitaire ayant pour but de créer un site innovant permettant de créer des arbres généalogiques afin de se démarquer des sites existants comme Geneanet ou MyHeritage. Ce projet comporte plusieurs fonctionnalités comme le partage d'arbres ou l'importation des fichiers GEDCOM."
+		},
+		"pages": {
 			"index": {
-				"about_me": {
-					"title": "À propos de moi",
-					"description": "Bienvenue sur mon portfolio !<br><br>Je suis Florian, un développeur français de {{age}} ans. Je suis principalement un développeur <i>back-end</i> (NodeJS, PHP, ...) mais je suis vraiment intéressé par l'apprentissage du <i>front-end</i> (HTML, CSS, JavaScript, ...) et du design UI\/UX.<br><br>J'ai également de l'expérience dans les langages de script et de programmation comme le Lua, le Python et le C# (avec .NET Core). Cela inclut évidemment des connaissances solides dans les systèmes de sauvegarde SQLite et MySQL utilisés également dans le Web.<br><br>Vous pourrez en apprendre plus sur moi, mes expériences, mes projets et mes compétences grâce à ce Portfolio."
-				},
-				"skills": {
-					"school": {
-						"title": "Parcours scolaire & diplômes",
-						"image": "Image représentant une école.",
-						"description": "<b><a>Cliquez ici</a></b> pour en savoir plus sur mon parcours scolaire ainsi que les diplômes et certificats que j'ai pu obtenir jusqu'à aujourd'hui."
-					},
-					"work": {
-						"title": "Compétences professionnelles",
-						"image": "Image représentant un travail.",
-						"description": "<b><a>Cliquez ici</a></b> pour en savoir plus sur mes compétences acquises durant mon apprentissage en autodidacte mais aussi lors de stages en milieu professionnel."
-					}
-				},
-				"contact": {
-					"title": "Contact",
-					"button": "Formulaire de contact",
-					"message": "Un projet ? Une demande ?<br><br>Contactez-moi !"
-				}
+				"header_projects": "Projets",
+				"header_skills": "Compétences",
+				"header_contact": "Contact",
+				"footer_mail": "Courriel",
+				"filter_all": "Toutes",
+				"filter_front": "Front-end",
+				"filter_back": "Back-end",
+				"filter_other": "Autres",
+				"footer_legacy": "<a>Version classique</a>",
+				"footer_madeby": "Conçu par <a>Florian Trayon 🐈</a>",
+				"footer_recaptcha": "Ce site est protégé par reCAPTCHA sur lequel s'appliquent les <a1>politiques de confidentialité</a1> et les <a2>conditions d'utilisation</a2> de Google.",
+				"developer_firstname": "Florian",
+				"developer_surname": "Trayon",
+				"developer_description": "Je suis un développeur (junior) français full-stack de {age} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
+				"hello_title": "Bonjour. Je suis",
+				"download_resume": "Télécharger le C.V"
+			}
+		}
+	},
+	"legacy": {
+		"deprecated": "Vous êtes actuellement dans l'ancienne version du site, les informations affichées ne sont plus mises à jour et servent uniquement d'archive.",
+		"header": {
+			"index": {
+				"subtitle": "Développeur Web (Front\/Back-End)"
 			},
 			"projects": {
-				"discordbot": "Ce projet un programme simulant un automate (ou un utilisateur automatisé) pour exécuter des tâches d'administration sur des serveurs de la plate-forme de communication <a>Discord</a>. L'automate fonctionne au travers de <b>NodeJS</b> en utilisant la dépendance <b>npm</b> <i>DiscordJS</i> pour pouvoir communiquer avec l'<i>API</i> public de Discord. Afin d'effectuer certaines actions d'administration, le programme est amené à communiquer avec une base de données <b>MySQL</b>.",
-				"raven": "Ce projet est un ensemble d'outils facilitant la création de scripts <b>Lua</b> pour le jeu vidéo de type <i>bac-à-sable</i> <a1>Garry's Mod</a1>. Ces outils ont été développés d'une part en utilisant l'API du jeu vidéo appelé le <b>gLua</b> mais également avec des systèmes plus complexes en <b>C++</b> pour bénéficier des performances exceptionnelles du moteur graphique Source. Le code source du framework n'est pas ouvert mais est en partie disponible sur le <a2>Steam Workshop</a2>. Certains systèmes du framework interagit directement avec une base de données de type <b>SQLite</b> et <b>MySQL</b>.",
-				"facepunch": "Ce projet est une application graphique ayant pour but de suivre les changements (<i>commits</i>) <b>Git</b> effectués par le studio de jeux vidéo appelé <a1>Facepunch</a1>. Le programme développé grâce à <b>.NET 6</b> et <b>Windows Forms</b> en <b>C#</b> permet de suivre en temps réel les modifications apportées à certains jeux vidéos créés par l'entreprise. Ces changements sont visibles et accessibles publiquement grâce à l'<i>API</i> et au <a2>site public</a2> de l'entreprise.",
-				"steam": "Ce projet est une application en ligne de commande permettant de calculer la taille de certains objets présents sur la <a>communauté Steam</a>. La plate-forme est mondialement connue pour son magasin de vente de jeux vidéo dématérialisée appelé <i>Steam</i> mais aussi pour sa bibliothèque presque infinie d'objets en tout genre créé par des amateurs de tout horizon (aussi appelé le <i>Workshop</i>). Le programme est alors conçu pour calculer la taille totale d'une <i>collection</i> où des utilisateurs peuvent collecter plusieurs objets pour les déployer dans certains jeux vidéo compatibles. L'interface du site étant désuète et peu ergonomique, le programme permet alors de combler le manque d'informations en fournissant un accès rapide et intuitif aux utilisateurs. Pour pouvoir fonctionner, le programme écrit en <b>C#</b> grâce à <b>.NET 6</b> utilise directement l'<i>API</i> du site pour récupérer les informations générales d'un objet.",
-				"pythonrpg": "Ce projet est un programme simulant un environnement de type <i>RPG</i> (jeu de rôle) à l'écrit. Il permet de lire des histoires narratives créées de toute pièce par des utilisateurs en tout genre afin de les lire et de pouvoir donner la possibilité aux joueurs d'interagir avec grâce à un système d'actions\/conséquences. Le programme a été créé pour expérimenter la syntaxe et les rouages de <b>Python</b>, il est donc considéré comme étant une version de démonstration mais plutôt fonctionnelle avant tout.",
-				"phpstorage": "Ce projet sera une interface Internet de gestion de fichiers avec comme inspiration les nombreux services de stockage de données comme <a1>OneDrive</a1>, <a2>Google Drive</a2>, etc. L'interface utilisera des technologies ainsi que outils modernes comme <i>Bootstrap</i> (<b>HTML\/SASS</b>), <i>React</i> (<b>TypeScript</b>) mais aussi <i>Symfony</i> (<b>PHP\/MongoDB</b>) pour gérer efficacement et de manière sécurisée les fichiers enregistrés par l'utilisateur. Ce projet aura pour but de synthétiser l'ensemble de mes connaissances durant mes années de cours et d'expériences dans le domaine pour offrir un site qualitatif pour tous ceux voulant héberger leurs données chez eux sans dépendre d'acteurs publics avec des politiques de confidentialités douteuses.",
-				"sourceconsole": "Ce projet est une interface d'administration Internet destiné aux propriétaires de serveurs hébergeant des parties en ligne issus des jeux vidéo utilisant le <a>moteur Source</a>. Habituellement, les propriétaires de serveurs doivent utiliser une interface <i>SSH</i> et <i>FTP</i> pour effectuer certaines tâches de gestion redondantes et archaïques. Le projet propose alors de fournir une interface ergonomique qui se connecte directement au serveur du propriétaire afin d'effectuer graphiquement les actions qu'il désire et sans à connaître les nombreuses commandes nécessaires pour administrer des serveurs en ligne. Le site a été créé au travers de technologies d'Internet modernes (<b>jQuery</b>, <b>SASS</b>, <b>MySQL</b>, <b>PHP 8</b>, ...) et représente à ce jour l'un des projets les plus aboutis.",
-				"domego": "Ce projet est un jeu sérieux pédagogique à plateau jouable sur une interface Internet jouable en ligne avec d'autres joueurs. <a>Domego</a> a été initialement inventé sur un support physique, cette interface a pour but de reproduire ses mécaniques sur un site Internet pour permettre à des joueurs de tous horizons de pouvoir jouer ensemble. Grâce à l'utilisation de technologiques inédites par rapport aux anciens projets (<b>TypeScript</b>, <b>React</b>, <b>Express</b>, <b>MongoDB</b>, etc.), le projet laisse aux joueurs une certaine liberté de contrôle sur les règles et le comportement du jeu pour explorer toutes les possibilités. Par manque de temps et suite à la fin de mon scolaire, le projet est dans un état de développement avancé mais non abouti à l'heure actuelle."
+				"title": "Mes projets",
+				"subtitle": "Mes réalisations personnelles les plus abouties"
 			},
 			"skills": {
-				"title": "Compétences",
-				"description": "Tout au long de ma scolarité, j'ai appris de nombreuses choses dans différents domaine notamment en électronique mais également en informatique. Au travers de mon apprentissage scolaire et de manière autonome en autodidacte, j'ai pu avoir la chance de développer mes compétences dans certains langages de programmation afin de réaliser plusieurs petits projets.",
-				"degrees": {
-					"list_title": "Liste des formations",
-					"resume_title": "Résumé des formations",
-					"carlone": {
-						"title": "Licence Professionnelle - Informatique Multimédia Appliquée",
-						"location": "Université Côte d'Azur, Campus Carlone (Département Informatique)<br><br>Nice, France",
-						"description": "Apprentissage du HTML, CSS (<b>SASS</b>, <b>SCSS</b>), PHP (<b>PDO</b>, <b>Twig</b>), JavaScript (<b>jQuery</b>, <b>AJAX</b>). Initiation au design (<i>charte graphique, responsive, ergonomie</i>) et à la gestion de projets (<i>méthodologie, organisationnelle</i>)."
-					},
-					"hutinel": {
-						"title": "Baccalauréat Professionnel - Systèmes électroniques numériques",
-						"option": "Option « AVM » : Audio Visuel Multimédia",
-						"location": "Lycée professionnel Alfred Hutinel<br><br>Cannes-La-Bocca, France",
-						"description": "Installation, mise en service et dépannage de produits audio-visuel, d'équipements informatiques (pour entreprise\/embarqué sur des navires) et de systèmes de prévention anti-incendie."
-					},
-					"jules": {
-						"title": "Brevet de Technicien Supérieur (BTS) - Systèmes numériques",
-						"option": "Option B : électronique et communications",
-						"location": "Lycée général et technologique Jules Ferry<br><br>Cannes, France",
-						"description": "Électronique de type analogique et numérique, liaison <b>RS232</b>, <b>I2C</b>. Réalisation d'un projet « <i>CubeSat</i> » mêlant plusieurs parties électroniques (capteurs, liaison de communication) et informatiques (<i>LabView</i>, <i>FlowCode</i>)."
-					},
-					"valrose": {
-						"title": "Licence - Sciences et Technologies",
-						"option": "Parcours informatique",
-						"location": "Université Côte d'Azur, Campus Valrose (Faculté des Sciences et Ingénierie)<br><br>Nice, France",
-						"description": "Découverte des modèles algorithmiques avec <b>Python</b>, <b>C</b>, <b>C++</b>. Initiation au Web avec <b>HTML</b> et <b>CSS</b> (avec <i>Bootstrap</i>). Créations de logiciels graphiques pour des opérations mathématiques."
-					}
+				"title": "Mes compétences",
+				"subtitle": "Mon parcours scolaire et mes compétences professionnelles"
+			},
+			"contact": {
+				"title": "Mes moyens de contact",
+				"subtitle": "Les moyens permettant de me contacter directement"
+			}
+		},
+		"footer": {
+			"admin": "Administration",
+			"github": "Code source",
+			"contributions": "Contributions"
+		},
+		"language": {
+			"en": "Anglais",
+			"es": "Espagnol",
+			"fr": "Français",
+			"jp": "Japonais"
+		},
+		"index": {
+			"about_me": {
+				"title": "À propos de moi",
+				"description": "Bienvenue sur mon portfolio !<br><br>Je suis Florian, un développeur français de {age} ans. Je suis principalement un développeur <i>back-end</i> (NodeJS, PHP, ...) mais je suis vraiment intéressé par l'apprentissage du <i>front-end</i> (HTML, CSS, JavaScript, ...) et du design UI\/UX.<br><br>J'ai également de l'expérience dans les langages de script et de programmation comme le Lua, le Python et le C# (avec .NET Core). Cela inclut évidemment des connaissances solides dans les systèmes de sauvegarde SQLite et MySQL utilisés également dans le Web.<br><br>Vous pourrez en apprendre plus sur moi, mes expériences, mes projets et mes compétences grâce à ce Portfolio."
+			},
+			"skills": {
+				"school": {
+					"title": "Parcours scolaire & diplômes",
+					"image": "Image représentant une école.",
+					"description": "<b><a>Cliquez ici</a></b> pour en savoir plus sur mon parcours scolaire ainsi que les diplômes et certificats que j'ai pu obtenir jusqu'à aujourd'hui."
 				},
-				"jobs": {
-					"title": "Expériences",
-					"dim": "Durant ces deux périodes de formation, j'ai découvert l'univers de l'informatique pour entreprise en réalisant des activités d'installation, de maintenance et de dépannage de parc informatique (comprenant des ordinateurs, des serveurs, des baies de brassages...).",
-					"domo": "Durant cette période de formation, j'ai eu l'opportunité de travailler avec une équipe de techniciens qui réalisaient principalement l'installation de produits audio-visuels comme des télévisions, home-cinéma (passage des câbles jusqu'à la pose finale du produit).",
-					"eas": "Durant ces plusieurs périodes de formation, j'ai pu découvrir l'univers de la réception pour la télévision grâce notamment à l'installation de systèmes de réception satellitaires ou terrestres pour des particuliers (centrale de réception, câblage, pose des produits)."
+				"work": {
+					"title": "Compétences professionnelles",
+					"image": "Image représentant un travail.",
+					"description": "<b><a>Cliquez ici</a></b> pour en savoir plus sur mes compétences acquises durant mon apprentissage en autodidacte mais aussi lors de stages en milieu professionnel."
 				}
 			},
 			"contact": {
-				"description": "Voici le formulaire de contact permettant de m'adresser un message, ce message sera directement transmis dans ma boite mail personnelle. Afin de vous répondre, ce formulaire vous demande de renseigner une adresse mail valide pour que je puisse vous répondre, elle ne sera ni stockée et ni utilisée à des fins malveillantes. Sans ça, votre message restera évidemment lettre morte. Vous trouvez ce moyen de communication trop.. <i>archaïque</i> ? N'oubliez pas que des supports de communication plus modernes sont disponibles sur la page d'accueil (Discord, Twitter, LinkedIn, ...).",
-				"form": {
-					"content": "Contenu",
-					"email": "Adresse électronique",
-					"subject": "Sujet",
-					"subject_1": "Question",
-					"subject_2": "Problème",
-					"subject_3": "Autre",
-					"success": "Le message à été envoyé avec succès. Vous recevrez une réponse dans les plus brefs délais.",
-					"warning": "Le champ « $1 » doit avoir une taille comprise entre $2 et $3 caractères."
+				"title": "Contact",
+				"button": "Formulaire de contact",
+				"message": "Un projet ? Une demande ?<br><br>Contactez-moi !"
+			}
+		},
+		"projects": {
+			"discordbot": "Ce projet un programme simulant un automate (ou un utilisateur automatisé) pour exécuter des tâches d'administration sur des serveurs de la plate-forme de communication <a>Discord</a>. L'automate fonctionne au travers de <b>NodeJS</b> en utilisant la dépendance <b>npm</b> <i>DiscordJS</i> pour pouvoir communiquer avec l'<i>API</i> public de Discord. Afin d'effectuer certaines actions d'administration, le programme est amené à communiquer avec une base de données <b>MySQL</b>.",
+			"raven": "Ce projet est un ensemble d'outils facilitant la création de scripts <b>Lua</b> pour le jeu vidéo de type <i>bac-à-sable</i> <a1>Garry's Mod</a1>. Ces outils ont été développés d'une part en utilisant l'API du jeu vidéo appelé le <b>gLua</b> mais également avec des systèmes plus complexes en <b>C++</b> pour bénéficier des performances exceptionnelles du moteur graphique Source. Le code source du framework n'est pas ouvert mais est en partie disponible sur le <a2>Steam Workshop</a2>. Certains systèmes du framework interagit directement avec une base de données de type <b>SQLite</b> et <b>MySQL</b>.",
+			"facepunch": "Ce projet est une application graphique ayant pour but de suivre les changements (<i>commits</i>) <b>Git</b> effectués par le studio de jeux vidéo appelé <a1>Facepunch</a1>. Le programme développé grâce à <b>.NET 6</b> et <b>Windows Forms</b> en <b>C#</b> permet de suivre en temps réel les modifications apportées à certains jeux vidéos créés par l'entreprise. Ces changements sont visibles et accessibles publiquement grâce à l'<i>API</i> et au <a2>site public</a2> de l'entreprise.",
+			"steam": "Ce projet est une application en ligne de commande permettant de calculer la taille de certains objets présents sur la <a>communauté Steam</a>. La plate-forme est mondialement connue pour son magasin de vente de jeux vidéo dématérialisée appelé <i>Steam</i> mais aussi pour sa bibliothèque presque infinie d'objets en tout genre créé par des amateurs de tout horizon (aussi appelé le <i>Workshop</i>). Le programme est alors conçu pour calculer la taille totale d'une <i>collection</i> où des utilisateurs peuvent collecter plusieurs objets pour les déployer dans certains jeux vidéo compatibles. L'interface du site étant désuète et peu ergonomique, le programme permet alors de combler le manque d'informations en fournissant un accès rapide et intuitif aux utilisateurs. Pour pouvoir fonctionner, le programme écrit en <b>C#</b> grâce à <b>.NET 6</b> utilise directement l'<i>API</i> du site pour récupérer les informations générales d'un objet.",
+			"pythonrpg": "Ce projet est un programme simulant un environnement de type <i>RPG</i> (jeu de rôle) à l'écrit. Il permet de lire des histoires narratives créées de toute pièce par des utilisateurs en tout genre afin de les lire et de pouvoir donner la possibilité aux joueurs d'interagir avec grâce à un système d'actions\/conséquences. Le programme a été créé pour expérimenter la syntaxe et les rouages de <b>Python</b>, il est donc considéré comme étant une version de démonstration mais plutôt fonctionnelle avant tout.",
+			"phpstorage": "Ce projet sera une interface Internet de gestion de fichiers avec comme inspiration les nombreux services de stockage de données comme <a1>OneDrive</a1>, <a2>Google Drive</a2>, etc. L'interface utilisera des technologies ainsi que outils modernes comme <i>Bootstrap</i> (<b>HTML\/SASS</b>), <i>React</i> (<b>TypeScript</b>) mais aussi <i>Symfony</i> (<b>PHP\/MongoDB</b>) pour gérer efficacement et de manière sécurisée les fichiers enregistrés par l'utilisateur. Ce projet aura pour but de synthétiser l'ensemble de mes connaissances durant mes années de cours et d'expériences dans le domaine pour offrir un site qualitatif pour tous ceux voulant héberger leurs données chez eux sans dépendre d'acteurs publics avec des politiques de confidentialités douteuses.",
+			"sourceconsole": "Ce projet est une interface d'administration Internet destiné aux propriétaires de serveurs hébergeant des parties en ligne issus des jeux vidéo utilisant le <a>moteur Source</a>. Habituellement, les propriétaires de serveurs doivent utiliser une interface <i>SSH</i> et <i>FTP</i> pour effectuer certaines tâches de gestion redondantes et archaïques. Le projet propose alors de fournir une interface ergonomique qui se connecte directement au serveur du propriétaire afin d'effectuer graphiquement les actions qu'il désire et sans à connaître les nombreuses commandes nécessaires pour administrer des serveurs en ligne. Le site a été créé au travers de technologies d'Internet modernes (<b>jQuery</b>, <b>SASS</b>, <b>MySQL</b>, <b>PHP 8</b>, ...) et représente à ce jour l'un des projets les plus aboutis.",
+			"domego": "Ce projet est un jeu sérieux pédagogique à plateau jouable sur une interface Internet jouable en ligne avec d'autres joueurs. <a>Domego</a> a été initialement inventé sur un support physique, cette interface a pour but de reproduire ses mécaniques sur un site Internet pour permettre à des joueurs de tous horizons de pouvoir jouer ensemble. Grâce à l'utilisation de technologiques inédites par rapport aux anciens projets (<b>TypeScript</b>, <b>React</b>, <b>Express</b>, <b>MongoDB</b>, etc.), le projet laisse aux joueurs une certaine liberté de contrôle sur les règles et le comportement du jeu pour explorer toutes les possibilités. Par manque de temps et suite à la fin de mon scolaire, le projet est dans un état de développement avancé mais non abouti à l'heure actuelle."
+		},
+		"skills": {
+			"title": "Compétences",
+			"description": "Tout au long de ma scolarité, j'ai appris de nombreuses choses dans différents domaine notamment en électronique mais également en informatique. Au travers de mon apprentissage scolaire et de manière autonome en autodidacte, j'ai pu avoir la chance de développer mes compétences dans certains langages de programmation afin de réaliser plusieurs petits projets.",
+			"degrees": {
+				"list_title": "Liste des formations",
+				"resume_title": "Résumé des formations",
+				"carlone": {
+					"title": "Licence Professionnelle - Informatique Multimédia Appliquée",
+					"location": "Université Côte d'Azur, Campus Carlone (Département Informatique)<br><br>Nice, France",
+					"description": "Apprentissage du HTML, CSS (<b>SASS</b>, <b>SCSS</b>), PHP (<b>PDO</b>, <b>Twig</b>), JavaScript (<b>jQuery</b>, <b>AJAX</b>). Initiation au design (<i>charte graphique, responsive, ergonomie</i>) et à la gestion de projets (<i>méthodologie, organisationnelle</i>)."
+				},
+				"hutinel": {
+					"title": "Baccalauréat Professionnel - Systèmes électroniques numériques",
+					"option": "Option « AVM » : Audio Visuel Multimédia",
+					"location": "Lycée professionnel Alfred Hutinel<br><br>Cannes-La-Bocca, France",
+					"description": "Installation, mise en service et dépannage de produits audio-visuel, d'équipements informatiques (pour entreprise\/embarqué sur des navires) et de systèmes de prévention anti-incendie."
+				},
+				"jules": {
+					"title": "Brevet de Technicien Supérieur (BTS) - Systèmes numériques",
+					"option": "Option B : électronique et communications",
+					"location": "Lycée général et technologique Jules Ferry<br><br>Cannes, France",
+					"description": "Électronique de type analogique et numérique, liaison <b>RS232</b>, <b>I2C</b>. Réalisation d'un projet « <i>CubeSat</i> » mêlant plusieurs parties électroniques (capteurs, liaison de communication) et informatiques (<i>LabView</i>, <i>FlowCode</i>)."
+				},
+				"valrose": {
+					"title": "Licence - Sciences et Technologies",
+					"option": "Parcours informatique",
+					"location": "Université Côte d'Azur, Campus Valrose (Faculté des Sciences et Ingénierie)<br><br>Nice, France",
+					"description": "Découverte des modèles algorithmiques avec <b>Python</b>, <b>C</b>, <b>C++</b>. Initiation au Web avec <b>HTML</b> et <b>CSS</b> (avec <i>Bootstrap</i>). Créations de logiciels graphiques pour des opérations mathématiques."
 				}
+			},
+			"jobs": {
+				"title": "Expériences",
+				"dim": "Durant ces deux périodes de formation, j'ai découvert l'univers de l'informatique pour entreprise en réalisant des activités d'installation, de maintenance et de dépannage de parc informatique (comprenant des ordinateurs, des serveurs, des baies de brassages...).",
+				"domo": "Durant cette période de formation, j'ai eu l'opportunité de travailler avec une équipe de techniciens qui réalisaient principalement l'installation de produits audio-visuels comme des télévisions, home-cinéma (passage des câbles jusqu'à la pose finale du produit).",
+				"eas": "Durant ces plusieurs périodes de formation, j'ai pu découvrir l'univers de la réception pour la télévision grâce notamment à l'installation de systèmes de réception satellitaires ou terrestres pour des particuliers (centrale de réception, câblage, pose des produits)."
+			}
+		},
+		"contact": {
+			"description": "Voici le formulaire de contact permettant de m'adresser un message, ce message sera directement transmis dans ma boite mail personnelle. Afin de vous répondre, ce formulaire vous demande de renseigner une adresse mail valide pour que je puisse vous répondre, elle ne sera ni stockée et ni utilisée à des fins malveillantes. Sans ça, votre message restera évidemment lettre morte. Vous trouvez ce moyen de communication trop.. <i>archaïque</i> ? N'oubliez pas que des supports de communication plus modernes sont disponibles sur la page d'accueil (Discord, Twitter, LinkedIn, ...).",
+			"form": {
+				"content": "Contenu",
+				"email": "Adresse électronique",
+				"subject": "Sujet",
+				"subject_1": "Question",
+				"subject_2": "Problème",
+				"subject_3": "Autre",
+				"success": "Le message à été envoyé avec succès. Vous recevrez une réponse dans les plus brefs délais.",
+				"warning": "Le champ « $1 » doit avoir une taille comprise entre $2 et $3 caractères."
 			}
 		}
 	},
