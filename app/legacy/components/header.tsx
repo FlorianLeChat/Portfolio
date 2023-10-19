@@ -1,9 +1,12 @@
 //
 // Composant de l'en-tête de l'ancienne version du site.
 //
+
+"use client";
+
 import Image from "next/image";
 import { lazy } from "react";
-import { headers } from "next/headers";
+import { usePathname } from "next/navigation";
 
 import CV from "@/images/platforms/cv.svg";
 import GitHub from "@/images/platforms/github.svg";
@@ -16,18 +19,20 @@ import GreenWaves from "@/images/decorations/header_waves_green.svg";
 import OrangeWaves from "@/images/decorations/header_waves_orange.svg";
 import PurpleWaves from "@/images/decorations/header_waves_purple.svg";
 
-import { useTranslation } from "@/utilities/ServerTranslations";
+import { useTranslation } from "@/utilities/ClientTranslations";
 
 const TypingEffect = lazy( () => import( "./typing-effect" ) );
 
-export default async function Header()
+export default function Header()
 {
 	// Déclaration des constantes.
-	const { t } = await useTranslation();
-	const route = headers().get( "X-Invoke-Path" ) ?? "";
+	const pathname = usePathname();
+
+	// Déclaration des variables d'état.
+	const { t } = useTranslation();
 
 	// Suppression de l'affichage sur la page de déconnexion de l'administration.
-	if ( route.endsWith( "/admin/logout" ) )
+	if ( pathname === "/admin/logout" )
 	{
 		return null;
 	}
@@ -37,7 +42,7 @@ export default async function Header()
 		<header>
 			{
 				// Page d'accueil.
-				route.endsWith( "/legacy" ) && (
+				pathname.endsWith( "/legacy" ) && (
 					<>
 						{/* Prénom & Nom */}
 						<TypingEffect text="Florian Trayon" />
@@ -47,57 +52,87 @@ export default async function Header()
 
 						{/* Plate-formes de communication */}
 						<a
-							style={{ color: "#5865f2" }} rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://discord.com/users/183272411167326209"
+							style={{ color: "#5865f2" }}
+							target="_blank"
 						>
 							{/* Discord */}
 							<Image
-								src={Discord} style={{ color: "currentcolor" }}
-								alt="Discord" width="32" height="32" priority
+								src={Discord}
+								alt="Discord"
+								style={{ color: "currentcolor" }}
+								width="32"
+								height="32"
+								priority
 							/>
 						</a>
 
 						<a
-							style={{ color: "#27272a" }} rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat"
+							style={{ color: "#27272a" }}
+							target="_blank"
 						>
 							{/* GitHub */}
 							<Image
-								src={GitHub} style={{ color: "currentcolor" }}
-								alt="GitHub" width="32" height="32" priority
+								src={GitHub}
+								alt="GitHub"
+								style={{ color: "currentcolor" }}
+								width="32"
+								height="32"
+								priority
 							/>
 						</a>
 
 						<a
-							style={{ color: "#1da1f2" }} rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
+							style={{ color: "#1da1f2" }}
 							href="https://twitter.com/FlorianTrayon"
+							target="_blank"
 						>
 							{/* Twitter */}
 							<Image
-								src={Twitter} style={{ color: "currentcolor" }}
-								alt="Twitter" width="32" height="32" priority
+								src={Twitter}
+								alt="Twitter"
+								style={{ color: "currentcolor" }}
+								width="32"
+								height="32"
+								priority
 							/>
 						</a>
 
 						<a
-							style={{ color: "#006699" }} rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://www.linkedin.com/in/florian-trayon/"
+							style={{ color: "#006699" }}
+							target="_blank"
 						>
 							{/* LinkedIn */}
 							<Image
-								src={LinkedIn} style={{ color: "currentcolor" }}
-								alt="LinkedIn" width="32" height="32" priority
+								src={LinkedIn}
+								alt="LinkedIn"
+								style={{ color: "currentcolor" }}
+								width="32"
+								height="32"
+								priority
 							/>
 						</a>
 
 						<a
-							style={{ color: "white" }} rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view"
+							style={{ color: "white" }}
+							target="_blank"
 						>
 							{/* Curriculum Vitæ */}
 							<Image
-								src={CV} style={{ color: "currentcolor" }}
-								alt="CV" width="32" height="32" priority
+								src={CV}
+								alt="CV"
+								style={{ color: "currentcolor" }}
+								width="32"
+								height="32"
+								priority
 							/>
 						</a>
 
@@ -109,10 +144,12 @@ export default async function Header()
 
 			{
 				// Page des projets.
-				route.endsWith( "/projects" ) && (
+				pathname.endsWith( "/projects" ) && (
 					<>
 						{/* Titre de la catégorie */}
-						<TypingEffect text={t( "pages.legacy.header.projects.title" )} />
+						<TypingEffect
+							text={t( "pages.legacy.header.projects.title" )}
+						/>
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.projects.subtitle" )}</h2>
@@ -125,10 +162,12 @@ export default async function Header()
 
 			{
 				// Page des compétences.
-				route.endsWith( "/skills" ) && (
+				pathname.endsWith( "/skills" ) && (
 					<>
 						{/* Titre de la catégorie */}
-						<TypingEffect text={t( "pages.legacy.header.skills.title" )} />
+						<TypingEffect
+							text={t( "pages.legacy.header.skills.title" )}
+						/>
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.skills.subtitle" )}</h2>
@@ -141,10 +180,12 @@ export default async function Header()
 
 			{
 				// Page de contact.
-				route.endsWith( "/contact" ) && (
+				pathname.endsWith( "/contact" ) && (
 					<>
 						{/* Titre de la catégorie */}
-						<TypingEffect text={t( "pages.legacy.header.contact.title" )} />
+						<TypingEffect
+							text={t( "pages.legacy.header.contact.title" )}
+						/>
 
 						{/* Description succincte */}
 						<h2>{t( "pages.legacy.header.contact.subtitle" )}</h2>
@@ -157,13 +198,16 @@ export default async function Header()
 
 			{
 				// Page de connexion à l'administration.
-				route.endsWith( "/admin/login" ) && (
+				pathname.endsWith( "/admin/login" ) && (
 					<>
 						{/* Titre de la catégorie */}
 						<TypingEffect text="Authentification" />
 
 						{/* Description succincte */}
-						<h2>Pour accéder à cette ressource, vous devez vous identifier.</h2>
+						<h2>
+							Pour accéder à cette ressource, vous devez vous
+							identifier.
+						</h2>
 
 						{/* Heure actuelle */}
 						<p>00:00:00</p>
@@ -173,13 +217,15 @@ export default async function Header()
 
 			{
 				// Page principale de l'administration.
-				route.endsWith( "/admin" ) && (
+				pathname.endsWith( "/admin" ) && (
 					<>
 						{/* Titre de la catégorie */}
 						<TypingEffect text="Administration" />
 
 						{/* Description succincte */}
-						<h2>Gestion du contenu dynamique de la base de données</h2>
+						<h2>
+							Gestion du contenu dynamique de la base de données
+						</h2>
 
 						{/* Heure actuelle */}
 						<p>00:00:00</p>
