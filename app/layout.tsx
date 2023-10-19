@@ -163,13 +163,14 @@ export default async function Layout( { children }: { children: ReactNode } )
 		( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark"
 			? "dark cc--darkmode"
 			: "light";
-	const font = legacy ? openSans : poppins;
 
 	// Affichage du rendu HTML de la page.
 	return (
 		<html
 			lang={getLanguage()}
-			className={`${ font.className } theme-${ theme }`}
+			className={`${ poppins.className } theme-${ theme }`}
+			data-modern-font={poppins.className}
+			data-legacy-font={openSans.className}
 		>
 			{/* Corps de la page */}
 			<body>
