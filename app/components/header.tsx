@@ -12,7 +12,9 @@ import { faSun,
 import { usePathname } from "next/navigation";
 import { useTranslation } from "@/utilities/ClientTranslations";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
+
+import { useTheme } from "./theme-provider";
 
 export default function Header()
 {
@@ -24,73 +26,20 @@ export default function Header()
 
 	// Déclaration des variables d'état.
 	const { t } = useTranslation();
-	const [ theme, setTheme ] = useState( "light" );
-	const [ passed, setPassed ] = useState( false );
+	const { theme, setTheme } = useTheme();
+	const [ mounted, setMounted ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
-
-	// Basculement entre les thèmes sombre et clair.
-	const switchTheme = useCallback(
-		( forceDark?: boolean ) =>
-		{
-			const html = document.querySelector( "html" );
-
-			if ( html )
-			{
-				// On récupère d'abord le thème préféré de l'utilisateur.
-				const target =
-					forceDark || ( theme === "light" && passed )
-						? "dark"
-						: "light";
-
-				// On supprime alors l'ensemble des classes de thème
-				//  avant d'ajouter celle correspondant au thème cible.
-				html.classList.remove(
-					"theme-light",
-					"theme-dark",
-					"cc--darkmode"
-				);
-
-				html.classList.add( `theme-${ target }` );
-
-				setTheme( target );
-
-				// On ajoute ensuite une classe spécifique pour le thème sombre
-				//  de la fenêtre du consentement des cookies.
-				if ( target === "dark" )
-				{
-					html.classList.add( "cc--darkmode" );
-				}
-
-				// On enregistre enfin le thème cible dans les cookies du navigateur.
-				document.cookie = `NEXT_THEME=${ target }; path=${ process.env.__NEXT_ROUTER_BASEPATH }`;
-			}
-		},
-		[ passed, theme ]
-	);
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
 	const toggleMenu = () => setShowMenu( !showMenu );
 
-	// Détection du thème par défaut de l'utilisateur.
+	// Mise à jour de l'état de montage du composant.
+	//  Source : https://www.npmjs.com/package/next-themes#avoid-hydration-mismatch
 	useEffect( () =>
 	{
-		// On vérifie si le navigateur demande un thème sombre préférentiel.
-		const scheme = window.matchMedia( "(prefers-color-scheme: dark)" );
-
-		// On applique alors le thème sombre si nécessaire au montage du composant.
-		if ( !passed )
-		{
-			setPassed( true );
-			switchTheme( scheme.matches );
-		}
-
-		// On ajoute enfin des écouteurs d'événements pour détecter les changements
-		//  du thème préférentiel de l'utilisateur.
-		scheme.addEventListener( "change", ( event ) => switchTheme( event.matches ) );
-
-		return () => scheme.removeEventListener( "change", ( event ) => switchTheme( event.matches ) );
-	}, [ switchTheme, passed ] );
+		setMounted( true );
+	}, [] );
 
 	// Affichage du rendu HTML du composant.
 	return (
@@ -124,9 +73,16 @@ export default function Header()
 				</ul>
 
 				{/* Bouton de basculement en thème sombre/clair */}
-				<button type="button" onClick={() => switchTheme()}>
+				<button
+					type="button"
+					onClick={() => setTheme( theme === "light" ? "dark" : "light" )}
+				>
 					<FontAwesomeIcon
-						icon={theme === "light" ? faMoon : faSun}
+						icon={
+							( mounted ? theme : "light" ) === "light"
+								? faMoon
+								: faSun
+						}
 					/>
 				</button>
 

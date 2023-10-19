@@ -7,7 +7,6 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
-import { cookies } from "next/headers";
 import { Poppins, Open_Sans } from "next/font/google";
 import { Suspense, lazy, type ReactNode } from "react";
 
@@ -16,6 +15,7 @@ import { getLanguage } from "@/utilities/NextRouter";
 
 // Importation des composants.
 import Loading from "./loading";
+import { ThemeProvider } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
@@ -158,16 +158,12 @@ export default async function Layout( { children }: { children: ReactNode } )
 {
 	// Déclaration des constantes.
 	const metadata = await generateMetadata();
-	const theme =
-		( cookies().get( "NEXT_THEME" )?.value ?? "light" ) === "dark"
-			? "dark cc--darkmode"
-			: "light";
 
 	// Affichage du rendu HTML de la page.
 	return (
 		<html
 			lang={getLanguage()}
-			className={`${ poppins.className } theme-${ theme }`}
+			className={poppins.className}
 			data-modern-font={poppins.className}
 			data-legacy-font={openSans.className}
 		>
@@ -175,29 +171,32 @@ export default async function Layout( { children }: { children: ReactNode } )
 			<body>
 				{/* Écran de chargement de la page */}
 				<Suspense fallback={<Loading title={metadata.title} />}>
-					{/* En-tête */}
-					<Header />
+					{/* Basculement entre les thèmes */}
+					<ThemeProvider>
+						{/* En-tête */}
+						<Header />
 
-					{/* Composant enfant */}
-					{children}
+						{/* Composant enfant */}
+						{children}
 
-					{/* Consentement des cookies */}
-					<CookieConsent />
+						{/* Consentement des cookies */}
+						<CookieConsent />
 
-					{/* Google Analytics */}
-					<Analytics />
+						{/* Google Analytics */}
+						<Analytics />
 
-					{/* Google reCAPTCHA */}
-					<Recaptcha />
+						{/* Google reCAPTCHA */}
+						<Recaptcha />
 
-					{/* Reconnaissance vocale */}
-					<SpeechRecognition />
+						{/* Reconnaissance vocale */}
+						<SpeechRecognition />
 
-					{/* Bouton de retour en haut de page */}
-					<ScrollTop />
+						{/* Bouton de retour en haut de page */}
+						<ScrollTop />
 
-					{/* Pied de page */}
-					<Footer />
+						{/* Pied de page */}
+						<Footer />
+					</ThemeProvider>
 				</Suspense>
 			</body>
 		</html>
