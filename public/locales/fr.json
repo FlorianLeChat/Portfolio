@@ -191,7 +191,7 @@
 							"expiration": "Expire après 6 mois."
 						},
 						{
-							"name": "NEXT_LANGUAGE",
+							"name": "NEXT_LOCALE",
 							"domain": "NextJS",
 							"description": "Cookie mis en place par le site Internet.",
 							"expiration": "Expire à la fin de la session."
