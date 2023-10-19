@@ -20,6 +20,8 @@ export default async function Page()
 {
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/skills`;
+
+	// Déclaration des variables d'état.
 	const { t } = await useTranslation();
 
 	// Affichage du rendu HTML de la page.

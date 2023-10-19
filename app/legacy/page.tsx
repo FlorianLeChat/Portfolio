@@ -24,10 +24,12 @@ export default async function Page()
 {
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;
-	const { t } = await useTranslation();
 	const date = new Date();
 
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
+
+	// Déclaration des variables d'état.
+	const { t } = await useTranslation();
 
 	// Affichage du rendu HTML de la page.
 	return (

@@ -26,6 +26,8 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 		const url = new URLSearchParams( parameters );
 		url.set( "filter", event.currentTarget.id );
 
+		// et voir tous les router.replace pour similaires...
+
 		router.push( url ? `?${ url.toString() }` : url, { scroll: false } );
 	};
 
