@@ -36,49 +36,69 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 			<h2>{t( "pages.index.header_skills" )}</h2>
 
 			{/* Filtre des compétences */}
-			<article>
-				<input
-					id="all"
-					type="radio"
-					name="skills"
-					checked={filter === "all" || filter === ""}
-					onChange={updateSkillFilter}
-				/>
-				<label htmlFor="all">{t( "pages.index.filter_all" )}</label>
+			<ul>
+				<li>
+					<input
+						id="all"
+						type="radio"
+						name="skills"
+						checked={filter === "all" || filter === ""}
+						onChange={updateSkillFilter}
+					/>
 
-				<input
-					id="front"
-					type="radio"
-					name="skills"
-					checked={filter === "front"}
-					onChange={updateSkillFilter}
-				/>
-				<label htmlFor="front">{t( "pages.index.filter_front" )}</label>
+					<label htmlFor="all">{t( "pages.index.filter_all" )}</label>
+				</li>
 
-				<input
-					id="back"
-					type="radio"
-					name="skills"
-					checked={filter === "back"}
-					onChange={updateSkillFilter}
-				/>
-				<label htmlFor="back">{t( "pages.index.filter_back" )}</label>
+				<li>
+					<input
+						id="front"
+						type="radio"
+						name="skills"
+						checked={filter === "front"}
+						onChange={updateSkillFilter}
+					/>
 
-				<input
-					id="other"
-					type="radio"
-					name="skills"
-					checked={filter === "other"}
-					onChange={updateSkillFilter}
-				/>
-				<label htmlFor="other">{t( "pages.index.filter_other" )}</label>
-			</article>
+					<label htmlFor="front">
+						{t( "pages.index.filter_front" )}
+					</label>
+				</li>
+
+				<li>
+					<input
+						id="back"
+						type="radio"
+						name="skills"
+						checked={filter === "back"}
+						onChange={updateSkillFilter}
+					/>
+
+					<label htmlFor="back">{t( "pages.index.filter_back" )}</label>
+				</li>
+
+				<li>
+					<input
+						id="other"
+						type="radio"
+						name="skills"
+						checked={filter === "other"}
+						onChange={updateSkillFilter}
+					/>
+
+					<label htmlFor="other">
+						{t( "pages.index.filter_other" )}
+					</label>
+				</li>
+			</ul>
 
 			{/* Génération des compétences */}
-			<article>
+			<ul>
 				{Object.entries( skills ).map( ( [ key, value ] ) =>
 				{
-					if ( filter === "" || filter === "all" || value.type.includes( filter ) )
+					if (
+						filter === ""
+						|| filter === "all"
+						|| value.type.includes( filter )
+					)
 					{
 						const colored =
 							key !== "lua"
@@ -86,7 +106,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 							&& value.icon !== "original";
 
 						return (
-							<div key={key}>
+							<li key={key}>
 								<i
 									className={`devicon-${ key }-${
 										value.icon + ( colored ? " colored" : "" )
@@ -94,13 +114,13 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 								/>
 
 								<span>{value.name}</span>
-							</div>
+							</li>
 						);
 					}
 
 					return null;
 				} )}
-			</article>
+			</ul>
 		</section>
 	);
 }

@@ -146,13 +146,13 @@ section:first-of-type
 	}
 }
 
-section:nth-of-type(2) div
+section:nth-of-type(2) > ul
 {
 	// Conteneur des projets.
 	overflow-x: auto;
 	max-height: 30rem;
 
-	article
+	> li
 	{
 		// Conteneur d'un projet quelconque.
 		width: 95%;
@@ -302,7 +302,7 @@ section:nth-of-type(2) div
 	}
 }
 
-section:nth-of-type(3) article
+section:nth-of-type(3) ul
 {
 	// Conteneur des compétences.
 	gap: 1rem;
@@ -323,6 +323,9 @@ section:nth-of-type(3) article
 		// Couleur de fond des options de tri.
 		input[type = radio]
 		{
+			margin-right: 1rem;
+			vertical-align: middle;
+
 			@include themeColors()
 			{
 				accent-color: getThemedColor("primary");
@@ -330,7 +333,7 @@ section:nth-of-type(3) article
 		}
 	}
 
-	div
+	&:last-of-type li
 	{
 		// Conteneur de chaque compétence.
 		gap: 0.5rem;
