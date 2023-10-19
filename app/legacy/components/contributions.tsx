@@ -8,7 +8,7 @@ import { useTranslation } from "@/utilities/ClientTranslations";
 
 export default function Contributions( { visible }: { visible: boolean } )
 {
-	// Déclaration des constantes.
+	// Déclaration des variables d'état.
 	const { t } = useTranslation();
 
 	// Affichage conditionnel du rendu HTML du composant.

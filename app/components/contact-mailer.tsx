@@ -13,7 +13,7 @@ import { useTranslation } from "@/utilities/ClientTranslations";
 
 export default function Home()
 {
-	// Déclaration des constantes.
+	// Déclaration des variables d'état.
 	const { t } = useTranslation();
 
 	// Envoi d'un courriel après sélection de la messagerie.
