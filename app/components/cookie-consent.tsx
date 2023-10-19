@@ -6,9 +6,16 @@
 
 import { run } from "vanilla-cookieconsent";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function CookieConsent()
 {
+	// Vérification de la version du site.
+	if ( usePathname().startsWith( "/legacy" ) )
+	{
+		return null;
+	}
+
 	// Affichage du consentement des cookies.
 	//  Source : https://cookieconsent.orestbida.com/reference/api-reference.html
 	useEffect( () =>

@@ -5,11 +5,21 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import type { CookieValue } from "vanilla-cookieconsent";
 import { useState, useEffect, useCallback } from "react";
 
 export default function Analytics()
 {
+	// Vérification de la version du site et de l'activation du service.
+	if (
+		usePathname().startsWith( "/legacy" )
+		|| process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "false"
+	)
+	{
+		return null;
+	}
+
 	// Déclaration des constantes.
 	const analyticsUrl = new URL( "https://www.googletagmanager.com/gtag/js" );
 
@@ -36,12 +46,6 @@ export default function Analytics()
 
 		return () => window.removeEventListener( "cc:onConsent", onConsent );
 	}, [ onConsent, setAnalytics ] );
-
-	// Vérification de l'activation du service.
-	if ( process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "false" )
-	{
-		return null;
-	}
 
 	// Affichage conditionnel du rendu HTML du composant.
 	return analytics ? (

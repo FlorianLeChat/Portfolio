@@ -5,6 +5,7 @@
 "use client";
 
 import Script from "next/script";
+import { usePathname } from "next/navigation";
 import type { CookieValue } from "vanilla-cookieconsent";
 import { useState, useEffect, useCallback } from "react";
 
@@ -17,6 +18,15 @@ declare global {
 
 export default function Recaptcha()
 {
+	// Vérification de la version du site et de l'activation du service.
+	if (
+		usePathname().startsWith( "/legacy" )
+		|| process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false"
+	)
+	{
+		return null;
+	}
+
 	// Déclaration des constantes.
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
 	recaptchaUrl.searchParams.append(
@@ -84,12 +94,6 @@ export default function Recaptcha()
 
 		return () => window.removeEventListener( "cc:onConsent", onConsent );
 	}, [ onConsent, setupRecaptcha ] );
-
-	// Vérification de l'activation du service.
-	if ( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false" )
-	{
-		return null;
-	}
 
 	// Affichage du rendu HTML du composant.
 	return (

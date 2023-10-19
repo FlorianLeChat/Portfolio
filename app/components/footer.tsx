@@ -1,13 +1,23 @@
 //
 // Composant du pied de page du site.
 //
+
+"use client";
+
 import Link from "next/link";
 import { Trans } from "react-i18next/TransWithoutContext";
 import { faPhp } from "@fortawesome/free-brands-svg-icons";
+import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer()
 {
+	// Vérification de la version du site.
+	if ( usePathname().startsWith( "/legacy" ) )
+	{
+		return null;
+	}
+
 	// Affichage du rendu HTML du composant.
 	return (
 		<footer>

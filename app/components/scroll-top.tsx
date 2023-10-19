@@ -5,11 +5,18 @@
 "use client";
 
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 export default function ScrollTop()
 {
+	// Vérification de la version du site.
+	if ( usePathname().startsWith( "/legacy" ) )
+	{
+		return null;
+	}
+
 	// Déclaration des variables d'état.
 	const [ showButton, setShowButton ] = useState( false );
 
@@ -31,18 +38,13 @@ export default function ScrollTop()
 	}, [] );
 
 	// Affichage conditionnel du rendu HTML du composant.
-	if ( showButton )
-	{
-		// L'utilisateur se trouve à plus de 200 pixels du haut de la page.
-		return (
+	return (
+		showButton && (
 			<aside>
 				<button type="button" onClick={scrollToTop}>
 					<FontAwesomeIcon icon={faArrowUp} />
 				</button>
 			</aside>
-		);
-	}
-
-	// L'utilisateur se trouve à moins de 200 pixels du haut de la page.
-	return null;
+		)
+	);
 }
