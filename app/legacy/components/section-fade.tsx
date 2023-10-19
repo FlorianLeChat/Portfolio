@@ -4,17 +4,27 @@
 
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useCallback } from "react";
 
 export default function SectionFade()
 {
+	// Vérification de la version du site.
+	if ( usePathname().includes( "/admin" ) )
+	{
+		return null;
+	}
+
 	// Effet visuel de fondu d'apparition et disparition des sections.
 	const fadeIn = useCallback( () =>
 	{
 		document.querySelectorAll( "section" ).forEach( ( section ) =>
 		{
-			const offset = section.getBoundingClientRect().top - window.innerHeight + 20;
-			const element: HTMLElement | null = document.querySelector( `#${ section.id }` );
+			const offset =
+				section.getBoundingClientRect().top - window.innerHeight + 20;
+			const element: HTMLElement | null = document.querySelector(
+				`#${ section.id }`
+			);
 
 			if ( element )
 			{

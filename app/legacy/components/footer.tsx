@@ -6,13 +6,20 @@
 
 import Link from "next/link";
 import { useTranslation } from "@/utilities/ClientTranslations";
-import { useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+
 import { lazy, useEffect, useCallback } from "react";
 
 const Contributions = lazy( () => import( "./contributions" ) );
 
 export default function Footer()
 {
+	// Vérification de la version du site.
+	if ( usePathname().includes( "/admin" ) )
+	{
+		return null;
+	}
+
 	// Déclaration des constantes.
 	const router = useRouter();
 	const parameters = useSearchParams();

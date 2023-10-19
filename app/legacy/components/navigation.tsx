@@ -17,6 +17,12 @@ export default function Navigation()
 	// Déclaration des variables d'état.
 	const { t } = useTranslation();
 
+	// Vérification de la version du site.
+	if ( pathname.includes( "/admin" ) )
+	{
+		return null;
+	}
+
 	// Affichage du rendu HTML du composant.
 	return (
 		<nav>
