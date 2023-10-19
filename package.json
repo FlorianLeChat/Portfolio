@@ -14,6 +14,7 @@
   "dependencies": {
     "next": "~13.5",
     "devicon": "~2.15",
+    "next-intl": "3.0.0-rc.5",
     "flag-icons": "~6.11",
     "sweetalert2": "<11.4.9",
     "sanitize.css": "~13.0",

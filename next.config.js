@@ -4,7 +4,9 @@
  * @type {import("next").NextConfig}
  */
 const { withSentryConfig } = require( "@sentry/nextjs" );
-const nextConfig = {
+const withNextIntl = require( "next-intl/plugin" )( "./utilities/i18n.ts" );
+
+const nextConfig = withNextIntl( {
 	poweredByHeader: false,
 	basePath: "",
 	sentry: {
@@ -13,7 +15,7 @@ const nextConfig = {
 		hideSourceMaps: true,
 		widenClientFileUpload: true
 	}
-};
+} );
 
 const sentryConfig = {
 	org: process.env.SENTRY_ORG,
@@ -22,4 +24,6 @@ const sentryConfig = {
 	authToken: process.env.SENTRY_AUTH_TOKEN
 };
 
-module.exports = process.env.SENTRY_ENABLED === "true" ? withSentryConfig( nextConfig, sentryConfig ) : nextConfig;
+module.exports = process.env.SENTRY_ENABLED === "true"
+	? withSentryConfig( nextConfig, sentryConfig )
+	: nextConfig;
