@@ -28,14 +28,18 @@ export default async function Page()
 					{/* Icône */}
 					<Image
 						src={`${ assets }/projects/logo_discordbot.svg`}
-						alt="Logo Florian's Bot" width="64" height="64"
+						alt="Logo Florian's Bot"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>Florian&#39;s Bot</h2>
 
 					{/* Date */}
-					<h3><em>2016</em></h3>
+					<h3>
+						<em>2016</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -44,7 +48,15 @@ export default async function Page()
 							components={{
 								i: <i />,
 								b: <strong />,
-								a: <a href="https://discord.com/" target="_blank" rel="noopener noreferrer">...</a>
+								a: (
+									<a
+										rel="noopener noreferrer"
+										href="https://discord.js.org/"
+										target="_blank"
+									>
+										...
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -55,35 +67,33 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="discordbot"
-					photos={
-						[
-							{
-								width: 502,
-								height: 855,
-								caption: "Suivi des actualités"
-							},
-							{
-								width: 314,
-								height: 160,
-								caption: "Réponses automatiques"
-							},
-							{
-								width: 365,
-								height: 581,
-								caption: "Journalisation interne"
-							},
-							{
-								width: 603,
-								height: 378,
-								caption: "Commandes personnalisées"
-							},
-							{
-								width: 289,
-								height: 405,
-								caption: "Messages de statut aléatoires"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 502,
+							height: 855,
+							caption: "Suivi des actualités"
+						},
+						{
+							width: 314,
+							height: 160,
+							caption: "Réponses automatiques"
+						},
+						{
+							width: 365,
+							height: 581,
+							caption: "Journalisation interne"
+						},
+						{
+							width: 603,
+							height: 378,
+							caption: "Commandes personnalisées"
+						},
+						{
+							width: 289,
+							height: 405,
+							caption: "Messages de statut aléatoires"
+						}
+					]}
 				/>
 
 				<hr />
@@ -91,18 +101,27 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo MySQL"
 						src={`${ assets }/languages/mysql.svg`}
-						width="60" height="40" title="MySQL" alt="Logo MySQL"
+						title="MySQL"
+						width="60"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo JavaScript"
 						src={`${ assets }/languages/javascript.svg`}
-						width="40" height="40" title="JavaScript" alt="Logo JavaScript"
+						title="JavaScript"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo NodeJS"
 						src={`${ assets }/languages/nodejs.svg`}
-						width="40" height="40" title="NodeJS" alt="Logo NodeJS"
+						title="NodeJS"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>
@@ -112,15 +131,19 @@ export default async function Page()
 				<div className="properties">
 					{/* Icône */}
 					<Image
+						alt="Logo Framework Raven"
 						src={`${ assets }/projects/logo_raven.svg`}
-						width="64" height="64" alt="Logo Framework Raven"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>Raven Framework</h2>
 
 					{/* Date */}
-					<h3><em>2017</em></h3>
+					<h3>
+						<em>2017</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -129,14 +152,24 @@ export default async function Page()
 							components={{
 								i: <i />,
 								b: <strong />,
-								a1: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://store.steampowered.com/app/4000/Garrys_Mod/"
-								>...</a>,
-								a2: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://steamcommunity.com/app/4000/workshop/"
-								>...</a>
+								a1: (
+									<a
+										rel="noopener noreferrer"
+										href="https://store.steampowered.com/app/4000/Garrys_Mod/"
+										target="_blank"
+									>
+										...
+									</a>
+								),
+								a2: (
+									<a
+										rel="noopener noreferrer"
+										href="https://steamcommunity.com/app/4000/workshop/"
+										target="_blank"
+									>
+										...
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -147,40 +180,39 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="raven"
-					photos={
-						[
-							{
-								width: 528,
-								height: 399,
-								caption: "Communications écrites entre joueurs"
-							},
-							{
-								width: 1920,
-								height: 1080,
-								caption: "Liste des joueurs connectés"
-							},
-							{
-								width: 617,
-								height: 1079,
-								caption: "Éléments interactifs avec l'environnement"
-							},
-							{
-								width: 981,
-								height: 829,
-								caption: "Choix d'un rôle"
-							},
-							{
-								width: 196,
-								height: 150,
-								caption: "Système d'armements"
-							},
-							{
-								width: 1920,
-								height: 1080,
-								caption: "Entités et PNJs dynamiques"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 528,
+							height: 399,
+							caption: "Communications écrites entre joueurs"
+						},
+						{
+							width: 1920,
+							height: 1080,
+							caption: "Liste des joueurs connectés"
+						},
+						{
+							width: 617,
+							height: 1079,
+							caption:
+								"Éléments interactifs avec l'environnement"
+						},
+						{
+							width: 981,
+							height: 829,
+							caption: "Choix d'un rôle"
+						},
+						{
+							width: 196,
+							height: 150,
+							caption: "Système d'armements"
+						},
+						{
+							width: 1920,
+							height: 1080,
+							caption: "Entités et PNJs dynamiques"
+						}
+					]}
 				/>
 
 				<hr />
@@ -188,18 +220,27 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo MySQL"
 						src={`${ assets }/languages/mysql.svg`}
-						width="60" height="40" title="MySQL" alt="Logo MySQL"
+						title="MySQL"
+						width="60"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo C++"
 						src={`${ assets }/languages/cplusplus.svg`}
-						width="40" height="40" title="C++" alt="Logo C++"
+						title="C++"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo Lua"
 						src={`${ assets }/languages/lua.svg`}
-						width="40" height="40" title="Lua" alt="Logo Lua"
+						title="Lua"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>
@@ -209,22 +250,27 @@ export default async function Page()
 				<div className="properties">
 					{/* Icône */}
 					<Image
+						alt="Logo Facepunch Commits Monitor"
 						src={`${ assets }/projects/logo_facepunch.svg`}
-						width="64" height="64" alt="Logo Facepunch Commits Monitor"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>
 						<a
-							rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Facepunch-Commits-Monitor"
+							target="_blank"
 						>
 							Facepunch Commits Monitor
 						</a>
 					</h2>
 
 					{/* Date */}
-					<h3><em>2021</em></h3>
+					<h3>
+						<em>2021</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -233,14 +279,24 @@ export default async function Page()
 							components={{
 								i: <i />,
 								b: <strong />,
-								a1: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://facepunch.com/"
-								>...</a>,
-								a2: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://commits.facepunch.com/"
-								>...</a>
+								a1: (
+									<a
+										rel="noopener noreferrer"
+										href="https://facepunch.com/"
+										target="_blank"
+									>
+										...
+									</a>
+								),
+								a2: (
+									<a
+										rel="noopener noreferrer"
+										href="https://commits.facepunch.com/"
+										target="_blank"
+									>
+										...
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -251,20 +307,20 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="facepunch"
-					photos={
-						[
-							{
-								width: 396,
-								height: 360,
-								caption: "Choix du répertoire et définition de l'interval de vérification"
-							},
-							{
-								width: 391,
-								height: 553,
-								caption: "Affichage des actualités dans la barre de navigation Windows"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 396,
+							height: 360,
+							caption:
+								"Choix du répertoire et définition de l'interval de vérification"
+						},
+						{
+							width: 391,
+							height: 553,
+							caption:
+								"Affichage des actualités dans la barre de navigation Windows"
+						}
+					]}
 				/>
 
 				<hr />
@@ -272,13 +328,19 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo C#"
 						src={`${ assets }/languages/csharp.svg`}
-						width="40" height="40" title="C#" alt="Logo C#"
+						title="C#"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo .NET"
 						src={`${ assets }/languages/dotnet.svg`}
-						width="40" height="40" title=".NET" alt="Logo .NET"
+						title=".NET"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>
@@ -288,22 +350,27 @@ export default async function Page()
 				<div className="properties">
 					{/* Icône */}
 					<Image
+						alt="Logo Steam Collection Download Size Calculator"
 						src={`${ assets }/projects/logo_steam.svg`}
-						width="64" height="64" alt="Logo Steam Collection Download Size Calculator"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>
 						<a
-							rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Steam-Collection-Download-Size-Calculator"
+							target="_blank"
 						>
 							Steam Collection Download Size Calculator
 						</a>
 					</h2>
 
 					{/* Date */}
-					<h3><em>2021</em></h3>
+					<h3>
+						<em>2021</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -312,7 +379,15 @@ export default async function Page()
 							components={{
 								i: <i />,
 								b: <strong />,
-								a: <a target="_blank" rel="noopener noreferrer" href="https://steamcommunity.com/">...</a>
+								a: (
+									<a
+										rel="noopener noreferrer"
+										href="https://steamcommunity.com/"
+										target="_blank"
+									>
+										...
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -323,15 +398,13 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="steam"
-					photos={
-						[
-							{
-								width: 881,
-								height: 363,
-								caption: "Informations détaillées de l'objet"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 881,
+							height: 363,
+							caption: "Informations détaillées de l'objet"
+						}
+					]}
 				/>
 
 				<hr />
@@ -339,13 +412,19 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo .NET"
 						src={`${ assets }/languages/dotnet.svg`}
-						width="40" height="40" title=".NET" alt="Logo .NET"
+						title=".NET"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo C#"
 						src={`${ assets }/languages/csharp.svg`}
-						width="40" height="40" title="C#" alt="Logo C#"
+						title="C#"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>
@@ -355,22 +434,27 @@ export default async function Page()
 				<div className="properties">
 					{/* Icône */}
 					<Image
+						alt="Logo Python RPG"
 						src={`${ assets }/projects/logo_pythonrpg.svg`}
-						width="64" height="64" alt="Logo Python RPG"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>
 						<a
-							rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Python-RPG"
+							target="_blank"
 						>
 							Python RPG
 						</a>
 					</h2>
 
 					{/* Date */}
-					<h3><em>2021</em></h3>
+					<h3>
+						<em>2021</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -389,20 +473,18 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="pythonrpg"
-					photos={
-						[
-							{
-								width: 665,
-								height: 502,
-								caption: "Plusieurs modes de lecture"
-							},
-							{
-								width: 964,
-								height: 498,
-								caption: "Histoires riches et détaillées"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 665,
+							height: 502,
+							caption: "Plusieurs modes de lecture"
+						},
+						{
+							width: 964,
+							height: 498,
+							caption: "Histoires riches et détaillées"
+						}
+					]}
 				/>
 
 				<hr />
@@ -410,8 +492,11 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo Python"
 						src={`${ assets }/languages/python.svg`}
-						width="40" height="40" title="Python" alt="Logo Python"
+						width="40"
+						height="40"
+						title="Python"
 					/>
 				</div>
 			</article>
@@ -421,22 +506,27 @@ export default async function Page()
 				<div className="properties">
 					{/* Icône */}
 					<Image
+						alt="Logo Simple File Storage"
 						src={`${ assets }/projects/logo_phpstorage.svg`}
-						width="64" height="64" alt="Logo Simple File Storage"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>
 						<a
-							rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Simple-File-Storage"
+							target="_blank"
 						>
 							Simple File Storage
 						</a>
 					</h2>
 
 					{/* Date */}
-					<h3><em>2021</em></h3>
+					<h3>
+						<em>2021</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -445,14 +535,24 @@ export default async function Page()
 							components={{
 								i: <i />,
 								b: <strong />,
-								a1: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage"
-								>...</a>,
-								a2: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://www.google.com/intl/en/drive/"
-								>...</a>
+								a1: (
+									<a
+										rel="noopener noreferrer"
+										href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage"
+										target="_blank"
+									>
+										...
+									</a>
+								),
+								a2: (
+									<a
+										rel="noopener noreferrer"
+										href="https://www.google.com/intl/en/drive/"
+										target="_blank"
+									>
+										...
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -463,25 +563,24 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="phpstorage"
-					photos={
-						[
-							{
-								width: 791,
-								height: 529,
-								caption: "Interface de téléversement simplifiée"
-							},
-							{
-								width: 785,
-								height: 562,
-								caption: "Système d'administration des fichiers"
-							},
-							{
-								width: 659,
-								height: 723,
-								caption: "Création d'une nouvelle version avec Bootstrap"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 791,
+							height: 529,
+							caption: "Interface de téléversement simplifiée"
+						},
+						{
+							width: 785,
+							height: 562,
+							caption: "Système d'administration des fichiers"
+						},
+						{
+							width: 659,
+							height: 723,
+							caption:
+								"Création d'une nouvelle version avec Bootstrap"
+						}
+					]}
 				/>
 
 				<hr />
@@ -489,33 +588,51 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo Nginx"
 						src={`${ assets }/languages/nginx.svg`}
-						width="80" height="40" title="Nginx" alt="Logo Nginx"
+						title="Nginx"
+						width="80"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo PHP"
 						src={`${ assets }/languages/php.svg`}
-						width="40" height="40" title="PHP" alt="Logo PHP"
+						title="PHP"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo JavaScript"
 						src={`${ assets }/languages/javascript.svg`}
-						width="40" height="40" title="JavaScript" alt="Logo JavaScript"
+						title="JavaScript"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo CSS"
 						src={`${ assets }/languages/css3.svg`}
-						width="40" height="40" title="CSS" alt="Logo CSS"
+						title="CSS"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo Bootstrap"
 						src={`${ assets }/languages/bootstrap.svg`}
-						width="40" height="40" title="Bootstrap" alt="Logo Bootstrap"
+						title="Bootstrap"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo HTML"
 						src={`${ assets }/languages/html5.svg`}
-						width="40" height="40" title="HTML" alt="Logo HTML"
+						title="HTML"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>
@@ -525,22 +642,27 @@ export default async function Page()
 				<div className="properties">
 					{/* Icône */}
 					<Image
+						alt="Logo Source Web Console"
 						src={`${ assets }/projects/logo_sourceconsole.svg`}
-						width="64" height="64" alt="Logo Source Web Console"
+						width="64"
+						height="64"
 					/>
 
 					{/* Nom */}
 					<h2>
 						<a
-							rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Source-Web-Console"
+							target="_blank"
 						>
 							Source Web Console
 						</a>
 					</h2>
 
 					{/* Date */}
-					<h3><em>2022</em></h3>
+					<h3>
+						<em>2022</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -549,10 +671,15 @@ export default async function Page()
 							components={{
 								i: <i />,
 								b: <strong />,
-								a: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://developer.valvesoftware.com/wiki/Source"
-								>..</a>
+								a: (
+									<a
+										rel="noopener noreferrer"
+										href="https://developer.valvesoftware.com/wiki/Source"
+										target="_blank"
+									>
+										..
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -563,30 +690,30 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="sourceconsole"
-					photos={
-						[
-							{
-								width: 1338,
-								height: 850,
-								caption: "Page d'accueil avec présentation des fonctionnalités"
-							},
-							{
-								width: 1338,
-								height: 850,
-								caption: "Tableau de bord de visualisation"
-							},
-							{
-								width: 1338,
-								height: 850,
-								caption: "Statistiques d'utilisation des serveurs"
-							},
-							{
-								width: 1338,
-								height: 850,
-								caption: "Compte utilisateur pour modifier les paramètres"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 1338,
+							height: 850,
+							caption:
+								"Page d'accueil avec présentation des fonctionnalités"
+						},
+						{
+							width: 1338,
+							height: 850,
+							caption: "Tableau de bord de visualisation"
+						},
+						{
+							width: 1338,
+							height: 850,
+							caption: "Statistiques d'utilisation des serveurs"
+						},
+						{
+							width: 1338,
+							height: 850,
+							caption:
+								"Compte utilisateur pour modifier les paramètres"
+						}
+					]}
 				/>
 
 				<hr />
@@ -594,38 +721,59 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo Nginx"
 						src={`${ assets }/languages/nginx.svg`}
-						width="80" height="40" title="Nginx" alt="Logo Nginx"
+						title="Nginx"
+						width="80"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo MySQL"
 						src={`${ assets }/languages/mysql.svg`}
-						width="60" height="40" title="MySQL" alt="Logo MySQL"
+						title="MySQL"
+						width="60"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo PHP"
 						src={`${ assets }/languages/php.svg`}
-						width="40" height="40" title="PHP" alt="Logo PHP"
+						title="PHP"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo jQuery"
 						src={`${ assets }/languages/jquery.svg`}
-						width="40" height="40" title="jQuery" alt="Logo jQuery"
+						title="jQuery"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo JavaScript"
 						src={`${ assets }/languages/javascript.svg`}
-						width="40" height="40" title="JavaScript" alt="Logo JavaScript"
+						width="40"
+						height="40"
+						title="JavaScript"
 					/>
 
 					<Image
+						alt="Logo SASS"
 						src={`${ assets }/languages/sass.svg`}
-						width="40" height="40" title="SASS" alt="Logo SASS"
+						title="SASS"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo HTML"
 						src={`${ assets }/languages/html5.svg`}
-						width="40" height="40" title="HTML" alt="Logo HTML"
+						title="HTML"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>
@@ -634,20 +782,28 @@ export default async function Page()
 			<article id="domego">
 				<div className="properties">
 					{/* Icône */}
-					<Image src={`${ assets }/projects/logo_domego.svg`} width="64" height="64" alt="Logo Domego" />
+					<Image
+						alt="Logo Domego"
+						src={`${ assets }/projects/logo_domego.svg`}
+						width="64"
+						height="64"
+					/>
 
 					{/* Nom */}
 					<h2>
 						<a
-							rel="noopener noreferrer" target="_blank"
+							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Domego"
+							target="_blank"
 						>
 							Domego
 						</a>
 					</h2>
 
 					{/* Date */}
-					<h3><em>2022</em></h3>
+					<h3>
+						<em>2022</em>
+					</h3>
 
 					{/* Description */}
 					<p>
@@ -655,10 +811,15 @@ export default async function Page()
 							i18nKey="pages.legacy.projects.domego"
 							components={{
 								b: <strong />,
-								a: <a
-									target="_blank" rel="noopener noreferrer"
-									href="https://www.i2m.u-bordeaux.fr/Projets/Autres-projets2/Domego"
-								>..</a>
+								a: (
+									<a
+										rel="noopener noreferrer"
+										href="https://www.i2m.u-bordeaux.fr/Projets/Autres-projets2/Domego"
+										target="_blank"
+									>
+										..
+									</a>
+								)
 							}}
 						/>
 					</p>
@@ -669,25 +830,25 @@ export default async function Page()
 				{/* Galerie photos */}
 				<PhotoGallery
 					project="domego"
-					photos={
-						[
-							{
-								width: 1362,
-								height: 937,
-								caption: "Page d'accueil avec la liste des parties"
-							},
-							{
-								width: 1362,
-								height: 937,
-								caption: "Sélection des rôles avec communications textuelles"
-							},
-							{
-								width: 1362,
-								height: 880,
-								caption: "Choix du mode de jeu : joueur ou spectateur"
-							}
-						]
-					}
+					photos={[
+						{
+							width: 1362,
+							height: 937,
+							caption: "Page d'accueil avec la liste des parties"
+						},
+						{
+							width: 1362,
+							height: 937,
+							caption:
+								"Sélection des rôles avec communications textuelles"
+						},
+						{
+							width: 1362,
+							height: 880,
+							caption:
+								"Choix du mode de jeu : joueur ou spectateur"
+						}
+					]}
 				/>
 
 				<hr />
@@ -695,43 +856,67 @@ export default async function Page()
 				{/* Icônes des langages utilisés */}
 				<div className="languages">
 					<Image
+						alt="Logo Nginx"
 						src={`${ assets }/languages/nginx.svg`}
-						width="80" height="40" title="Nginx" alt="Logo Nginx"
+						title="Nginx"
+						width="80"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo MongoDB"
 						src={`${ assets }/languages/mongodb.svg`}
-						width="40" height="40" title="MongoDB" alt="Logo MongoDB"
+						title="MongoDB"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo Express"
 						src={`${ assets }/languages/express.svg`}
-						width="40" height="40" title="Express" alt="Logo Express"
+						title="Express"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo TypeScript"
 						src={`${ assets }/languages/typescript.svg`}
-						width="40" height="40" title="TypeScript" alt="Logo TypeScript"
+						title="TypeScript"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo React"
 						src={`${ assets }/languages/react.svg`}
-						width="40" height="40" title="React" alt="Logo React"
+						title="React"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo NodeJS"
 						src={`${ assets }/languages/nodejs.svg`}
-						width="40" height="40" title="NodeJS" alt="Logo NodeJS"
+						title="NodeJS"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo SASS"
 						src={`${ assets }/languages/sass.svg`}
-						width="40" height="40" title="SASS" alt="Logo SASS"
+						title="SASS"
+						width="40"
+						height="40"
 					/>
 
 					<Image
+						alt="Logo HTML"
 						src={`${ assets }/languages/html5.svg`}
-						width="40" height="40" title="HTML" alt="Logo HTML"
+						title="HTML"
+						width="40"
+						height="40"
 					/>
 				</div>
 			</article>

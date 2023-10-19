@@ -111,14 +111,16 @@ export default async function Page()
 {
 	// Déclaration des constantes.
 	const github = ( await generateMetadata() ).source;
-	const { t } = await useTranslation();
 	const date = new Date();
 
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
+	// Déclaration des variables d'état.
+	const { t } = await useTranslation();
+
 	// Affichage du rendu HTML de la page.
 	return (
-		<>
+		<main>
 			{/* Affichage de l'animation du logo vers le dépôt GitHub */}
 			{/* Source : https://tholman.com/github-corners/ */}
 			<a href={github} target="_blank" rel="noopener noreferrer">
@@ -189,8 +191,8 @@ export default async function Page()
 
 								{/* Compétences utilisées pour le projet */}
 								<ul>
-									{value.skills.map( ( skill, index ) => (
-										<li key={index}>{skill}</li>
+									{value.skills.map( ( skill ) => (
+										<li key={key}>{skill}</li>
 									) )}
 								</ul>
 
@@ -241,6 +243,6 @@ export default async function Page()
 
 			{/* Section de contact */}
 			<ContactMailer />
-		</>
+		</main>
 	);
 }
