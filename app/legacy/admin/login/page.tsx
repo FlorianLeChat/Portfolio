@@ -10,7 +10,10 @@ export default function Page()
 		<>
 			{/* Vidéo en arrière-plan */}
 			<video autoPlay muted loop>
-				<source src={`${ process.env.__NEXT_ROUTER_BASEPATH }/assets/videos/login.mp4`} type="video/mp4" />
+				<source
+					src={`${ process.env.__NEXT_ROUTER_BASEPATH }/assets/videos/login.mp4`}
+					type="video/mp4"
+				/>
 			</video>
 
 			{/* Formulaire de connexion */}
@@ -26,16 +29,24 @@ export default function Page()
 					<label htmlFor="username">Nom d&#39;utilisateur</label>
 
 					<input
-						type="text" autoComplete="username" spellCheck="false"
-						id="username" placeholder="username" required
+						id="username"
+						type="text"
+						spellCheck="false"
+						placeholder="username"
+						autoComplete="username"
+						required
 					/>
 
 					{/* Mot de passe */}
 					<label htmlFor="password">Mot de passe</label>
 
 					<input
-						type="password" autoComplete="current-password" spellCheck="false"
-						id="password" placeholder="password" required
+						id="password"
+						type="password"
+						spellCheck="false"
+						placeholder="password"
+						autoComplete="current-password"
+						required
 					/>
 
 					{/* Récupération du mot de passe */}
@@ -43,11 +54,15 @@ export default function Page()
 
 					{/* Bouton d'affichage du mot de passe */}
 					<label htmlFor="clear">Afficher le mot de passe</label>
-					<input type="checkbox" id="clear" /><br /><br />
+					<input type="checkbox" id="clear" />
+					<br />
+					<br />
 
 					{/* Se souvenir de la connexion */}
 					<label htmlFor="remember_me">Se souvenir de moi</label>
-					<input type="checkbox" id="remember_me" /><br /><br />
+					<input type="checkbox" id="remember_me" />
+					<br />
+					<br />
 
 					{/* Validation */}
 					<input type="submit" value="Envoyer" />

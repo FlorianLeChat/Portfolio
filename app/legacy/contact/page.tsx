@@ -17,16 +17,16 @@ import { useTranslation } from "@/utilities/ClientTranslations";
 // Affichage de la page.
 export default function Page()
 {
-	// Déclaration des constantes.
-	const { t } = useTranslation();
-
 	// Déclaration des variables d'état.
+	const { t } = useTranslation();
 	const [ showWarning, setShowWarning ] = useState( "" );
 	const [ warningMessage, setWarningMessage ] = useState( "" );
 
 	// Vérification de l'état de validité du champ de saisie.
 	const checkField = (
-		event: FormEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+		event: FormEvent<
+			HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+		>
 	) =>
 	{
 		// On récupère d'abord l'élément qui a déclenché l'événement.
@@ -59,7 +59,11 @@ export default function Page()
 		const message = event.currentTarget[ 2 ] as HTMLTextAreaElement;
 
 		// On vérifie alors si les champs sont valides ou non.
-		if ( !address.validity.valid || !subject.validity.valid || !message.validity.valid )
+		if (
+			!address.validity.valid
+			|| !subject.validity.valid
+			|| !message.validity.valid
+		)
 		{
 			return;
 		}
@@ -67,7 +71,10 @@ export default function Page()
 		// On ouvre alors une nouvelle fenêtre pour envoyer le courriel
 		//  via la messagerie GMail.
 		const element = event.currentTarget;
-		const destination = ( `admin@${ window.location.hostname }` ).replace( "www.", "" );
+		const destination = `admin@${ window.location.hostname }`.replace(
+			"www.",
+			""
+		);
 
 		window.open(
 			`https://mail.google.com/mail/?view=cm&fs=1
@@ -101,37 +108,59 @@ export default function Page()
 			</p>
 
 			{/* Messages de vérification */}
-			<p id="warning" className={showWarning}>{warningMessage}</p>
+			<p id="warning" className={showWarning}>
+				{warningMessage}
+			</p>
 
 			{/* Formulaire  */}
 			<form method="POST" noValidate onSubmit={checkForm}>
 				{/* Adresse électronique */}
-				<label htmlFor="email">{t( "pages.legacy.contact.form.email" )}</label>
+				<label htmlFor="email">
+					{t( "pages.legacy.contact.form.email" )}
+				</label>
 
 				<input
-					type="email" autoComplete="email" spellCheck="false"
-					id="email" placeholder="jeandupont@mail.com"
-					minLength={10} maxLength={40} onInput={checkField} required
+					id="email"
+					type="email"
+					onInput={checkField}
+					minLength={10}
+					maxLength={40}
+					spellCheck="false"
+					placeholder="jeandupont@mail.com"
+					autoComplete="email"
+					required
 				/>
 
 				<span />
 
 				{/* Sujet de la prise de contact */}
-				<label htmlFor="subject">{t( "pages.legacy.contact.form.subject" )}</label>
+				<label htmlFor="subject">
+					{t( "pages.legacy.contact.form.subject" )}
+				</label>
 
 				<select id="subject" onInput={checkField}>
-					<option disabled>{t( "pages.legacy.contact.form.subject" )}</option>
+					<option disabled>
+						{t( "pages.legacy.contact.form.subject" )}
+					</option>
 					<option>{t( "pages.legacy.contact.form.subject_1" )}</option>
 					<option>{t( "pages.legacy.contact.form.subject_2" )}</option>
 					<option>{t( "pages.legacy.contact.form.subject_3" )}</option>
 				</select>
 
 				{/* Contenu du message */}
-				<label htmlFor="content">{t( "pages.legacy.contact.form.content" )}</label>
+				<label htmlFor="content">
+					{t( "pages.legacy.contact.form.content" )}
+				</label>
 
 				<textarea
-					id="content" minLength={50} maxLength={4000} onInput={checkField} required
-					placeholder={t( "pages.legacy.index.contact.message" ).replaceAll( "<br>", "\n" )}
+					id="content"
+					onInput={checkField}
+					minLength={50}
+					maxLength={4000}
+					placeholder={t(
+						"pages.legacy.index.contact.message"
+					).replaceAll( "<br>", "\n" )}
+					required
 				/>
 
 				<span />
