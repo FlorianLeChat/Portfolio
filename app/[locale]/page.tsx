@@ -114,6 +114,9 @@ export default async function Page( {
 	params: { locale: string };
 } )
 {
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
+
 	// Déclaration des constantes.
 	const github = ( await generateMetadata() ).source;
 	const date = new Date();
@@ -122,9 +125,6 @@ export default async function Page( {
 
 	// Déclaration des variables d'état.
 	const t = await getTranslator( useLocale(), "global" );
-
-	// Définition de la langue de la page.
-	unstable_setRequestLocale( locale );
 
 	// Affichage du rendu HTML de la page.
 	return (
