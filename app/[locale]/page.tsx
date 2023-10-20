@@ -10,7 +10,6 @@ import "./page.scss";
 import Image from "next/image";
 import { join } from "path";
 import { lazy } from "react";
-import { redirect } from "next/navigation";
 import { useLocale } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
@@ -115,12 +114,6 @@ export default async function Page( {
 	params: { locale: string };
 } )
 {
-	// Vérification de la langue demandée.
-	if ( locale !== "en" && locale !== "fr" )
-	{
-		redirect( "/legacy" );
-	}
-
 	// Déclaration des constantes.
 	const github = ( await generateMetadata() ).source;
 	const date = new Date();
