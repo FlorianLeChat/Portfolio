@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les anciennes pages.
 	if ( usePathname().startsWith( "/legacy" ) )
 	{
 		return null;
@@ -26,7 +26,7 @@ export default function Footer()
 		<footer>
 			<span>
 				{/* Lien vers le dépôt GitHub du projet */}
-				{t.rich( "pages.index.footer_madeby", {
+				{t.rich( "landing.footer_madeby", {
 					a: ( chunks ) => (
 						<a
 							rel="noopener noreferrer"
@@ -45,7 +45,7 @@ export default function Footer()
 			{/* Avertissement de Google reCAPTCHA */}
 			{process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" && (
 				<small>
-					{t.rich( "pages.index.footer_recaptcha", {
+					{t.rich( "landing.footer_recaptcha", {
 						a1: ( chunks ) => (
 							<a
 								rel="noopener noreferrer"
@@ -72,7 +72,7 @@ export default function Footer()
 			<small>
 				<FontAwesomeIcon icon={faPhp} />
 
-				{t.rich( "pages.index.footer_legacy", {
+				{t.rich( "landing.footer_legacy", {
 					a: ( chunks ) => <Link href="/legacy">{chunks}</Link>
 				} )}
 			</small>

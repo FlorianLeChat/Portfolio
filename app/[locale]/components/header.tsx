@@ -18,7 +18,7 @@ import { useTheme } from "./theme-provider";
 
 export default function Header()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les anciennes pages.
 	if ( usePathname().startsWith( "/legacy" ) )
 	{
 		return null;
@@ -50,25 +50,23 @@ export default function Header()
 				href="https://github.com/FlorianLeChat"
 				target="_blank"
 			>
-				{t( "pages.index.developer_firstname" )[ 0 ]
-					+ t( "pages.index.developer_surname" )[ 0 ]}
+				{t( "landing.developer_firstname" )[ 0 ]
+					+ t( "landing.developer_surname" )[ 0 ]}
 			</a>
 
 			<nav>
 				{/* Liens de navigation */}
 				<ul className={showMenu ? "show" : ""}>
 					<li>
-						<a href="#projects">
-							{t( "pages.index.header_projects" )}
-						</a>
+						<a href="#projects">{t( "landing.header_projects" )}</a>
 					</li>
 
 					<li>
-						<a href="#skills">{t( "pages.index.header_skills" )}</a>
+						<a href="#skills">{t( "landing.header_skills" )}</a>
 					</li>
 
 					<li>
-						<a href="#contact">{t( "pages.index.header_contact" )}</a>
+						<a href="#contact">{t( "landing.header_contact" )}</a>
 					</li>
 				</ul>
 

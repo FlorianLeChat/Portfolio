@@ -64,14 +64,14 @@ export default function Home()
 	return (
 		<section id="contact">
 			{/* Section de contact */}
-			<h2>{t( "pages.index.header_contact" )}</h2>
+			<h2>{t( "landing.header_contact" )}</h2>
 
 			{/* Liens vers les réseaux sociaux */}
 			<ul>
 				<li>
 					<button type="button" onClick={sendMail}>
 						<FontAwesomeIcon icon={faEnvelope} />
-						{t( "pages.index.footer_mail" )}
+						{t( "landing.footer_mail" )}
 					</button>
 				</li>
 
