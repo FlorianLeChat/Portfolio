@@ -4,17 +4,17 @@
 
 "use client";
 
-import { useTranslation } from "@/utilities/ClientTranslations";
+import { useTranslations } from "next-intl";
 
 export default function Contributions( { visible }: { visible: boolean } )
 {
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "legacy" );
 
 	// Affichage conditionnel du rendu HTML du composant.
 	return visible ? (
 		<section id="contributions">
-			<h2>{t( "pages.legacy.footer.contributions" )}</h2>
+			<h2>{t( "footer.contributions" )}</h2>
 
 			<ul>
 				{/* Description de chaque contribution */}

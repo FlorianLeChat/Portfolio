@@ -8,17 +8,14 @@
 import "./page.scss";
 
 // Importation des dépendances.
-import { Trans } from "react-i18next/TransWithoutContext";
+import { useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
-
-// Importation des fonctions utilitaires.
-import { useTranslation } from "@/utilities/ClientTranslations";
 
 // Affichage de la page.
 export default function Page()
 {
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "legacy" );
 	const [ showWarning, setShowWarning ] = useState( "" );
 	const [ warningMessage, setWarningMessage ] = useState( "" );
 
@@ -95,16 +92,13 @@ export default function Page()
 		<section id="form">
 			<h3>#contact</h3>
 
-			<h2>{t( "pages.legacy.index.contact.title" )}</h2>
+			<h2>{t( "index.contact.title" )}</h2>
 
 			{/* Description */}
 			<p>
-				<Trans
-					i18nKey="pages.legacy.contact.description"
-					components={{
-						i: <i />
-					}}
-				/>
+				{t.rich( "contact.description", {
+					i: ( chunks ) => <i>{chunks}</i>
+				} )}
 			</p>
 
 			{/* Messages de vérification */}
@@ -115,9 +109,7 @@ export default function Page()
 			{/* Formulaire  */}
 			<form method="POST" noValidate onSubmit={checkForm}>
 				{/* Adresse électronique */}
-				<label htmlFor="email">
-					{t( "pages.legacy.contact.form.email" )}
-				</label>
+				<label htmlFor="email">{t( "contact.form.email" )}</label>
 
 				<input
 					id="email"
@@ -134,32 +126,28 @@ export default function Page()
 				<span />
 
 				{/* Sujet de la prise de contact */}
-				<label htmlFor="subject">
-					{t( "pages.legacy.contact.form.subject" )}
-				</label>
+				<label htmlFor="subject">{t( "contact.form.subject" )}</label>
 
 				<select id="subject" onInput={checkField}>
-					<option disabled>
-						{t( "pages.legacy.contact.form.subject" )}
-					</option>
-					<option>{t( "pages.legacy.contact.form.subject_1" )}</option>
-					<option>{t( "pages.legacy.contact.form.subject_2" )}</option>
-					<option>{t( "pages.legacy.contact.form.subject_3" )}</option>
+					<option disabled>{t( "contact.form.subject" )}</option>
+					<option>{t( "contact.form.subject_1" )}</option>
+					<option>{t( "contact.form.subject_2" )}</option>
+					<option>{t( "contact.form.subject_3" )}</option>
 				</select>
 
 				{/* Contenu du message */}
-				<label htmlFor="content">
-					{t( "pages.legacy.contact.form.content" )}
-				</label>
+				<label htmlFor="content">{t( "contact.form.content" )}</label>
 
 				<textarea
 					id="content"
 					onInput={checkField}
 					minLength={50}
 					maxLength={4000}
-					placeholder={t(
-						"pages.legacy.index.contact.message"
-					).replaceAll( "<br>", "\n" )}
+					placeholder={
+						t.rich( "index.contact.message", {
+							br: () => "\n"
+						} ) as string
+					}
 					required
 				/>
 

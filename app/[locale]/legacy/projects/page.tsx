@@ -8,16 +8,27 @@ import "./page.scss";
 // Importation des dépendances.
 import Image from "next/image";
 import { lazy } from "react";
-import { Trans } from "react-i18next/TransWithoutContext";
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Importation des composants.
 const PhotoGallery = lazy( () => import( "../components/photo-gallery" ) );
 
 // Affichage de la page.
-export default async function Page()
+export default function Page( {
+	params: { locale }
+}: {
+	params: { locale: string };
+} )
 {
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images`;
+
+	// Déclaration des variables d'état.
+	const t = useTranslations( "legacy" );
+
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
 
 	// Affichage du rendu HTML de la page.
 	return (
@@ -43,22 +54,19 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.discordbot"
-							components={{
-								i: <i />,
-								b: <strong />,
-								a: (
-									<a
-										rel="noopener noreferrer"
-										href="https://discord.js.org/"
-										target="_blank"
-									>
-										...
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.discordbot", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://discord.js.org/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 
@@ -147,31 +155,28 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.raven"
-							components={{
-								i: <i />,
-								b: <strong />,
-								a1: (
-									<a
-										rel="noopener noreferrer"
-										href="https://store.steampowered.com/app/4000/Garrys_Mod/"
-										target="_blank"
-									>
-										...
-									</a>
-								),
-								a2: (
-									<a
-										rel="noopener noreferrer"
-										href="https://steamcommunity.com/app/4000/workshop/"
-										target="_blank"
-									>
-										...
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.raven", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a1: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://store.steampowered.com/app/4000/Garrys_Mod/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							),
+							a2: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://steamcommunity.com/app/4000/workshop/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 
@@ -274,31 +279,28 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.facepunch"
-							components={{
-								i: <i />,
-								b: <strong />,
-								a1: (
-									<a
-										rel="noopener noreferrer"
-										href="https://facepunch.com/"
-										target="_blank"
-									>
-										...
-									</a>
-								),
-								a2: (
-									<a
-										rel="noopener noreferrer"
-										href="https://commits.facepunch.com/"
-										target="_blank"
-									>
-										...
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.facepunch", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a1: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://facepunch.com/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							),
+							a2: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://commits.facepunch.com/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 
@@ -374,22 +376,19 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.steam"
-							components={{
-								i: <i />,
-								b: <strong />,
-								a: (
-									<a
-										rel="noopener noreferrer"
-										href="https://steamcommunity.com/"
-										target="_blank"
-									>
-										...
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.steam", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://steamcommunity.com/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 
@@ -458,13 +457,10 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.pythonrpg"
-							components={{
-								i: <i />,
-								b: <strong />
-							}}
-						/>
+						{t.rich( "projects.pythonrpg", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>
+						} )}
 					</p>
 				</div>
 
@@ -530,31 +526,28 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.phpstorage"
-							components={{
-								i: <i />,
-								b: <strong />,
-								a1: (
-									<a
-										rel="noopener noreferrer"
-										href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage"
-										target="_blank"
-									>
-										...
-									</a>
-								),
-								a2: (
-									<a
-										rel="noopener noreferrer"
-										href="https://www.google.com/intl/en/drive/"
-										target="_blank"
-									>
-										...
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.phpstorage", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a1: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://www.microsoft.com/en-us/microsoft-365/onedrive/online-cloud-storage"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							),
+							a2: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://www.google.com/intl/en/drive/"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 
@@ -666,22 +659,19 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.sourceconsole"
-							components={{
-								i: <i />,
-								b: <strong />,
-								a: (
-									<a
-										rel="noopener noreferrer"
-										href="https://developer.valvesoftware.com/wiki/Source"
-										target="_blank"
-									>
-										..
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.sourceconsole", {
+							i: ( chunks ) => <i>{chunks}</i>,
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://developer.valvesoftware.com/wiki/Source"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 
@@ -807,21 +797,18 @@ export default async function Page()
 
 					{/* Description */}
 					<p>
-						<Trans
-							i18nKey="pages.legacy.projects.domego"
-							components={{
-								b: <strong />,
-								a: (
-									<a
-										rel="noopener noreferrer"
-										href="https://www.i2m.u-bordeaux.fr/Projets/Autres-projets2/Domego"
-										target="_blank"
-									>
-										..
-									</a>
-								)
-							}}
-						/>
+						{t.rich( "projects.domego", {
+							b: ( chunks ) => <strong>{chunks}</strong>,
+							a: ( chunks ) => (
+								<a
+									rel="noopener noreferrer"
+									href="https://www.i2m.u-bordeaux.fr/Projets/Autres-projets2/Domego"
+									target="_blank"
+								>
+									{chunks}
+								</a>
+							)
+						} )}
 					</p>
 				</div>
 

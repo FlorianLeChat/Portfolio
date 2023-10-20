@@ -7,6 +7,7 @@
 import Image from "next/image";
 import { lazy } from "react";
 import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 import CV from "@/images/platforms/cv.svg";
 import GitHub from "@/images/platforms/github.svg";
@@ -19,8 +20,6 @@ import GreenWaves from "@/images/decorations/header_waves_green.svg";
 import OrangeWaves from "@/images/decorations/header_waves_orange.svg";
 import PurpleWaves from "@/images/decorations/header_waves_purple.svg";
 
-import { useTranslation } from "@/utilities/ClientTranslations";
-
 const TypingEffect = lazy( () => import( "./typing-effect" ) );
 
 export default function Header()
@@ -28,14 +27,14 @@ export default function Header()
 	// Déclaration des constantes.
 	const pathname = usePathname();
 
-	// Déclaration des variables d'état.
-	const { t } = useTranslation();
-
-	// Suppression de l'affichage sur la page de déconnexion de l'administration.
+	// Désactivation du composant sur les pages d'administration.
 	if ( pathname === "/admin/logout" )
 	{
 		return null;
 	}
+
+	// Déclaration des variables d'état.
+	const t = useTranslations( "legacy" );
 
 	// Affichage conditionnel du rendu HTML du composant.
 	return (
@@ -48,7 +47,7 @@ export default function Header()
 						<TypingEffect text="Florian Trayon" />
 
 						{/* Description succincte */}
-						<h2>{t( "pages.legacy.header.index.subtitle" )}</h2>
+						<h2>{t( "header.index.subtitle" )}</h2>
 
 						{/* Plate-formes de communication */}
 						<a
@@ -148,11 +147,11 @@ export default function Header()
 					<>
 						{/* Titre de la catégorie */}
 						<TypingEffect
-							text={t( "pages.legacy.header.projects.title" )}
+							text={t( "header.projects.title" )}
 						/>
 
 						{/* Description succincte */}
-						<h2>{t( "pages.legacy.header.projects.subtitle" )}</h2>
+						<h2>{t( "header.projects.subtitle" )}</h2>
 
 						{/* Vagues de fin */}
 						<Image src={OrangeWaves} alt="" priority />
@@ -166,11 +165,11 @@ export default function Header()
 					<>
 						{/* Titre de la catégorie */}
 						<TypingEffect
-							text={t( "pages.legacy.header.skills.title" )}
+							text={t( "header.skills.title" )}
 						/>
 
 						{/* Description succincte */}
-						<h2>{t( "pages.legacy.header.skills.subtitle" )}</h2>
+						<h2>{t( "header.skills.subtitle" )}</h2>
 
 						{/* Vagues de fin */}
 						<Image src={GreenWaves} alt="" priority />
@@ -184,11 +183,11 @@ export default function Header()
 					<>
 						{/* Titre de la catégorie */}
 						<TypingEffect
-							text={t( "pages.legacy.header.contact.title" )}
+							text={t( "header.contact.title" )}
 						/>
 
 						{/* Description succincte */}
-						<h2>{t( "pages.legacy.header.contact.subtitle" )}</h2>
+						<h2>{t( "header.contact.subtitle" )}</h2>
 
 						{/* Vagues de fin */}
 						<Image src={PurpleWaves} alt="" priority />
