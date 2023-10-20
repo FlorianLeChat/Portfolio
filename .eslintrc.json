@@ -31,7 +31,7 @@
 		"template-curly-spacing": ["error", "always"],
 		"computed-property-spacing": ["error", "always"],
 
-		"import/extensions": ["error", "never"],
+		"import/extensions": ["error", "never", { "json": "ignorePackages" }],
 		"import/prefer-default-export": "off",
 		"import/no-extraneous-dependencies": "off",
 
