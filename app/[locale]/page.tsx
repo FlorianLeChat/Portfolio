@@ -153,15 +153,15 @@ export default async function Page( {
 			<section>
 				{/* Prénom et nom du développeur */}
 				<h1>
-					{t( "pages.index.hello_title" )}
-					<span>{t( "pages.index.developer_firstname" )}</span>
-					<span>{t( "pages.index.developer_surname" )}.</span>
+					{t( "landing.hello_title" )}
+					<span>{t( "landing.developer_firstname" )}</span>
+					<span>{t( "landing.developer_surname" )}.</span>
 				</h1>
 
 				<article id="about">
 					{/* Résumé du développeur */}
 					<p>
-						{t( "pages.index.developer_description", {
+						{t( "landing.developer_description", {
 							age: date.getFullYear() - 1970
 						} )}
 					</p>
@@ -173,7 +173,7 @@ export default async function Page( {
 						target="_blank"
 					>
 						<button type="button">
-							{t( "pages.index.download_resume" )}
+							{t( "landing.download_resume" )}
 						</button>
 					</a>
 				</article>
@@ -181,7 +181,7 @@ export default async function Page( {
 
 			<section id="projects">
 				{/* Section des projets */}
-				<h2>{t( "pages.index.header_projects" )}</h2>
+				<h2>{t( "landing.header_projects" )}</h2>
 
 				{/* Génération des projets */}
 				<ul>

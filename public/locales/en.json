@@ -21,25 +21,23 @@
 			"gamesonweb2023": "A game created for the \"Games On Web\" contest 2023 edition and having as theme \"Be green\" under the theme of sustainable development. The game is a 3D game where the player drives on an endless road and must avoid obstacles that appear in his path.",
 			"genio": "An academic project aimed at creating an innovative website for creating family trees to stand out from existing sites such as Geneanet or MyHeritage. This project includes several features such as tree sharing or importing GEDCOM files."
 		},
-		"pages": {
-			"index": {
-				"header_projects": "Projects",
-				"header_skills": "Skills",
-				"header_contact": "Contact",
-				"footer_mail": "Mail",
-				"filter_all": "All",
-				"filter_front": "Front-end",
-				"filter_back": "Back-end",
-				"filter_other": "Other",
-				"footer_legacy": "<a>Legacy version</a>",
-				"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
-				"footer_recaptcha": "This site is protected by reCAPTCHA and the Google <a1>Privacy Policy</a1> and <a2>Terms of Service</a2> apply.",
-				"developer_firstname": "Florian",
-				"developer_surname": "Trayon",
-				"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
-				"hello_title": "Hi. I am",
-				"download_resume": "Download the resume"
-			}
+		"landing": {
+			"header_projects": "Projects",
+			"header_skills": "Skills",
+			"header_contact": "Contact",
+			"footer_mail": "Mail",
+			"filter_all": "All",
+			"filter_front": "Front-end",
+			"filter_back": "Back-end",
+			"filter_other": "Other",
+			"footer_legacy": "<a>Legacy version</a>",
+			"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
+			"footer_recaptcha": "This site is protected by reCAPTCHA and the Google <a1>Privacy Policy</a1> and <a2>Terms of Service</a2> apply.",
+			"developer_firstname": "Florian",
+			"developer_surname": "Trayon",
+			"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
+			"hello_title": "Hi. I am",
+			"download_resume": "Download the resume"
 		}
 	},
 	"legacy": {
@@ -75,7 +73,7 @@
 		"index": {
 			"about_me": {
 				"title": "About me",
-				"description": "Welcome to my portfolio!<br><br>I'm Florian, a {age} years old French developer. I'm mainly a <i>back-end</i> developer (NodeJS, PHP, ...) but I'm really interested in learning <i>front-end</i> (HTML, CSS, JavaScript, ...) and UI\/UX design.<br><br>I also have experience in scripting and programming languages such as Lua, Python and C# (with .NET Core). This obviously includes a solid knowledge of SQLite and MySQL backup systems also used in the web.<br><br>You can learn more about me, my experiences, my projects and my skills through this Portfolio."
+				"description": "Welcome to my portfolio!<br></br><br></br>I'm Florian, a {age} years old French developer. I'm mainly a <i>back-end</i> developer (NodeJS, PHP, ...) but I'm really interested in learning <i>front-end</i> (HTML, CSS, JavaScript, ...) and UI\/UX design.<br></br><br></br>I also have experience in scripting and programming languages such as Lua, Python and C# (with .NET Core). This obviously includes a solid knowledge of SQLite and MySQL backup systems also used in the web.<br></br><br></br>You can learn more about me, my experiences, my projects and my skills through this Portfolio."
 			},
 			"skills": {
 				"school": {
@@ -92,7 +90,7 @@
 			"contact": {
 				"title": "Contact",
 				"button": "Contact form",
-				"message": "A project? A question?<br><br>Contact me!"
+				"message": "A project? A question?<br></br><br></br>Contact me!"
 			}
 		},
 		"projects": {
@@ -113,25 +111,25 @@
 				"resume_title": "Summary of courses",
 				"carlone": {
 					"title": "Professional degree - Applied Multimedia Computing",
-					"location": "Université Côte d'Azur, Campus Carlone (Computer Science Department)<br><br>Nice, France",
+					"location": "Université Côte d'Azur, Campus Carlone (Computer Science Department)<br></br><br></br>Nice, France",
 					"description": "Learning of HTML, CSS (<b>SASS</b>, <b>SCSS</b>), PHP (<b>PDO</b>, <b>Twig</b>), JavaScript (<b>jQuery</b>, <b>AJAX</b>). Introduction to design (<i>graphic design, responsive, ergonomics</i>) and project management (<i>methodology, organization</i>)."
 				},
 				"hutinel": {
 					"title": "Baccalauréat Professionnel - Digital Electronic Systems",
 					"option": "\"AVM\" option : Audio Visual Multimedia",
-					"location": "Lycée professionnel Alfred Hutinel<br><br>Cannes-La-Bocca, France",
+					"location": "Lycée professionnel Alfred Hutinel<br></br><br></br>Cannes-La-Bocca, France",
 					"description": "Installation, commissioning and troubleshooting of audio-visual products, computer equipment (for companies\/ships) and fire prevention systems."
 				},
 				"jules": {
 					"title": "Brevet de Technicien Supérieur (BTS) - Digital Systems",
 					"option": "Option B: electronics and communications",
-					"location": "Lycée général et technologique Jules Ferry<br><br>Cannes, France",
+					"location": "Lycée général et technologique Jules Ferry<br></br><br></br>Cannes, France",
 					"description": "Analog and digital electronics, <b>RS232</b>, <b>I2C</b> link. Realization of a project \"<i>CubeSat</i>\" mixing several electronic parts (sensors, communication link) and computing (<i>LabView</i>, <i>FlowCode</i>)."
 				},
 				"valrose": {
 					"title": "Degree - Science and Technology",
 					"option": "Computer science program",
-					"location": "Université Côte d'Azur, Valrose Campus (Faculty of Science and Engineering)<br><br>Nice, France",
+					"location": "Université Côte d'Azur, Valrose Campus (Faculty of Science and Engineering)<br></br><br></br>Nice, France",
 					"description": "Discovery of algorithmic models with <b>Python</b>, <b>C</b>, <b>C++</b>. Introduction to the Web with <b>HTML</b> and <b>CSS</b> (with <i>Bootstrap</i>). Creation of graphical software for mathematical operations."
 				}
 			},

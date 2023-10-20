@@ -11,7 +11,7 @@ import { useEffect, useState } from "react";
 
 export default function ScrollTop()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les anciennes pages.
 	if ( usePathname().startsWith( "/legacy" ) )
 	{
 		return null;

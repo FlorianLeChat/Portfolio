@@ -35,7 +35,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 	return (
 		<section id="skills">
 			{/* Section des compétences */}
-			<h2>{t( "pages.index.header_skills" )}</h2>
+			<h2>{t( "landing.header_skills" )}</h2>
 
 			{/* Filtre des compétences */}
 			<ul>
@@ -48,7 +48,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="all">{t( "pages.index.filter_all" )}</label>
+					<label htmlFor="all">{t( "landing.filter_all" )}</label>
 				</li>
 
 				<li>
@@ -60,9 +60,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="front">
-						{t( "pages.index.filter_front" )}
-					</label>
+					<label htmlFor="front">{t( "landing.filter_front" )}</label>
 				</li>
 
 				<li>
@@ -74,7 +72,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="back">{t( "pages.index.filter_back" )}</label>
+					<label htmlFor="back">{t( "landing.filter_back" )}</label>
 				</li>
 
 				<li>
@@ -86,9 +84,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="other">
-						{t( "pages.index.filter_other" )}
-					</label>
+					<label htmlFor="other">{t( "landing.filter_other" )}</label>
 				</li>
 			</ul>
 

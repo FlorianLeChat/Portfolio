@@ -27,7 +27,7 @@
 		"index": {
 			"about_me": {
 				"title": "Acerca de mí",
-				"description": "¡Bienvenido a mi portafolio!<br><br>Soy Florian, un desarrollador francés de {age} años. Soy principalmente un desarrollador <i>back-end</i> (NodeJS, PHP, ...) pero estoy realmente interesado en aprender <i>front-end</i> (HTML, CSS, JavaScript, ...) y diseño UI\/UX.<br><br>También tengo experiencia en scripts y lenguajes de programación como Lua, Python y C# (con .NET Core). Esto incluye, por supuesto, un sólido conocimiento de los sistemas de copia de seguridad SQLite y MySQL utilizados también en la web.<br><br>Puedes conocer más sobre mí, mis experiencias, mis proyectos y mis habilidades a través de este Portafolio."
+				"description": "¡Bienvenido a mi portafolio!<br></br><br></br>Soy Florian, un desarrollador francés de {age} años. Soy principalmente un desarrollador <i>back-end</i> (NodeJS, PHP, ...) pero estoy realmente interesado en aprender <i>front-end</i> (HTML, CSS, JavaScript, ...) y diseño UI\/UX.<br></br><br></br>También tengo experiencia en scripts y lenguajes de programación como Lua, Python y C# (con .NET Core). Esto incluye, por supuesto, un sólido conocimiento de los sistemas de copia de seguridad SQLite y MySQL utilizados también en la web.<br></br><br></br>Puedes conocer más sobre mí, mis experiencias, mis proyectos y mis habilidades a través de este Portafolio."
 			},
 			"skills": {
 				"school": {
@@ -44,7 +44,7 @@
 			"contact": {
 				"title": "Contacte con",
 				"button": "Formulario de contacto",
-				"message": "¿Un proyecto? ¿Una petición?<br><br>Por favor, póngase en contacto conmigo."
+				"message": "¿Un proyecto? ¿Una petición?<br></br><br></br>Por favor, póngase en contacto conmigo."
 			}
 		}
 	}

@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 
 export default function SpeechRecognition()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les anciennes pages.
 	if ( usePathname().startsWith( "/legacy" ) )
 	{
 		return null;
