@@ -159,6 +159,12 @@ export async function generateMetadata(): Promise<
 	return metadata;
 }
 
+// Génération des paramètres pour les pages statiques.
+export function generateStaticParams()
+{
+	return [ "en", "fr", "es", "jp" ].map( ( locale ) => ( { locale } ) );
+}
+
 // Création des polices de caractères Poppins et Open Sans.
 const poppins = Poppins( {
 	weight: [ "400", "500", "600", "700" ],
@@ -180,11 +186,11 @@ export default function Layout( {
 	params: { locale: string };
 } )
 {
-	// Déclaration des constantes.
-	const messages = useMessages();
-
 	// Définition de la langue de la page.
 	unstable_setRequestLocale( locale );
+
+	// Déclaration des constantes.
+	const messages = useMessages();
 
 	// Affichage du rendu HTML de la page.
 	return (

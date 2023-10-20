@@ -24,6 +24,9 @@ export default function Page( {
 	params: { locale: string };
 } )
 {
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
+
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;
 	const date = new Date();
@@ -32,9 +35,6 @@ export default function Page( {
 
 	// Déclaration des variables d'état.
 	const t = useTranslations( "legacy" );
-
-	// Définition de la langue de la page.
-	unstable_setRequestLocale( locale );
 
 	// Affichage du rendu HTML de la page.
 	return (

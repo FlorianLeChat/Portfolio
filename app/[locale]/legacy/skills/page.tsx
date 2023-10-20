@@ -8,13 +8,21 @@ import "./page.scss";
 // Importation des dépendances.
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Importation des images statiques.
 import Certificate from "@/images/skills/certificate.svg";
 
 // Affichage de la page.
-export default function Page()
+export default function Page( {
+	params: { locale }
+}: {
+	params: { locale: string };
+} )
 {
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
+
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/skills`;
 

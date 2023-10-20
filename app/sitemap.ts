@@ -7,15 +7,16 @@ import { generateMetadata } from "./[locale]/layout";
 export default async function Sitemap()
 {
 	// Déclaration des constantes.
-	const url = ( await generateMetadata() ).metadataBase.href;
+	const metadata = await generateMetadata();
 	const date = new Date();
-	const legacy = new URL( "/legacy", url ).href;
+	const base = metadata?.metadataBase ?? "";
+	const legacy = new URL( "/legacy", base ).href;
 
 	// Génération du plan du site.
 	return [
 		{
 			// Page d'accueil.
-			url,
+			url: base,
 			lastModified: date
 		},
 		{
