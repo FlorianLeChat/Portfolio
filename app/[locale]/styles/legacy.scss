@@ -35,7 +35,7 @@ html
 	// Disposition et affichage.
 	min-width: $html-min-width;
 	scroll-behavior: smooth;
-	background-image: url("../../public/assets/images/decorations/wireframes.webp");
+	background-image: url("../../../public/assets/images/decorations/wireframes.webp");
 	background-color: $theme-background-color;
 	background-attachment: fixed;
 
@@ -369,7 +369,7 @@ ul#flags
 
 	// Image de décoration.
 	background-size: 50%;
-	background-image: url("../../public/assets/images/decorations/arrow_up.svg");
+	background-image: url("../../../public/assets/images/decorations/arrow_up.svg");
 	background-repeat: no-repeat;
 	background-position: center;
 
