@@ -5,7 +5,7 @@
 "use client";
 
 import Link from "next/link";
-import { useTranslation } from "@/utilities/ClientTranslations";
+import { useTranslations } from "next-intl";
 import { lazy, useEffect, useCallback } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 
@@ -13,7 +13,7 @@ const Contributions = lazy( () => import( "./contributions" ) );
 
 export default function Footer()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les pages d'administration.
 	if ( usePathname().includes( "/admin" ) )
 	{
 		return null;
@@ -24,7 +24,7 @@ export default function Footer()
 	const parameters = useSearchParams();
 
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "legacy" );
 
 	// Affiche ou cache l'overlay des contributions.
 	const openOverlay = useCallback( () =>
@@ -83,14 +83,14 @@ export default function Footer()
 					{/* Overlay des contributions */}
 					<li>
 						<button type="button" onClick={openOverlay}>
-							{t( "pages.legacy.footer.contributions" )}
+							{t( "footer.contributions" )}
 						</button>
 					</li>
 
 					{/* Interface d'administration (back office) */}
 					<li>
 						<Link href="/legacy/admin">
-							{t( "pages.legacy.footer.admin" )}
+							{t( "footer.admin" )}
 						</Link>
 					</li>
 
@@ -101,7 +101,7 @@ export default function Footer()
 							href="https://github.com/FlorianLeChat/Portfolio"
 							target="_blank"
 						>
-							{t( "pages.legacy.footer.github" )}
+							{t( "footer.github" )}
 						</a>
 					</li>
 				</ul>
@@ -109,7 +109,7 @@ export default function Footer()
 
 			{/* Bannière de dépréciation */}
 			<section id="deprecated">
-				<p>{t( "pages.legacy.deprecated" )}</p>
+				<p>{t( "deprecated" )}</p>
 			</section>
 		</>
 	);

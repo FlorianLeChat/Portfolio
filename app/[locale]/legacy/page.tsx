@@ -8,7 +8,8 @@ import "./page.scss";
 // Importation des dépendances.
 import Link from "next/link";
 import Image from "next/image";
-import { Trans } from "react-i18next/TransWithoutContext";
+import { useTranslations } from "next-intl";
+import { unstable_setRequestLocale } from "next-intl/server";
 
 // Importation des images statiques.
 import Work from "@/images/skills/work.svg";
@@ -16,11 +17,12 @@ import School from "@/images/skills/school.svg";
 import TopWaves from "@/images/decorations/projects_waves_top_blue.svg";
 import BottomWaves from "@/images/decorations/projects_waves_bottom_blue.svg";
 
-// Importation des fonctions utilitaires.
-import { useTranslation } from "@/utilities/ServerTranslations";
-
 // Affichage de la page.
-export default async function Page()
+export default function Page( {
+	params: { locale }
+}: {
+	params: { locale: string };
+} )
 {
 	// Déclaration des constantes.
 	const assets = `${ process.env.__NEXT_ROUTER_BASEPATH }/assets/images/projects`;
@@ -29,7 +31,10 @@ export default async function Page()
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
 	// Déclaration des variables d'état.
-	const { t } = await useTranslation();
+	const t = useTranslations( "legacy" );
+
+	// Définition de la langue de la page.
+	unstable_setRequestLocale( locale );
 
 	// Affichage du rendu HTML de la page.
 	return (
@@ -38,16 +43,15 @@ export default async function Page()
 			<section id="aboutme">
 				<h3>#aboutme</h3>
 
-				<h2>{t( "pages.legacy.index.about_me.title" )}</h2>
+				<h2>{t( "index.about_me.title" )}</h2>
 
-				<Trans
-					i18nKey="pages.legacy.index.about_me.description"
-					tOptions={{ age: date.getFullYear() - 1970 }}
-					components={{
-						i: <i />,
-						br: <br />
-					}}
-				/>
+				<p>
+					{t.rich( "index.about_me.description", {
+						age: date.getFullYear() - 1970,
+						i: ( chunks ) => <i>{chunks}</i>,
+						br: () => <br />
+					} )}
+				</p>
 			</section>
 
 			{/* Projets */}
@@ -59,60 +63,112 @@ export default async function Page()
 				<h3>#projects</h3>
 
 				<h2>
-					&#8250; <Link href="/legacy/projects">{t( "pages.legacy.header.projects.title" )}</Link> &#8249;
+					&#8250;{" "}
+					<Link href="/legacy/projects">
+						{t( "header.projects.title" )}
+					</Link>{" "}
+					&#8249;
 				</h2>
 
 				<div className="container">
 					<div className="row">
-						<article style={{ backgroundImage: `url(${ assets }/bg_discordbot.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_discordbot.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#discordbot">Florian&#39;s Bot</Link>
+								<Link href="/legacy/projects#discordbot">
+									Florian&#39;s Bot
+								</Link>
 							</h3>
 						</article>
 
-						<article style={{ backgroundImage: `url(${ assets }/bg_raven.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_raven.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#raven">Raven Framework</Link>
+								<Link href="/legacy/projects#raven">
+									Raven Framework
+								</Link>
 							</h3>
 						</article>
 
-						<article style={{ backgroundImage: `url(${ assets }/bg_facepunch.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_facepunch.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#facepunch">Facepunch Commits Monitor</Link>
+								<Link href="/legacy/projects#facepunch">
+									Facepunch Commits Monitor
+								</Link>
 							</h3>
 						</article>
 					</div>
 
 					<div className="row">
-						<article style={{ backgroundImage: `url(${ assets }/bg_steam.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_steam.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#steam">Steam Collection Download Size Calculator</Link>
+								<Link href="/legacy/projects#steam">
+									Steam Collection Download Size Calculator
+								</Link>
 							</h3>
 						</article>
 
-						<article style={{ backgroundImage: `url(${ assets }/bg_pythonrpg.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_pythonrpg.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#pythonrpg">Python RPG</Link>
+								<Link href="/legacy/projects#pythonrpg">
+									Python RPG
+								</Link>
 							</h3>
 						</article>
 
-						<article style={{ backgroundImage: `url(${ assets }/bg_phpstorage.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_phpstorage.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#phpstorage">Simple File Storage</Link>
+								<Link href="/legacy/projects#phpstorage">
+									Simple File Storage
+								</Link>
 							</h3>
 						</article>
 					</div>
 
 					<div className="row">
-						<article style={{ backgroundImage: `url(${ assets }/bg_sourceconsole.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_sourceconsole.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#sourceconsole">Source Web Console</Link>
+								<Link href="/legacy/projects#sourceconsole">
+									Source Web Console
+								</Link>
 							</h3>
 						</article>
 
-						<article style={{ backgroundImage: `url(${ assets }/bg_domego.webp)` }}>
+						<article
+							style={{
+								backgroundImage: `url(${ assets }/bg_domego.webp)`
+							}}
+						>
 							<h3>
-								<Link href="/legacy/projects#domego">Domego</Link>
+								<Link href="/legacy/projects#domego">
+									Domego
+								</Link>
 							</h3>
 						</article>
 					</div>
@@ -127,39 +183,55 @@ export default async function Page()
 				<h3>#skills</h3>
 
 				<h2>
-					&#8250; <Link href="/legacy/skills">{t( "pages.legacy.header.skills.title" )}</Link> &#8249;
+					&#8250;{" "}
+					<Link href="/legacy/skills">
+						{t( "header.skills.title" )}
+					</Link>{" "}
+					&#8249;
 				</h2>
 
 				<div>
 					<article>
-						<Image src={School} alt={t( "pages.legacy.index.skills.school.image" )} width="64" height="64" />
+						<Image
+							src={School}
+							alt={t( "index.skills.school.image" )}
+							width="64"
+							height="64"
+						/>
 
-						<h2>{t( "pages.legacy.index.skills.school.title" )}</h2>
+						<h2>{t( "index.skills.school.title" )}</h2>
 
 						<p>
-							<Trans
-								i18nKey="pages.legacy.index.skills.school.description"
-								components={{
-									b: <strong />,
-									a: <Link href="/legacy/skills#school">...</Link>
-								}}
-							/>
+							{t.rich( "index.skills.school.description", {
+								b: ( chunks ) => <strong>{chunks}</strong>,
+								a: ( chunks ) => (
+									<Link href="/legacy/skills#school">
+										{chunks}
+									</Link>
+								)
+							} )}
 						</p>
 					</article>
 
 					<article>
-						<Image src={Work} alt={t( "pages.legacy.index.skills.work.image" )} width="64" height="64" />
+						<Image
+							src={Work}
+							alt={t( "index.skills.work.image" )}
+							width="64"
+							height="64"
+						/>
 
-						<h2>{t( "pages.legacy.index.skills.work.title" )}</h2>
+						<h2>{t( "index.skills.work.title" )}</h2>
 
 						<p>
-							<Trans
-								i18nKey="pages.legacy.index.skills.work.description"
-								components={{
-									b: <strong />,
-									a: <Link href="/legacy/skills#work">...</Link>
-								}}
-							/>
+							{t.rich( "index.skills.work.description", {
+								b: ( chunks ) => <strong>{chunks}</strong>,
+								a: ( chunks ) => (
+									<Link href="/legacy/skills#work">
+										{chunks}
+									</Link>
+								)
+							} )}
 						</p>
 					</article>
 				</div>
@@ -170,19 +242,20 @@ export default async function Page()
 				<h3>#contact</h3>
 
 				<h2>
-					&#8250; <Link href="/legacy/contact">{t( "pages.legacy.index.contact.title" )}</Link> &#8249;
+					&#8250;{" "}
+					<Link href="/legacy/contact">
+						{t( "index.contact.title" )}
+					</Link>{" "}
+					&#8249;
 				</h2>
 
 				<h2>
-					<Trans
-						i18nKey="pages.legacy.index.contact.message"
-						components={{
-							br: <br />
-						}}
-					/>
+					{t.rich( "index.contact.message", {
+						br: () => <br />
+					} )}
 				</h2>
 
-				<Link href="/legacy/contact">{t( "pages.legacy.index.contact.button" )}</Link>
+				<Link href="/legacy/contact">{t( "index.contact.button" )}</Link>
 			</section>
 		</>
 	);

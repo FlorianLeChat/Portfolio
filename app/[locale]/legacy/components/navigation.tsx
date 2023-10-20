@@ -6,7 +6,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useTranslation } from "@/utilities/ClientTranslations";
+import { useTranslations } from "next-intl";
 
 export default function Navigation()
 {
@@ -15,9 +15,9 @@ export default function Navigation()
 	const landing = pathname.endsWith( "/legacy" );
 
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "legacy" );
 
-	// Vérification de la version du site.
+	// Désactivation du composant sur les pages d'administration.
 	if ( pathname.includes( "/admin" ) )
 	{
 		return null;
@@ -32,13 +32,13 @@ export default function Navigation()
 					landing ? (
 						<li>
 							<a href="#aboutme">
-								{t( "pages.legacy.index.about_me.title" )}
+								{t( "index.about_me.title" )}
 							</a>
 						</li>
 					) : (
 						<li>
 							<Link href="/legacy">
-								{t( "pages.legacy.index.about_me.title" )}
+								{t( "index.about_me.title" )}
 							</Link>
 						</li>
 					)
@@ -49,14 +49,14 @@ export default function Navigation()
 					landing ? (
 						<li>
 							<a href="#projects">
-								{t( "pages.legacy.header.projects.title" )}
+								{t( "header.projects.title" )}
 							</a>
 						</li>
 					) : (
 						!pathname.endsWith( "/projects" ) && (
 							<li>
 								<Link href="/legacy/projects">
-									{t( "pages.legacy.header.projects.title" )}
+									{t( "header.projects.title" )}
 								</Link>
 							</li>
 						)
@@ -68,14 +68,14 @@ export default function Navigation()
 					landing ? (
 						<li>
 							<a href="#skills">
-								{t( "pages.legacy.header.skills.title" )}
+								{t( "header.skills.title" )}
 							</a>
 						</li>
 					) : (
 						!pathname.endsWith( "/skills" ) && (
 							<li>
 								<Link href="/legacy/skills">
-									{t( "pages.legacy.header.skills.title" )}
+									{t( "header.skills.title" )}
 								</Link>
 							</li>
 						)
@@ -87,14 +87,14 @@ export default function Navigation()
 					landing ? (
 						<li>
 							<a href="#contact">
-								{t( "pages.legacy.index.contact.title" )}
+								{t( "index.contact.title" )}
 							</a>
 						</li>
 					) : (
 						!pathname.endsWith( "/contact" ) && (
 							<li>
 								<Link href="/legacy/contact">
-									{t( "pages.legacy.index.contact.title" )}
+									{t( "index.contact.title" )}
 								</Link>
 							</li>
 						)

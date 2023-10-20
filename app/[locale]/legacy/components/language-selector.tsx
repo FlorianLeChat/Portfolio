@@ -4,7 +4,7 @@
 
 "use client";
 
-import { useTranslation } from "@/utilities/ClientTranslations";
+import { useTranslations } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { useState, lazy, type MouseEvent } from "react";
 
@@ -12,7 +12,7 @@ const ScrollTop = lazy( () => import( "./scroll-top" ) );
 
 export default function LanguageSelector()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les pages d'administration.
 	if ( usePathname().includes( "/admin" ) )
 	{
 		return null;
@@ -22,7 +22,7 @@ export default function LanguageSelector()
 	const router = useRouter();
 
 	// Déclaration des variables d'état.
-	const { t } = useTranslation();
+	const t = useTranslations( "legacy" );
 	const [ firstTime, setFirstTime ] = useState( true );
 
 	// Change la langue actuellement sur le site.
@@ -66,7 +66,7 @@ export default function LanguageSelector()
 						onClick={( event ) => switchLanguage( event, "fr" )}
 					>
 						<i className="fi fi-fr" />
-						<span>{t( "pages.legacy.language.fr" )}</span>
+						<span>{t( "language.fr" )}</span>
 					</button>
 				</li>
 
@@ -76,7 +76,7 @@ export default function LanguageSelector()
 						onClick={( event ) => switchLanguage( event, "en" )}
 					>
 						<i className="fi fi-gb" />
-						<span>{t( "pages.legacy.language.en" )}</span>
+						<span>{t( "language.en" )}</span>
 					</button>
 				</li>
 
@@ -86,7 +86,7 @@ export default function LanguageSelector()
 						onClick={( event ) => switchLanguage( event, "es" )}
 					>
 						<i className="fi fi-es" />
-						<span>{t( "pages.legacy.language.es" )}</span>
+						<span>{t( "language.es" )}</span>
 					</button>
 				</li>
 
@@ -96,7 +96,7 @@ export default function LanguageSelector()
 						onClick={( event ) => switchLanguage( event, "jp" )}
 					>
 						<i className="fi fi-jp" />
-						<span>{t( "pages.legacy.language.jp" )}</span>
+						<span>{t( "language.jp" )}</span>
 					</button>
 				</li>
 			</ul>

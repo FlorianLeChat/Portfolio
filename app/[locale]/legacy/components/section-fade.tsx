@@ -9,7 +9,7 @@ import { useEffect, useCallback } from "react";
 
 export default function SectionFade()
 {
-	// Vérification de la version du site.
+	// Désactivation du composant sur les pages d'administration.
 	if ( usePathname().includes( "/admin" ) )
 	{
 		return null;
