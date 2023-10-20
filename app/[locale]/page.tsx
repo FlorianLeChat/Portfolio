@@ -7,8 +7,8 @@
 import "./page.scss";
 
 // Importation des dépendances.
-import path from "path";
 import Image from "next/image";
+import { join } from "path";
 import { lazy } from "react";
 import { redirect } from "next/navigation";
 import { useLocale } from "next-intl";
@@ -42,7 +42,7 @@ const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
 const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
 
 // Récupération des projets et des compétences.
-const directory = path.join( process.cwd(), "public/data" );
+const directory = join( process.cwd(), "public/data" );
 const getProjects = async () => JSON.parse(
 	await fileSystem.readFile( `${ directory }/projects.json`, "utf8" )
 ) as ProjectAttributes[];

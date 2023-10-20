@@ -7,14 +7,17 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
-import { notFound } from "next/navigation";
+import { join } from "path";
 import { Poppins, Open_Sans } from "next/font/google";
-import { NextIntlClientProvider } from "next-intl";
+import { promises as fileSystem } from "fs";
 import { unstable_setRequestLocale } from "next-intl/server";
 import { Suspense, lazy, type ReactNode } from "react";
+import { NextIntlClientProvider, useMessages } from "next-intl";
+
+// Importation des types.
+import type { Metadata } from "next";
 
 // Importation des composants.
-import Loading from "./loading";
 import { ThemeProvider } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
@@ -26,23 +29,33 @@ const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
 // Déclaration des propriétés de la page.
-export async function generateMetadata()
+export async function generateMetadata(): Promise<
+	Metadata & { source: string }
+	>
 {
-	// On récupère d'abord les informations du dépôt GitHub.
+	// On vérifie d'abord si les métadonnées sont déjà enregistrées.
+	const path = `${ join( process.cwd(), "public/data" ) }/metadata.json`;
+	const content = await fileSystem.readFile( path, "utf8" );
+
+	if ( content )
+	{
+		return JSON.parse( content ) as Metadata & { source: string };
+	}
+
+	// On récupère ensuite les informations du dépôt GitHub,
+	//  ceux de l'auteur et le dernier commit.
 	const repository = ( await (
 		await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio", {
 			cache: "force-cache"
 		} )
 	).json() ) as Record<string, string>;
 
-	// On récupère ensuite les informations de l'auteur.
 	const author = ( await (
 		await fetch( "https://api.github.com/users/FlorianLeChat", {
 			cache: "force-cache"
 		} )
 	).json() ) as Record<string, string>;
 
-	// On récupère après les informations du dernier commit GitHub.
 	const commits = ( await (
 		await fetch(
 			"https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master",
@@ -52,7 +65,7 @@ export async function generateMetadata()
 		)
 	).json() ) as Record<string, string>;
 
-	// On détermine certaines méta-données récurrentes.
+	// On détermine après certaines métadonnées récurrentes.
 	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
 	const title = `${ author.name } - ${ repository.name }`;
 	const url =
@@ -60,9 +73,10 @@ export async function generateMetadata()
 			? repository.homepage
 			: "http://localhost:3000/";
 
-	// On retourne enfin les méta-données récupérées récemment.
-	return {
-		// Méta-données du document.
+	// On retourne enfin les métadonnées récupérées récemment
+	//  avant de les enregistrer dans un fichier JSON.
+	const metadata = {
+		// Métadonnées du document.
 		title,
 		source: repository.html_url,
 		authors: [ { name: author.name, url: author.html_url } ],
@@ -139,25 +153,10 @@ export async function generateMetadata()
 			]
 		}
 	};
-}
 
-// Déclaration des paramètres statiques de la page.
-export function generateStaticParams()
-{
-	return [ "en", "fr" ].map( ( locale ) => ( { locale } ) );
-}
+	await fileSystem.writeFile( path, JSON.stringify( metadata ) );
 
-// Récupération des traductions de la page.
-async function getMessages( locale: string )
-{
-	try
-	{
-		return ( await import( `../../public/locales/${ locale }.json` ) ).default;
-	}
-	catch ( error )
-	{
-		return notFound();
-	}
+	return metadata;
 }
 
 // Création des polices de caractères Poppins et Open Sans.
@@ -173,7 +172,7 @@ const openSans = Open_Sans( {
 	display: "swap"
 } );
 
-export default async function Layout( {
+export default function Layout( {
 	children,
 	params: { locale }
 }: {
@@ -182,8 +181,7 @@ export default async function Layout( {
 } )
 {
 	// Déclaration des constantes.
-	const messages = await getMessages( locale );
-	const metadata = await generateMetadata();
+	const messages = useMessages();
 
 	// Définition de la langue de la page.
 	unstable_setRequestLocale( locale );
@@ -199,7 +197,7 @@ export default async function Layout( {
 			{/* Corps de la page */}
 			<body>
 				{/* Écran de chargement de la page */}
-				<Suspense fallback={<Loading title={metadata.title} />}>
+				<Suspense>
 					{/* Utilisation des traductions */}
 					<NextIntlClientProvider
 						locale={locale}
