@@ -36,7 +36,7 @@
 		"import/no-extraneous-dependencies": "off",
 
 		"@typescript-eslint/no-shadow": "error",
-		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-unused-vars": ["error", { "varsIgnorePattern": "IntlMessages" }], // https://next-intl-docs.vercel.app/docs/workflows/typescript
 
 		"jsx-a11y/label-has-associated-control": ["error", { "assert": "either" } ], // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/718
 
