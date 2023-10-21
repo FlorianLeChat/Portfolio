@@ -11,8 +11,8 @@ import { join } from "path";
 import { Poppins, Open_Sans } from "next/font/google";
 import { promises as fileSystem } from "fs";
 import { unstable_setRequestLocale } from "next-intl/server";
-import { Suspense, lazy, type ReactNode } from "react";
 import { NextIntlClientProvider, useMessages } from "next-intl";
+import { Suspense, lazy, type ReactNode, type CSSProperties } from "react";
 
 // Importation des types.
 import type { Metadata } from "next";
@@ -196,9 +196,12 @@ export default function Layout( {
 	return (
 		<html
 			lang={locale}
-			className={poppins.className}
-			data-modern-font={poppins.className}
-			data-legacy-font={openSans.className}
+			style={
+				{
+					"--modern-font": poppins.style.fontFamily,
+					"--legacy-font": openSans.style.fontFamily
+				} as CSSProperties
+			}
 		>
 			{/* Corps de la page */}
 			<body>

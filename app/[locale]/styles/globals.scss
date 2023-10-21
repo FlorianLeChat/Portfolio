@@ -37,6 +37,7 @@ body
 	max-width: 1024px;
 	transition: background-color 100ms linear;
 	line-height: 1.5;
+	font-family: var(--modern-font);
 
 	@include themeColors()
 	{

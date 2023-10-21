@@ -48,7 +48,7 @@ html
 	color: white;
 	hyphens: auto;
 	text-align: center;
-	font-family: "Open Sans", sans-serif;
+	font-family: var(--legacy-font), sans-serif;
 	text-rendering: optimizeSpeed;
 
 	// Disposition et affichage.
