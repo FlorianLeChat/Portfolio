@@ -9,8 +9,8 @@ import "@total-typescript/ts-reset";
 // Importation des dépendances.
 import { join } from "path";
 import { Poppins, Open_Sans } from "next/font/google";
-import { promises as fileSystem } from "fs";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { promises as fileSystem, existsSync } from "fs";
 import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Suspense, lazy, type ReactNode, type CSSProperties } from "react";
 
@@ -33,13 +33,15 @@ export async function generateMetadata(): Promise<
 	Metadata & { source: string }
 	>
 {
-	// On vérifie d'abord si les métadonnées sont déjà enregistrées.
+	// On vérifie d'abord si les métadonnées sont déjà enregistrées
+	//  dans le cache du système de fichiers.
 	const path = `${ join( process.cwd(), "public/data" ) }/metadata.json`;
-	const content = await fileSystem.readFile( path, "utf8" );
 
-	if ( content )
+	if ( existsSync( path ) )
 	{
-		return JSON.parse( content ) as Metadata & { source: string };
+		return JSON.parse(
+			await fileSystem.readFile( path, "utf8" )
+		) as Metadata & { source: string };
 	}
 
 	// On récupère ensuite les informations du dépôt GitHub,
