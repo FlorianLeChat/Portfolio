@@ -20,6 +20,25 @@ $theme-box-color: rgb(39, 39, 42);					// Couleur de certains blocs
 $deprecated-box-color: rgb(51, 51, 51);			// Couleur de fond du bloc de dépréciation
 $deprecated-text-color: rgb(245, 154, 35);			// Couleur du texte du bloc de dépréciation
 
+// ------------------- //
+// Écran de chargement //
+// ------------------- //
+@import "colors";
+@import "loading";
+
+div.loading, .dark div.loading
+{
+	// Modification des couleurs de l'écran de chargement
+	//  pour s'adapter à celles de l'ancienne version.
+	background-image: linear-gradient(to right, $theme-color-dark, $theme-color-bright);
+
+	&::after
+	{
+		border: 5px solid whitesmoke;
+		border-color: whitesmoke transparent whitesmoke transparent;
+	}
+}
+
 // --------------- //
 // Document entier //
 // --------------- //
