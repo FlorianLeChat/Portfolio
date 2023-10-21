@@ -3,15 +3,25 @@
 div.loading
 {
 	// Texte de transition au-dessus du cercle rotatif.
+    top: 0;
 	gap: 1rem;
+	left: 0;
+	width: 100vw;
 	height: 100vh;
+	z-index: 10;
 	display: flex;
+	position: absolute;
 	font-size: 2rem;
 	font-weight: bold;
 	align-items: center;
 	flex-direction: column;
 	text-transform: uppercase;
 	justify-content: center;
+
+	@include themeColors()
+	{
+		background-color: getThemedColor("background");
+	}
 
 	&::after
 	{
