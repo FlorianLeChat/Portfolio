@@ -9,8 +9,7 @@ init( {
 			blockAllMedia: true
 		} )
 	],
-	tracesSampleRate: 1,
+	tracesSampleRate: process.env.NODE_ENV === "development" ? 1.0 : 0.1,
 	replaysOnErrorSampleRate: 1.0,
-	replaysSessionSampleRate:
-		process.env.NODE_ENV === "development" ? 1.0 : 0.1
+	replaysSessionSampleRate: 0.1
 } );
