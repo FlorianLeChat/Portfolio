@@ -7,6 +7,9 @@ test.beforeEach( async ( { page } ) =>
 {
 	// Accès à la page d'accueil.
 	await page.goto( "/" );
+
+	// Attente de la fin du chargement de la page.
+	await page.locator( ".loading" ).waitFor( { state: "hidden" } );
 } );
 
 //
@@ -42,14 +45,14 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 //
 test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 {
-	// Vérification de la présence de la classe initiale « theme-light ».
-	await expect( page.locator( "html" ) ).toHaveClass( /theme-light/ );
+	// Vérification de la présence de la classe initiale « light ».
+	await expect( page.locator( "html" ) ).toHaveClass( /light/ );
 
 	// Clic sur le bouton de basculement de thème.
 	await page.getByRole( "button" ).first().click();
 
-	// Vérification de la présence de la classe « theme-dark ».
-	await expect( page.locator( "html" ) ).toHaveClass( /theme-dark/ );
+	// Vérification de la présence de la classe « dark ».
+	await expect( page.locator( "html" ) ).toHaveClass( /dark/ );
 } );
 
 //
@@ -141,7 +144,7 @@ test( "Disponibilité du C.V", async ( { page, context } ) =>
 test( "Filtrage des compétences", async ( { page } ) =>
 {
 	// Récupération du nombre de compétences avant le filtrage.
-	const selector = "#skills article:last-of-type div";
+	const selector = "#skills ul:last-of-type li";
 	const count = await page.locator( selector ).count();
 
 	// Filtrage par compétence « Front-end ».
