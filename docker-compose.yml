@@ -4,7 +4,6 @@ services:
     # https://github.com/FlorianLeChat/Portfolio
     node:
         image: portfolio
-        restart: always
         healthcheck:
             test: ["CMD", "curl", "-f", "http://localhost:3000"]
             retries: 3
