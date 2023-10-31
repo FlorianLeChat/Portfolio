@@ -16,14 +16,14 @@ RUN chown node:node .
 # Copy all files required to build the project
 COPY --chown=node:node . .
 
-# Use non-root user
-USER node
-
 # Install all dependencies
 # Use cache mount to speed up installation of existing dependencies
 RUN --mount=type=cache,target=.npm \
 	npm set cache .npm && \
-	npm install
+	npm install && chown -R node:node ./node_modules
+
+# Use non-root user
+USER node
 
 # Build the entire project
 RUN npm run build

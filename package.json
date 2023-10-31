@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "next": "~13.5",
+    "sharp": "~0.32",
     "devicon": "~2.15",
     "deepmerge": "~4.3",
     "next-intl": "3.0.0-rc.5",
@@ -42,9 +43,6 @@
     "eslint-config-airbnb": "~19.0",
     "@total-typescript/ts-reset": "~0.5",
     "@typescript-eslint/eslint-plugin": "~6.7"
-  },
-  "optionalDependencies": {
-    "sharp": "~0.32"
   },
   "engines": {
     "node": ">=20.5",
