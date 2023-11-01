@@ -12,16 +12,16 @@
     "url": "https://github.com/FlorianLeChat/Portfolio/issues"
   },
   "dependencies": {
-    "next": "~13.5",
+    "next": "~14.0",
     "sharp": "~0.32",
     "devicon": "~2.15",
     "deepmerge": "~4.3",
-    "next-intl": "3.0.0-rc.5",
+    "next-intl": "3.0.0-rc.6",
     "flag-icons": "~6.11",
     "sweetalert2": "<11.4.9",
     "sanitize.css": "~13.0",
     "normalize.css": "~8.0",
-    "@sentry/nextjs": "~7.74",
+    "@sentry/nextjs": "~7.77",
     "vanilla-cookieconsent": "3.0.0-rc.16",
     "@fortawesome/react-fontawesome": "~0.2",
     "@fortawesome/fontawesome-svg-core": "~6.4",
@@ -37,12 +37,12 @@
     "husky": "~8.0",
     "prettier": "~3.0",
     "typescript": "~5.2",
-    "lint-staged": "~12.0",
-    "@playwright/test": "~1.38",
-    "eslint-config-next": "~13.5",
+    "lint-staged": "~15.0",
+    "@playwright/test": "~1.39",
+    "eslint-config-next": "~14.0",
     "eslint-config-airbnb": "~19.0",
     "@total-typescript/ts-reset": "~0.5",
-    "@typescript-eslint/eslint-plugin": "~6.7"
+    "@typescript-eslint/eslint-plugin": "~6.9"
   },
   "engines": {
     "node": ">=20.5",
