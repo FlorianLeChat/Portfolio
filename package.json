@@ -49,7 +49,9 @@
     "npm": ">=10.1"
   },
   "overrides": {
-    "uuid": "~9.0"
+    "next-intl": {
+      "next": "$next"
+    }
   },
   "scripts": {
     "dev": "next dev",
