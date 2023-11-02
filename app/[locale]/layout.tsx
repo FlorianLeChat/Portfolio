@@ -15,7 +15,7 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 import { Suspense, lazy, type ReactNode, type CSSProperties } from "react";
 
 // Importation des types.
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 
 // Importation des composants.
 import { ThemeProvider } from "./components/theme-provider";
@@ -26,6 +26,15 @@ const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
+
+// Déclaration des paramètres d'affichage.
+export const viewport: Viewport = {
+	viewportFit: "cover",
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "#306cc4" },
+		{ media: "(prefers-color-scheme: dark)", color: "#807ae8" }
+	]
+};
 
 // Déclaration des propriétés de la page.
 export async function generateMetadata(): Promise<
@@ -83,12 +92,7 @@ export async function generateMetadata(): Promise<
 		authors: [ { name: author.name, url: author.html_url } ],
 		description: repository.description,
 		keywords: repository.topics,
-		viewport: "width=device-width, initial-scale=1, viewport-fit=cover",
 		manifest: new URL( "manifest.json", url ),
-		themeColor: [
-			{ media: "(prefers-color-scheme: light)", color: "#306cc4" },
-			{ media: "(prefers-color-scheme: dark)", color: "#807ae8" }
-		],
 		metadataBase: new URL( url ),
 
 		// Icônes du document.
