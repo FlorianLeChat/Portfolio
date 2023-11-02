@@ -38,7 +38,7 @@ export const viewport: Viewport = {
 
 // Déclaration des propriétés de la page.
 export async function generateMetadata(): Promise<
-	Metadata & { source: string }
+	Metadata & { name: string; source: string }
 	>
 {
 	// On vérifie d'abord si les métadonnées sont déjà enregistrées
@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<
 	{
 		return JSON.parse(
 			await fileSystem.readFile( path, "utf8" )
-		) as Metadata & { source: string };
+		) as Metadata & { name: string; source: string };
 	}
 
 	// On récupère ensuite les informations du dépôt GitHub,
@@ -88,6 +88,7 @@ export async function generateMetadata(): Promise<
 	const metadata = {
 		// Métadonnées du document.
 		title,
+		name: repository.name,
 		source: repository.html_url,
 		authors: [ { name: author.name, url: author.html_url } ],
 		description: repository.description,
