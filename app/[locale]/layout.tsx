@@ -22,7 +22,6 @@ import { ThemeProvider } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
 const Footer = lazy( () => import( "./components/footer" ) );
-const Analytics = lazy( () => import( "./components/analytics" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
@@ -225,9 +224,6 @@ export default function Layout( {
 
 							{/* Consentement des cookies */}
 							<CookieConsent />
-
-							{/* Google Analytics */}
-							<Analytics />
 
 							{/* Google reCAPTCHA */}
 							<Recaptcha />
