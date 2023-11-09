@@ -199,7 +199,7 @@ export default function Page( {
 							height="64"
 						/>
 
-						<h2>{t( "index.skills.school.title" )}</h2>
+						<h3>{t( "index.skills.school.title" )}</h3>
 
 						<p>
 							{t.rich( "index.skills.school.description", {
@@ -221,7 +221,7 @@ export default function Page( {
 							height="64"
 						/>
 
-						<h2>{t( "index.skills.work.title" )}</h2>
+						<h3>{t( "index.skills.work.title" )}</h3>
 
 						<p>
 							{t.rich( "index.skills.work.description", {
@@ -249,11 +249,11 @@ export default function Page( {
 					&#8249;
 				</h2>
 
-				<h2>
+				<h3>
 					{t.rich( "index.contact.message", {
 						br: () => <br />
 					} )}
-				</h2>
+				</h3>
 
 				<Link href="/legacy/contact">{t( "index.contact.button" )}</Link>
 			</section>

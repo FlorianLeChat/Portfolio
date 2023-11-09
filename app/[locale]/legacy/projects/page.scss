@@ -62,7 +62,7 @@ article
 	// --------------------- //
 	div.properties
 	{
-		h2
+		h3
 		{
 			// Nom du projet.
 			overflow: hidden;
@@ -71,7 +71,7 @@ article
 			margin-bottom: 0;
 		}
 
-		h3
+		h4
 		{
 			// Date du projet.
 			margin-top: 0.5rem;
@@ -99,7 +99,7 @@ article
 		{
 			// Alignement des propriétés du projet
 			//	au centre sur les petits écrans.
-			h2, h3
+			h3, h4
 			{
 				// Nom et date du projet.
 				text-align: center;
@@ -129,7 +129,7 @@ article
 		flex-direction: column;
 		justify-content: center;
 
-		div
+		figure
 		{
 			// État initial de la galerie photos.
 			margin: 0.5rem;
