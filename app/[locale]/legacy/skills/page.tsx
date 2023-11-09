@@ -34,13 +34,13 @@ export default function Page( {
 		<>
 			{/* Parcours scolaire */}
 			<section id="school">
-				<h3>#school</h3>
+				<h4>#school</h4>
 
-				<h2>{t( "index.skills.school.title" )}</h2>
+				<h3>{t( "index.skills.school.title" )}</h3>
 
 				{/* Formations (liste) */}
 				<article id="list">
-					<h3>{t( "skills.degrees.list_title" )}</h3>
+					<h4>{t( "skills.degrees.list_title" )}</h4>
 
 					<ul>
 						<li
@@ -49,7 +49,7 @@ export default function Page( {
 							}}
 						>
 							{/* Intitulé de la formation */}
-							<h4>{t( "skills.degrees.carlone.title" )}</h4>
+							<h5>{t( "skills.degrees.carlone.title" )}</h5>
 
 							{/* Lieu de formation */}
 							<p>
@@ -80,9 +80,9 @@ export default function Page( {
 							}}
 						>
 							{/* Intitulé de la formation */}
-							<h4>{t( "skills.degrees.valrose.title" )}</h4>
+							<h5>{t( "skills.degrees.valrose.title" )}</h5>
 
-							<h5>{t( "skills.degrees.valrose.option" )}</h5>
+							<h6>{t( "skills.degrees.valrose.option" )}</h6>
 
 							{/* Lieu de formation */}
 							<p>
@@ -105,9 +105,9 @@ export default function Page( {
 							}}
 						>
 							{/* Intitulé de la formation */}
-							<h4>{t( "skills.degrees.jules.title" )}</h4>
+							<h5>{t( "skills.degrees.jules.title" )}</h5>
 
-							<h5>{t( "skills.degrees.jules.option" )}</h5>
+							<h6>{t( "skills.degrees.jules.option" )}</h6>
 
 							{/* Lieu de formation */}
 							<p>
@@ -138,9 +138,9 @@ export default function Page( {
 							}}
 						>
 							{/* Intitulé de la formation */}
-							<h4>{t( "skills.degrees.hutinel.title" )}</h4>
+							<h5>{t( "skills.degrees.hutinel.title" )}</h5>
 
-							<h5>{t( "skills.degrees.hutinel.option" )}</h5>
+							<h6>{t( "skills.degrees.hutinel.option" )}</h6>
 
 							{/* Lieu de formation */}
 							<p>
@@ -169,7 +169,7 @@ export default function Page( {
 
 				{/* Formations (résumé descriptif) */}
 				<article id="summary">
-					<h3>{t( "skills.degrees.resume_title" )}</h3>
+					<h4>{t( "skills.degrees.resume_title" )}</h4>
 
 					<ul>
 						<li>
@@ -210,12 +210,12 @@ export default function Page( {
 
 			{/* Compétences professionnelles */}
 			<section id="work">
-				<h3>#work</h3>
+				<h4>#work</h4>
 
-				<h2>{t( "index.skills.work.title" )}</h2>
+				<h3>{t( "index.skills.work.title" )}</h3>
 
 				<article id="experiences">
-					<h3>{t( "skills.jobs.title" )}</h3>
+					<h4>{t( "skills.jobs.title" )}</h4>
 
 					<ul>
 						<li>
@@ -248,7 +248,7 @@ export default function Page( {
 				</article>
 
 				<article id="competences">
-					<h3>{t( "skills.title" )}</h3>
+					<h4>{t( "skills.title" )}</h4>
 
 					{/* Descriptif des compétences */}
 					<p>{t( "skills.description" )}</p>

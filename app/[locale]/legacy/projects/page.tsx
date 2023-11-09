@@ -45,12 +45,12 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>Florian&#39;s Bot</h2>
+					<h3>Florian&#39;s Bot</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2016</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -146,12 +146,12 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>Raven Framework</h2>
+					<h3>Raven Framework</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2017</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -262,7 +262,7 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>
+					<h3>
 						<a
 							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Facepunch-Commits-Monitor"
@@ -270,12 +270,12 @@ export default function Page( {
 						>
 							Facepunch Commits Monitor
 						</a>
-					</h2>
+					</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2021</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -359,7 +359,7 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>
+					<h3>
 						<a
 							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Steam-Collection-Download-Size-Calculator"
@@ -367,12 +367,12 @@ export default function Page( {
 						>
 							Steam Collection Download Size Calculator
 						</a>
-					</h2>
+					</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2021</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -440,7 +440,7 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>
+					<h3>
 						<a
 							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Python-RPG"
@@ -448,12 +448,12 @@ export default function Page( {
 						>
 							Python RPG
 						</a>
-					</h2>
+					</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2021</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -509,7 +509,7 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>
+					<h3>
 						<a
 							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Simple-File-Storage"
@@ -517,12 +517,12 @@ export default function Page( {
 						>
 							Simple File Storage
 						</a>
-					</h2>
+					</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2021</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -642,7 +642,7 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>
+					<h3>
 						<a
 							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Source-Web-Console"
@@ -650,12 +650,12 @@ export default function Page( {
 						>
 							Source Web Console
 						</a>
-					</h2>
+					</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2022</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>
@@ -780,7 +780,7 @@ export default function Page( {
 					/>
 
 					{/* Nom */}
-					<h2>
+					<h3>
 						<a
 							rel="noopener noreferrer"
 							href="https://github.com/FlorianLeChat/Domego"
@@ -788,12 +788,12 @@ export default function Page( {
 						>
 							Domego
 						</a>
-					</h2>
+					</h3>
 
 					{/* Date */}
-					<h3>
+					<h4>
 						<em>2022</em>
-					</h3>
+					</h4>
 
 					{/* Description */}
 					<p>

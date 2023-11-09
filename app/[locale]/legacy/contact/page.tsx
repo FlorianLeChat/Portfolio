@@ -90,9 +90,9 @@ export default function Page()
 	// Affichage du rendu HTML de la page.
 	return (
 		<section id="form">
-			<h3>#contact</h3>
+			<h4>#contact</h4>
 
-			<h2>{t( "index.contact.title" )}</h2>
+			<h3>{t( "index.contact.title" )}</h3>
 
 			{/* Description */}
 			<p>

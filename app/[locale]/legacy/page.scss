@@ -47,7 +47,7 @@ header a img
 	font-size: 1.5rem;
 }
 
-#aboutme > h3, #projects > h3, #skills > h3, #contact > h3
+#aboutme > h3, #projects > h3, #skills > h3, #contact > h3:first-of-type
 {
 	// Identifiant de la section.
 	font-weight: 400;
@@ -194,10 +194,11 @@ header a img
 				min-width: 4rem;
 			}
 
-			h2
+			h3
 			{
 				// Apparence du titre de l'article.
 				color: white;
+				font-size: 1.5rem;
 				word-break: break-word;
 			}
 		}
@@ -231,14 +232,17 @@ header a img
 		// Premier titre de la section.
 		margin-bottom: 2rem;
 
-		+ h2
+		+ h3
 		{
 			// Souligne du texte (hors titres).
+			color: white;
+			font-size: 1.5rem;
+			margin-bottom: 2rem;
 			text-decoration: underline;
 		}
 	}
 
-	> h3
+	> h3:first-of-type
 	{
 		// Deuxième titre de la section.
 		margin-top: 0;
