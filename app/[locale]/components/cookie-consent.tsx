@@ -38,7 +38,7 @@ export default function CookieConsent()
 			// Paramètres internes des cookies.
 			cookie: {
 				path: process.env.__NEXT_ROUTER_BASEPATH,
-				name: "NEXT_ANALYTICS"
+				name: "NEXT_COOKIE"
 			},
 
 			// Paramètres de l'interface utilisateur.
@@ -91,7 +91,9 @@ export default function CookieConsent()
 				// Google Analytics.
 				if ( cookie.categories.includes( "analytics" ) )
 				{
-					setAnalytics( true );
+					setAnalytics(
+						process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true"
+					);
 				}
 			}
 		} );
