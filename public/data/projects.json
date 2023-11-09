@@ -17,13 +17,13 @@
 	},
 	"filestorage": {
 		"title": "Simple File Storage",
-		"skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"],
+		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "PHP", "Symfony", "Doctrine", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
 		"demo": "https://files.florian-dev.fr/"
 	},
 	"sourceconsole": {
 		"title": "Source Web Console",
-		"skills": ["HTML", "SASS", "TypeScript", "jQuery", "PHP", "Symfony", "Twig", "Doctrine", "Redis", "Docker"],
+		"skills": ["HTML", "SASS", "TypeScript", "jQuery", "PHP", "Symfony", "Twig", "Doctrine", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Source-Web-Console",
 		"demo": "https://console.florian-dev.fr/"
 	},
