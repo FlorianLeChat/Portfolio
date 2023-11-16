@@ -42,7 +42,7 @@ function Theme( { children = null }: ThemeProviderProps )
 			return "light";
 		}
 
-		return sessionStorage.getItem( key ) ?? "light";
+		return localStorage.getItem( key ) ?? "light";
 	};
 
 	// Récupération du thème du navigateur.
@@ -78,7 +78,7 @@ function Theme( { children = null }: ThemeProviderProps )
 		//  la sauvegarder dans le stockage de session.
 		setTheme( value );
 
-		sessionStorage.setItem( storageKey, value );
+		localStorage.setItem( storageKey, value );
 
 		// On applique enfin les classes CSS correspondantes
 		//  sur le DOM.
@@ -151,7 +151,7 @@ function Theme( { children = null }: ThemeProviderProps )
 			<script
 				dangerouslySetInnerHTML={{
 					__html: `
-						const theme = sessionStorage.getItem("${ storageKey }");
+						const theme = localStorage.getItem("${ storageKey }");
 						const element = document.documentElement;
 						const classes = element.classList;
 
@@ -169,7 +169,7 @@ function Theme( { children = null }: ThemeProviderProps )
 
 							classes.add(target);
 
-							sessionStorage.setItem("${ storageKey }", target);
+							localStorage.setItem("${ storageKey }", target);
 						}
 					`
 				}}
