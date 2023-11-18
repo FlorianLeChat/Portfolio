@@ -14,7 +14,7 @@ import { useLocale } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { unstable_setRequestLocale, getTranslator } from "next-intl/server";
+import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 
 // Importation des types.
 import type { SkillAttributes } from "@/interfaces/Skill";
@@ -124,7 +124,10 @@ export default async function Page( {
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
 	// Déclaration des variables d'état.
-	const t = await getTranslator( useLocale(), "global" );
+	const t = await getTranslations( {
+		locale: useLocale(),
+		namespace: "global"
+	} );
 
 	// Affichage du rendu HTML de la page.
 	return (
