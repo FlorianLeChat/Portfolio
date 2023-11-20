@@ -9,8 +9,8 @@ export default async function Sitemap()
 	// Déclaration des constantes.
 	const metadata = await generateMetadata();
 	const date = new Date();
-	const base = metadata?.metadataBase ?? "";
-	const legacy = new URL( "legacy", base ).href;
+	const base = metadata?.metadataBase?.toString() ?? "";
+	const legacy = base.endsWith( "/" ) ? `${ base }legacy` : `${ base }/legacy`;
 
 	// Génération du plan du site.
 	return [
