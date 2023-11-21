@@ -91,9 +91,9 @@ export async function generateMetadata(): Promise<
 		name: repository.name,
 		source: repository.html_url,
 		authors: [ { name: author.name, url: author.html_url } ],
-		description: repository.description,
 		keywords: repository.topics,
 		manifest: "manifest.json", // https://github.com/vercel/next.js/issues/56687
+		description: repository.description,
 		metadataBase: new URL( url ), // https://github.com/vercel/next.js/issues/53455
 
 		// Icônes du document.
