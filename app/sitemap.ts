@@ -7,36 +7,38 @@ import { generateMetadata } from "./[locale]/layout";
 export default async function Sitemap()
 {
 	// Déclaration des constantes.
-	const metadata = await generateMetadata();
 	const date = new Date();
-	const base = metadata?.metadataBase?.toString() ?? "";
-	const legacy = base.endsWith( "/" ) ? `${ base }legacy` : `${ base }/legacy`;
+	const baseUrl = new URL( ( await generateMetadata() )?.metadataBase ?? "" );
+	const pathname = baseUrl.pathname.endsWith( "/" )
+		? baseUrl.pathname
+		: `${ baseUrl.pathname }/`;
+	const legacyUrl = new URL( `${ pathname }legacy`, baseUrl );
 
 	// Génération du plan du site.
 	return [
 		{
 			// Page d'accueil.
-			url: base,
+			url: baseUrl,
 			lastModified: date
 		},
 		{
 			// Ancienne page d'accueil.
-			url: legacy,
+			url: legacyUrl,
 			lastModified: date
 		},
 		{
 			// Ancienne page des projets.
-			url: `${ legacy }/projects`,
+			url: `${ legacyUrl }/projects`,
 			lastModified: date
 		},
 		{
 			// Ancienne page des compétences.
-			url: `${ legacy }/skills`,
+			url: `${ legacyUrl }/skills`,
 			lastModified: date
 		},
 		{
 			// Ancienne page de contact.
-			url: `${ legacy }/contact`,
+			url: `${ legacyUrl }/contact`,
 			lastModified: date
 		}
 	];
