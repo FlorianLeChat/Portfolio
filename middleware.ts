@@ -86,9 +86,11 @@ export default async function middleware( request: NextRequest )
 		// Si la langue n'est pas définie dans l'URL ou si elle n'est pas
 		//  valide, on utilise la langue courante pour la page demandée.
 		return NextResponse.rewrite(
-			( request.nextUrl.href.endsWith( "/" )
-				? request.nextUrl.href
-				: `${ request.nextUrl.href }/` ) + resolvedLocale,
+			request.nextUrl.origin
+				+ process.env.__NEXT_ROUTER_BASEPATH
+				+ request.nextUrl.pathname
+				+ resolvedLocale
+				+ request.nextUrl.search,
 			{
 				request: { headers: request.headers }
 			}
