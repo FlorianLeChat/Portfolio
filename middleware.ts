@@ -88,7 +88,9 @@ export default async function middleware( request: NextRequest )
 		return NextResponse.rewrite(
 			request.nextUrl.origin
 				+ process.env.__NEXT_ROUTER_BASEPATH
-				+ request.nextUrl.pathname
+				+ ( request.nextUrl.pathname === "/"
+					? "/"
+					: `${ request.nextUrl.pathname }/` )
 				+ resolvedLocale
 				+ request.nextUrl.search,
 			{
