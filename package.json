@@ -46,8 +46,8 @@
     "@typescript-eslint/eslint-plugin": "~6.9"
   },
   "engines": {
-    "node": ">=20.5",
-    "npm": ">=10.1"
+    "node": ">=18.0",
+    "npm": ">=8.6"
   },
   "overrides": {
     "next-intl": {
