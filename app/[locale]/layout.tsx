@@ -217,7 +217,7 @@ export default function Layout( {
 					<NextIntlClientProvider
 						locale={locale}
 						messages={messages}
-						timeZone="Europe/Paris"
+						timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
 					>
 						{/* Basculement entre les thèmes */}
 						<ThemeProvider>
