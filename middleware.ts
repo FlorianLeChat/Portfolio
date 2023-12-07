@@ -1,6 +1,7 @@
 //
 // Mécanisme de routage pour les pages de l'application.
 //
+import createIntlMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
 import type { RecaptchaResponse } from "./interfaces/Recaptcha";
 
@@ -62,56 +63,25 @@ export default async function middleware( request: NextRequest )
 		}
 	}
 
-	// On créé par la suite un mécanisme de redirection des pages afin de gérer
-	//  les langues et traductions en fonction des préférences de l'utilisateur.
-	//  Source : https://github.com/amannn/next-intl/issues/243#issuecomment-1818575818
-	const locales = [ "en", "fr", "es", "jp" ];
-	const cookieLocale = request.cookies.get( "NEXT_LOCALE" )?.value;
-	const browserLocale = request.headers.get( "Accept-Language" )?.slice( 0, 2 );
-	const defaultLocale = "en";
-	const [ , localeUrl ] = request.nextUrl.pathname.split( "/" );
+	// On créé enfin le mécanisme de gestion des langues et traductions.
+	//  Source : https://next-intl-docs.vercel.app/docs/getting-started/app-router-server-components
+	const handleI18nRouting = createIntlMiddleware( {
+		locales: [ "en", "fr", "es", "jp" ],
+		localePrefix: "never",
+		defaultLocale: "en"
+	} );
 
-	let resolvedLocale =
-		( localeUrl !== "" ? localeUrl : undefined )
-		?? cookieLocale
-		?? browserLocale
-		?? defaultLocale;
-
-	resolvedLocale = locales.includes( resolvedLocale )
-		? resolvedLocale
-		: defaultLocale;
-
-	if ( !localeUrl || !locales.includes( localeUrl ) )
-	{
-		// Si la langue n'est pas définie dans l'URL ou si elle n'est pas
-		//  valide, on utilise la langue courante pour la page demandée.
-		return NextResponse.rewrite(
-			request.nextUrl.origin
-				+ process.env.__NEXT_ROUTER_BASEPATH
-				+ ( request.nextUrl.pathname === "/"
-					? "/"
-					: `${ request.nextUrl.pathname }/` )
-				+ resolvedLocale
-				+ request.nextUrl.search,
-			{
-				request: { headers: request.headers }
-			}
-		);
-	}
-
-	// Dans le cas contraire, on met enfin en mémoire les informations
-	//  déduites précédemment et on redirige l'utilisateur vers la même
-	//  page mais avec la langue définie dans l'URL.
-	const response = NextResponse.redirect(
-		request.nextUrl.href.replace( resolvedLocale, "" )
-	);
-
-	response.cookies.set( "NEXT_LOCALE", resolvedLocale );
-	response.headers.set( "X-NEXT-INTL-LOCALE", resolvedLocale );
-
-	return response;
+	return handleI18nRouting( request );
 }
 
 export const config = {
 	matcher: [ "/", "/((?!_next|_vercel|.*\\..*).*)" ]
 };
+
+if ( process.env.__NEXT_ROUTER_BASEPATH )
+{
+	// Ajout du support du chemin de base de NextJS pour le routage
+	//  effectué par le mécanisme de gestion des langues et traductions.
+	//  Source : https://next-intl-docs.vercel.app/docs/routing/middleware#base-path
+	config.matcher.push( process.env.__NEXT_ROUTER_BASEPATH );
+}
