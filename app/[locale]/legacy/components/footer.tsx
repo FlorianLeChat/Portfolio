@@ -6,10 +6,9 @@
 
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import { lazy, useEffect, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
-
-const Contributions = lazy( () => import( "./contributions" ) );
+import Contributions from "./contributions";
 
 export default function Footer()
 {
@@ -89,9 +88,7 @@ export default function Footer()
 
 					{/* Interface d'administration (back office) */}
 					<li>
-						<Link href="/legacy/admin">
-							{t( "footer.admin" )}
-						</Link>
+						<Link href="/legacy/admin">{t( "footer.admin" )}</Link>
 					</li>
 
 					{/* Dépôt du code source */}
