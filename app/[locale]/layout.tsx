@@ -168,7 +168,7 @@ export async function generateMetadata(): Promise<
 // Génération des paramètres pour les pages statiques.
 export function generateStaticParams()
 {
-	return [ "en", "fr", "es", "jp" ].map( ( locale ) => ( { locale } ) );
+	return [ "en", "fr" ].map( ( locale ) => ( { locale } ) );
 }
 
 // Création de la police de caractères Poppins.
