@@ -66,7 +66,7 @@ export default async function middleware( request: NextRequest )
 	// On créé enfin le mécanisme de gestion des langues et traductions.
 	//  Source : https://next-intl-docs.vercel.app/docs/getting-started/app-router-server-components
 	const handleI18nRouting = createIntlMiddleware( {
-		locales: [ "en", "fr", "es", "jp" ],
+		locales: [ "en", "fr" ],
 		localePrefix: "never",
 		defaultLocale: "en"
 	} );
