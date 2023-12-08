@@ -194,7 +194,7 @@ export default function Layout( {
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={locale} style={poppins.style.fontFamily}>
+		<html lang={locale} style={poppins.style}>
 			{/* Corps de la page */}
 			<body>
 				{/* Écran de chargement de la page */}
