@@ -9,7 +9,6 @@ import { faSun,
 	faBars,
 	faTimes,
 	faCookieBite } from "@fortawesome/free-solid-svg-icons";
-import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
@@ -18,12 +17,6 @@ import { useTheme } from "./theme-provider";
 
 export default function Header()
 {
-	// Désactivation du composant sur les anciennes pages.
-	if ( usePathname().startsWith( "/legacy" ) )
-	{
-		return null;
-	}
-
 	// Déclaration des variables d'état.
 	const t = useTranslations( "global" );
 	const { theme, setTheme } = useTheme();

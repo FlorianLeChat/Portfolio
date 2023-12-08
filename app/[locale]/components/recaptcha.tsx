@@ -5,7 +5,6 @@
 "use client";
 
 import Script from "next/script";
-import { usePathname } from "next/navigation";
 import type { CookieValue } from "vanilla-cookieconsent";
 import { useState, useEffect, useCallback } from "react";
 
@@ -18,11 +17,8 @@ declare global {
 
 export default function Recaptcha()
 {
-	// Vérification de la version du site et de l'activation du service.
-	if (
-		usePathname().startsWith( "/legacy" )
-		|| process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false"
-	)
+	// Vérification de l'activation du service.
+	if ( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false" )
 	{
 		return null;
 	}

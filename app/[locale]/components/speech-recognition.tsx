@@ -5,16 +5,9 @@
 "use client";
 
 import { useEffect } from "react";
-import { usePathname } from "next/navigation";
 
 export default function SpeechRecognition()
 {
-	// Désactivation du composant sur les anciennes pages.
-	if ( usePathname().startsWith( "/legacy" ) )
-	{
-		return null;
-	}
-
 	// Défilement automatique des sections via commandes vocales.
 	//  Note : cette fonctionnalité n'est pas disponible sur Firefox.
 	//  Source : https://github.com/mdn/dom-examples/blob/44856cc22f47b0203cbcb48127af50744e89aa7e/web-speech-api/speech-color-changer/script.js

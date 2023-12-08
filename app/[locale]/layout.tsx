@@ -8,20 +8,20 @@ import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
 import { join } from "path";
-import { Poppins, Open_Sans } from "next/font/google";
+import { Poppins } from "next/font/google";
 import { unstable_setRequestLocale } from "next-intl/server";
+import { Suspense, lazy, type ReactNode } from "react";
 import { promises as fileSystem, existsSync } from "fs";
 import { NextIntlClientProvider, useMessages } from "next-intl";
-import { Suspense, lazy, type ReactNode, type CSSProperties } from "react";
 
 // Importation des types.
 import type { Metadata, Viewport } from "next";
 
 // Importation des composants.
+import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
-const Footer = lazy( () => import( "./components/footer" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
@@ -171,15 +171,9 @@ export function generateStaticParams()
 	return [ "en", "fr", "es", "jp" ].map( ( locale ) => ( { locale } ) );
 }
 
-// Création des polices de caractères Poppins et Open Sans.
+// Création de la police de caractères Poppins.
 const poppins = Poppins( {
 	weight: [ "400", "500", "600", "700" ],
-	subsets: [ "latin" ],
-	display: "swap"
-} );
-
-const openSans = Open_Sans( {
-	weight: [ "400", "700" ],
 	subsets: [ "latin" ],
 	display: "swap"
 } );
@@ -200,15 +194,7 @@ export default function Layout( {
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html
-			lang={locale}
-			style={
-				{
-					"--modern-font": poppins.style.fontFamily,
-					"--legacy-font": openSans.style.fontFamily
-				} as CSSProperties
-			}
-		>
+		<html lang={locale} style={poppins.style.fontFamily}>
 			{/* Corps de la page */}
 			<body>
 				{/* Écran de chargement de la page */}
