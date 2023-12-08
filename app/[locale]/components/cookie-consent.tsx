@@ -5,18 +5,11 @@
 "use client";
 
 import { run } from "vanilla-cookieconsent";
-import { usePathname } from "next/navigation";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { useEffect, useState } from "react";
 
 export default function CookieConsent()
 {
-	// Désactivation du composant sur les anciennes pages.
-	if ( usePathname().startsWith( "/legacy" ) )
-	{
-		return null;
-	}
-
 	// Déclaration des variables d'état.
 	const [ analytics, setAnalytics ] = useState( false );
 

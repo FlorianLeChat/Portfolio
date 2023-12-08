@@ -5,18 +5,11 @@
 "use client";
 
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 export default function ScrollTop()
 {
-	// Désactivation du composant sur les anciennes pages.
-	if ( usePathname().startsWith( "/legacy" ) )
-	{
-		return null;
-	}
-
 	// Déclaration des variables d'état.
 	const [ showButton, setShowButton ] = useState( false );
 
