@@ -15,6 +15,17 @@ const nextConfig = withNextIntl( {
 		disableLogger: true,
 		hideSourceMaps: true,
 		widenClientFileUpload: true
+	},
+	async redirects()
+	{
+		return [
+			{
+				// Redirection vers l'ancienne version.
+				source: "/about",
+				permanent: true,
+				destination: "https://legacy.florian-dev.fr/portfolio/"
+			}
+		];
 	}
 } );
 

@@ -1,7 +1,6 @@
 //
 // Composant du pied de page du site.
 //
-import Link from "next/link";
 import { faPhp } from "@fortawesome/free-brands-svg-icons";
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,7 +62,11 @@ export default function Footer()
 				<FontAwesomeIcon icon={faPhp} />
 
 				{t.rich( "landing.footer_legacy", {
-					a: ( chunks ) => <Link href="/legacy">{chunks}</Link>
+					a: ( chunks ) => (
+						<a href="https://legacy.florian-dev.fr/portfolio/">
+							{chunks}
+						</a>
+					)
 				} )}
 			</small>
 		</footer>
