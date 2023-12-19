@@ -10,9 +10,9 @@ import "./page.scss";
 import Image from "next/image";
 import { join } from "path";
 import { lazy } from "react";
+import { readFile } from "fs/promises";
 import { useLocale } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { promises as fileSystem } from "fs";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
 
@@ -43,11 +43,11 @@ const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
 // Récupération des projets et des compétences.
 const directory = join( process.cwd(), "public/data" );
 const getProjects = async () => JSON.parse(
-	await fileSystem.readFile( `${ directory }/projects.json`, "utf8" )
+	await readFile( `${ directory }/projects.json`, "utf8" )
 ) as ProjectAttributes[];
 
 const getSkills = async () => JSON.parse(
-	await fileSystem.readFile( `${ directory }/skills.json`, "utf8" )
+	await readFile( `${ directory }/skills.json`, "utf8" )
 ) as SkillAttributes[];
 
 // Récupération de l'image statique correspondant au nom d'un projet.
