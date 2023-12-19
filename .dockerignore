@@ -1,5 +1,4 @@
 **/*.md
-**/*.d.ts
 **/.next
 **/.git*
 **/.dockerignore
