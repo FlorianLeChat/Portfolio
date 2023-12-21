@@ -3,6 +3,8 @@
 //
 import createIntlMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
+
+import { getLanguages } from "./utilities/i18n";
 import type { RecaptchaResponse } from "./interfaces/Recaptcha";
 
 export default async function middleware( request: NextRequest )
@@ -66,7 +68,7 @@ export default async function middleware( request: NextRequest )
 	// On créé enfin le mécanisme de gestion des langues et traductions.
 	//  Source : https://next-intl-docs.vercel.app/docs/getting-started/app-router-server-components
 	const handleI18nRouting = createIntlMiddleware( {
-		locales: [ "en", "fr" ],
+		locales: getLanguages(),
 		localePrefix: "never",
 		defaultLocale: "en"
 	} );
