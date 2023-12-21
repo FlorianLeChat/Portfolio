@@ -18,6 +18,9 @@ import { NextIntlClientProvider, useMessages } from "next-intl";
 // Importation des types.
 import type { Metadata, Viewport } from "next";
 
+// Importation des fonctions utilitaires.
+import { getLanguages } from "@/utilities/i18n";
+
 // Importation des composants.
 import Footer from "./components/footer";
 import { ThemeProvider } from "./components/theme-provider";
@@ -173,9 +176,11 @@ export async function generateMetadata(): Promise<
 }
 
 // Génération des paramètres pour les pages statiques.
+const languages = getLanguages();
+
 export function generateStaticParams()
 {
-	return [ "en", "fr" ].map( ( locale ) => ( { locale } ) );
+	return languages.map( ( locale ) => ( { locale } ) );
 }
 
 // Création de la police de caractères Poppins.
@@ -195,6 +200,12 @@ export default function Layout( {
 {
 	// Définition de la langue de la page.
 	unstable_setRequestLocale( locale );
+
+	// Vérification du support de la langue.
+	if ( !languages.includes( locale ) )
+	{
+		return null;
+	}
 
 	// Déclaration des constantes.
 	const messages = useMessages();

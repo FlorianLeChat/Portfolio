@@ -15,7 +15,7 @@
     "next": "~14.0",
     "sharp": "~0.33",
     "devicon": "~2.15",
-    "next-intl": "~3.3",
+    "next-intl": "~3.4",
     "deepmerge": "~4.3",
     "flag-icons": "~7.0",
     "sweetalert2": "<11.4.9",
