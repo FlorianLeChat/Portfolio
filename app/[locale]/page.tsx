@@ -11,7 +11,6 @@ import Image from "next/image";
 import { join } from "path";
 import { lazy } from "react";
 import { readFile } from "fs/promises";
-import { useLocale } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
@@ -124,10 +123,7 @@ export default async function Page( {
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
 
 	// Déclaration des variables d'état.
-	const t = await getTranslations( {
-		locale: useLocale(),
-		namespace: "global"
-	} );
+	const t = await getTranslations();
 
 	// Affichage du rendu HTML de la page.
 	return (

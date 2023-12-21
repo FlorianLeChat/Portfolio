@@ -12,8 +12,8 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Home()
 {
-	// Déclaration des variables d'état.
-	const t = useTranslations( "global" );
+	// Déclaration des constantes.
+	const t = useTranslations();
 
 	// Envoi d'un courriel après sélection de la messagerie.
 	const sendMail = async ( event: MouseEvent<HTMLButtonElement> ) =>

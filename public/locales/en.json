@@ -1,44 +1,42 @@
 {
-	"global": {
-		"modals": {
-			"mailer_title": "Mailbox selection",
-			"mailer_description": "To send an email, you can choose between several mailboxes. Select your preferred one.",
-			"mailer_error": "You have to choose a mailbox.",
-			"mailer_google": "Gmail (Google)",
-			"mailer_default": "Default mailbox"
-		},
-		"projects":
-		{
-			"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
-			"steamdownloader": "A command line application to calculate the total size of a collection of items created on the Steam platform through their public API.",
-			"facepunchmonitor": "A graphical application created to follow changes made in real time on games produced by the video game studio called Facepunch Studios from their public API.",
-			"filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
-			"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
-			"domego": "The dematerialized version of an educational and serious board game with the same name to learn the steps of a public building construction operation. This project is unfinished but currently maintained by students of Polytech Nice-Sophia Antipolis.",
-			"assignment": "A small website designed for educational purposes to manage the homework and grades of students in a class as a teacher. The website is not intended to be used in production because it was designed in a very short time and only to learn the Angular framework.",
-			"mangaparadise": "A showcase site designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The site was designed to replace their old site which was obsolete and was no longer maintained.",
-			"digitalidentity": "An academic research project aimed at improving the current monitoring of student attendance and absence in class. The site offers ways to replace existing methods such as attendance registration via a QR Code, the addition of absence justifications but also the obtaining of attendance certificates.",
-			"gamesonweb2023": "A game created for the \"Games On Web\" contest 2023 edition and having as theme \"Be green\" under the theme of sustainable development. The game is a 3D game where the player drives on an endless road and must avoid obstacles that appear in his path.",
-			"genio": "An academic project aimed at creating an innovative website for creating family trees to stand out from existing sites such as Geneanet or MyHeritage. This project includes several features such as tree sharing or importing GEDCOM files."
-		},
-		"landing": {
-			"header_projects": "Projects",
-			"header_skills": "Skills",
-			"header_contact": "Contact",
-			"footer_mail": "Mail",
-			"filter_all": "All",
-			"filter_front": "Front-end",
-			"filter_back": "Back-end",
-			"filter_other": "Other",
-			"footer_legacy": "<a>Legacy version</a>",
-			"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
-			"footer_recaptcha": "This site is protected by reCAPTCHA and the Google <a1>Privacy Policy</a1> and <a2>Terms of Service</a2> apply.",
-			"developer_firstname": "Florian",
-			"developer_surname": "Trayon",
-			"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
-			"hello_title": "Hi. I am",
-			"download_resume": "Download the resume"
-		}
+	"modals": {
+		"mailer_title": "Mailbox selection",
+		"mailer_description": "To send an email, you can choose between several mailboxes. Select your preferred one.",
+		"mailer_error": "You have to choose a mailbox.",
+		"mailer_google": "Gmail (Google)",
+		"mailer_default": "Default mailbox"
+	},
+	"projects":
+	{
+		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
+		"steamdownloader": "A command line application to calculate the total size of a collection of items created on the Steam platform through their public API.",
+		"facepunchmonitor": "A graphical application created to follow changes made in real time on games produced by the video game studio called Facepunch Studios from their public API.",
+		"filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
+		"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
+		"domego": "The dematerialized version of an educational and serious board game with the same name to learn the steps of a public building construction operation. This project is unfinished but currently maintained by students of Polytech Nice-Sophia Antipolis.",
+		"assignment": "A small website designed for educational purposes to manage the homework and grades of students in a class as a teacher. The website is not intended to be used in production because it was designed in a very short time and only to learn the Angular framework.",
+		"mangaparadise": "A showcase site designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The site was designed to replace their old site which was obsolete and was no longer maintained.",
+		"digitalidentity": "An academic research project aimed at improving the current monitoring of student attendance and absence in class. The site offers ways to replace existing methods such as attendance registration via a QR Code, the addition of absence justifications but also the obtaining of attendance certificates.",
+		"gamesonweb2023": "A game created for the \"Games On Web\" contest 2023 edition and having as theme \"Be green\" under the theme of sustainable development. The game is a 3D game where the player drives on an endless road and must avoid obstacles that appear in his path.",
+		"genio": "An academic project aimed at creating an innovative website for creating family trees to stand out from existing sites such as Geneanet or MyHeritage. This project includes several features such as tree sharing or importing GEDCOM files."
+	},
+	"landing": {
+		"header_projects": "Projects",
+		"header_skills": "Skills",
+		"header_contact": "Contact",
+		"footer_mail": "Mail",
+		"filter_all": "All",
+		"filter_front": "Front-end",
+		"filter_back": "Back-end",
+		"filter_other": "Other",
+		"footer_legacy": "<a>Legacy version</a>",
+		"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
+		"footer_recaptcha": "This site is protected by reCAPTCHA and the Google <a1>Privacy Policy</a1> and <a2>Terms of Service</a2> apply.",
+		"developer_firstname": "Florian",
+		"developer_surname": "Trayon",
+		"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
+		"hello_title": "Hi. I am",
+		"download_resume": "Download the resume"
 	},
 	"consentModal": {
 		"title": "Do you want a cookie? 🍪",
