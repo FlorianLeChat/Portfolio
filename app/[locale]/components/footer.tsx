@@ -7,15 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer()
 {
-	// Déclaration des variables d'état.
-	const t = useTranslations( "global" );
+	// Déclaration des constantes.
+	const t = useTranslations( "landing" );
 
 	// Affichage du rendu HTML du composant.
 	return (
 		<footer>
 			<span>
 				{/* Lien vers le dépôt GitHub du projet */}
-				{t.rich( "landing.footer_madeby", {
+				{t.rich( "footer_madeby", {
 					a: ( chunks ) => (
 						<a
 							rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export default function Footer()
 			{/* Avertissement de Google reCAPTCHA */}
 			{process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" && (
 				<small>
-					{t.rich( "landing.footer_recaptcha", {
+					{t.rich( "footer_recaptcha", {
 						a1: ( chunks ) => (
 							<a
 								rel="noopener noreferrer"
@@ -61,7 +61,7 @@ export default function Footer()
 			<small>
 				<FontAwesomeIcon icon={faPhp} />
 
-				{t.rich( "landing.footer_legacy", {
+				{t.rich( "footer_legacy", {
 					a: ( chunks ) => (
 						<a href="https://legacy.florian-dev.fr/portfolio/">
 							{chunks}

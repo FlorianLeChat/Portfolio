@@ -7,13 +7,14 @@
 import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
+import pick from "lodash/pick";
 import { join } from "path";
 import { Poppins } from "next/font/google";
 import { existsSync } from "fs";
-import { unstable_setRequestLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { Suspense, lazy, type ReactNode } from "react";
-import { NextIntlClientProvider, useMessages } from "next-intl";
+import { unstable_setRequestLocale, getMessages } from "next-intl/server";
 
 // Importation des types.
 import type { Metadata, Viewport } from "next";
@@ -190,7 +191,7 @@ const poppins = Poppins( {
 	display: "swap"
 } );
 
-export default function Layout( {
+export default async function Layout( {
 	children,
 	params: { locale }
 }: {
@@ -208,7 +209,7 @@ export default function Layout( {
 	}
 
 	// Déclaration des constantes.
-	const messages = useMessages();
+	const messages = await getMessages();
 
 	// Affichage du rendu HTML de la page.
 	return (
@@ -220,7 +221,7 @@ export default function Layout( {
 					{/* Utilisation des traductions */}
 					<NextIntlClientProvider
 						locale={locale}
-						messages={messages}
+						messages={pick( messages, "landing", "modals" )}
 						timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
 					>
 						{/* Basculement entre les thèmes */}

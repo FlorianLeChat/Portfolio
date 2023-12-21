@@ -16,9 +16,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 	const parameters = useSearchParams();
 	const router = useRouter();
 	const filter = parameters.get( "filter" ) ?? "";
-
-	// Déclaration des variables d'état.
-	const t = useTranslations( "global" );
+	const t = useTranslations( "landing" );
 
 	// Mise à jour du filtre des compétences.
 	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) =>
@@ -33,7 +31,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 	return (
 		<section id="skills">
 			{/* Section des compétences */}
-			<h2>{t( "landing.header_skills" )}</h2>
+			<h2>{t( "header_skills" )}</h2>
 
 			{/* Filtre des compétences */}
 			<ul>
@@ -46,7 +44,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="all">{t( "landing.filter_all" )}</label>
+					<label htmlFor="all">{t( "filter_all" )}</label>
 				</li>
 
 				<li>
@@ -58,7 +56,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="front">{t( "landing.filter_front" )}</label>
+					<label htmlFor="front">{t( "filter_front" )}</label>
 				</li>
 
 				<li>
@@ -70,7 +68,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="back">{t( "landing.filter_back" )}</label>
+					<label htmlFor="back">{t( "filter_back" )}</label>
 				</li>
 
 				<li>
@@ -82,7 +80,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="other">{t( "landing.filter_other" )}</label>
+					<label htmlFor="other">{t( "filter_other" )}</label>
 				</li>
 			</ul>
 

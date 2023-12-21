@@ -12,16 +12,17 @@ import { faSun,
 import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
-
 import { useTheme } from "./theme-provider";
 
 export default function Header()
 {
 	// Déclaration des variables d'état.
-	const t = useTranslations( "global" );
 	const { theme, setTheme } = useTheme();
 	const [ mounted, setMounted ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
+
+	// Déclaration des constantes.
+	const t = useTranslations( "landing" );
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
@@ -43,23 +44,22 @@ export default function Header()
 				href="https://github.com/FlorianLeChat"
 				target="_blank"
 			>
-				{t( "landing.developer_firstname" )[ 0 ]
-					+ t( "landing.developer_surname" )[ 0 ]}
+				{t( "developer_firstname" )[ 0 ] + t( "developer_surname" )[ 0 ]}
 			</a>
 
 			<nav>
 				{/* Liens de navigation */}
 				<ul className={showMenu ? "show" : ""}>
 					<li>
-						<a href="#projects">{t( "landing.header_projects" )}</a>
+						<a href="#projects">{t( "header_projects" )}</a>
 					</li>
 
 					<li>
-						<a href="#skills">{t( "landing.header_skills" )}</a>
+						<a href="#skills">{t( "header_skills" )}</a>
 					</li>
 
 					<li>
-						<a href="#contact">{t( "landing.header_contact" )}</a>
+						<a href="#contact">{t( "header_contact" )}</a>
 					</li>
 				</ul>
 
