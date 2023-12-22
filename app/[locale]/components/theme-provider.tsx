@@ -147,36 +147,7 @@ function Theme( { children = null }: ThemeProviderProps )
 	);
 
 	return (
-		<ThemeContext.Provider value={value}>
-			<script
-				dangerouslySetInnerHTML={{
-					__html: `
-						const theme = localStorage.getItem("${ storageKey }");
-						const element = document.documentElement;
-						const classes = element.classList;
-
-						classes.remove("light", "dark");
-
-						if (theme === "light" || theme === "dark")
-						{
-							// Application du thème choisi par l'utilisateur.
-							classes.add(theme)
-						}
-						else
-						{
-							// Application du thème préféré par le navigateur.
-							const target = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
-							classes.add(target);
-
-							localStorage.setItem("${ storageKey }", target);
-						}
-					`
-				}}
-			/>
-
-			{children}
-		</ThemeContext.Provider>
+		<ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 	);
 }
 
@@ -184,7 +155,39 @@ function Theme( { children = null }: ThemeProviderProps )
 export const useTheme = () => useContext( ThemeContext ) ?? defaultContext;
 
 // Exportation du composant.
-export function ThemeProvider( { children = null }: ThemeProviderProps )
+export default function ThemeProvider( { children = null }: ThemeProviderProps )
 {
 	return <Theme>{children}</Theme>;
+}
+
+// Export du script de basculement entre les thèmes.
+export function ThemeSwitcher()
+{
+	return (
+		<script
+			dangerouslySetInnerHTML={{
+				__html: `
+const theme = localStorage.getItem("${ storageKey }");
+const element = document.documentElement;
+const classes = element.classList;
+
+classes.remove("light", "dark");
+
+if (theme === "light" || theme === "dark")
+{
+	// Application du thème choisi par l'utilisateur.
+	classes.add(theme)
+}
+else
+{
+	// Application du thème préféré par le navigateur.
+	const target = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
+	classes.add(target);
+
+	localStorage.setItem("${ storageKey }", target);
+}`
+			}}
+		/>
+	);
 }

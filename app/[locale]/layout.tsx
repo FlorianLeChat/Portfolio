@@ -24,11 +24,12 @@ import { getLanguages } from "@/utilities/i18n";
 
 // Importation des composants.
 import Footer from "./components/footer";
-import { ThemeProvider } from "./components/theme-provider";
+import { ThemeSwitcher } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
 const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
+const ThemeProvider = lazy( () => import( "./components/theme-provider" ) );
 const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
@@ -214,18 +215,24 @@ export default async function Layout( {
 	// Affichage du rendu HTML de la page.
 	return (
 		<html lang={locale} style={poppins.style}>
+			{/* En-tête de la page */}
+			<head>
+				{/* Basculement entre les thèmes */}
+				<ThemeSwitcher />
+			</head>
+
 			{/* Corps de la page */}
 			<body>
 				{/* Écran de chargement de la page */}
 				<Suspense>
-					{/* Utilisation des traductions */}
-					<NextIntlClientProvider
-						locale={locale}
-						messages={pick( messages, "landing", "modals" )}
-						timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
-					>
-						{/* Basculement entre les thèmes */}
-						<ThemeProvider>
+					{/* Basculement entre les thèmes */}
+					<ThemeProvider>
+						{/* Utilisation des traductions */}
+						<NextIntlClientProvider
+							locale={locale}
+							messages={pick( messages, "landing", "modals" )}
+							timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
+						>
 							{/* En-tête */}
 							<Header />
 
@@ -246,8 +253,8 @@ export default async function Layout( {
 
 							{/* Pied de page */}
 							<Footer />
-						</ThemeProvider>
-					</NextIntlClientProvider>
+						</NextIntlClientProvider>
+					</ThemeProvider>
 				</Suspense>
 			</body>
 		</html>
