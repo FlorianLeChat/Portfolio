@@ -21,7 +21,7 @@ const nextConfig = withNextIntl( {
 		return [
 			{
 				// Redirection vers l'ancienne version.
-				source: "/about",
+				source: "/legacy",
 				permanent: true,
 				destination: "https://legacy.florian-dev.fr/portfolio/"
 			}
