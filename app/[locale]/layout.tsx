@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<
 {
 	// On vérifie d'abord si les métadonnées sont déjà enregistrées
 	//  dans le cache du système de fichiers.
-	const folderPath = join( process.cwd(), "public/data" );
+	const folderPath = join( process.cwd(), "data" );
 	const filePath = join( folderPath, "metadata.json" );
 
 	await mkdir( folderPath, { recursive: true } );

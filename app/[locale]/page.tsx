@@ -40,7 +40,7 @@ const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
 const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
 
 // Récupération des projets et des compétences.
-const directory = join( process.cwd(), "public/data" );
+const directory = join( process.cwd(), "data" );
 const getProjects = async () => JSON.parse(
 	await readFile( `${ directory }/projects.json`, "utf8" )
 ) as ProjectAttributes[];
