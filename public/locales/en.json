@@ -9,6 +9,7 @@
 	"projects":
 	{
 		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
+		"ravenframework": "A framework to help developers creating Lua scripts for a sandbox-style video game called Garry's Mod, used mainly by the French-speaking Combined Roleplay community.",
 		"steamdownloader": "A command line application to calculate the total size of a collection of items created on the Steam platform through their public API.",
 		"facepunchmonitor": "A graphical application created to follow changes made in real time on games produced by the video game studio called Facepunch Studios from their public API.",
 		"filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
