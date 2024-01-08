@@ -50,11 +50,6 @@
     "node": ">=18.0",
     "npm": ">=8.6"
   },
-  "overrides": {
-    "next-intl": {
-      "next": "$next"
-    }
-  },
   "scripts": {
     "dev": "next dev",
     "test": "playwright test",
