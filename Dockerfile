@@ -25,6 +25,9 @@ RUN --mount=type=cache,target=.npm \
 # Use non-root user
 USER node
 
+# Find and replace some default environment variables
+RUN sed -i "s/NEXT_PUBLIC_ENV=development/NEXT_PUBLIC_ENV=production/g" .env
+
 # Build the entire project
 RUN npm run build
 
