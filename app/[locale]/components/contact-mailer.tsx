@@ -12,7 +12,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function Home()
 {
-	// Déclaration des constantes.
+	// Déclaration des variables d'état.
 	const t = useTranslations();
 
 	// Envoi d'un courriel après sélection de la messagerie.
