@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Footer()
 {
-	// Déclaration des constantes.
+	// Déclaration des variables d'état.
 	const t = useTranslations( "landing" );
 
 	// Affichage du rendu HTML du composant.

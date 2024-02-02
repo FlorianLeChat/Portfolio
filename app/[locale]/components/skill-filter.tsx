@@ -5,16 +5,15 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { useSearchParams } from "next/navigation";
 import { type ChangeEvent } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
 
 import type { SkillAttributes } from "@/interfaces/Skill";
 
 export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 {
-	// Déclaration des constantes.
+	// Déclaration des variables d'état.
 	const parameters = useSearchParams();
-	const router = useRouter();
 	const filter = parameters.get( "filter" ) ?? "";
 	const t = useTranslations( "landing" );
 
@@ -24,7 +23,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 		const url = new URLSearchParams( parameters );
 		url.set( "filter", event.currentTarget.id );
 
-		router.push( url ? `?${ url.toString() }` : url, { scroll: false } );
+		window.history.pushState( null, "", `?${ url.toString() }` );
 	};
 
 	// Affichage du rendu HTML du composant.

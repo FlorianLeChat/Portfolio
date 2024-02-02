@@ -17,12 +17,10 @@ import { useTheme } from "./theme-provider";
 export default function Header()
 {
 	// Déclaration des variables d'état.
+	const t = useTranslations( "landing" );
 	const { theme, setTheme } = useTheme();
 	const [ mounted, setMounted ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
-
-	// Déclaration des constantes.
-	const t = useTranslations( "landing" );
 
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
