@@ -8,7 +8,6 @@ const withNextIntl = require( "next-intl/plugin" )( "./utilities/i18n.ts" );
 
 const nextConfig = withNextIntl( {
 	poweredByHeader: false,
-	experimental: { webpackBuildWorker: true }, // https://github.com/getsentry/sentry-javascript/discussions/9424
 	basePath: "",
 	sentry: {
 		tunnelRoute: "/monitoring",
