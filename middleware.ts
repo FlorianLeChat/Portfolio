@@ -22,20 +22,24 @@ export default async function middleware( request: NextRequest )
 			|| request.method === "POST"
 		)
 		{
-			// On vérifie après si le corps de la requête est vide ou non.
-			const body = await request.text();
+			// On traite le corps de la requête sous format JSON pour récupérer
+			//  le jeton d'authentification reCAPTCHA transmis par l'utilisateur.
+			let token;
 
-			if ( body.length === 0 )
+			try
 			{
+				token = ( ( await request.json() ) as { token: string } ).token;
+			}
+			catch
+			{
+				// Une erreur s'est produite lors de la transformation du corps de
+				//  la requête sous format JSON.
 				return new NextResponse( null, { status: 400 } );
 			}
 
-			// On vérifie également si un jeton d'authentification a été
-			//  transmis par l'utilisateur.
-			const { token } = JSON.parse( body ) as { token?: string };
-
 			if ( !token )
 			{
+				// Le jeton d'authentification reCAPTCHA est manquant ou invalide.
 				return new NextResponse( null, { status: 400 } );
 			}
 
