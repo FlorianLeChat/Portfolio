@@ -23,7 +23,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 		const url = new URLSearchParams( parameters );
 		url.set( "filter", event.currentTarget.id );
 
-		window.history.pushState( null, "", `?${ url.toString() }` );
+		window.history.pushState( null, "", `?${ url }` );
 	};
 
 	// Affichage du rendu HTML du composant.
