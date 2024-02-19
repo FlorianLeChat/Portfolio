@@ -135,7 +135,7 @@ test( "Disponibilité du C.V", async ( { page, context } ) =>
 	await drivePage.waitForLoadState();
 
 	// Vérification du titre de la nouvelle page.
-	await expect( drivePage ).toHaveTitle( /CV.pdf/ );
+	await expect( drivePage ).toHaveTitle( /CV - Florian Trayon.pdf/ );
 } );
 
 //
