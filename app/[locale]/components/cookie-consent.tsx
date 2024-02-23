@@ -19,14 +19,14 @@ export default function CookieConsent()
 	{
 		// Définition de l'environnement de production.
 		run( {
-			// Activation automatique de la fenêtre de consentement.
-			autoShow: process.env.NEXT_PUBLIC_ENV === "production",
-
 			// Désactivation de l'interaction avec la page.
 			disablePageInteraction: true,
 
 			// Disparition du mécanisme pour les robots.
 			hideFromBots: process.env.NEXT_PUBLIC_ENV === "production",
+
+			// Activation automatique de la fenêtre de consentement.
+			autoShow: process.env.NEXT_PUBLIC_ENV === "production",
 
 			// Paramètres internes des cookies.
 			cookie: {

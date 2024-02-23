@@ -121,14 +121,14 @@ export default async function Page( {
 	// Définition de la langue de la page.
 	unstable_setRequestLocale( locale );
 
+	// Déclaration des variables d'état.
+	const t = await getTranslations();
+
 	// Déclaration des constantes.
 	const github = ( await generateMetadata() ).source;
 	const date = new Date();
 
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
-
-	// Déclaration des variables d'état.
-	const t = await getTranslations();
 
 	// Affichage du rendu HTML de la page.
 	return (
