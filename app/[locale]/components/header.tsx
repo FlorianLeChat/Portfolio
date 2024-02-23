@@ -22,6 +22,9 @@ export default function Header()
 	const [ mounted, setMounted ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
 
+	// Déclaration des constantes.
+	const isLightTheme = mounted ? theme === "light" : true;
+
 	// Affichage ou disparition du menu de navigation.
 	//  Note : ce menu est seulement visible sur les écrans de petite taille.
 	const toggleMenu = () => setShowMenu( !showMenu );
@@ -65,15 +68,9 @@ export default function Header()
 				<button
 					type="button"
 					title={t( "header_theme" )}
-					onClick={() => setTheme( theme === "light" ? "dark" : "light" )}
+					onClick={() => setTheme( isLightTheme ? "dark" : "light" )}
 				>
-					<FontAwesomeIcon
-						icon={
-							( mounted ? theme : "light" ) === "light"
-								? faMoon
-								: faSun
-						}
-					/>
+					<FontAwesomeIcon icon={isLightTheme ? faMoon : faSun} />
 				</button>
 
 				{/* Préférences des cookies */}

@@ -77,9 +77,9 @@ export default function Home()
 
 				<li>
 					<a
+						rel="noopener noreferrer"
 						href="https://github.com/FlorianLeChat"
 						target="_blank"
-						rel="noopener noreferrer"
 					>
 						<FontAwesomeIcon icon={faGithub} />
 						GitHub
@@ -88,9 +88,9 @@ export default function Home()
 
 				<li>
 					<a
+						rel="noopener noreferrer"
 						href="https://www.linkedin.com/in/florian-trayon/"
 						target="_blank"
-						rel="noopener noreferrer"
 					>
 						<FontAwesomeIcon icon={faLinkedin} />
 						LinkedIn

@@ -23,6 +23,9 @@ export default function Recaptcha()
 		return null;
 	}
 
+	// Déclaration des variables d'état.
+	const [ recaptcha, setRecaptcha ] = useState( false );
+
 	// Déclaration des constantes.
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
 	recaptchaUrl.searchParams.append(
@@ -30,9 +33,6 @@ export default function Recaptcha()
 		process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY ?? ""
 	);
 	recaptchaUrl.searchParams.append( "onload", "setupRecaptcha" );
-
-	// Déclaration des variables d'état.
-	const [ recaptcha, setRecaptcha ] = useState( false );
 
 	// Activation des services Google reCAPTCHA au consentement des cookies.
 	const onConsent = useCallback(
