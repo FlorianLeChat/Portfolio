@@ -22,7 +22,7 @@
     "sweetalert2": "<11.4.9",
     "sanitize.css": "~13.0",
     "@sentry/nextjs": "~7.104",
-    "vanilla-cookieconsent": "3.0.0",
+    "vanilla-cookieconsent": "~3.0",
     "@fortawesome/react-fontawesome": "~0.2",
     "@fortawesome/fontawesome-svg-core": "~6.5",
     "@fortawesome/free-solid-svg-icons": "~6.5",
