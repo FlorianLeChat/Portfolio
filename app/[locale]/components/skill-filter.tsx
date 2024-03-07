@@ -93,20 +93,11 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						|| value.type.includes( filter )
 					)
 					{
-						const colored =
-							key !== "lua"
-							&& key !== "wordpress"
-							&& value.icon !== "original";
-
 						return (
 							<li key={key}>
-								<i
-									className={`devicon-${ key }-${
-										value.icon + ( colored ? " colored" : "" )
-									}`}
-								/>
+								<i className={`devicon-${ key }-${ value.icon }`} />
 
-								<span>{value.name}</span>
+								{value.name}
 							</li>
 						);
 					}

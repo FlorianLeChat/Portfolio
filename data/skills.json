@@ -1,57 +1,57 @@
 {
 	"angularjs": {
 		"name": "Angular",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"arduino": {
 		"name": "Arduino",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"bootstrap": {
 		"name": "Bootstrap",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"centos": {
 		"name": "CentOS",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"csharp": {
 		"name": "C#",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["back", "other"]
 	},
 	"css3": {
 		"name": "CSS",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"debian": {
 		"name": "Debian",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"docker": {
 		"name": "Docker",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"doctrine": {
 		"name": "Doctrine",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "back"
 	},
 	"dotnetcore": {
 		"name": ".NET",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["other"]
 	},
 	"git": {
 		"name": "Git",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"github": {
@@ -61,32 +61,32 @@
 	},
 	"html5": {
 		"name": "HTML",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"java": {
 		"name": "Java",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["back", "other"]
 	},
 	"javascript": {
 		"name": "JavaScript",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["front", "back"]
 	},
 	"jira": {
 		"name": "Jira",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"jquery": {
 		"name": "jQuery",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"labview": {
 		"name": "LabView",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"lua": {
@@ -96,62 +96,62 @@
 	},
 	"mongodb": {
 		"name": "MongoDB",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["back", "other"]
 	},
 	"mysql": {
 		"name": "MySQL",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["back", "other"]
 	},
 	"nextjs": {
 		"name": "NextJS",
-		"icon": "original",
+		"icon": "plain",
 		"type": ["front", "back"]
 	},
 	"nodejs": {
 		"name": "NodeJS",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "back"
 	},
 	"php": {
 		"name": "PHP",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "back"
 	},
 	"python": {
 		"name": "Python",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["back", "other"]
 	},
 	"r": {
 		"name": "R",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "other"
 	},
 	"react": {
 		"name": "React",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"redis": {
 		"name": "Redis",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "back"
 	},
 	"sass": {
 		"name": "Sass",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"spring": {
 		"name": "Spring Boot",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "back"
 	},
 	"svelte": {
 		"name": "Svelte",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"symfony": {
@@ -161,12 +161,12 @@
 	},
 	"tailwindcss": {
 		"name": "TailwindCSS",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": "front"
 	},
 	"typescript": {
 		"name": "TypeScript",
-		"icon": "plain",
+		"icon": "plain colored",
 		"type": ["front", "back"]
 	},
 	"wordpress": {
