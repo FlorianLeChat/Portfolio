@@ -27,8 +27,8 @@ export default getRequestConfig( async ( { locale } ) =>
 	return {
 		timeZone: process.env.NEXT_PUBLIC_TIMEZONE,
 		messages: deepmerge(
-			( await import( "../public/locales/en.json" ) ).default,
-			( await import( `../public/locales/${ locale }.json` ) ).default
+			( await import( "../locales/en.json" ) ).default,
+			( await import( `../locales/${ locale }.json` ) ).default
 		) as unknown as AbstractIntlMessages
 	};
 } );
