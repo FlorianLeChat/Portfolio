@@ -230,7 +230,13 @@ export default async function Layout( {
 						{/* Utilisation des traductions */}
 						<NextIntlClientProvider
 							locale={locale}
-							messages={pick( messages, "landing", "modals" )}
+							messages={pick(
+								messages,
+								"modals",
+								"landing",
+								"consentModal",
+								"preferencesModal"
+							)}
 							timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
 						>
 							{/* En-tête */}

@@ -4,13 +4,20 @@
 
 "use client";
 
-import { run } from "vanilla-cookieconsent";
+import { useMessages } from "next-intl";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { useEffect, useState } from "react";
+import { run,
+	type ConsentModalOptions,
+	type PreferencesModalOptions } from "vanilla-cookieconsent";
 
 export default function CookieConsent()
 {
 	// Déclaration des variables d'état.
+	const messages = useMessages() as unknown as {
+		consentModal: ConsentModalOptions;
+		preferencesModal: PreferencesModalOptions;
+	};
 	const [ analytics, setAnalytics ] = useState( false );
 
 	// Affichage du consentement des cookies.
@@ -74,10 +81,11 @@ export default function CookieConsent()
 			// Configuration des traductions.
 			language: {
 				default: "en",
-				autoDetect: "document",
 				translations: {
-					en: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/en.json`,
-					fr: `${ process.env.__NEXT_ROUTER_BASEPATH }/locales/fr.json`
+					en: {
+						consentModal: messages.consentModal,
+						preferencesModal: messages.preferencesModal
+					}
 				}
 			},
 
@@ -93,7 +101,7 @@ export default function CookieConsent()
 				}
 			}
 		} );
-	}, [] );
+	}, [ messages.consentModal, messages.preferencesModal ] );
 
 	// Affichage conditionnel du rendu HTML du composant.
 	return (
