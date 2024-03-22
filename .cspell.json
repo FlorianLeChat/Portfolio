@@ -1,0 +1,27 @@
+{
+	"import": ["./node_modules/@cspell/dict-fr-fr/cspell-ext.json"],
+	"version": "0.2",
+	"language": "fr, en",
+	"words": [
+		"Gmail",
+		"ravenframework",
+		"Roleplay",
+		"steamdownloader",
+		"facepunchmonitor",
+		"Facepunch",
+		"filestorage",
+		"sourceconsole",
+		"domego",
+		"Antipolis",
+		"mangaparadise",
+		"digitalidentity",
+		"gamesonweb",
+		"genio",
+		"GEDCOM",
+		"madeby",
+		"recaptcha",
+		"Polytech",
+		"Geneanet",
+		"firstname"
+	]
+}
