@@ -60,7 +60,8 @@
     "start": "next start",
     "pretty": "prettier --write \"**/*.{js,jsx,ts,tsx}\"",
     "prepare": "husky",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "check-spell": "cspell locales/** --show-context --show-suggestions"
   },
   "browserslist": [
     "defaults"
