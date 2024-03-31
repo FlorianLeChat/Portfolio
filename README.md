@@ -6,12 +6,8 @@ Ceci est mon portfolio tout simplement ! Au départ, il s'agissait de mon tout p
 
 Les anciennes versions de mon portfolio sont également disponibles sur les autres branches GitHub : `no-next-js` (dernière version utilisant PHP), `no-gmail` (version PHP ayant encore un formulaire de contact sans GMail), `no-sass` (version PHP sans l'utilisation du préprocesseur SASS) et `no-php` (version utilisant seulement HTML, CSS et JavaScript).
 
-> [!NOTE]
-> Voici les exigences pour exécuter le site Internet :
-> * [**Toute** version de NodeJS LTS maintenue](https://github.com/nodejs/release#release-schedule)
-
 > [!TIP]
-> Pour essayer le projet, il suffit d'installer l'ensemble des dépendances nécessaires avec la commande `npm install` (nécessite [NodeJS](https://nodejs.org/en/download)) puis de lancer le serveur de développement avec la commande `npm run dev`. Une image Docker est aussi disponible pour tester ce projet pour les personnes les plus expérimentées ! 🐳
+> Pour essayer le projet, vous devez être en posession de [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost:3000/. Si vous souhaitez travailler sur le projet avec Docker, vous devez utilisez la commande `docker compose watch --no-up` pour que vos changements locaux soient automatiquement synchronisés avec le conteneur. 🐳
 
 > [!WARNING]
 > L'entièreté du code de ce projet est commenté dans ma langue natale (en français) et n'est pas voué à être traduit en anglais par soucis de simplicité de développement.
@@ -26,12 +22,8 @@ This is my portfolio! At the beginning, it was my very first website made during
 
 Older versions of my portfolio are also available on the other GitHub branches: `no-next-js` (latest version using PHP), `no-gmail` (PHP version still having a contact form without GMail), `no-sass` (PHP version without using the SASS preprocessor) and `no-php` (version using only HTML, CSS and JavaScript).
 
-> [!NOTE]
-> Here are the requirements to run the website:
-> * [**Any** maintained NodeJS LTS versions](https://github.com/nodejs/release#release-schedule)
-
 > [!TIP]
-> To test the project, you simply have to install all the necessary dependencies with `npm install` command (requires [NodeJS](https://nodejs.org/en/download)) and then launch the development server with `npm run dev` command. A Docker image is also available to test this project for more experienced people! 🐳
+> To try the project, you must have [Docker](https://www.docker.com/) installed. Once installed, simply start the development Docker image with `docker compose up --detach --build` command. The website should be available at http://localhost:3000/. If you want to work on the project with Docker, you need to use `docker compose watch --no-up` to automatically synchronize your local changes with the container. 🐳
 
 > [!WARNING]
 > The whole code of this project is commented in my native language (in French) and will not be translated in English for easier programming.
