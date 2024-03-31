@@ -9,3 +9,4 @@
 **/docker-*
 **/CODEOWNERS
 **/LICENSE
+**/next-env.d.ts

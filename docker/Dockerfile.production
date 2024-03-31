@@ -22,11 +22,14 @@ RUN --mount=type=cache,target=.npm \
 	npm set cache .npm && \
 	npm install && chown -R node:node ./node_modules
 
-# Use non-root user
-USER node
-
 # Build the entire project
 RUN npm run build
+
+# Change ownership of production files
+RUN chown -R node:node .next next-env.d.ts
+
+# Use non-root user
+USER node
 
 # Remove all development dependencies
 RUN npm prune --production
