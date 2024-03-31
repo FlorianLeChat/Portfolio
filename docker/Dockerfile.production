@@ -5,16 +5,16 @@
 FROM node:lts-alpine
 
 # Add cURL for health check
-RUN apk --no-cache add curl
+RUN apk update && apk add --no-cache curl
 
 # Set the working directory to the website files
 WORKDIR /usr/src/app
 
-# Change permissions of the working directory
-RUN chown node:node .
-
 # Copy all files required to build the project
 COPY --chown=node:node . .
+
+# Create a directory for the Next.js build cache
+RUN mkdir -p .next && chown -R node:node .next
 
 # Install all dependencies
 # Use cache mount to speed up installation of existing dependencies
@@ -24,9 +24,6 @@ RUN --mount=type=cache,target=.npm \
 
 # Use non-root user
 USER node
-
-# Find and replace some default environment variables
-RUN sed -i "s/NEXT_PUBLIC_ENV=development/NEXT_PUBLIC_ENV=production/g" .env
 
 # Build the entire project
 RUN npm run build
