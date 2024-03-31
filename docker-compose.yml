@@ -7,6 +7,11 @@ services:
     node:
         image: portfolio
         restart: always
+        develop:
+            watch:
+                - action: sync
+                  path: .
+                  target: /usr/src/app
         healthcheck:
             test: curl -f http://localhost:3000
             retries: 3
