@@ -7,7 +7,7 @@ Ceci est mon portfolio tout simplement ! Au départ, il s'agissait de mon tout p
 Les anciennes versions de mon portfolio sont également disponibles sur les autres branches GitHub : `no-next-js` (dernière version utilisant PHP), `no-gmail` (version PHP ayant encore un formulaire de contact sans GMail), `no-sass` (version PHP sans l'utilisation du préprocesseur SASS) et `no-php` (version utilisant seulement HTML, CSS et JavaScript).
 
 > [!TIP]
-> Pour essayer le projet, vous devez être en posession de [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost:3000/. Si vous souhaitez travailler sur le projet avec Docker, vous devez utiliser la commande `docker compose watch --no-up` pour que vos changements locaux soient automatiquement synchronisés avec le conteneur. 🐳
+> Pour tester le projet, vous devez être en posession de [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de développement à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost:3000/. Si vous souhaitez travailler sur le projet avec Docker, vous devez utiliser la commande `docker compose watch --no-up` pour que vos changements locaux soient automatiquement synchronisés avec le conteneur. 🐳
 
 > [!WARNING]
 > L'entièreté du code de ce projet est commenté dans ma langue natale (en français) et n'est pas voué à être traduit en anglais par soucis de simplicité de développement.
