@@ -10,6 +10,9 @@ RUN apk update && apk add --no-cache curl
 # Set the working directory to the website files
 WORKDIR /usr/src/app
 
+# Change permissions of the working directory
+RUN chown node:node .
+
 # Copy all files required to build the project
 COPY --chown=node:node . .
 
@@ -23,10 +26,7 @@ RUN --mount=type=cache,target=.npm \
 	npm install && chown -R node:node ./node_modules
 
 # Build the entire project
-RUN npm run build
-
-# Change ownership of production files
-RUN chown -R node:node .next next-env.d.ts
+RUN npm run build && chown -R node:node .next
 
 # Use non-root user
 USER node

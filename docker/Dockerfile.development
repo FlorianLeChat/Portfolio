@@ -10,6 +10,9 @@ RUN apk update && apk add --no-cache curl
 # Set the working directory to the website files
 WORKDIR /usr/src/app
 
+# Change permissions of the working directory
+RUN chown node:node .
+
 # Copy all files required to build the project
 COPY --chown=node:node . .
 
