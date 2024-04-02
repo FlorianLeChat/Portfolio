@@ -46,7 +46,7 @@
     "@next/third-parties": "~14.1",
     "eslint-config-airbnb": "~19.0",
     "@total-typescript/ts-reset": "~0.5",
-    "@typescript-eslint/eslint-plugin": "~7.4"
+    "@typescript-eslint/eslint-plugin": "~6.21"
   },
   "engines": {
     "node": ">=18.0",
