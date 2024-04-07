@@ -21,10 +21,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - name: Install ESLint
-        run: |
-          npm install eslint@latest
-          npm install @microsoft/eslint-formatter-sarif@latest
+      - name: Install dependencies
+        run: npm install
+      - name: Install SARIF formatter for ESLint
+        run: npm install @microsoft/eslint-formatter-sarif@latest
       - name: Run ESLint
         run: npx eslint .
           --config .eslintrc.json
