@@ -138,8 +138,8 @@ export default async function Page( {
 			<a
 				rel="noopener noreferrer"
 				href={github}
-				title="GitHub"
 				target="_blank"
+				aria-label="GitHub"
 			>
 				<svg width="80" height="80" viewBox="0 0 250 250">
 					<path d="M0 0l115 115h15l12 27 108 108V0z" />
@@ -222,10 +222,10 @@ export default async function Page( {
 												<a
 													rel="noopener noreferrer"
 													href={value.repository}
-													title={t(
+													target="_blank"
+													aria-label={t(
 														"landing.project_source"
 													)}
-													target="_blank"
 												>
 													<FontAwesomeIcon
 														icon={faCode}
@@ -242,10 +242,10 @@ export default async function Page( {
 												<a
 													rel="noopener noreferrer"
 													href={value.demo}
-													title={t(
+													target="_blank"
+													aria-label={t(
 														"landing.project_demo"
 													)}
-													target="_blank"
 												>
 													<FontAwesomeIcon
 														icon={faExternalLinkAlt}

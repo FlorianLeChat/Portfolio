@@ -22,6 +22,7 @@
 		"genio": "Un projet universitaire ayant pour but de créer un site innovant permettant de créer des arbres généalogiques afin de se démarquer des sites existants comme Geneanet ou MyHeritage. Ce projet comporte plusieurs fonctionnalités comme le partage d'arbres ou l'importation des fichiers GEDCOM."
 	},
 	"landing": {
+		"scroll_top": "Remonter en haut de la page",
 		"header_projects": "Projets",
 		"header_skills": "Compétences",
 		"header_contact": "Contact",
