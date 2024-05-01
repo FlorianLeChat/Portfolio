@@ -5,12 +5,14 @@
 "use client";
 
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { useTranslations } from "next-intl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 export default function ScrollTop()
 {
 	// Déclaration des variables d'état.
+	const t = useTranslations( "landing" );
 	const [ showButton, setShowButton ] = useState( false );
 
 	// Remontée en haut de la page.
@@ -34,7 +36,11 @@ export default function ScrollTop()
 	return (
 		showButton && (
 			<aside>
-				<button type="button" onClick={scrollToTop}>
+				<button
+					type="button"
+					onClick={scrollToTop}
+					aria-label={t( "scroll_top" )}
+				>
 					<FontAwesomeIcon icon={faArrowUp} />
 				</button>
 			</aside>

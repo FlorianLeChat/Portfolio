@@ -22,6 +22,7 @@
 		"genio": "An academic project aimed at creating an innovative website for creating family trees to stand out from existing sites such as Geneanet or MyHeritage. This project includes several features such as tree sharing or importing GEDCOM files."
 	},
 	"landing": {
+		"scroll_top": "Scroll to top",
 		"header_projects": "Projects",
 		"header_skills": "Skills",
 		"header_contact": "Contact",
