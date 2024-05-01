@@ -67,8 +67,8 @@ export default function Header()
 				{/* Bouton de basculement en thème sombre/clair */}
 				<button
 					type="button"
-					title={t( "header_theme" )}
 					onClick={() => setTheme( isLightTheme ? "dark" : "light" )}
+					aria-label={t( "header_theme" )}
 				>
 					<FontAwesomeIcon icon={isLightTheme ? faMoon : faSun} />
 				</button>
@@ -76,8 +76,8 @@ export default function Header()
 				{/* Préférences des cookies */}
 				<button
 					type="button"
-					title={t( "header_cookies" )}
 					data-cc="show-preferencesModal"
+					aria-label={t( "header_cookies" )}
 				>
 					<FontAwesomeIcon icon={faCookieBite} />
 				</button>
@@ -85,8 +85,8 @@ export default function Header()
 				{/* Bouton pour ouvrir le menu de navigation */}
 				<button
 					type="button"
-					title={t( "header_navigation" )}
 					onClick={toggleMenu}
+					aria-label={t( "header_navigation" )}
 				>
 					<FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
 				</button>
