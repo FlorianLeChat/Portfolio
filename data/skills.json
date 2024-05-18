@@ -9,6 +9,11 @@
 		"icon": "plain colored",
 		"type": "other"
 	},
+	"ansible": {
+		"name": "Ansible",
+		"icon": "plain",
+		"type": "other"
+	},
 	"bootstrap": {
 		"name": "Bootstrap",
 		"icon": "plain colored",
@@ -59,6 +64,11 @@
 		"icon": "original",
 		"type": "other"
 	},
+	"gitlab": {
+		"name": "GitLab",
+		"icon": "plain colored",
+		"type": "other"
+	},
 	"html5": {
 		"name": "HTML",
 		"icon": "plain colored",
@@ -74,11 +84,6 @@
 		"icon": "plain colored",
 		"type": ["front", "back"]
 	},
-	"jira": {
-		"name": "Jira",
-		"icon": "plain colored",
-		"type": "other"
-	},
 	"jquery": {
 		"name": "jQuery",
 		"icon": "plain colored",
@@ -92,6 +97,16 @@
 	"lua": {
 		"name": "Lua",
 		"icon": "plain",
+		"type": "other"
+	},
+	"mariadb": {
+		"name": "MariaDB",
+		"icon": "original",
+		"type": ["back", "other"]
+	},
+	"markdown": {
+		"name": "Markdown",
+		"icon": "original",
 		"type": "other"
 	},
 	"mongodb": {
@@ -163,6 +178,11 @@
 		"name": "TailwindCSS",
 		"icon": "plain colored",
 		"type": "front"
+	},
+	"traefikproxy": {
+		"name": "Traefik",
+		"icon": "plain colored",
+		"type": "other"
 	},
 	"typescript": {
 		"name": "TypeScript",
