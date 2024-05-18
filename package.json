@@ -12,10 +12,12 @@
     "url": "https://github.com/FlorianLeChat/Portfolio/issues"
   },
   "dependencies": {
+    "pino": "~9.1",
     "next": "~14.2",
     "sharp": "~0.33",
     "lodash": "~4.17",
     "next-intl": "~3.12",
+    "pino-pretty": "~11.0",
     "@sentry/nextjs": "~7.112"
   },
   "devDependencies": {
@@ -24,7 +26,6 @@
     "@types/lodash": "~4.17",
     "@types/grecaptcha": "~3.0",
     "@types/dom-speech-recognition": "~0.0",
-    "pino": "~9.1",
     "sass": "~1.76",
     "husky": "~9.0",
     "cspell": "~8.7",
@@ -34,7 +35,6 @@
     "typescript": "~5.4",
     "sweetalert2": "<11.4.9",
     "lint-staged": "~15.2",
-    "pino-pretty": "~11.0",
     "sanitize.css": "~13.0",
     "@playwright/test": "~1.43",
     "@cspell/dict-fr-fr": "~2.2",
