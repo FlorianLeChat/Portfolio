@@ -1,5 +1,7 @@
 import { join } from "path";
-import { PlaywrightTestConfig, defineConfig, devices } from "@playwright/test";
+import { devices,
+	defineConfig,
+	type PlaywrightTestConfig } from "@playwright/test";
 
 const port = process.env.PORT ?? 3000;
 const baseURL = `http://localhost:${ port }`;
