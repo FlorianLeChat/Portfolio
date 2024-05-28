@@ -11,7 +11,7 @@ services:
                   path: .
                   target: /usr/src/app
         healthcheck:
-            test: curl -f http://localhost:3000
+            test: wget -O - http://localhost:3000
             retries: 3
             timeout: 5s
         build:
