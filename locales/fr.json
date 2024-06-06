@@ -19,7 +19,8 @@
 		"mangaparadise": "Un site vitrine conçu bénévolement pour l'association Manga Paradise, une association de passionnés de mangas et de culture japonaise. Le site a été conçu dans le but de remplacer leur ancien site qui était obsolète et qui n'était plus maintenu.",
 		"digitalidentity": "Un projet de recherche universitaire visant à améliorer le suivi actuel de présence et d'absence des étudiants aux cours. Le site offre des moyens de remplacer les moyens existants comme l'émargement de présence via un QR Code, l'ajout de justificatifs d'absences mais aussi l'obtention d'attestations de présence.",
 		"gamesonweb2023": "Un jeu créé à l'occasion du concours « Games On Web » édition 2023 et ayant comme thème « Be green » sous fond de développement durable. Le jeu est un jeu en 3D où le joueur conduit sur une route sans fin et doit éviter les obstacles qui apparaissent sur son passage.",
-		"genio": "Un projet universitaire ayant pour but de créer un site innovant permettant de créer des arbres généalogiques afin de se démarquer des sites existants comme Geneanet ou MyHeritage. Ce projet comporte plusieurs fonctionnalités comme le partage d'arbres ou l'importation des fichiers GEDCOM."
+		"genio": "Un projet universitaire ayant pour but de créer un site innovant permettant de créer des arbres généalogiques afin de se démarquer des sites existants comme Geneanet ou MyHeritage. Ce projet comporte plusieurs fonctionnalités comme le partage d'arbres ou l'importation des fichiers GEDCOM.",
+		"homepage": "Une page d'accueil conçue dans le style d'un terminal de commande, servant de passerelle vers mon portfolio et permettant d'accéder aux liens vers mes différents projets personnels. Le site est évidemment conçu pour une utilisation sur un ordinateur et n'est pas adapté pour un appareil mobile."
 	},
 	"landing": {
 		"scroll_top": "Remonter en haut de la page",
