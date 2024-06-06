@@ -180,6 +180,16 @@ section:nth-of-type(2) > ul
 			flex-direction: column;
 		}
 
+		&:first-of-type {
+			// Premier projet.
+			margin-top: 0;
+		}
+
+		&:last-of-type {
+			// Dernier projet.
+			margin-bottom: 0;
+		}
+
 		> h2
 		{
 			// Titre de la section.
