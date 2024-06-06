@@ -22,6 +22,7 @@ import type { ProjectAttributes } from "@/interfaces/Project";
 // Importation des images statiques.
 import Genio from "@/images/genio.png";
 import Domego from "@/images/domego.png";
+import Homepage from "@/images/homepage.png";
 import Portfolio from "@/images/portfolio.png";
 import GamesOnWeb from "@/images/gamesonweb2023.png";
 import Assignment from "@/images/assignment.png";
@@ -64,6 +65,10 @@ const getImage = ( name: string ) =>
 		// Domego.
 		case "domego":
 			return Domego;
+
+		// Homepage.
+		case "homepage":
+			return Homepage;
 
 		// Portfolio.
 		case "portfolio":

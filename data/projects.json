@@ -63,5 +63,11 @@
 		"title": "Genio",
 		"skills": ["HTML", "SASS", "JavaScript", "jQuery", "PHP", "Symfony", "Twig", "MySQL"],
 		"repository": "https://github.com/FlorianLeChat/Genio"
+	},
+	"homepage": {
+		"title": "Homepage",
+		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte"],
+		"repository": "https://github.com/FlorianLeChat/Homepage",
+		"demo": "https://florianlechat.github.io/Homepage/"
 	}
 }

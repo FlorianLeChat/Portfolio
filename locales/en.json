@@ -19,7 +19,8 @@
 		"mangaparadise": "A showcase site designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The site was designed to replace their old site which was obsolete and was no longer maintained.",
 		"digitalidentity": "An academic research project aimed at improving the current monitoring of student attendance and absence in class. The site offers ways to replace existing methods such as attendance registration via a QR Code, the addition of absence justifications but also the obtaining of attendance certificates.",
 		"gamesonweb2023": "A game created for the \"Games On Web\" contest 2023 edition and having as theme \"Be green\" under the theme of sustainable development. The game is a 3D game where the player drives on an endless road and must avoid obstacles that appear in his path.",
-		"genio": "An academic project aimed at creating an innovative website for creating family trees to stand out from existing sites such as Geneanet or MyHeritage. This project includes several features such as tree sharing or importing GEDCOM files."
+		"genio": "An academic project aimed at creating an innovative website for creating family trees to stand out from existing sites such as Geneanet or MyHeritage. This project includes several features such as tree sharing or importing GEDCOM files.",
+		"homepage": "A home page designed to look like a command terminal, serving as a gateway to my portfolio and providing links to my various personal projects. This website is obviously designed to be used on a computer and is not suitable for mobile devices."
 	},
 	"landing": {
 		"scroll_top": "Scroll to top",
