@@ -20,7 +20,6 @@ import { unstable_setRequestLocale, getMessages } from "next-intl/server";
 import type { Metadata, Viewport } from "next";
 
 // Importation des fonctions utilitaires.
-import { logger } from "@/utilities/pino";
 import { getLanguages } from "@/utilities/i18n";
 
 // Importation des composants.
@@ -172,11 +171,6 @@ export async function generateMetadata(): Promise<
 
 	// On enregistre enfin les métadonnées dans un fichier JSON
 	//  avant de les retourner.
-	logger.warn(
-		{ source: __filename, metadata },
-		"Loading metadata from GitHub API"
-	);
-
 	await writeFile( filePath, JSON.stringify( metadata ) );
 
 	return metadata;
@@ -211,7 +205,6 @@ export default async function Layout( {
 	// Vérification du support de la langue.
 	if ( !languages.includes( locale ) )
 	{
-		logger.error( { source: __filename, locale }, "Unsupported language" );
 		return null;
 	}
 

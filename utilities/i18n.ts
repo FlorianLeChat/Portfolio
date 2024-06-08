@@ -6,7 +6,6 @@ import deepmerge from "deepmerge";
 import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 import type { AbstractIntlMessages } from "next-intl";
-import { logger } from "./pino";
 
 export function getLanguages()
 {
@@ -19,7 +18,6 @@ export default getRequestConfig( async ( { locale } ) =>
 	// Vérification de la langue demandée par l'utilisateur.
 	if ( !getLanguages().includes( locale ) )
 	{
-		logger.error( { source: __filename, locale }, "Unsupported language" );
 		notFound();
 	}
 
