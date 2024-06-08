@@ -180,12 +180,14 @@ section:nth-of-type(2) > ul
 			flex-direction: column;
 		}
 
-		&:first-of-type {
+		&:first-of-type
+		{
 			// Premier projet.
 			margin-top: 0;
 		}
 
-		&:last-of-type {
+		&:last-of-type
+		{
 			// Dernier projet.
 			margin-bottom: 0;
 		}
