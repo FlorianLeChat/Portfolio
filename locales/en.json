@@ -105,8 +105,8 @@
 						{
 							"name": "_ga",
 							"domain": "Google Analytics",
-							"description": "Cookie set by <a href=\"https://support.google.com/analytics/answer/10089681\" target=\"_blank\">Google Analytics</a>.",
-							"expiration": "Expires after 12 days"
+							"description": "Cookie set by <a href=\"https://analytics.google.com/analytics/web/\" target=\"_blank\">Google Analytics</a>.",
+							"expiration": "Expires after 2 years."
 						}
 					]
 				}
