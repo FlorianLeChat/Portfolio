@@ -43,7 +43,8 @@
 		"developer_surname": "Trayon",
 		"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
 		"hello_title": "Hi. I am",
-		"download_resume": "Download the resume"
+		"download_resume": "Download the resume",
+		"japanese_credits": "✨ Proudly translated into Japanese by <a>Zélie Exposito</a> 🎌"
 	},
 	"consentModal": {
 		"title": "Do you want a cookie? 🍪",

@@ -43,7 +43,8 @@
 		"developer_surname": "Trayon",
 		"developer_description": "Je suis un développeur (junior) français full-stack de {age} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
 		"hello_title": "Bonjour. Je suis",
-		"download_resume": "Télécharger le C.V"
+		"download_resume": "Télécharger le C.V",
+		"japanese_credits": "✨ Fièrement traduit en Japonais par <a>Zélie Exposito</a> 🎌"
 	},
 	"consentModal": {
 		"title": "Voulez-vous un cookie ? 🍪",

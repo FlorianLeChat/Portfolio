@@ -24,6 +24,7 @@ import { getLanguages } from "@/utilities/i18n";
 
 // Importation des composants.
 import Footer from "./components/footer";
+import Credits from "./components/credits";
 import { ThemeSwitcher } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
@@ -238,6 +239,9 @@ export default async function Layout( {
 							)}
 							timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
 						>
+							{/* Remerciements */}
+							<Credits />
+
 							{/* En-tête */}
 							<Header />
 
