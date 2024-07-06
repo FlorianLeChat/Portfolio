@@ -44,6 +44,14 @@ body
 		color: getThemedColor("foreground");
 		background-color: getThemedColor("background");
 	}
+
+	> p
+	{
+		// Texte pour les remerciements relatifs aux
+		//  traductions du site.
+		text-align: center;
+		font-weight: bold;
+	}
 }
 
 h1, h2, h3, h4, h5, h6
