@@ -1,6 +1,22 @@
 name: portfolio
 
 services:
+    # https://hub.docker.com/_/varnish
+    varnish:
+        image: varnish:alpine
+        depends_on:
+            - node
+        volumes:
+            - ./docker/default.vcl:/etc/varnish/default.vcl:ro
+        environment:
+            VARNISH_SIZE: 128m
+        healthcheck:
+            test: wget -O - http://localhost/portfolio
+            retries: 3
+            timeout: 5s
+        ports:
+            - "8080:80"
+
     # https://github.com/FlorianLeChat/Portfolio
     node:
         image: portfolio
