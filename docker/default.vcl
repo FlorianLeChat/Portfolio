@@ -68,21 +68,9 @@ sub vcl_recv {
 	if (req.method != "GET" && req.method != "HEAD") {
 		return (pass);
 	}
-}
 
-sub vcl_backend_response {
-	# Suppression de la mise en cache pour les réponses
-	#  ayant une erreur en provenance du serveur.
-	if (beresp.status >= 400 && beresp.status < 600) {
-		set beresp.uncacheable = true;
-		return (deliver);
-	}
-
-	# Mise en cache des requêtes ayant un code de statut
-	#  valides pour une durée de 5 minutes.
-	set beresp.ttl = 5m;
-
-	return (deliver);
+	# Tentative de récupération de la page en cache.
+	return (hash);
 }
 
 sub vcl_deliver {
