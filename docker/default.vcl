@@ -69,6 +69,9 @@ sub vcl_backend_response {
 }
 
 sub vcl_deliver {
+	# Suppression de certains en-têtes HTTP dans la réponse.
+	unset resp.http.Via;
+
 	# Affichage de l'état de la mise en cache.
 	if (obj.hits > 0) {
 		set resp.http.X-Cache = "HIT";
