@@ -15,16 +15,16 @@
     "next": "~14.2",
     "sharp": "~0.33",
     "lodash": "~4.17",
-    "next-intl": "~3.15"
+    "next-intl": "~3.17"
   },
   "devDependencies": {
-    "@types/node": "~20.14",
+    "@types/node": "~22.0",
     "@types/react": "~18.3",
     "@types/lodash": "~4.17",
     "@types/dom-speech-recognition": "~0.0",
     "sass": "~1.77",
-    "husky": "~9.0",
-    "cspell": "~8.9",
+    "husky": "~9.1",
+    "cspell": "~8.13",
     "devicon": "~2.16",
     "prettier": "~3.3",
     "deepmerge": "~4.3",
@@ -40,10 +40,10 @@
     "vanilla-cookieconsent": "~3.0",
     "@total-typescript/ts-reset": "~0.5",
     "@fortawesome/react-fontawesome": "~0.2",
-    "@typescript-eslint/eslint-plugin": "~7.15",
-    "@fortawesome/fontawesome-svg-core": "~6.5",
-    "@fortawesome/free-solid-svg-icons": "~6.5",
-    "@fortawesome/free-brands-svg-icons": "~6.5"
+    "@typescript-eslint/eslint-plugin": "~8.0",
+    "@fortawesome/fontawesome-svg-core": "~6.6",
+    "@fortawesome/free-solid-svg-icons": "~6.6",
+    "@fortawesome/free-brands-svg-icons": "~6.6"
   },
   "engines": {
     "node": ">=18.0",
