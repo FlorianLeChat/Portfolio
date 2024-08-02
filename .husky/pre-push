@@ -1,4 +1,4 @@
-npm.cmd run build
-npx.cmd cspell locales/** --no-summary --no-progress --no-must-find-files
-npx.cmd playwright install --with-deps
-npm.cmd run test
+npm run build
+cspell locales/** --no-summary --no-progress --no-must-find-files
+playwright install --with-deps
+npm run test
