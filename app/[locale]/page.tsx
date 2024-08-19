@@ -143,6 +143,7 @@ export default async function Page( {
 			<a
 				rel="noopener noreferrer"
 				href={github}
+				title="GitHub"
 				target="_blank"
 				aria-label="GitHub"
 			>
@@ -227,6 +228,9 @@ export default async function Page( {
 												<a
 													rel="noopener noreferrer"
 													href={value.repository}
+													title={t(
+														"landing.project_source"
+													)}
 													target="_blank"
 													aria-label={t(
 														"landing.project_source"
@@ -247,6 +251,9 @@ export default async function Page( {
 												<a
 													rel="noopener noreferrer"
 													href={value.demo}
+													title={t(
+														"landing.project_demo"
+													)}
 													target="_blank"
 													aria-label={t(
 														"landing.project_demo"

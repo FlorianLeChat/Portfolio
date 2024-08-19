@@ -38,6 +38,7 @@ export default function ScrollTop()
 			<aside>
 				<button
 					type="button"
+					title={t( "scroll_top" )}
 					onClick={scrollToTop}
 					aria-label={t( "scroll_top" )}
 				>
