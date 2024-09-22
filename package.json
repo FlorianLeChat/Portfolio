@@ -12,10 +12,12 @@
     "url": "https://github.com/FlorianLeChat/Portfolio/issues"
   },
   "dependencies": {
+    "pino": "~9.1",
     "next": "~14.2",
     "sharp": "~0.33",
     "lodash": "~4.17",
-    "next-intl": "~3.19"
+    "next-intl": "~3.14",
+    "pino-pretty": "~11.1"
   },
   "devDependencies": {
     "@types/node": "~22.5",
