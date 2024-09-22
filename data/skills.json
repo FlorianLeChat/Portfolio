@@ -144,6 +144,11 @@
 		"icon": "plain colored",
 		"type": "other"
 	},
+	"rabbitmq": {
+		"name": "RabbitMQ",
+		"icon": "plain colored",
+		"type": "back"
+	},
 	"react": {
 		"name": "React",
 		"icon": "plain colored",
