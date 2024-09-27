@@ -33,7 +33,7 @@ jobs:
             path: ${{ steps.npm-cache.outputs.dir }}
             restore-keys: ${{ runner.os }}-npm-
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Install SARIF formatter for ESLint
         run: npm install @microsoft/eslint-formatter-sarif@latest
       - name: Run ESLint
