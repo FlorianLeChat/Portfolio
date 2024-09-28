@@ -222,7 +222,7 @@ export default async function Layout( {
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={locale} style={poppins.style}>
+		<html lang={locale} style={poppins.style} className="antialiased">
 			{/* En-tête de la page */}
 			<head>
 				{/* Basculement entre les thèmes */}
