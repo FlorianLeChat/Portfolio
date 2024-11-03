@@ -13,8 +13,8 @@ import { Poppins } from "next/font/google";
 import { existsSync } from "fs";
 import { NextIntlClientProvider } from "next-intl";
 import { readFile, writeFile, mkdir } from "fs/promises";
+import { setRequestLocale, getMessages } from "next-intl/server";
 import { Suspense, lazy, type ReactNode } from "react";
-import { unstable_setRequestLocale, getMessages } from "next-intl/server";
 
 // Importation des types.
 import type { Metadata, Viewport } from "next";
@@ -201,14 +201,16 @@ const poppins = Poppins( {
 
 export default async function Layout( {
 	children,
-	params: { locale }
+	params
 }: {
 	children: ReactNode;
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 } )
 {
 	// Définition de la langue de la page.
-	unstable_setRequestLocale( locale );
+	const { locale } = await params;
+
+	setRequestLocale( locale );
 
 	// Vérification du support de la langue.
 	if ( !languages.includes( locale ) )
@@ -245,7 +247,7 @@ export default async function Layout( {
 								"consentModal",
 								"preferencesModal"
 							)}
-							timeZone={process.env.NEXT_PUBLIC_TIMEZONE}
+							timeZone={process.env.TZ}
 						>
 							{/* Remerciements */}
 							<Credits />
