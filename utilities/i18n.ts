@@ -3,7 +3,6 @@
 //  Source : https://next-intl-docs.vercel.app/docs/getting-started/app-router-server-components
 //
 import deepmerge from "deepmerge";
-import { notFound } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 import type { AbstractIntlMessages } from "next-intl";
 import { logger } from "./pino";
@@ -14,20 +13,27 @@ export function getLanguages()
 	return [ "en", "fr" ];
 }
 
-export default getRequestConfig( async ( { locale } ) =>
+export default getRequestConfig( async ( { requestLocale } ) =>
 {
 	// Vérification de la langue demandée par l'utilisateur.
-	if ( !getLanguages().includes( locale ) )
+	let locale = await requestLocale;
+
+	if ( !locale || !getLanguages().includes( locale ) )
 	{
-		logger.error( { source: __filename, locale }, "Unsupported language" );
-		notFound();
+		logger.warn(
+			{ source: __filename, locale },
+			"Invalid locale, fallback to default."
+		);
+
+		locale = "en";
 	}
 
 	// Récupération des traductions dans le système de fichiers.
 	//  Note : les traductions manquantes sont fusionnées avec celles de
 	//   la langue par défaut.
 	return {
-		timeZone: process.env.NEXT_PUBLIC_TIMEZONE,
+		locale,
+		timeZone: process.env.TZ,
 		messages: deepmerge(
 			( await import( "../locales/en.json" ) ).default,
 			( await import( `../locales/${ locale }.json` ) ).default,
