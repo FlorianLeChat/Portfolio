@@ -21,7 +21,7 @@ export default getRequestConfig( async ( { requestLocale } ) =>
 	if ( !locale || !getLanguages().includes( locale ) )
 	{
 		logger.warn(
-			{ source: __filename, locale },
+			{ source: __dirname, locale },
 			"Invalid locale, fallback to default."
 		);
 

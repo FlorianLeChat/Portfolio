@@ -175,7 +175,7 @@ export async function generateMetadata(): Promise<
 	// On enregistre enfin les métadonnées dans un fichier JSON
 	//  avant de les retourner.
 	logger.warn(
-		{ source: __filename, metadata },
+		{ source: __dirname, metadata },
 		"Loading metadata from GitHub API"
 	);
 
@@ -215,7 +215,7 @@ export default async function Layout( {
 	// Vérification du support de la langue.
 	if ( !languages.includes( locale ) )
 	{
-		logger.error( { source: __filename, locale }, "Unsupported language" );
+		logger.error( { source: __dirname, locale }, "Unsupported language" );
 		return null;
 	}
 
