@@ -13,7 +13,7 @@ import { lazy } from "react";
 import { readFile } from "fs/promises";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { unstable_setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 
 // Importation des types.
 import type { SkillAttributes } from "@/interfaces/Skill";
@@ -118,13 +118,15 @@ const getImage = ( name: string ) =>
 
 // Affichage de la page.
 export default async function Page( {
-	params: { locale }
+	params
 }: {
-	params: { locale: string };
+	params: Promise<{ locale: string }>;
 } )
 {
 	// Définition de la langue de la page.
-	unstable_setRequestLocale( locale );
+	const { locale } = await params;
+
+	setRequestLocale( locale );
 
 	// Déclaration des variables d'état.
 	const t = await getTranslations();
