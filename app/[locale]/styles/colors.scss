@@ -1,5 +1,7 @@
 // Création des thèmes.
 //  Source : https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995
+@use "sass:map";
+
 $themes:
 (
 	light:
@@ -42,8 +44,8 @@ $themes:
 			@each $key, $submap in $map
 			{
 				// Création des variables de thèmes.
-				$value: map-get(map-get($themes, $theme), "#{$key}");
-				$theme-map: map-merge($theme-map, ($key: $value)) !global;
+				$value: map.get(map.get($themes, $theme), "#{$key}");
+				$theme-map: map.merge($theme-map, ($key: $value)) !global;
 			}
 
 			// Contenu de la classe.
@@ -58,5 +60,5 @@ $themes:
 @function getThemedColor($key)
 {
 	// Récupération des variables de thèmes.
-	@return map-get($theme-map, $key);
+	@return map.get($theme-map, $key);
 }
