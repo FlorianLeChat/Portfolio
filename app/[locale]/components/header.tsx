@@ -10,6 +10,7 @@ import { faSun,
 	faTimes,
 	faCookieBite } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
+import { showPreferences } from "vanilla-cookieconsent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { useTheme } from "./theme-provider";
@@ -78,7 +79,7 @@ export default function Header()
 				<button
 					type="button"
 					title={t( "header_cookies" )}
-					data-cc="show-preferencesModal"
+					onClick={() => showPreferences()}
 					aria-label={t( "header_cookies" )}
 				>
 					<FontAwesomeIcon icon={faCookieBite} />
