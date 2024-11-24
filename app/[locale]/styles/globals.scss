@@ -1,16 +1,16 @@
 // Importation des normalisateurs CSS.
-@import "sanitize.css/sanitize";
-@import "sanitize.css/forms";
-@import "sanitize.css/assets";
-@import "sanitize.css/system-ui";
-@import "sanitize.css/typography";
-@import "sanitize.css/ui-monospace";
-@import "sanitize.css/reduce-motion";
+@use "sanitize.css/sanitize";
+@use "sanitize.css/forms";
+@use "sanitize.css/assets";
+@use "sanitize.css/system-ui";
+@use "sanitize.css/typography";
+@use "sanitize.css/ui-monospace";
+@use "sanitize.css/reduce-motion";
 
 // Importation des dépendances externes.
-@import "devicon/devicon.min";
-@import "vanilla-cookieconsent/dist/cookieconsent";
-@import "@fortawesome/fontawesome-svg-core/styles";
+@use "devicon/devicon.min";
+@use "vanilla-cookieconsent/dist/cookieconsent";
+@use "@fortawesome/fontawesome-svg-core/styles";
 
 // Importation des variables de thème.
 @use "colors";
