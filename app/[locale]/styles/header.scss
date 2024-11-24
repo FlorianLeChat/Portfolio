@@ -1,3 +1,5 @@
+@use "colors";
+
 header
 {
 	// Conteneur de l'en-tête.
@@ -28,10 +30,10 @@ header
 		font-weight: 700;
 		text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("primary");
-			border: 0.2rem solid getThemedColor("primary");
+			color: colors.getThemedColor("primary");
+			border: 0.2rem solid colors.getThemedColor("primary");
 		}
 	}
 
@@ -50,9 +52,9 @@ header
 			transition: width 200ms ease-in-out;
 			flex-direction: column;
 
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("background");
+				background-color: colors.getThemedColor("background");
 			}
 
 			&[class = show]
@@ -78,9 +80,9 @@ header
 				padding: 0 0 0.15rem 0;
 				position: relative;
 
-				@include themeColors()
+				@include colors.themeColors()
 				{
-					color: getThemedColor("foreground-alt");
+					color: colors.getThemedColor("foreground-alt");
 				}
 
 				@media (hover: hover) and (pointer: fine)
@@ -90,9 +92,9 @@ header
 					&:hover
 					{
 						// Animation de survol.
-						@include themeColors()
+						@include colors.themeColors()
 						{
-							color: getThemedColor("primary");
+							color: colors.getThemedColor("primary");
 						}
 
 						&::before
@@ -104,9 +106,9 @@ header
 					&:active
 					{
 						// Animation de sélection.
-						@include themeColors()
+						@include colors.themeColors()
 						{
-							color: getThemedColor("primary-alt");
+							color: colors.getThemedColor("primary-alt");
 						}
 					}
 				}
@@ -122,9 +124,9 @@ header
 					position: absolute;
 					transition: width 200ms ease-out;
 
-					@include themeColors()
+					@include colors.themeColors()
 					{
-						background-color: getThemedColor("primary");
+						background-color: colors.getThemedColor("primary");
 					}
 				}
 			}
@@ -139,9 +141,9 @@ header
 		margin: 0.5rem;
 		vertical-align: middle;
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("foreground-alt");
+			color: colors.getThemedColor("foreground-alt");
 		}
 
 		&[class *= fa-bars]

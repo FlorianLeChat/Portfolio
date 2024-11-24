@@ -13,13 +13,13 @@
 @import "@fortawesome/fontawesome-svg-core/styles";
 
 // Importation des variables de thème.
-@import "colors";
+@use "colors";
 
 // Importation des règles CSS des composants React.
-@import "header";
-@import "footer";
-@import "loading";
-@import "scroll-top";
+@use "header";
+@use "footer";
+@use "loading";
+@use "scroll-top";
 
 // Modifications globales.
 html
@@ -39,10 +39,10 @@ body
 	line-height: 1.5;
 	font-family: var(--modern-font);
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("foreground");
-		background-color: getThemedColor("background");
+		color: colors.getThemedColor("foreground");
+		background-color: colors.getThemedColor("background");
 	}
 
 	> p
@@ -60,9 +60,9 @@ h1, h2, h3, h4, h5, h6
 	margin: 0;
 	line-height: 1.1;
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("foreground-alt");
+		color: colors.getThemedColor("foreground-alt");
 	}
 }
 
@@ -91,9 +91,9 @@ a
 	// Lien hypertexte.
 	text-decoration: none;
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("primary");
+		color: colors.getThemedColor("primary");
 	}
 }
 
@@ -118,18 +118,18 @@ section:first-of-type button, section:last-of-type button, section:last-of-type 
 	font-weight: 600;
 	border-radius: 5rem;
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("background");
-		background-color: getThemedColor("primary");
+		color: colors.getThemedColor("background");
+		background-color: colors.getThemedColor("primary");
 	}
 
 	&:hover
 	{
 		// Effet de survol.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			background-color: getThemedColor("primary-alt");
+			background-color: colors.getThemedColor("primary-alt");
 		}
 	}
 
@@ -182,9 +182,9 @@ section
 			content: "";
 			display: block;
 
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				border-bottom: 0.5rem solid getThemedColor("primary");
+				border-bottom: 0.5rem solid colors.getThemedColor("primary");
 			}
 		}
 	}
@@ -222,9 +222,9 @@ header > a, header button, section:nth-of-type(2) a
 		transition-property: width, height, border;
 		transition-timing-function: ease-in-out;
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			background-color: getThemedColor("primary");
+			background-color: colors.getThemedColor("primary");
 		}
 	}
 
@@ -234,9 +234,9 @@ header > a, header button, section:nth-of-type(2) a
 		//  à pointeur (souris).
 		&:hover, &:hover svg
 		{
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				color: getThemedColor("background");
+				color: colors.getThemedColor("background");
 			}
 		}
 
@@ -245,9 +245,9 @@ header > a, header button, section:nth-of-type(2) a
 			width: 100%;
 			height: 100%;
 
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				border: 0.25rem solid getThemedColor("primary");
+				border: 0.25rem solid colors.getThemedColor("primary");
 			}
 		}
 	}
@@ -256,10 +256,10 @@ header > a, header button, section:nth-of-type(2) a
 ::selection
 {
 	// Sélection des textes.
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("background");
-		background-color: getThemedColor("primary");
+		color: colors.getThemedColor("background");
+		background-color: colors.getThemedColor("primary");
 	}
 }
 
@@ -282,28 +282,28 @@ header > a, header button, section:nth-of-type(2) a
 .swal2-validation-message
 {
 	// Message d'erreur.
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("foreground");
-		background-color: getThemedColor("background-alt");
+		color: colors.getThemedColor("foreground");
+		background-color: colors.getThemedColor("background-alt");
 	}
 }
 
 .swal2-styled.swal2-confirm
 {
 	// Bouton de confirmation.
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("background");
-		background-color: getThemedColor("primary");
+		color: colors.getThemedColor("background");
+		background-color: colors.getThemedColor("primary");
 	}
 
 	&:focus
 	{
 		// Effet de maintien.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			box-shadow: 0 0 0 3px rgba(getThemedColor("primary"), 0.5);
+			box-shadow: 0 0 0 3px rgba(colors.getThemedColor("primary"), 0.5);
 		}
 	}
 }
@@ -311,11 +311,11 @@ header > a, header button, section:nth-of-type(2) a
 .swal2-modal
 {
 	// Respect des couleurs du thème.
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		color: getThemedColor("foreground");
-		border: 1px solid rgba(getThemedColor("primary"), 0.5);
-		background-color: getThemedColor("background");
+		color: colors.getThemedColor("foreground");
+		border: 1px solid rgba(colors.getThemedColor("primary"), 0.5);
+		background-color: colors.getThemedColor("background");
 	}
 
 	.swal2-radio
@@ -337,9 +337,9 @@ header > a, header button, section:nth-of-type(2) a
 ::-webkit-scrollbar-track
 {
 	// Chemin de la barre de défilement.
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		background-color: getThemedColor("background-alt");
+		background-color: colors.getThemedColor("background-alt");
 	}
 }
 
@@ -348,18 +348,18 @@ header > a, header button, section:nth-of-type(2) a
 	// Boutons haut/bas de la barre de défilement.
 	border-radius: 0.5rem;
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		border: 0.25rem solid getThemedColor("background");
-		background-color: getThemedColor("primary");
+		border: 0.25rem solid colors.getThemedColor("background");
+		background-color: colors.getThemedColor("primary");
 	}
 
 	&:hover
 	{
 		// Effet de survol.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			background-color: getThemedColor("primary-alt");
+			background-color: colors.getThemedColor("primary-alt");
 		}
 	}
 }
@@ -374,29 +374,29 @@ header > a, header button, section:nth-of-type(2) a
 	.cm
 	{
 		// Conteneur de la bannière de consentement.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			border-top: 1px solid rgba(getThemedColor("primary"), 0.5);
-			background-color: getThemedColor("background");
+			border-top: 1px solid rgba(colors.getThemedColor("primary"), 0.5);
+			background-color: colors.getThemedColor("background");
 		}
 	}
 
 	.pm
 	{
 		// Conteneur du gestionnaire des préférences.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			border: 1px solid rgba(getThemedColor("primary"), 0.5);
-			background-color: getThemedColor("background");
+			border: 1px solid rgba(colors.getThemedColor("primary"), 0.5);
+			background-color: colors.getThemedColor("background");
 		}
 	}
 
 	.pm__header, .pm__footer
 	{
 		// En-tête et pied de page du gestionnaire des préférences.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			border-color: rgba(getThemedColor("primary"), 0.25);
+			border-color: rgba(colors.getThemedColor("primary"), 0.25);
 		}
 	}
 
@@ -422,17 +422,17 @@ header > a, header button, section:nth-of-type(2) a
 	.pm__section:not(:first-child)
 	{
 		// Section pour plus d'informations.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			border-color: rgba(getThemedColor("primary"), 0.25);
+			border-color: rgba(colors.getThemedColor("primary"), 0.25);
 		}
 
 		&:hover
 		{
 			// Effet de survol.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("background-alt");
+				background-color: colors.getThemedColor("background-alt");
 			}
 		}
 	}
@@ -440,34 +440,34 @@ header > a, header button, section:nth-of-type(2) a
 	.pm__section--toggle
 	{
 		// Conteneurs généraux du gestionnaire des préférences.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			background-color: getThemedColor("background");
+			background-color: colors.getThemedColor("background");
 		}
 
 		.pm__section-desc-wrapper
 		{
 			// Conteneur contenant les descriptions des cookies.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				border-color: rgba(getThemedColor("primary"), 0.25);
+				border-color: rgba(colors.getThemedColor("primary"), 0.25);
 			}
 		}
 
 		.pm__section-arrow
 		{
 			// Flèches de chaque section.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("primary");
+				background-color: colors.getThemedColor("primary");
 			}
 
 			svg
 			{
 				// Icône de la flèche.
-				@include themeColors()
+				@include colors.themeColors()
 				{
-					stroke: getThemedColor("background");
+					stroke: colors.getThemedColor("background");
 				}
 			}
 		}
@@ -476,37 +476,37 @@ header > a, header button, section:nth-of-type(2) a
 	.cm__title, .pm__title, .pm__section-title
 	{
 		// Titres de la bannière de consentement.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("foreground");
+			color: colors.getThemedColor("foreground");
 		}
 	}
 
 	.cm__desc, .pm__section-desc
 	{
 		// Descriptions de la bannière de consentement.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("foreground");
+			color: colors.getThemedColor("foreground");
 		}
 	}
 
 	button.pm__section-title
 	{
 		// Boutons de la bannière de consentement.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			border-color: rgba(getThemedColor("primary"), 0.25);
-			background-color: getThemedColor("background");
+			border-color: rgba(colors.getThemedColor("primary"), 0.25);
+			background-color: colors.getThemedColor("background");
 		}
 
 		&:hover
 		{
 			// Effet de survol.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				border-color: rgba(getThemedColor("primary-alt"), 0.25);
-				background-color: getThemedColor("background-alt");
+				border-color: rgba(colors.getThemedColor("primary-alt"), 0.25);
+				background-color: colors.getThemedColor("background-alt");
 			}
 		}
 	}
@@ -514,17 +514,17 @@ header > a, header button, section:nth-of-type(2) a
 	.pm__table-th, .pm__table-tr
 	{
 		// Textes du tableau de la liste des cookies.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("foreground");
+			color: colors.getThemedColor("foreground");
 		}
 
 		&:hover
 		{
 			// Effet de survol.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("background-alt");
+				background-color: colors.getThemedColor("background-alt");
 			}
 		}
 	}
@@ -533,29 +533,29 @@ header > a, header button, section:nth-of-type(2) a
 	{
 		// Boutons d'acception, de refus ou de fermeture
 		//  de la bannière de consentement.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("background");
-			border-color: getThemedColor("primary");
-			background-color: getThemedColor("primary");
+			color: colors.getThemedColor("background");
+			border-color: colors.getThemedColor("primary");
+			background-color: colors.getThemedColor("primary");
 		}
 
 		&.cm__btn--secondary, &.pm__btn--secondary
 		{
 			// Boutons de sauvegarde ou d'ouverture du
 			//  gestionnaire de préférences.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				border-color: getThemedColor("foreground");
-				background-color: getThemedColor("foreground");
+				border-color: colors.getThemedColor("foreground");
+				background-color: colors.getThemedColor("foreground");
 			}
 
 			&:hover
 			{
 				// Effet de survol.
-				@include themeColors()
+				@include colors.themeColors()
 				{
-					background-color: getThemedColor("foreground-alt");
+					background-color: colors.getThemedColor("foreground-alt");
 				}
 			}
 		}
@@ -563,18 +563,18 @@ header > a, header button, section:nth-of-type(2) a
 		&:hover
 		{
 			// Effet de survol.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("primary-alt");
+				background-color: colors.getThemedColor("primary-alt");
 			}
 		}
 
 		svg
 		{
 			// Croix de fermeture de la bannière de consentement.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				stroke: getThemedColor("background");
+				stroke: colors.getThemedColor("background");
 			}
 		}
 	}
@@ -582,17 +582,17 @@ header > a, header button, section:nth-of-type(2) a
 	.cc__link, a
 	{
 		// Liens du gestionnaire des préférences.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("foreground-alt");
+			color: colors.getThemedColor("foreground-alt");
 		}
 
 		&:hover
 		{
 			// Effet de survol.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				color: getThemedColor("primary");
+				color: colors.getThemedColor("primary");
 			}
 		}
 	}
@@ -603,26 +603,26 @@ header > a, header button, section:nth-of-type(2) a
 		~ .toggle__icon
 		{
 			// Bascules inactives.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				box-shadow: 0 0 0 1px rgba(getThemedColor("primary"), 0.25);
-				background-color: getThemedColor("background");
+				box-shadow: 0 0 0 1px rgba(colors.getThemedColor("primary"), 0.25);
+				background-color: colors.getThemedColor("background");
 			}
 
 			.toggle__icon-circle
 			{
 				// Cercle de la bascule.
-				@include themeColors()
+				@include colors.themeColors()
 				{
-					background-color: getThemedColor("primary");
+					background-color: colors.getThemedColor("primary");
 				}
 
 				.toggle__icon-off svg
 				{
 					// Icône de la bascule.
-					@include themeColors()
+					@include colors.themeColors()
 					{
-						stroke: getThemedColor("background");
+						stroke: colors.getThemedColor("background");
 					}
 				}
 			}
@@ -631,26 +631,26 @@ header > a, header button, section:nth-of-type(2) a
 		&:checked ~ .toggle__icon
 		{
 			// Bascules actives.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				box-shadow: 0 0 0 1px getThemedColor("primary");
-				background-color: getThemedColor("primary");
+				box-shadow: 0 0 0 1px colors.getThemedColor("primary");
+				background-color: colors.getThemedColor("primary");
 			}
 
 			.toggle__icon-circle
 			{
 				// Cercle de la bascule.
-				@include themeColors()
+				@include colors.themeColors()
 				{
-					background-color: getThemedColor("background");
+					background-color: colors.getThemedColor("background");
 				}
 
 				.toggle__icon-on svg
 				{
 					// Icône de la bascule.
-					@include themeColors()
+					@include colors.themeColors()
 					{
-						stroke: getThemedColor("primary");
+						stroke: colors.getThemedColor("primary");
 					}
 				}
 			}
@@ -659,26 +659,26 @@ header > a, header button, section:nth-of-type(2) a
 		&:checked:disabled ~ .toggle__icon
 		{
 			// Bascules désactivées mais actives.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				box-shadow: 0 0 0 1px rgba(getThemedColor("primary"), 0.25);
-				background-color: rgba(getThemedColor("primary"), 0.25);
+				box-shadow: 0 0 0 1px rgba(colors.getThemedColor("primary"), 0.25);
+				background-color: rgba(colors.getThemedColor("primary"), 0.25);
 			}
 
 			.toggle__icon-circle
 			{
 				// Cercle de la bascule.
-				@include themeColors()
+				@include colors.themeColors()
 				{
-					background-color: getThemedColor("background");
+					background-color: colors.getThemedColor("background");
 				}
 
 				.toggle__icon-on svg
 				{
 					// Icône de la bascule.
-					@include themeColors()
+					@include colors.themeColors()
 					{
-						stroke: rgba(getThemedColor("primary"), 0.25);
+						stroke: rgba(colors.getThemedColor("primary"), 0.25);
 					}
 				}
 			}

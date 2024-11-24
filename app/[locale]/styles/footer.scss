@@ -1,3 +1,5 @@
+@use "colors";
+
 footer
 {
 	// Conteneur du pied de page.
@@ -11,9 +13,9 @@ footer
 	flex-direction: column;
 	justify-content: center;
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		background-color: getThemedColor("background-alt");
+		background-color: colors.getThemedColor("background-alt");
 	}
 
 	> span a

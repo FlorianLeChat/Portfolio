@@ -1,3 +1,5 @@
+@use "colors";
+
 // Animation de chargement (cercle rotatif et texte de transition).
 // 	Source : https://web.dev/code-splitting-suspense/#suspending-multiple-components
 div.loading
@@ -20,9 +22,9 @@ div.loading
 	text-transform: uppercase;
 	justify-content: center;
 
-	@include themeColors()
+	@include colors.themeColors()
 	{
-		background-color: getThemedColor("background");
+		background-color: colors.getThemedColor("background");
 	}
 
 	&::after
@@ -35,10 +37,10 @@ div.loading
 		animation: loader 1.2s linear infinite;
 		border-radius: 50%;
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			border: 5px solid getThemedColor("primary");
-			border-color: getThemedColor("primary") transparent getThemedColor("primary") transparent;
+			border: 5px solid colors.getThemedColor("primary");
+			border-color: colors.getThemedColor("primary") transparent colors.getThemedColor("primary") transparent;
 		}
 	}
 }
