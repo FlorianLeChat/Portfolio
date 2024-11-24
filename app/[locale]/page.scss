@@ -1,5 +1,6 @@
 // Importation de l'apparence globale du site.
-@import "styles/globals";
+@use "styles/colors";
+@use "styles/globals";
 
 main > a
 {
@@ -32,10 +33,10 @@ main > a
 	svg
 	{
 		// Délimitation de la zone cliquable.
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			fill: getThemedColor("primary");
-			color: getThemedColor("background");
+			fill: colors.getThemedColor("primary");
+			color: colors.getThemedColor("background");
 		}
 
 		path:nth-of-type(2)
@@ -110,9 +111,9 @@ section:first-of-type
 		span
 		{
 			// Prénom et nom du développeur.
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				color: getThemedColor("primary");
+				color: colors.getThemedColor("primary");
 			}
 		}
 	}
@@ -165,10 +166,10 @@ section:nth-of-type(2) > ul
 		border-radius: 1rem;
 		justify-content: space-between;
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			box-shadow: getThemedColor("container-shadow");
-			background-color: getThemedColor("background-alt");
+			box-shadow: colors.getThemedColor("container-shadow");
+			background-color: colors.getThemedColor("background-alt");
 		}
 
 		@media screen and (max-width: 1024px)
@@ -208,9 +209,9 @@ section:nth-of-type(2) > ul
 			// Image de présentation du projet.
 			border-radius: 0.5rem;
 
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				border: 1px solid getThemedColor("foreground");
+				border: 1px solid colors.getThemedColor("foreground");
 			}
 
 			@media screen and (max-width: 1024px)
@@ -273,10 +274,10 @@ section:nth-of-type(2) > ul
 						font-weight: 700;
 						border-radius: 5rem;
 
-						@include themeColors()
+						@include colors.themeColors()
 						{
-							color: getThemedColor("primary-alt");
-							background-color: getThemedColor("primary-light");
+							color: colors.getThemedColor("primary-alt");
+							background-color: colors.getThemedColor("primary-light");
 						}
 					}
 				}
@@ -294,17 +295,17 @@ section:nth-of-type(2) > ul
 						padding: 0.5rem;
 						border-radius: 50%;
 
-						@include themeColors()
+						@include colors.themeColors()
 						{
-							border: 0.2rem solid getThemedColor("primary");
+							border: 0.2rem solid colors.getThemedColor("primary");
 						}
 
 						&:not(:hover)
 						{
 							// État initial de l'icône (sans effet)
-							@include themeColors()
+							@include colors.themeColors()
 							{
-								color: getThemedColor("primary");
+								color: colors.getThemedColor("primary");
 							}
 						}
 					}
@@ -338,9 +339,9 @@ section:nth-of-type(3) ul
 			margin-right: 1rem;
 			vertical-align: middle;
 
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				accent-color: getThemedColor("primary");
+				accent-color: colors.getThemedColor("primary");
 			}
 		}
 	}
@@ -361,10 +362,10 @@ section:nth-of-type(3) ul
 		flex-direction: column;
 		justify-content: center;
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			box-shadow: getThemedColor("container-shadow");
-			background-color: getThemedColor("background-alt");
+			box-shadow: colors.getThemedColor("container-shadow");
+			background-color: colors.getThemedColor("background-alt");
 		}
 
 		i
@@ -385,9 +386,9 @@ section:nth-of-type(3) ul
 			transform: scaleX(0);
 			transition: transform 200ms linear;
 
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("primary-alt");
+				background-color: colors.getThemedColor("primary-alt");
 			}
 		}
 

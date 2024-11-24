@@ -1,3 +1,5 @@
+@use "colors";
+
 aside
 {
 	// Conteneur du bouton de retour en haut de page.
@@ -27,17 +29,17 @@ aside
 		padding: 1rem 1.3rem;
 		border-radius: 50%;
 
-		@include themeColors()
+		@include colors.themeColors()
 		{
-			color: getThemedColor("background");
-			background-color: getThemedColor("primary");
+			color: colors.getThemedColor("background");
+			background-color: colors.getThemedColor("primary");
 		}
 
 		&:hover
 		{
-			@include themeColors()
+			@include colors.themeColors()
 			{
-				background-color: getThemedColor("primary-alt");
+				background-color: colors.getThemedColor("primary-alt");
 			}
 		}
 	}
