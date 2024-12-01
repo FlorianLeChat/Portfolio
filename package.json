@@ -31,7 +31,7 @@
     "prettier": "~3.4",
     "deepmerge": "~4.3",
     "typescript": "~5.7",
-    "sweetalert2": "<11.4.9",
+    "sweetalert2": "~11.14",
     "lint-staged": "~15.2",
     "sanitize.css": "~13.0",
     "sass-embedded": "~1.81",
