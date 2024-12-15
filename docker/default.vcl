@@ -70,7 +70,7 @@ sub vcl_recv {
 	}
 
 	# Mise en cache des ressources statiques générées par NextJS.
-	if (req.url ~ "^/assets" || req.url ~ "^/_next") {
+	if (req.url ~ "/assets" || req.url ~ "/_next") {
 		return (hash);
 	}
 
