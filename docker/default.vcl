@@ -69,8 +69,13 @@ sub vcl_recv {
 		return (pass);
 	}
 
-	# Tentative de récupération de la page en cache.
-	return (hash);
+	# Mise en cache des ressources statiques générées par NextJS.
+	if (req.url ~ "^/assets" || req.url ~ "^/_next") {
+		return (hash);
+	}
+
+	# Passage de la requête au back-end sans mise en cache.
+	return (pass);
 }
 
 sub vcl_deliver {
