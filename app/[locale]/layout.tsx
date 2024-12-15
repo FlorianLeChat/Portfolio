@@ -33,6 +33,7 @@ const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const ThemeProvider = lazy( () => import( "./components/theme-provider" ) );
 const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
+const BirthdayEffect = lazy( () => import( "./components/birthday-effect" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
 // Déclaration des paramètres d'affichage.
@@ -202,10 +203,10 @@ const poppins = Poppins( {
 export default async function Layout( {
 	children,
 	params
-}: {
+}: Readonly<{
 	children: ReactNode;
 	params: Promise<{ locale: string }>;
-} )
+}> )
 {
 	// Définition de la langue de la page.
 	const { locale } = await params;
@@ -257,6 +258,9 @@ export default async function Layout( {
 
 							{/* Composant enfant */}
 							{children}
+
+							{/* Effet pour l'anniversaire */}
+							<BirthdayEffect />
 
 							{/* Consentement des cookies */}
 							<CookieConsent />
