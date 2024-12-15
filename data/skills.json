@@ -1,17 +1,17 @@
 {
-	"angularjs": {
-		"name": "Angular",
+	"ansible": {
+		"name": "Ansible",
+		"icon": "plain",
+		"type": "other"
+	},
+	"apache": {
+		"name": "Apache",
 		"icon": "plain colored",
-		"type": "front"
+		"type": "other"
 	},
 	"arduino": {
 		"name": "Arduino",
 		"icon": "plain colored",
-		"type": "other"
-	},
-	"ansible": {
-		"name": "Ansible",
-		"icon": "plain",
 		"type": "other"
 	},
 	"bootstrap": {
@@ -74,11 +74,6 @@
 		"icon": "plain colored",
 		"type": "front"
 	},
-	"java": {
-		"name": "Java",
-		"icon": "plain colored",
-		"type": ["back", "other"]
-	},
 	"javascript": {
 		"name": "JavaScript",
 		"icon": "plain colored",
@@ -124,6 +119,11 @@
 		"icon": "plain",
 		"type": ["front", "back"]
 	},
+	"nginx": {
+		"name": "Nginx",
+		"icon": "plain colored",
+		"type": "other"
+	},
 	"nodejs": {
 		"name": "NodeJS",
 		"icon": "plain colored",
@@ -138,11 +138,6 @@
 		"name": "Python",
 		"icon": "plain colored",
 		"type": ["back", "other"]
-	},
-	"r": {
-		"name": "R",
-		"icon": "plain colored",
-		"type": "other"
 	},
 	"rabbitmq": {
 		"name": "RabbitMQ",
@@ -163,11 +158,6 @@
 		"name": "Sass",
 		"icon": "plain colored",
 		"type": "front"
-	},
-	"spring": {
-		"name": "Spring Boot",
-		"icon": "plain colored",
-		"type": "back"
 	},
 	"svelte": {
 		"name": "Svelte",
