@@ -29,6 +29,7 @@
     "husky": "~9.1",
     "cspell": "~8.16",
     "devicon": "~2.16",
+    "valibot": "~0.42",
     "prettier": "~3.4",
     "deepmerge": "~4.3",
     "typescript": "~5.7",
