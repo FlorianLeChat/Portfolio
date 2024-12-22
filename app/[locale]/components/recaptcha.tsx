@@ -17,35 +17,22 @@ declare global {
 
 export default function Recaptcha()
 {
-	// Vérification de l'activation du service.
-	if ( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "false" )
-	{
-		return null;
-	}
-
 	// Déclaration des variables d'état.
 	const [ recaptcha, setRecaptcha ] = useState( false );
 
 	// Déclaration des constantes.
 	const recaptchaUrl = new URL( "https://www.google.com/recaptcha/api.js" );
-	recaptchaUrl.searchParams.append(
-		"render",
-		process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY ?? ""
-	);
+	recaptchaUrl.searchParams.append( "render", process.env.NEXT_PUBLIC_RECAPTCHA_PUBLIC_KEY ?? "" );
 	recaptchaUrl.searchParams.append( "onload", "setupRecaptcha" );
 
 	// Activation des services Google reCAPTCHA au consentement des cookies.
-	const onConsent = useCallback(
-		( event: CustomEventInit<{ cookie: CookieValue }> ) =>
-		{
-			setRecaptcha(
-				event.detail?.cookie.categories.some(
-					( category: string ) => category === "security"
-				) ?? false
-			);
-		},
-		[]
-	);
+	const onConsent = useCallback( ( event: CustomEventInit<{ cookie: CookieValue }> ) =>
+	{
+		const categories = event.detail?.cookie.categories;
+		const isSecurity = categories?.some( ( category: string ) => category === "security" );
+
+		setRecaptcha( isSecurity ?? false );
+	}, [] );
 
 	// Vérification de la validité de l'utilisateur via Google reCAPTCHA.
 	const setupRecaptcha = useCallback( () =>
@@ -70,10 +57,7 @@ export default function Recaptcha()
 			// On envoie enfin le jeton au serveur pour vérification.
 			fetch( `${ process.env.__NEXT_ROUTER_BASEPATH }/api/recaptcha`, {
 				body: JSON.stringify( { token } ),
-				method: "POST",
-				headers: {
-					"Content-type": "application/json; charset=UTF-8"
-				}
+				method: "POST"
 			} );
 		} );
 	}, [] );
@@ -93,6 +77,7 @@ export default function Recaptcha()
 
 	// Affichage du rendu HTML du composant.
 	return (
-		recaptcha && <Script src={recaptchaUrl.href} strategy="lazyOnload" />
+		process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true"
+		&& recaptcha && <Script src={recaptchaUrl.href} strategy="lazyOnload" />
 	);
 }

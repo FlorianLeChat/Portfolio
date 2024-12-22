@@ -2,86 +2,34 @@
 // Mécanisme de gestion des langues et traductions.
 //  Source : https://next-intl-docs.vercel.app/docs/routing/middleware
 //
+import { type NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
-import { type NextRequest, NextResponse } from "next/server";
 
 import "./utilities/env";
 import { getLanguages } from "./utilities/i18n";
-import type { RecaptchaResponse } from "./interfaces/Recaptcha";
+import { checkRecaptcha } from "./utilities/recaptcha";
 
 export default async function middleware( request: NextRequest )
 {
-	// On vérifie d'abord si le service reCAPTCHA est activé ou non.
-	if ( process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" )
+	// On traite d'abord les requêtes de vérification contenant un jeton reCAPTCHA.
+	const isRecaptchaRoute = request.nextUrl.pathname === "/api/recaptcha";
+	const isRecaptchaEnabled = process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true";
+	const isValidRecaptchaRequest = isRecaptchaEnabled && isRecaptchaRoute;
+
+	if ( isValidRecaptchaRequest )
 	{
-		// On vérifie ensuite s'il s'agit d'une requête de type GET ou POST.
-		//  Note : les requêtes de type GET sont utilisées pour les diverses
-		//   statistiques, tant disque que les requêtes de type POST sont
-		//   utilisées pour la vérification de la validité des formulaires.
-		const { method } = request;
-		const isGetRequest = method === "GET";
-		const isPostRequest = method === "POST";
-		const isRecaptchaRoute = request.nextUrl.pathname === "/api/recaptcha";
-		const isValidReCaptchaRequest = ( isGetRequest && isRecaptchaRoute ) || isPostRequest;
-
-		if ( isValidReCaptchaRequest )
-		{
-			// On traite le corps de la requête sous format JSON pour récupérer
-			//  le jeton d'authentification reCAPTCHA transmis par l'utilisateur.
-			let token;
-
-			try
-			{
-				token = ( ( await request.json() ) as { token: string } ).token;
-			}
-			catch
-			{
-				// Une erreur s'est produite lors de la transformation du corps de
-				//  la requête sous format JSON.
-				return new NextResponse( null, { status: 400 } );
-			}
-
-			if ( !token )
-			{
-				// Le jeton d'authentification reCAPTCHA est manquant ou invalide.
-				return new NextResponse( null, { status: 400 } );
-			}
-
-			// On effectue une requête à l'API de Google reCAPTCHA afin de vérifier
-			//  la validité du jeton d'authentification auprès de leurs services.
-			const data = await fetch(
-				`https://www.google.com/recaptcha/api/siteverify?secret=${ process.env.RECAPTCHA_SECRET_KEY }&response=${ token }`,
-				{ method: "POST" }
-			);
-
-			if ( data.ok )
-			{
-				// Si la requête a été traitée avec succès, on vérifie alors le
-				//  résultat obtenu de l'API de Google reCAPTCHA sous format JSON.
-				const json = ( await data.json() ) as RecaptchaResponse;
-
-				if ( !json.success || json.score < 0.7 )
-				{
-					// En cas de score insuffisant ou si la réponse est invalide,
-					//  on bloque la requête courante.
-					return new NextResponse( null, { status: 400 } );
-				}
-
-				// Dans le cas contraire, on continue le traitement de la requête.
-				return new NextResponse( null, { status: 200 } );
-			}
-		}
+		return checkRecaptcha( request );
 	}
 
 	// On créé enfin le mécanisme de gestion des langues et traductions.
 	//  Source : https://next-intl-docs.vercel.app/docs/getting-started/app-router-server-components
-	const handleI18nRouting = createIntlMiddleware( {
+	const i18nRouting = createIntlMiddleware( {
 		locales: getLanguages(),
 		localePrefix: "never",
 		defaultLocale: "en"
 	} );
 
-	return handleI18nRouting( request );
+	return i18nRouting( request );
 }
 
 export const config = {
