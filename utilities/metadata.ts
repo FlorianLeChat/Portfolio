@@ -47,22 +47,23 @@ export async function fetchMetadata(): Promise<Metadata & { source: string }>
 
 	// On détermine après certaines métadonnées récurrentes.
 	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
-	const title = repository.name.replaceAll( "-", " " );
-	const url =
-		process.env.NEXT_PUBLIC_ENV === "production"
-			? repository.homepage
-			: "http://localhost:3000";
+	const title = `${ author.name } - ${ repository.name }`;
+	const url = process.env.NEXT_PUBLIC_ENV === "production"
+		? repository.homepage
+		: `http://localhost:3000${ process.env.__NEXT_ROUTER_BASEPATH }`;
 
 	// On retourne également les métadonnées récupérées récemment
 	//  avant de les enregistrer dans un fichier JSON.
 	const metadata = {
 		// Métadonnées du document.
 		title,
+		name: repository.name,
 		source: repository.html_url,
 		authors: [ { name: author.name, url: author.html_url } ],
 		keywords: repository.topics,
+		manifest: "manifest.json", // https://github.com/vercel/next.js/issues/56687
 		description: repository.description,
-		metadataBase: new URL( url ),
+		metadataBase: new URL( url ), // https://github.com/vercel/next.js/issues/53455
 
 		// Icônes du document.
 		icons: {
