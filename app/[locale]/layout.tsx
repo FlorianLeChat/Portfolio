@@ -8,20 +8,18 @@ import "@total-typescript/ts-reset";
 
 // Importation des dépendances.
 import pick from "lodash/pick";
-import { join } from "path";
 import { Poppins } from "next/font/google";
-import { existsSync } from "fs";
 import { NextIntlClientProvider } from "next-intl";
-import { readFile, writeFile, mkdir } from "fs/promises";
 import { setRequestLocale, getMessages } from "next-intl/server";
 import { Suspense, lazy, type ReactNode } from "react";
 
 // Importation des types.
-import type { Metadata, Viewport } from "next";
+import type { Viewport } from "next";
 
 // Importation des fonctions utilitaires.
 import { logger } from "@/utilities/pino";
 import { getLanguages } from "@/utilities/i18n";
+import { fetchMetadata } from "@/utilities/metadata";
 
 // Importation des composants.
 import Footer from "./components/footer";
@@ -46,143 +44,9 @@ export const viewport: Viewport = {
 };
 
 // Déclaration des propriétés de la page.
-export async function generateMetadata(): Promise<
-	Metadata & { name: string; source: string }
-	>
+export async function generateMetadata()
 {
-	// On vérifie d'abord si les métadonnées sont déjà enregistrées
-	//  dans le cache du système de fichiers.
-	const folderPath = join( process.cwd(), "data" );
-	const filePath = join( folderPath, "metadata.json" );
-
-	await mkdir( folderPath, { recursive: true } );
-
-	if ( existsSync( filePath ) )
-	{
-		return JSON.parse( await readFile( filePath, "utf8" ) ) as Metadata & {
-			name: string;
-			source: string;
-		};
-	}
-
-	// On récupère ensuite les informations du dépôt GitHub,
-	//  ceux de l'auteur et le dernier commit.
-	const repository = ( await (
-		await fetch( "https://api.github.com/repos/FlorianLeChat/Portfolio", {
-			cache: "force-cache"
-		} )
-	).json() ) as Record<string, string>;
-
-	const author = ( await (
-		await fetch( "https://api.github.com/users/FlorianLeChat", {
-			cache: "force-cache"
-		} )
-	).json() ) as Record<string, string>;
-
-	const commits = ( await (
-		await fetch(
-			"https://api.github.com/repos/FlorianLeChat/Portfolio/commits/master",
-			{
-				cache: "force-cache"
-			}
-		)
-	).json() ) as Record<string, string>;
-
-	// On détermine après certaines métadonnées récurrentes.
-	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
-	const title = `${ author.name } - ${ repository.name }`;
-	const url =
-		process.env.NEXT_PUBLIC_ENV === "production"
-			? repository.homepage
-			: `http://localhost:3000${ process.env.__NEXT_ROUTER_BASEPATH }`;
-
-	// On retourne également les métadonnées récupérées récemment
-	//  avant de les enregistrer dans un fichier JSON.
-	const metadata = {
-		// Métadonnées du document.
-		title,
-		name: repository.name,
-		source: repository.html_url,
-		authors: [ { name: author.name, url: author.html_url } ],
-		keywords: repository.topics,
-		manifest: "manifest.json", // https://github.com/vercel/next.js/issues/56687
-		description: repository.description,
-		metadataBase: new URL( url ), // https://github.com/vercel/next.js/issues/53455
-
-		// Icônes du document.
-		icons: {
-			icon: [
-				{
-					url: `${ url }/assets/favicons/16x16.webp`,
-					type: "image/webp",
-					sizes: "16x16"
-				},
-				{
-					url: `${ url }/assets/favicons/32x32.webp`,
-					type: "image/webp",
-					sizes: "32x32"
-				},
-				{
-					url: `${ url }/assets/favicons/48x48.webp`,
-					type: "image/webp",
-					sizes: "48x48"
-				},
-				{
-					url: `${ url }/assets/favicons/192x192.webp`,
-					type: "image/webp",
-					sizes: "192x192"
-				},
-				{
-					url: `${ url }/assets/favicons/512x512.webp`,
-					type: "image/webp",
-					sizes: "512x512"
-				}
-			],
-			apple: [
-				{
-					url: `${ url }/assets/favicons/180x180.webp`,
-					type: "image/webp",
-					sizes: "180x180"
-				}
-			]
-		},
-
-		// Informations pour les moteurs de recherche.
-		openGraph: {
-			url,
-			type: "website",
-			title,
-			description: repository.description,
-			images: [
-				{
-					url: banner
-				}
-			]
-		},
-
-		// Informations pour la plate-forme Twitter.
-		twitter: {
-			title,
-			creator: `@${ author.twitter_username }`,
-			description: repository.description,
-			images: [
-				{
-					url: banner
-				}
-			]
-		}
-	};
-
-	// On enregistre enfin les métadonnées dans un fichier JSON
-	//  avant de les retourner.
-	logger.warn(
-		{ source: __dirname, metadata },
-		"Loading metadata from GitHub API"
-	);
-
-	await writeFile( filePath, JSON.stringify( metadata ) );
-
-	return metadata;
+	return fetchMetadata();
 }
 
 // Génération des paramètres pour les pages statiques.
