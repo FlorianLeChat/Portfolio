@@ -35,7 +35,7 @@ import SteamDownloader from "@/images/steamdownloader.png";
 import FacepunchMonitor from "@/images/facepunchmonitor.png";
 
 // Importation des fonctions utilitaires.
-import { generateMetadata } from "./layout";
+import { fetchMetadata } from "@/utilities/metadata";
 
 // Importation des composants.
 const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
@@ -119,9 +119,9 @@ const getImage = ( name: string ) =>
 // Affichage de la page.
 export default async function Page( {
 	params
-}: {
+}: Readonly<{
 	params: Promise<{ locale: string }>;
-} )
+}> )
 {
 	// Définition de la langue de la page.
 	const { locale } = await params;
@@ -132,7 +132,7 @@ export default async function Page( {
 	const t = await getTranslations();
 
 	// Déclaration des constantes.
-	const github = ( await generateMetadata() ).source;
+	const github = ( await fetchMetadata() ).source;
 	const date = new Date();
 
 	date.setTime( date.getTime() - Date.parse( "08 Aug 1999 00:00:00 GMT" ) );
