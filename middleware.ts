@@ -5,6 +5,7 @@
 import createIntlMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
 
+import "./utilities/env";
 import { getLanguages } from "./utilities/i18n";
 import type { RecaptchaResponse } from "./interfaces/Recaptcha";
 
@@ -17,10 +18,13 @@ export default async function middleware( request: NextRequest )
 		//  Note : les requêtes de type GET sont utilisées pour les diverses
 		//   statistiques, tant disque que les requêtes de type POST sont
 		//   utilisées pour la vérification de la validité des formulaires.
-		if (
-			( request.method === "GET" && request.nextUrl.pathname === "/api/recaptcha" )
-			|| request.method === "POST"
-		)
+		const { method } = request;
+		const isGetRequest = method === "GET";
+		const isPostRequest = method === "POST";
+		const isRecaptchaRoute = request.nextUrl.pathname === "/api/recaptcha";
+		const isValidReCaptchaRequest = ( isGetRequest && isRecaptchaRoute ) || isPostRequest;
+
+		if ( isValidReCaptchaRequest )
 		{
 			// On traite le corps de la requête sous format JSON pour récupérer
 			//  le jeton d'authentification reCAPTCHA transmis par l'utilisateur.
