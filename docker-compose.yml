@@ -26,6 +26,8 @@ services:
                 - action: sync
                   path: .
                   target: /usr/src/app
+        volumes:
+            - ./logs:/usr/src/app/logs
         healthcheck:
             test: wget -O - http://localhost:3000
             retries: 3
