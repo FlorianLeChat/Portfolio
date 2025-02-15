@@ -6,9 +6,6 @@ export interface ProjectAttributes
 	// Titre du projet.
 	title: string;
 
-	// Description du projet.
-	description: string;
-
 	// Langages utilisés pour le projet.
 	skills: string[];
 
