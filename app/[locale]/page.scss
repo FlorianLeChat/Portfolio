@@ -71,7 +71,7 @@ main > a
 	}
 }
 
-section:first-of-type
+section#about
 {
 	// Informations sur le développeur.
 	margin-top: 6rem;
@@ -147,7 +147,7 @@ section:first-of-type
 	}
 }
 
-section:nth-of-type(2) > ul
+section#projects > ul
 {
 	// Conteneur des projets.
 	overflow-x: auto;
@@ -318,7 +318,7 @@ section:nth-of-type(2) > ul
 	}
 }
 
-section:nth-of-type(3) ul
+section#skills ul
 {
 	// Conteneur des compétences.
 	gap: 1rem;
@@ -403,7 +403,7 @@ section:nth-of-type(3) ul
 	}
 }
 
-section:last-of-type ul
+section#contact ul
 {
 	// Liens vers les réseaux sociaux.
 	flex-wrap: wrap;
