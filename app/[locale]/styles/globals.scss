@@ -97,7 +97,7 @@ a
 	}
 }
 
-header button, section:first-of-type button, section:last-of-type button, section:last-of-type a
+header button, section#about button, section#contact button, section#contact a
 {
 	// Bouton générique.
 	margin: 0;
@@ -108,7 +108,7 @@ header button, section:first-of-type button, section:last-of-type button, sectio
 	box-sizing: border-box;
 }
 
-section:first-of-type button, section:last-of-type button, section:last-of-type a
+section#about button, section#contact button, section#contact a
 {
 	// Bouton comprenant un lien cliquable.
 	display: inline-block;
@@ -147,7 +147,7 @@ nav li
 	font-weight: 500;
 }
 
-section
+main section
 {
 	// Conteneur des sections.
 	margin-top: 5rem;
@@ -190,14 +190,14 @@ section
 	}
 }
 
-header, nav, nav ul, section:first-of-type, section:last-of-type ul, footer
+header, nav, nav ul, section#about, section#contact ul, footer
 {
 	// Conteneurs généraux.
 	display: flex;
 	align-items: center;
 }
 
-header > a, header button, section:nth-of-type(2) a
+header > a, header button, section#projects a
 {
 	// Boutons de la barre de navigation et de la section
 	//  à propos du développeur.
