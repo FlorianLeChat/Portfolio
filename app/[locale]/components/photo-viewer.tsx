@@ -50,5 +50,12 @@ export default function PhotoViewer( {
 	}, [] );
 
 	// Affichage du rendu HTML du composant.
-	return <Image src={getImage( id )} alt={project.title} placeholder="blur" />;
+	return (
+		<Image
+			src={getImage( id )}
+			alt={project.title}
+			priority
+			placeholder="blur"
+		/>
+	);
 }
