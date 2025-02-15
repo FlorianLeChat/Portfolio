@@ -27,7 +27,7 @@
 	"csharp": {
 		"name": "C#",
 		"icon": "plain colored",
-		"type": ["back", "other"]
+		"type": "other"
 	},
 	"css3": {
 		"name": "CSS",
