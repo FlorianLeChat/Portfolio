@@ -18,7 +18,7 @@ import { useTheme } from "./theme-provider";
 export default function Header()
 {
 	// Déclaration des variables d'état.
-	const t = useTranslations( "landing" );
+	const messages = useTranslations( "landing" );
 	const { theme, setTheme } = useTheme();
 	const [ mounted, setMounted ] = useState( false );
 	const [ showMenu, setShowMenu ] = useState( false );
@@ -46,31 +46,31 @@ export default function Header()
 				href="https://github.com/FlorianLeChat"
 				target="_blank"
 			>
-				{t( "developer_firstname" )[ 0 ] + t( "developer_surname" )[ 0 ]}
+				{messages( "developer_firstname" )[ 0 ] + messages( "developer_surname" )[ 0 ]}
 			</a>
 
 			<nav>
 				{/* Liens de navigation */}
 				<ul className={showMenu ? "show" : ""}>
 					<li>
-						<a href="#projects">{t( "header_projects" )}</a>
+						<a href="#projects">{messages( "header_projects" )}</a>
 					</li>
 
 					<li>
-						<a href="#skills">{t( "header_skills" )}</a>
+						<a href="#skills">{messages( "header_skills" )}</a>
 					</li>
 
 					<li>
-						<a href="#contact">{t( "header_contact" )}</a>
+						<a href="#contact">{messages( "header_contact" )}</a>
 					</li>
 				</ul>
 
 				{/* Bouton de basculement en thème sombre/clair */}
 				<button
 					type="button"
-					title={t( "header_theme" )}
+					title={messages( "header_theme" )}
 					onClick={() => setTheme( isLightTheme ? "dark" : "light" )}
-					aria-label={t( "header_theme" )}
+					aria-label={messages( "header_theme" )}
 				>
 					<FontAwesomeIcon icon={isLightTheme ? faMoon : faSun} />
 				</button>
@@ -78,9 +78,9 @@ export default function Header()
 				{/* Préférences des cookies */}
 				<button
 					type="button"
-					title={t( "header_cookies" )}
+					title={messages( "header_cookies" )}
 					onClick={() => showPreferences()}
-					aria-label={t( "header_cookies" )}
+					aria-label={messages( "header_cookies" )}
 				>
 					<FontAwesomeIcon icon={faCookieBite} />
 				</button>
@@ -88,9 +88,9 @@ export default function Header()
 				{/* Bouton pour ouvrir le menu de navigation */}
 				<button
 					type="button"
-					title={t( "header_navigation" )}
+					title={messages( "header_navigation" )}
 					onClick={toggleMenu}
-					aria-label={t( "header_navigation" )}
+					aria-label={messages( "header_navigation" )}
 				>
 					<FontAwesomeIcon icon={showMenu ? faTimes : faBars} />
 				</button>

@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 export default function ScrollTop()
 {
 	// Déclaration des variables d'état.
-	const t = useTranslations( "landing" );
+	const messages = useTranslations( "landing" );
 	const [ showButton, setShowButton ] = useState( false );
 
 	// Remontée en haut de la page.
@@ -38,9 +38,9 @@ export default function ScrollTop()
 			<aside>
 				<button
 					type="button"
-					title={t( "scroll_top" )}
+					title={messages( "scroll_top" )}
 					onClick={scrollToTop}
-					aria-label={t( "scroll_top" )}
+					aria-label={messages( "scroll_top" )}
 				>
 					<FontAwesomeIcon icon={faArrowUp} />
 				</button>
