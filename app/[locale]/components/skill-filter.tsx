@@ -7,15 +7,14 @@
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { type ChangeEvent } from "react";
-
 import type { SkillAttributes } from "@/interfaces/Skill";
 
-export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
+export default function SkillFilter( { skills }: Readonly<{ skills: SkillAttributes[] }> )
 {
 	// Déclaration des variables d'état.
 	const parameters = useSearchParams();
+	const messages = useTranslations( "landing" );
 	const filter = parameters.get( "filter" ) ?? "";
-	const t = useTranslations( "landing" );
 
 	// Mise à jour du filtre des compétences.
 	const updateSkillFilter = ( event: ChangeEvent<HTMLInputElement> ) =>
@@ -30,7 +29,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 	return (
 		<section id="skills">
 			{/* Section des compétences */}
-			<h2>{t( "header_skills" )}</h2>
+			<h2>{messages( "header_skills" )}</h2>
 
 			{/* Filtre des compétences */}
 			<ul>
@@ -43,7 +42,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="all">{t( "filter_all" )}</label>
+					<label htmlFor="all">{messages( "filter_all" )}</label>
 				</li>
 
 				<li>
@@ -55,7 +54,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="front">{t( "filter_front" )}</label>
+					<label htmlFor="front">{messages( "filter_front" )}</label>
 				</li>
 
 				<li>
@@ -67,7 +66,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="back">{t( "filter_back" )}</label>
+					<label htmlFor="back">{messages( "filter_back" )}</label>
 				</li>
 
 				<li>
@@ -79,7 +78,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 						onChange={updateSkillFilter}
 					/>
 
-					<label htmlFor="other">{t( "filter_other" )}</label>
+					<label htmlFor="other">{messages( "filter_other" )}</label>
 				</li>
 			</ul>
 
@@ -87,11 +86,7 @@ export default function SkillFilter( { skills }: { skills: SkillAttributes[] } )
 			<ul>
 				{Object.entries( skills ).map( ( [ key, value ] ) =>
 				{
-					if (
-						filter === ""
-						|| filter === "all"
-						|| value.type.includes( filter )
-					)
+					if ( filter === "" || filter === "all" || value.type.includes( filter ) )
 					{
 						return (
 							<li key={key}>

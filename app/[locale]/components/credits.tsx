@@ -7,7 +7,7 @@ import { useLocale, useTranslations } from "next-intl";
 export default function Credits()
 {
 	// Déclaration des variables d'état.
-	const t = useTranslations( "landing" );
+	const messages = useTranslations( "landing" );
 
 	if ( useLocale() !== "ja" )
 	{
@@ -17,7 +17,7 @@ export default function Credits()
 	// Affichage du rendu HTML du composant.
 	return (
 		<p>
-			{t.rich( "japanese_credits", {
+			{messages.rich( "japanese_credits", {
 				a: ( chunks ) => (
 					<a
 						rel="noreferrer noopener"

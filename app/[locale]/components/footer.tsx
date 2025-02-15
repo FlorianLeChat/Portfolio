@@ -2,20 +2,20 @@
 // Composant du pied de page du site.
 //
 import { faPhp } from "@fortawesome/free-brands-svg-icons";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Footer()
+export default async function Footer()
 {
 	// Déclaration des variables d'état.
-	const t = useTranslations( "landing" );
+	const messages = await getTranslations();
 
 	// Affichage du rendu HTML du composant.
 	return (
 		<footer>
 			<span>
 				{/* Lien vers le dépôt GitHub du projet */}
-				{t.rich( "footer_madeby", {
+				{messages.rich( "landing.footer_madeby", {
 					a: ( chunks ) => (
 						<a
 							rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export default function Footer()
 			{/* Avertissement de Google reCAPTCHA */}
 			{process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" && (
 				<small>
-					{t.rich( "footer_recaptcha", {
+					{messages.rich( "landing.footer_recaptcha", {
 						a1: ( chunks ) => (
 							<a
 								rel="noopener noreferrer"
@@ -61,7 +61,7 @@ export default function Footer()
 			<small>
 				<FontAwesomeIcon icon={faPhp} />
 
-				{t.rich( "footer_legacy", {
+				{messages.rich( "landing.footer_legacy", {
 					a: ( chunks ) => (
 						<a href="https://legacy.florian-dev.fr/portfolio/">
 							{chunks}
