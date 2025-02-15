@@ -7,114 +7,32 @@
 import "./page.scss";
 
 // Importation des dépendances.
-import Image from "next/image";
 import { join } from "path";
 import { lazy } from "react";
 import { readFile } from "fs/promises";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 
 // Importation des types.
 import type { SkillAttributes } from "@/interfaces/Skill";
 import type { ProjectAttributes } from "@/interfaces/Project";
 
-// Importation des images statiques.
-import Genio from "@/images/genio.png";
-import Domego from "@/images/domego.png";
-import Homepage from "@/images/homepage.png";
-import Portfolio from "@/images/portfolio.png";
-import GamesOnWeb from "@/images/gamesonweb2023.png";
-import Assignment from "@/images/assignment.png";
-import FileStorage from "@/images/filestorage.png";
-import SourceConsole from "@/images/sourceconsole.png";
-import MangaParadise from "@/images/mangaparadise.png";
-import RavenFramework from "@/images/ravenframework.png";
-import DigitalIdentity from "@/images/digitalidentity.png";
-import SteamDownloader from "@/images/steamdownloader.png";
-import FacepunchMonitor from "@/images/facepunchmonitor.png";
-
 // Importation des fonctions utilitaires.
 import { fetchMetadata } from "@/utilities/metadata";
 
 // Importation des composants.
 const SkillFilter = lazy( () => import( "./components/skill-filter" ) );
+const ProjectList = lazy( () => import( "./components/project-list" ) );
 const ContactMailer = lazy( () => import( "./components/contact-mailer" ) );
 
 // Récupération des projets et des compétences.
 const directory = join( process.cwd(), "data" );
 const getProjects = async () => JSON.parse(
 	await readFile( `${ directory }/projects.json`, "utf8" )
-) as ProjectAttributes[];
+) as Record<string, ProjectAttributes>;
 
 const getSkills = async () => JSON.parse(
 	await readFile( `${ directory }/skills.json`, "utf8" )
 ) as SkillAttributes[];
-
-// Récupération de l'image statique correspondant au nom d'un projet.
-//  Note : cette astuce est utilisée pour le chargement progressif des images.
-//  Source : https://nextjs.org/docs/app/api-reference/components/image#placeholder
-const getImage = ( name: string ) =>
-{
-	switch ( name )
-	{
-		// Genio.
-		case "genio":
-			return Genio;
-
-		// Domego.
-		case "domego":
-			return Domego;
-
-		// Homepage.
-		case "homepage":
-			return Homepage;
-
-		// Portfolio.
-		case "portfolio":
-			return Portfolio;
-
-		// Games On Web 2023.
-		case "gamesonweb2023":
-			return GamesOnWeb;
-
-		// Assignment Manager.
-		case "assignment":
-			return Assignment;
-
-		// Simple File Storage.
-		case "filestorage":
-			return FileStorage;
-
-		// Source Web Console.
-		case "sourceconsole":
-			return SourceConsole;
-
-		// Manga Paradise.
-		case "mangaparadise":
-			return MangaParadise;
-
-		// Raven Framework.
-		case "ravenframework":
-			return RavenFramework;
-
-		// Digital Identity.
-		case "digitalidentity":
-			return DigitalIdentity;
-
-		// Steam Collection Download Size Calculator
-		case "steamdownloader":
-			return SteamDownloader;
-
-		// Facepunch Commits Monitor
-		case "facepunchmonitor":
-			return FacepunchMonitor;
-
-		// Aucune image.
-		default:
-			return "";
-	}
-};
 
 // Affichage de la page.
 export default async function Page( {
@@ -129,7 +47,7 @@ export default async function Page( {
 	setRequestLocale( locale );
 
 	// Déclaration des variables d'état.
-	const t = await getTranslations();
+	const messages = await getTranslations();
 
 	// Déclaration des constantes.
 	const github = ( await fetchMetadata() ).source;
@@ -160,18 +78,18 @@ export default async function Page( {
 				</svg>
 			</a>
 
-			<section>
+			<section id="about">
 				{/* Prénom et nom du développeur */}
 				<h1>
-					{t( "landing.hello_title" )}
-					<span>{t( "landing.developer_firstname" )}</span>
-					<span>{t( "landing.developer_surname" )}.</span>
+					{messages( "landing.hello_title" )}
+					<span>{messages( "landing.developer_firstname" )}</span>
+					<span>{messages( "landing.developer_surname" )}.</span>
 				</h1>
 
 				<article id="about">
 					{/* Résumé du développeur */}
 					<p>
-						{t( "landing.developer_description", {
+						{messages( "landing.developer_description", {
 							age: date.getFullYear() - 1970
 						} )}
 					</p>
@@ -183,97 +101,14 @@ export default async function Page( {
 						target="_blank"
 					>
 						<button type="button">
-							{t( "landing.download_resume" )}
+							{messages( "landing.download_resume" )}
 						</button>
 					</a>
 				</article>
 			</section>
 
-			<section id="projects">
-				{/* Section des projets */}
-				<h2>{t( "landing.header_projects" )}</h2>
-
-				{/* Génération des projets */}
-				<ul>
-					{Object.entries( await getProjects() ).map( ( [ key, value ] ) => (
-						<li key={key}>
-							{/* Image du projet */}
-							<Image
-								src={getImage( key )}
-								alt={value.title}
-								width={450}
-								height={375}
-								placeholder="blur"
-							/>
-
-							{/* Contenu du projet */}
-							<div>
-								{/* Titre du projet */}
-								<h3>{value.title}</h3>
-
-								{/* Description du projet */}
-								<p>{t( `projects.${ key }` )}</p>
-
-								{/* Compétences utilisées pour le projet */}
-								<ul>
-									{value.skills.map( ( skill ) => (
-										<li key={skill}>{skill}</li>
-									) )}
-								</ul>
-
-								{/* Liens du projet */}
-								<ul>
-									{
-										// Dépôt Git (facultatif).
-										value.repository && (
-											<li>
-												<a
-													rel="noopener noreferrer"
-													href={value.repository}
-													title={t(
-														"landing.project_source"
-													)}
-													target="_blank"
-													aria-label={t(
-														"landing.project_source"
-													)}
-												>
-													<FontAwesomeIcon
-														icon={faCode}
-													/>
-												</a>
-											</li>
-										)
-									}
-
-									{
-										// Site de démonstration (facultatif).
-										value.demo && (
-											<li>
-												<a
-													rel="noopener noreferrer"
-													href={value.demo}
-													title={t(
-														"landing.project_demo"
-													)}
-													target="_blank"
-													aria-label={t(
-														"landing.project_demo"
-													)}
-												>
-													<FontAwesomeIcon
-														icon={faExternalLinkAlt}
-													/>
-												</a>
-											</li>
-										)
-									}
-								</ul>
-							</div>
-						</li>
-					) )}
-				</ul>
-			</section>
+			{/* Section des projets */}
+			<ProjectList projects={await getProjects()} />
 
 			{/* Section des compétences */}
 			<SkillFilter skills={await getSkills()} />

@@ -207,6 +207,9 @@ section:nth-of-type(2) > ul
 		img
 		{
 			// Image de présentation du projet.
+			width: 450px;
+			height: 375px;
+			cursor: pointer;
 			border-radius: 0.5rem;
 
 			@include colors.themeColors()
