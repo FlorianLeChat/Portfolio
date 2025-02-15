@@ -32,6 +32,7 @@
     "valibot": "~0.42",
     "prettier": "~3.4",
     "deepmerge": "~4.3",
+    "photoswipe": "~5.4",
     "typescript": "~5.7",
     "sweetalert2": "~11.14",
     "lint-staged": "~15.4",
