@@ -207,9 +207,9 @@ section#projects > ul
 		img
 		{
 			// Image de présentation du projet.
-			width: 450px;
-			height: 375px;
 			cursor: pointer;
+			max-width: 450px;
+			max-height: 375px;
 			border-radius: 0.5rem;
 
 			@include colors.themeColors()
