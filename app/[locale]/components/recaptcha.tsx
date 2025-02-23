@@ -8,9 +8,11 @@ import Script from "next/script";
 import type { CookieValue } from "vanilla-cookieconsent";
 import { useState, useEffect, useCallback } from "react";
 
-declare global {
+declare global
+{
 	// Déclaration du contexte global du navigateur.
-	interface Window {
+	interface Window
+	{
 		setupRecaptcha: () => void;
 	}
 }

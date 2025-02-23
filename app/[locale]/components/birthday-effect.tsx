@@ -21,8 +21,7 @@ export default function BirthdayEffect()
 
 		if ( !isBirthday )
 		{
-			return () =>
-			{};
+			return () => {};
 		}
 
 		// Déclenchement de l'effet de feux d'artifice.
