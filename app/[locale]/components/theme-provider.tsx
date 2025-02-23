@@ -14,24 +14,24 @@ import { useMemo,
 	type ReactNode } from "react";
 
 // Déclaration des types.
-interface UseThemeProps {
+interface UseThemeProps
+{
 	theme?: string;
 	setTheme: ( value: string ) => void;
 }
 
-interface ThemeProviderProps {
+interface ThemeProviderProps
+{
 	children?: ReactNode;
 }
 
 // Déclaration des constantes globales.
 const storageKey = "NEXT_THEME";
 const ThemeContext = createContext<UseThemeProps | undefined>( undefined );
-const defaultContext: UseThemeProps = { theme: "light",
-	setTheme: () =>
-	{} };
+const defaultContext: UseThemeProps = { theme: "light", setTheme: () => {} };
 
 // Définition du fonctionnement du composant.
-function Theme( { children = null }: ThemeProviderProps )
+function Theme( { children = null }: Readonly<ThemeProviderProps> )
 {
 	// Récupération du thème choisi par l'utilisateur.
 	const getCurrentTheme = ( key: string ) =>
@@ -155,7 +155,7 @@ function Theme( { children = null }: ThemeProviderProps )
 export const useTheme = () => useContext( ThemeContext ) ?? defaultContext;
 
 // Exportation du composant.
-export default function ThemeProvider( { children = null }: ThemeProviderProps )
+export default function ThemeProvider( { children = null }: Readonly<ThemeProviderProps> )
 {
 	return <Theme>{children}</Theme>;
 }
