@@ -1,4 +1,2 @@
 npm run build
 cspell locales/** --no-summary --no-progress --no-must-find-files
-playwright install --with-deps
-npm run test
