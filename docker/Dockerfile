@@ -22,8 +22,11 @@ RUN --mount=type=cache,target=.npm \
 	npm set cache .npm && \
 	npm ci && chown -R node:node ./node_modules
 
+# Build the entire project
+RUN npm run build && chown -R node:node .next
+
 # Use non-root user
 USER node
 
-# Run the website
-CMD [ "npm", "run", "dev" ]
+# Remove all development dependencies
+RUN npm prune --production
