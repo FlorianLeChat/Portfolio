@@ -26,4 +26,4 @@ updates:
           - "*"
     ignore:
       # https://github.com/typescript-eslint/typescript-eslint/issues/10884
-      - "typescript"
+      - dependency-name: "typescript"
