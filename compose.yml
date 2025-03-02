@@ -4,6 +4,7 @@ services:
     # https://hub.docker.com/_/varnish
     varnish:
         image: varnish:alpine
+        restart: always
         depends_on:
             - node
         volumes:
@@ -15,17 +16,13 @@ services:
             retries: 3
             timeout: 5s
         ports:
-            - "8080:80"
+            - "80:80"
 
     # https://github.com/FlorianLeChat/Portfolio
     node:
         image: portfolio
         restart: always
-        develop:
-            watch:
-                - action: sync
-                  path: .
-                  target: /usr/src/app
+        command: npm run start
         volumes:
             - ./logs:/usr/src/app/logs
         healthcheck:
@@ -34,6 +31,6 @@ services:
             timeout: 5s
         build:
             context: .
-            dockerfile: ./docker/Dockerfile.${NEXT_PUBLIC_ENV}
-        ports:
-            - "3000:3000"
+            dockerfile: ./docker/Dockerfile
+        expose:
+            - "3000"
