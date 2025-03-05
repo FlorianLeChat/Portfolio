@@ -61,7 +61,6 @@ export async function fetchMetadata(): Promise<Metadata & { source: string }>
 		source: repository.html_url,
 		authors: [ { name: author.name, url: author.html_url } ],
 		keywords: repository.topics,
-		manifest: "manifest.json", // https://github.com/vercel/next.js/issues/56687
 		description: repository.description,
 		metadataBase: new URL( url ), // https://github.com/vercel/next.js/issues/53455
 
