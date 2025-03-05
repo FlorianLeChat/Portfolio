@@ -29,6 +29,8 @@ jobs:
             restore-keys: ${{ runner.os }}-npm-
       - name: Install dependencies
         run: npm ci
+      - name: Switch to development mode
+        run: sed -i "s/production/development/g" .env
       - name: Build website
         run: npm run build
       - name: Install Playwright Browsers
