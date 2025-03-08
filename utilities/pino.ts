@@ -21,7 +21,7 @@ export const logger = pino( {
 					colorize: false,
 					singleLine: false,
 					levelFirst: true,
-					destination: `logs/${ new Date().toISOString().split( "T" )[ 0 ] }.log`
+					destination: "logs/application.log"
 				}
 			},
 			{
