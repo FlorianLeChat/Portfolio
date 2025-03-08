@@ -25,6 +25,8 @@ services:
         command: ./docker/scripts/entrypoint.sh
         volumes:
             - ./logs:/usr/src/app/logs
+        environment:
+            TZ: ${TZ}
         healthcheck:
             test: wget -O - http://localhost:3000
             retries: 3
