@@ -5,7 +5,7 @@
 FROM node:lts-alpine
 
 # Install system dependencies
-RUN apk add --no-cache logrotate supercronic
+RUN apk add --no-cache logrotate supercronic tzdata
 
 # Set the working directory to the website files
 WORKDIR /usr/src/app
