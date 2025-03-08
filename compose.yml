@@ -8,7 +8,7 @@ services:
         depends_on:
             - node
         volumes:
-            - ./docker/default.vcl:/etc/varnish/default.vcl:ro
+            - ./docker/configuration/default.vcl:/etc/varnish/default.vcl:ro
         environment:
             VARNISH_SIZE: 128m
         healthcheck:
@@ -22,7 +22,7 @@ services:
     node:
         image: portfolio
         restart: always
-        command: npm run start
+        command: ./docker/scripts/entrypoint.sh
         volumes:
             - ./logs:/usr/src/app/logs
         healthcheck:
@@ -31,6 +31,6 @@ services:
             timeout: 5s
         build:
             context: .
-            dockerfile: ./docker/Dockerfile
+            dockerfile: ./docker/scripts/Dockerfile
         expose:
             - "3000"
