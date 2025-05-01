@@ -5,7 +5,6 @@
 import { type NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 
-import "./utilities/env";
 import { getLanguages } from "./utilities/i18n";
 import { checkRecaptcha } from "./utilities/recaptcha";
 
