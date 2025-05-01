@@ -2,7 +2,6 @@
 // Génération des métadonnées du site Internet à partir de l'API GitHub.
 //
 import { join } from "path";
-import { logger } from "@/utilities/pino";
 import { existsSync } from "fs";
 import type { Metadata } from "next";
 import { mkdir, readFile, writeFile } from "fs/promises";
@@ -130,11 +129,6 @@ export async function fetchMetadata(): Promise<Metadata & { source: string }>
 
 	// On enregistre enfin les métadonnées dans un fichier JSON
 	//  avant de les retourner.
-	logger.warn(
-		{ source: __dirname, metadata },
-		"Loading metadata from GitHub API"
-	);
-
 	await writeFile( filePath, JSON.stringify( metadata ) );
 
 	return metadata;

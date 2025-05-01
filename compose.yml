@@ -23,8 +23,6 @@ services:
         image: portfolio
         restart: always
         command: ./docker/scripts/entrypoint.sh
-        volumes:
-            - ./logs:/usr/src/app/logs
         environment:
             TZ: ${TZ}
         healthcheck:

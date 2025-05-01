@@ -17,7 +17,6 @@ import { Suspense, lazy, type ReactNode } from "react";
 import type { Viewport } from "next";
 
 // Importation des fonctions utilitaires.
-import { logger } from "@/utilities/pino";
 import { getLanguages } from "@/utilities/i18n";
 import { fetchMetadata } from "@/utilities/metadata";
 
@@ -80,7 +79,6 @@ export default async function Layout( {
 	// Vérification du support de la langue.
 	if ( !languages.includes( locale ) )
 	{
-		logger.error( { source: __dirname, locale }, "Unsupported language" );
 		return null;
 	}
 
