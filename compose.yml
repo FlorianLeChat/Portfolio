@@ -22,7 +22,7 @@ services:
     node:
         image: portfolio
         restart: always
-        command: ./docker/scripts/entrypoint.sh
+        command: npm run start
         environment:
             TZ: ${TZ}
         healthcheck:
