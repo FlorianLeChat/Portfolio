@@ -97,7 +97,7 @@ export default async function Page( {
 					{/* Bouton de téléchargement du CV */}
 					<a
 						rel="noopener noreferrer"
-						href="https://drive.google.com/file/d/1AuJMWr9LJGnZv64cFh-fBrNGj0BgyRNH/view"
+						href="https://florianlechat.github.io/Online-Resume/"
 						target="_blank"
 					>
 						<button type="button">
