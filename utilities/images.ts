@@ -3,17 +3,16 @@
 //  Note : cette astuce est utilisée pour le chargement progressif des images.
 //  Source : https://nextjs.org/docs/app/api-reference/components/image#placeholder
 //
-import Genio from "@/images/genio.png";
 import Domego from "@/images/domego.png";
 import Homepage from "@/images/homepage.png";
 import Portfolio from "@/images/portfolio.png";
 import GamesOnWeb from "@/images/gamesonweb2023.png";
-import Assignment from "@/images/assignment.png";
 import FileStorage from "@/images/filestorage.png";
+import OnlineResume from "@/images/onlineresume.png";
 import SourceConsole from "@/images/sourceconsole.png";
 import MangaParadise from "@/images/mangaparadise.png";
 import RavenFramework from "@/images/ravenframework.png";
-import DigitalIdentity from "@/images/digitalidentity.png";
+import RavenShortener from "@/images/ravenshortener.png";
 import SteamDownloader from "@/images/steamdownloader.png";
 import FacepunchMonitor from "@/images/facepunchmonitor.png";
 
@@ -21,10 +20,6 @@ export const getImage = ( name: string ) =>
 {
 	switch ( name )
 	{
-		// Genio.
-		case "genio":
-			return Genio;
-
 		// Domego.
 		case "domego":
 			return Domego;
@@ -40,10 +35,6 @@ export const getImage = ( name: string ) =>
 		// Games On Web 2023.
 		case "gamesonweb2023":
 			return GamesOnWeb;
-
-		// Assignment Manager.
-		case "assignment":
-			return Assignment;
 
 		// Simple File Storage.
 		case "filestorage":
@@ -61,9 +52,13 @@ export const getImage = ( name: string ) =>
 		case "ravenframework":
 			return RavenFramework;
 
-		// Digital Identity.
-		case "digitalidentity":
-			return DigitalIdentity;
+		// Online Resume.
+		case "onlineresume":
+			return OnlineResume;
+
+		// Raven URL Shortener.
+		case "ravenshortener":
+			return RavenShortener;
 
 		// Steam Collection Download Size Calculator
 		case "steamdownloader":

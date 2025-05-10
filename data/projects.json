@@ -37,21 +37,10 @@
 		"repository": "https://github.com/FlorianLeChat/Domego",
 		"demo": "https://www.florian-dev.fr/domego/"
 	},
-	"assignment": {
-		"title": "Assignment Manager",
-		"skills": ["HTML", "CSS", "JavaScript", "NodeJS", "Angular", "MongoDB"],
-		"repository": "https://github.com/FlorianLeChat/Assignment-Manager",
-		"demo": "https://dapper-kheer-98d13d.netlify.app/"
-	},
 	"mangaparadise": {
 		"title": "Manga Paradise",
 		"skills": ["HTML", "CSS", "JavaScript", "PHP", "Wordpress"],
 		"demo": "https://manga-paradise.fr/"
-	},
-	"digitalidentity": {
-		"title": "Digital Identity",
-		"skills": ["HTML", "SASS", "JavaScript", "jQuery", "PHP", "Symfony", "Twig", "MySQL"],
-		"repository": "https://github.com/FlorianLeChat/Digital-Identity"
 	},
 	"gamesonweb2023": {
 		"title": "Have A Break, Save The Planet",
@@ -59,15 +48,22 @@
 		"repository": "https://github.com/FlorianLeChat/Games-On-Web-2023",
 		"demo": "https://florianlechat.github.io/Games-On-Web-2023/"
 	},
-	"genio": {
-		"title": "Genio",
-		"skills": ["HTML", "SASS", "JavaScript", "jQuery", "PHP", "Symfony", "Twig", "MySQL"],
-		"repository": "https://github.com/FlorianLeChat/Genio"
-	},
 	"homepage": {
 		"title": "Homepage",
-		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte"],
+		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Homepage",
 		"demo": "https://florianlechat.github.io/Homepage/"
+	},
+	"ravenshortener": {
+		"title": "Raven Url Shortener",
+		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "PHP", "Symfony", "Doctrine", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/Raven-Url-Shortener",
+		"demo": "https://url.florian-dev.fr/"
+	},
+	"onlineresume": {
+		"title": "Online Resume",
+		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/Online-Resume",
+		"demo": "https://florianlechat.github.io/Online-Resume/"
 	}
 }
