@@ -4,13 +4,13 @@
 
 ### Développement local
 
-- Installer [NodeJS LTS](https://nodejs.org/) (>18 ou plus) ;
+- Installer [NodeJS LTS](https://nodejs.org/) (>20 ou plus) ;
 - Installer les dépendances du projet avec la commande `npm install` ;
 - Démarrer le serveur local NextJS avec la commande `npm run dev`.
 
 ### Déploiement en production
 
-- Installer [NodeJS LTS](https://nodejs.org/) (>18 ou plus) ;
+- Installer [NodeJS LTS](https://nodejs.org/) (>20 ou plus) ;
 - Installer les dépendances du projet avec la commande `npm install` ;
 - Modifier la [variable d'environnement](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) `NEXT_PUBLIC_ENV` sur `production` ;
 - Compiler les fichiers statiques du site Internet avec la commande `npm run build` ;
@@ -30,13 +30,13 @@
 
 ### Local development
 
-- Install [NodeJS LTS](https://nodejs.org/) (>18 or higher) ;
+- Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
 - Start NextJS local server using `npm run dev`.
 
 ### Production deployment
 
-- Install [NodeJS LTS](https://nodejs.org/) (>18 or higher) ;
+- Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
 - Set `NEXT_PUBLIC_ENV` [environment variable](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) to `production` ;
 - Build static website files using `npm run build` ;
