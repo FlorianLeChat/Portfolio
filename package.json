@@ -53,8 +53,8 @@
     "@fortawesome/free-brands-svg-icons": "~6.7"
   },
   "engines": {
-    "node": ">=18.0",
-    "npm": ">=8.6"
+    "node": ">=20.0",
+    "npm": ">=9.6"
   },
   "scripts": {
     "dev": "next dev --turbo",
