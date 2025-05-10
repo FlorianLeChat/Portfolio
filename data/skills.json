@@ -9,11 +9,6 @@
 		"icon": "plain colored",
 		"type": "other"
 	},
-	"arduino": {
-		"name": "Arduino",
-		"icon": "plain colored",
-		"type": "other"
-	},
 	"bootstrap": {
 		"name": "Bootstrap",
 		"icon": "plain colored",
@@ -21,11 +16,6 @@
 	},
 	"centos": {
 		"name": "CentOS",
-		"icon": "plain colored",
-		"type": "other"
-	},
-	"csharp": {
-		"name": "C#",
 		"icon": "plain colored",
 		"type": "other"
 	},
@@ -48,11 +38,6 @@
 		"name": "Doctrine",
 		"icon": "plain colored",
 		"type": "back"
-	},
-	"dotnetcore": {
-		"name": ".NET",
-		"icon": "plain colored",
-		"type": ["other"]
 	},
 	"git": {
 		"name": "Git",
@@ -83,11 +68,6 @@
 		"name": "jQuery",
 		"icon": "plain colored",
 		"type": "front"
-	},
-	"labview": {
-		"name": "LabView",
-		"icon": "plain colored",
-		"type": "other"
 	},
 	"lua": {
 		"name": "Lua",
@@ -133,11 +113,6 @@
 		"name": "PHP",
 		"icon": "plain colored",
 		"type": "back"
-	},
-	"python": {
-		"name": "Python",
-		"icon": "plain colored",
-		"type": ["back", "other"]
 	},
 	"rabbitmq": {
 		"name": "RabbitMQ",
