@@ -5,10 +5,11 @@ services:
     varnish:
         image: varnish:alpine
         restart: always
-        depends_on:
-            - node
         volumes:
             - ./docker/configuration/default.vcl:/etc/varnish/default.vcl:ro
+        depends_on:
+            node:
+                condition: service_healthy
         environment:
             VARNISH_SIZE: 128m
         healthcheck:
