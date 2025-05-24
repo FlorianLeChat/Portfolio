@@ -6,13 +6,13 @@
 
 - Installer [NodeJS LTS](https://nodejs.org/) (>20 ou plus) ;
 - Installer les dépendances du projet avec la commande `npm install` ;
+- Modifier la [variable d'environnement](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) `NEXT_PUBLIC_ENV` sur `development` ;
 - Démarrer le serveur local NextJS avec la commande `npm run dev`.
 
 ### Déploiement en production
 
 - Installer [NodeJS LTS](https://nodejs.org/) (>20 ou plus) ;
 - Installer les dépendances du projet avec la commande `npm install` ;
-- Modifier la [variable d'environnement](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) `NEXT_PUBLIC_ENV` sur `production` ;
 - Compiler les fichiers statiques du site Internet avec la commande `npm run build` ;
 - Supprimer les dépendances de développement avec la commande `npm prune --production` ;
 - Démarrer le serveur local NodeJS avec la commande `npm run start` ;
@@ -32,13 +32,13 @@
 
 - Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
+- Set `NEXT_PUBLIC_ENV` [environment variable](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) to `development` ;
 - Start NextJS local server using `npm run dev`.
 
 ### Production deployment
 
 - Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
-- Set `NEXT_PUBLIC_ENV` [environment variable](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) to `production` ;
 - Build static website files using `npm run build` ;
 - Remove development dependencies using `npm prune --production` ;
 - Start NodeJS local server using `npm run start` ;
