@@ -31,32 +31,6 @@ export default async function Footer()
 				<small>&copy; {new Date().getFullYear()}</small>
 			</span>
 
-			{/* Avertissement de Google reCAPTCHA */}
-			{process.env.NEXT_PUBLIC_RECAPTCHA_ENABLED === "true" && (
-				<small>
-					{messages.rich( "landing.footer_recaptcha", {
-						a1: ( chunks ) => (
-							<a
-								rel="noopener noreferrer"
-								href="https://policies.google.com/privacy"
-								target="_blank"
-							>
-								{chunks}
-							</a>
-						),
-						a2: ( chunks ) => (
-							<a
-								rel="noopener noreferrer"
-								href="https://policies.google.com/terms"
-								target="_blank"
-							>
-								{chunks}
-							</a>
-						)
-					} )}
-				</small>
-			)}
-
 			{/* Lien vers l'ancienne version du site */}
 			<small>
 				<FontAwesomeIcon icon={faPhp} />

@@ -264,13 +264,6 @@ header > a, header button, section#projects a
 	}
 }
 
-// Badge de Google reCAPTCHA.
-//  Source : https://developers.google.com/recaptcha/docs/faq#id-like-to-hide-the-recaptcha-badge.-what-is-allowed
-.grecaptcha-badge
-{
-	display: none;
-}
-
 // Personnalisation de SweetAlert2.
 .swal2-shown > [aria-hidden]
 {
