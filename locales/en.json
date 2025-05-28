@@ -38,7 +38,6 @@
 		"filter_other": "Other",
 		"footer_legacy": "<a>Legacy version</a>",
 		"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
-		"footer_recaptcha": "This site is protected by reCAPTCHA and the Google <a1>Privacy Policy</a1> and <a2>Terms of Service</a2> apply.",
 		"developer_firstname": "Florian",
 		"developer_surname": "Trayon",
 		"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
@@ -108,57 +107,6 @@
 							"domain": "Google Analytics",
 							"description": "Cookie set by <a href=\"https://analytics.google.com/analytics/web/\" target=\"_blank\">Google Analytics</a>.",
 							"expiration": "Expires after 2 years."
-						}
-					]
-				}
-			},
-			{
-				"title": "Security cookies",
-				"description": "These cookies allow to authenticate users, prevent fraudulent use of login information and protect Internet users who interact with the website.",
-				"linkedCategory": "security",
-				"cookieTable": {
-					"headers": {
-						"name": "Name",
-						"domain": "Service",
-						"description": "Description",
-						"expiration": "Expiration"
-					},
-					"body": [
-						{
-							"name": "OTZ",
-							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
-							"expiration": "Expires after 1 month."
-						},
-						{
-							"name": "__Secure-ENID",
-							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
-							"expiration": "Expires after 1 year."
-						},
-						{
-							"name": "SOCS",
-							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
-							"expiration": "Expires after 13 months."
-						},
-						{
-							"name": "CONSENT",
-							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
-							"expiration": "Expires after 2 years."
-						},
-						{
-							"name": "DV",
-							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
-							"expiration": "Expires after 1 day."
-						},
-						{
-							"name": "AEC",
-							"domain": "Google reCAPTCHA",
-							"description": "Cookie set by <a href=\"https://www.google.com/recaptcha/about/\" target=\"_blank\">Google reCAPTCHA</a>.",
-							"expiration": "Expires after 6 months."
 						}
 					]
 				}

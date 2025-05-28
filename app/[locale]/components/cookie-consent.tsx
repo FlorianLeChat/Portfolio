@@ -66,15 +66,6 @@ export default function CookieConsent()
 							}
 						]
 					}
-				},
-				security: {
-					autoClear: {
-						cookies: [
-							{
-								name: /^(OTZ|__Secure-ENID|SOCS|CONSENT|AEC)/
-							}
-						]
-					}
 				}
 			},
 

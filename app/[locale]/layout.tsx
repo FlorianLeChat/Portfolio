@@ -26,7 +26,6 @@ import Credits from "./components/credits";
 import { ThemeSwitcher } from "./components/theme-provider";
 
 const Header = lazy( () => import( "./components/header" ) );
-const Recaptcha = lazy( () => import( "./components/recaptcha" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const ThemeProvider = lazy( () => import( "./components/theme-provider" ) );
 const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
@@ -126,9 +125,6 @@ export default async function Layout( {
 
 							{/* Consentement des cookies */}
 							<CookieConsent />
-
-							{/* Google reCAPTCHA */}
-							<Recaptcha />
 
 							{/* Reconnaissance vocale */}
 							<SpeechRecognition />
