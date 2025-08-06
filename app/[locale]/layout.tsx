@@ -3,9 +3,6 @@
 //  Source : https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#root-layout-required
 //
 
-// Importation du normalisateur TypeScript.
-import "@total-typescript/ts-reset";
-
 // Importation des dépendances.
 import pick from "lodash/pick";
 import { Poppins } from "next/font/google";
