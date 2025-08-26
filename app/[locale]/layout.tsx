@@ -6,9 +6,9 @@
 // Importation des dépendances.
 import pick from "lodash/pick";
 import { Poppins } from "next/font/google";
+import { lazy, type ReactNode } from "react";
 import { NextIntlClientProvider } from "next-intl";
 import { setRequestLocale, getMessages } from "next-intl/server";
-import { Suspense, lazy, type ReactNode } from "react";
 
 // Importation des types.
 import type { Viewport } from "next";
@@ -92,48 +92,45 @@ export default async function Layout( {
 
 			{/* Corps de la page */}
 			<body>
-				{/* Écran de chargement de la page */}
-				<Suspense>
-					{/* Basculement entre les thèmes */}
-					<ThemeProvider>
-						{/* Utilisation des traductions */}
-						<NextIntlClientProvider
-							locale={locale}
-							messages={pick(
-								messages,
-								"modals",
-								"landing",
-								"consentModal",
-								"preferencesModal"
-							)}
-							timeZone={process.env.TZ}
-						>
-							{/* Remerciements */}
-							<Credits />
+				{/* Basculement entre les thèmes */}
+				<ThemeProvider>
+					{/* Utilisation des traductions */}
+					<NextIntlClientProvider
+						locale={locale}
+						messages={pick(
+							messages,
+							"modals",
+							"landing",
+							"consentModal",
+							"preferencesModal"
+						)}
+						timeZone={process.env.TZ}
+					>
+						{/* Remerciements */}
+						<Credits />
 
-							{/* En-tête */}
-							<Header />
+						{/* En-tête */}
+						<Header />
 
-							{/* Composant enfant */}
-							{children}
+						{/* Composant enfant */}
+						{children}
 
-							{/* Effet pour l'anniversaire */}
-							<BirthdayEffect />
+						{/* Effet pour l'anniversaire */}
+						<BirthdayEffect />
 
-							{/* Consentement des cookies */}
-							<CookieConsent />
+						{/* Consentement des cookies */}
+						<CookieConsent />
 
-							{/* Reconnaissance vocale */}
-							<SpeechRecognition />
+						{/* Reconnaissance vocale */}
+						<SpeechRecognition />
 
-							{/* Bouton de retour en haut de page */}
-							<ScrollTop />
+						{/* Bouton de retour en haut de page */}
+						<ScrollTop />
 
-							{/* Pied de page */}
-							<Footer />
-						</NextIntlClientProvider>
-					</ThemeProvider>
-				</Suspense>
+						{/* Pied de page */}
+						<Footer />
+					</NextIntlClientProvider>
+				</ThemeProvider>
 			</body>
 		</html>
 	);
