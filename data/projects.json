@@ -39,5 +39,11 @@
 		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Online-Resume",
 		"demo": "https://florianlechat.github.io/Online-Resume/"
+	},
+	"timeloop": {
+		"title": "TimeLoop",
+		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
+		"repository": "https://github.com/FlorianLeChat/TimeLoop",
+		"demo": "https://florianlechat.github.io/TimeLoop/"
 	}
 }

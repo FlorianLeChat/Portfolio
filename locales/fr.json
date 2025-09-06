@@ -14,7 +14,8 @@
 		"mangaparadise": "Un site vitrine conçu bénévolement pour l'association Manga Paradise, une association de passionnés de mangas et de culture japonaise. Le site a été conçu dans le but de remplacer leur ancien site qui était obsolète et qui n'était plus maintenu.",
 		"homepage": "Une page d'accueil conçue dans le style d'un terminal de commande, servant de passerelle vers mon portfolio et permettant d'accéder aux liens vers mes différents projets personnels. Le site est évidemment conçu pour une utilisation sur un ordinateur et n'est pas adapté pour un appareil mobile.",
 		"ravenshortener": "Un raccourcisseur de liens Internet conçu pour être simple d'utilisation, intrinsèquement sécurisé et entièrement personnalisable, mettant un accent particulier sur la protection de la vie privée et offrant une API totalement indépendante.",
-		"onlineresume": "Un curriculum vitæ (CV) en ligne conçu pour être dynamique, personnalisable et parfaitement adaptable à tous les supports, quel que soit l'appareil ou le format d'affichage, afin de mettre en valeur les informations essentielles pour les recruteurs."
+		"onlineresume": "Un curriculum vitæ (CV) en ligne conçu pour être dynamique, personnalisable et parfaitement adaptable à tous les supports, quel que soit l'appareil ou le format d'affichage, afin de mettre en valeur les informations essentielles pour les recruteurs.",
+		"timeloop": "Un compte à rebours pour estimer le temps restant avant une date future, ou mesurer le temps écoulé depuis une date passée pour ne jamais oublier à quel point le temps file. Le site permet également de sélectionner des événements historiques marquants afin de mieux visualiser l'écoulement du temps."
 	},
 	"landing": {
 		"scroll_top": "Remonter en haut de la page",
