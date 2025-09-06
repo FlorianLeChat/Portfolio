@@ -26,7 +26,6 @@ const Header = lazy( () => import( "./components/header" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const ThemeProvider = lazy( () => import( "./components/theme-provider" ) );
 const BirthdayEffect = lazy( () => import( "./components/birthday-effect" ) );
-const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
 // Déclaration des paramètres d'affichage.
 export const viewport: Viewport = {
@@ -82,7 +81,7 @@ export default async function Layout( {
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={locale} style={poppins.style} className="antialiased">
+		<html lang={locale} style={poppins.style} className="antialiased" suppressHydrationWarning>
 			{/* En-tête de la page */}
 			<head>
 				{/* Basculement entre les thèmes */}
@@ -110,9 +109,6 @@ export default async function Layout( {
 
 						{/* Effet pour l'anniversaire */}
 						<BirthdayEffect />
-
-						{/* Reconnaissance vocale */}
-						<SpeechRecognition />
 
 						{/* Bouton de retour en haut de page */}
 						<ScrollTop />
