@@ -4,9 +4,8 @@
 
 "use client";
 
+import { useEffect } from "react";
 import { useMessages } from "next-intl";
-import { GoogleTagManager } from "@next/third-parties/google";
-import { useEffect, useState } from "react";
 import { run,
 	type ConsentModalOptions,
 	type PreferencesModalOptions } from "vanilla-cookieconsent";
@@ -18,7 +17,6 @@ export default function CookieConsent()
 		consentModal: ConsentModalOptions;
 		preferencesModal: PreferencesModalOptions;
 	};
-	const [ analytics, setAnalytics ] = useState( false );
 
 	// Affichage du consentement des cookies.
 	//  Source : https://cookieconsent.orestbida.com/reference/api-reference.html
@@ -78,28 +76,7 @@ export default function CookieConsent()
 						preferencesModal: messages.preferencesModal
 					}
 				}
-			},
-
-			// Exécution des actions de consentement.
-			onConsent: ( { cookie } ) =>
-			{
-				// Google Analytics.
-				if ( cookie.categories.includes( "analytics" ) )
-				{
-					setAnalytics(
-						process.env.NEXT_PUBLIC_ANALYTICS_ENABLED === "true"
-					);
-				}
 			}
 		} );
 	}, [ messages.consentModal, messages.preferencesModal ] );
-
-	// Affichage conditionnel du rendu HTML du composant.
-	return (
-		analytics && (
-			<GoogleTagManager
-				gtmId={process.env.NEXT_PUBLIC_ANALYTICS_TAG ?? ""}
-			/>
-		)
-	);
 }
