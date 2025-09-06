@@ -20,15 +20,15 @@ $themes:
 	),
 	dark:
 	(
-		// Thème sombre.
-		background: rgb(3, 2, 23),
-		background-alt: rgb(22 28 41 / 33%),
-		foreground: rgb(189, 189, 221),
-		foreground-alt: rgb(205, 205, 255),
-		primary: rgb(128, 122, 232),
-		primary-alt: rgb(112, 106, 236),
-		primary-light: rgb(18 17 49 / 44%),
-		container-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px
+		// Thème sombre (noir + bleu).
+		background: rgb(10, 12, 20),
+		background-alt: rgb(17, 24, 39),
+		foreground: rgb(203, 213, 225),
+		foreground-alt: rgb(229, 231, 235),
+		primary: rgb(96, 165, 250),
+		primary-alt: rgb(59, 130, 246),
+		primary-light: rgba(59, 130, 246, 0.15),
+		container-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px -2px
 	)
 );
 
