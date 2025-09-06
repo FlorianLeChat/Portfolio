@@ -5,20 +5,6 @@
 		"repository": "https://github.com/FlorianLeChat/Portfolio",
 		"demo": "https://www.florian-dev.fr/portfolio/"
 	},
-	"ravenframework": {
-		"title": "Raven Framework",
-		"skills": ["Lua", "C++", "MySQL"]
-	},
-	"steamdownloader": {
-		"title": "Steam Collection Download Size Calculator",
-		"skills": ["C#", ".NET"],
-		"repository": "https://github.com/FlorianLeChat/Steam-Collection-Download-Size-Calculator"
-	},
-	"facepunchmonitor": {
-		"title": "Facepunch Commits Monitor",
-		"skills": ["C#", ".NET", "WPF"],
-		"repository": "https://github.com/FlorianLeChat/Facepunch-Commits-Monitor"
-	},
 	"filestorage": {
 		"title": "Simple File Storage",
 		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "Docker"],
@@ -31,22 +17,10 @@
 		"repository": "https://github.com/FlorianLeChat/Source-Web-Console",
 		"demo": "https://console.florian-dev.fr/"
 	},
-	"domego": {
-		"title": "Domego",
-		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "MongoDB", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Domego",
-		"demo": "https://www.florian-dev.fr/domego/"
-	},
 	"mangaparadise": {
 		"title": "Manga Paradise",
 		"skills": ["HTML", "CSS", "JavaScript", "PHP", "Wordpress"],
 		"demo": "https://manga-paradise.fr/"
-	},
-	"gamesonweb2023": {
-		"title": "Have A Break, Save The Planet",
-		"skills": ["HTML", "JavaScript", "BabylonJS"],
-		"repository": "https://github.com/FlorianLeChat/Games-On-Web-2023",
-		"demo": "https://florianlechat.github.io/Games-On-Web-2023/"
 	},
 	"homepage": {
 		"title": "Homepage",
