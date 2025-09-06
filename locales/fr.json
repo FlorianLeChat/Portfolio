@@ -27,7 +27,6 @@
 		"header_skills": "Compétences",
 		"header_contact": "Contact",
 		"header_theme": "Changement de thème",
-		"header_cookies": "Consentement des cookies",
 		"header_navigation": "Menu de navigation",
 		"project_source": "Code source",
 		"project_demo": "Démonstration",
@@ -44,56 +43,5 @@
 		"hello_title": "Bonjour. Je suis",
 		"download_resume": "Télécharger le C.V",
 		"japanese_credits": "✨ Fièrement traduit en Japonais par <a>Zélie Exposito</a> 🎌"
-	},
-	"consentModal": {
-		"title": "Voulez-vous un cookie ? 🍪",
-		"description": "Notre site Internet utilise des cookies de suivi pour comprendre comment vous interagissez avec lui. Le suivi ne sera activé que si vous l'acceptez explicitement.",
-		"acceptAllBtn": "Tout accepter",
-		"acceptNecessaryBtn": "Tout refuser",
-		"showPreferencesBtn": "Gérer les préférences"
-	},
-	"preferencesModal": {
-		"title": "Préférences en matière de cookies",
-		"acceptAllBtn": "Tout accepter",
-		"acceptNecessaryBtn": "Tout refuser",
-		"savePreferencesBtn": "Sauvegarder les préférences",
-		"closeIconLabel": "Fermer",
-		"sections": [
-			{
-				"title": "Utilisation des cookies 📢",
-				"description": "Nous utilisons des cookies pour assurer les fonctionnalités de base du site Internet et pour améliorer votre expérience en ligne."
-			},
-			{
-				"title": "Cookies strictement nécessaires",
-				"description": "Ces cookies sont essentiels au bon fonctionnement du site Internet. Sans ces cookies, le site ne fonctionnerait pas correctement.",
-				"linkedCategory": "necessary",
-				"cookieTable": {
-					"headers": {
-						"name": "Nom",
-						"domain": "Service",
-						"description": "Description",
-						"expiration": "Expiration"
-					},
-					"body": [
-						{
-							"name": "NEXT_COOKIE",
-							"domain": "Cookie Consent",
-							"description": "Cookie mis en place par <a href=\"https://cookieconsent.orestbida.com/\" target=\"_blank\">Cookie Consent</a>.",
-							"expiration": "Expire après 6 mois."
-						},
-						{
-							"name": "NEXT_LOCALE",
-							"domain": "NextJS",
-							"description": "Cookie mis en place par le site Internet.",
-							"expiration": "Expire à la fin de la session."
-						}
-					]
-				}
-			},
-			{
-				"title": "Plus d'informations",
-				"description": "Pour toute question relative à notre politique en matière de cookies et à vos choix, veuillez nous contacter via le support du site."
-			}
-		]
 	}
 }

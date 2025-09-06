@@ -25,7 +25,6 @@ import { ThemeSwitcher } from "./components/theme-provider";
 const Header = lazy( () => import( "./components/header" ) );
 const ScrollTop = lazy( () => import( "./components/scroll-top" ) );
 const ThemeProvider = lazy( () => import( "./components/theme-provider" ) );
-const CookieConsent = lazy( () => import( "./components/cookie-consent" ) );
 const BirthdayEffect = lazy( () => import( "./components/birthday-effect" ) );
 const SpeechRecognition = lazy( () => import( "./components/speech-recognition" ) );
 
@@ -83,7 +82,7 @@ export default async function Layout( {
 
 	// Affichage du rendu HTML de la page.
 	return (
-		<html lang={locale} style={poppins.style} className="antialiased" suppressHydrationWarning>
+		<html lang={locale} style={poppins.style} className="antialiased">
 			{/* En-tête de la page */}
 			<head>
 				{/* Basculement entre les thèmes */}
@@ -97,13 +96,7 @@ export default async function Layout( {
 					{/* Utilisation des traductions */}
 					<NextIntlClientProvider
 						locale={locale}
-						messages={pick(
-							messages,
-							"modals",
-							"landing",
-							"consentModal",
-							"preferencesModal"
-						)}
+						messages={pick( messages, "modals", "landing" )}
 						timeZone={process.env.TZ}
 					>
 						{/* Remerciements */}
@@ -117,9 +110,6 @@ export default async function Layout( {
 
 						{/* Effet pour l'anniversaire */}
 						<BirthdayEffect />
-
-						{/* Consentement des cookies */}
-						<CookieConsent />
 
 						{/* Reconnaissance vocale */}
 						<SpeechRecognition />

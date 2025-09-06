@@ -56,21 +56,6 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 } );
 
 //
-// Vérification de l'affichage du consentement des cookies.
-//
-test( "Affichage du consentement des cookies", async ( { page } ) =>
-{
-	// Clic sur le bouton du consentement des cookies.
-	await page.getByRole( "button" ).nth( 1 ).click();
-
-	// Sauvegarde des préférences actuelles.
-	await page.getByRole( "button", { name: "Save preferences" } ).click();
-
-	// Vérification de la page actuelle.
-	await expect( page ).toHaveURL( "/" );
-} );
-
-//
 // Vérification de la navigation par l'en-tête.
 //
 test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>

@@ -41,7 +41,6 @@
     "@playwright/test": "~1.55",
     "typescript-eslint": "~8.41",
     "@cspell/dict-fr-fr": "~2.3",
-    "vanilla-cookieconsent": "~3.1",
     "eslint-plugin-jsx-a11y": "~6.10",
     "@stylistic/eslint-plugin": "~5.3",
     "@fortawesome/react-fontawesome": "~3.0",

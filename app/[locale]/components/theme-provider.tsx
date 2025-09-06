@@ -83,15 +83,8 @@ function Theme( { children = null }: Readonly<ThemeProviderProps> )
 		// On applique enfin les classes CSS correspondantes
 		//  sur le DOM.
 		const element = document.documentElement;
-		element.classList.remove( "light", "dark", "cc--darkmode" );
+		element.classList.remove( "light", "dark" );
 		element.classList.add( value );
-
-		if ( value === "dark" )
-		{
-			// Support pour le thème sombre pour les fenêtres
-			//  de consentement des cookies.
-			element.classList.add( "cc--darkmode" );
-		}
 	}, [] );
 
 	// Application du nouveau thème détecté précédemment.

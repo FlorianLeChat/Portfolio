@@ -19,19 +19,10 @@ sub vcl_recv {
 		return (synth(400));
 	}
 
-	# Suppression de tous les cookies sauf ceux
-	#  nécessaires à l'application.
+	# Suppression de tous les cookies.
 	# https://varnish-cache.org/docs/4.0/users-guide/increasing-your-hitrate.html#cookies-from-the-client
 	if (req.http.Cookie) {
-		set req.http.Cookie = ";" + req.http.Cookie;
-		set req.http.Cookie = regsuball(req.http.Cookie, "; +", ";");
-		set req.http.Cookie = regsuball(req.http.Cookie, ";(NEXT_COOKIE|NEXT_LOCALE|NEXT_THEME)=", "; \1=");
-		set req.http.Cookie = regsuball(req.http.Cookie, ";[^ ][^;]*", "");
-		set req.http.Cookie = regsuball(req.http.Cookie, "^[; ]+|[; ]+$", "");
-
-		if (req.http.Cookie == "") {
-			unset req.http.Cookie;
-		}
+		unset req.http.Cookie;
 	}
 
 	# Définition du port en fonction du protocole.
