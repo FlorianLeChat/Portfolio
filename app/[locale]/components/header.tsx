@@ -7,10 +7,8 @@
 import { faSun,
 	faMoon,
 	faBars,
-	faTimes,
-	faCookieBite } from "@fortawesome/free-solid-svg-icons";
+	faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useTranslations } from "next-intl";
-import { showPreferences } from "vanilla-cookieconsent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
 import { useTheme } from "./theme-provider";
@@ -73,16 +71,6 @@ export default function Header()
 					aria-label={messages( "header_theme" )}
 				>
 					<FontAwesomeIcon icon={isLightTheme ? faMoon : faSun} />
-				</button>
-
-				{/* Préférences des cookies */}
-				<button
-					type="button"
-					title={messages( "header_cookies" )}
-					onClick={() => showPreferences()}
-					aria-label={messages( "header_cookies" )}
-				>
-					<FontAwesomeIcon icon={faCookieBite} />
 				</button>
 
 				{/* Bouton pour ouvrir le menu de navigation */}
