@@ -101,7 +101,7 @@ export default async function Page( {
 						target="_blank"
 					>
 						<button type="button">
-							{messages( "landing.download_resume" )}
+							{messages( "landing.access_resume" )}
 						</button>
 					</a>
 				</article>
