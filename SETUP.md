@@ -6,7 +6,6 @@
 
 - Installer [NodeJS LTS](https://nodejs.org/) (>20 ou plus) ;
 - Installer les dépendances du projet avec la commande `npm install` ;
-- Modifier la [variable d'environnement](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) `NEXT_PUBLIC_ENV` sur `development` ;
 - Démarrer le serveur local NextJS avec la commande `npm run dev`.
 
 ### Déploiement en production
@@ -32,7 +31,6 @@
 
 - Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
-- Set `NEXT_PUBLIC_ENV` [environment variable](https://github.com/FlorianLeChat/Portfolio/blob/master/.env) to `development` ;
 - Start NextJS local server using `npm run dev`.
 
 ### Production deployment
