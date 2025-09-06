@@ -63,7 +63,7 @@ test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 	if ( isMobile )
 	{
 		// Clic sur le bouton d'ouverture du menu.
-		await page.getByRole( "button" ).nth( 2 ).click();
+		await page.getByRole( "button" ).nth( 1 ).click();
 	}
 
 	// Clic sur le lien « Projets ».
@@ -110,17 +110,17 @@ test( "Retour en haut de page", async ( { page, isMobile } ) =>
 test( "Disponibilité du C.V", async ( { page, context } ) =>
 {
 	// Préparation à l'ouverte d'une nouvelle page.
-	const drivePromise = context.waitForEvent( "page" );
+	const resumePromise = context.waitForEvent( "page" );
 
 	// Clic sur le bouton de téléchargement du C.V.
-	await page.getByRole( "button", { name: "Download the resume" } ).click();
+	await page.getByRole( "button", { name: "Go to the online resume" } ).click();
 
 	// Attente de l'ouverture de la nouvelle page.
-	const drivePage = await drivePromise;
-	await drivePage.waitForLoadState();
+	const resumePage = await resumePromise;
+	await resumePage.waitForLoadState();
 
 	// Vérification du titre de la nouvelle page.
-	await expect( drivePage ).toHaveTitle( "Florian Trayon - Curriculum Vitae" );
+	await expect( resumePage ).toHaveTitle( "Florian Trayon - Curriculum Vitae" );
 } );
 
 //
