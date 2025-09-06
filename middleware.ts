@@ -10,6 +10,7 @@ export default async function middleware( request: NextRequest )
 {
 	const i18nRouting = createIntlMiddleware( {
 		locales: getLanguages(),
+		localeCookie: false,
 		localePrefix: "never",
 		defaultLocale: "en"
 	} );
