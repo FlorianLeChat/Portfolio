@@ -9,7 +9,7 @@ main > a
 	position: fixed;
 	clip-path: polygon(0 0, 100% 0, 100% 100%);
 
-	@media screen and (max-width: 320px)
+	@media screen and (max-width: 640px)
 	{
 		// Suppression du logo GitHub sur les écrans
 		//  de petite taille.
@@ -22,7 +22,7 @@ main > a
 		// Effet de survol.
 		animation: octocat-wave 560ms ease-in-out;
 
-		@media screen and (max-width: 768px)
+		@media screen and (max-width: 640px)
 		{
 			// Désactivation de l'animation sur les
 			//  écrans de petite taille.
@@ -279,7 +279,7 @@ section#projects > ul
 
 						@include colors.themeColors()
 						{
-							color: colors.getThemedColor("primary-alt");
+							color: colors.getThemedColor("primary");
 							background-color: colors.getThemedColor("primary-light");
 						}
 					}
@@ -339,7 +339,7 @@ section#skills ul
 		// Couleur de fond des options de tri.
 		input[type = radio]
 		{
-			margin-right: 1rem;
+			margin-right: 0.75rem;
 			vertical-align: middle;
 
 			@include colors.themeColors()
@@ -412,6 +412,7 @@ section#contact ul
 	button, a
 	{
 		// Boutons vers les réseaux sociaux.
+		gap: 0.5rem;
 		display: flex;
 		margin-top: 0.3rem;
 		align-items: center;
@@ -421,7 +422,6 @@ section#contact ul
 		{
 			// Icônes des réseaux sociaux.
 			height: 1rem;
-			margin-right: 0.25rem;
 		}
 	}
 }
