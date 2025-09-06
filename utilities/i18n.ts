@@ -30,22 +30,7 @@ export default getRequestConfig( async ( { requestLocale } ) =>
 		timeZone: process.env.TZ,
 		messages: deepmerge(
 			( await import( "../locales/en.json" ) ).default,
-			( await import( `../locales/${ locale }.json` ) ).default,
-			{
-				// Désactivation de la fusion des traductions manquantes
-				//  relatives aux sections du consentement des cookies.
-				//  Note : les traductions manquantes sont fusionnées avec
-				//   celles de la langue par défaut et provoquent des duplications.
-				customMerge: ( key ) =>
-				{
-					if ( key === "sections" )
-					{
-						return ( _, y ) => y;
-					}
-
-					return undefined;
-				}
-			}
+			( await import( `../locales/${ locale }.json` ) ).default
 		) as unknown as AbstractIntlMessages
 	};
 } );
