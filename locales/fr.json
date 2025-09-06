@@ -9,14 +9,9 @@
 	"projects":
 	{
 		"portfolio": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
-		"ravenframework": "Un ensemble d'outils facilitant la création de scripts Lua pour jeu vidéo de type bac-à-sable Garry's Mod et utilisée essentiellement par la communauté francophone de jeu de rôle « Combined Roleplay ».",
-		"steamdownloader": "Une application en ligne de commande permettant de calculer la taille totale d'une collection d'objets créée sur la plate-forme Steam au travers de leur API publique.",
-		"facepunchmonitor": "Une application graphique créée afin de suivre les changements effectués en temps réel sur les jeux produits par le studio de jeux vidéos appelé Facepunch Studios à partir de leur API publique.",
 		"filestorage": "Un service de stockage de données simple d'utilisation, sécurisé et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialité douteuses.",
 		"sourceconsole": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
-		"domego": "La version dématérialisée d'un jeu à plateau pédagogique et sérieux du même nom pour apprendre les étapes des opérations de construction d'un bâtiment public. Ce projet est inachevé mais actuellement maintenu par des étudiants de Polytech Nice-Sophia Antipolis.",
 		"mangaparadise": "Un site vitrine conçu bénévolement pour l'association Manga Paradise, une association de passionnés de mangas et de culture japonaise. Le site a été conçu dans le but de remplacer leur ancien site qui était obsolète et qui n'était plus maintenu.",
-		"gamesonweb2023": "Un jeu créé à l'occasion du concours « Games On Web » édition 2023 et ayant comme thème « Be green » sous fond de développement durable. Le jeu est un jeu en 3D où le joueur conduit sur une route sans fin et doit éviter les obstacles qui apparaissent sur son passage.",
 		"homepage": "Une page d'accueil conçue dans le style d'un terminal de commande, servant de passerelle vers mon portfolio et permettant d'accéder aux liens vers mes différents projets personnels. Le site est évidemment conçu pour une utilisation sur un ordinateur et n'est pas adapté pour un appareil mobile.",
 		"ravenshortener": "Un raccourcisseur de liens Internet conçu pour être simple d'utilisation, intrinsèquement sécurisé et entièrement personnalisable, mettant un accent particulier sur la protection de la vie privée et offrant une API totalement indépendante.",
 		"onlineresume": "Un curriculum vitæ (CV) en ligne conçu pour être dynamique, personnalisable et parfaitement adaptable à tous les supports, quel que soit l'appareil ou le format d'affichage, afin de mettre en valeur les informations essentielles pour les recruteurs."
@@ -41,7 +36,7 @@
 		"developer_surname": "Trayon",
 		"developer_description": "Je suis un développeur (junior) français full-stack de {age} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
 		"hello_title": "Bonjour. Je suis",
-		"download_resume": "Télécharger le C.V",
+		"access_resume": "Accéder au C.V en ligne",
 		"japanese_credits": "✨ Fièrement traduit en Japonais par <a>Zélie Exposito</a> 🎌"
 	}
 }

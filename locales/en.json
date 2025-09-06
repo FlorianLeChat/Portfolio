@@ -9,14 +9,9 @@
 	"projects":
 	{
 		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
-		"ravenframework": "A framework to help developers creating Lua scripts for a sandbox-style video game called Garry's Mod, used mainly by the French-speaking Combined Roleplay community.",
-		"steamdownloader": "A command line application to calculate the total size of a collection of items created on the Steam platform through their public API.",
-		"facepunchmonitor": "A graphical application created to follow changes made in real time on games produced by the video game studio called Facepunch Studios from their public API.",
 		"filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
 		"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
-		"domego": "The dematerialized version of an educational and serious board game with the same name to learn the steps of a public building construction operation. This project is unfinished but currently maintained by students of Polytech Nice-Sophia Antipolis.",
 		"mangaparadise": "A showcase site designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The site was designed to replace their old site which was obsolete and was no longer maintained.",
-		"gamesonweb2023": "A game created for the \"Games On Web\" contest 2023 edition and having as theme \"Be green\" under the theme of sustainable development. The game is a 3D game where the player drives on an endless road and must avoid obstacles that appear in his path.",
 		"homepage": "A home page designed to look like a command terminal, serving as a gateway to my portfolio and providing links to my various personal projects. This website is obviously designed to be used on a computer and is not suitable for mobile devices.",
 		"ravenshortener": "An URL shortener designed to be easy to use, inherently secure and fully customizable, with a strong emphasis on privacy and a fully independent API.",
 		"onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters."
@@ -41,7 +36,7 @@
 		"developer_surname": "Trayon",
 		"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
 		"hello_title": "Hi. I am",
-		"download_resume": "Download the resume",
+		"access_resume": "Go to online resume",
 		"japanese_credits": "✨ Proudly translated into Japanese by <a>Zélie Exposito</a> 🎌"
 	}
 }
