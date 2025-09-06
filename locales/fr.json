@@ -91,27 +91,6 @@
 				}
 			},
 			{
-				"title": "Cookies de performance et d'analyse",
-				"description": "Ces cookies permettent au site Internet de se souvenir des choix que vous avez faits dans le passé.",
-				"linkedCategory": "analytics",
-				"cookieTable": {
-					"headers": {
-						"name": "Nom",
-						"domain": "Service",
-						"description": "Description",
-						"expiration": "Expiration"
-					},
-					"body": [
-						{
-							"name": "_ga",
-							"domain": "Google Analytics",
-							"description": "Cookie mis en place par <a href=\"https://analytics.google.com/analytics/web/\" target=\"_blank\">Google Analytics</a>.",
-							"expiration": "Expire après 2 ans."
-						}
-					]
-				}
-			},
-			{
 				"title": "Plus d'informations",
 				"description": "Pour toute question relative à notre politique en matière de cookies et à vos choix, veuillez nous contacter via le support du site."
 			}
