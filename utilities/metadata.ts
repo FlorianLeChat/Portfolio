@@ -47,7 +47,7 @@ export async function fetchMetadata(): Promise<Metadata & { source: string }>
 	// On détermine après certaines métadonnées récurrentes.
 	const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
 	const title = `${ author.name } - ${ repository.name }`;
-	const url = process.env.NEXT_PUBLIC_ENV === "production"
+	const url = process.env.NODE_ENV === "production"
 		? repository.homepage
 		: `http://localhost:3000${ process.env.__NEXT_ROUTER_BASEPATH }`;
 
