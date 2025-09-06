@@ -12,7 +12,7 @@ Les anciennes versions de mon portfolio sont également disponibles sur les autr
 > [!IMPORTANT]
 > L'entièreté du code de ce projet est commenté dans ma langue natale (en français) et n'est pas voué à être traduit en anglais par soucis de simplicité de développement.
 
-![image](https://user-images.githubusercontent.com/26360935/220702548-5d333d02-e5a2-48bf-bdbf-afc08492f035.png)
+![image](https://github.com/user-attachments/assets/1f92f303-a032-4818-8f8b-701126bcb58e)
 
 ## In English
 
@@ -26,4 +26,4 @@ Older versions of my portfolio are also available on the other GitHub branches: 
 > [!IMPORTANT]
 > The whole code of this project is commented in my native language (in French) and will not be translated in English for easier programming.
 
-![image](https://user-images.githubusercontent.com/26360935/220702663-5cd0eb29-097f-484f-8c82-2f1023459d9c.png)
+![image](https://github.com/user-attachments/assets/1385b4d5-ad5a-491f-a078-31068a675fbf)
