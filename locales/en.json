@@ -11,10 +11,11 @@
 		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
 		"filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
 		"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
-		"mangaparadise": "A showcase site designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The site was designed to replace their old site which was obsolete and was no longer maintained.",
+		"mangaparadise": "A showcase website designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The website was designed to replace their old website which was obsolete and was no longer maintained.",
 		"homepage": "A home page designed to look like a command terminal, serving as a gateway to my portfolio and providing links to my various personal projects. This website is obviously designed to be used on a computer and is not suitable for mobile devices.",
 		"ravenshortener": "An URL shortener designed to be easy to use, inherently secure and fully customizable, with a strong emphasis on privacy and a fully independent API.",
-		"onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters."
+		"onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters.",
+		"timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time."
 	},
 	"landing": {
 		"scroll_top": "Scroll to top",
