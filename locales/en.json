@@ -15,13 +15,15 @@
 		"homepage": "A home page designed to look like a command terminal, serving as a gateway to my portfolio and providing links to my various personal projects. This website is obviously designed to be used on a computer and is not suitable for mobile devices.",
 		"ravenshortener": "An URL shortener designed to be easy to use, inherently secure and fully customizable, with a strong emphasis on privacy and a fully independent API.",
 		"onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters.",
-		"timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time."
+		"timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time.",
+		"blog": "A personal blog where I can share my thoughts, experiences and knowledge on various topics such as computer science and other areas that interest me. It is a space where I can express myself freely without format or subject constraints."
 	},
 	"landing": {
 		"scroll_top": "Scroll to top",
 		"header_projects": "Projects",
 		"header_skills": "Skills",
 		"header_contact": "Contact",
+		"header_blog": "Blog",
 		"header_theme": "Theme selection",
 		"header_navigation": "Navigation menu",
 		"project_source": "Source code",

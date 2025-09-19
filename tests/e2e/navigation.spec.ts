@@ -58,7 +58,7 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 //
 // Vérification de la navigation par l'en-tête.
 //
-test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
+test( "Navigation par l'en-tête", async ( { page, context, isMobile } ) =>
 {
 	if ( isMobile )
 	{
@@ -77,6 +77,16 @@ test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 	// Clic sur le lien « Contact ».
 	await page.getByRole( "link", { name: "Contact" } ).click();
 	await expect( page ).toHaveURL( "#contact" );
+
+	// Clic sur le lien « Blog ».
+	const blogPromise = context.waitForEvent( "page" );
+
+	await page.getByRole( "link", { name: "Blog" } ).click();
+
+	const blogPage = await blogPromise;
+	await blogPage.waitForLoadState();
+
+	await expect( blogPage ).toHaveTitle( "Le blog de Florian" );
 } );
 
 //
