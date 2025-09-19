@@ -3,6 +3,7 @@
 //  Note : cette astuce est utilisée pour le chargement progressif des images.
 //  Source : https://nextjs.org/docs/app/api-reference/components/image#placeholder
 //
+import Blog from "@/images/blog.png";
 import TimeLoop from "@/images/timeloop.png";
 import Homepage from "@/images/homepage.png";
 import Portfolio from "@/images/portfolio.png";
@@ -16,6 +17,10 @@ export const getImage = ( name: string ) =>
 {
 	switch ( name )
 	{
+		// Blog.
+		case "blog":
+			return Blog;
+
 		// TimeLoop.
 		case "timeloop":
 			return TimeLoop;

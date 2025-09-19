@@ -61,6 +61,16 @@ export default function Header()
 					<li>
 						<a href="#contact">{messages( "header_contact" )}</a>
 					</li>
+
+					<li>
+						<a
+							rel="noopener noreferrer"
+							href="https://florianlechat.github.io/Blog/"
+							target="_blank"
+						>
+							{messages( "header_blog" )}
+						</a>
+					</li>
 				</ul>
 
 				{/* Bouton de basculement en thème sombre/clair */}

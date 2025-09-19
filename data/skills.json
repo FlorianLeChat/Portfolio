@@ -64,6 +64,11 @@
 		"icon": "plain colored",
 		"type": ["front", "back"]
 	},
+	"jekyll": {
+		"name": "Jekyll",
+		"icon": "plain",
+		"type": "other"
+	},
 	"jquery": {
 		"name": "jQuery",
 		"icon": "plain colored",
