@@ -29,7 +29,8 @@ test( "Vérification de certains contenus", async ( { page } ) =>
 	await expect( page.locator( "nav > ul a" ) ).toHaveText( [
 		"Projects",
 		"Skills",
-		"Contact"
+		"Contact",
+		"Blog"
 	] );
 
 	// Vérification de la présence des liens de contact.
