@@ -8,10 +8,12 @@ const baseURL = `http://localhost:${ port }`;
 
 export default defineConfig( {
 	use: {
-		trace: process.env.CI ? "off" : "on-first-retry",
-		video: process.env.CI ? "off" : "on-first-retry",
+		trace: process.env.CI ? "off" : "retain-on-failure",
+		video: process.env.CI ? "off" : "retain-on-failure",
 		locale: "en-GB",
-		baseURL
+		baseURL,
+		headless: !!process.env.CI,
+		screenshot: process.env.CI ? "off" : "only-on-failure"
 	},
 	expect: { timeout: 10000 },
 	workers: 1,
