@@ -2,7 +2,7 @@
 
 # Use an customized image of Node.js
 # https://hub.docker.com/_/node
-FROM node:lts-alpine
+FROM node:24-alpine
 
 # Install system dependencies
 RUN apk add --no-cache tzdata
