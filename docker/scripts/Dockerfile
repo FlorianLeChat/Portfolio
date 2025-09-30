@@ -2,10 +2,10 @@
 
 # Use an customized image of Node.js
 # https://hub.docker.com/_/node
-FROM node:24-alpine
+FROM node:24-slim
 
 # Install system dependencies
-RUN apk add --no-cache tzdata
+RUN apt update && apt install -y tzdata wget && apt clean
 
 # Set the working directory to the website files
 WORKDIR /usr/src/app

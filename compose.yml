@@ -3,7 +3,7 @@ name: portfolio
 services:
     # https://hub.docker.com/_/varnish
     varnish:
-        image: varnish:8
+        image: varnish:8-alpine
         restart: always
         volumes:
             - ./docker/configuration/default.vcl:/etc/varnish/default.vcl:ro
