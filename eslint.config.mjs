@@ -3,8 +3,9 @@ import tslint from "typescript-eslint";
 import globals from "globals";
 import jsxA11y from "eslint-plugin-jsx-a11y";
 import stylistic from "@stylistic/eslint-plugin";
+import { defineConfig } from "eslint/config";
 
-export default tslint.config(
+export default defineConfig(
 	{
 		ignores: [ ".next/*", "next-env.d.ts" ]
 	},
