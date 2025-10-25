@@ -1,5 +1,18 @@
 # 📚 Portfolio
 
+![HTML](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-639?logo=css&logoColor=white)
+![Sass](https://img.shields.io/badge/Sass-CC6699?logo=sass&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+
+![Next.js](https://img.shields.io/badge/Next.js-black?logo=nextdotjs&logoColor=white)
+![Font Awesome](https://img.shields.io/badge/Font%20Awesome-528DD7?logo=fontawesome&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Playwright](https://custom-icon-badges.demolab.com/badge/Playwright-2EAD33?logo=playwright&logoColor=white)
+![i18n](https://img.shields.io/badge/i18n-26A69A?logo=googletranslate&logoColor=white)
+![Prettier](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=black)
+![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
+
 ## In French
 
 Ceci est mon portfolio tout simplement ! Au départ, il s'agissait de mon tout premier site Internet réalisé durant mes études et utilisant HTML, CSS, JavaScript ainsi que PHP sans aucun framework particulier. Plusieurs mois ont défilés et j'ai décidé de le refaire complètement en adoptant un nouveau design inspiré de [ce portfolio](https://github.com/rajshekhar26/cleanfolio) avec NextJS ainsi que des technologies beaucoup plus modernes.
