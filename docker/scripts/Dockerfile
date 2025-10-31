@@ -29,4 +29,4 @@ RUN --mount=type=cache,target=.npm \
 USER node
 
 # Prepare project files and configuration to be built
-RUN npm run build && npm prune --production
+RUN npm run build && npm prune --omit=dev

@@ -13,7 +13,7 @@
 - Installer [NodeJS LTS](https://nodejs.org/) (>20 ou plus) ;
 - Installer les dépendances du projet avec la commande `npm install` ;
 - Compiler les fichiers statiques du site Internet avec la commande `npm run build` ;
-- Supprimer les dépendances de développement avec la commande `npm prune --production` ;
+- Supprimer les dépendances de développement avec la commande `npm prune --omit=dev` ;
 - Démarrer le serveur local NodeJS avec la commande `npm run start` ;
 - *(Facultatif)* Utiliser [Varnish](https://varnish-cache.org/) comme serveur de cache HTTP pour atténuer les effets des fortes charges ([configuration intégrée](https://github.com/FlorianLeChat/Portfolio/blob/master/docker/default.vcl)).
 
@@ -38,7 +38,7 @@
 - Install [NodeJS LTS](https://nodejs.org/) (>20 or higher) ;
 - Install project dependencies using `npm install` ;
 - Build static website files using `npm run build` ;
-- Remove development dependencies using `npm prune --production` ;
+- Remove development dependencies using `npm prune --omit=dev` ;
 - Start NodeJS local server using `npm run start` ;
 - *(Optional)* Use [Varnish](https://varnish-cache.org/) as an HTTP cache server to mitigate effects of heavy loads ([built-in configuration](https://github.com/FlorianLeChat/Portfolio/blob/master/docker/default.vcl)).
 
