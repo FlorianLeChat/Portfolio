@@ -16,8 +16,8 @@ services:
             test: wget -O - http://localhost/portfolio
             retries: 3
             timeout: 5s
-        ports:
-            - "80:80"
+        expose:
+            - "80"
 
     # https://github.com/FlorianLeChat/Portfolio
     node:
