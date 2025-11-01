@@ -3,7 +3,8 @@
 //  Source : https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts#pages
 //
 
-// Importation de la feuille de style.
+// Importation des feuilles de style.
+import "photoswipe/photoswipe.css";
 import "./page.scss";
 
 // Importation des dépendances.
