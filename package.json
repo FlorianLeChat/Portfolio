@@ -12,14 +12,14 @@
     "url": "https://github.com/FlorianLeChat/Portfolio/issues"
   },
   "dependencies": {
-    "next": "~15.5",
+    "next": "~16.0",
     "sharp": "~0.34",
     "lodash": "~4.17",
-    "next-intl": "~4.3"
+    "next-intl": "~4.4"
   },
   "devDependencies": {
-    "@types/node": "~24.6",
-    "@types/react": "~19.1",
+    "@types/node": "~24.9",
+    "@types/react": "~19.2",
     "@types/lodash": "~4.17",
     "@types/canvas-confetti": "~1.9",
     "@types/dom-speech-recognition": "~0.0",
@@ -28,7 +28,7 @@
     "eslint": "~9.36",
     "cspell": "~9.2",
     "devicon": "~2.17",
-    "globals": "~16.4",
+    "globals": "~16.5",
     "prettier": "~3.6",
     "deepmerge": "~4.3",
     "photoswipe": "~5.4",
@@ -38,22 +38,22 @@
     "sanitize.css": "~13.0",
     "sass-embedded": "~1.93",
     "canvas-confetti": "~1.9",
-    "@playwright/test": "~1.55",
-    "typescript-eslint": "~8.45",
+    "@playwright/test": "~1.56",
+    "typescript-eslint": "~8.46",
     "@cspell/dict-fr-fr": "~2.3",
     "eslint-plugin-jsx-a11y": "~6.10",
-    "@stylistic/eslint-plugin": "~5.4",
-    "@fortawesome/react-fontawesome": "~3.0",
-    "@fortawesome/fontawesome-svg-core": "~7.0",
-    "@fortawesome/free-solid-svg-icons": "~7.0",
-    "@fortawesome/free-brands-svg-icons": "~7.0"
+    "@stylistic/eslint-plugin": "~5.5",
+    "@fortawesome/react-fontawesome": "~3.1",
+    "@fortawesome/fontawesome-svg-core": "~7.1",
+    "@fortawesome/free-solid-svg-icons": "~7.1",
+    "@fortawesome/free-brands-svg-icons": "~7.1"
   },
   "engines": {
     "node": ">=20.0",
     "npm": ">=9.6"
   },
   "scripts": {
-    "dev": "next dev --turbo",
+    "dev": "next dev",
     "test": "playwright test",
     "lint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
     "build": "next build",
