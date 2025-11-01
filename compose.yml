@@ -13,11 +13,9 @@ services:
         environment:
             VARNISH_SIZE: 128m
         healthcheck:
-            test: wget -O - http://localhost/portfolio
+            test: wget -O - http://localhost/portfolio/
             retries: 3
             timeout: 5s
-        expose:
-            - "80"
 
     # https://github.com/FlorianLeChat/Portfolio
     node:
@@ -27,7 +25,7 @@ services:
         environment:
             TZ: ${TZ}
         healthcheck:
-            test: wget -O - http://localhost:3000
+            test: wget -O - http://localhost:3000/
             retries: 3
             timeout: 5s
         build:
