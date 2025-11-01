@@ -1,9 +1,9 @@
 {
 	"exclude": ["node_modules"],
-	"include": ["next-env.d.ts", "**/*.config.*", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+	"include": ["next-env.d.ts", "**/*.config.*", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", ".next/dev/types/**/*.ts"],
 	"compilerOptions": {
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"jsx": "preserve",
+		"jsx": "react-jsx",
 		"paths": {
 			"@/*": ["./*"],
 			"@/images/*": ["./public/assets/images/*"],

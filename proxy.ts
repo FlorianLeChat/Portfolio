@@ -6,7 +6,7 @@ import { type NextRequest } from "next/server";
 import createIntlMiddleware from "next-intl/middleware";
 import { getLanguages } from "./utilities/i18n";
 
-export default async function middleware( request: NextRequest )
+export default async function proxy( request: NextRequest )
 {
 	const i18nRouting = createIntlMiddleware( {
 		locales: getLanguages(),
