@@ -12,13 +12,13 @@
     "url": "https://github.com/FlorianLeChat/Portfolio/issues"
   },
   "dependencies": {
-    "next": "~16.0",
+    "next": "~16.1",
     "sharp": "~0.34",
     "lodash": "~4.17",
-    "next-intl": "~4.5"
+    "next-intl": "~4.7"
   },
   "devDependencies": {
-    "@types/node": "~24.10",
+    "@types/node": "~25.0",
     "@types/react": "~19.2",
     "@types/lodash": "~4.17",
     "@types/canvas-confetti": "~1.9",
@@ -28,7 +28,7 @@
     "eslint": "~9.39",
     "cspell": "~9.4",
     "devicon": "~2.17",
-    "globals": "~16.5",
+    "globals": "~17.0",
     "prettier": "~3.7",
     "deepmerge": "~4.3",
     "photoswipe": "~5.4",
@@ -36,10 +36,10 @@
     "sweetalert2": "~11.22",
     "lint-staged": "~16.2",
     "sanitize.css": "~13.0",
-    "sass-embedded": "~1.93",
+    "sass-embedded": "~1.97",
     "canvas-confetti": "~1.9",
     "@playwright/test": "~1.57",
-    "typescript-eslint": "~8.48",
+    "typescript-eslint": "~8.51",
     "@cspell/dict-fr-fr": "~2.3",
     "eslint-plugin-jsx-a11y": "~6.10",
     "@stylistic/eslint-plugin": "~5.6",
