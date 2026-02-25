@@ -65,7 +65,7 @@ export default function Header()
 					<li>
 						<a
 							rel="noopener noreferrer"
-							href="https://florianlechat.github.io/Blog/"
+							href="https://blog.florian-dev.fr/"
 							target="_blank"
 						>
 							{messages( "header_blog" )}

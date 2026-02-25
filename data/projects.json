@@ -49,6 +49,6 @@
 	"blog": {
 		"title": "Blog",
 		"skills": ["HTML", "CSS", "JavaScript", "Jekyll", "Markdown"],
-		"demo": "https://florianlechat.github.io/Blog/"
+		"demo": "https://blog.florian-dev.fr/"
 	}
 }
