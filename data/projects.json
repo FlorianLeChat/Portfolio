@@ -26,7 +26,7 @@
 		"title": "Homepage",
 		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Homepage",
-		"demo": "https://florianlechat.github.io/Homepage/"
+		"demo": "https://pages.florian-dev.fr/floriantrayon/Homepage"
 	},
 	"ravenshortener": {
 		"title": "Raven Url Shortener",
@@ -38,13 +38,13 @@
 		"title": "Online Resume",
 		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Online-Resume",
-		"demo": "https://florianlechat.github.io/Online-Resume/"
+		"demo": "https://pages.florian-dev.fr/floriantrayon/Online-Resume/"
 	},
 	"timeloop": {
 		"title": "TimeLoop",
 		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/TimeLoop",
-		"demo": "https://florianlechat.github.io/TimeLoop/"
+		"demo": "https://pages.florian-dev.fr/floriantrayon/TimeLoop/"
 	},
 	"blog": {
 		"title": "Blog",
