@@ -1,35 +1,58 @@
 name: portfolio
 
 services:
-    # https://hub.docker.com/_/varnish
-    varnish:
+    proxy:
         image: varnish:8-alpine
-        restart: always
+        restart: unless-stopped
         volumes:
-            - ./docker/configuration/default.vcl:/etc/varnish/default.vcl:ro
+            - ./varnish.vcl:/etc/varnish/default.vcl:ro
+        cap_drop:
+            - ALL
         depends_on:
-            node:
+            server:
                 condition: service_healthy
         environment:
             VARNISH_SIZE: 128m
+        security_opt:
+            - no-new-privileges=true
         healthcheck:
-            test: wget -O - http://localhost/portfolio/
+            test: wget -O - http://localhost/
             retries: 3
             timeout: 5s
+            start_period: 30s
+        deploy:
+            resources:
+                limits:
+                    pids: 1024
+                    cpus: "0.5"
+                    memory: 256M
+        ports:
+            - "${PORT:-80}:80"
 
-    # https://github.com/FlorianLeChat/Portfolio
-    node:
-        image: portfolio
-        restart: always
+    server:
+        user: "${UID:-1000}:${GID:-1000}"
+        image: registry.florian-dev.fr:443/floriantrayon/portfolio:${VERSION:-latest}
+        restart: unless-stopped
         command: npm run start
+        cap_drop:
+            - ALL
+        env_file:
+            - .env
         environment:
-            TZ: ${TZ}
+            PORT: 3000
+        security_opt:
+            - no-new-privileges=true
         healthcheck:
             test: wget -O - http://localhost:3000/
             retries: 3
             timeout: 5s
+            start_period: 30s
+        deploy:
+            resources:
+                limits:
+                    pids: 64
+                    cpus: "1"
+                    memory: 512M
         build:
             context: .
-            dockerfile: ./docker/scripts/Dockerfile
-        expose:
-            - "3000"
+            dockerfile: ./docker/Dockerfile

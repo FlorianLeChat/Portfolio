@@ -38,9 +38,7 @@ export async function fetchMetadata(): Promise<Metadata & { source: string }>
 
     const banner = `https://opengraph.githubassets.com/${ commits.sha }/${ repository.full_name }`;
     const title = `${ author.name } - ${ repository.name }`;
-    const url = process.env.NODE_ENV === "production"
-        ? repository.homepage
-        : `http://localhost:3000${ process.env.__NEXT_ROUTER_BASEPATH }`;
+    const url = repository.homepage;
 
     const metadata = {
         title,
@@ -49,7 +47,6 @@ export async function fetchMetadata(): Promise<Metadata & { source: string }>
         authors: [ { name: author.name, url: author.html_url } ],
         keywords: repository.topics,
         description: repository.description,
-        metadataBase: new URL( url ), // https://github.com/vercel/next.js/issues/53455
         icons: {
             icon: [
                 {

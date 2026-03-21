@@ -7,7 +7,6 @@ const nextConfig: NextConfig = withNextIntl( {
     sassOptions: {
         implementation: "sass-embedded"
     },
-    basePath: "",
     async redirects()
     {
         return [
