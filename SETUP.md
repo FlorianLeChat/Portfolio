@@ -15,7 +15,7 @@
 - Compiler les fichiers statiques du site Internet avec la commande `npm run build` ;
 - Supprimer les dépendances de développement avec la commande `npm prune --omit=dev` ;
 - Démarrer le serveur local NodeJS avec la commande `npm run start` ;
-- *(Facultatif)* Utiliser [Varnish](https://varnish-cache.org/) comme serveur de cache HTTP pour atténuer les effets des fortes charges ([configuration intégrée](https://github.com/FlorianLeChat/Portfolio/blob/master/docker/default.vcl)).
+- *(Facultatif)* Utiliser [Varnish](https://varnish-cache.org/) comme serveur de cache HTTP pour atténuer les effets des fortes charges ([configuration intégrée](docker/configuration/default.vcl)).
 
 > [!TIP]
 > Pour tester le projet, vous *pouvez* également utiliser [Docker](https://www.docker.com/). Une fois installé, il suffit de lancer l'image Docker de production à l'aide de la commande `docker compose up --detach --build`. Le site devrait être accessible à l'adresse suivante : http://localhost:3000/. 🐳
@@ -40,7 +40,7 @@
 - Build static website files using `npm run build` ;
 - Remove development dependencies using `npm prune --omit=dev` ;
 - Start NodeJS local server using `npm run start` ;
-- *(Optional)* Use [Varnish](https://varnish-cache.org/) as an HTTP cache server to mitigate effects of heavy loads ([built-in configuration](https://github.com/FlorianLeChat/Portfolio/blob/master/docker/default.vcl)).
+- *(Optional)* Use [Varnish](https://varnish-cache.org/) as an HTTP cache server to mitigate effects of heavy loads ([built-in configuration](docker/configuration/default.vcl)).
 
 > [!TIP]
 > To try the project, you *can* also use [Docker](https://www.docker.com/) installed. Once installed, simply start the production Docker image with `docker compose up --detach --build` command. The website should be available at http://localhost:3000/. 🐳
