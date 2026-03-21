@@ -21,9 +21,6 @@ Les anciennes versions de mon portfolio sont également disponibles sur les autr
 > [!TIP]
 > Voir le fichier [SETUP.md](SETUP.md) pour consulter les instructions d'installation.
 
-> [!IMPORTANT]
-> L'entièreté du code de ce projet est commenté dans ma langue natale (en français) et n'est pas voué à être traduit en anglais par soucis de simplicité de développement.
-
 ![image](.gitlab/images/portfolio_french.png)
 
 ## In English
@@ -34,8 +31,5 @@ Older versions of my portfolio are also available on the other GitHub branches: 
 
 > [!TIP]
 > See the [SETUP.md](SETUP.md) file for setup instructions.
-
-> [!IMPORTANT]
-> The whole code of this project is commented in my native language (in French) and will not be translated in English for easier programming.
 
 ![image](.gitlab/images/portfolio_english.png)

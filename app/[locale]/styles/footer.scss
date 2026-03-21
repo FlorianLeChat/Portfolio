@@ -2,39 +2,35 @@
 
 footer
 {
-	// Conteneur du pied de page.
-	inset: auto 0;
-	padding: 1rem;
-	position: absolute;
-	text-align: center;
-	box-shadow: 0 -0.1rem 1rem rgb(0, 0, 0, 0.1);
-	margin-top: 5rem;
-	min-height: 5rem;
-	flex-direction: column;
-	justify-content: center;
+    inset: auto 0;
+    padding: 1rem;
+    position: absolute;
+    text-align: center;
+    box-shadow: 0 -0.1rem 1rem rgb(0, 0, 0, 0.1);
+    margin-top: 5rem;
+    min-height: 5rem;
+    flex-direction: column;
+    justify-content: center;
 
-	@include colors.themeColors()
-	{
-		background-color: colors.getThemedColor("background-alt");
-	}
+    @include colors.themeColors()
+    {
+        background-color: colors.getThemedColor("background-alt");
+    }
 
-	> span a
-	{
-		// Notes complémentaires.
-		margin-right: 0.25rem;
-	}
+    > span a
+    {
+        margin-right: 0.25rem;
+    }
 
-	> small:last-of-type
-	{
-		// Redirection vers l'ancienne version du site.
-		gap: 0.25rem;
-		display: flex;
-		align-items: center;
+    > small:last-of-type
+    {
+        gap: 0.25rem;
+        display: flex;
+        align-items: center;
 
-		svg
-		{
-			// Icône de PHP.
-			font-size: 1.25rem;
-		}
-	}
+        svg
+        {
+            font-size: 1.25rem;
+        }
+    }
 }

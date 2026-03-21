@@ -2,45 +2,40 @@
 
 aside
 {
-	// Conteneur du bouton de retour en haut de page.
-	inset: auto 2rem 3rem auto;
-	z-index: 1;
-	position: fixed;
-	transition: transform 200ms ease-in-out;
+    inset: auto 2rem 3rem auto;
+    z-index: 1;
+    position: fixed;
+    transition: transform 200ms ease-in-out;
 
-	@media screen and (max-width: 1024px)
-	{
-		// Disparition du bouton sur les écrans de taille
-		//  moyenne.
-		display: none;
-	}
+    @media screen and (max-width: 1024px)
+    {
+        display: none;
+    }
 
-	&:active
-	{
-		// Effet de maintien.
-		transform: translateY(0.5rem);
-	}
+    &:active
+    {
+        transform: translateY(0.5rem);
+    }
 
-	button
-	{
-		// Lien de retour en haut de page.
-		border: none;
-		cursor: pointer;
-		padding: 1rem 1.1rem;
-		border-radius: 50%;
+    button
+    {
+        border: none;
+        cursor: pointer;
+        padding: 1rem 1.1rem;
+        border-radius: 50%;
 
-		@include colors.themeColors()
-		{
-			color: colors.getThemedColor("background");
-			background-color: colors.getThemedColor("primary");
-		}
+        @include colors.themeColors()
+        {
+            color: colors.getThemedColor("background");
+            background-color: colors.getThemedColor("primary");
+        }
 
-		&:hover
-		{
-			@include colors.themeColors()
-			{
-				background-color: colors.getThemedColor("primary-alt");
-			}
-		}
-	}
+        &:hover
+        {
+            @include colors.themeColors()
+            {
+                background-color: colors.getThemedColor("primary-alt");
+            }
+        }
+    }
 }

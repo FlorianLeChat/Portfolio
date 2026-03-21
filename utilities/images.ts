@@ -1,8 +1,4 @@
-//
-// Génération des images statiques correspondants aux projets.
-//  Note : cette astuce est utilisée pour le chargement progressif des images.
-//  Source : https://nextjs.org/docs/app/api-reference/components/image#placeholder
-//
+// https://nextjs.org/docs/app/api-reference/components/image#placeholder
 import Blog from "@/images/blog.png";
 import TimeLoop from "@/images/timeloop.png";
 import Homepage from "@/images/homepage.png";
@@ -15,46 +11,36 @@ import RavenShortener from "@/images/ravenshortener.png";
 
 export const getImage = ( name: string ) =>
 {
-	switch ( name )
-	{
-		// Blog.
-		case "blog":
-			return Blog;
+    switch ( name )
+    {
+        case "blog":
+            return Blog;
 
-		// TimeLoop.
-		case "timeloop":
-			return TimeLoop;
+        case "timeloop":
+            return TimeLoop;
 
-		// Homepage.
-		case "homepage":
-			return Homepage;
+        case "homepage":
+            return Homepage;
 
-		// Portfolio.
-		case "portfolio":
-			return Portfolio;
+        case "portfolio":
+            return Portfolio;
 
-		// Simple File Storage.
-		case "filestorage":
-			return FileStorage;
+        case "filestorage":
+            return FileStorage;
 
-		// Source Web Console.
-		case "sourceconsole":
-			return SourceConsole;
+        case "sourceconsole":
+            return SourceConsole;
 
-		// Manga Paradise.
-		case "mangaparadise":
-			return MangaParadise;
+        case "mangaparadise":
+            return MangaParadise;
 
-		// Online Resume.
-		case "onlineresume":
-			return OnlineResume;
+        case "onlineresume":
+            return OnlineResume;
 
-		// Raven URL Shortener.
-		case "ravenshortener":
-			return RavenShortener;
+        case "ravenshortener":
+            return RavenShortener;
 
-		// Aucune image.
-		default:
-			return "";
-	}
+        default:
+            return "";
+    }
 };

@@ -1,52 +1,49 @@
 @use "colors";
 
-// Animation de chargement (cercle rotatif et texte de transition).
-// 	Source : https://web.dev/code-splitting-suspense/#suspending-multiple-components
+// https://web.dev/code-splitting-suspense/#suspending-multiple-components
 div.loading
 {
-	// Texte de transition au-dessus du cercle rotatif.
     top: 0;
-	gap: 1rem;
-	left: 0;
-	width: calc(100vw - 1rem);
-	height: calc(100vh - 1rem);
-	margin: 0.5rem;
-	z-index: 10;
-	display: flex;
-	position: absolute;
-	font-size: 2rem;
-	text-align: center;
-	font-weight: bold;
-	align-items: center;
-	flex-direction: column;
-	text-transform: uppercase;
-	justify-content: center;
+    gap: 1rem;
+    left: 0;
+    width: calc(100vw - 1rem);
+    height: calc(100vh - 1rem);
+    margin: 0.5rem;
+    z-index: 10;
+    display: flex;
+    position: absolute;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    align-items: center;
+    flex-direction: column;
+    text-transform: uppercase;
+    justify-content: center;
 
-	@include colors.themeColors()
-	{
-		background-color: colors.getThemedColor("background");
-	}
+    @include colors.themeColors()
+    {
+        background-color: colors.getThemedColor("background");
+    }
 
-	&::after
-	{
-		// Conteneur et animation du cercle rotatif.
-		width: 3rem;
-		height: 3rem;
-		content: "";
-		display: block;
-		animation: loader 1.2s linear infinite;
-		border-radius: 50%;
+    &::after
+    {
+        width: 3rem;
+        height: 3rem;
+        content: "";
+        display: block;
+        animation: loader 1.2s linear infinite;
+        border-radius: 50%;
 
-		@include colors.themeColors()
-		{
-			border: 5px solid colors.getThemedColor("primary");
-			border-color: colors.getThemedColor("primary") transparent colors.getThemedColor("primary") transparent;
-		}
-	}
+        @include colors.themeColors()
+        {
+            border: 5px solid colors.getThemedColor("primary");
+            border-color: colors.getThemedColor("primary") transparent colors.getThemedColor("primary") transparent;
+        }
+    }
 }
 
 @keyframes loader
 {
-	0% { transform: rotate(0); }
-	100% { transform: rotate(360deg); }
+    0% { transform: rotate(0); }
+    100% { transform: rotate(360deg); }
 }

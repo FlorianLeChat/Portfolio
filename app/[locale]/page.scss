@@ -1,427 +1,366 @@
-// Importation de l'apparence globale du site.
 @use "styles/colors";
 @use "styles/globals";
 
 main > a
 {
-	// Lien vers le dépôt GitHub.
-	inset: 0 0 auto auto;
-	position: fixed;
-	clip-path: polygon(0 0, 100% 0, 100% 100%);
+    inset: 0 0 auto auto;
+    position: fixed;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
 
-	@media screen and (max-width: 640px)
-	{
-		// Suppression du logo GitHub sur les écrans
-		//  de petite taille.
-		display: none;
-	}
+    @media screen and (max-width: 640px)
+    {
+        display: none;
+    }
 
-	// Animation du logo GitHub.
-	&:hover path:nth-of-type(2)
-	{
-		// Effet de survol.
-		animation: octocat-wave 560ms ease-in-out;
+    &:hover path:nth-of-type(2)
+    {
+        animation: octocat-wave 560ms ease-in-out;
 
-		@media screen and (max-width: 640px)
-		{
-			// Désactivation de l'animation sur les
-			//  écrans de petite taille.
-			animation: none;
-		}
-	}
+        @media screen and (max-width: 640px)
+        {
+            animation: none;
+        }
+    }
 
-	svg
-	{
-		// Délimitation de la zone cliquable.
-		@include colors.themeColors()
-		{
-			fill: colors.getThemedColor("primary");
-			color: colors.getThemedColor("background");
-		}
+    svg
+    {
+        @include colors.themeColors()
+        {
+            fill: colors.getThemedColor("primary");
+            color: colors.getThemedColor("background");
+        }
 
-		path:nth-of-type(2)
-		{
-			// Bras du logo GitHub.
-			fill: currentColor;
-			transform-origin: 130px 106px
-		}
+        path:nth-of-type(2)
+        {
+            fill: currentColor;
+            transform-origin: 130px 106px
+        }
 
-		path:nth-of-type(3)
-		{
-			// Corps du logo GitHub.
-			fill: currentColor;
-		}
-	}
+        path:nth-of-type(3)
+        {
+            fill: currentColor;
+        }
+    }
 
-	@media screen and (max-width: 768px)
-	{
-		path:nth-of-type(2)
-		{
-			// Animation du logo GitHub au chargement
-			//  de la page sur les écrans de petite taille.
-			animation: octocat-wave 560ms ease-in-out;
-		}
-	}
+    @media screen and (max-width: 768px)
+    {
+        path:nth-of-type(2)
+        {
+            animation: octocat-wave 560ms ease-in-out;
+        }
+    }
 
-	@keyframes octocat-wave
-	{
-		0%, 100% { transform:rotate(0); }
-		20%, 60% { transform:rotate(-25deg); }
-		40%, 80% { transform:rotate(10deg); }
-	}
+    @keyframes octocat-wave
+    {
+        0%, 100% { transform:rotate(0); }
+        20%, 60% { transform:rotate(-25deg); }
+        40%, 80% { transform:rotate(10deg); }
+    }
 }
 
 section#about
 {
-	// Informations sur le développeur.
-	margin-top: 6rem;
-	justify-content: space-between;
+    margin-top: 6rem;
+    justify-content: space-between;
 
-	@media screen and (max-width: 768px)
-	{
-		// Modification de l'apparence de la section sur les
-		//  écrans de petite taille.
-		padding-bottom: 1rem;
-		flex-direction: column;
-	}
+    @media screen and (max-width: 768px)
+    {
+        padding-bottom: 1rem;
+        flex-direction: column;
+    }
 
-	h1
-	{
-		// Phrase d'accroche.
-		display: flex;
-		flex-basis: 50%;
-		flex-direction: column;
+    h1
+    {
+        display: flex;
+        flex-basis: 50%;
+        flex-direction: column;
 
-		@media screen and (max-width: 768px)
-		{
-			// Réduction de la taille de la police de caractères
-			//  sur les écrans de petite taille.
-			width: 100%;
-			text-align: center;
-			font-size: 4rem;
-		}
+        @media screen and (max-width: 768px)
+        {
+            width: 100%;
+            text-align: center;
+            font-size: 4rem;
+        }
 
-		@media screen and (max-width: 384px)
-		{
-			// Réduction de la taille de la police de caractères
-			//  sur les écrans de très petite taille.
-			font-size: 3rem;
-		}
+        @media screen and (max-width: 384px)
+        {
+            font-size: 3rem;
+        }
 
-		span
-		{
-			// Prénom et nom du développeur.
-			@include colors.themeColors()
-			{
-				color: colors.getThemedColor("primary");
-			}
-		}
-	}
+        span
+        {
+            @include colors.themeColors()
+            {
+                color: colors.getThemedColor("primary");
+            }
+        }
+    }
 
-	article
-	{
-		// Conteneur du résumé.
-		flex-basis: 40%;
+    article
+    {
+        flex-basis: 40%;
 
-		@media screen and (max-width: 768px)
-		{
-			// Modification des marges extérieures sur les
-			//  écrans de petite taille.
-			width: 100%;
-			text-align: center;
-			margin-top: 2.5rem;
-		}
+        @media screen and (max-width: 768px)
+        {
+            width: 100%;
+            text-align: center;
+            margin-top: 2.5rem;
+        }
 
-		p
-		{
-			// Résumé du développeur.
-			margin: 0;
-			font-size: 1.15rem;
-		}
+        p
+        {
+            margin: 0;
+            font-size: 1.15rem;
+        }
 
-		button
-		{
-			// Bouton de téléchargement du CV.
-			margin-top: 2rem;
-		}
-	}
+        button
+        {
+            margin-top: 2rem;
+        }
+    }
 }
 
 section#projects > ul
 {
-	// Conteneur des projets.
-	overflow-x: auto;
-	max-height: 28rem;
+    overflow-x: auto;
+    max-height: 28rem;
 
-	> li
-	{
-		// Conteneur d'un projet quelconque.
-		width: 95%;
-		margin: 2rem auto;
-		padding: 2rem;
-		display: flex;
-		max-width: 1024px;
-		text-align: center;
-		align-items: center;
-		border-radius: 1rem;
-		justify-content: space-between;
+    > li
+    {
+        width: 95%;
+        margin: 2rem auto;
+        padding: 2rem;
+        display: flex;
+        max-width: 1024px;
+        text-align: center;
+        align-items: center;
+        border-radius: 1rem;
+        justify-content: space-between;
 
-		@include colors.themeColors()
-		{
-			box-shadow: colors.getThemedColor("container-shadow");
-			background-color: colors.getThemedColor("background-alt");
-		}
+        @include colors.themeColors()
+        {
+            box-shadow: colors.getThemedColor("container-shadow");
+            background-color: colors.getThemedColor("background-alt");
+        }
 
-		@media screen and (max-width: 1024px)
-		{
-			// Réduction de l'apparence du conteneur sur les
-			//  écrans de taille moyenne.
-			padding: 1.5rem;
-			max-width: 450px;
-			flex-direction: column;
-		}
+        @media screen and (max-width: 1024px)
+        {
+            padding: 1.5rem;
+            max-width: 450px;
+            flex-direction: column;
+        }
 
-		&:first-of-type
-		{
-			// Premier projet.
-			margin-top: 0;
-		}
+        &:first-of-type
+        {
+            margin-top: 0;
+        }
 
-		&:last-of-type
-		{
-			// Dernier projet.
-			margin-bottom: 0;
-		}
+        &:last-of-type
+        {
+            margin-bottom: 0;
+        }
 
-		> h2
-		{
-			// Titre de la section.
-			@media screen and (max-width: 768px)
-			{
-				// Modification des marges du titre sur les
-				//  écrans de petite taille.
-				margin-bottom: 0;
-			}
-		}
+        > h2
+        {
+            @media screen and (max-width: 768px)
+            {
+                margin-bottom: 0;
+            }
+        }
 
-		img
-		{
-			// Image de présentation du projet.
-			cursor: pointer;
-			max-width: 450px;
-			max-height: 375px;
-			border-radius: 0.5rem;
+        img
+        {
+            cursor: pointer;
+            max-width: 450px;
+            max-height: 375px;
+            border-radius: 0.5rem;
 
-			@include colors.themeColors()
-			{
-				border: 1px solid colors.getThemedColor("foreground");
-			}
+            @include colors.themeColors()
+            {
+                border: 1px solid colors.getThemedColor("foreground");
+            }
 
-			@media screen and (max-width: 1024px)
-			{
-				// Réduction des dimensions de l'image sur les
-				//  écrans de taille moyenne.
-				margin: 0 auto;
-				max-width: 100%;
-				max-height: 100%;
-				margin-bottom: 2rem;
-			}
-		}
+            @media screen and (max-width: 1024px)
+            {
+                margin: 0 auto;
+                max-width: 100%;
+                max-height: 100%;
+                margin-bottom: 2rem;
+            }
+        }
 
-		div
-		{
-			// Conteneur des informations du projet.
-			flex-basis: 50%;
-			margin-left: 2rem;
+        div
+        {
+            flex-basis: 50%;
+            margin-left: 2rem;
 
-			@media screen and (max-width: 1024px)
-			{
-				// Réduction de l'apparence du conteneur sur les
-				//  écrans de taille moyenne.
-				padding: 0;
-				margin-left: 0;
-			}
+            @media screen and (max-width: 1024px)
+            {
+                padding: 0;
+                margin-left: 0;
+            }
 
-			p
-			{
-				// Description du projet.
-				margin: 1.25rem 0;
-			}
+            p
+            {
+                margin: 1.25rem 0;
+            }
 
-			ul
-			{
-				// Informations générales du projet.
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-				justify-content: center;
+            ul
+            {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
 
-				&:first-of-type
-				{
-					// Technologies utilisées.
-					margin: 0 auto;
+                &:first-of-type
+                {
+                    margin: 0 auto;
 
-					@media screen and (max-width: 768px)
-					{
-						// Disparition de la liste sur les écrans
-						//  de petite taille.
-						display: none;
-					}
+                    @media screen and (max-width: 768px)
+                    {
+                        display: none;
+                    }
 
-					li
-					{
-						// Conteneur de chaque technologie.
-						margin: 0.25rem 0.25rem;
-						padding: 0.5rem 0.5rem;
-						font-size: 0.85rem;
-						font-weight: 700;
-						border-radius: 5rem;
+                    li
+                    {
+                        margin: 0.25rem 0.25rem;
+                        padding: 0.5rem 0.5rem;
+                        font-size: 0.85rem;
+                        font-weight: 700;
+                        border-radius: 5rem;
 
-						@include colors.themeColors()
-						{
-							color: colors.getThemedColor("primary");
-							background-color: colors.getThemedColor("primary-light");
-						}
-					}
-				}
+                        @include colors.themeColors()
+                        {
+                            color: colors.getThemedColor("primary");
+                            background-color: colors.getThemedColor("primary-light");
+                        }
+                    }
+                }
 
-				&:last-of-type
-				{
-					// Liens vers le code source.
-					margin-top: 1.25rem;
+                &:last-of-type
+                {
+                    margin-top: 1.25rem;
 
-					svg
-					{
-						// Icône de chaque lien.
-						width: 1.5rem;
-						height: 1.5rem;
-						padding: 0.5rem;
-						border-radius: 50%;
+                    svg
+                    {
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        padding: 0.5rem;
+                        border-radius: 50%;
 
-						@include colors.themeColors()
-						{
-							border: 0.2rem solid colors.getThemedColor("primary");
-						}
+                        @include colors.themeColors()
+                        {
+                            border: 0.2rem solid colors.getThemedColor("primary");
+                        }
 
-						&:not(:hover)
-						{
-							// État initial de l'icône (sans effet)
-							@include colors.themeColors()
-							{
-								color: colors.getThemedColor("primary");
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                        &:not(:hover)
+                        {
+                            @include colors.themeColors()
+                            {
+                                color: colors.getThemedColor("primary");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 section#skills ul
 {
-	// Conteneur des compétences.
-	gap: 1rem;
-	margin: 0 auto;
-	display: flex;
-	flex-wrap: wrap;
-	overflow-x: auto;
+    gap: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-x: auto;
     max-height: 19.5rem;
-	align-items: center;
-	padding-bottom: 0.5rem;
-	justify-content: center;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    justify-content: center;
 
-	&:first-of-type
-	{
-		// Conteneur des options de tri.
-		margin: 0 1rem 3rem 1rem;
+    &:first-of-type
+    {
+        margin: 0 1rem 3rem 1rem;
 
-		// Couleur de fond des options de tri.
-		input[type = radio]
-		{
-			margin-right: 0.75rem;
-			vertical-align: middle;
+        input[type = radio]
+        {
+            margin-right: 0.75rem;
+            vertical-align: middle;
 
-			@include colors.themeColors()
-			{
-				accent-color: colors.getThemedColor("primary");
-			}
-		}
-	}
+            @include colors.themeColors()
+            {
+                accent-color: colors.getThemedColor("primary");
+            }
+        }
+    }
 
-	&:last-of-type li
-	{
-		// Conteneur de chaque compétence.
-		gap: 0.5rem;
-		width: 9rem;
-		height: 9rem;
-		display: flex;
-		overflow: hidden;
-		position: relative;
-		font-size: 0.85rem;
-		font-weight: 500;
-		align-items: center;
-		border-radius: 1.5rem;
-		flex-direction: column;
-		justify-content: center;
+    &:last-of-type li
+    {
+        gap: 0.5rem;
+        width: 9rem;
+        height: 9rem;
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        font-size: 0.85rem;
+        font-weight: 500;
+        align-items: center;
+        border-radius: 1.5rem;
+        flex-direction: column;
+        justify-content: center;
 
-		@include colors.themeColors()
-		{
-			box-shadow: colors.getThemedColor("container-shadow");
-			background-color: colors.getThemedColor("background-alt");
-		}
+        @include colors.themeColors()
+        {
+            box-shadow: colors.getThemedColor("container-shadow");
+            background-color: colors.getThemedColor("background-alt");
+        }
 
-		i
-		{
-			// Icônes des compétences.
-			font-size: 3rem;
-			margin-bottom: 0.25rem;
-		}
+        i
+        {
+            font-size: 3rem;
+            margin-bottom: 0.25rem;
+        }
 
-		&::before
-		{
-			// État initial de l'animation.
-			inset: auto 0 0;
-			width: 100%;
-			height: 6px;
-			content: "";
-			position: absolute;
-			transform: scaleX(0);
-			transition: transform 200ms linear;
+        &::before
+        {
+            inset: auto 0 0;
+            width: 100%;
+            height: 6px;
+            content: "";
+            position: absolute;
+            transform: scaleX(0);
+            transition: transform 200ms linear;
 
-			@include colors.themeColors()
-			{
-				background-color: colors.getThemedColor("primary-alt");
-			}
-		}
+            @include colors.themeColors()
+            {
+                background-color: colors.getThemedColor("primary-alt");
+            }
+        }
 
-		&:hover::before
-		{
-			// Animation de survol.
-			transform: scaleX(1);
-		}
-	}
+        &:hover::before
+        {
+            transform: scaleX(1);
+        }
+    }
 }
 
 section#contact ul
 {
-	// Liens vers les réseaux sociaux.
-	flex-wrap: wrap;
-	justify-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
 
-	button, a
-	{
-		// Boutons vers les réseaux sociaux.
-		gap: 0.5rem;
-		display: flex;
-		margin-top: 0.3rem;
-		align-items: center;
-		margin-right: 0.5rem;
+    button, a
+    {
+        gap: 0.5rem;
+        display: flex;
+        margin-top: 0.3rem;
+        align-items: center;
+        margin-right: 0.5rem;
 
-		svg
-		{
-			// Icônes des réseaux sociaux.
-			height: 1rem;
-		}
-	}
+        svg
+        {
+            height: 1rem;
+        }
+    }
 }

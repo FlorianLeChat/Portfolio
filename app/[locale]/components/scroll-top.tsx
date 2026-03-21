@@ -1,7 +1,3 @@
-//
-// Composant de retour en haut de page du site.
-//
-
 "use client";
 
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
@@ -11,40 +7,34 @@ import { useEffect, useState } from "react";
 
 export default function ScrollTop()
 {
-	// Déclaration des variables d'état.
-	const messages = useTranslations( "landing" );
-	const [ showButton, setShowButton ] = useState( false );
+    const messages = useTranslations( "landing" );
+    const [ showButton, setShowButton ] = useState( false );
 
-	// Remontée en haut de la page.
-	const scrollToTop = () => window.scrollTo( { top: 0, behavior: "smooth" } );
+    const scrollToTop = () => window.scrollTo( { top: 0, behavior: "smooth" } );
+    const onScroll = () => setShowButton( window.scrollY > 200 );
 
-	// Affichage ou disparition du bouton de remontée en haut de page.
-	const onScroll = () => setShowButton( window.scrollY > 200 );
+    // https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
+    useEffect( () =>
+    {
+        onScroll();
 
-	// Détection du défilement de la page.
-	//  Source : https://github.com/vercel/next.js/issues/6132#issuecomment-790623507
-	useEffect( () =>
-	{
-		onScroll();
+        window.addEventListener( "scroll", onScroll );
 
-		window.addEventListener( "scroll", onScroll );
+        return () => window.removeEventListener( "scroll", onScroll );
+    }, [] );
 
-		return () => window.removeEventListener( "scroll", onScroll );
-	}, [] );
-
-	// Affichage conditionnel du rendu HTML du composant.
-	return (
-		showButton && (
-			<aside>
-				<button
-					type="button"
-					title={messages( "scroll_top" )}
-					onClick={scrollToTop}
-					aria-label={messages( "scroll_top" )}
-				>
-					<FontAwesomeIcon icon={faArrowUp} />
-				</button>
-			</aside>
-		)
-	);
+    return (
+        showButton && (
+            <aside>
+                <button
+                    type="button"
+                    title={messages( "scroll_top" )}
+                    onClick={scrollToTop}
+                    aria-label={messages( "scroll_top" )}
+                >
+                    <FontAwesomeIcon icon={faArrowUp} />
+                </button>
+            </aside>
+        )
+    );
 }

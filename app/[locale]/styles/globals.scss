@@ -1,4 +1,3 @@
-// Importation des normalisateurs CSS.
 @use "sanitize.css/sanitize";
 @use "sanitize.css/forms";
 @use "sanitize.css/assets";
@@ -7,351 +6,307 @@
 @use "sanitize.css/ui-monospace";
 @use "sanitize.css/reduce-motion";
 
-// Importation des dépendances externes.
 @use "devicon/devicon.min";
 @use "@fortawesome/fontawesome-svg-core/styles";
 
-// Importation des variables de thème.
 @use "colors";
 
-// Importation des règles CSS des composants React.
 @use "header";
 @use "footer";
 @use "loading";
 @use "scroll-top";
 
-// Modifications globales.
 html
 {
-	// Document entier.
-	scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body
 {
-	// Corps de la page.
-	width: 95%;
-	cursor: auto;
-	margin: 0 auto;
-	max-width: 1024px;
-	transition: background-color 100ms linear;
-	line-height: 1.5;
-	font-family: var(--modern-font);
+    width: 95%;
+    cursor: auto;
+    margin: 0 auto;
+    max-width: 1024px;
+    transition: background-color 100ms linear;
+    line-height: 1.5;
+    font-family: var(--modern-font);
 
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("foreground");
-		background-color: colors.getThemedColor("background");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground");
+        background-color: colors.getThemedColor("background");
+    }
 
-	> p
-	{
-		// Texte pour les remerciements relatifs aux
-		//  traductions du site.
-		text-align: center;
-		font-weight: bold;
-	}
+    > p
+    {
+        text-align: center;
+        font-weight: bold;
+    }
 }
 
 h1, h2, h3, h4, h5, h6
 {
-	// Titres de niveau 1 à 6.
-	margin: 0;
-	line-height: 1.1;
+    margin: 0;
+    line-height: 1.1;
 
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("foreground-alt");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground-alt");
+    }
 }
 
 h1
 {
-	// Titre principal.
-	font-size: 5rem;
+    font-size: 5rem;
 }
 
 h2
 {
-	// Titre secondaire.
-	font-size: 2rem;
+    font-size: 2rem;
 }
 
 ul
 {
-	// Liste non ordonnée.
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
 
 a
 {
-	// Lien hypertexte.
-	text-decoration: none;
+    text-decoration: none;
 
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("primary");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("primary");
+    }
 }
 
 header button, section#about button, section#contact button, section#contact a
 {
-	// Bouton générique.
-	margin: 0;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	box-shadow: none;
-	box-sizing: border-box;
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
 }
 
 section#about button, section#contact button, section#contact a
 {
-	// Bouton comprenant un lien cliquable.
-	display: inline-block;
-	padding: 1rem 1.5rem;
-	font-size: 0.8rem;
-	transition: transform 200ms ease-in-out;
-	font-weight: 600;
-	border-radius: 5rem;
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    transition: transform 200ms ease-in-out;
+    font-weight: 600;
+    border-radius: 5rem;
 
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("background");
-		background-color: colors.getThemedColor("primary");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
 
-	&:hover
-	{
-		// Effet de survol.
-		@include colors.themeColors()
-		{
-			background-color: colors.getThemedColor("primary-alt");
-		}
-	}
+    &:hover
+    {
+        @include colors.themeColors()
+        {
+            background-color: colors.getThemedColor("primary-alt");
+        }
+    }
 
-	&:active
-	{
-		// Effet de maintien.
-		transform: translateY(-0.5rem);
-	}
+    &:active
+    {
+        transform: translateY(-0.5rem);
+    }
 }
 
 nav li
 {
-	// Élément de la barre de navigation.
-	margin: 0 0.5rem;
-	font-weight: 500;
+    margin: 0 0.5rem;
+    font-weight: 500;
 }
 
 main section
 {
-	// Conteneur des sections.
-	margin-top: 5rem;
+    margin-top: 5rem;
 
-	@media screen and (max-width: 768px)
-	{
-		// Réduction de la marge supérieure pour les
-		//  écrans de petite taille.
-		margin-top: 2.5rem;
-	}
+    @media screen and (max-width: 768px)
+    {
+        margin-top: 2.5rem;
+    }
 
-	> h2
-	{
-		// Titre des sections.
-		text-align: center;
-		padding-top: 0.5rem;
-		margin-bottom: 3rem;
-		text-transform: uppercase;
+    > h2
+    {
+        text-align: center;
+        padding-top: 0.5rem;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
 
-		@media screen and (max-width: 768px)
-		{
-			// Réduction de la taille du titre pour les
-			//  écrans de petite taille.
-			font-size: 1.5rem;
-		}
+        @media screen and (max-width: 768px)
+        {
+            font-size: 1.5rem;
+        }
 
-		&::after
-		{
-			// Barre de séparation en dessous du titre.
-			width: 4rem;
-			margin: 0.5rem auto 0 auto;
-			content: "";
-			display: block;
+        &::after
+        {
+            width: 4rem;
+            margin: 0.5rem auto 0 auto;
+            content: "";
+            display: block;
 
-			@include colors.themeColors()
-			{
-				border-bottom: 0.5rem solid colors.getThemedColor("primary");
-			}
-		}
-	}
+            @include colors.themeColors()
+            {
+                border-bottom: 0.5rem solid colors.getThemedColor("primary");
+            }
+        }
+    }
 }
 
 header, nav, nav ul, section#about, section#contact ul, footer
 {
-	// Conteneurs généraux.
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 header > a, header button, section#projects a
 {
-	// Boutons de la barre de navigation et de la section
-	//  à propos du développeur.
-	margin: 0.5rem;
-	z-index: 1;
-	display: flex;
-	position: relative;
-	align-items: center;
-	border-radius: 50%;
-	justify-content: center;
+    margin: 0.5rem;
+    z-index: 1;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
 
-	&::after
-	{
-		// Arrière-plan de l'icône.
-		width: 0;
-		height: 0;
-		z-index: -1;
-		content: "";
-		position: absolute;
-		border-radius: 50%;
-		transition-duration: 250ms;
-		transition-property: width, height, border;
-		transition-timing-function: ease-in-out;
+    &::after
+    {
+        width: 0;
+        height: 0;
+        z-index: -1;
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        transition-duration: 250ms;
+        transition-property: width, height, border;
+        transition-timing-function: ease-in-out;
 
-		@include colors.themeColors()
-		{
-			background-color: colors.getThemedColor("primary");
-		}
-	}
+        @include colors.themeColors()
+        {
+            background-color: colors.getThemedColor("primary");
+        }
+    }
 
-	@media (hover: hover) and (pointer: fine)
-	{
-		// Animation de survol de l'icône sur les écrans
-		//  à pointeur (souris).
-		&:hover, &:hover svg
-		{
-			@include colors.themeColors()
-			{
-				color: colors.getThemedColor("background");
-			}
-		}
+    @media (hover: hover) and (pointer: fine)
+    {
+        &:hover, &:hover svg
+        {
+            @include colors.themeColors()
+            {
+                color: colors.getThemedColor("background");
+            }
+        }
 
-		&:hover::after
-		{
-			width: 100%;
-			height: 100%;
+        &:hover::after
+        {
+            width: 100%;
+            height: 100%;
 
-			@include colors.themeColors()
-			{
-				border: 0.25rem solid colors.getThemedColor("primary");
-			}
-		}
-	}
+            @include colors.themeColors()
+            {
+                border: 0.25rem solid colors.getThemedColor("primary");
+            }
+        }
+    }
 }
 
 ::selection
 {
-	// Sélection des textes.
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("background");
-		background-color: colors.getThemedColor("primary");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
 }
 
-// Personnalisation de SweetAlert2.
+// https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
 .swal2-shown > [aria-hidden]
 {
-	// Flou artistique en arrière-plan.
-	//  Source : https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
-	filter: blur(0.5rem);
-	transition: filter 100ms;
+    filter: blur(0.5rem);
+    transition: filter 100ms;
 }
 
 .swal2-validation-message
 {
-	// Message d'erreur.
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("foreground");
-		background-color: colors.getThemedColor("background-alt");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground");
+        background-color: colors.getThemedColor("background-alt");
+    }
 }
 
 .swal2-styled.swal2-confirm
 {
-	// Bouton de confirmation.
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("background");
-		background-color: colors.getThemedColor("primary");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
 
-	&:focus
-	{
-		// Effet de maintien.
-		@include colors.themeColors()
-		{
-			box-shadow: 0 0 0 3px rgba(colors.getThemedColor("primary"), 0.5);
-		}
-	}
+    &:focus
+    {
+        @include colors.themeColors()
+        {
+            box-shadow: 0 0 0 3px rgba(colors.getThemedColor("primary"), 0.5);
+        }
+    }
 }
 
 .swal2-modal
 {
-	// Respect des couleurs du thème.
-	@include colors.themeColors()
-	{
-		color: colors.getThemedColor("foreground");
-		border: 1px solid rgba(colors.getThemedColor("primary"), 0.5);
-		background-color: colors.getThemedColor("background");
-	}
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground");
+        border: 1px solid rgba(colors.getThemedColor("primary"), 0.5);
+        background-color: colors.getThemedColor("background");
+    }
 
-	.swal2-radio
-	{
-		// Boutons radio.
-		background: inherit;
-		justify-content: space-evenly;
-	}
+    .swal2-radio
+    {
+        background: inherit;
+        justify-content: space-evenly;
+    }
 }
 
-// Personnalisation de la barre de défilement.
-//  (Navigateurs WebKit uniquement : https://caniuse.com/css-scrollbar).
+// https://caniuse.com/css-scrollbar
 ::-webkit-scrollbar
 {
-	// Conteneur de la barre de défilement.
-	width: 1rem;
+    width: 1rem;
 }
 
 ::-webkit-scrollbar-track
 {
-	// Chemin de la barre de défilement.
-	@include colors.themeColors()
-	{
-		background-color: colors.getThemedColor("background-alt");
-	}
+    @include colors.themeColors()
+    {
+        background-color: colors.getThemedColor("background-alt");
+    }
 }
 
 ::-webkit-scrollbar-thumb
 {
-	// Boutons haut/bas de la barre de défilement.
-	border-radius: 0.5rem;
+    border-radius: 0.5rem;
 
-	@include colors.themeColors()
-	{
-		border: 0.25rem solid colors.getThemedColor("background");
-		background-color: colors.getThemedColor("primary");
-	}
+    @include colors.themeColors()
+    {
+        border: 0.25rem solid colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
 
-	&:hover
-	{
-		// Effet de survol.
-		@include colors.themeColors()
-		{
-			background-color: colors.getThemedColor("primary-alt");
-		}
-	}
+    &:hover
+    {
+        @include colors.themeColors()
+        {
+            background-color: colors.getThemedColor("primary-alt");
+        }
+    }
 }
