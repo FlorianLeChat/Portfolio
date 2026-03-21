@@ -1,7 +1,6 @@
 name: portfolio
 
 services:
-services:
     proxy:
         image: varnish:8-alpine
         restart: unless-stopped
@@ -41,9 +40,6 @@ services:
             - .env
         environment:
             PORT: 3000
-        depends_on:
-            database:
-                condition: service_healthy
         security_opt:
             - no-new-privileges=true
         healthcheck:
