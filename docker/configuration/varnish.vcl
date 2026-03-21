@@ -57,6 +57,12 @@ sub vcl_recv {
 	return (hash);
 }
 
+sub vcl_hash {
+    if (req.http.Accept-Language) {
+        hash_data(req.http.Accept-Language);
+    }
+}
+
 sub vcl_deliver {
     unset resp.http.X-Varnish;
 
