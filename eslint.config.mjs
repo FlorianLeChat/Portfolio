@@ -50,12 +50,6 @@ export default defineConfig(
                     props: false
                 }
             ],
-            "no-underscore-dangle": [
-                "error",
-                {
-                    allow: [ "__NEXT_ROUTER_BASEPATH" ]
-                }
-            ],
             "@stylistic/semi": [ "error", "always" ],
             "@stylistic/indent": [ "error", 4 ],
             "@stylistic/quotes": [ "error", "double" ],

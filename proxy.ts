@@ -17,9 +17,3 @@ export default async function proxy( request: NextRequest )
 export const config = {
     matcher: [ "/", "/((?!_next|_vercel|.*\\..*).*)" ]
 };
-
-if ( process.env.__NEXT_ROUTER_BASEPATH )
-{
-    // https://next-intl-docs.vercel.app/docs/routing/middleware#base-path
-    config.matcher.push( process.env.__NEXT_ROUTER_BASEPATH );
-}

@@ -3,7 +3,7 @@
 		"title": "Portfolio",
 		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "Docker"],
 		"repository": "https://github.com/FlorianLeChat/Portfolio",
-		"demo": "https://www.florian-dev.fr/portfolio/"
+		"demo": "https://www.florian-dev.fr/"
 	},
 	"filestorage": {
 		"title": "Simple File Storage",
