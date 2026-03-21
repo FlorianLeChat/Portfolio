@@ -28,7 +28,7 @@ function Theme( { children = null }: Readonly<ThemeProviderProps> )
 {
     const getCurrentTheme = ( key: string ) =>
     {
-        if ( typeof globalThis.window === "undefined" )
+        if ( globalThis.window === undefined )
         {
             return "light";
         }
@@ -38,7 +38,7 @@ function Theme( { children = null }: Readonly<ThemeProviderProps> )
 
     const getSystemTheme = ( event?: MediaQueryList | MediaQueryListEvent ) =>
     {
-        if ( typeof globalThis.window === "undefined" )
+        if ( globalThis.window === undefined )
         {
             return "light";
         }
@@ -91,7 +91,7 @@ function Theme( { children = null }: Readonly<ThemeProviderProps> )
 
     useEffect( () =>
     {
-        const media = globalThis.window.matchMedia( "(prefers-color-scheme: dark)" );
+        const media = globalThis.matchMedia( "(prefers-color-scheme: dark)" );
 
         media.addEventListener( "change", detectMedia );
 
@@ -100,9 +100,9 @@ function Theme( { children = null }: Readonly<ThemeProviderProps> )
 
     useEffect( () =>
     {
-        globalThis.window.addEventListener( "storage", detectStorage );
+        globalThis.addEventListener( "storage", detectStorage );
 
-        return () => globalThis.window.removeEventListener( "storage", detectStorage );
+        return () => globalThis.removeEventListener( "storage", detectStorage );
     }, [ detectStorage ] );
 
     const value = useMemo(
@@ -140,7 +140,7 @@ if (theme === "light" || theme === "dark")
 }
 else
 {
-    const target = globalThis.window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const target = globalThis.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
     classes.add(target);
 

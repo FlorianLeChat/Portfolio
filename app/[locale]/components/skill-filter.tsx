@@ -16,7 +16,7 @@ export default function SkillFilter( { skills }: Readonly<{ skills: SkillAttribu
         const url = new URLSearchParams( parameters );
         url.set( "filter", event.currentTarget.id );
 
-        window.history.pushState( null, "", `?${ url }` );
+        globalThis.history.pushState( null, "", `?${ url }` );
     };
 
     return (

@@ -1,9 +1,9 @@
 import "photoswipe/photoswipe.css";
 import "./page.scss";
 
-import { join } from "path";
+import { join } from "node:path";
 import { lazy } from "react";
-import { readFile } from "fs/promises";
+import { readFile } from "node:fs/promises";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 
 import type { SkillAttributes } from "@/interfaces/Skill";
