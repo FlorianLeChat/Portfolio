@@ -18,15 +18,7 @@ sub vcl_recv {
 
 	# https://varnish-cache.org/docs/4.0/users-guide/increasing-your-hitrate.html#cookies-from-the-client
 	if (req.http.Cookie) {
-		set req.http.Cookie = ";" + req.http.Cookie;
-		set req.http.Cookie = regsuball(req.http.Cookie, "; +", ";");
-		set req.http.Cookie = regsuball(req.http.Cookie, ";(NEXT_LOCALE)=", "; \1=");
-		set req.http.Cookie = regsuball(req.http.Cookie, ";[^ ][^;]*", "");
-		set req.http.Cookie = regsuball(req.http.Cookie, "^[; ]+|[; ]+$", "");
-
-		if (req.http.Cookie == "") {
-			unset req.http.Cookie;
-		}
+		unset req.http.Cookie;
 	}
 
 	# https://symfony.com/doc/current/http_cache/varnish.html#routing-and-x-forwarded-headers
@@ -65,13 +57,9 @@ sub vcl_recv {
 	return (hash);
 }
 
-sub vcl_hash {
-	if (req.http.Cookie ~ "NEXT_LOCALE=") {
-		hash_data(regsub(req.http.Cookie, ".*NEXT_LOCALE=([^;]*).*", "\1"));
-	}
-}
-
 sub vcl_deliver {
+    unset resp.http.X-Varnish;
+
 	if (obj.hits > 0) {
 		set resp.http.X-Cache = "HIT";
 	} else {
