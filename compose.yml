@@ -2,6 +2,7 @@ name: portfolio
 
 services:
     proxy:
+        init: true
         image: varnish:8-alpine
         restart: unless-stopped
         volumes:
@@ -30,6 +31,7 @@ services:
             - "${PORT:-80}:80"
 
     server:
+        init: true
         user: "${UID:-1000}:${GID:-1000}"
         image: registry.florian-dev.fr:443/floriantrayon/portfolio:${VERSION:-latest}
         restart: unless-stopped
@@ -54,5 +56,6 @@ services:
                     cpus: "1"
                     memory: 512M
         build:
+            target: production
             context: .
             dockerfile: ./docker/Dockerfile
