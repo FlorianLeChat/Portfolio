@@ -3,8 +3,8 @@
 FROM node:20-slim AS base
 
 RUN apt update && \
-	apt install -y tzdata wget && \
-    apt clean && rm -rf /var/lib/apt/lists/* \
+    apt install -y tzdata wget && \
+    apt clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
