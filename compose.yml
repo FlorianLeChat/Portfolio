@@ -38,8 +38,6 @@ services:
         command: npm run start
         cap_drop:
             - ALL
-        env_file:
-            - .env
         environment:
             PORT: 3000
         security_opt:
