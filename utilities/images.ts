@@ -5,6 +5,7 @@ import Homepage from "@/images/homepage.png";
 import Portfolio from "@/images/portfolio.png";
 import FileStorage from "@/images/filestorage.png";
 import OnlineResume from "@/images/onlineresume.png";
+import MagicAnswers from "@/images/magicanswers.png";
 import SourceConsole from "@/images/sourceconsole.png";
 import MangaParadise from "@/images/mangaparadise.png";
 import RavenShortener from "@/images/ravenshortener.png";
@@ -36,6 +37,9 @@ export const getImage = ( name: string ) =>
 
         case "onlineresume":
             return OnlineResume;
+
+        case "magicanswers":
+            return MagicAnswers;
 
         case "ravenshortener":
             return RavenShortener;

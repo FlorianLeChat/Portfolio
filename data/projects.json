@@ -1,54 +1,60 @@
 {
-	"portfolio": {
-		"title": "Portfolio",
-		"skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Portfolio",
-		"demo": "https://www.florian-dev.fr/"
-	},
-	"filestorage": {
-		"title": "Simple File Storage",
-		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
-		"demo": "https://files.florian-dev.fr/"
-	},
-	"sourceconsole": {
-		"title": "Source Web Console",
-		"skills": ["HTML", "SASS", "TypeScript", "jQuery", "PHP", "Symfony", "Twig", "Doctrine", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Source-Web-Console",
-		"demo": "https://console.florian-dev.fr/"
-	},
-	"mangaparadise": {
-		"title": "Manga Paradise",
-		"skills": ["HTML", "CSS", "JavaScript", "PHP", "Wordpress"],
-		"demo": "https://manga-paradise.fr/"
-	},
-	"homepage": {
-		"title": "Homepage",
-		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Homepage",
-		"demo": "https://pages.florian-dev.fr/floriantrayon/Homepage"
-	},
-	"ravenshortener": {
-		"title": "Raven Url Shortener",
-		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "PHP", "Symfony", "Doctrine", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Raven-Url-Shortener",
-		"demo": "https://url.florian-dev.fr/"
-	},
-	"onlineresume": {
-		"title": "Online Resume",
-		"skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/Online-Resume",
-		"demo": "https://pages.florian-dev.fr/floriantrayon/Online-Resume/"
-	},
-	"timeloop": {
-		"title": "TimeLoop",
-		"skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "Svelte", "Docker"],
-		"repository": "https://github.com/FlorianLeChat/TimeLoop",
-		"demo": "https://pages.florian-dev.fr/floriantrayon/TimeLoop/"
-	},
-	"blog": {
-		"title": "Blog",
-		"skills": ["HTML", "CSS", "JavaScript", "Jekyll", "Markdown"],
-		"demo": "https://blog.florian-dev.fr/"
-	}
+    "portfolio": {
+        "title": "Portfolio",
+        "skills": ["HTML", "SASS", "TypeScript", "NodeJS", "React", "NextJS", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Portfolio",
+        "demo": "https://www.florian-dev.fr/"
+    },
+    "filestorage": {
+        "title": "Simple File Storage",
+        "skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Simple-File-Storage",
+        "demo": "https://files.florian-dev.fr/"
+    },
+    "sourceconsole": {
+        "title": "Source Web Console",
+        "skills": ["HTML", "SASS", "TypeScript", "jQuery", "PHP", "Symfony", "Twig", "Doctrine", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Source-Web-Console",
+        "demo": "https://console.florian-dev.fr/"
+    },
+    "mangaparadise": {
+        "title": "Manga Paradise",
+        "skills": ["HTML", "CSS", "JavaScript", "PHP", "Wordpress"],
+        "demo": "https://manga-paradise.fr/"
+    },
+    "homepage": {
+        "title": "Homepage",
+        "skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Homepage",
+        "demo": "https://pages.florian-dev.fr/floriantrayon/Homepage"
+    },
+    "ravenshortener": {
+        "title": "Raven Url Shortener",
+        "skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "React", "NextJS", "PHP", "Symfony", "Doctrine", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Raven-Url-Shortener",
+        "demo": "https://url.florian-dev.fr/"
+    },
+    "onlineresume": {
+        "title": "Online Resume",
+        "skills": ["HTML", "CSS", "TypeScript", "NodeJS", "Svelte", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Online-Resume",
+        "demo": "https://pages.florian-dev.fr/floriantrayon/Online-Resume/"
+    },
+    "timeloop": {
+        "title": "TimeLoop",
+        "skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "Svelte", "Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/TimeLoop",
+        "demo": "https://pages.florian-dev.fr/floriantrayon/TimeLoop/"
+    },
+    "blog": {
+        "title": "Blog",
+        "skills": ["HTML", "CSS", "JavaScript", "Jekyll", "Markdown"],
+        "demo": "https://blog.florian-dev.fr/"
+    },
+    "magicanswers": {
+        "title": "Magic Answers",
+        "skills": ["HTML", "TailwindCSS", "TypeScript", "NodeJS", "SvelteKit" ,"Docker", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Magic-Answers",
+        "demo": "https://pages.florian-dev.fr/floriantrayon/Magic-Answers/"
+    }
 }

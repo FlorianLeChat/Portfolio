@@ -16,7 +16,8 @@
 		"ravenshortener": "An URL shortener designed to be easy to use, inherently secure and fully customizable, with a strong emphasis on privacy and a fully independent API.",
 		"onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters.",
 		"timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time.",
-		"blog": "A personal blog where I can share my thoughts, experiences and knowledge on various topics such as computer science and other areas that interest me. It is a space where I can express myself freely without format or subject constraints."
+		"blog": "A personal blog where I can share my thoughts, experiences and knowledge on various topics such as computer science and other areas that interest me. It is a space where I can express myself freely without format or subject constraints.",
+        "magicanswers": "A website, largely inspired by the book of the same name, that generates sufficiently vague answers to answer all the questions in the universe. It was designed with increased constraints of environmental sobriety, accessibility and privacy."
 	},
 	"landing": {
 		"scroll_top": "Scroll to top",
