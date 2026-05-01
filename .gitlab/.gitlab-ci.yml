@@ -14,7 +14,7 @@ default:
 
 lint:eslint:
     stage: lint
-    image: node:20-alpine
+    image: node:22-alpine
     before_script:
         - npm ci --cache .npm --prefer-offline
     script:
