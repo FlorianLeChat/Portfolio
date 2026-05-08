@@ -1,7 +1,10 @@
 ---
 -   hosts: proxmox
     vars:
-        application_path: "/var/www/florian-dev.fr/portfolio"
+        environments:
+            test: "/var/www/portfolio.test.florian-dev.fr"
+            production: "/var/www/florian-dev.fr/portfolio"
+        application_path: "{{ environments[deploy] }}"
     tasks:
         -   name: Installation des dépendances système
             apt:

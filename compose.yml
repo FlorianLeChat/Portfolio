@@ -1,4 +1,4 @@
-name: portfolio
+name: portfolio-${ENVIRONMENT:-production}
 
 services:
     proxy:
