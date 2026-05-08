@@ -36,6 +36,7 @@
         "filter_other": "Autres",
         "footer_legacy": "<a>Version classique</a>",
         "footer_madeby": "Conçu par <a>Florian Trayon 🐈</a>",
+        "footer_version": "Version déployée : {version}",
         "developer_firstname": "Florian",
         "developer_surname": "Trayon",
         "developer_description": "Je suis un développeur (junior) français full-stack de {age} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",

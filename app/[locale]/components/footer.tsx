@@ -35,6 +35,12 @@ export default async function Footer()
                     )
                 } )}
             </small>
+
+            <code>
+                {messages( "landing.footer_version", {
+                    version: process.env.NEXT_PUBLIC_VERSION ?? "0.0.1"
+                } )}
+            </code>
         </footer>
     );
 }

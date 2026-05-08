@@ -1,46 +1,47 @@
 {
-	"modals": {
-		"mailer_title": "Mailbox selection",
-		"mailer_description": "To send an email, you can choose between several mailboxes. Select your preferred one.",
-		"mailer_error": "You have to choose a mailbox.",
-		"mailer_google": "Gmail (Google)",
-		"mailer_default": "Default mailbox"
-	},
-	"projects":
-	{
-		"portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
-		"filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
-		"sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
-		"mangaparadise": "A showcase website designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The website was designed to replace their old website which was obsolete and was no longer maintained.",
-		"homepage": "A home page designed to look like a command terminal, serving as a gateway to my portfolio and providing links to my various personal projects. This website is obviously designed to be used on a computer and is not suitable for mobile devices.",
-		"ravenshortener": "An URL shortener designed to be easy to use, inherently secure and fully customizable, with a strong emphasis on privacy and a fully independent API.",
-		"onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters.",
-		"timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time.",
-		"blog": "A personal blog where I can share my thoughts, experiences and knowledge on various topics such as computer science and other areas that interest me. It is a space where I can express myself freely without format or subject constraints.",
+    "modals": {
+        "mailer_title": "Mailbox selection",
+        "mailer_description": "To send an email, you can choose between several mailboxes. Select your preferred one.",
+        "mailer_error": "You have to choose a mailbox.",
+        "mailer_google": "Gmail (Google)",
+        "mailer_default": "Default mailbox"
+    },
+    "projects":
+    {
+        "portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
+        "filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
+        "sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
+        "mangaparadise": "A showcase website designed voluntarily for the Manga Paradise association, an association of manga and Japanese culture enthusiasts. The website was designed to replace their old website which was obsolete and was no longer maintained.",
+        "homepage": "A home page designed to look like a command terminal, serving as a gateway to my portfolio and providing links to my various personal projects. This website is obviously designed to be used on a computer and is not suitable for mobile devices.",
+        "ravenshortener": "An URL shortener designed to be easy to use, inherently secure and fully customizable, with a strong emphasis on privacy and a fully independent API.",
+        "onlineresume": "An online resume designed to be dynamic, customizable and perfectly adaptable to all media, whatever the device or display format, in order to focus on essential information for recruiters.",
+        "timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time.",
+        "blog": "A personal blog where I can share my thoughts, experiences and knowledge on various topics such as computer science and other areas that interest me. It is a space where I can express myself freely without format or subject constraints.",
         "magicanswers": "A website, largely inspired by the book of the same name, that generates sufficiently vague answers to answer all the questions in the universe. It was designed with increased constraints of environmental sobriety, accessibility and privacy."
-	},
-	"landing": {
-		"scroll_top": "Scroll to top",
-		"header_projects": "Projects",
-		"header_skills": "Skills",
-		"header_contact": "Contact",
-		"header_blog": "Blog",
-		"header_theme": "Theme selection",
-		"header_navigation": "Navigation menu",
-		"project_source": "Source code",
-		"project_demo": "Demo",
-		"footer_mail": "Mail",
-		"filter_all": "All",
-		"filter_front": "Front-end",
-		"filter_back": "Back-end",
-		"filter_other": "Other",
-		"footer_legacy": "<a>Legacy version</a>",
-		"footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
-		"developer_firstname": "Florian",
-		"developer_surname": "Trayon",
-		"developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
-		"hello_title": "Hi. I am",
-		"access_resume": "Go to the online resume",
-		"japanese_credits": "✨ Proudly translated into Japanese by <a>Zélie Exposito</a> 🎌"
-	}
+    },
+    "landing": {
+        "scroll_top": "Scroll to top",
+        "header_projects": "Projects",
+        "header_skills": "Skills",
+        "header_contact": "Contact",
+        "header_blog": "Blog",
+        "header_theme": "Theme selection",
+        "header_navigation": "Navigation menu",
+        "project_source": "Source code",
+        "project_demo": "Demo",
+        "footer_mail": "Mail",
+        "filter_all": "All",
+        "filter_front": "Front-end",
+        "filter_back": "Back-end",
+        "filter_other": "Other",
+        "footer_legacy": "<a>Legacy version</a>",
+        "footer_madeby": "Created by <a>Florian Trayon 🐈</a>",
+        "footer_version": "Current version: {version}",
+        "developer_firstname": "Florian",
+        "developer_surname": "Trayon",
+        "developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
+        "hello_title": "Hi. I am",
+        "access_resume": "Go to the online resume",
+        "japanese_credits": "✨ Proudly translated into Japanese by <a>Zélie Exposito</a> 🎌"
+    }
 }
