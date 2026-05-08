@@ -44,8 +44,8 @@ build:project:
         - mv $ENV_FILE .env
         - echo "" >> .env
         - echo "PORT=$PORT" >> .env
-        - echo "RUNTIME=$RUNTIME" >> .env
         - echo "VERSION=${CI_COMMIT_TAG:-$CI_COMMIT_SHORT_SHA}" >> .env
+        - echo "ENVIRONMENT=$ENVIRONMENT" >> .env
     script:
         - mv docker/configuration/varnish.vcl varnish.vcl
         - zip -r project.zip .env compose.yml varnish.vcl
