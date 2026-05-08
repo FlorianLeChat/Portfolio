@@ -154,6 +154,6 @@ deploy:ansible:
         - ssh-keyscan -H 192.168.1.22 >> ~/.ssh/known_hosts
         - echo $ANSIBLE_VAULT_PASSWORD > .vault_password.txt
     script:
-        - ansible-playbook -i .gitlab/ansible/hosts.yml --vault-password-file .vault_password.txt .gitlab/ansible/deploy.yml -e "environment=$ENVIRONMENT"
+        - ansible-playbook -i .gitlab/ansible/hosts.yml --vault-password-file .vault_password.txt .gitlab/ansible/deploy.yml -e "deploy=$ENVIRONMENT"
     dependencies:
         - build:project
