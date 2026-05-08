@@ -1,4 +1,4 @@
-name: portfolio
+name: portfolio-${RUNTIME:-production}
 
 services:
     proxy:
