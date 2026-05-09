@@ -21,7 +21,7 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
     await expect( page.locator( "html" ) ).toHaveClass( /dark/ );
 } );
 
-test( "Navigation par l'en-tête", async ( { page, context, isMobile } ) =>
+test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 {
     if ( isMobile )
     {
@@ -37,7 +37,7 @@ test( "Navigation par l'en-tête", async ( { page, context, isMobile } ) =>
     await page.getByRole( "link", { name: "Contact" } ).click();
     await expect( page ).toHaveURL( "#contact" );
 
-    const blogPromise = context.waitForEvent( "page" );
+    const blogPromise = page.waitForEvent( "popup" );
     await page.getByRole( "link", { name: "Blog" } ).click();
 
     const blogPage = await blogPromise;
@@ -59,9 +59,9 @@ test( "Retour en haut de page", async ( { page, isMobile } ) =>
     expect( isAtTop ).toBeTruthy();
 } );
 
-test( "Disponibilité du C.V", async ( { page, context } ) =>
+test( "Disponibilité du C.V", async ( { page } ) =>
 {
-    const resumePromise = context.waitForEvent( "page" );
+    const resumePromise = page.waitForEvent( "popup" );
     await page.getByRole( "button", { name: "Go to the online resume" } ).click();
 
     const resumePage = await resumePromise;
