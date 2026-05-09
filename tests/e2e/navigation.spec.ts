@@ -9,23 +9,9 @@ test.beforeEach( async ( { page } ) =>
 test( "Vérification de certains contenus", async ( { page } ) =>
 {
     await expect( page ).toHaveTitle( "Florian Trayon - Portfolio" );
-
-    await expect(
-        page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } )
-    ).toBeVisible();
-
-    await expect( page.locator( "nav > ul a" ) ).toHaveText( [
-        "Projects",
-        "Skills",
-        "Contact",
-        "Blog"
-    ] );
-
-    await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [
-        "Mail",
-        "GitHub",
-        "LinkedIn"
-    ] );
+    await expect( page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } ) ).toBeVisible();
+    await expect( page.locator( "nav > ul a" ) ).toHaveText( [ "Projects", "Skills", "Contact", "Blog" ] );
+    await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [ "Mail", "GitHub", "LinkedIn" ] );
 } );
 
 test( "Basculement des thèmes de couleurs", async ( { page } ) =>
