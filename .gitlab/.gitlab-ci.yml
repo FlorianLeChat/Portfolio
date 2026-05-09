@@ -28,7 +28,7 @@ lint:eslint:
         expire_in: 1 hour
 
 test:e2e:
-    image: mcr.microsoft.com/playwright:v1.59.1-noble
+    image: node:22
     stage: test
     timeout: 15 minutes
     before_script:
