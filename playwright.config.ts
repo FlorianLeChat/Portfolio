@@ -1,25 +1,23 @@
 import { join } from "node:path";
-import { devices,
-    defineConfig,
-    type PlaywrightTestConfig } from "@playwright/test";
+import { devices, defineConfig, type PlaywrightTestConfig } from "@playwright/test";
 
 const port = process.env.PORT ?? 3000;
 const baseURL = `http://localhost:${ port }`;
 
 export default defineConfig( {
     use: {
-        trace: process.env.CI ? "off" : "retain-on-failure",
-        video: process.env.CI ? "off" : "retain-on-failure",
+        trace: "on-all-retries",
+        video: "on-first-retry",
         locale: "en-GB",
         baseURL,
         headless: !!process.env.CI,
-        screenshot: process.env.CI ? "off" : "only-on-failure"
+        screenshot: "only-on-failure"
     },
     expect: { timeout: 10000 },
     workers: 1,
     retries: process.env.CI ? 2 : 0,
     testDir: join( __dirname, "tests/e2e" ),
-    reporter: process.env.CI ? "github" : "html",
+    reporter: process.env.CI ? [ [ "list" ], [ "junit", { outputFile: "playwright-report.xml" } ] ] : "html",
     outputDir: "test-results/",
     webServer: {
         port,

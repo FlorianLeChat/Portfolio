@@ -1,5 +1,6 @@
 stages:
     - lint
+    - test
     - build
     - analyze
     - deploy
@@ -25,6 +26,27 @@ lint:eslint:
         reports:
             codequality: gl-codequality.json
         expire_in: 1 hour
+
+test:e2e:
+    image: node:22
+    stage: test
+    timeout: 15 minutes
+    before_script:
+        - npm ci --cache .npm --prefer-offline
+        - mv $ENV_FILE .env
+        - npm run build
+        - npx playwright install --with-deps
+    script:
+        - npm run test
+    artifacts:
+        when: always
+        paths:
+            - test-results/
+        access: developer
+        reports:
+            junit: playwright-report.xml
+        expire_in: 1 hour
+    dependencies: []
 
 build:project:
     stage: build
