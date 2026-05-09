@@ -33,7 +33,6 @@ test:e2e:
     timeout: 15 minutes
     before_script:
         - npm ci --cache .npm --prefer-offline
-        - mv $ENV_FILE .env
         - npm run build
         - npx playwright install --with-deps
     script:
