@@ -81,6 +81,7 @@ build:project:
             - project.zip
         access: none
         expire_in: 1 hour
+    dependencies: []
 
 build:docker:
     stage: build
