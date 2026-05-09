@@ -39,7 +39,9 @@ test:e2e:
     script:
         - npm run test
     artifacts:
-        when: always
+        paths:
+            - test-results/
+        access: developer
         reports:
             junit: playwright-report.xml
         expire_in: 1 hour
