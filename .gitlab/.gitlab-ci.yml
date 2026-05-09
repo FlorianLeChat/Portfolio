@@ -30,7 +30,7 @@ lint:eslint:
 test:e2e:
     image: node:22-slim
     stage: test
-    timeout: 30 minutes
+    timeout: 15 minutes
     before_script:
         - npm ci --cache .npm --prefer-offline
         - mv $ENV_FILE .env
