@@ -28,7 +28,7 @@ lint:eslint:
         expire_in: 1 hour
 
 test:e2e:
-    image: node:22-slim
+    image: mcr.microsoft.com/playwright:v1.59.1-noble
     stage: test
     timeout: 15 minutes
     before_script:
@@ -37,7 +37,7 @@ test:e2e:
         - npm run build
         - npx playwright install --with-deps
     script:
-        - npm run test
+        - DEBUG=pw:browser npx playwright test
     artifacts:
         when: always
         paths:
