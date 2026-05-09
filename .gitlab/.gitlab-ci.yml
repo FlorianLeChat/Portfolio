@@ -37,7 +37,7 @@ test:e2e:
         - npm run build
         - npx playwright install --with-deps
     script:
-        - DEBUG=pw:browser npx playwright test
+        - npm run test
     artifacts:
         when: always
         paths:
