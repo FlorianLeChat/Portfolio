@@ -39,6 +39,7 @@ test:e2e:
     script:
         - npm run test
     artifacts:
+        when: always
         paths:
             - test-results/
         access: developer
