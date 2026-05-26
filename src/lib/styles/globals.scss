@@ -217,6 +217,7 @@ header > a, header button, section#projects a
     }
 }
 
+// https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
 .swal2-shown > [aria-hidden]
 {
     filter: blur(0.5rem);
@@ -265,6 +266,7 @@ header > a, header button, section#projects a
     }
 }
 
+// https://caniuse.com/css-scrollbar
 ::-webkit-scrollbar
 {
     width: 1rem;

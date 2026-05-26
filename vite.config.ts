@@ -7,8 +7,8 @@ export default defineConfig( {
     plugins: [
         sveltekit(),
         paraglideVitePlugin( {
-            project: "./project.inlang",
-            outdir: "./src/lib/paraglide",
+            outdir: "./src/lib/locales",
+            project: "./locales/.inlang",
             strategy: [ "preferredLanguage", "baseLocale" ]
         } )
     ],
