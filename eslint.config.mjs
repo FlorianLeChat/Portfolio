@@ -98,7 +98,9 @@ export default defineConfig(
                     }
                 }
             ],
-            "@stylistic/computed-property-spacing": [ "error", "always" ]
+            "@stylistic/computed-property-spacing": [ "error", "always" ],
+
+            "@typescript-eslint/consistent-type-definitions": [ "error", "type" ]
         }
     }
 );
