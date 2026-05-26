@@ -1,16 +1,4 @@
-@use "sanitize.css/sanitize";
-@use "sanitize.css/forms";
-@use "sanitize.css/assets";
-@use "sanitize.css/system-ui";
-@use "sanitize.css/typography";
-@use "sanitize.css/ui-monospace";
-@use "sanitize.css/reduce-motion";
-
-@use "devicon/devicon.min";
-@use "@fortawesome/fontawesome-svg-core/styles";
-
 @use "colors";
-
 @use "header";
 @use "footer";
 @use "loading";
@@ -29,7 +17,7 @@ body
     max-width: 1024px;
     transition: background-color 100ms linear;
     line-height: 1.5;
-    font-family: var(--modern-font), sans-serif;
+    font-family: 'Poppins', sans-serif;
 
     @include colors.themeColors()
     {
@@ -229,7 +217,6 @@ header > a, header button, section#projects a
     }
 }
 
-// https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
 .swal2-shown > [aria-hidden]
 {
     filter: blur(0.5rem);
@@ -278,7 +265,6 @@ header > a, header button, section#projects a
     }
 }
 
-// https://caniuse.com/css-scrollbar
 ::-webkit-scrollbar
 {
     width: 1rem;
