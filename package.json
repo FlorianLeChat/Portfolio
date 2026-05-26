@@ -13,6 +13,7 @@
         "url": "https://github.com/FlorianLeChat/Portfolio/issues"
     },
     "devDependencies": {
+        "@types/canvas-confetti": "~1.9",
         "vite": "~8.0",
         "husky": "~9.1",
         "cspell": "~9.8",
