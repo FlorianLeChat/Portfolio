@@ -1,7 +1,7 @@
 import { join } from "node:path";
 import { devices, defineConfig, type PlaywrightTestConfig } from "@playwright/test";
 
-const port = process.env.PORT ?? 3000;
+const port = process.env.PORT ?? 4173;
 const baseURL = `http://localhost:${ port }`;
 
 export default defineConfig( {
@@ -21,7 +21,7 @@ export default defineConfig( {
     outputDir: "test-results/",
     webServer: {
         port,
-        command: "next start",
+        command: "npm run preview",
         reuseExistingServer: !process.env.CI
     },
     projects: [
