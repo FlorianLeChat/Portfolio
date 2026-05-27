@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { onMount } from "svelte";
     import * as m from "$lib/locales/messages";
+    import { onMount } from "svelte";
     import { themeStore } from "$lib/theme.svelte";
 
     let mounted = $state( false );
@@ -15,7 +15,7 @@
 
         const handleStorage = ( event: StorageEvent ) =>
         {
-            if ( event.key !== "NEXT_THEME" ) return;
+            if ( event.key !== "COLOR_SCHEME" ) return;
             if ( event.newValue === "light" || event.newValue === "dark" )
             {
                 themeStore.apply( event.newValue );
