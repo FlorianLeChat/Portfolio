@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="%paraglide.lang%" dir="%paraglide.dir%">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        <meta name="theme-color" content="#deaae6" />
+        <meta name="text-scale" content="scale" />
+        <meta name="description" content="📚 My personal portfolio website to highlight my skills and projects." />
+        <meta name="keywords" content="npm,portfolio,typescript,eslint,a11y,scss,prettier,svelte,husky,vite,playwright,sveltekit,inlang" />
+
+        <title>Florian Trayon - Portfolio</title>
+
+        <link rel="author" href="https://github.com/FlorianLeChat" />
+        <meta name="author" content="Florian Trayon" />
+
+        <meta property="og:title" content="Florian Trayon - Portfolio" />
+        <meta property="og:description" content="📚 My personal portfolio website to highlight my skills and projects." />
+        <meta property="og:url" content="https://github.com/FlorianLeChat/Magic-Answers" />
+        <meta property="og:image" content="https://opengraph.githubassets.com/8cef4801be783bba70585ffb0ba28398b174b956/FlorianLeChat/Portfolio" />
+        <meta property="og:type" content="website" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:creator" content="@FlorianTrayon" />
+        <meta name="twitter:title" content="Florian Trayon - Portfolio" />
+        <meta name="twitter:description" content="📚 My personal portfolio website to highlight my skills and projects." />
+        <meta name="twitter:image" content="https://opengraph.githubassets.com/8cef4801be783bba70585ffb0ba28398b174b956/FlorianLeChat/Portfolio" />
+
+        <script>
+            (function () {
+                const key = "COLOR_SCHEME";
+                const stored = localStorage.getItem(key);
+                const element = document.documentElement;
+
+                element.classList.remove("light", "dark");
+
+                if (stored === "light" || stored === "dark") {
+                    element.classList.add(stored);
+                } else {
+                    const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
+                    const target = isDark ? "dark" : "light";
+
+                    element.classList.add(target);
+
+                    localStorage.setItem(key, target);
+                }
+            })();
+        </script>
+
+        %sveltekit.head%
+    </head>
+
+    <body data-sveltekit-preload-data="hover" class="min-w-sm">
+        <div style="display: contents">
+            %sveltekit.body%
+        </div>
+    </body>
+</html>
