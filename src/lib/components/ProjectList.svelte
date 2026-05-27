@@ -1,50 +1,50 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
+    import { getImage } from "$lib/images";
     import type { Project } from "$lib/types/Project";
+    import { getDescription } from "$lib/descriptions";
+    import type PhotoSwipeLightbox from "photoswipe/lightbox";
 
     let { projects }: { projects: Record<string, Project> } = $props();
 
-    // Maps each project key to its Paraglide message function
-    const projectDescriptions: Record<string, () => string> = {
-        portfolio: m.projects_portfolio,
-        filestorage: m.projects_filestorage,
-        sourceconsole: m.projects_sourceconsole,
-        mangaparadise: m.projects_mangaparadise,
-        homepage: m.projects_homepage,
-        ravenshortener: m.projects_ravenshortener,
-        onlineresume: m.projects_onlineresume,
-        timeloop: m.projects_timeloop,
-        blog: m.projects_blog,
-        magicanswers: m.projects_magicanswers
-    };
-
-    onMount( async () =>
+    onMount( () =>
     {
-        const [ PhotoSwipeLightbox, { default: PhotoSwipe } ] = await Promise.all( [
-            import( "photoswipe/lightbox" ).then( ( mod ) => mod.default ),
-            import( "photoswipe" )
-        ] );
+        let lightbox: InstanceType<typeof PhotoSwipeLightbox>;
 
-        const lightbox = new PhotoSwipeLightbox( {
-            gallery: "#projects",
-            children: "img",
-            pswpModule: PhotoSwipe
-        } );
-
-        lightbox.addFilter( "itemData", ( itemData ) =>
+        const init = async () =>
         {
-            const element = itemData.element as HTMLImageElement;
-            return {
-                src: element?.src,
-                width: element?.naturalWidth,
-                height: element?.naturalHeight
-            };
-        } );
+            const [ PhotoSwipeLightbox, { default: PhotoSwipe } ] = await Promise.all( [
+                import( "photoswipe/lightbox" ).then( ( mod ) => mod.default ),
+                import( "photoswipe" )
+            ] );
 
-        lightbox.init();
+            lightbox = new PhotoSwipeLightbox( {
+                gallery: "#projects",
+                children: "img",
+                pswpModule: PhotoSwipe
+            } );
 
-        return () => lightbox.destroy();
+            lightbox.addFilter( "itemData", ( itemData ) =>
+            {
+                const element = itemData.element as HTMLImageElement;
+
+                return {
+                    src: element?.src,
+                    width: element?.naturalWidth,
+                    height: element?.naturalHeight
+                };
+            } );
+
+            lightbox.init();
+        };
+
+        init();
+
+        return () =>
+        {
+            lightbox?.destroy();
+        };
     } );
 </script>
 
@@ -54,12 +54,12 @@
     <ul>
         {#each Object.entries( projects ) as [ key, value ] ( key )}
             <li>
-                <img src="/assets/images/{key}.png" alt={value.title} loading="eager" />
+                <img src={getImage( key )} alt={value.title} />
 
                 <div>
                     <h3>{value.title}</h3>
 
-                    <p>{projectDescriptions[ key ]?.()}</p>
+                    <p>{getDescription( key )}</p>
 
                     <ul>
                         {#each value.skills as skill ( skill )}
