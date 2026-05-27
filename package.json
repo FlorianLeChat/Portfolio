@@ -43,11 +43,8 @@
         "eslint-formatter-gitlab": "~7.1",
         "@stylistic/eslint-plugin": "~5.10",
         "@sveltejs/adapter-static": "~3.0",
-        "@fortawesome/react-fontawesome": "~3.3",
-        "@commitlint/config-conventional": "~20.5",
-        "@fortawesome/fontawesome-svg-core": "~7.2",
-        "@fortawesome/free-solid-svg-icons": "~7.2",
-        "@fortawesome/free-brands-svg-icons": "~7.2"
+        "@fortawesome/fontawesome-free": "~7.2",
+        "@commitlint/config-conventional": "~20.5"
     },
     "engines": {
         "node": ">=24.0",
