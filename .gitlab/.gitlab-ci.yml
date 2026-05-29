@@ -3,6 +3,7 @@ stages:
     - test
     - build
     - analyze
+    - deploy
 
 default:
     cache:
@@ -102,3 +103,22 @@ analyze:secret-detection:
             secret_detection: gl-secret-detection-report.json
         expire_in: 1 hour
     dependencies: []
+
+deploy:pages:
+    stage: deploy
+    image: alpine:3
+    rules:
+        - if: $CI_COMMIT_TAG
+          when: on_success
+        - if: $CI_COMMIT_BRANCH
+          when: manual
+    pages:
+        publish: build
+    before_script: []
+    script:
+        - echo 'Deploy to GitLab Pages'
+    artifacts:
+        expire_in: 1 hour
+    dependencies:
+        - build:node
+    allow_failure: false
