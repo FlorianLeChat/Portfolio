@@ -1,7 +1,7 @@
 {
     "portfolio": {
         "title": "Portfolio",
-        "skills": ["HTML", "SASS", "TypeScript", "Node.js", "SvelteKit", "Docker", "ESLint", "Prettier"],
+        "skills": ["HTML", "SASS", "TypeScript", "Node.js", "SvelteKit", "ESLint", "Prettier"],
         "repository": "https://github.com/FlorianLeChat/Portfolio",
         "demo": "https://www.florian-dev.fr/"
     },
