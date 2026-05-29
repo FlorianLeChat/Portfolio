@@ -1,13 +1,13 @@
-import Blog from "$lib/images/blog.png";
-import TimeLoop from "$lib/images/timeloop.png";
-import Homepage from "$lib/images/homepage.png";
-import Portfolio from "$lib/images/portfolio.png";
-import FileStorage from "$lib/images/filestorage.png";
-import OnlineResume from "$lib/images/onlineresume.png";
-import MagicAnswers from "$lib/images/magicanswers.png";
-import SourceConsole from "$lib/images/sourceconsole.png";
-import MangaParadise from "$lib/images/mangaparadise.png";
-import RavenShortener from "$lib/images/ravenshortener.png";
+import Blog from "$lib/images/blog.webp";
+import TimeLoop from "$lib/images/timeloop.webp";
+import Homepage from "$lib/images/homepage.webp";
+import Portfolio from "$lib/images/portfolio.webp";
+import FileStorage from "$lib/images/filestorage.webp";
+import OnlineResume from "$lib/images/onlineresume.webp";
+import MagicAnswers from "$lib/images/magicanswers.webp";
+import SourceConsole from "$lib/images/sourceconsole.webp";
+import MangaParadise from "$lib/images/mangaparadise.webp";
+import RavenShortener from "$lib/images/ravenshortener.webp";
 
 export const getImage = ( name: string ) =>
 {
