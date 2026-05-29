@@ -54,7 +54,7 @@
     <ul>
         {#each Object.entries( projects ) as [ key, value ] ( key )}
             <li>
-                <img src={getImage( key )} alt={value.title} />
+                <img src={getImage( key )} alt={value.title} loading="lazy" />
 
                 <div>
                     <h3>{value.title}</h3>
