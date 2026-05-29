@@ -17,18 +17,13 @@ footer
         background-color: colors.getThemedColor("background-alt");
     }
 
-    > span a
-    {
-        margin-right: 0.25rem;
-    }
-
     > small:last-of-type
     {
         gap: 0.25rem;
         display: flex;
         align-items: center;
 
-        svg
+        i
         {
             font-size: 1.25rem;
         }

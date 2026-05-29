@@ -77,7 +77,7 @@
                                     target="_blank"
                                     aria-label={m.landing_project_source()}
                                 >
-                                    <i class="fas fa-code"></i>
+                                    <i class="fa-solid fa-code"></i>
                                 </a>
                             </li>
                         {/if}
@@ -91,7 +91,7 @@
                                     target="_blank"
                                     aria-label={m.landing_project_demo()}
                                 >
-                                    <i class="fas fa-external-link-alt"></i>
+                                    <i class="fa-solid fa-external-link-alt"></i>
                                 </a>
                             </li>
                         {/if}

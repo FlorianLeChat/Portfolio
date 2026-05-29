@@ -10,7 +10,9 @@
     import "sanitize.css/ui-monospace.css";
     import "sanitize.css/reduce-motion.css";
 
-    import "@fortawesome/fontawesome-free/css/all.css";
+    import "@fortawesome/fontawesome-free/css/solid.min.css";
+    import "@fortawesome/fontawesome-free/css/brands.min.css";
+    import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 
     import Header from "$lib/components/Header.svelte";
     import Footer from "$lib/components/Footer.svelte";

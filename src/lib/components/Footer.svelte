@@ -13,7 +13,7 @@
     </span>
 
     <small>
-        <i class="fas fa-php"></i>
+        <i class="fa-brands fa-php"></i>
 
         <a href="https://legacy.florian-dev.fr/portfolio/">
             {m.landing_footer_legacy()}

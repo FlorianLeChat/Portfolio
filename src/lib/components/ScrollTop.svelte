@@ -20,7 +20,7 @@
 {#if showButton}
     <aside>
         <button type="button" title={m.landing_scroll_top()} onclick={scrollToTop} aria-label={m.landing_scroll_top()}>
-            <i class="fas fa-arrow-up"></i>
+            <i class="fa-solid fa-arrow-up"></i>
         </button>
     </aside>
 {/if}

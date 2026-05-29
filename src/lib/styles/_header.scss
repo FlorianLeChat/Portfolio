@@ -114,12 +114,13 @@ header
         }
     }
 
-    svg[class *= fa]
+    i[class *= fa]
     {
         width: 1.75rem;
         height: 1.75rem;
         margin: 0.5rem;
-        vertical-align: middle;
+        font-size: 1.5rem;
+        padding-top: 2px;
 
         @include colors.themeColors()
         {

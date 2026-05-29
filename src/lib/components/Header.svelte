@@ -61,9 +61,9 @@
             aria-label={m.landing_header_theme()}
         >
             {#if isLightTheme}
-                <i class="fas fa-moon"></i>
+                <i class="fa-solid fa-moon"></i>
             {:else}
-                <i class="fas fa-sun"></i>
+                <i class="fa-solid fa-sun"></i>
             {/if}
         </button>
 
@@ -74,9 +74,9 @@
             aria-label={m.landing_header_navigation()}
         >
             {#if showMenu}
-                <i class="fas fa-times"></i>
+                <i class="fa-solid fa-times"></i>
             {:else}
-                <i class="fas fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             {/if}
         </button>
     </nav>

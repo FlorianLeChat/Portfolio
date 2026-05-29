@@ -181,10 +181,9 @@ section#projects > ul
 
             @media screen and (max-width: 1024px)
             {
-                margin: 0 auto;
+                margin: 0 auto 2rem;
                 max-width: 100%;
                 max-height: 100%;
-                margin-bottom: 2rem;
             }
         }
 
@@ -242,9 +241,10 @@ section#projects > ul
 
                     i
                     {
-                        width: 2.5rem;
-                        height: 2.5rem;
+                        width: 3rem;
+                        height: 3rem;
                         padding: 0.5rem;
+                        font-size: 1.5rem;
                         border-radius: 50%;
 
                         @include colors.themeColors()
@@ -284,7 +284,7 @@ section#skills ul
 
         input[type = radio]
         {
-            margin-right: 0.75rem;
+            margin-right: 0.5rem;
             vertical-align: middle;
 
             @include colors.themeColors()
@@ -351,15 +351,15 @@ section#contact ul
 
     button, a
     {
-        gap: 0.5rem;
+        gap: 0.25rem;
         display: flex;
         margin-top: 0.3rem;
         align-items: center;
         margin-right: 0.5rem;
 
-        svg
+        i
         {
-            height: 1rem;
+            font-size: 1rem;
         }
     }
 }

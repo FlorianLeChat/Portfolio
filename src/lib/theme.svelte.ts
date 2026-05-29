@@ -1,4 +1,4 @@
-const STORAGE_KEY = "NEXT_THEME";
+const STORAGE_KEY = "COLOR_SCHEME";
 
 class ThemeStore
 {

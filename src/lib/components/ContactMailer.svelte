@@ -37,21 +37,21 @@
     <ul>
         <li>
             <button type="button" onclick={sendMail}>
-                <i class="fas fa-envelope"></i>
+                <i class="fa-solid fa-envelope"></i>
                 {m.landing_footer_mail()}
             </button>
         </li>
 
         <li>
             <a rel="noopener noreferrer" href="https://github.com/FlorianLeChat" target="_blank">
-                <i class="fas fa-github"></i>
+                <i class="fa-brands fa-github"></i>
                 GitHub
             </a>
         </li>
 
         <li>
             <a rel="noopener noreferrer" href="https://www.linkedin.com/in/florian-trayon/" target="_blank">
-                <i class="fab fa-linkedin-in"></i>
+                <i class="fa-brands fa-linkedin-in"></i>
                 LinkedIn
             </a>
         </li>
