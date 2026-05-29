@@ -1,4 +1,3 @@
-import { join } from "node:path";
 import { devices, defineConfig, type PlaywrightTestConfig } from "@playwright/test";
 
 const port = process.env.PORT ?? 4173;
@@ -16,12 +15,12 @@ export default defineConfig( {
     expect: { timeout: 10000 },
     workers: 1,
     retries: process.env.CI ? 2 : 0,
-    testDir: join( __dirname, "tests/e2e" ),
+    testDir: "tests/e2e",
     reporter: process.env.CI ? [ [ "list" ], [ "junit", { outputFile: "playwright-report.xml" } ] ] : "html",
     outputDir: "test-results/",
     webServer: {
         port,
-        command: "npm run preview",
+        command: "vite preview",
         reuseExistingServer: !process.env.CI
     },
     projects: [
