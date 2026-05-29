@@ -10,11 +10,7 @@ const config = {
                 return config;
             }
         },
-        adapter: adapter(),
-        paths: {
-            // @ts-expect-error Needed for GitLab Pages generation.
-            base: process.argv.includes( "dev" ) ? "" : process.env.BASE_PATH
-        }
+        adapter: adapter()
     }
 };
 
