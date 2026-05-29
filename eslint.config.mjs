@@ -1,25 +1,20 @@
 import eslint from "@eslint/js";
 import tslint from "typescript-eslint";
 import globals from "globals";
-import jsxA11y from "eslint-plugin-jsx-a11y";
 import stylistic from "@stylistic/eslint-plugin";
+import sveltelint from "eslint-plugin-svelte";
+import svelteConfig from "./svelte.config.js";
 import { defineConfig } from "eslint/config";
 
 export default defineConfig(
     {
-        ignores: [ ".next/*", "next-env.d.ts" ]
+        ignores: [ "**/app.d.ts", ".svelte-kit/**", "build/**" ]
     },
     eslint.configs.recommended,
     tslint.configs.strict,
     tslint.configs.stylistic,
-    jsxA11y.flatConfigs.recommended,
     stylistic.configs.recommended,
-    {
-        files: [ "**/utilities/env.ts" ],
-        rules: {
-            "@typescript-eslint/no-empty-object-type": "off"
-        }
-    },
+    sveltelint.configs.recommended,
     {
         plugins: {
             "@stylistic": stylistic
@@ -30,7 +25,10 @@ export default defineConfig(
                 ...globals.browser
             },
             parserOptions: {
-                project: [ "./tsconfig.json" ]
+                parser: tslint.parser,
+                svelteConfig,
+                projectService: true,
+                extraFileExtensions: [ ".svelte" ]
             }
         },
         rules: {
@@ -50,6 +48,7 @@ export default defineConfig(
                     props: false
                 }
             ],
+
             "@stylistic/semi": [ "error", "always" ],
             "@stylistic/indent": [ "error", 4 ],
             "@stylistic/quotes": [ "error", "double" ],
@@ -73,7 +72,6 @@ export default defineConfig(
                     dynamicImports: "never"
                 }
             ],
-            "@stylistic/linebreak-style": [ "error", "unix" ],
             "@stylistic/object-curly-newline": [
                 "error",
                 {
@@ -84,14 +82,7 @@ export default defineConfig(
             ],
             "@stylistic/comma-style": [ "error", "last" ],
             "@stylistic/space-in-parens": [ "error", "always" ],
-            "@stylistic/jsx-indent-props": [ "error", "first" ],
-            "@stylistic/multiline-ternary": [
-                "error",
-                "always-multiline",
-                {
-                    ignoreJSX: true
-                }
-            ],
+            "@stylistic/linebreak-style": [ "error", "unix" ],
             "@stylistic/array-bracket-spacing": [ "error", "always" ],
             "@stylistic/template-curly-spacing": [ "error", "always" ],
             "@stylistic/member-delimiter-style": [
@@ -108,9 +99,8 @@ export default defineConfig(
                 }
             ],
             "@stylistic/computed-property-spacing": [ "error", "always" ],
-            "@stylistic/jsx-one-expression-per-line": "off",
 
-            "@typescript-eslint/no-empty-function": "off"
+            "@typescript-eslint/consistent-type-definitions": [ "error", "type" ]
         }
     }
 );

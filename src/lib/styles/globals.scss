@@ -1,0 +1,300 @@
+@use "colors";
+@use "fonts";
+@use "header";
+@use "footer";
+@use "scroll-top";
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+body
+{
+    width: 95%;
+    cursor: auto;
+    margin: 0 auto;
+    max-width: 1024px;
+    transition: background-color 100ms linear;
+    line-height: 1.5;
+    font-family: "Poppins", sans-serif;
+
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground");
+        background-color: colors.getThemedColor("background");
+    }
+
+    > p
+    {
+        text-align: center;
+        font-weight: bold;
+    }
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    margin: 0;
+    line-height: 1.1;
+
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground-alt");
+    }
+}
+
+h1
+{
+    font-size: 5rem;
+}
+
+h2
+{
+    font-size: 2rem;
+}
+
+ul
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a
+{
+    text-decoration: none;
+
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("primary");
+    }
+}
+
+header button, section#about button, section#contact button, section#contact a
+{
+    margin: 0;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+section#about button, section#contact button, section#contact a
+{
+    display: inline-block;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    transition: transform 200ms ease-in-out;
+    font-weight: 600;
+    border-radius: 5rem;
+
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
+
+    &:hover
+    {
+        @include colors.themeColors()
+        {
+            background-color: colors.getThemedColor("primary-alt");
+        }
+    }
+
+    &:active
+    {
+        transform: translateY(-0.5rem);
+    }
+}
+
+nav li
+{
+    margin: 0 0.5rem;
+    font-weight: 500;
+}
+
+main section
+{
+    margin-top: 5rem;
+
+    @media screen and (max-width: 768px)
+    {
+        margin-top: 2.5rem;
+    }
+
+    > h2
+    {
+        text-align: center;
+        padding-top: 0.5rem;
+        margin-bottom: 3rem;
+        text-transform: uppercase;
+
+        @media screen and (max-width: 768px)
+        {
+            font-size: 1.5rem;
+        }
+
+        &::after
+        {
+            width: 4rem;
+            margin: 0.5rem auto 0 auto;
+            content: "";
+            display: block;
+
+            @include colors.themeColors()
+            {
+                border-bottom: 0.5rem solid colors.getThemedColor("primary");
+            }
+        }
+    }
+}
+
+header, nav, nav ul, section#about, section#contact ul, footer
+{
+    display: flex;
+    align-items: center;
+}
+
+header > a, header button, section#projects a
+{
+    margin: 0.5rem;
+    z-index: 1;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border-radius: 50%;
+    justify-content: center;
+
+    &::after
+    {
+        width: 0;
+        height: 0;
+        z-index: -1;
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        transition-duration: 250ms;
+        transition-property: width, height, border;
+        transition-timing-function: ease-in-out;
+
+        @include colors.themeColors()
+        {
+            background-color: colors.getThemedColor("primary");
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine)
+    {
+        &:hover, &:hover i
+        {
+            @include colors.themeColors()
+            {
+                color: colors.getThemedColor("background");
+            }
+        }
+
+        &:hover::after
+        {
+            width: 100%;
+            height: 100%;
+
+            @include colors.themeColors()
+            {
+                border: 0.25rem solid colors.getThemedColor("primary");
+            }
+        }
+    }
+}
+
+::selection
+{
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
+}
+
+// https://sweetalert2.github.io/recipe-gallery/blurred-backdrop.html
+.swal2-shown > [aria-hidden]
+{
+    filter: blur(0.5rem);
+    transition: filter 100ms;
+}
+
+.swal2-validation-message
+{
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground");
+        background-color: colors.getThemedColor("background-alt");
+    }
+}
+
+.swal2-styled.swal2-confirm
+{
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
+
+    &:focus
+    {
+        @include colors.themeColors()
+        {
+            box-shadow: 0 0 0 3px rgba(colors.getThemedColor("primary"), 0.5);
+        }
+    }
+}
+
+.swal2-modal
+{
+    @include colors.themeColors()
+    {
+        color: colors.getThemedColor("foreground");
+        border: 1px solid rgba(colors.getThemedColor("primary"), 0.5);
+        background-color: colors.getThemedColor("background");
+    }
+
+    .swal2-radio
+    {
+        background: inherit;
+        justify-content: space-evenly;
+    }
+}
+
+// https://caniuse.com/css-scrollbar
+::-webkit-scrollbar
+{
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track
+{
+    @include colors.themeColors()
+    {
+        background-color: colors.getThemedColor("background-alt");
+    }
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 0.5rem;
+
+    @include colors.themeColors()
+    {
+        border: 0.25rem solid colors.getThemedColor("background");
+        background-color: colors.getThemedColor("primary");
+    }
+
+    &:hover
+    {
+        @include colors.themeColors()
+        {
+            background-color: colors.getThemedColor("primary-alt");
+        }
+    }
+}

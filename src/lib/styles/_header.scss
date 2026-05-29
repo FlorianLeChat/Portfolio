@@ -1,0 +1,140 @@
+@use "colors";
+
+header
+{
+    height: 6rem;
+    justify-content: space-between;
+
+    @media screen and (min-width: 640px) and (max-width: 768px)
+    {
+        margin-right: 3rem;
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1024px)
+    {
+        margin-right: 1rem;
+    }
+
+    > a
+    {
+        width: 3rem;
+        height: 3rem;
+        margin: 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-shadow: 0 0.25rem 0.125rem rgba(0, 0, 0, 0.2);
+
+        @include colors.themeColors()
+        {
+            color: colors.getThemedColor("primary");
+            border: 0.2rem solid colors.getThemedColor("primary");
+        }
+    }
+
+    ul
+    {
+        @media screen and (max-width: 768px)
+        {
+            width: 0;
+            inset: 5rem 0 0;
+            padding: 4rem 0;
+            position: absolute;
+            overflow: hidden;
+            transition: width 200ms ease-in-out;
+            flex-direction: column;
+
+            @include colors.themeColors()
+            {
+                background-color: colors.getThemedColor("background");
+            }
+
+            &[class = show]
+            {
+                width: 100%;
+            }
+        }
+
+        li
+        {
+            @media screen and (max-width: 768px)
+            {
+                margin: 0.5rem 0;
+            }
+
+            a
+            {
+                padding: 0 0 0.15rem 0;
+                position: relative;
+
+                @include colors.themeColors()
+                {
+                    color: colors.getThemedColor("foreground-alt");
+                }
+
+                @media (hover: hover) and (pointer: fine)
+                {
+                    &:hover
+                    {
+                        @include colors.themeColors()
+                        {
+                            color: colors.getThemedColor("primary");
+                        }
+
+                        &::before
+                        {
+                            width: 100%;
+                        }
+                    }
+
+                    &:active
+                    {
+                        @include colors.themeColors()
+                        {
+                            color: colors.getThemedColor("primary-alt");
+                        }
+                    }
+                }
+
+                &::before
+                {
+                    width: 0;
+                    bottom: 0;
+                    height: 0.15rem;
+                    display: inline;
+                    content: "";
+                    position: absolute;
+                    transition: width 200ms ease-out;
+
+                    @include colors.themeColors()
+                    {
+                        background-color: colors.getThemedColor("primary");
+                    }
+                }
+            }
+        }
+    }
+
+    i[class *= fa]
+    {
+        width: 1.75rem;
+        height: 1.75rem;
+        margin: 0.5rem;
+        font-size: 1.5rem;
+        padding-top: 2px;
+
+        @include colors.themeColors()
+        {
+            color: colors.getThemedColor("foreground-alt");
+        }
+
+        &[class *= fa-bars]
+        {
+            display: none;
+
+            @media screen and (max-width: 768px)
+            {
+                display: flex;
+            }
+        }
+    }
+}
