@@ -17,7 +17,7 @@ body
     max-width: 1024px;
     transition: background-color 100ms linear;
     line-height: 1.5;
-    font-family: "Poppins", sans-serif;
+    font-family: system-ui, sans-serif;
 
     @include colors.themeColors()
     {
