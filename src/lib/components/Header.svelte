@@ -60,11 +60,8 @@
             onclick={() => themeStore.apply( isLightTheme ? "dark" : "light" )}
             aria-label={m.landing_header_theme()}
         >
-            {#if isLightTheme}
-                <i class="fa-solid fa-moon"></i>
-            {:else}
-                <i class="fa-solid fa-sun"></i>
-            {/if}
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-sun"></i>
         </button>
 
         <button
@@ -81,3 +78,13 @@
         </button>
     </nav>
 </header>
+
+<style>
+    :global(html.dark) .fa-moon {
+        display: none;
+    }
+
+    :global(html:not(.dark)) .fa-sun {
+        display: none;
+    }
+</style>

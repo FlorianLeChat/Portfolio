@@ -18,13 +18,9 @@
     import Footer from "$lib/components/Footer.svelte";
     import { asset } from "$app/paths";
     import ScrollTop from "$lib/components/ScrollTop.svelte";
-    import { onMount } from "svelte";
     import BirthdayEffect from "$lib/components/BirthdayEffect.svelte";
-    import { themeStore } from "$lib/theme.svelte";
 
     let { children } = $props();
-
-    onMount( () => themeStore.init() );
 </script>
 
 <svelte:head>

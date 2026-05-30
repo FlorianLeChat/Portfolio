@@ -1,26 +1,17 @@
+import type { Theme } from "$lib/types/Theme";
+
 const STORAGE_KEY = "COLOR_SCHEME";
+
+const getInitialTheme = (): Theme =>
+{
+    if ( typeof document === "undefined" ) return "light";
+
+    return document.documentElement.classList.contains( "dark" ) ? "dark" : "light";
+};
 
 class ThemeStore
 {
-    value = $state<string>( "light" );
-
-    init()
-    {
-        if ( globalThis.window === undefined ) return;
-
-        const stored = localStorage.getItem( STORAGE_KEY );
-
-        if ( stored === "light" || stored === "dark" )
-        {
-            this.value = stored;
-        }
-        else
-        {
-            const isDark = globalThis.matchMedia( "(prefers-color-scheme: dark)" ).matches;
-
-            this.value = isDark ? "dark" : "light";
-        }
-    }
+    value = $state<Theme>( getInitialTheme() );
 
     apply( value: string )
     {
