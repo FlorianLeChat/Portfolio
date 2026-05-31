@@ -15,11 +15,6 @@
     const age = elapsed.getFullYear() - 1970;
 </script>
 
-<svelte:head>
-    <title>Florian Trayon - Portfolio</title>
-    <meta name="description" content="Portfolio of Florian Trayon, a french full-stack developer." />
-</svelte:head>
-
 <main>
     <!-- https://tholman.com/github-corners/ -->
     <a
