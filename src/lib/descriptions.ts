@@ -16,8 +16,8 @@ export const getDescription = ( name: string ) =>
         case "mangaparadise":
             return m.projects_mangaparadise();
 
-        case "homepage":
-            return m.projects_homepage();
+        case "terminalhomepage":
+            return m.projects_terminalhomepage();
 
         case "ravenshortener":
             return m.projects_ravenshortener();

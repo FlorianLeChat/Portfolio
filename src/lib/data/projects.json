@@ -22,11 +22,11 @@
         "skills": ["HTML", "CSS", "JavaScript", "PHP", "Wordpress"],
         "demo": "https://manga-paradise.fr/"
     },
-    "homepage": {
-        "title": "Homepage",
-        "skills": ["HTML", "CSS", "TypeScript", "Node.js", "Svelte", "ESLint", "Prettier"],
-        "repository": "https://github.com/FlorianLeChat/Homepage",
-        "demo": "https://pages.florian-dev.fr/floriantrayon/Homepage"
+    "terminalhomepage": {
+        "title": "Terminal Homepage",
+        "skills": ["HTML", "CSS", "TypeScript", "Node.js", "SvelteKit", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Terminal-Homepage",
+        "demo": "https://pages.florian-dev.fr/floriantrayon/Terminal-Homepage"
     },
     "ravenshortener": {
         "title": "Raven Url Shortener",
@@ -36,13 +36,13 @@
     },
     "onlineresume": {
         "title": "Online Resume",
-        "skills": ["HTML", "CSS", "TypeScript", "Node.js", "Svelte", "ESLint", "Prettier"],
+        "skills": ["HTML", "CSS", "TypeScript", "Node.js", "SvelteKit", "ESLint", "Prettier"],
         "repository": "https://github.com/FlorianLeChat/Online-Resume",
         "demo": "https://pages.florian-dev.fr/floriantrayon/Online-Resume/"
     },
     "timeloop": {
         "title": "TimeLoop",
-        "skills": ["HTML", "TailwindCSS", "TypeScript", "Node.js", "Svelte", "ESLint", "Prettier"],
+        "skills": ["HTML", "TailwindCSS", "TypeScript", "Node.js", "SvelteKit", "ESLint", "Prettier"],
         "repository": "https://github.com/FlorianLeChat/TimeLoop",
         "demo": "https://pages.florian-dev.fr/floriantrayon/TimeLoop/"
     },
