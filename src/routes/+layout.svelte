@@ -16,6 +16,7 @@
 
     import Header from "$lib/components/Header.svelte";
     import Footer from "$lib/components/Footer.svelte";
+    import { env } from "$env/dynamic/public";
     import { asset } from "$app/paths";
     import ScrollTop from "$lib/components/ScrollTop.svelte";
     import BirthdayEffect from "$lib/components/BirthdayEffect.svelte";
@@ -31,6 +32,18 @@
     <link rel="icon" href={asset( "/assets/favicons/512x512.webp" )} type="image/webp" sizes="512x512" />
     <link rel="apple-touch-icon" href={asset( "/assets/favicons/180x180.webp" )} type="image/webp" sizes="180x180" />
     <link rel="manifest" href={asset( "/manifest.webmanifest" )} crossorigin="use-credentials" />
+
+    {#if env.PUBLIC_ANALYTICS_ENABLED === "true"}
+        <script
+            src={env.PUBLIC_ANALYTICS_ENDPOINT}
+            defer
+            data-website-id={env.PUBLIC_ANALYTICS_PROJECT_ID}
+            data-performance="true"
+            data-do-not-track={env.PUBLIC_ANALYTICS_RESPECT_DNT}
+            data-exclude-hash="true"
+            data-exclude-search="true"
+        ></script>
+    {/if}
 </svelte:head>
 
 <Header />
