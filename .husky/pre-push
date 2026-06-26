@@ -1,2 +1,2 @@
 npm run build
-cspell locales/** --no-summary --no-progress --no-must-find-files
+npm run check-spell
