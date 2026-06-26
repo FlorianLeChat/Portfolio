@@ -2,7 +2,7 @@
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
     import { getImage } from "$lib/images";
-    import type { Project } from "$lib/types/Project";
+    import type { Project } from "$lib";
     import { getDescription } from "$lib/descriptions";
     import type PhotoSwipeLightbox from "photoswipe/lightbox";
 

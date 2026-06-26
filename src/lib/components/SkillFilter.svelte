@@ -1,6 +1,6 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
-    import type { Skill } from "$lib/types/Skill";
+    import type { Skill } from "$lib";
 
     let { skills }: { skills: Record<string, Skill> } = $props();
 
