@@ -1,4 +1,5 @@
 @use "colors";
+@use "fonts";
 @use "header";
 @use "footer";
 @use "scroll-top";
@@ -16,7 +17,7 @@ body
     max-width: 1024px;
     transition: background-color 100ms linear;
     line-height: 1.5;
-    font-family: system-ui, sans-serif;
+    font-family: "Poppins", sans-serif;
 
     @include colors.themeColors()
     {
