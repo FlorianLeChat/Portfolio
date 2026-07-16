@@ -56,5 +56,11 @@
         "skills": ["HTML", "TailwindCSS", "TypeScript", "Node.js", "SvelteKit", "ESLint", "Prettier"],
         "repository": "https://github.com/FlorianLeChat/Magic-Answers",
         "demo": "https://pages.florian-dev.fr/floriantrayon/Magic-Answers/"
+    },
+    "terminalstories": {
+        "title": "Terminal Stories",
+        "skills": ["HTML", "TailwindCSS", "TypeScript", "Node.js", "SvelteKit", "ESLint", "Prettier"],
+        "repository": "https://github.com/FlorianLeChat/Terminal-Stories",
+        "demo": "https://pages.florian-dev.fr/floriantrayon/Terminal-Stories/"
     }
 }

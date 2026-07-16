@@ -7,6 +7,7 @@ import MagicAnswers from "$lib/images/magicanswers.webp";
 import SourceConsole from "$lib/images/sourceconsole.webp";
 import MangaParadise from "$lib/images/mangaparadise.webp";
 import RavenShortener from "$lib/images/ravenshortener.webp";
+import TerminalStories from "$lib/images/terminalstories.webp";
 import TerminalHomepage from "$lib/images/terminalhomepage.webp";
 
 export const getImage = ( name: string ) =>
@@ -39,6 +40,9 @@ export const getImage = ( name: string ) =>
 
         case "ravenshortener":
             return RavenShortener;
+
+        case "terminalstories":
+            return TerminalStories;
 
         case "terminalhomepage":
             return TerminalHomepage;

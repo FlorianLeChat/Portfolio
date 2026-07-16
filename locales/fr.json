@@ -17,6 +17,7 @@
 	"projects_timeloop": "Un compte à rebours pour estimer le temps restant avant une date future, ou mesurer le temps écoulé depuis une date passée pour ne jamais oublier à quel point le temps file. Le site permet également de sélectionner des événements historiques marquants afin de mieux visualiser l'écoulement du temps.",
 	"projects_blog": "Un blog personnel où je peux partager mes réflexions, expériences et connaissances sur divers sujets comme l'informatique et à d'autres domaines qui me passionnent. C'est un espace où je peux m'exprimer librement sans contraintes de format ou de sujet.",
 	"projects_magicanswers": "Un site Internet, grandement inspiré du livre du même nom, permettant de générer des réponses suffisamment vagues pour répondre à toutes les questions de l'univers. Ce dernier a été conçu avec des contraintes accrues de sobriété environnementale, d'accessibilité et de confidentialité.",
+    "projects_terminalstories": "Un site Internet conçu pour raconter des histoires interactives dans un style de terminal de commande, permettant aux utilisateurs de vivre une expérience narrative unique et immersive. Le site met l'accent sur l'interactivité et l'engagement du lecteur à travers des choix et des actions qui influencent le déroulement de l'histoire.",
 
 	"landing_scroll_top": "Remonter en haut de la page",
 	"landing_header_projects": "Projets",
