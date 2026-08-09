@@ -27,24 +27,22 @@
         <meta name="twitter:image" content="https://opengraph.githubassets.com/8cef4801be783bba70585ffb0ba28398b174b956/FlorianLeChat/Portfolio" />
 
         <script>
-            (function () {
-                const key = "COLOR_SCHEME";
-                const stored = localStorage.getItem(key);
-                const element = document.documentElement;
+            const key = "portfolio:theme";
+            const stored = localStorage.getItem(key);
+            const element = document.documentElement;
 
-                element.classList.remove("light", "dark");
+            element.classList.remove("light", "dark");
 
-                if (stored === "light" || stored === "dark") {
-                    element.classList.add(stored);
-                } else {
-                    const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
-                    const target = isDark ? "dark" : "light";
+            if (stored === "light" || stored === "dark") {
+                element.classList.add(stored);
+            } else {
+                const isDark = matchMedia("(prefers-color-scheme: dark)").matches;
+                const target = isDark ? "dark" : "light";
 
-                    element.classList.add(target);
+                element.classList.add(target);
 
-                    localStorage.setItem(key, target);
-                }
-            })();
+                localStorage.setItem(key, target);
+            }
         </script>
 
         %sveltekit.head%
