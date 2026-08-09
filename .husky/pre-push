@@ -1,2 +1,2 @@
 npm run build
-npm run check-spell
+npm run check-spell -- --no-must-find-files
