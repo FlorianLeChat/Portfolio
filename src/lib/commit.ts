@@ -11,6 +11,7 @@ const GITLAB_USER = env.PUBLIC_GITLAB_USERNAME ?? "floriantrayon";
 const GITHUB_USER = env.PUBLIC_GITHUB_USERNAME ?? "FlorianLeChat";
 
 const TIMEOUT = 8_000;
+const PAGE_SIZE = 10;
 
 /// Fetches JSON, resolving to `null` instead of throwing.
 ///
@@ -52,10 +53,16 @@ const fetchGitLabCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
 
     if ( !user?.id ) return null;
 
-    const events = await readJson( fetch, `${ GITLAB_API }/api/v4/users/${ user.id }/events?action=pushed&per_page=1` );
-    const event = Array.isArray( events ) ? events[ 0 ] : null;
+    const events = await readJson( fetch, `${ GITLAB_API }/api/v4/users/${ user.id }/events?action=pushed&per_page=${ PAGE_SIZE }` );
 
-    if ( !event?.push_data?.commit_to || !event.project_id ) return null;
+    // `action=pushed` also covers branch creations and deletions, which carry a
+    // null `commit_to`. Deleting a branch right after merging it is routine, so
+    // reading a single event used to leave the card empty until the next push.
+    const event = Array.isArray( events )
+        ? events.find( ( entry ) => entry?.push_data?.commit_to && entry.project_id )
+        : null;
+
+    if ( !event ) return null;
 
     // Reading the commit rather than the project: the event only carries a
     // `commit_title` that GitLab truncates around seventy characters, whereas
@@ -78,9 +85,9 @@ const fetchGitLabCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
 
 /// Reads the most recent public push from GitHub.
 ///
-/// Unauthenticated requests are capped at 60 per hour per IP. At build time
-/// that is the CI runner and in the browser it is the visitor, so neither gets
-/// close.
+/// Unauthenticated requests are capped at 60 per hour per IP, and this costs
+/// two of them. At build time that IP is the CI runner and in the browser it is
+/// the visitor, so neither gets close.
 ///
 /// @param {typeof fetch} fetch - The `fetch` implementation to use.
 /// @return {Promise<Commit | null>} The latest push, or `null` when
@@ -92,18 +99,23 @@ const fetchGitHubCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
 
     if ( !Array.isArray( events ) ) return null;
 
-    const event = events.find( ( entry ) => entry.type === "PushEvent" && entry.payload?.commits?.length > 0 );
-    const repository = event?.repo?.name;
+    const event = events.find( ( entry ) => entry.type === "PushEvent" && entry.payload?.head && entry.repo?.name );
 
-    if ( !repository || !event.payload.head ) return null;
+    if ( !event ) return null;
 
-    const commits = event.payload.commits;
-    const last = commits[ commits.length - 1 ];
+    const repository = String( event.repo.name );
+    const head = String( event.payload.head );
+    const commit = ( await readJson(
+        fetch,
+        `https://api.github.com/repos/${ repository }/commits/${ head }`
+    ) ) as { commit?: { message?: string } } | null;
+
+    if ( !commit?.commit?.message ) return null;
 
     return {
-        url: `https://github.com/${ repository }/commit/${ event.payload.head }`,
+        url: `https://github.com/${ repository }/commit/${ head }`,
         date: new Date( event.created_at ).toISOString(),
-        title: String( last?.message ?? "" ).split( "\n" )[ 0 ],
+        title: String( commit.commit.message ).split( "\n" )[ 0 ],
         source: "github",
         project: String( repository ).split( "/" )[ 1 ] ?? String( repository )
     };
