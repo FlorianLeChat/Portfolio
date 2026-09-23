@@ -17,7 +17,7 @@
     padding: 0.75rem 1.5rem;
     font-size: 0.9rem;
     box-shadow: none;
-    transition: transform var(--duration) var(--ease), background-color var(--duration) var(--ease);
+    transition: transform var(--duration) var(--ease), color var(--duration) var(--ease), border-color var(--duration) var(--ease), background-color var(--duration) var(--ease);
     font-weight: 600;
     align-items: center;
     font-family: inherit;

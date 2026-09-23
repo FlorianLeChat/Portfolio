@@ -9,10 +9,7 @@
 <ul>
     {#each resolved as skill ( skill.name )}
         <li>
-            {#if skill.icon}
-                <i class="devicon-{skill.icon}" aria-hidden="true"></i>
-            {/if}
-
+            <skill.icon color={skill.color} aria-hidden="true" />
             {skill.name}
         </li>
     {/each}
@@ -29,11 +26,6 @@
         align-items: center;
         justify-content: center;
 
-        i
-        {
-            font-size: 1rem;
-        }
-
         li
         {
             gap: 0.5rem;
@@ -47,5 +39,11 @@
             border-radius: var(--radius-pill);
             background-color: colors.getThemedColor("background-alt");
         }
+    }
+
+    li > :global(svg)
+    {
+        width: 1rem;
+        height: 1rem;
     }
 </style>

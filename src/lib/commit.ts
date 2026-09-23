@@ -131,7 +131,7 @@ const loadLatestCommit = async ( fetch: typeof globalThis.fetch ): Promise<Commi
 
     if ( found.length === 0 ) return null;
 
-    return found.sort( ( a, b ) => Date.parse( b.date ) - Date.parse( a.date ) )[ 0 ];
+    return found.toSorted( ( a, b ) => Date.parse( b.date ) - Date.parse( a.date ) )[ 0 ];
 };
 
 /// Returns the most recent public commit, through the session cache.

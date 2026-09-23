@@ -4,6 +4,8 @@
     // scrolling list and the state of its two paging arrows.
     import * as m from "$lib/locales/messages";
     import { onMount, type Snippet } from "svelte";
+    import IconChevronLeft from "~icons/tabler/chevron-left";
+    import IconChevronRight from "~icons/tabler/chevron-right";
 
     let {
         children,
@@ -89,7 +91,7 @@
         onclick={() => move( -1 )}
         aria-label={m.landing_carousel_previous()}
     >
-        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+        <IconChevronLeft aria-hidden="true" />
     </button>
 
     <ul bind:this={scroller} onscroll={update} aria-label={label}>
@@ -103,7 +105,7 @@
         onclick={() => move( 1 )}
         aria-label={m.landing_carousel_next()}
     >
-        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+        <IconChevronRight aria-hidden="true" />
     </button>
 </div>
 

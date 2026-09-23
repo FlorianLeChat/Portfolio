@@ -1,7 +1,11 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
+    import IconX from "~icons/tabler/x";
     import { resolve } from "$app/paths";
+    import IconSun from "~icons/tabler/sun-filled";
+    import IconMoon from "~icons/tabler/moon-filled";
+    import IconMenu2 from "~icons/tabler/menu-2";
     import { themeStore, STORAGE_KEY } from "$lib/theme.svelte";
 
     let mounted = $state( false );
@@ -92,9 +96,9 @@
             aria-label={themeLabel}
         >
             {#if isLightTheme}
-                <i class="fa-solid fa-moon" aria-hidden="true"></i>
+                <IconMoon aria-hidden="true" />
             {:else}
-                <i class="fa-solid fa-sun" aria-hidden="true"></i>
+                <IconSun aria-hidden="true" />
             {/if}
         </button>
 
@@ -108,9 +112,9 @@
             aria-controls="navigation-menu"
         >
             {#if showMenu}
-                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                <IconX aria-hidden="true" />
             {:else}
-                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                <IconMenu2 aria-hidden="true" />
             {/if}
         </button>
     </nav>

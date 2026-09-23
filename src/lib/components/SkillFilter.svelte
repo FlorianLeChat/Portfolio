@@ -77,10 +77,7 @@
     <Carousel label={m.landing_carousel_skills()}>
         {#each visible as [ key, value ] ( key )}
             <li>
-                {#if value.icon}
-                    <i class="devicon-{value.icon}" aria-hidden="true"></i>
-                {/if}
-
+                <value.icon color={value.color} aria-hidden="true" />
                 {value.name}
             </li>
         {/each}
@@ -190,8 +187,9 @@
         }
     }
 
-    li i
+    li > :global(svg)
     {
-        font-size: 2.25rem;
+        width: 2.25rem;
+        height: 2.25rem;
     }
 </style>

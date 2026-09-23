@@ -1,15 +1,21 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
+    import IconGitBranch from "~icons/tabler/git-branch";
+    import IconGitlab from "~icons/simple-icons/gitlab";
+    import IconGithub from "~icons/simple-icons/github";
     import { getLocale } from "$lib/locales/runtime";
     import { fetchLatestCommit } from "$lib/commit";
-    import type { Commit } from "$lib/types/Commit";
+    import type { SkillIcon } from "$lib/types/Skill";
+    import type { Commit, CommitSource } from "$lib/types/Commit";
 
-    // Read on every visit rather than baked into the build, so the card never
-    // advertises stale activity. Nothing is rendered until the forges answer,
-    // which also covers the case where neither does.
     let commit = $state<Commit | null>( null );
     let settled = $state( false );
+
+    const SOURCE_ICONS: Record<CommitSource, SkillIcon> = {
+        gitlab: IconGitlab,
+        github: IconGithub
+    };
 
     const relative = new Intl.RelativeTimeFormat( getLocale(), { numeric: "auto" } );
 
@@ -54,9 +60,11 @@
 </script>
 
 {#if commit}
+    {@const SourceIcon = SOURCE_ICONS[ commit.source ]}
+
     <aside>
         <h2>
-            <i class="fa-solid fa-code-branch" aria-hidden="true"></i>
+            <IconGitBranch aria-hidden="true" />
             {m.landing_commit_title()}
         </h2>
 
@@ -65,7 +73,7 @@
         </a>
 
         <p>
-            <i class="fa-brands fa-{commit.source}" aria-hidden="true"></i>
+            <SourceIcon aria-hidden="true" />
             {commit.project}
             <time datetime={commit.date}>{formatAge( commit.date )}</time>
         </p>

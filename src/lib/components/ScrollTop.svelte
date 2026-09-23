@@ -1,6 +1,7 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
+    import IconArrowUp from "~icons/tabler/arrow-up";
 
     let showButton = $state( false );
 
@@ -20,7 +21,7 @@
 {#if showButton}
     <aside>
         <button type="button" title={m.landing_scroll_top()} onclick={scrollToTop} aria-label={m.landing_scroll_top()}>
-            <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+            <IconArrowUp aria-hidden="true" />
         </button>
     </aside>
 {/if}
