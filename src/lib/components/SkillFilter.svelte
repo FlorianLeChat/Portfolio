@@ -38,15 +38,18 @@
         }
     } );
 
-    const updateFilter = ( value: Filter ) =>
+    $effect( () =>
     {
-        filter = value;
-
         const url = new URL( window.location.href );
-        url.searchParams.set( "filter", value );
+        const current = url.searchParams.get( "filter" );
+        const untouched = current === null && filter === "all";
+
+        if ( current === filter || untouched ) return;
+
+        url.searchParams.set( "filter", filter );
 
         history.replaceState( null, "", url.toString() );
-    };
+    } );
 </script>
 
 <section id="skills">
@@ -62,8 +65,8 @@
                         id="filter-{value}"
                         type="radio"
                         name="skills"
-                        checked={filter === value}
-                        onchange={() => updateFilter( value )}
+                        {value}
+                        bind:group={filter}
                     />
                     <label for="filter-{value}">{labels[ value ]}</label>
                 </li>
