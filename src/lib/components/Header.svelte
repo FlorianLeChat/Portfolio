@@ -181,7 +181,7 @@
                 width: 0;
                 inset: 5rem 0 auto;
                 padding: 3rem 0;
-                position: fixed;
+                position: absolute;
                 overflow: hidden;
                 visibility: hidden;
                 transition: width var(--duration) var(--ease), visibility var(--duration) var(--ease);

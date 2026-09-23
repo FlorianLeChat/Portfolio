@@ -37,7 +37,10 @@ test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
             await page.getByRole( "button", { name: "Navigation menu" } ).click();
         }
 
-        await page.getByRole( "navigation" ).getByRole( "link", { name, exact: true } ).click();
+        const link = page.getByRole( "navigation" ).getByRole( "link", { name, exact: true } );
+
+        await expect( link ).toBeInViewport();
+        await link.click();
     };
 
     await open( "Projects" );
