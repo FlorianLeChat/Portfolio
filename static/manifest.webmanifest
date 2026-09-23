@@ -4,8 +4,8 @@
     "start_url": "/",
     "short_name": "Florian Trayon - Portfolio",
     "description": "📚 My personal portfolio website to highlight my skills and projects.",
-    "theme_color": "#306cc4",
-    "background_color": "#f5f6f7",
+    "theme_color": "#4f46e5",
+    "background_color": "#fafaff",
     "icons": [
         {
             "src": "assets/favicons/16x16.webp",

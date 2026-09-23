@@ -3,92 +3,91 @@ import { test, expect } from "@playwright/test";
 test.beforeEach( async ( { page } ) =>
 {
     await page.goto( "/" );
-    await page.locator( ".loading" ).waitFor( { state: "hidden" } );
 } );
 
 test( "Vérification de certains contenus", async ( { page } ) =>
 {
     await expect( page ).toHaveTitle( "Florian Trayon - Portfolio" );
     await expect( page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } ) ).toBeVisible();
-    await expect( page.locator( "nav > ul a" ) ).toHaveText( [ "Projects", "Skills", "Contact", "Blog" ] );
-    await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [ "Mail", "GitHub", "LinkedIn" ] );
+    await expect( page.locator( "nav > ul a" ) ).toHaveText( [ "Projects", "Skills", "Blog", "Contact" ] );
+    await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [
+        "Mail",
+        "GitLab",
+        "GitHub",
+        "LinkedIn"
+    ] );
 } );
 
 test( "Basculement des thèmes de couleurs", async ( { page } ) =>
 {
     await expect( page.locator( "html" ) ).toHaveClass( /light/ );
-    await page.getByRole( "button" ).first().click();
+
+    await page.getByRole( "button", { name: "Switch to the dark theme" } ).click();
+
     await expect( page.locator( "html" ) ).toHaveClass( /dark/ );
+    await expect( page.getByRole( "button", { name: "Switch to the light theme" } ) ).toBeVisible();
 } );
 
-test( "Navigation par l'en-tête", async ( { page, context, isMobile } ) =>
+test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 {
-    if ( isMobile )
+    const open = async ( name: string ) =>
     {
-        await page.getByRole( "button" ).nth( 1 ).click();
-    }
+        if ( isMobile )
+        {
+            await page.getByRole( "button", { name: "Navigation menu" } ).click();
+        }
 
-    await page.getByRole( "link", { name: "Projects" } ).click();
+        await page.getByRole( "navigation" ).getByRole( "link", { name, exact: true } ).click();
+    };
+
+    await open( "Projects" );
     await expect( page ).toHaveURL( "#projects" );
 
-    await page.getByRole( "link", { name: "Skills" } ).click();
+    await open( "Skills" );
     await expect( page ).toHaveURL( "#skills" );
 
-    await page.getByRole( "link", { name: "Contact" } ).click();
+    await open( "Blog" );
+    await expect( page ).toHaveURL( "#blog" );
+
+    await open( "Contact" );
     await expect( page ).toHaveURL( "#contact" );
-
-    const blogPromise = context.waitForEvent( "page" );
-    await page.getByRole( "link", { name: "Blog" } ).click();
-
-    const blogPage = await blogPromise;
-    await blogPage.waitForLoadState();
-
-    await expect( blogPage ).toHaveTitle( "Le blog de Florian" );
 } );
 
 test( "Retour en haut de page", async ( { page, isMobile } ) =>
 {
-    test.skip( isMobile );
+    test.skip( isMobile, "Le bouton est masqué sous 1024px." );
 
-    await page.getByRole( "link", { name: "Contact" } ).click();
-    await page.waitForTimeout( 1000 );
-    await page.getByRole( "complementary" ).getByRole( "button" ).click();
-    await page.waitForTimeout( 1000 );
+    await page.getByRole( "navigation" ).getByRole( "link", { name: "Contact" } ).click();
 
-    const isAtTop = await page.evaluate( () => window.scrollY === 0 );
-    expect( isAtTop ).toBeTruthy();
+    await page.getByRole( "button", { name: "Scroll to top" } ).click();
+
+    await expect.poll( () => page.evaluate( () => window.scrollY ) ).toBe( 0 );
 } );
 
-test( "Disponibilité du C.V", async ( { page, context } ) =>
+test( "Disponibilité du C.V", async ( { page } ) =>
 {
-    const resumePromise = context.waitForEvent( "page" );
-    await page.getByRole( "button", { name: "Go to the online resume" } ).click();
+    const link = page.locator( "#about" ).getByRole( "link", { name: "Go to the online resume" } );
 
-    const resumePage = await resumePromise;
-    await resumePage.waitForLoadState();
-
-    await expect( resumePage ).toHaveTitle( "Florian Trayon - Curriculum Vitae" );
+    await expect( link ).toHaveAttribute( "href", "https://pages.florian-dev.fr/floriantrayon/Online-Resume/" );
+    await expect( link ).toHaveAttribute( "target", "_blank" );
 } );
 
 test( "Filtrage des compétences", async ( { page } ) =>
 {
-    const selector = "#skills ul:last-of-type li";
+    const selector = "#skills > div > ul > li";
     const count = await page.locator( selector ).count();
 
-    await page.getByLabel( "Front-end" ).click();
-    await expect( page ).toHaveURL( "?filter=front" );
+    for ( const [ label, value ] of [
+        [ "Front-end", "front" ],
+        [ "Back-end", "back" ],
+        [ "Other", "other" ]
+    ] )
+    {
+        await page.getByLabel( label ).click();
+        await expect( page ).toHaveURL( `?filter=${ value }` );
 
-    expect( await page.locator( selector ).count() ).toBeLessThan( count );
-
-    await page.getByLabel( "Back-end" ).click();
-    await expect( page ).toHaveURL( "?filter=back" );
-
-    expect( await page.locator( selector ).count() ).toBeLessThan( count );
-
-    await page.getByLabel( "Other" ).click();
-    await expect( page ).toHaveURL( "?filter=other" );
-
-    expect( await page.locator( selector ).count() ).toBeLessThan( count );
+        expect( await page.locator( selector ).count() ).toBeLessThan( count );
+    }
 
     await page.getByLabel( "All" ).click();
     await expect( page ).toHaveURL( "?filter=all" );

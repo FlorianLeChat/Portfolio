@@ -14,12 +14,12 @@
     import "@fortawesome/fontawesome-free/css/brands.min.css";
     import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
 
+    import * as m from "$lib/locales/messages";
     import Header from "$lib/components/Header.svelte";
     import Footer from "$lib/components/Footer.svelte";
     import { env } from "$env/dynamic/public";
     import { asset } from "$app/paths";
     import ScrollTop from "$lib/components/ScrollTop.svelte";
-    import BirthdayEffect from "$lib/components/BirthdayEffect.svelte";
 
     let { children } = $props();
 </script>
@@ -46,10 +46,35 @@
     {/if}
 </svelte:head>
 
+<a href="#content">{m.landing_header_skip()}</a>
+
 <Header />
 
 {@render children()}
 
-<BirthdayEffect />
 <ScrollTop />
 <Footer />
+
+<style lang="scss">
+    @use "colors";
+
+    a
+    {
+        top: 0;
+        left: 0;
+        color: colors.getThemedColor("background");
+        z-index: 30;
+        padding: 0.75rem 1.25rem;
+        position: fixed;
+        transform: translateY(-150%);
+        transition: transform var(--duration) var(--ease);
+        font-weight: 600;
+        border-radius: 0 0 var(--radius-md) 0;
+        background-color: colors.getThemedColor("primary");
+
+        &:focus-visible
+        {
+            transform: translateY(0);
+        }
+    }
+</style>

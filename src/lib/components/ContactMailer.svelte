@@ -1,34 +1,6 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
-
-    const sendMail = async ( event: MouseEvent ) =>
-    {
-        event.preventDefault();
-
-        const Swal = ( await import( "sweetalert2" ) ).default;
-        const { value: service } = await Swal.fire( {
-            icon: "question",
-            text: m.modals_mailer_description(),
-            title: m.modals_mailer_title(),
-            input: "radio",
-            inputOptions: {
-                google: m.modals_mailer_google(),
-                default: m.modals_mailer_default()
-            },
-            inputValidator: ( value ) => ( !value && m.modals_mailer_error() ) || null
-        } );
-
-        switch ( service )
-        {
-            case "google":
-                window.open( "https://mail.google.com/mail/?view=cm&fs=1&to=contact@florian-dev.fr", "_blank" );
-                break;
-
-            case "default":
-                window.open( "mailto:contact@florian-dev.fr", "_blank" );
-                break;
-        }
-    };
+    import { LINKS, CONTACT_MAIL } from "$lib/links";
 </script>
 
 <section id="contact">
@@ -36,24 +8,53 @@
 
     <ul>
         <li>
-            <button type="button" onclick={sendMail}>
-                <i class="fa-solid fa-envelope"></i>
+            <a href="mailto:{CONTACT_MAIL}">
+                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
                 {m.landing_footer_mail()}
-            </button>
+            </a>
         </li>
 
         <li>
-            <a rel="noopener noreferrer" href="https://github.com/FlorianLeChat" target="_blank">
-                <i class="fa-brands fa-github"></i>
+            <a rel="external noopener noreferrer" href={LINKS.gitlab} target="_blank">
+                <i class="fa-brands fa-gitlab" aria-hidden="true"></i>
+                GitLab
+            </a>
+        </li>
+
+        <li>
+            <a rel="external noopener noreferrer" href={LINKS.github} target="_blank">
+                <i class="fa-brands fa-github" aria-hidden="true"></i>
                 GitHub
             </a>
         </li>
 
         <li>
-            <a rel="noopener noreferrer" href="https://www.linkedin.com/in/florian-trayon/" target="_blank">
-                <i class="fa-brands fa-linkedin-in"></i>
+            <a rel="external noopener noreferrer" href={LINKS.linkedin} target="_blank">
+                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
                 LinkedIn
             </a>
         </li>
     </ul>
 </section>
+
+<style lang="scss">
+    @use "buttons";
+
+    ul
+    {
+        gap: 0.75rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    a
+    {
+        @include buttons.pill();
+    }
+
+    li + li a
+    {
+        @include buttons.pillGhost();
+    }
+</style>

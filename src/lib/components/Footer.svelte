@@ -1,26 +1,105 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
+    import { LINKS } from "$lib/links";
     import { env } from "$env/dynamic/public";
 </script>
 
 <footer>
-    <span>
-        {m.landing_footer_madeby()}
+    <ul>
+        <li>
+            <a rel="external noopener noreferrer" href={LINKS.repository} target="_blank">
+                <i class="fa-solid fa-code" aria-hidden="true"></i>
+                {m.landing_footer_source()}
+            </a>
+        </li>
 
-        <a rel="noopener noreferrer" href="https://github.com/FlorianLeChat" target="_blank"> Florian Trayon 🐈 </a>
+        <li>
+            <a rel="external noopener noreferrer" href={LINKS.legacy} target="_blank">
+                <i class="fa-brands fa-php" aria-hidden="true"></i>
+                {m.landing_footer_legacy()}
+            </a>
+        </li>
+    </ul>
 
-        <small>&copy; {new Date().getFullYear()}</small>
-    </span>
+    <div>
+        <span>
+            {m.landing_footer_madeby()}
 
-    <small>
-        <i class="fa-brands fa-php"></i>
+            <a rel="external noopener noreferrer" href={LINKS.github} target="_blank">Florian Trayon 🐈</a>
 
-        <a href="https://legacy.florian-dev.fr/portfolio/">
-            {m.landing_footer_legacy()}
-        </a>
-    </small>
+            <small>&copy; {new Date().getFullYear()}</small>
+        </span>
 
-    <code>
-        {m.landing_footer_version( { version: env.PUBLIC_VERSION ?? "0.0.1" } )}
-    </code>
+        <code>
+            {m.landing_footer_version( { version: env.PUBLIC_VERSION ?? "0.0.1" } )}
+        </code>
+    </div>
 </footer>
+
+<style lang="scss">
+    @use "colors";
+
+    footer
+    {
+        gap: 1rem;
+        display: flex;
+        padding: 1.5rem 1.5rem 1.25rem;
+        margin-top: 4rem;
+        text-align: center;
+        border-top: 1px solid colors.getThemedColor("border");
+        align-items: center;
+        flex-direction: column;
+        background-color: colors.getThemedColor("background-alt");
+
+        > ul
+        {
+            gap: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            justify-content: center;
+
+            @media screen and (max-width: 640px)
+            {
+                gap: 0.75rem;
+            }
+
+            a
+            {
+                gap: 0.5rem;
+                color: colors.getThemedColor("muted");
+                display: inline-flex;
+                align-items: center;
+
+                &:hover
+                {
+                    color: colors.getThemedColor("primary");
+                }
+
+                i
+                {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        > div
+        {
+            gap: 0.25rem;
+            width: 100%;
+            display: flex;
+            max-width: 32rem;
+            font-size: 0.85rem;
+            border-top: 1px solid colors.getThemedColor("border");
+            align-items: center;
+            padding-top: 1rem;
+            flex-direction: column;
+        }
+
+        code
+        {
+            color: colors.getThemedColor("muted");
+            font-size: 0.75rem;
+        }
+    }
+</style>

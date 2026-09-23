@@ -1,12 +1,21 @@
 <script lang="ts">
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
-    import { getImage } from "$lib/images";
     import type { Project } from "$lib";
-    import { getDescription } from "$lib/descriptions";
+    import Carousel from "$lib/components/Carousel.svelte";
+    import SkillChips from "$lib/components/SkillChips.svelte";
+    import { getImage, getDescription } from "$lib/projects";
     import type PhotoSwipeLightbox from "photoswipe/lightbox";
 
-    let { projects }: { projects: Record<string, Project> } = $props();
+    let {
+        projects,
+        heading,
+        description
+    }: {
+        projects: [ string, Project ][];
+        heading?: string;
+        description?: string;
+    } = $props();
 
     onMount( () =>
     {
@@ -49,23 +58,25 @@
 </script>
 
 <section id="projects">
-    <h2>{m.landing_header_projects()}</h2>
+    {#if heading}
+        <h2>{heading}</h2>
+    {/if}
 
-    <ul>
-        {#each Object.entries( projects ) as [ key, value ] ( key )}
+    {#if description}
+        <p>{description}</p>
+    {/if}
+
+    <Carousel label={m.landing_carousel_projects()}>
+        {#each projects as [ key, value ] ( key )}
             <li>
-                <img src={getImage( key )} alt={value.title} loading="lazy" />
+                <img src={getImage( key )} alt={value.title} loading="lazy" decoding="async" />
 
                 <div>
                     <h3>{value.title}</h3>
 
                     <p>{getDescription( key )}</p>
 
-                    <ul>
-                        {#each value.skills as skill ( skill )}
-                            <li>{skill}</li>
-                        {/each}
-                    </ul>
+                    <SkillChips keys={value.skills} />
 
                     <ul>
                         {#if value.repository}
@@ -77,7 +88,7 @@
                                     target="_blank"
                                     aria-label={m.landing_project_source()}
                                 >
-                                    <i class="fa-solid fa-code"></i>
+                                    <i class="fa-solid fa-code" aria-hidden="true"></i>
                                 </a>
                             </li>
                         {/if}
@@ -91,7 +102,7 @@
                                     target="_blank"
                                     aria-label={m.landing_project_demo()}
                                 >
-                                    <i class="fa-solid fa-external-link-alt"></i>
+                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                                 </a>
                             </li>
                         {/if}
@@ -99,5 +110,100 @@
                 </div>
             </li>
         {/each}
-    </ul>
+    </Carousel>
 </section>
+
+<style lang="scss">
+    @use "colors";
+
+    section > p
+    {
+        color: colors.getThemedColor("muted");
+        margin: -1.5rem auto 2.5rem;
+        max-width: 60ch;
+        text-align: center;
+    }
+
+    :global(section#projects > div > ul > li)
+    {
+        flex: 0 0 calc( 50% - 0.75rem );
+        border: 1px solid colors.getThemedColor("border");
+        display: flex;
+        overflow: hidden;
+        transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
+        border-radius: var(--radius-lg);
+        flex-direction: column;
+        background-color: colors.getThemedColor("surface");
+
+        @media screen and (max-width: 768px)
+        {
+            flex-basis: 100%;
+        }
+
+        @media (hover: hover) and (pointer: fine)
+        {
+            &:hover
+            {
+                transform: translateY(-0.25rem);
+                box-shadow: colors.getThemedColor("container-shadow");
+                border-color: colors.getThemedColor("primary");
+            }
+        }
+    }
+
+    li > img
+    {
+        width: 100%;
+        cursor: zoom-in;
+        object-fit: cover;
+        aspect-ratio: 16 / 10;
+        border-bottom: 1px solid colors.getThemedColor("border");
+    }
+
+    li > div
+    {
+        gap: 1rem;
+        flex: 1;
+        display: flex;
+        padding: 1.5rem;
+        text-align: center;
+        align-items: center;
+        flex-direction: column;
+
+        > p
+        {
+            flex: 1;
+            color: colors.getThemedColor("muted");
+            font-size: 0.95rem;
+        }
+
+        > ul:last-of-type
+        {
+            gap: 0.75rem;
+            display: flex;
+
+            a
+            {
+                width: 2.75rem;
+                color: colors.getThemedColor("primary");
+                height: 2.75rem;
+                border: 2px solid colors.getThemedColor("primary");
+                display: flex;
+                font-size: 1.1rem;
+                transition: color var(--duration) var(--ease), background-color var(--duration) var(--ease);
+                align-items: center;
+                border-radius: 50%;
+                justify-content: center;
+
+                @media (hover: hover) and (pointer: fine)
+                {
+                    &:hover
+                    {
+                        color: colors.getThemedColor("background");
+                        background-color: colors.getThemedColor("primary");
+                    }
+                }
+            }
+        }
+    }
+</style>
