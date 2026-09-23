@@ -16,7 +16,7 @@ body
     cursor: auto;
     display: flex;
     min-height: 100dvh;
-    transition: background-color var(--duration) linear;
+    transition: background-color var(--duration) var(--ease);
     line-height: 1.6;
     font-family: var(--font-body), system-ui;
     flex-direction: column;

@@ -1,9 +1,7 @@
-import data from "$lib/data/skills.json";
+import { SKILLS } from "$lib/data/skills";
 import type { Skill } from "$lib/types/Skill";
 
-// JSON imports widen `type` to `string`, so the registry is asserted once here
-// rather than at every call site.
-const registry = data as Record<string, Skill>;
+const registry: Record<string, Skill> = SKILLS;
 
 /// Returns the whole skill registry.
 ///
@@ -14,7 +12,8 @@ export const getAllSkills = () => registry;
 /// Resolves technology keys to registry entries.
 ///
 /// Unknown keys still produce a chip, labelled with the raw key, so a typo is
-/// visible rather than silently dropping a technology.
+/// visible rather than silently dropping a technology. That entry carries no
+/// glyph, which Svelte renders as nothing.
 ///
 /// @param {string[]} keys - Skill keys, typically listed on a project.
 /// @return {Skill[]} The matching registry entries.

@@ -1,5 +1,5 @@
 import * as m from "$lib/locales/messages";
-import projects from "$lib/data/projects.json";
+import { PROJECTS } from "$lib/data/projects";
 import type { Project } from "$lib/types/Project";
 
 // Screenshots are matched to projects by file name, so adding one only means
@@ -15,7 +15,7 @@ const imagesByKey = Object.fromEntries(
 // a computed key is not something its types describe, hence the cast.
 const messages = m as unknown as Record<string, ( () => string ) | undefined>;
 
-const catalogue = projects as Record<string, Project>;
+const catalogue: Record<string, Project> = PROJECTS;
 
 /// Resolves a project screenshot.
 ///
@@ -33,7 +33,7 @@ export const getImage = ( key: string ) => imagesByKey[ key ];
 /// @author Claude
 export const getDescription = ( key: string ) => messages[ `projects_${ key }` ]?.() ?? "";
 
-/// Lists every project, in the order declared in `projects.json`.
+/// Lists every project, in the order declared in `projects.ts`.
 ///
 /// @return {[ string, Project ][]} Key and project pairs.
 /// @author Claude

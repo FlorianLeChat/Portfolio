@@ -2,10 +2,12 @@
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
     import type { Project } from "$lib";
+    import IconCode from "~icons/tabler/code";
     import Carousel from "$lib/components/Carousel.svelte";
     import SkillChips from "$lib/components/SkillChips.svelte";
     import { getImage, getDescription } from "$lib/projects";
     import type PhotoSwipeLightbox from "photoswipe/lightbox";
+    import IconExternalLink from "~icons/tabler/external-link";
 
     let {
         projects,
@@ -88,7 +90,7 @@
                                     target="_blank"
                                     aria-label={m.landing_project_source()}
                                 >
-                                    <i class="fa-solid fa-code" aria-hidden="true"></i>
+                                    <IconCode aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}
@@ -102,7 +104,7 @@
                                     target="_blank"
                                     aria-label={m.landing_project_demo()}
                                 >
-                                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                    <IconExternalLink aria-hidden="true" />
                                 </a>
                             </li>
                         {/if}

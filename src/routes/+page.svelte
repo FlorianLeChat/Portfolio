@@ -9,6 +9,8 @@
     import LatestCommit from "$lib/components/LatestCommit.svelte";
     import ContactMailer from "$lib/components/ContactMailer.svelte";
     import type { PageData } from "./$types";
+    import IconArrowRight from "~icons/tabler/arrow-right";
+    import IconExternalLink from "~icons/tabler/external-link";
 
     let { data }: { data: PageData } = $props();
 
@@ -32,11 +34,11 @@
             <div>
                 <a href="#projects">
                     {m.landing_header_projects()}
-                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                    <IconArrowRight aria-hidden="true" />
                 </a>
 
                 <a rel="external noopener noreferrer" href={LINKS.resume} target="_blank">
-                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    <IconExternalLink aria-hidden="true" />
                     {m.landing_access_resume()}
                 </a>
             </div>

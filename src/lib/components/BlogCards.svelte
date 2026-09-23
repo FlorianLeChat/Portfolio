@@ -2,9 +2,11 @@
     import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
     import { LINKS } from "$lib/links";
+    import IconRss from "~icons/simple-icons/rss";
     import type { Post } from "$lib/types/Post";
     import { getLocale } from "$lib/locales/runtime";
     import { fetchPosts, MAX_POSTS } from "$lib/feed";
+    import IconArrowRight from "~icons/tabler/arrow-right";
 
     let posts = $state<Post[]>( [] );
     let settled = $state( false );
@@ -45,7 +47,7 @@
 
                         <span>
                             {m.landing_blog_read()}
-                            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                            <IconArrowRight aria-hidden="true" />
                         </span>
                     </a>
                 </li>
@@ -63,7 +65,7 @@
 
     <div>
         <a rel="external noopener noreferrer" href={LINKS.blog} target="_blank">
-            <i class="fa-solid fa-rss" aria-hidden="true"></i>
+            <IconRss aria-hidden="true" />
             {m.landing_blog_all()}
         </a>
     </div>

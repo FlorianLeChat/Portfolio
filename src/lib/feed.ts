@@ -74,7 +74,7 @@ const decodeEntities = ( value: string ): string =>
     {
         const lower = entity.toLowerCase();
 
-        if ( lower.startsWith( "#x" ) ) return toCharacter( parseInt( lower.slice( 2 ), 16 ) ) ?? match;
+        if ( lower.startsWith( "#x" ) ) return toCharacter( Number.parseInt( lower.slice( 2 ), 16 ) ) ?? match;
         if ( lower.startsWith( "#" ) ) return toCharacter( Number( lower.slice( 1 ) ) ) ?? match;
 
         return NAMED_ENTITIES[ lower ] ?? match;

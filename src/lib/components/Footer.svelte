@@ -2,20 +2,22 @@
     import * as m from "$lib/locales/messages";
     import { LINKS } from "$lib/links";
     import { env } from "$env/dynamic/public";
+    import IconCode from "~icons/tabler/code";
+    import IconPhp from "~icons/simple-icons/php";
 </script>
 
 <footer>
     <ul>
         <li>
             <a rel="external noopener noreferrer" href={LINKS.repository} target="_blank">
-                <i class="fa-solid fa-code" aria-hidden="true"></i>
-                {m.landing_footer_source()}
+                <IconCode aria-hidden="true" />
+                {m.landing_project_source()}
             </a>
         </li>
 
         <li>
             <a rel="external noopener noreferrer" href={LINKS.legacy} target="_blank">
-                <i class="fa-brands fa-php" aria-hidden="true"></i>
+                <IconPhp aria-hidden="true" />
                 {m.landing_footer_legacy()}
             </a>
         </li>
@@ -76,7 +78,7 @@
                     color: colors.getThemedColor("primary");
                 }
 
-                i
+                > :global(svg)
                 {
                     font-size: 1rem;
                 }

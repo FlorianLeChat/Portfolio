@@ -1,6 +1,10 @@
 <script lang="ts">
+    import IconMail from "~icons/tabler/mail-filled";
     import * as m from "$lib/locales/messages";
     import { LINKS, CONTACT_MAIL } from "$lib/links";
+    import IconGitlab from "~icons/simple-icons/gitlab";
+    import IconGithub from "~icons/simple-icons/github";
+    import IconLinkedin from "~icons/tabler/brand-linkedin-filled";
 </script>
 
 <section id="contact">
@@ -9,28 +13,28 @@
     <ul>
         <li>
             <a href="mailto:{CONTACT_MAIL}">
-                <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                <IconMail aria-hidden="true" />
                 {m.landing_footer_mail()}
             </a>
         </li>
 
         <li>
             <a rel="external noopener noreferrer" href={LINKS.gitlab} target="_blank">
-                <i class="fa-brands fa-gitlab" aria-hidden="true"></i>
+                <IconGitlab aria-hidden="true" />
                 GitLab
             </a>
         </li>
 
         <li>
             <a rel="external noopener noreferrer" href={LINKS.github} target="_blank">
-                <i class="fa-brands fa-github" aria-hidden="true"></i>
+                <IconGithub aria-hidden="true" />
                 GitHub
             </a>
         </li>
 
         <li>
             <a rel="external noopener noreferrer" href={LINKS.linkedin} target="_blank">
-                <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                <IconLinkedin aria-hidden="true" />
                 LinkedIn
             </a>
         </li>

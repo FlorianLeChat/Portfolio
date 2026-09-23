@@ -88,8 +88,8 @@ writes `@use "colors"` exactly like a stylesheet does, with no relative path.
 Styling a component still means no styling class: the markup stays plain
 semantic HTML and the selectors reach it through its structure. Scoping now does
 the qualifying that section prefixes used to do, so write `nav > ul`, not
-`header nav > ul`. Two class exceptions stay: the `show` class the header
-toggles on its menu, and the icon classes the webfonts need.
+`header nav > ul`. One class exception stays: the `show` class the header
+toggles on its menu.
 
 ### Reaching across a component boundary
 
@@ -164,22 +164,34 @@ already do. Screenshots are `loading="lazy"` and `decoding="async"`.
 
 ## Icons
 
-Icons come from two webfont stylesheets loaded in `+layout.svelte`:
+Icons are inline SVG, compiled at build time by `unplugin-icons` from the
+Iconify data packages. Nothing is fetched at runtime and only the glyphs
+actually used ship.
 
-- UI and brand icons: FontAwesome, `<i class="fa-solid fa-code">` or
-  `<i class="fa-brands fa-github">`
-- Technology icons: devicon, `<i class="devicon-{skill.icon}">`, where `icon`
-  is the class fragment stored in `data/skills.json`
+- Brand glyphs: Simple Icons, whether the mark stands for a technology in
+  `data/skills.ts` or for a destination in a link, so a brand is always drawn
+  the way its owner publishes it.
+- UI glyphs: Tabler, `import IconCode from "~icons/tabler/code"`, then
+  `<IconCode aria-hidden="true" />`. Arrows, chevrons, the theme toggle, the
+  menu, the mail and repository symbols: everything Simple Icons does not
+  cover, since it is a brand set and nothing else.
 
-That fragment includes the `colored` suffix for glyphs devicon ships with brand
-colours, and omits it for the monochrome ones so they follow `currentColor`.
-Verify a variant actually exists before adding it: several entries used to
-declare a `plain` variant devicon does not ship, which rendered a blank square.
+A glyph is only compiled from a static import, which is why the skill registry
+is TypeScript rather than JSON: a data file the compiler cannot look into has
+nowhere to name one. `data/skills.ts` `satisfies Record<string, Skill>`, so a
+skill added without its icon fails `npm run check` on its own line. Check the
+slug on simpleicons.org first, some brands have been withdrawn from the set
+(LinkedIn, which is why that one contact link falls back to Tabler).
 
-**Known cost:** devicon publishes no woff2, so browsers fall back to
-`devicon.woff`, about 1.46 MB on every visit. This is a deliberate, temporary
-trade-off. Inlining the glyphs as an SVG sprite cut it to roughly 53 KB and is
-the obvious fix when the subject comes back around.
+Simple Icons glyphs are monochrome and follow `currentColor`. A skill that
+shows its brand colour carries a `color` in its entry, passed to the glyph as
+the SVG `color` attribute. Those values are data, not theme tokens, so they are
+the one place a colour literal is allowed.
+
+Icons size themselves in `em` (1.2em by default). The `<svg>` belongs to the
+icon component, so a parent resizes it with `:global` at the end of the
+sequence: `li > :global(svg)`. Setting `font-size` scales it like the text,
+setting `width` and `height` pins it.
 
 ## Comments and JSDoc
 
@@ -295,13 +307,12 @@ src/
     cache.ts            Short lived session cache for the network reads
     commit.ts           Latest public commit, fetched in the browser
     feed.ts             Blog feed fetching and parsing, browser only
-    icons.ts            Generated UI icon paths
     links.ts            Every external destination, in one place
     projects.ts         Project images and descriptions
-    skills.ts           Technology registry
+    skills.ts           Registry accessors over the skill data
     theme.svelte.ts     Colour scheme store
     components/         One file per component: markup, logic and its styles
-    data/               projects.json, skills.json
+    data/               projects.ts, skills.ts
     images/             Project screenshots, matched by file name
     styles/             Only the shared rules, see above
     types/              One type per file
@@ -315,5 +326,5 @@ tests/e2e/              The Playwright spec
 The site is a single page. Navigation is made of fragments, so a new section
 means a new `id` and a matching entry in `Header.svelte`.
 
-Adding a project means touching four files: `data/projects.json`, the screenshot
+Adding a project means touching four files: `data/projects.ts`, the screenshot
 in `lib/images/<key>.webp`, and the `projects_<key>` message in both locales.
