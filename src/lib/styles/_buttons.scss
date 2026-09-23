@@ -1,0 +1,55 @@
+@use "colors";
+
+/// Solid pill used by the call to action links.
+///
+/// The hero, the blog section and the contact list each render their own
+/// buttons, and scoped styles cannot reach across those components, so the shape
+/// lives in a mixin rather than in a selector list spanning all three.
+///
+/// @author Claude
+@mixin pill()
+{
+    gap: 0.5rem;
+    color: colors.getThemedColor("background");
+    cursor: pointer;
+    border: 1px solid transparent;
+    display: inline-flex;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+    box-shadow: none;
+    transition: transform var(--duration) var(--ease), background-color var(--duration) var(--ease);
+    font-weight: 600;
+    align-items: center;
+    font-family: inherit;
+    border-radius: var(--radius-pill);
+    justify-content: center;
+    background-color: colors.getThemedColor("primary");
+
+    &:hover
+    {
+        background-color: colors.getThemedColor("primary-alt");
+    }
+
+    &:active
+    {
+        transform: translateY(0.125rem);
+    }
+}
+
+/// Outlined variant of `pill()`, for the secondary action of a pair.
+///
+/// Include it after `pill()`: it only restates the colours.
+///
+/// @author Claude
+@mixin pillGhost()
+{
+    color: colors.getThemedColor("primary");
+    border-color: colors.getThemedColor("border");
+    background-color: colors.getThemedColor("background-alt");
+
+    &:hover
+    {
+        border-color: colors.getThemedColor("primary");
+        background-color: colors.getThemedColor("primary-light");
+    }
+}

@@ -15,7 +15,7 @@ export default defineConfig( {
     css: {
         preprocessorOptions: {
             scss: {
-                loadPaths: [ resolve( "./node_modules" ) ]
+                loadPaths: [ resolve( "./node_modules" ), resolve( "./src/lib/styles" ) ]
             }
         }
     }

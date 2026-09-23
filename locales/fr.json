@@ -1,12 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
-	"modals_mailer_title": "Sélection de la messagerie",
-	"modals_mailer_description": "Pour envoyer un courriel, vous avez le choix entre plusieurs messageries. Sélectionnez celle de votre choix.",
-	"modals_mailer_error": "Vous devez choisir une messagerie.",
-	"modals_mailer_google": "Gmail (Google)",
-	"modals_mailer_default": "Messagerie par défaut",
-
 	"projects_portfolio": "C'est le site où vous vous trouvez actuellement, c'est un simple portfolio sous forme d'un site Internet, il décrit toutes mes compétences mais également les projets que j'ai réalisé à travers le temps (personnels, scolaires ou professionnels).",
 	"projects_filestorage": "Un service de stockage de données simple d'utilisation, sécurisé et rapide permettant de s'émanciper des grands acteurs actuels comme Google Drive ou OneDrive ayant des politiques de confidentialité douteuses.",
 	"projects_sourceconsole": "Un service d'administration à distance de serveurs exécutant le moteur Source (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) pour les administrateurs de serveurs inexpérimentés ou les personnes n'ayant pas accès à la console du serveur.",
@@ -17,28 +11,53 @@
 	"projects_timeloop": "Un compte à rebours pour estimer le temps restant avant une date future, ou mesurer le temps écoulé depuis une date passée pour ne jamais oublier à quel point le temps file. Le site permet également de sélectionner des événements historiques marquants afin de mieux visualiser l'écoulement du temps.",
 	"projects_blog": "Un blog personnel où je peux partager mes réflexions, expériences et connaissances sur divers sujets comme l'informatique et à d'autres domaines qui me passionnent. C'est un espace où je peux m'exprimer librement sans contraintes de format ou de sujet.",
 	"projects_magicanswers": "Un site Internet, grandement inspiré du livre du même nom, permettant de générer des réponses suffisamment vagues pour répondre à toutes les questions de l'univers. Ce dernier a été conçu avec des contraintes accrues de sobriété environnementale, d'accessibilité et de confidentialité.",
-    "projects_terminalstories": "Un site Internet conçu pour raconter des histoires interactives dans un style de terminal de commande, permettant aux utilisateurs de vivre une expérience narrative unique et immersive. Le site met l'accent sur l'interactivité et l'engagement du lecteur à travers des choix et des actions qui influencent le déroulement de l'histoire.",
+	"projects_terminalstories": "Un site Internet conçu pour raconter des histoires interactives dans un style de terminal de commande, permettant aux utilisateurs de vivre une expérience narrative unique et immersive. Le site met l'accent sur l'interactivité et l'engagement du lecteur à travers des choix et des actions qui influencent le déroulement de l'histoire.",
 
-	"landing_scroll_top": "Remonter en haut de la page",
+	"landing_header_skip": "Aller au contenu principal",
+	"landing_header_home": "Accueil",
 	"landing_header_projects": "Projets",
 	"landing_header_skills": "Compétences",
-	"landing_header_contact": "Contact",
 	"landing_header_blog": "Blog",
-	"landing_header_theme": "Changement de thème",
+	"landing_header_contact": "Contact",
+	"landing_header_theme_light": "Activer le thème clair",
+	"landing_header_theme_dark": "Activer le thème sombre",
 	"landing_header_navigation": "Menu de navigation",
+
+	"landing_hello_title": "Bonjour. Je suis",
+	"landing_developer_firstname": "Florian",
+	"landing_developer_surname": "Trayon",
+	"landing_developer_description": "Je suis un développeur (junior) français full-stack de {age} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
+	"landing_access_resume": "Accéder au C.V en ligne",
+
+	"landing_commit_title": "Dernière activité publique",
+	"landing_commit_view": "Voir le commit",
+
+	"landing_blog_title": "Blog",
+	"landing_blog_intro": "Là où j'écris, et où vous pouvez en apprendre un peu plus sur moi.",
+	"landing_blog_read": "Lire l'article",
+	"landing_blog_all": "Lire tous les articles",
+	"landing_blog_unavailable": "Les articles ne sont pas disponibles pour le moment.",
+
+	"landing_projects_intro": "Mes projets personnels les plus aboutis, tous disponibles en production.",
 	"landing_project_source": "Code source",
 	"landing_project_demo": "Démonstration",
-	"landing_footer_mail": "Courriel",
+
+	"landing_filter_legend": "Filtrer les compétences par catégorie",
 	"landing_filter_all": "Toutes",
 	"landing_filter_front": "Front-end",
 	"landing_filter_back": "Back-end",
 	"landing_filter_other": "Autres",
+
+	"landing_carousel_previous": "Éléments précédents",
+	"landing_carousel_next": "Éléments suivants",
+	"landing_carousel_projects": "Liste des projets",
+	"landing_carousel_skills": "Liste des compétences",
+
+	"landing_footer_mail": "Courriel",
+	"landing_footer_source": "Code source du portfolio",
 	"landing_footer_legacy": "Version classique",
 	"landing_footer_madeby": "Conçu par",
 	"landing_footer_version": "Version déployée : {version}",
-	"landing_developer_firstname": "Florian",
-	"landing_developer_surname": "Trayon",
-	"landing_developer_description": "Je suis un développeur (junior) français full-stack de {age} ans. J'adore utiliser mes heures perdues pour développer des projets personnels de toutes sortes. Passionné par l'informatique, je suis toujours à la recherche de nouvelles technologies et de nouveaux projets.",
-	"landing_hello_title": "Bonjour. Je suis",
-	"landing_access_resume": "Accéder au C.V en ligne"
+
+	"landing_scroll_top": "Remonter en haut de la page"
 }

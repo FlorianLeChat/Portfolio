@@ -1,6 +1,6 @@
 import type { Theme } from "$lib/types/Theme";
 
-const STORAGE_KEY = "COLOR_SCHEME";
+export const STORAGE_KEY = "portfolio:theme";
 
 const getInitialTheme = (): Theme =>
 {

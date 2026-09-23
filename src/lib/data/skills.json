@@ -1,172 +1,199 @@
 {
     "ansible": {
         "name": "Ansible",
-        "icon": "plain",
+        "icon": "ansible-plain",
         "type": "other"
     },
     "apache": {
         "name": "Apache",
-        "icon": "plain colored",
+        "icon": "apache-plain colored",
         "type": "other"
     },
     "bootstrap": {
         "name": "Bootstrap",
-        "icon": "plain colored",
+        "icon": "bootstrap-plain colored",
         "type": "front"
     },
     "centos": {
         "name": "CentOS",
-        "icon": "plain colored",
+        "icon": "centos-plain colored",
         "type": "other"
     },
     "css3": {
         "name": "CSS",
-        "icon": "plain colored",
+        "icon": "css3-plain colored",
         "type": "front"
     },
     "debian": {
         "name": "Debian",
-        "icon": "plain colored",
+        "icon": "debian-plain colored",
         "type": "other"
     },
     "docker": {
         "name": "Docker",
-        "icon": "plain colored",
+        "icon": "docker-plain colored",
         "type": "other"
     },
     "doctrine": {
         "name": "Doctrine",
-        "icon": "plain colored",
+        "icon": "doctrine-plain colored",
         "type": "back"
+    },
+    "eslint": {
+        "name": "ESLint",
+        "icon": "eslint-plain colored",
+        "type": "other"
     },
     "git": {
         "name": "Git",
-        "icon": "plain colored",
+        "icon": "git-plain colored",
         "type": "other"
     },
     "github": {
         "name": "GitHub",
-        "icon": "original",
+        "icon": "github-original",
         "type": "other"
     },
     "gitlab": {
         "name": "GitLab",
-        "icon": "plain colored",
+        "icon": "gitlab-plain colored",
         "type": "other"
     },
     "html5": {
         "name": "HTML",
-        "icon": "plain colored",
+        "icon": "html5-plain colored",
         "type": "front"
     },
     "javascript": {
         "name": "JavaScript",
-        "icon": "plain colored",
-        "type": ["front", "back"]
+        "icon": "javascript-plain colored",
+        "type": [
+            "front",
+            "back"
+        ]
     },
     "jekyll": {
         "name": "Jekyll",
-        "icon": "plain",
+        "icon": "jekyll-plain",
         "type": "other"
     },
     "jquery": {
         "name": "jQuery",
-        "icon": "plain colored",
+        "icon": "jquery-plain colored",
         "type": "front"
     },
     "lua": {
         "name": "Lua",
-        "icon": "plain",
+        "icon": "lua-plain",
         "type": "other"
     },
     "mariadb": {
         "name": "MariaDB",
-        "icon": "original",
-        "type": ["back", "other"]
+        "icon": "mariadb-original colored",
+        "type": [
+            "back",
+            "other"
+        ]
     },
     "markdown": {
         "name": "Markdown",
-        "icon": "original",
+        "icon": "markdown-original",
         "type": "other"
     },
     "mongodb": {
         "name": "MongoDB",
-        "icon": "plain colored",
-        "type": ["back", "other"]
+        "icon": "mongodb-plain colored",
+        "type": [
+            "back",
+            "other"
+        ]
     },
     "mysql": {
         "name": "MySQL",
-        "icon": "plain colored",
-        "type": ["back", "other"]
+        "icon": "mysql-original colored",
+        "type": [
+            "back",
+            "other"
+        ]
     },
     "nextjs": {
         "name": "Next.js",
-        "icon": "plain",
-        "type": ["front", "back"]
+        "icon": "nextjs-plain",
+        "type": [
+            "front",
+            "back"
+        ]
     },
     "nginx": {
         "name": "Nginx",
-        "icon": "plain colored",
+        "icon": "nginx-original colored",
         "type": "other"
     },
     "nodejs": {
         "name": "Node.js",
-        "icon": "plain colored",
+        "icon": "nodejs-plain colored",
         "type": "back"
     },
     "php": {
         "name": "PHP",
-        "icon": "plain colored",
+        "icon": "php-plain colored",
         "type": "back"
     },
     "rabbitmq": {
         "name": "RabbitMQ",
-        "icon": "plain colored",
+        "icon": "rabbitmq-original colored",
         "type": "back"
     },
     "react": {
         "name": "React",
-        "icon": "plain colored",
+        "icon": "react-original colored",
         "type": "front"
     },
     "redis": {
         "name": "Redis",
-        "icon": "plain colored",
+        "icon": "redis-plain colored",
         "type": "back"
     },
     "sass": {
         "name": "Sass",
-        "icon": "plain colored",
+        "icon": "sass-original colored",
         "type": "front"
     },
     "svelte": {
         "name": "Svelte",
-        "icon": "plain colored",
+        "icon": "svelte-plain colored",
         "type": "front"
     },
     "symfony": {
         "name": "Symfony",
-        "icon": "original",
+        "icon": "symfony-original",
         "type": "back"
     },
     "tailwindcss": {
         "name": "Tailwind CSS",
-        "icon": "plain colored",
+        "icon": "tailwindcss-original colored",
         "type": "front"
     },
     "traefikproxy": {
         "name": "Traefik",
-        "icon": "plain colored",
+        "icon": "traefikproxy-original colored",
         "type": "other"
     },
     "typescript": {
         "name": "TypeScript",
-        "icon": "plain colored",
-        "type": ["front", "back"]
+        "icon": "typescript-plain colored",
+        "type": [
+            "front",
+            "back"
+        ]
     },
     "wordpress": {
         "name": "WordPress",
-        "icon": "plain",
-        "type": ["front", "back", "other"]
+        "icon": "wordpress-plain",
+        "type": [
+            "front",
+            "back",
+            "other"
+        ]
     }
 }

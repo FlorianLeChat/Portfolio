@@ -13,7 +13,6 @@
         "url": "https://github.com/FlorianLeChat/Portfolio/issues"
     },
     "devDependencies": {
-        "@types/canvas-confetti": "~1.9",
         "vite": "~8.2.0",
         "husky": "~9.1",
         "cspell": "~10.1.0",
@@ -25,13 +24,11 @@
         "photoswipe": "~5.4",
         "typescript": "~6.0",
         "@eslint/js": "~10.0",
-        "sweetalert2": "~11.26",
         "lint-staged": "~17.3.0",
         "svelte-check": "~4.7.0",
         "sanitize.css": "~13.0",
         "sass-embedded": "~1.103.0",
         "@sveltejs/kit": "~2.70.0",
-        "canvas-confetti": "~1.9",
         "@commitlint/cli": "~21.2.0",
         "@tsconfig/svelte": "~5.0",
         "@playwright/test": "~1.62.0",
@@ -43,6 +40,7 @@
         "eslint-formatter-gitlab": "~7.2.0",
         "@stylistic/eslint-plugin": "~5.10",
         "@sveltejs/adapter-static": "~3.0",
+        "@sveltejs/vite-plugin-svelte": "~7.3.0",
         "@fortawesome/fontawesome-free": "~7.3.0",
         "@commitlint/config-conventional": "~21.2.0"
     },

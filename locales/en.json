@@ -1,12 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 
-	"modals_mailer_title": "Mailbox selection",
-	"modals_mailer_description": "To send an email, you can choose between several mailboxes. Select your preferred one.",
-	"modals_mailer_error": "You have to choose a mailbox.",
-	"modals_mailer_google": "Gmail (Google)",
-	"modals_mailer_default": "Default mailbox",
-
 	"projects_portfolio": "This is the website you are currently on, it is a simple website portfolio, it describes all my skills but also the projects I have done over the years (personal, school or professional).",
 	"projects_filestorage": "A fast, secure, easy-to-use data storage service offering an alternative to the current dominant providers, such as Google Drive and OneDrive, with their questionable privacy policies.",
 	"projects_sourceconsole": "A remote administration solution for servers running the Source Engine (Garry's Mod, Counter-Strike: Source, Team Fortress 2, etc.) to help inexperienced server administrators or people who do not have access to the server console.",
@@ -17,28 +11,53 @@
 	"projects_timeloop": "A countdown to estimate the time remaining until a future date, or to measure the time elapsed since a past date, so you never forget how fast time flies. The website also allows you to select significant historical events to better visualize the passage of time.",
 	"projects_blog": "A personal blog where I can share my thoughts, experiences and knowledge on various topics such as computer science and other areas that interest me. It is a space where I can express myself freely without format or subject constraints.",
 	"projects_magicanswers": "A website, largely inspired by the book of the same name, that generates sufficiently vague answers to answer all the questions in the universe. It was designed with increased constraints of environmental sobriety, accessibility and privacy.",
-    "projects_terminalstories": "A website designed to tell interactive stories in a command terminal style, allowing users to experience a unique and immersive narrative experience. The site emphasizes interactivity and reader engagement through choices and actions that influence the course of the story.",
+	"projects_terminalstories": "A website designed to tell interactive stories in a command terminal style, allowing users to experience a unique and immersive narrative experience. The site emphasizes interactivity and reader engagement through choices and actions that influence the course of the story.",
 
-	"landing_scroll_top": "Scroll to top",
+	"landing_header_skip": "Skip to the main content",
+	"landing_header_home": "Home",
 	"landing_header_projects": "Projects",
 	"landing_header_skills": "Skills",
-	"landing_header_contact": "Contact",
 	"landing_header_blog": "Blog",
-	"landing_header_theme": "Theme selection",
+	"landing_header_contact": "Contact",
+	"landing_header_theme_light": "Switch to the light theme",
+	"landing_header_theme_dark": "Switch to the dark theme",
 	"landing_header_navigation": "Navigation menu",
+
+	"landing_hello_title": "Hi. I am",
+	"landing_developer_firstname": "Florian",
+	"landing_developer_surname": "Trayon",
+	"landing_developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
+	"landing_access_resume": "Go to the online resume",
+
+	"landing_commit_title": "Latest public activity",
+	"landing_commit_view": "View the commit",
+
+	"landing_blog_title": "Blog",
+	"landing_blog_intro": "Where I write, and where you can learn a little more about me.",
+	"landing_blog_read": "Read the post",
+	"landing_blog_all": "Read every post",
+	"landing_blog_unavailable": "Posts are not available right now.",
+
+	"landing_projects_intro": "My most accomplished personal projects, all running in production.",
 	"landing_project_source": "Source code",
 	"landing_project_demo": "Demo",
-	"landing_footer_mail": "Mail",
+
+	"landing_filter_legend": "Filter the skills by category",
 	"landing_filter_all": "All",
 	"landing_filter_front": "Front-end",
 	"landing_filter_back": "Back-end",
 	"landing_filter_other": "Other",
+
+	"landing_carousel_previous": "Previous items",
+	"landing_carousel_next": "Next items",
+	"landing_carousel_projects": "Project list",
+	"landing_carousel_skills": "Skill list",
+
+	"landing_footer_mail": "Mail",
+	"landing_footer_source": "Portfolio source code",
 	"landing_footer_legacy": "Legacy version",
 	"landing_footer_madeby": "Created by",
 	"landing_footer_version": "Current version: {version}",
-	"landing_developer_firstname": "Florian",
-	"landing_developer_surname": "Trayon",
-	"landing_developer_description": "I'm a {age} year old french full-stack (junior) developer. I love to use my spare time to develop personal projects of all kinds. Passionate about computer science, I'm always looking for new technologies and new projects.",
-	"landing_hello_title": "Hi. I am",
-	"landing_access_resume": "Go to the online resume"
+
+	"landing_scroll_top": "Scroll to top"
 }

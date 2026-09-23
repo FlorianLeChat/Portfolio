@@ -1,56 +1,163 @@
-// https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995
+// Colour system: the palette, the tokens it emits, and the accessors
+// stylesheets call.
+//
+// Colours used to live in a Sass map consumed by a mixin that duplicated every
+// themed selector into `.light &` and `.dark &`. Custom properties remove that
+// duplication and let JavaScript read the current values.
+@use "sass:color";
 @use "sass:map";
 
-$theme-map: null;
-
-$themes:
+// The active palette declares a solid colour per token. Tints, shadows and the
+// rgb triplets used for alpha compositing are derived below, so swapping the
+// palette only ever means editing this flat list.
+//
+// Two alternates were evaluated alongside this one and are kept here rather
+// than in version history, so trying one again is a copy and paste:
+//
+//   Teal and amber
+//     light  background #fbfcfd  background-alt #ffffff  surface #ffffff
+//            foreground #3d4b5a  foreground-alt #1b2733  muted   #64748b
+//            border     #dde3e9  primary        #0d7d8a  primary-alt #0a656f
+//            accent     #b45309  accent-alt     #92400e
+//     dark   background #0b1117  background-alt #121b24  surface #16212c
+//            foreground #cbd7e3  foreground-alt #eef4fa  muted   #8b9bad
+//            border     #23303d  primary        #2dd4bf  primary-alt #5eead4
+//            accent     #fbbf24  accent-alt     #fcd34d
+//
+//   Modernised blue
+//     light  background #f7f9fb  background-alt #ffffff  surface #ffffff
+//            foreground #3a4756  foreground-alt #16202b  muted   #5f6c7b
+//            border     #dbe3ea  primary        #1d5fd0  primary-alt #1749a8
+//            accent     #c2410c  accent-alt     #9a3412
+//     dark   background #090d14  background-alt #10171f  surface #141d27
+//            foreground #c6d3e2  foreground-alt #eaf1f8  muted   #8296ab
+//            border     #1e2b38  primary        #74a8ff  primary-alt #a2c6ff
+//            accent     #ff8a4c  accent-alt     #ffab7a
+//
+// Every combination below clears WCAG AA against its own background.
+$palette:
     (
         light:
         (
-            background: rgb(245, 246, 247),
-            background-alt: white,
-            foreground: rgb(68, 68, 68),
-            foreground-alt: rgb(34, 34, 34),
-            primary: rgb(48, 108, 196),
-            primary-alt: rgb(24, 93, 199),
-            primary-light: rgba(44, 93, 206, 0.1),
-            container-shadow: 0 2px 4px rgb(0 0 0 / 10%)
+            background: #fafaff,
+            background-alt: #ffffff,
+            surface: #ffffff,
+            foreground: #4a4560,
+            foreground-alt: #1e1b2e,
+            muted: #6b6785,
+            border: #e2e0ee,
+            primary: #4f46e5,
+            primary-alt: #4338ca,
+            accent: #be185d,
+            accent-alt: #9d174d
         ),
         dark:
         (
-            background: rgb(10, 12, 20),
-            background-alt: rgb(17, 24, 39),
-            foreground: rgb(203, 213, 225),
-            foreground-alt: rgb(229, 231, 235),
-            primary: rgb(96, 165, 250),
-            primary-alt: rgb(59, 130, 246),
-            primary-light: rgba(59, 130, 246, 0.15),
-            container-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px -2px
+            background: #0d0b14,
+            background-alt: #16131f,
+            surface: #1b1727,
+            foreground: #d5cfe8,
+            foreground-alt: #f3f0fb,
+            muted: #9a93b8,
+            border: #2a2438,
+            primary: #818cf8,
+            primary-alt: #a5b4fc,
+            accent: #f472b6,
+            accent-alt: #f9a8d4
         )
     );
 
-@mixin themeColors()
+// Tint strength and elevation depend on the mode rather than the palette.
+$mode-tint:
+    (
+        light: 0.1,
+        dark: 0.16
+    );
+
+$mode-shadow:
+    (
+        light: (0 1px 2px rgb(15 23 42 / 6%), 0 8px 24px -12px rgb(15 23 42 / 18%)),
+        dark: (0 1px 2px rgb(0 0 0 / 40%), 0 10px 28px -12px rgb(0 0 0 / 60%))
+    );
+
+/// Emits every custom property for one mode.
+///
+/// Alongside each solid colour it emits an `-rgb` triplet, because `rgba()`
+/// cannot take a `var()` argument. Rules needing transparency compose with
+/// `rgb(var(--color-x-rgb) / <alpha>)` instead.
+@mixin emitTokens( $tokens, $mode )
 {
-    @each $theme, $map in $themes
+    @each $key, $value in $tokens
     {
-        .#{$theme} &
+        --color-#{$key}: #{$value};
+        --color-#{$key}-rgb: #{color.channel( $value, "red" )}, #{color.channel( $value, "green" )}, #{color.channel( $value, "blue" )};
+    }
+
+    --alpha-tint: #{map.get( $mode-tint, $mode )};
+    --color-primary-light: rgb(var(--color-primary-rgb) / var(--alpha-tint));
+    --color-accent-light: rgb(var(--color-accent-rgb) / var(--alpha-tint));
+    --color-container-shadow: #{map.get( $mode-shadow, $mode )};
+}
+
+/// Writes the whole token layer.
+///
+/// Nothing is emitted at module load, because `globals.scss` and the page
+/// stylesheets are separate Sass entry points: emitting on load would duplicate
+/// the declarations in every bundle. `globals.scss` calls this exactly once.
+///
+/// @author Claude
+@mixin emitPalettes()
+{
+    @each $mode, $tokens in $palette
+    {
+        html.#{$mode}
         {
-            $theme-map: () !global;
+            @include emitTokens( $tokens, $mode );
+        }
+    }
 
-            @each $key, $submap in $map
-            {
-                $value: map.get(map.get($themes, $theme), "#{$key}");
-                $theme-map: map.merge($theme-map, ($key: $value)) !global;
-            }
+    :root
+    {
+        --radius-sm: 0.5rem;
+        --radius-md: 0.75rem;
+        --radius-lg: 1.25rem;
+        --radius-pill: 5rem;
 
-            @content;
+        --duration: 200ms;
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
 
-            $theme-map: null !global;
+        --font-body: "Poppins", system-ui, sans-serif;
+    }
+
+    @media ( prefers-reduced-motion: reduce )
+    {
+        :root
+        {
+            --duration: 0ms;
         }
     }
 }
 
-@function getThemedColor($key)
+/// Resolves a palette token to its custom property.
+///
+/// @param {String} $key - Token name, without the `--color-` prefix.
+/// @return {String} A `var()` reference resolved by the browser.
+/// @author Claude
+@function getThemedColor( $key )
 {
-    @return map.get($theme-map, $key);
+    @return var(--color-#{$key});
+}
+
+/// Resolves a palette token to a translucent colour.
+///
+/// `rgba()` cannot take a `var()` argument, so this composes with the `-rgb`
+/// triplet emitted alongside every solid token.
+///
+/// @param {String} $key - Token name, without the `--color-` prefix.
+/// @param {Number} $alpha - Opacity between 0 and 1.
+/// @return {String} An `rgb()` expression with an alpha channel.
+/// @author Claude
+@function getThemedAlpha( $key, $alpha )
+{
+    @return #{"rgb(var(--color-" + $key + "-rgb) / " + $alpha + ")"};
 }
