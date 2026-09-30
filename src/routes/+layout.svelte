@@ -30,13 +30,19 @@
 
     {#if env.PUBLIC_ANALYTICS_ENABLED === "true"}
         <script
-            src={env.PUBLIC_ANALYTICS_ENDPOINT}
+            src={env.PUBLIC_ANALYTICS_ENDPOINT + "/script.js"}
             defer
             data-website-id={env.PUBLIC_ANALYTICS_PROJECT_ID}
             data-performance="true"
             data-do-not-track={env.PUBLIC_ANALYTICS_RESPECT_DNT}
             data-exclude-hash="true"
             data-exclude-search="true"
+        ></script>
+
+        <script
+            src={env.PUBLIC_ANALYTICS_ENDPOINT + "/recorder.js"}
+            defer
+            data-website-id={env.PUBLIC_ANALYTICS_PROJECT_ID}
         ></script>
     {/if}
 </svelte:head>
