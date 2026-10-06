@@ -31,37 +31,20 @@
             const key = "portfolio:theme";
             const element = document.documentElement;
 
-            // Private browsing modes can make localStorage throw on access,
-            // which would abort the whole script and leave the page unstyled.
-            const read = () => {
-                try {
-                    return localStorage.getItem(key);
-                } catch {
-                    return null;
-                }
-            };
+            let stored = null;
 
-            const write = (value) => {
-                try {
-                    localStorage.setItem(key, value);
-                } catch {
-                    // Persisting the preference is best effort.
-                }
-            };
-
-            const stored = read();
+            try {
+                stored = localStorage.getItem(key);
+            } catch {
+                /* storage unavailable, the system preference decides on every visit */
+            }
 
             element.classList.remove("light", "dark");
 
-            if (stored === "light" || stored === "dark") {
-                element.classList.add(stored);
-            } else {
-                const target = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+            const chosen = stored === "light" || stored === "dark";
+            const system = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 
-                element.classList.add(target);
-
-                write(target);
-            }
+            element.classList.add(chosen ? stored : system);
         </script>
 
         %sveltekit.head%
