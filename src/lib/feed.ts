@@ -1,13 +1,13 @@
-import { env } from "$env/dynamic/public";
-import { withCache } from "$lib/cache";
-import type { Post } from "$lib/types/Post";
+import { withCache } from "#lib/cache.ts";
+import type { Post } from "#lib/types/Post.ts";
+import { PUBLIC_BLOG_FEED_URL } from "$app/env/public";
 
 // The feed is read in the browser on every visit rather than baked at build
 // time, so the cards are never older than the page the visitor is looking at.
 // `DOMParser` does the parsing, which means no XML library ships to the client.
 export const MAX_POSTS = 3;
 
-export const FEED_URL = env.PUBLIC_BLOG_FEED_URL ?? "https://blog.florian-dev.fr/feed.xml";
+export const FEED_URL = PUBLIC_BLOG_FEED_URL;
 
 // Named entities a French blog realistically emits. Numeric forms are handled
 // generically below, so this only has to cover the named spellings.

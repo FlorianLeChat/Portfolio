@@ -1,6 +1,6 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
+    import * as m from "#lib/locales/messages.js";
     import IconArrowUp from "~icons/tabler/arrow-up";
 
     let showButton = $state( false );

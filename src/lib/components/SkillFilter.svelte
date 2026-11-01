@@ -1,8 +1,8 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
-    import Carousel from "$lib/components/Carousel.svelte";
-    import type { Skill, SkillType } from "$lib";
+    import type { Skill, SkillType } from "#lib";
+    import * as m from "#lib/locales/messages.js";
+    import Carousel from "#lib/components/Carousel.svelte";
 
     let { skills }: { skills: Record<string, Skill> } = $props();
 

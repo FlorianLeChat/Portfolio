@@ -27,10 +27,11 @@
         "svelte-check": "~4.7.0",
         "sanitize.css": "~13.0",
         "sass-embedded": "~1.106.0",
-        "@sveltejs/kit": "~2.70.0",
+        "@sveltejs/kit": "~3.1.0",
         "unplugin-icons": "~24.0",
         "@commitlint/cli": "~21.2.0",
         "@tsconfig/svelte": "~5.0",
+        "@types/node": "~22.20",
         "@playwright/test": "~1.64.0",
         "typescript-eslint": "~8.72.0",
         "@cspell/dict-fr-fr": "~2.3",
@@ -40,13 +41,17 @@
         "prettier-plugin-svelte": "~4.1.0",
         "eslint-formatter-gitlab": "~7.2.0",
         "@stylistic/eslint-plugin": "~5.10",
-        "@sveltejs/adapter-static": "~3.0",
+        "@sveltejs/adapter-static": "~4.0.0",
         "@iconify-json/simple-icons": "~1.2",
         "@sveltejs/vite-plugin-svelte": "~7.3.0",
         "@commitlint/config-conventional": "~21.2.0"
     },
+    "imports": {
+        "#lib": "./src/lib/index.ts",
+        "#lib/*": "./src/lib/*"
+    },
     "engines": {
-        "node": ">=22.0",
+        "node": ">=22.17",
         "npm": ">=10.5"
     },
     "scripts": {

@@ -1,12 +1,12 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
     import IconX from "~icons/tabler/x";
     import { resolve } from "$app/paths";
+    import IconMenu2 from "~icons/tabler/menu-2";
+    import * as m from "#lib/locales/messages.js";
     import IconSun from "~icons/tabler/sun-filled";
     import IconMoon from "~icons/tabler/moon-filled";
-    import IconMenu2 from "~icons/tabler/menu-2";
-    import { themeStore, STORAGE_KEY } from "$lib/theme.svelte";
+    import { themeStore, STORAGE_KEY } from "#lib/theme.svelte.ts";
 
     let mounted = $state( false );
     let showMenu = $state( false );

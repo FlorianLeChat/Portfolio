@@ -1,9 +1,9 @@
 <script lang="ts">
+    import * as m from "#lib/locales/messages.js";
     import IconMail from "~icons/tabler/mail-filled";
-    import * as m from "$lib/locales/messages";
-    import { LINKS, CONTACT_MAIL } from "$lib/links";
-    import IconGitlab from "~icons/simple-icons/gitlab";
+    import { LINKS, CONTACT_MAIL } from "#lib/links.ts";
     import IconGithub from "~icons/simple-icons/github";
+    import IconGitlab from "~icons/simple-icons/gitlab";
     import IconLinkedin from "~icons/tabler/brand-linkedin-filled";
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getSkills } from "$lib/skills";
+    import { getSkills } from "#lib/skills.ts";
 
     let { keys }: { keys: string[] } = $props();
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
-    import { LINKS } from "$lib/links";
-    import { env } from "$env/dynamic/public";
+    import { LINKS } from "#lib/links.ts";
     import IconCode from "~icons/tabler/code";
+    import * as m from "#lib/locales/messages.js";
     import IconPhp from "~icons/simple-icons/php";
+    import { PUBLIC_VERSION } from "$app/env/public";
 </script>
 
 <footer>
@@ -33,7 +33,7 @@
         </span>
 
         <code>
-            {m.landing_footer_version( { version: env.PUBLIC_VERSION ?? "0.0.1" } )}
+            {m.landing_footer_version( { version: PUBLIC_VERSION } )}
         </code>
     </div>
 </footer>

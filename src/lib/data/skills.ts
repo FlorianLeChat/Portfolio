@@ -3,6 +3,7 @@ import IconGit from "~icons/simple-icons/git";
 import IconLua from "~icons/simple-icons/lua";
 import IconPhp from "~icons/simple-icons/php";
 import IconSass from "~icons/simple-icons/sass";
+import type { Skill } from "#lib/types/Skill.ts";
 import IconHtml5 from "~icons/simple-icons/html5";
 import IconMysql from "~icons/simple-icons/mysql";
 import IconNginx from "~icons/simple-icons/nginx";
@@ -33,7 +34,6 @@ import IconJavascript from "~icons/simple-icons/javascript";
 import IconTypescript from "~icons/simple-icons/typescript";
 import IconTailwindcss from "~icons/simple-icons/tailwindcss";
 import IconTraefikproxy from "~icons/simple-icons/traefikproxy";
-import type { Skill } from "$lib/types/Skill";
 
 export const SKILLS = {
     ansible: { name: "Ansible", icon: IconAnsible, type: "other" },

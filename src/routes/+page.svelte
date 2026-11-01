@@ -1,16 +1,16 @@
 <script lang="ts">
     import "photoswipe/photoswipe.css";
 
-    import * as m from "$lib/locales/messages";
-    import { LINKS } from "$lib/links";
-    import BlogCards from "$lib/components/BlogCards.svelte";
-    import ProjectList from "$lib/components/ProjectList.svelte";
-    import SkillFilter from "$lib/components/SkillFilter.svelte";
-    import LatestCommit from "$lib/components/LatestCommit.svelte";
-    import ContactMailer from "$lib/components/ContactMailer.svelte";
+    import { LINKS } from "#lib/links.ts";
     import type { PageData } from "./$types";
+    import * as m from "#lib/locales/messages.js";
     import IconArrowRight from "~icons/tabler/arrow-right";
+    import BlogCards from "#lib/components/BlogCards.svelte";
     import IconExternalLink from "~icons/tabler/external-link";
+    import ProjectList from "#lib/components/ProjectList.svelte";
+    import SkillFilter from "#lib/components/SkillFilter.svelte";
+    import LatestCommit from "#lib/components/LatestCommit.svelte";
+    import ContactMailer from "#lib/components/ContactMailer.svelte";
 
     let { data }: { data: PageData } = $props();
 

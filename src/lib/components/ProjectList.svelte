@@ -1,13 +1,13 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
-    import type { Project } from "$lib";
+    import type { Project } from "#lib";
     import IconCode from "~icons/tabler/code";
-    import Carousel from "$lib/components/Carousel.svelte";
-    import SkillChips from "$lib/components/SkillChips.svelte";
-    import { getImage, getDescription } from "$lib/projects";
+    import * as m from "#lib/locales/messages.js";
+    import Carousel from "#lib/components/Carousel.svelte";
     import type PhotoSwipeLightbox from "photoswipe/lightbox";
     import IconExternalLink from "~icons/tabler/external-link";
+    import SkillChips from "#lib/components/SkillChips.svelte";
+    import { getImage, getDescription } from "#lib/projects.ts";
 
     let {
         projects,
