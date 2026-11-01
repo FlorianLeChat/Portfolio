@@ -1,5 +1,5 @@
-import { SKILLS } from "$lib/data/skills";
-import type { Skill } from "$lib/types/Skill";
+import { SKILLS } from "#lib/data/skills.ts";
+import type { Skill } from "#lib/types/Skill.ts";
 
 const registry: Record<string, Skill> = SKILLS;
 

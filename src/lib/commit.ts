@@ -1,14 +1,14 @@
-import { env } from "$env/dynamic/public";
-import { withCache } from "$lib/cache";
-import type { Commit } from "$lib/types/Commit";
+import { withCache } from "#lib/cache.ts";
+import type { Commit } from "#lib/types/Commit.ts";
+import { PUBLIC_GITLAB_API_URL, PUBLIC_GITLAB_USERNAME, PUBLIC_GITHUB_USERNAME } from "$app/env/public";
 
 // Isomorphic on purpose. The same code prefetches at build time, so the card
 // paints immediately, and refreshes in the browser, so a build from three weeks
 // ago does not advertise three-week-old activity. Both GitLab and GitHub answer
 // with `Access-Control-Allow-Origin: *`, so no proxy is involved.
-const GITLAB_API = env.PUBLIC_GITLAB_API_URL ?? "https://git.florian-dev.fr";
-const GITLAB_USER = env.PUBLIC_GITLAB_USERNAME ?? "floriantrayon";
-const GITHUB_USER = env.PUBLIC_GITHUB_USERNAME ?? "FlorianLeChat";
+const GITLAB_API = PUBLIC_GITLAB_API_URL;
+const GITLAB_USER = PUBLIC_GITLAB_USERNAME;
+const GITHUB_USER = PUBLIC_GITHUB_USERNAME;
 
 const TIMEOUT = 8_000;
 const PAGE_SIZE = 10;

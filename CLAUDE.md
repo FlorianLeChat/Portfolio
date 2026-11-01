@@ -1,6 +1,6 @@
 # Project conventions
 
-Guidance for working in this repository. It assumes SvelteKit 2, Svelte 5 runes,
+Guidance for working in this repository. It assumes SvelteKit 3, Svelte 5 runes,
 TypeScript and SCSS, built statically with `adapter-static` and published to
 GitLab Pages.
 
@@ -8,7 +8,7 @@ GitLab Pages.
 
 All user facing text goes through Paraglide messages. Never hardcode a string in
 a component: add the key to both `locales/en.json` and `locales/fr.json`, then
-call it as `m.my_key()` from `$lib/locales/messages`.
+call it as `m.my_key()` from `#lib/locales/messages.js`.
 
 Key names are namespaced by prefix: `landing_*` for the site chrome and
 `projects_*` for project descriptions.
@@ -30,8 +30,9 @@ at runtime.
 
 - There is no `+page.server.ts`. Anything that must be current is fetched from
   the browser, not baked into the build.
-- `$env/dynamic/public` is resolved at build time, so changing a variable means
-  rebuilding. Every variable is `PUBLIC_` prefixed.
+- Environment variables are declared in `src/env.ts` and imported from
+  `$app/env/public`. They are `static`, inlined at build time, so changing a
+  variable means rebuilding. Every variable is `PUBLIC_` prefixed.
 - Every feature backed by an environment variable must render nothing when that
   variable is empty.
 
@@ -223,13 +224,39 @@ ESLint enforces a distinctive house style, so run it rather than guessing:
 - `type` rather than `interface`
 - Internal navigation goes through `resolve()` from `$app/paths`
 
+### Imports
+
+Imports are sorted **in a staircase**, the same way declarations are in a
+stylesheet: ascending by line length, then alphabetically when two lines are the
+same length. The run is unbroken, side effect imports, value imports and `import
+type` alike — nothing groups them by origin, and a blank line is what starts a
+new staircase rather than what separates kinds.
+
+Blank line separated groups therefore each sort on their own, which is how
+`+layout.svelte` keeps the global stylesheet, the `sanitize.css` modules and the
+application imports apart. A statement spanning several lines is the tallest
+step there is, so it closes its group.
+
+```ts
+import { asset } from "$app/paths";
+import * as m from "#lib/locales/messages.js";
+import Footer from "#lib/components/Footer.svelte";
+import Header from "#lib/components/Header.svelte";
+import ScrollTop from "#lib/components/ScrollTop.svelte";
+```
+
+A group whose load order is load bearing — one stylesheet overriding the next —
+is the exception, and keeps the order it needs. The `sanitize.css` modules are
+not such a group: they are `:where()` rules over disjoint properties, so sorting
+them changes nothing.
+
 Before committing:
 
 ```bash
 npm run check && npm run lint && npm run check-spell
 ```
 
-`svelte.config.js` sets `preprocess: vitePreprocess()`. Without it `svelte-check`
+`vite.config.ts` passes `preprocess: vitePreprocess()` to `sveltekit()`. Without it `svelte-check`
 silently skips every component using `<style lang="scss">`.
 
 ## Planning before implementation
@@ -279,7 +306,7 @@ Prefer semantic elements over generic containers: `<main>`, `<section>`,
 Interactive controls carry an accessible name. Icons next to a visible label are
 `aria-hidden`; icons standing alone get a label.
 
-External URLs live in `$lib/links`, never as literals in a component. ESLint's
+External URLs live in `#lib/links.ts`, never as literals in a component. ESLint's
 `no-navigation-without-resolve` cannot tell an external constant from an
 unresolved internal route, so those links carry a targeted disable comment
 stating why.
@@ -301,6 +328,7 @@ long. Its styles move with it, into its own `<style lang="scss">` block.
 ```
 src/
   app.html              Shell, plus the blocking theme/palette/eco script
+  env.ts                Environment variables, public and static
   hooks.ts              Locale de-localisation for routing
   hooks.server.ts       Paraglide middleware
   lib/

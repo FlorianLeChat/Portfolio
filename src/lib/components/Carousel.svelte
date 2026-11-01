@@ -2,7 +2,7 @@
     // Horizontal scroller with arrow controls, shared by the projects and the
     // skills sections. The children lay themselves out; this only owns the
     // scrolling list and the state of its two paging arrows.
-    import * as m from "$lib/locales/messages";
+    import * as m from "#lib/locales/messages.js";
     import { onMount, type Snippet } from "svelte";
     import IconChevronLeft from "~icons/tabler/chevron-left";
     import IconChevronRight from "~icons/tabler/chevron-right";

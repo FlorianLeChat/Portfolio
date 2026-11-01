@@ -1,11 +1,11 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
-    import { LINKS } from "$lib/links";
+    import { LINKS } from "#lib/links.ts";
+    import * as m from "#lib/locales/messages.js";
     import IconRss from "~icons/simple-icons/rss";
-    import type { Post } from "$lib/types/Post";
-    import { getLocale } from "$lib/locales/runtime";
-    import { fetchPosts, MAX_POSTS } from "$lib/feed";
+    import type { Post } from "#lib/types/Post.ts";
+    import { getLocale } from "#lib/locales/runtime.js";
+    import { fetchPosts, MAX_POSTS } from "#lib/feed.ts";
     import IconArrowRight from "~icons/tabler/arrow-right";
 
     let posts = $state<Post[]>( [] );

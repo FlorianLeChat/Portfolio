@@ -1,9 +1,9 @@
-import * as m from "$lib/locales/messages";
-import { PROJECTS } from "$lib/data/projects";
-import type { Project } from "$lib/types/Project";
+import * as m from "#lib/locales/messages.js";
+import { PROJECTS } from "#lib/data/projects.ts";
+import type { Project } from "#lib/types/Project.ts";
 
 // Screenshots are matched to projects by file name, so adding one only means
-// dropping `<key>.webp` in `$lib/images`. Vite resolves these to hashed URLs at
+// dropping `<key>.webp` in `#lib/images`. Vite resolves these to hashed URLs at
 // build time, which replaces the handwritten switch this file used to need.
 const images = import.meta.glob<string>( "./images/*.webp", { eager: true, import: "default" } );
 

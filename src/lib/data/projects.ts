@@ -1,4 +1,4 @@
-import type { Project } from "$lib/types/Project";
+import type { Project } from "#lib/types/Project.ts";
 
 export const PROJECTS = {
     portfolio: {

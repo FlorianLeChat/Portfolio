@@ -1,13 +1,13 @@
 <script lang="ts">
-    import * as m from "$lib/locales/messages";
     import { onMount } from "svelte";
-    import IconGitBranch from "~icons/tabler/git-branch";
-    import IconGitlab from "~icons/simple-icons/gitlab";
+    import * as m from "#lib/locales/messages.js";
+    import { fetchLatestCommit } from "#lib/commit.ts";
+    import { getLocale } from "#lib/locales/runtime.js";
     import IconGithub from "~icons/simple-icons/github";
-    import { getLocale } from "$lib/locales/runtime";
-    import { fetchLatestCommit } from "$lib/commit";
-    import type { SkillIcon } from "$lib/types/Skill";
-    import type { Commit, CommitSource } from "$lib/types/Commit";
+    import IconGitlab from "~icons/simple-icons/gitlab";
+    import IconGitBranch from "~icons/tabler/git-branch";
+    import type { SkillIcon } from "#lib/types/Skill.ts";
+    import type { Commit, CommitSource } from "#lib/types/Commit.ts";
 
     let commit = $state<Commit | null>( null );
     let settled = $state( false );
