@@ -64,5 +64,11 @@ export const PROJECTS = {
         skills: [ "html5", "tailwindcss", "typescript", "nodejs", "svelte", "eslint" ],
         repository: "https://github.com/FlorianLeChat/Terminal-Stories",
         demo: "https://pages.florian-dev.fr/floriantrayon/Terminal-Stories/"
+    },
+    pericles: {
+        title: "Périclès Initiative",
+        skills: [ "html5", "tailwindcss", "typescript", "nodejs", "svelte", "eslint" ],
+        repository: "https://github.com/FlorianLeChat/Pericles-Initiative",
+        demo: "https://wiki.florian-dev.fr/"
     }
 } satisfies Record<string, Project>;
