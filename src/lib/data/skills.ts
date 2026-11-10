@@ -11,6 +11,7 @@ import IconReact from "~icons/simple-icons/react";
 import IconRedis from "~icons/simple-icons/redis";
 import IconApache from "~icons/simple-icons/apache";
 import IconCentos from "~icons/simple-icons/centos";
+import IconClaude from "~icons/simple-icons/claude";
 import IconDebian from "~icons/simple-icons/debian";
 import IconDocker from "~icons/simple-icons/docker";
 import IconEslint from "~icons/simple-icons/eslint";
@@ -19,9 +20,12 @@ import IconGitlab from "~icons/simple-icons/gitlab";
 import IconJekyll from "~icons/simple-icons/jekyll";
 import IconJquery from "~icons/simple-icons/jquery";
 import IconSvelte from "~icons/simple-icons/svelte";
+import IconVitest from "~icons/simple-icons/vitest";
 import IconAnsible from "~icons/simple-icons/ansible";
+import IconGrafana from "~icons/simple-icons/grafana";
 import IconMariadb from "~icons/simple-icons/mariadb";
 import IconMongodb from "~icons/simple-icons/mongodb";
+import IconProxmox from "~icons/simple-icons/proxmox";
 import IconSymfony from "~icons/simple-icons/symfony";
 import IconDoctrine from "~icons/simple-icons/doctrine";
 import IconMarkdown from "~icons/simple-icons/markdown";
@@ -30,7 +34,10 @@ import IconBootstrap from "~icons/simple-icons/bootstrap";
 import IconNextdotjs from "~icons/simple-icons/nextdotjs";
 import IconNodedotjs from "~icons/simple-icons/nodedotjs";
 import IconWordpress from "~icons/simple-icons/wordpress";
+import IconClaudecode from "~icons/simple-icons/claudecode";
 import IconJavascript from "~icons/simple-icons/javascript";
+import IconPlaywright from "~icons/simple-icons/playwright";
+import IconPostgresql from "~icons/simple-icons/postgresql";
 import IconTypescript from "~icons/simple-icons/typescript";
 import IconTailwindcss from "~icons/simple-icons/tailwindcss";
 import IconTraefikproxy from "~icons/simple-icons/traefikproxy";
@@ -40,6 +47,8 @@ export const SKILLS = {
     apache: { name: "Apache", icon: IconApache, color: "#cb2533", type: "other" },
     bootstrap: { name: "Bootstrap", icon: IconBootstrap, color: "#712cf9", type: "front" },
     centos: { name: "CentOS", icon: IconCentos, color: "#932178", type: "other" },
+    claude: { name: "Claude", icon: IconClaude, color: "#d97757", type: "other" },
+    claudecode: { name: "Claude Code", icon: IconClaudecode, color: "#d97757", type: "other" },
     css3: { name: "CSS", icon: IconCss, color: "#3d8fc6", type: "front" },
     debian: { name: "Debian", icon: IconDebian, color: "#a80030", type: "other" },
     docker: { name: "Docker", icon: IconDocker, color: "#019bc6", type: "other" },
@@ -48,6 +57,7 @@ export const SKILLS = {
     git: { name: "Git", icon: IconGit, color: "#f34f29", type: "other" },
     github: { name: "GitHub", icon: IconGithub, type: "other" },
     gitlab: { name: "GitLab", icon: IconGitlab, color: "#e24329", type: "other" },
+    grafana: { name: "Grafana", icon: IconGrafana, color: "#f46800", type: [ "back", "other" ] },
     html5: { name: "HTML", icon: IconHtml5, color: "#e54d26", type: "front" },
     javascript: { name: "JavaScript", icon: IconJavascript, color: "#f0db4f", type: [ "front", "back" ] },
     jekyll: { name: "Jekyll", icon: IconJekyll, type: "other" },
@@ -61,6 +71,9 @@ export const SKILLS = {
     nginx: { name: "Nginx", icon: IconNginx, color: "#009900", type: "other" },
     nodejs: { name: "Node.js", icon: IconNodedotjs, color: "#5fa04e", type: "back" },
     php: { name: "PHP", icon: IconPhp, color: "#777bb3", type: "back" },
+    playwright: { name: "Playwright", icon: IconPlaywright, color: "#2ead33", type: "other" },
+    postgresql: { name: "PostgreSQL", icon: IconPostgresql, color: "#336791", type: [ "back", "other" ] },
+    proxmox: { name: "Proxmox", icon: IconProxmox, color: "#e57000", type: "other" },
     rabbitmq: { name: "RabbitMQ", icon: IconRabbitmq, color: "#ff6600", type: "back" },
     react: { name: "React", icon: IconReact, color: "#61dafb", type: "front" },
     redis: { name: "Redis", icon: IconRedis, color: "#d82c20", type: "back" },
@@ -70,5 +83,6 @@ export const SKILLS = {
     tailwindcss: { name: "Tailwind CSS", icon: IconTailwindcss, color: "#38bdf8", type: "front" },
     traefikproxy: { name: "Traefik", icon: IconTraefikproxy, color: "#24a1c1", type: "other" },
     typescript: { name: "TypeScript", icon: IconTypescript, color: "#007acc", type: [ "front", "back" ] },
+    vitest: { name: "Vitest", icon: IconVitest, color: "#6e9f18", type: "other" },
     wordpress: { name: "WordPress", icon: IconWordpress, type: [ "front", "back", "other" ] }
 } satisfies Record<string, Skill>;
