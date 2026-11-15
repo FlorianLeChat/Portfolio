@@ -4,8 +4,8 @@ export const variables = defineEnvVars( {
     PUBLIC_VERSION: {
         public: true,
         static: true,
-        description: "Version displayed in the footer (set by the CI, hidden when empty)",
-        schema: ( value ) => value ?? ""
+        description: "Version displayed in the footer (set by the CI)",
+        schema: ( value ) => value || "0.0.1"
     },
     PUBLIC_ANALYTICS_ENABLED: {
         public: true,
@@ -29,13 +29,13 @@ export const variables = defineEnvVars( {
         public: true,
         static: true,
         description: "Environment name reported to Umami with each event",
-        schema: ( value ) => value ?? ""
+        schema: ( value ) => value || "development"
     },
     PUBLIC_ANALYTICS_RESPECT_DNT: {
         public: true,
         static: true,
         description: "Whether analytics honour the visitor's Do Not Track and Global Privacy Control signals",
-        schema: ( value ) => value
+        schema: ( value ) => value !== "false"
     },
     PUBLIC_BLOG_FEED_URL: {
         public: true,

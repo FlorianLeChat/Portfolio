@@ -28,11 +28,9 @@
             </a>
         </li>
 
-        {#if PUBLIC_VERSION}
-            <li>
-                <code>{m.landing_footer_version( { version: PUBLIC_VERSION } )}</code>
-            </li>
-        {/if}
+        <li>
+            <code>{m.landing_footer_version( { version: PUBLIC_VERSION } )}</code>
+        </li>
     </ul>
 </footer>
 

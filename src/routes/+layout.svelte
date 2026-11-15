@@ -40,7 +40,7 @@
     const isTrackingAllowed = (): boolean =>
     {
         const privacyNavigator = navigator as Navigator & { globalPrivacyControl?: boolean };
-        const respectOptOut = PUBLIC_ANALYTICS_RESPECT_DNT === "true";
+        const respectOptOut = PUBLIC_ANALYTICS_RESPECT_DNT;
         const dntRequested = [ "1", "yes" ].includes( privacyNavigator.doNotTrack ?? "" );
         const gpcRequested = privacyNavigator.globalPrivacyControl === true;
         const optedOut = dntRequested || gpcRequested;
@@ -70,7 +70,7 @@
             src={PUBLIC_ANALYTICS_ENDPOINT + "/script.js"}
             defer
             data-errors="true"
-            data-release={PUBLIC_VERSION || undefined}
+            data-release={PUBLIC_VERSION}
             data-website-id={PUBLIC_ANALYTICS_PROJECT_ID}
             data-performance="true"
             data-environment={PUBLIC_ANALYTICS_ENVIRONMENT}
