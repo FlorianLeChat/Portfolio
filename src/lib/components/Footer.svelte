@@ -7,6 +7,12 @@
 </script>
 
 <footer>
+    <p>
+        {m.landing_footer_madeby()}
+        <a rel="external noopener noreferrer" href={LINKS.github} target="_blank">Florian Trayon <span aria-hidden="true">🐈</span></a>
+        <small>&copy; {new Date().getFullYear()}</small>
+    </p>
+
     <ul>
         <li>
             <a rel="external noopener noreferrer" href={LINKS.repository} target="_blank">
@@ -21,21 +27,13 @@
                 {m.landing_footer_legacy()}
             </a>
         </li>
+
+        {#if PUBLIC_VERSION}
+            <li>
+                <code>{m.landing_footer_version( { version: PUBLIC_VERSION } )}</code>
+            </li>
+        {/if}
     </ul>
-
-    <div>
-        <span>
-            {m.landing_footer_madeby()}
-
-            <a rel="external noopener noreferrer" href={LINKS.github} target="_blank">Florian Trayon 🐈</a>
-
-            <small>&copy; {new Date().getFullYear()}</small>
-        </span>
-
-        <code>
-            {m.landing_footer_version( { version: PUBLIC_VERSION } )}
-        </code>
-    </div>
 </footer>
 
 <style lang="scss">
@@ -43,65 +41,57 @@
 
     footer
     {
-        gap: 1rem;
+        gap: 1rem 2rem;
+        width: 92%;
+        color: colors.getThemedColor("muted");
+        margin: 7rem auto 0;
         display: flex;
-        padding: 1.5rem 1.5rem 1.25rem;
-        margin-top: 4rem;
-        text-align: center;
+        padding: 2rem 0 2.5rem;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+        max-width: 1120px;
         border-top: 1px solid colors.getThemedColor("border");
         align-items: center;
-        flex-direction: column;
-        background-color: colors.getThemedColor("background-alt");
+        font-family: var(--font-mono);
+        justify-content: space-between;
 
-        > ul
+        @media screen and (max-width: 768px)
         {
-            gap: 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            font-size: 0.8rem;
-            justify-content: center;
-
-            @media screen and (max-width: 640px)
-            {
-                gap: 0.75rem;
-            }
-
-            a
-            {
-                gap: 0.5rem;
-                color: colors.getThemedColor("muted");
-                display: inline-flex;
-                align-items: center;
-
-                &:hover
-                {
-                    color: colors.getThemedColor("primary");
-                }
-
-                > :global(svg)
-                {
-                    font-size: 1rem;
-                }
-            }
+            margin-top: 4.5rem;
+            padding-bottom: calc( 5rem + env(safe-area-inset-bottom) );
         }
+    }
 
-        > div
+    ul
+    {
+        gap: 0.25rem 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    a
+    {
+        gap: 0.5rem;
+        color: colors.getThemedColor("foreground");
+        display: inline-flex;
+        min-height: 2.75rem;
+        align-items: center;
+
+        &:hover
         {
-            gap: 0.25rem;
-            width: 100%;
-            display: flex;
-            max-width: 32rem;
-            font-size: 0.85rem;
-            border-top: 1px solid colors.getThemedColor("border");
-            align-items: center;
-            padding-top: 1rem;
-            flex-direction: column;
+            color: colors.getThemedColor("primary");
+            text-decoration: underline;
         }
+    }
 
-        code
-        {
-            color: colors.getThemedColor("muted");
-            font-size: 0.75rem;
-        }
+    li > a > :global(svg)
+    {
+        font-size: 1rem;
+    }
+
+    code
+    {
+        font-family: inherit;
     }
 </style>

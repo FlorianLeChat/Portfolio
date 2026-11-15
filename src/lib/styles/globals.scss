@@ -15,10 +15,13 @@ body
     margin: 0;
     cursor: auto;
     display: flex;
+    font-size: 1.125rem;
+    overflow-x: clip;
     min-height: 100dvh;
     transition: background-color var(--duration) var(--ease);
     line-height: 1.6;
-    font-family: var(--font-body), system-ui;
+    font-family: var(--font-body);
+    caret-color: colors.getThemedColor("primary");
     flex-direction: column;
     background-color: colors.getThemedColor("background");
 }
@@ -39,21 +42,30 @@ h1, h2, h3, h4, h5, h6
 {
     color: colors.getThemedColor("foreground-alt");
     margin: 0;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
+    text-wrap: balance;
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
 }
 
 h1
 {
-    font-size: clamp( 2.25rem, 9vw, 5rem );
+    font-size: clamp( 2.75rem, 1.5rem + 5vw, 5.25rem );
+    letter-spacing: -0.03em;
 }
 
 h2
 {
-    font-size: clamp( 1.5rem, 4vw, 2.25rem );
+    font-size: clamp( 2rem, 1.4rem + 2.5vw, 3rem );
+    letter-spacing: -0.025em;
 }
 
 h3
+{
+    font-size: 1.5rem;
+}
+
+h4
 {
     font-size: 1.25rem;
 }
@@ -61,6 +73,7 @@ h3
 p
 {
     margin: 0;
+    text-wrap: pretty;
 }
 
 ul
@@ -74,6 +87,7 @@ a
 {
     color: colors.getThemedColor("primary");
     text-decoration: none;
+    text-underline-offset: 0.2em;
 }
 
 img
@@ -81,38 +95,42 @@ img
     max-width: 100%;
 }
 
+time, code
+{
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+}
+
 main section
 {
-    margin-top: 6rem;
+    margin-top: 7rem;
+    border-top: 1px solid colors.getThemedColor("border");
+    padding-top: 2.5rem;
 
     @media screen and (max-width: 768px)
     {
-        margin-top: 4rem;
+        margin-top: 4.5rem;
+        padding-top: 2rem;
     }
 
     > h2
     {
-        text-align: center;
-        margin-bottom: 2.5rem;
-        text-transform: uppercase;
+        margin-bottom: 1rem;
+    }
 
-        &::after
-        {
-            width: 3rem;
-            height: 0.3rem;
-            margin: 0.75rem auto 0;
-            content: "";
-            display: block;
-            border-radius: var(--radius-pill);
-            background-color: colors.getThemedColor("primary");
-        }
+    > h2 + p
+    {
+        color: colors.getThemedColor("muted");
+        max-width: 60ch;
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
     }
 }
 
 :focus-visible
 {
     outline: 2px solid colors.getThemedColor("primary");
-    outline-offset: 2px;
+    outline-offset: 3px;
 }
 
 ::selection

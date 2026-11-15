@@ -9,8 +9,10 @@
     import "sanitize.css/ui-monospace.css";
     import "sanitize.css/reduce-motion.css";
 
+    import { onMount } from "svelte";
     import { asset } from "$app/paths";
     import * as m from "#lib/locales/messages.js";
+    import { currentLocale, revealLocale } from "#lib/locale.svelte.ts";
     import Footer from "#lib/components/Footer.svelte";
     import Header from "#lib/components/Header.svelte";
     import ScrollTop from "#lib/components/ScrollTop.svelte";
@@ -20,6 +22,8 @@
         PUBLIC_ANALYTICS_RESPECT_DNT } from "$app/env/public";
 
     let { children } = $props();
+
+    onMount( revealLocale );
 </script>
 
 <svelte:head>
@@ -29,7 +33,7 @@
     <link rel="icon" href={asset( "assets/favicons/192x192.webp" )} type="image/webp" sizes="192x192" />
     <link rel="icon" href={asset( "assets/favicons/512x512.webp" )} type="image/webp" sizes="512x512" />
     <link rel="apple-touch-icon" href={asset( "assets/favicons/180x180.webp" )} type="image/webp" sizes="180x180" />
-    <link rel="manifest" href={asset( "manifest.webmanifest" )} crossorigin="use-credentials" />
+    <link rel="manifest" href={asset( "manifest.webmanifest" )} crossorigin="anonymous" />
 
     {#if PUBLIC_ANALYTICS_ENABLED}
         <script
@@ -50,14 +54,16 @@
     {/if}
 </svelte:head>
 
-<a href="#content">{m.landing_header_skip()}</a>
+{#key currentLocale()}
+    <a href="#content">{m.landing_header_skip()}</a>
 
-<Header />
+    <Header />
 
-{@render children()}
+    {@render children()}
 
-<ScrollTop />
-<Footer />
+    <ScrollTop />
+    <Footer />
+{/key}
 
 <style lang="scss">
     @use "colors";

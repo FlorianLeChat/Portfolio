@@ -1,12 +1,3 @@
-// The blog feed and the two forges are read on every page load, so the cards
-// are never staler than the visit itself. That promise is per visit, not per
-// page load: a visitor who reloads four times used to pay four times for the
-// same five round trips.
-//
-// `sessionStorage` collapses those repeats without weakening the guarantee,
-// since it dies with the tab. It is never a correctness dependency either:
-// private browsing modes can make it throw, and every failure path simply
-// falls back to fetching.
 const TTL = 15 * 60 * 1000;
 
 type Entry = {

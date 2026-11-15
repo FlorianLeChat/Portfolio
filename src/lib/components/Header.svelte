@@ -7,16 +7,20 @@
     import IconSun from "~icons/tabler/sun-filled";
     import IconMoon from "~icons/tabler/moon-filled";
     import { themeStore, STORAGE_KEY } from "#lib/theme.svelte.ts";
+    import { setLocale } from "#lib/locales/runtime.js";
+    import { currentLocale, otherLocale } from "#lib/locale.svelte.ts";
 
+    const SECTIONS = [ "projects", "skills", "blog", "contact" ];
+
+    let active = $state( "" );
     let mounted = $state( false );
     let showMenu = $state( false );
+    let header = $state<HTMLElement | null>( null );
     let menuButton = $state<HTMLButtonElement | null>( null );
 
     const home = resolve( "/" );
     const isLightTheme = $derived( mounted ? themeStore.value === "light" : true );
-
-    // The icon alone carries the state and is hidden from assistive technology,
-    // so the accessible name has to say which theme the button switches to.
+    const alternate = $derived( otherLocale( currentLocale() ) );
     const themeLabel = $derived( isLightTheme ? m.landing_header_theme_dark() : m.landing_header_theme_light() );
 
     const closeMenu = () => ( showMenu = false );
@@ -44,6 +48,30 @@
         if ( event.key === "Escape" ) dismissMenu();
     };
 
+    /// Closes the mobile menu when the visitor taps anywhere outside the
+    /// header, the way a dropdown is expected to behave.
+    ///
+    /// @param {MouseEvent} event - The click being handled.
+    /// @author Claude
+    const handleOutsideClick = ( event: MouseEvent ) =>
+    {
+        if ( !showMenu || !header ) return;
+
+        // The path is recorded at dispatch, whereas `contains()` would test the
+        // target as it is now: the menu icon that was tapped has already been
+        // swapped for the close icon and detached, so it reads as outside.
+        if ( event.composedPath().includes( header ) ) return;
+
+        closeMenu();
+    };
+
+    /// Switches the language. Paraglide stores the choice, so the browser
+    /// language no longer decides for a visitor who picked one, and reloads the
+    /// page: the messages are plain functions, not reactive values.
+    ///
+    /// @author Claude
+    const switchLocale = () => setLocale( alternate );
+
     onMount( () =>
     {
         mounted = true;
@@ -59,35 +87,72 @@
 
         window.addEventListener( "storage", handleStorage );
 
-        return () => window.removeEventListener( "storage", handleStorage );
+        const observer = new IntersectionObserver( ( entries ) =>
+        {
+            for ( const entry of entries )
+            {
+                if ( entry.isIntersecting )
+                {
+                    active = entry.target.id;
+                }
+                else if ( active === entry.target.id )
+                {
+                    active = "";
+                }
+            }
+        }, { rootMargin: "-45% 0px -54% 0px" } );
+
+        for ( const id of SECTIONS )
+        {
+            const section = document.getElementById( id );
+
+            if ( section ) observer.observe( section );
+        }
+
+        return () =>
+        {
+            observer.disconnect();
+
+            window.removeEventListener( "storage", handleStorage );
+        };
     } );
 </script>
 
-<svelte:window onkeydown={handleKeydown} />
+<svelte:window onkeydown={handleKeydown} onclick={handleOutsideClick} />
 
-<header>
+<header bind:this={header}>
     <a href={home} aria-label={m.landing_header_home()}>
-        {m.landing_developer_firstname()[ 0 ]}{m.landing_developer_surname()[ 0 ]}
+        ft<span aria-hidden="true">_</span>
     </a>
 
-    <nav>
+    <nav aria-label={m.landing_header_landmark()}>
         <ul id="navigation-menu" class:show={showMenu}>
             <li>
-                <a href="#projects" onclick={closeMenu}>{m.landing_header_projects()}</a>
+                <a href="#projects" onclick={closeMenu} aria-current={active === "projects" ? "true" : undefined}>{m.landing_header_projects()}</a>
             </li>
 
             <li>
-                <a href="#skills" onclick={closeMenu}>{m.landing_header_skills()}</a>
+                <a href="#skills" onclick={closeMenu} aria-current={active === "skills" ? "true" : undefined}>{m.landing_header_skills()}</a>
             </li>
 
             <li>
-                <a href="#blog" onclick={closeMenu}>{m.landing_header_blog()}</a>
+                <a href="#blog" onclick={closeMenu} aria-current={active === "blog" ? "true" : undefined}>{m.landing_header_blog()}</a>
             </li>
 
             <li>
-                <a href="#contact" onclick={closeMenu}>{m.landing_header_contact()}</a>
+                <a href="#contact" onclick={closeMenu} aria-current={active === "contact" ? "true" : undefined}>{m.landing_header_contact()}</a>
             </li>
         </ul>
+
+        <button
+            type="button"
+            lang={alternate}
+            title={m.landing_header_language()}
+            onclick={switchLocale}
+            aria-label={m.landing_header_language()}
+        >
+            {alternate}
+        </button>
 
         <button
             type="button"
@@ -127,7 +192,7 @@
     {
         top: 0;
         gap: 1rem;
-        height: 5rem;
+        height: 4.5rem;
         z-index: 20;
         display: flex;
         position: sticky;
@@ -135,66 +200,85 @@
         justify-content: space-between;
         background-color: colors.getThemedColor("background");
 
-        @supports ( backdrop-filter: blur( 1px ) )
+        // The header is as narrow as the content, so its background is carried
+        // out to both edges of the window by a shadow, clipped to the header's
+        // own height. On a pseudo element, because clipping the header itself
+        // would also cut off the mobile menu that unrolls below it.
+        &::before
         {
-            backdrop-filter: blur(0.75rem);
-            background-color: colors.getThemedAlpha("background", 0.75);
+            inset: 0;
+            content: "";
+            z-index: -1;
+            position: absolute;
+            clip-path: inset( 0 -100vmax );
+            box-shadow: 0 0 0 100vmax colors.getThemedColor("background");
+            background-color: colors.getThemedColor("background");
+        }
+
+        @media screen and (max-width: 768px)
+        {
+            &:has( ul.show )::after
+            {
+                inset: 4.5rem 0 0;
+                content: "";
+                z-index: -1;
+                position: fixed;
+                background-color: colors.getThemedAlpha("foreground", 0.4);
+            }
         }
 
         > a
         {
-            width: 2.75rem;
-            color: colors.getThemedColor("primary");
-            height: 2.75rem;
-            border: 2px solid colors.getThemedColor("primary");
-            display: flex;
-            font-size: 1.1rem;
-            transition: color var(--duration) var(--ease), background-color var(--duration) var(--ease);
+            color: colors.getThemedColor("foreground-alt");
+            padding: 0.5rem 0;
+            display: inline-flex;
+            min-width: 2.75rem;
+            font-size: 1.15rem;
+            min-height: 2.75rem;
             font-weight: 700;
             align-items: center;
-            border-radius: 50%;
-            letter-spacing: 0;
-            justify-content: center;
+            font-family: var(--font-mono);
+            letter-spacing: -0.04em;
 
-            @media (hover: hover) and (pointer: fine)
+            > span
             {
-                &:hover
-                {
-                    color: colors.getThemedColor("background");
-                    background-color: colors.getThemedColor("primary");
-                }
+                color: colors.getThemedColor("primary");
             }
         }
     }
 
     nav
     {
-        gap: 0.5rem;
+        gap: 0.25rem;
         display: flex;
         align-items: center;
 
         > ul
         {
-            gap: 1.25rem;
+            gap: 0.25rem;
             display: flex;
             align-items: center;
+            margin-right: 0.75rem;
 
             @media screen and (max-width: 768px)
             {
-                gap: 1.5rem;
-                width: 0;
-                inset: 5rem 0 auto;
-                padding: 3rem 0;
+                gap: 0;
+                inset: 4.5rem 0 auto;
+                margin: 0 -4vw;
+                padding: 0.5rem 4vw 1.5rem;
                 position: absolute;
-                overflow: hidden;
+                clip-path: inset( 0 0 100% 0 );
                 visibility: hidden;
-                transition: width var(--duration) var(--ease), visibility var(--duration) var(--ease);
+                box-shadow: colors.getThemedColor("container-shadow");
+                transition: clip-path calc( var(--duration) * 1.5 ) var(--ease), visibility calc( var(--duration) * 1.5 ) var(--ease);
+                align-items: stretch;
+                border-bottom: 1px solid colors.getThemedColor("border");
                 flex-direction: column;
                 background-color: colors.getThemedColor("background");
 
                 &.show
                 {
-                    width: 100%;
+                    clip-path: inset( 0 0 -2rem 0 );
                     visibility: visible;
                 }
             }
@@ -202,69 +286,59 @@
 
         li a
         {
-            color: colors.getThemedColor("foreground-alt");
-            position: relative;
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding-bottom: 0.15rem;
+            color: colors.getThemedColor("foreground");
+            display: flex;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+            min-height: 2.75rem;
+            transition: color var(--duration) var(--ease);
+            align-items: center;
+            font-family: var(--font-mono);
+            text-underline-offset: 0.35em;
 
-            &::before
+            @media screen and (max-width: 768px)
             {
-                left: 0;
-                width: 0;
-                bottom: 0;
-                height: 0.15rem;
-                content: "";
-                position: absolute;
-                transition: width var(--duration) var(--ease);
-                border-radius: var(--radius-pill);
-                background-color: colors.getThemedColor("primary");
+                padding: 0.75rem 0;
+                font-size: 1rem;
+                border-bottom: 1px solid colors.getThemedColor("border");
             }
 
-            @media (hover: hover) and (pointer: fine)
+            &:hover, &[aria-current]
             {
-                &:hover
-                {
-                    color: colors.getThemedColor("primary");
-
-                    &::before
-                    {
-                        width: 100%;
-                    }
-                }
+                color: colors.getThemedColor("primary");
+                text-decoration: underline;
             }
         }
 
         > button
         {
-            width: 2.5rem;
-            color: colors.getThemedColor("foreground-alt");
+            width: 2.75rem;
+            color: colors.getThemedColor("foreground");
             border: none;
-            height: 2.5rem;
             cursor: pointer;
+            height: 2.75rem;
             padding: 0;
             display: flex;
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             background: none;
             transition: color var(--duration) var(--ease), background-color var(--duration) var(--ease);
             align-items: center;
-            border-radius: 50%;
+            border-radius: var(--radius-sm);
             justify-content: center;
 
-            @media screen and (max-width: 768px)
+            &:hover
             {
-                width: 2.75rem;
-                height: 2.75rem;
+                color: colors.getThemedColor("primary");
+                background-color: colors.getThemedColor("primary-light");
             }
+        }
 
-            @media (hover: hover) and (pointer: fine)
-            {
-                &:hover
-                {
-                    color: colors.getThemedColor("primary");
-                    background-color: colors.getThemedColor("primary-light");
-                }
-            }
+        > button:first-of-type
+        {
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: var(--font-mono);
+            text-transform: uppercase;
         }
 
         > button:last-of-type

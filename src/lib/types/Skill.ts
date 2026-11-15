@@ -9,4 +9,5 @@ export type Skill = {
     icon: SkillIcon | null;
     type: SkillType | SkillType[];
     color?: string;
+    core?: boolean;
 };

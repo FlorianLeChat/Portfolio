@@ -21,6 +21,26 @@ group it belongs to rather than the end of the file.
 New words that trip the spell checker go in `.cspell.json`, which runs over
 `locales/**` on push.
 
+There is one page and one URL, whatever the language. Paraglide runs the
+`localStorage`, `preferredLanguage` and `baseLocale` strategies, in that order
+(`vite.config.ts`): the visitor's own choice, then the browser language, then
+English. The key is `portfolio:locale`. The switch in the header is a button
+that calls `setLocale()`, which stores the choice and reloads the page.
+`src/hooks.ts` (de-localisation for routing) and `src/hooks.server.ts` (Paraglide
+middleware, `%paraglide.lang%` and `%paraglide.dir%` in `app.html`) stay in place:
+they are the integration Paraglide documents for SvelteKit.
+
+The prerender is English only, and a browser cannot repair attributes when it
+hydrates different text over it. `#lib/locale.svelte.ts` therefore pins
+`getLocale()` to the base locale for the first render and `+layout.svelte`
+reveals the real one in `onMount`, rebuilding the tree once inside a `{#key}`
+block. Anything that reads the locale at module load time would see the base one:
+read it in a component instead.
+
+The title, the description, the Open Graph and the Twitter tags live in
+`app.html`, in English only: they are not translated, so they are not Paraglide
+messages. There is no `canonical` link.
+
 Code, comments and commit messages are written in English.
 
 ## Static build
@@ -47,16 +67,25 @@ tags, so baking them into the build would have shown week old activity.
 
 Every call must degrade without breaking anything:
 
-- A failure resolves to `null` or `[]` and the section is simply not rendered.
+- A failure resolves to `null` or `[]` and what it would have filled is simply
+  not rendered: the commit card disappears and the hero falls back to one
+  column, the blog keeps its heading and its link to the blog.
 - Always pass an `AbortSignal.timeout`.
 - Parse feeds with `DOMParser`, never an XML library: it costs nothing to ship.
 
 ## Design tokens
 
 Colours, radii and durations are CSS custom properties emitted by
-`src/lib/styles/_colors.scss`. Never write a colour literal in a component. Two
-alternate palettes sit commented above the active one in that file; keep them in
-sync if the token list changes.
+`src/lib/styles/_colors.scss`. Never write a colour literal in a component. The
+active palette is "paper and phosphor"; three alternates, the previous indigo
+identity among them, sit commented above it in that file. Keep them in sync if
+the token list changes.
+
+Two typefaces, each with a job. Newsreader (`var(--font-body)`) sets everything
+written for the reader: headings, descriptions, the blog. JetBrains Mono
+(`var(--font-mono)`) sets everything the interface says: navigation, buttons,
+chips, dates, the commit, the version. Keep monospace for that voice, never as
+decoration. Both are self hosted variable fonts in `static/assets/fonts`.
 
 - Solid colour: `colors.getThemedColor( "primary" )`
 - Translucent colour: `colors.getThemedAlpha( "primary", 0.5 )`, because `rgba()`
@@ -94,10 +123,12 @@ toggles on its menu.
 
 ### Reaching across a component boundary
 
-Svelte scopes a selector to the markup of the component it is written in, and
-`Carousel.svelte` renders its children through a snippet. The `<li>` therefore
-carries the caller's scope while the `<div>` and `<ul>` around it carry the
-carousel's, and neither side can match the whole path.
+Svelte scopes a selector to the markup of the component it is written in. A
+component that renders its children through a snippet, as the project carousel
+once did, splits one path between two scopes: the `<li>` carries the caller's
+scope while the `<div>` and `<ul>` around it carry the wrapper's, and neither
+side can match the whole path. No component does this today; the rules below
+are what to follow when one does again.
 
 `:global()` bridges that, under two constraints learnt the hard way:
 
@@ -124,8 +155,10 @@ li > img
 }
 ```
 
-The other direction works without ceremony: the carousel reaches the items it
-was handed with `:global` at the end of the sequence, `ul > :global(li)`.
+The other direction works without ceremony: a wrapper reaches the items it was
+handed with `:global` at the end of the sequence, `ul > :global(li)`. The hero
+uses the same idea to notice the commit card is missing:
+`&:not( :has( > :global(aside) ) )`.
 
 Declarations are sorted **in a staircase**: ascending by property name length,
 then by line length when two names are the same length. One unbroken staircase
@@ -160,8 +193,8 @@ partial from the bundle, which type checks, lints and builds without a word.
 
 The portfolio is a showcase, so it stays presentable rather than stripped down,
 but nothing heavy ships without earning it. Anything sizeable and optional goes
-behind a dynamic `import()`, the way PhotoSwipe, SweetAlert2 and the confetti
-already do. Screenshots are `loading="lazy"` and `decoding="async"`.
+behind a dynamic `import()`, the way PhotoSwipe and its stylesheet already do.
+Screenshots are `loading="lazy"` and `decoding="async"`.
 
 ## Icons
 
@@ -185,9 +218,17 @@ slug on simpleicons.org first, some brands have been withdrawn from the set
 (LinkedIn, which is why that one contact link falls back to Tabler).
 
 Simple Icons glyphs are monochrome and follow `currentColor`. A skill that
-shows its brand colour carries a `color` in its entry, passed to the glyph as
-the SVG `color` attribute. Those values are data, not theme tokens, so they are
-the one place a colour literal is allowed.
+shows its brand colour carries a `color` in its entry. Those values are data,
+not theme tokens, so they are the one place a colour literal is allowed. They
+reach the glyph as a `--brand` custom property through `brandStyle()` from
+`#lib/skills.ts`, and the stylesheet blends them with the theme's ink:
+
+```scss
+color: color-mix(in oklab, var(--brand, currentColor) 50%, colors.getThemedColor("foreground-alt"));
+```
+
+Painting the raw brand colour made several glyphs vanish: MariaDB's navy on the
+dark theme, JavaScript's yellow on the light one.
 
 Icons size themselves in `em` (1.2em by default). The `<svg>` belongs to the
 icon component, so a parent resizes it with `:global` at the end of the
@@ -199,9 +240,25 @@ setting `width` and `height` pins it.
 Document exported functions with a JSDoc block covering parameters and return
 value. Close blocks written by the assistant with `@author Claude`.
 
-Inline comments explain **why**, not what. A comment restating the code is
-noise; a comment recording a constraint, a trade-off or a non-obvious browser
-behaviour earns its place.
+Documentation lives in the JSDoc of declarations. **No inline comment** (`//`,
+`/* */` inside a body, `<!-- -->` in markup or a style block) is written beside
+the lines of a change or a fix to explain a choice of design, layout, wording or
+behaviour: when a decision needs recording, it goes in the JSDoc of the
+enclosing function. The one exception is a technical trap, a line that looks
+wrong and would be "fixed" into a bug without its comment: a browser quirk, an
+API that behaves unexpectedly, a cast the types cannot express.
+
+**No HTML comment** (`<!-- -->`) exists anywhere in the markup, technical traps
+included: a reason that matters goes in the JSDoc of the script or the function
+behind it.
+
+Never add a comment that repeats what the code or the JSDoc above it already
+says, and never narrate a change ("now uses", "used to", "added for"): the git
+history owns that. Commented out code goes, and so does a comment that would
+still be true if the code changed underneath it.
+
+Before finishing a change, reread the diff for the comments it added and delete
+the ones that fail the rule above.
 
 ## Prefer arrow functions
 
@@ -264,6 +321,26 @@ silently skips every component using `<style lang="scss">`.
 Non trivial changes get a plan approved before any code is written. Typo fixes
 and one line corrections do not.
 
+## Performance and security audit
+
+A large change (a new feature, a new external call, a new dependency, a change
+to the build or to `app.html`) gets an audit before it is committed. Typo fixes
+and one line corrections do not. Read the diff and report what you find, even
+when nothing is wrong:
+
+- Security: every URL read from a third party (the feed, the GitLab and GitHub
+  APIs) goes through `toSafeUrl()` from `#lib/url.ts` before reaching an `href`
+  or a `src`; no `{@html}`, `innerHTML` or `eval`; third party scripts and the
+  origins the page talks to are still the ones intended; `npm audit --omit=dev`
+  reports nothing.
+- Performance: new network calls run in parallel when they are independent and
+  carry an `AbortSignal.timeout`; anything sizeable and optional sits behind a
+  dynamic `import()`; images and fonts keep their weight in check against the
+  build output.
+
+Fix what the change introduced. Report the rest to the user rather than widening
+the change.
+
 ## Preview and dev server
 
 Never start a dev server. Ask the user to run `npm run dev` or `npm run preview`.
@@ -285,7 +362,12 @@ a visitor actually takes. Keep it short: this is a portfolio, not a product.
 
 Scroll driven behaviour has to be verified here rather than in a preview pane:
 a browser that is not compositing frames fires no `scroll` events and never
-animates a smooth `scrollBy`, so carousels look broken when they are not.
+animates a smooth scroll, so the scroll to top button looks broken when it is
+not.
+
+Anything loaded by a dynamic `import()` after mount, the lightbox for one, is
+not there yet when the page first answers. Retry the action inside
+`expect( … ).toPass()` until it takes rather than waiting a fixed delay.
 
 ## Commits
 
@@ -306,17 +388,17 @@ Prefer semantic elements over generic containers: `<main>`, `<section>`,
 Interactive controls carry an accessible name. Icons next to a visible label are
 `aria-hidden`; icons standing alone get a label.
 
-External URLs live in `#lib/links.ts`, never as literals in a component. ESLint's
-`no-navigation-without-resolve` cannot tell an external constant from an
-unresolved internal route, so those links carry a targeted disable comment
-stating why.
+External URLs live in `#lib/links.ts`, never as literals in a component, and
+their links carry `rel="external noopener noreferrer"`, which also satisfies
+ESLint's `no-navigation-without-resolve`. The language switch is a `<button>` that calls
+`setLocale()`, so it needs no link at all.
 
 Keep contrast at WCAG AA in both themes and every palette.
 
 `svelte-ignore` is not used. An accessibility warning is a description of the
-markup, so the markup is what changes: the carousel dropped the `tabindex` the
-compiler objected to and leans on its arrow buttons, which are real controls,
-for keyboard operation.
+markup, so the markup is what changes: the project screenshots used to open
+the lightbox from a click on a bare `<img>`, and are now wrapped in a real
+`<button>` that the keyboard reaches.
 
 ## Component decomposition
 
@@ -327,15 +409,16 @@ long. Its styles move with it, into its own `<style lang="scss">` block.
 
 ```
 src/
-  app.html              Shell, plus the blocking theme/palette/eco script
-  env.ts                Environment variables, public and static
+  app.html              Shell, plus the blocking theme script
   hooks.ts              Locale de-localisation for routing
   hooks.server.ts       Paraglide middleware
+  env.ts                Environment variables, public and static
   lib/
     cache.ts            Short lived session cache for the network reads
     commit.ts           Latest public commit, fetched in the browser
     feed.ts             Blog feed fetching and parsing, browser only
     links.ts            Every external destination, in one place
+    locale.svelte.ts    Locale pinned to English until mount, then revealed
     projects.ts         Project images and descriptions
     skills.ts           Registry accessors over the skill data
     theme.svelte.ts     Colour scheme store
@@ -346,8 +429,9 @@ src/
     types/              One type per file
   routes/
     +layout.svelte      Global CSS, header, footer
+    +layout.ts          Prerender option
     +page.ts            Landing page data, static only
-    +page.svelte        The whole site: hero, blog, projects, skills, contact
+    +page.svelte        The whole site: hero, projects, skills, blog, contact
 tests/e2e/              The Playwright spec
 ```
 
@@ -356,3 +440,8 @@ means a new `id` and a matching entry in `Header.svelte`.
 
 Adding a project means touching four files: `data/projects.ts`, the screenshot
 in `lib/images/<key>.webp`, and the `projects_<key>` message in both locales.
+Declaration order in `data/projects.ts` is display order; `featured: true` moves
+a project into the alternating rows at the top, which hold three.
+
+Skills marked `core: true` in `data/skills.ts` are listed under the everyday
+group, ahead of the rest, which sits in a `<details>` folded by default.
