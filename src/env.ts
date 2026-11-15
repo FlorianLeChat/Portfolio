@@ -25,10 +25,16 @@ export const variables = defineEnvVars( {
         description: "Umami website identifier",
         schema: ( value ) => value
     },
+    PUBLIC_ANALYTICS_ENVIRONMENT: {
+        public: true,
+        static: true,
+        description: "Environment name reported to Umami with each event",
+        schema: ( value ) => value ?? ""
+    },
     PUBLIC_ANALYTICS_RESPECT_DNT: {
         public: true,
         static: true,
-        description: "Whether Umami honours the visitor's Do Not Track preference",
+        description: "Whether analytics honour the visitor's Do Not Track and Global Privacy Control signals",
         schema: ( value ) => value
     },
     PUBLIC_BLOG_FEED_URL: {
