@@ -12,6 +12,8 @@ import IconRedis from "~icons/simple-icons/redis";
 import IconApache from "~icons/simple-icons/apache";
 import IconCentos from "~icons/simple-icons/centos";
 import IconClaude from "~icons/simple-icons/claude";
+import IconOracle from "~icons/simple-icons/oracle";
+import IconSqlite from "~icons/simple-icons/sqlite";
 import IconDebian from "~icons/simple-icons/debian";
 import IconDocker from "~icons/simple-icons/docker";
 import IconEslint from "~icons/simple-icons/eslint";
@@ -41,6 +43,7 @@ import IconPostgresql from "~icons/simple-icons/postgresql";
 import IconTypescript from "~icons/simple-icons/typescript";
 import IconTailwindcss from "~icons/simple-icons/tailwindcss";
 import IconTraefikproxy from "~icons/simple-icons/traefikproxy";
+import IconModelcontextprotocol from "~icons/simple-icons/modelcontextprotocol";
 
 export const SKILLS = {
     ansible: { name: "Ansible", icon: IconAnsible, type: "other" },
@@ -65,11 +68,13 @@ export const SKILLS = {
     lua: { name: "Lua", icon: IconLua, type: "other" },
     mariadb: { name: "MariaDB", icon: IconMariadb, core: true, color: "#003545", type: [ "back", "other" ] },
     markdown: { name: "Markdown", icon: IconMarkdown, type: "other" },
+    mcp: { name: "MCP", icon: IconModelcontextprotocol, type: "other" },
     mongodb: { name: "MongoDB", icon: IconMongodb, color: "#4faa41", type: [ "back", "other" ] },
     mysql: { name: "MySQL", icon: IconMysql, core: true, color: "#00618a", type: [ "back", "other" ] },
     nextjs: { name: "Next.js", icon: IconNextdotjs, core: true, type: [ "front", "back" ] },
     nginx: { name: "Nginx", icon: IconNginx, color: "#009900", type: "other" },
     nodejs: { name: "Node.js", icon: IconNodedotjs, core: true, color: "#5fa04e", type: "back" },
+    oracle: { name: "Oracle", icon: IconOracle, color: "#f80000", type: [ "back", "other" ] },
     php: { name: "PHP", icon: IconPhp, core: true, color: "#777bb3", type: "back" },
     playwright: { name: "Playwright", icon: IconPlaywright, color: "#2ead33", type: "other" },
     postgresql: { name: "PostgreSQL", icon: IconPostgresql, core: true, color: "#336791", type: [ "back", "other" ] },
@@ -78,6 +83,7 @@ export const SKILLS = {
     react: { name: "React", icon: IconReact, core: true, color: "#61dafb", type: "front" },
     redis: { name: "Redis", icon: IconRedis, color: "#d82c20", type: "back" },
     sass: { name: "Sass", icon: IconSass, core: true, color: "#cc6699", type: "front" },
+    sqlite: { name: "SQLite", icon: IconSqlite, color: "#003b57", type: [ "back", "other" ] },
     svelte: { name: "Svelte", icon: IconSvelte, core: true, color: "#ff3e00", type: "front" },
     symfony: { name: "Symfony", icon: IconSymfony, core: true, type: "back" },
     tailwindcss: { name: "Tailwind CSS", icon: IconTailwindcss, core: true, color: "#38bdf8", type: "front" },
