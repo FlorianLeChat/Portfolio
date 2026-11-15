@@ -3,4 +3,5 @@ export type Project = {
     skills: string[];
     repository?: string;
     demo?: string;
+    featured?: boolean;
 };

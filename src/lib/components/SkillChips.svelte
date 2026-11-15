@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { getSkills } from "#lib/skills.ts";
+    import { getSkills, brandStyle } from "#lib/skills.ts";
 
     let { keys }: { keys: string[] } = $props();
 
@@ -9,7 +9,7 @@
 <ul>
     {#each resolved as skill ( skill.name )}
         <li>
-            <skill.icon color={skill.color} aria-hidden="true" />
+            <skill.icon style={brandStyle( skill )} aria-hidden="true" />
             {skill.name}
         </li>
     {/each}
@@ -20,30 +20,29 @@
 
     ul
     {
-        gap: 0.5rem;
+        gap: 0.4rem;
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: center;
+    }
 
-        li
-        {
-            gap: 0.5rem;
-            color: colors.getThemedColor("foreground-alt");
-            border: 1px solid colors.getThemedColor("border");
-            display: inline-flex;
-            padding: 0.25rem 0.75rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            align-items: center;
-            border-radius: var(--radius-pill);
-            background-color: colors.getThemedColor("background-alt");
-        }
+    li
+    {
+        gap: 0.4rem;
+        color: colors.getThemedColor("foreground");
+        border: 1px solid colors.getThemedColor("border");
+        display: inline-flex;
+        padding: 0.2rem 0.55rem;
+        font-size: 0.75rem;
+        align-items: center;
+        font-family: var(--font-mono);
+        border-radius: var(--radius-sm);
     }
 
     li > :global(svg)
     {
-        width: 1rem;
-        height: 1rem;
+        width: 0.95rem;
+        color: color-mix(in oklab, var(--brand, currentColor) 50%, colors.getThemedColor("foreground-alt"));
+        height: 0.95rem;
     }
 </style>

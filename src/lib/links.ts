@@ -1,7 +1,5 @@
-// Every external destination the site points at, in one place. They were
-// scattered as literals across components, which made the resume URL drift
-// between the hero and the header.
 export const LINKS = {
+    site: "https://www.florian-dev.fr/",
     blog: "https://blog.florian-dev.fr/",
     github: "https://github.com/FlorianLeChat",
     gitlab: "https://git.florian-dev.fr/floriantrayon",

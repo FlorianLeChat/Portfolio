@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { brandStyle } from "#lib/skills.ts";
     import type { Skill, SkillType } from "#lib";
     import * as m from "#lib/locales/messages.js";
-    import Carousel from "#lib/components/Carousel.svelte";
 
     let { skills }: { skills: Record<string, Skill> } = $props();
 
@@ -28,32 +27,15 @@
 
     const visible = $derived( Object.entries( skills ).filter( ( [ , skill ] ) => matches( skill, filter ) ) );
 
-    onMount( () =>
-    {
-        const requested = new URL( window.location.href ).searchParams.get( "filter" ) as Filter | null;
+    const core = $derived( visible.filter( ( [ , skill ] ) => skill.core ) );
+    const familiar = $derived( visible.filter( ( [ , skill ] ) => !skill.core ) );
 
-        if ( requested && FILTERS.includes( requested ) )
-        {
-            filter = requested;
-        }
-    } );
-
-    $effect( () =>
-    {
-        const url = new URL( window.location.href );
-        const current = url.searchParams.get( "filter" );
-        const untouched = current === null && filter === "all";
-
-        if ( current === filter || untouched ) return;
-
-        url.searchParams.set( "filter", filter );
-
-        history.replaceState( null, "", url.toString() );
-    } );
 </script>
 
 <section id="skills">
     <h2>{m.landing_header_skills()}</h2>
+
+    <p>{m.landing_skills_intro()}</p>
 
     <fieldset>
         <legend>{m.landing_filter_legend()}</legend>
@@ -74,14 +56,39 @@
         </ul>
     </fieldset>
 
-    <Carousel label={m.landing_carousel_skills()}>
-        {#each visible as [ key, value ] ( key )}
-            <li>
-                <value.icon color={value.color} aria-hidden="true" />
-                {value.name}
-            </li>
-        {/each}
-    </Carousel>
+    <p role="status">{m.landing_filter_count( { count: visible.length } )}</p>
+
+    {#if core.length > 0}
+        <div>
+            <h3>{m.landing_skills_core()}</h3>
+
+            <ul>
+                {#each core as [ key, value ] ( key )}
+                    <li>
+                        <value.icon style={brandStyle( value )} aria-hidden="true" />
+                        {value.name}
+                    </li>
+                {/each}
+            </ul>
+        </div>
+    {/if}
+
+    {#if familiar.length > 0}
+        <details>
+            <summary>
+                <h3>{m.landing_skills_familiar()}</h3>
+            </summary>
+
+            <ul>
+                {#each familiar as [ key, value ] ( key )}
+                    <li>
+                        <value.icon style={brandStyle( value )} aria-hidden="true" />
+                        {value.name}
+                    </li>
+                {/each}
+            </ul>
+        </details>
+    {/if}
 </section>
 
 <style lang="scss">
@@ -90,11 +97,11 @@
     fieldset
     {
         border: none;
-        margin: 0 0 2.5rem;
+        margin: 0 0 3rem;
         padding: 0;
     }
 
-    legend
+    legend, input, p[role="status"]
     {
         width: 1px;
         height: 1px;
@@ -108,88 +115,141 @@
 
     fieldset > ul
     {
-        gap: 1.25rem;
-        display: flex;
+        border: 1px solid colors.getThemedColor("border");
+        padding: 0.25rem;
+        display: inline-flex;
         flex-wrap: wrap;
-        justify-content: center;
+        border-radius: var(--radius-md);
+        background-color: colors.getThemedColor("background-alt");
+    }
 
-        li
-        {
-            gap: 0.5rem;
-            display: flex;
-            font-weight: 500;
-            align-items: center;
-        }
+    // Keeps each visually hidden radio over its own label, so a screen reader's
+    // virtual cursor and the label share the same spot on the page.
+    fieldset li
+    {
+        position: relative;
+    }
 
-        input
-        {
-            margin: 0;
-            cursor: pointer;
-            accent-color: colors.getThemedColor("primary");
-        }
+    label
+    {
+        color: colors.getThemedColor("muted");
+        cursor: pointer;
+        display: flex;
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+        min-height: 2.75rem;
+        transition: color var(--duration) var(--ease), background-color var(--duration) var(--ease);
+        align-items: center;
+        font-family: var(--font-mono);
+        border-radius: var(--radius-sm);
 
-        label
+        &:hover
         {
-            cursor: pointer;
+            color: colors.getThemedColor("foreground-alt");
         }
     }
 
-    :global(section#skills > div > ul)
+    input:checked + label
     {
-        gap: 1rem;
+        color: colors.getThemedColor("primary");
+        font-weight: 600;
+        box-shadow: inset 0 0 0 1px colors.getThemedColor("primary");
+        background-color: colors.getThemedColor("primary-light");
+    }
 
-        @media screen and (max-width: 640px)
+    input:focus-visible + label
+    {
+        outline: 2px solid colors.getThemedColor("primary");
+        outline-offset: 2px;
+    }
+
+    details
+    {
+        margin-top: 3rem;
+    }
+
+    summary
+    {
+        cursor: pointer;
+        padding: 0.6rem 0;
+        margin-bottom: 1.25rem;
+
+        &:focus-visible
         {
-            gap: 0.75rem;
+            outline: 2px solid colors.getThemedColor("primary");
+            outline-offset: 4px;
         }
     }
 
-    :global(section#skills > div > ul > li)
+    summary > h3
     {
-        gap: 0.5rem;
-        flex: 0 0 8rem;
+        margin: 0;
+        display: inline;
+    }
+
+    details:not( [open] ) > summary
+    {
+        margin-bottom: 0;
+    }
+
+    h3
+    {
+        color: colors.getThemedColor("muted");
+        font-size: 1.25rem;
+        font-style: italic;
+        font-weight: 400;
+        margin-bottom: 1.25rem;
+    }
+
+    div > h3 + ul
+    {
+        gap: 0.75rem;
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax( min( 100%, 9.5rem ), 1fr ) );
+    }
+
+    div > h3 + ul > li
+    {
+        gap: 0.75rem;
+        color: colors.getThemedColor("foreground-alt");
         border: 1px solid colors.getThemedColor("border");
         display: flex;
-        padding: 1.25rem 0.5rem;
-        overflow: hidden;
-        position: relative;
-        font-size: 0.8rem;
-        text-align: center;
-        font-weight: 500;
+        padding: 0.75rem 1rem;
         align-items: center;
         border-radius: var(--radius-md);
-        flex-direction: column;
-        justify-content: center;
         background-color: colors.getThemedColor("surface");
+    }
 
-        @media screen and (max-width: 640px)
-        {
-            flex-basis: 6.5rem;
-        }
+    details > ul
+    {
+        gap: 0.5rem 1.5rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
 
-        @media (hover: hover) and (pointer: fine)
-        {
-            &:hover::before
-            {
-                transform: scaleX(1);
-            }
-        }
+    details > ul > li
+    {
+        gap: 0.4rem;
+        color: colors.getThemedColor("foreground-alt");
+        display: inline-flex;
+        font-size: 0.9rem;
+        align-items: center;
+        font-family: var(--font-mono);
+    }
 
-        &::before
-        {
-            inset: auto 0 0;
-            height: 0.25rem;
-            content: "";
-            position: absolute;
-            transform: scaleX(0);
-            transition: transform var(--duration) var(--ease);
-            background-color: colors.getThemedColor("primary");
-        }
+    details > ul > li > :global(svg)
+    {
+        width: 1em;
+        color: color-mix(in oklab, var(--brand, currentColor) 50%, colors.getThemedColor("foreground-alt"));
+        height: 1em;
+        flex-shrink: 0;
     }
 
     li > :global(svg)
     {
-        width: 2.25rem;
-        height: 2.25rem;
+        width: 1.5rem;
+        color: color-mix(in oklab, var(--brand, currentColor) 50%, colors.getThemedColor("foreground-alt"));
+        height: 1.5rem;
+        flex-shrink: 0;
     }
 </style>

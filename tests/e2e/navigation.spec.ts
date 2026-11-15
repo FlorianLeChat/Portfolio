@@ -5,20 +5,31 @@ test.beforeEach( async ( { page } ) =>
     await page.goto( "/" );
 } );
 
-test( "Vérification de certains contenus", async ( { page } ) =>
+test( "Page content", async ( { page } ) =>
 {
     await expect( page ).toHaveTitle( "Florian Trayon - Portfolio" );
-    await expect( page.getByRole( "heading", { name: "Hi. I am Florian Trayon." } ) ).toBeVisible();
+    await expect( page.getByRole( "heading", { name: "Hi, I'm Florian Trayon" } ) ).toBeVisible();
     await expect( page.locator( "nav > ul a" ) ).toHaveText( [ "Projects", "Skills", "Blog", "Contact" ] );
-    await expect( page.locator( "#contact button, #contact a" ) ).toContainText( [
-        "Mail",
-        "GitLab",
+
+    const sections = await page.locator( "main > section" ).evaluateAll( ( nodes ) => nodes.map( ( node ) => node.id ) );
+
+    expect( sections ).toEqual( [ "about", "projects", "skills", "blog", "contact" ] );
+
+    await expect( page.locator( "#contact a" ) ).toContainText( [
+        "contact@florian-dev.fr",
+        "Online resume",
+        "LinkedIn",
         "GitHub",
-        "LinkedIn"
+        "GitLab"
     ] );
+
+    const resume = page.locator( "#about" ).getByRole( "link", { name: "Online resume" } );
+
+    await expect( resume ).toHaveAttribute( "href", "https://pages.florian-dev.fr/floriantrayon/Online-Resume/" );
+    await expect( resume ).toHaveAttribute( "target", "_blank" );
 } );
 
-test( "Basculement des thèmes de couleurs", async ( { page } ) =>
+test( "Colour theme switch", async ( { page } ) =>
 {
     await expect( page.locator( "html" ) ).toHaveClass( /light/ );
 
@@ -28,7 +39,20 @@ test( "Basculement des thèmes de couleurs", async ( { page } ) =>
     await expect( page.getByRole( "button", { name: "Switch to the light theme" } ) ).toBeVisible();
 } );
 
-test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
+test( "Language switch", async ( { page } ) =>
+{
+    await page.getByRole( "button", { name: "Version française" } ).click();
+
+    await expect( page ).toHaveURL( "/" );
+    await expect( page.locator( "html" ) ).toHaveAttribute( "lang", "fr" );
+    await expect( page.getByRole( "heading", { name: "Bonjour, je suis Florian Trayon" } ) ).toBeVisible();
+
+    await page.reload();
+
+    await expect( page.getByRole( "heading", { name: "Bonjour, je suis Florian Trayon" } ) ).toBeVisible();
+} );
+
+test( "Header navigation and scroll to top", async ( { page, isMobile } ) =>
 {
     const open = async ( name: string ) =>
     {
@@ -54,28 +78,35 @@ test( "Navigation par l'en-tête", async ( { page, isMobile } ) =>
 
     await open( "Contact" );
     await expect( page ).toHaveURL( "#contact" );
-} );
-
-test( "Retour en haut de page", async ( { page, isMobile } ) =>
-{
-    test.skip( isMobile, "Le bouton est masqué sous 1024px." );
-
-    await page.getByRole( "navigation" ).getByRole( "link", { name: "Contact" } ).click();
 
     await page.getByRole( "button", { name: "Scroll to top" } ).click();
 
     await expect.poll( () => page.evaluate( () => window.scrollY ) ).toBe( 0 );
 } );
 
-test( "Disponibilité du C.V", async ( { page } ) =>
+test( "Screenshot lightbox opens from the keyboard", async ( { page } ) =>
 {
-    const link = page.locator( "#about" ).getByRole( "link", { name: "Go to the online resume" } );
+    const button = page.getByRole( "button", { name: "Enlarge the screenshot of Raven Url Shortener" } );
+    const lightbox = page.locator( ".pswp--ui-visible" );
 
-    await expect( link ).toHaveAttribute( "href", "https://pages.florian-dev.fr/floriantrayon/Online-Resume/" );
-    await expect( link ).toHaveAttribute( "target", "_blank" );
+    // PhotoSwipe is imported after the page mounts, so an `Enter` pressed before
+    // it arrives reaches a button nothing listens to yet. Pressing again until
+    // the lightbox shows waits for exactly that, without a fixed delay.
+    await expect( async () =>
+    {
+        await button.press( "Enter" );
+        await expect( lightbox ).toBeVisible( { timeout: 1000 } );
+    } ).toPass();
+
+    // Keys are ignored while the opening zoom plays, for the same reason.
+    await expect( async () =>
+    {
+        await page.keyboard.press( "Escape" );
+        await expect( page.locator( ".pswp" ) ).toHaveCount( 0, { timeout: 1000 } );
+    } ).toPass();
 } );
 
-test( "Filtrage des compétences", async ( { page } ) =>
+test( "Skill filtering", async ( { page } ) =>
 {
     const selector = "#skills > div > ul > li";
     const count = await page.locator( selector ).count();
@@ -86,14 +117,26 @@ test( "Filtrage des compétences", async ( { page } ) =>
         [ "Other", "other" ]
     ] )
     {
-        await page.getByLabel( label ).click();
-        await expect( page ).toHaveURL( `?filter=${ value }` );
+        await page.locator( "#skills label" ).getByText( label, { exact: true } ).click();
+        await expect( page.locator( `#filter-${ value }` ) ).toBeChecked();
 
         expect( await page.locator( selector ).count() ).toBeLessThan( count );
     }
 
-    await page.getByLabel( "All" ).click();
-    await expect( page ).toHaveURL( "?filter=all" );
+    await page.locator( "#skills label" ).getByText( "All", { exact: true } ).click();
+    await expect( page.locator( "#filter-all" ) ).toBeChecked();
 
     expect( await page.locator( selector ).count() ).toBe( count );
+} );
+
+test( "Fold out the other projects", async ( { page } ) =>
+{
+    const cards = page.locator( "#projects > h3 + ul > li" );
+
+    await expect( cards ).toHaveCount( 3 );
+
+    await page.getByRole( "button", { name: /^See \d+ more projects$/ } ).click();
+
+    expect( await cards.count() ).toBeGreaterThan( 3 );
+    await expect( page.getByRole( "button", { name: /more projects$/ } ) ).toHaveCount( 0 );
 } );

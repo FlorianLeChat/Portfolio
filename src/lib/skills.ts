@@ -20,3 +20,15 @@ export const getAllSkills = () => registry;
 /// @author Claude
 export const getSkills = ( keys: string[] ): Skill[] =>
     keys.map( ( key ) => registry[ key ] ?? { name: key, icon: null, type: "other" } );
+
+/// Exposes a skill's brand colour to its glyph's stylesheet.
+///
+/// The colour is handed over as a custom property rather than painted
+/// directly, so the stylesheet can blend it with the theme's ink and keep it
+/// legible on both backgrounds.
+///
+/// @param {Skill} skill - Registry entry, possibly without a brand colour.
+/// @return {string | undefined} A `--brand` declaration, or `undefined` when the
+///         glyph should simply follow the text colour.
+/// @author Claude
+export const brandStyle = ( skill: Skill ) => ( skill.color ? `--brand: ${ skill.color }` : undefined );

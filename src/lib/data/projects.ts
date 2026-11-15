@@ -1,5 +1,10 @@
 import type { Project } from "#lib/types/Project.ts";
 
+/**
+ * Declaration order is display order.
+ *
+ * @author Claude
+ */
 export const PROJECTS = {
     portfolio: {
         title: "Portfolio",
@@ -10,6 +15,7 @@ export const PROJECTS = {
     filestorage: {
         title: "Simple File Storage",
         skills: [ "html5", "tailwindcss", "typescript", "nodejs", "react", "nextjs", "docker", "eslint" ],
+        featured: true,
         repository: "https://github.com/FlorianLeChat/Simple-File-Storage",
         demo: "https://files.florian-dev.fr/"
     },
@@ -33,6 +39,7 @@ export const PROJECTS = {
     ravenshortener: {
         title: "Raven Url Shortener",
         skills: [ "html5", "tailwindcss", "typescript", "nodejs", "react", "nextjs", "php", "symfony", "doctrine", "eslint" ],
+        featured: true,
         repository: "https://github.com/FlorianLeChat/Raven-Url-Shortener",
         demo: "https://url.florian-dev.fr/"
     },
@@ -62,6 +69,7 @@ export const PROJECTS = {
     terminalstories: {
         title: "Terminal Stories",
         skills: [ "html5", "tailwindcss", "typescript", "nodejs", "svelte", "eslint" ],
+        featured: true,
         repository: "https://github.com/FlorianLeChat/Terminal-Stories",
         demo: "https://pages.florian-dev.fr/floriantrayon/Terminal-Stories/"
     },

@@ -1,13 +1,13 @@
 <script lang="ts">
-    import { onMount } from "svelte";
+    import { onMount, tick } from "svelte";
     import type { Project } from "#lib";
-    import IconCode from "~icons/tabler/code";
+    import IconArrowDown from "~icons/tabler/arrow-down";
     import * as m from "#lib/locales/messages.js";
-    import Carousel from "#lib/components/Carousel.svelte";
     import type PhotoSwipeLightbox from "photoswipe/lightbox";
-    import IconExternalLink from "~icons/tabler/external-link";
     import SkillChips from "#lib/components/SkillChips.svelte";
     import { getImage, getDescription } from "#lib/projects.ts";
+    import ProjectShot from "#lib/components/ProjectShot.svelte";
+    import ProjectLinks from "#lib/components/ProjectLinks.svelte";
 
     let {
         projects,
@@ -19,6 +19,37 @@
         description?: string;
     } = $props();
 
+    const featured = $derived( projects.filter( ( [ , project ] ) => project.featured ) );
+    const others = $derived( projects.filter( ( [ , project ] ) => !project.featured ) );
+
+    const PREVIEWED = 3;
+    const FALLBACK_WIDTH = 1600;
+    const FALLBACK_HEIGHT = 1000;
+
+    let expanded = $state( false );
+
+    const shown = $derived( expanded ? others : others.slice( 0, PREVIEWED ) );
+    const hidden = $derived( others.length - PREVIEWED );
+
+    let section = $state<HTMLElement | null>( null );
+
+    /// Reveals the rest of the grid and moves the focus to its first card.
+    ///
+    /// The button that was pressed disappears with the click, which would drop
+    /// a keyboard or screen reader visitor back at the top of the page.
+    ///
+    /// @author Claude
+    const expand = async () =>
+    {
+        expanded = true;
+
+        await tick();
+
+        const first = section?.querySelectorAll( "section > ul:last-of-type > li" )[ PREVIEWED ];
+
+        first?.querySelector<HTMLElement>( "button, a" )?.focus();
+    };
+
     onMount( () =>
     {
         let lightbox: InstanceType<typeof PhotoSwipeLightbox>;
@@ -27,23 +58,27 @@
         {
             const [ PhotoSwipeLightbox, { default: PhotoSwipe } ] = await Promise.all( [
                 import( "photoswipe/lightbox" ).then( ( mod ) => mod.default ),
-                import( "photoswipe" )
+                import( "photoswipe" ),
+                import( "photoswipe/photoswipe.css" )
             ] );
 
             lightbox = new PhotoSwipeLightbox( {
                 gallery: "#projects",
-                children: "img",
+                children: "li > button",
                 pswpModule: PhotoSwipe
             } );
 
             lightbox.addFilter( "itemData", ( itemData ) =>
             {
-                const element = itemData.element as HTMLImageElement;
+                const image = ( itemData.element as HTMLElement | undefined )?.querySelector( "img" );
 
+                // A lazy image that has not loaded yet reports 0x0, which opened
+                // the lightbox on nothing. The fallback matches the thumbnail's
+                // 16:10 ratio and PhotoSwipe corrects it once the image arrives.
                 return {
-                    src: element?.src,
-                    width: element?.naturalWidth,
-                    height: element?.naturalHeight
+                    src: image?.currentSrc || image?.src,
+                    width: image?.naturalWidth || FALLBACK_WIDTH,
+                    height: image?.naturalHeight || FALLBACK_HEIGHT
                 };
             } );
 
@@ -59,7 +94,7 @@
     } );
 </script>
 
-<section id="projects">
+<section id="projects" bind:this={section}>
     {#if heading}
         <h2>{heading}</h2>
     {/if}
@@ -68,144 +103,164 @@
         <p>{description}</p>
     {/if}
 
-    <Carousel label={m.landing_carousel_projects()}>
-        {#each projects as [ key, value ] ( key )}
+    <ul>
+        {#each featured as [ key, value ] ( key )}
             <li>
-                <img src={getImage( key )} alt={value.title} loading="lazy" decoding="async" />
+                <ProjectShot src={getImage( key )} title={value.title} />
 
                 <div>
                     <h3>{value.title}</h3>
-
                     <p>{getDescription( key )}</p>
-
                     <SkillChips keys={value.skills} />
-
-                    <ul>
-                        {#if value.repository}
-                            <li>
-                                <a
-                                    rel="external noopener noreferrer"
-                                    href={value.repository}
-                                    title={m.landing_project_source()}
-                                    target="_blank"
-                                    aria-label={m.landing_project_source()}
-                                >
-                                    <IconCode aria-hidden="true" />
-                                </a>
-                            </li>
-                        {/if}
-
-                        {#if value.demo}
-                            <li>
-                                <a
-                                    rel="external noopener noreferrer"
-                                    href={value.demo}
-                                    title={m.landing_project_demo()}
-                                    target="_blank"
-                                    aria-label={m.landing_project_demo()}
-                                >
-                                    <IconExternalLink aria-hidden="true" />
-                                </a>
-                            </li>
-                        {/if}
-                    </ul>
+                    <ProjectLinks title={value.title} demo={value.demo} repository={value.repository} />
                 </div>
             </li>
         {/each}
-    </Carousel>
+    </ul>
+
+    {#if others.length > 0}
+        <h3>{m.landing_projects_others()}</h3>
+
+        <ul>
+            {#each shown as [ key, value ] ( key )}
+                <li>
+                    <ProjectShot src={getImage( key )} title={value.title} />
+                    <h4>{value.title}</h4>
+                    <p>{getDescription( key )}</p>
+                    <ProjectLinks title={value.title} demo={value.demo} repository={value.repository} />
+                </li>
+            {/each}
+        </ul>
+
+        {#if hidden > 0 && !expanded}
+            <button type="button" onclick={expand}>
+                {m.landing_projects_more( { count: hidden } )}
+                <IconArrowDown aria-hidden="true" />
+            </button>
+        {/if}
+    {/if}
 </section>
 
 <style lang="scss">
     @use "colors";
+    @use "buttons";
 
-    section > p
+    p + ul
     {
-        color: colors.getThemedColor("muted");
-        margin: -1.5rem auto 2.5rem;
-        max-width: 60ch;
-        text-align: center;
-    }
-
-    :global(section#projects > div > ul > li)
-    {
-        flex: 0 0 calc( 50% - 0.75rem );
-        border: 1px solid colors.getThemedColor("border");
+        gap: 6rem;
         display: flex;
-        overflow: hidden;
-        transition: transform var(--duration) var(--ease), border-color var(--duration) var(--ease);
-        border-radius: var(--radius-lg);
         flex-direction: column;
-        background-color: colors.getThemedColor("surface");
 
         @media screen and (max-width: 768px)
         {
-            flex-basis: 100%;
+            gap: 3rem;
         }
 
-        @media (hover: hover) and (pointer: fine)
+        > li
         {
-            &:hover
+            gap: 3.5rem;
+            display: grid;
+            align-items: center;
+            grid-template-columns: minmax( 0, 1.2fr ) minmax( 0, 1fr );
+
+            @media screen and (max-width: 900px)
             {
-                transform: translateY(-0.25rem);
-                box-shadow: colors.getThemedColor("container-shadow");
-                border-color: colors.getThemedColor("primary");
+                gap: 1.75rem;
+                grid-template-columns: minmax( 0, 1fr );
             }
         }
-    }
 
-    li > img
-    {
-        width: 100%;
-        cursor: zoom-in;
-        object-fit: cover;
-        aspect-ratio: 16 / 10;
-        border-bottom: 1px solid colors.getThemedColor("border");
-    }
-
-    li > div
-    {
-        gap: 1rem;
-        flex: 1;
-        display: flex;
-        padding: 1.5rem;
-        text-align: center;
-        align-items: center;
-        flex-direction: column;
-
-        > p
+        > li:nth-child(even)
         {
-            flex: 1;
-            color: colors.getThemedColor("muted");
-            font-size: 0.95rem;
-        }
+            grid-template-columns: minmax( 0, 1fr ) minmax( 0, 1.2fr );
 
-        > ul:last-of-type
-        {
-            gap: 0.75rem;
-            display: flex;
-
-            a
+            @media screen and (max-width: 900px)
             {
-                width: 2.75rem;
-                color: colors.getThemedColor("primary");
-                height: 2.75rem;
-                border: 2px solid colors.getThemedColor("primary");
-                display: flex;
-                font-size: 1.1rem;
-                transition: color var(--duration) var(--ease), background-color var(--duration) var(--ease);
-                align-items: center;
-                border-radius: 50%;
-                justify-content: center;
+                grid-template-columns: minmax( 0, 1fr );
+            }
 
-                @media (hover: hover) and (pointer: fine)
+            > div
+            {
+                order: -1;
+
+                @media screen and (max-width: 900px)
                 {
-                    &:hover
-                    {
-                        color: colors.getThemedColor("background");
-                        background-color: colors.getThemedColor("primary");
-                    }
+                    order: 0;
                 }
             }
         }
+
+        div
+        {
+            gap: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+
+            @media screen and (max-width: 768px)
+            {
+                gap: 1rem;
+
+                > p + :global(ul)
+                {
+                    display: none;
+                }
+            }
+        }
+
+        h3
+        {
+            font-size: clamp( 1.75rem, 1.3rem + 1.5vw, 2.25rem );
+        }
+
+        p
+        {
+            max-width: 52ch;
+        }
+    }
+
+    section > h3
+    {
+        margin: 7rem 0 2.5rem;
+        font-size: 1.75rem;
+
+        @media screen and (max-width: 768px)
+        {
+            margin-top: 5rem;
+        }
+    }
+
+    h3 + ul
+    {
+        gap: 3.5rem 2.5rem;
+        display: grid;
+        grid-template-columns: repeat( auto-fill, minmax( min( 100%, 19rem ), 1fr ) );
+
+        > li
+        {
+            gap: 0.75rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h4
+        {
+            margin-top: 0.75rem;
+        }
+
+        p
+        {
+            flex: 1;
+            color: colors.getThemedColor("muted");
+            font-size: 1rem;
+        }
+    }
+
+    section > button
+    {
+        @include buttons.pill();
+        @include buttons.pillGhost();
+
+        margin-top: 3rem;
     }
 </style>

@@ -1,17 +1,31 @@
+import { toSafeUrl } from "#lib/url.ts";
 import { withCache } from "#lib/cache.ts";
 import type { Commit } from "#lib/types/Commit.ts";
 import { PUBLIC_GITLAB_API_URL, PUBLIC_GITLAB_USERNAME, PUBLIC_GITHUB_USERNAME } from "$app/env/public";
 
-// Isomorphic on purpose. The same code prefetches at build time, so the card
-// paints immediately, and refreshes in the browser, so a build from three weeks
-// ago does not advertise three-week-old activity. Both GitLab and GitHub answer
-// with `Access-Control-Allow-Origin: *`, so no proxy is involved.
 const GITLAB_API = PUBLIC_GITLAB_API_URL;
 const GITLAB_USER = PUBLIC_GITLAB_USERNAME;
 const GITHUB_USER = PUBLIC_GITHUB_USERNAME;
 
 const TIMEOUT = 8_000;
 const PAGE_SIZE = 10;
+
+// `type(scope)!: ` as written by Conventional Commits. The prefix is for the
+// changelog tooling; a visitor reading the card only needs what follows it.
+const CONVENTIONAL_PREFIX = /^[a-z]+(\([^)]*\))?!?:\s*/i;
+
+/// Rewrites a commit subject for a reader rather than for tooling.
+///
+/// @param {string} title - First line of the commit message.
+/// @return {string} The subject without its Conventional Commits prefix,
+///         starting with a capital letter.
+/// @author Claude
+export const toReadableTitle = ( title: string ): string =>
+{
+    const subject = title.replace( CONVENTIONAL_PREFIX, "" ).trim() || title;
+
+    return subject.charAt( 0 ).toLocaleUpperCase() + subject.slice( 1 );
+};
 
 /// Fetches JSON, resolving to `null` instead of throwing.
 ///
@@ -46,9 +60,6 @@ const fetchGitLabCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
 {
     const users = await readJson( fetch, `${ GITLAB_API }/api/v4/users?username=${ GITLAB_USER }` );
 
-    // Every field below comes from an API this code does not own, so each one
-    // is checked rather than assumed: a shape that drifted used to throw out of
-    // here and, through `Promise.all`, take the other forge down with it.
     const user = Array.isArray( users ) ? users[ 0 ] : null;
 
     if ( !user?.id ) return null;
@@ -72,10 +83,12 @@ const fetchGitLabCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
         `${ GITLAB_API }/api/v4/projects/${ event.project_id }/repository/commits/${ event.push_data.commit_to }`
     ) ) as { title?: string; web_url?: string } | null;
 
-    if ( !commit?.title || !commit.web_url ) return null;
+    const url = toSafeUrl( String( commit?.web_url ?? "" ) );
+
+    if ( !commit?.title || !url ) return null;
 
     return {
-        url: commit.web_url,
+        url,
         date: new Date( event.created_at ).toISOString(),
         title: String( commit.title ),
         source: "gitlab",
@@ -86,8 +99,8 @@ const fetchGitLabCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
 /// Reads the most recent public push from GitHub.
 ///
 /// Unauthenticated requests are capped at 60 per hour per IP, and this costs
-/// two of them. At build time that IP is the CI runner and in the browser it is
-/// the visitor, so neither gets close.
+/// two of them. The requests come from the visitor's browser, so the cap is
+/// theirs and never gets close.
 ///
 /// @param {typeof fetch} fetch - The `fetch` implementation to use.
 /// @return {Promise<Commit | null>} The latest push, or `null` when
@@ -121,36 +134,24 @@ const fetchGitHubCommit = async ( fetch: typeof globalThis.fetch ): Promise<Comm
     };
 };
 
-/// Returns the most recent public commit across both forges.
+/// Returns the most recent public commit, GitHub first and GitLab second.
 ///
-/// The two lookups run concurrently and are independent: one being down, or
-/// answering with something unexpected, never hides the other. That is what
-/// `allSettled` buys over `all`, which would have dropped both on the first
-/// rejection.
+/// GitLab is only asked when GitHub answered nothing, so a visit costs one
+/// forge in the common case. Each lookup resolves to `null` on failure, which
+/// is what lets the fallback chain stay a plain `??`.
 ///
 /// @param {typeof fetch} fetch - The `fetch` implementation to use.
-/// @return {Promise<Commit | null>} The newer of the two, or `null` when
-///         neither answered.
+/// @return {Promise<Commit | null>} The GitHub commit, else the GitLab one,
+///         or `null` when neither answered.
 /// @author Claude
 const loadLatestCommit = async ( fetch: typeof globalThis.fetch ): Promise<Commit | null> =>
-{
-    const settled = await Promise.allSettled( [ fetchGitLabCommit( fetch ), fetchGitHubCommit( fetch ) ] );
-
-    const found = settled
-        .filter( ( result ) => result.status === "fulfilled" )
-        .map( ( result ) => result.value )
-        .filter( ( commit ): commit is Commit => commit !== null );
-
-    if ( found.length === 0 ) return null;
-
-    return found.toSorted( ( a, b ) => Date.parse( b.date ) - Date.parse( a.date ) )[ 0 ];
-};
+    ( await fetchGitHubCommit( fetch ) ) ?? ( await fetchGitLabCommit( fetch ) );
 
 /// Returns the most recent public commit, through the session cache.
 ///
 /// @param {typeof fetch} fetch - The `fetch` implementation to use.
-/// @return {Promise<Commit | null>} The newer of the two, or `null` when
-///         neither answered.
+/// @return {Promise<Commit | null>} The GitHub commit, else the GitLab one,
+///         or `null` when neither answered.
 /// @author Claude
 export const fetchLatestCommit = ( fetch: typeof globalThis.fetch ): Promise<Commit | null> =>
     withCache( "portfolio:commit", () => loadLatestCommit( fetch ) );

@@ -1,32 +1,35 @@
 @use "colors";
 
-/// Solid pill used by the call to action links.
+/// Solid button used by the call to action links.
 ///
-/// The hero, the blog section and the contact list each render their own
+/// The hero, the blog section and the contact block each render their own
 /// buttons, and scoped styles cannot reach across those components, so the shape
-/// lives in a mixin rather than in a selector list spanning all three.
+/// lives in a mixin rather than in a selector list spanning all three. Controls
+/// speak in the monospace voice of the interface, never in the reading face.
 ///
 /// @author Claude
 @mixin pill()
 {
-    gap: 0.5rem;
+    gap: 0.6rem;
     color: colors.getThemedColor("background");
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 1px solid colors.getThemedColor("primary");
     display: inline-flex;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.875rem;
     box-shadow: none;
+    min-height: 2.75rem;
     transition: transform var(--duration) var(--ease), color var(--duration) var(--ease), border-color var(--duration) var(--ease), background-color var(--duration) var(--ease);
-    font-weight: 600;
+    font-weight: 500;
     align-items: center;
-    font-family: inherit;
-    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    border-radius: var(--radius-sm);
     justify-content: center;
     background-color: colors.getThemedColor("primary");
 
     &:hover
     {
+        border-color: colors.getThemedColor("primary-alt");
         background-color: colors.getThemedColor("primary-alt");
     }
 
@@ -38,14 +41,16 @@
 
 /// Outlined variant of `pill()`, for the secondary action of a pair.
 ///
-/// Include it after `pill()`: it only restates the colours.
+/// Include it after `pill()`: it only restates the colours. The outline stays
+/// in the primary colour so the control keeps a 3:1 boundary against the page,
+/// which the hairline border token does not reach.
 ///
 /// @author Claude
 @mixin pillGhost()
 {
     color: colors.getThemedColor("primary");
-    border-color: colors.getThemedColor("border");
-    background-color: colors.getThemedColor("background-alt");
+    border-color: colors.getThemedColor("primary");
+    background-color: transparent;
 
     &:hover
     {

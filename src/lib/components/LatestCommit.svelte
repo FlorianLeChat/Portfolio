@@ -1,13 +1,13 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import * as m from "#lib/locales/messages.js";
-    import { fetchLatestCommit } from "#lib/commit.ts";
-    import { getLocale } from "#lib/locales/runtime.js";
     import IconGithub from "~icons/simple-icons/github";
     import IconGitlab from "~icons/simple-icons/gitlab";
-    import IconGitBranch from "~icons/tabler/git-branch";
+    import { getLocale } from "#lib/locales/runtime.js";
+    import IconGitCommit from "~icons/tabler/git-commit";
     import type { SkillIcon } from "#lib/types/Skill.ts";
     import type { Commit, CommitSource } from "#lib/types/Commit.ts";
+    import { fetchLatestCommit, toReadableTitle } from "#lib/commit.ts";
 
     let commit = $state<Commit | null>( null );
     let settled = $state( false );
@@ -62,19 +62,19 @@
 {#if commit}
     {@const SourceIcon = SOURCE_ICONS[ commit.source ]}
 
-    <aside>
-        <h2>
-            <IconGitBranch aria-hidden="true" />
+    <aside aria-labelledby="latest-commit">
+        <p id="latest-commit">
+            <IconGitCommit aria-hidden="true" />
             {m.landing_commit_title()}
-        </h2>
+        </p>
 
-        <a rel="external noopener noreferrer" href={commit.url} title={m.landing_commit_view()} target="_blank">
-            {commit.title}
+        <a lang="en" rel="external noopener noreferrer" href={commit.url} title={m.landing_commit_view()} target="_blank">
+            {toReadableTitle( commit.title )}
         </a>
 
         <p>
             <SourceIcon aria-hidden="true" />
-            {commit.project}
+            <code>{commit.project}</code>
             <time datetime={commit.date}>{formatAge( commit.date )}</time>
         </p>
     </aside>
@@ -87,60 +87,100 @@
 
     aside
     {
-        gap: 0.75rem;
+        gap: 0.9rem;
         width: 100%;
         border: 1px solid colors.getThemedColor("border");
         display: flex;
         padding: 1.5rem;
-        border-radius: var(--radius-lg);
+        box-shadow: colors.getThemedColor("container-shadow");
+        border-radius: var(--radius-md);
         flex-direction: column;
         background-color: colors.getThemedColor("surface");
 
-        h2
+        &:not( [aria-hidden="true"] )
         {
-            gap: 0.5rem;
-            color: colors.getThemedColor("accent");
-            display: inline-flex;
-            font-size: 0.7rem;
-            font-weight: 700;
-            align-items: center;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        a
-        {
-            color: colors.getThemedColor("foreground-alt");
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.4;
-
-            &:hover
-            {
-                color: colors.getThemedColor("primary");
-            }
-        }
-
-        p
-        {
-            gap: 0.5rem;
-            color: colors.getThemedColor("muted");
-            display: inline-flex;
-            flex-wrap: wrap;
-            font-size: 0.8rem;
-            align-items: center;
-        }
-
-        time::before
-        {
-            content: "·";
-            margin-right: 0.5rem;
+            animation: reveal calc( var(--duration) * 2 ) var(--ease);
         }
 
         &[aria-hidden="true"]
         {
             opacity: 0.4;
-            min-height: 8.5rem;
+            min-height: 9.5rem;
+
+            @media screen and (max-width: 1024px)
+            {
+                display: none;
+            }
         }
+    }
+
+    @keyframes reveal
+    {
+        from
+        {
+            opacity: 0;
+        }
+    }
+
+    p:first-child
+    {
+        gap: 0.5rem;
+        color: colors.getThemedColor("accent");
+        display: inline-flex;
+        font-size: 0.75rem;
+        align-items: center;
+        font-family: var(--font-mono);
+    }
+
+    a
+    {
+        color: colors.getThemedColor("foreground-alt");
+        display: flex;
+        font-size: 1.3rem;
+        text-wrap: pretty;
+        min-height: 2.75rem;
+        line-height: 1.3;
+        align-items: center;
+
+        &:hover
+        {
+            color: colors.getThemedColor("primary");
+            text-decoration: underline;
+        }
+    }
+
+    p:last-child
+    {
+        gap: 0.5rem;
+        color: colors.getThemedColor("muted");
+        display: flex;
+        flex-wrap: wrap;
+        font-size: 0.8rem;
+        align-items: center;
+        font-family: var(--font-mono);
+    }
+
+    code
+    {
+        min-width: 0;
+        font-family: inherit;
+        overflow-wrap: anywhere;
+    }
+
+    time
+    {
+        flex-shrink: 0;
+        white-space: nowrap;
+    }
+
+    time::before
+    {
+        content: "·";
+        margin-right: 0.5rem;
+    }
+
+    p:last-child > :global(svg)
+    {
+        flex-shrink: 0;
     }
 </style>

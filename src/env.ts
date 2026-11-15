@@ -4,8 +4,8 @@ export const variables = defineEnvVars( {
     PUBLIC_VERSION: {
         public: true,
         static: true,
-        description: "Version displayed in the footer (set by the CI)",
-        schema: ( value ) => value || "0.0.1"
+        description: "Version displayed in the footer (set by the CI, hidden when empty)",
+        schema: ( value ) => value ?? ""
     },
     PUBLIC_ANALYTICS_ENABLED: {
         public: true,

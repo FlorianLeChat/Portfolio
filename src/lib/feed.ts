@@ -1,16 +1,12 @@
+import { toSafeUrl } from "#lib/url.ts";
 import { withCache } from "#lib/cache.ts";
 import type { Post } from "#lib/types/Post.ts";
 import { PUBLIC_BLOG_FEED_URL } from "$app/env/public";
 
-// The feed is read in the browser on every visit rather than baked at build
-// time, so the cards are never older than the page the visitor is looking at.
-// `DOMParser` does the parsing, which means no XML library ships to the client.
 export const MAX_POSTS = 3;
 
 export const FEED_URL = PUBLIC_BLOG_FEED_URL;
 
-// Named entities a French blog realistically emits. Numeric forms are handled
-// generically below, so this only has to cover the named spellings.
 const NAMED_ENTITIES: Record<string, string> = {
     amp: "&",
     lt: "<",
@@ -80,11 +76,36 @@ const decodeEntities = ( value: string ): string =>
         return NAMED_ENTITIES[ lower ] ?? match;
     } );
 
+const NOT_PROSE = "blockquote, figure, pre, h1, h2, h3, h4, h5, h6, script, style";
+
+// The feed does not declare a `<language>`, and every post is written in
+// French. A `<language>` element, if one appears, takes precedence.
+export const FEED_LANGUAGE = "fr";
+
+/// Brings third party text in line with the typography of the site's own strings.
+///
+/// The site writes straight apostrophes and, in French, a non breaking space
+/// before `:` and a narrow one before `? ! ;`. The feed does neither, so a line
+/// could otherwise start with a lone punctuation mark.
+///
+/// @param {string} text - Title or excerpt read from the feed.
+/// @param {string} lang - BCP 47 tag of the post.
+/// @return {string} The same text with apostrophes and French spacing fixed.
+/// @author Claude
+export const toTypography = ( text: string, lang: string ): string =>
+{
+    const straight = text.replace( /’/g, "'" );
+
+    if ( !lang.toLowerCase().startsWith( "fr" ) ) return straight;
+
+    return straight.replace( / ([?!;])/g, " $1" ).replace( / :/g, " :" );
+};
+
 /// Turns a feed description into a short plain text excerpt.
 ///
 /// Feed descriptions carry escaped HTML. Both parsers hand that back already
-/// unescaped once, so what is left is stripping the tags and resolving any
-/// entity that was escaped twice at the source.
+/// unescaped once, so what is left is reading the prose paragraphs and
+/// resolving any entity that was escaped twice at the source.
 ///
 /// @param {string} html - Raw description content.
 /// @param {number} length - Maximum number of characters to keep.
@@ -92,9 +113,32 @@ const decodeEntities = ( value: string ): string =>
 /// @author Claude
 export const toExcerpt = ( html: string, length = 180 ): string =>
 {
-    const text = decodeEntities( html.replace( /<[^>]*>/g, " " ) ).replace( /\s+/g, " " ).trim();
+    const body = new DOMParser().parseFromString( html, "text/html" ).body;
+
+    body.querySelectorAll( NOT_PROSE ).forEach( ( node ) => node.remove() );
+
+    const paragraphs = [ ...body.querySelectorAll( "p" ) ].map( ( paragraph ) => paragraph.textContent ?? "" );
+    const prose = paragraphs.length > 0 ? paragraphs.join( " " ) : body.textContent ?? "";
+    const text = decodeEntities( prose ).replace( /\s+/g, " " ).trim();
 
     return text.length > length ? `${ text.slice( 0, length ).trimEnd() }…` : text;
+};
+
+/// Finds the first picture of a post.
+///
+/// The feed carries no `enclosure` nor `media:*` element: the pictures only
+/// exist inside the description, as relative paths on the blog's own origin.
+///
+/// @param {string} html - Raw description content.
+/// @param {string} base - URL the picture paths are relative to, the feed's.
+/// @return {string} An absolute URL, or an empty string when the post has no
+///         picture or its address cannot be resolved.
+/// @author Claude
+export const toImage = ( html: string, base: string ): string =>
+{
+    const source = new DOMParser().parseFromString( html, "text/html" ).querySelector( "img" )?.getAttribute( "src" );
+
+    return source ? toSafeUrl( source, base ) : "";
 };
 
 /// Normalises a feed date into ISO 8601.
@@ -112,7 +156,8 @@ export const toIsoDate = ( value: string ): string =>
 /// Reads the blog feed and returns the most recent posts.
 ///
 /// Every failure path resolves to an empty list, so an unreachable blog leaves
-/// the section unrendered instead of breaking the page.
+/// the section with nothing but its link to the blog instead of breaking the
+/// page.
 ///
 /// @return {Promise<Post[]>} At most `MAX_POSTS` entries, newest first.
 /// @author Claude
@@ -129,17 +174,22 @@ const loadPosts = async (): Promise<Post[]> =>
         if ( document.querySelector( "parsererror" ) ) return [];
 
         const text = ( item: Element, tag: string ) => item.querySelector( tag )?.textContent ?? "";
+        const lang = document.querySelector( "channel > language" )?.textContent?.trim() || FEED_LANGUAGE;
 
-        return [ ...document.querySelectorAll( "item" ) ].slice( 0, MAX_POSTS ).map( ( item ) => ( {
-            title: text( item, "title" ),
-            link: text( item, "link" ),
-            date: toIsoDate( text( item, "pubDate" ) ),
-            excerpt: toExcerpt( text( item, "description" ) )
-        } ) );
+        return [ ...document.querySelectorAll( "item" ) ]
+            .map( ( item ) => ( {
+                lang,
+                title: toTypography( text( item, "title" ), lang ),
+                link: toSafeUrl( text( item, "link" ).trim(), FEED_URL ),
+                date: toIsoDate( text( item, "pubDate" ) ),
+                image: toImage( text( item, "description" ), FEED_URL ),
+                excerpt: toTypography( toExcerpt( text( item, "description" ) ), lang )
+            } ) )
+            .filter( ( post ) => post.link !== "" )
+            .slice( 0, MAX_POSTS );
     }
     catch
     {
-        // Network error, timeout or malformed feed: the section stays hidden.
         return [];
     }
 };
@@ -148,4 +198,4 @@ const loadPosts = async (): Promise<Post[]> =>
 ///
 /// @return {Promise<Post[]>} At most `MAX_POSTS` entries, newest first.
 /// @author Claude
-export const fetchPosts = (): Promise<Post[]> => withCache( "portfolio:feed", loadPosts );
+export const fetchPosts = (): Promise<Post[]> => withCache( "portfolio:feed:v4", loadPosts );
