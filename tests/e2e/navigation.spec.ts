@@ -79,6 +79,11 @@ test( "Header navigation and scroll to top", async ( { page, isMobile } ) =>
     await open( "Contact" );
     await expect( page ).toHaveURL( "#contact" );
 
+    // The button hides while the footer is in view, which it is at `#contact`:
+    // clicking from there only works while the smooth scroll is still running.
+    await open( "Skills" );
+    await expect( page ).toHaveURL( "#skills" );
+
     await page.getByRole( "button", { name: "Scroll to top" } ).click();
 
     await expect.poll( () => page.evaluate( () => window.scrollY ) ).toBe( 0 );
