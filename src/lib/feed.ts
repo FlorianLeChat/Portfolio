@@ -124,19 +124,21 @@ export const toExcerpt = ( html: string, length = 180 ): string =>
     return text.length > length ? `${ text.slice( 0, length ).trimEnd() }…` : text;
 };
 
-/// Finds the first picture of a post.
+/// Finds the cover picture of a post.
 ///
-/// The feed carries no `enclosure` nor `media:*` element: the pictures only
-/// exist inside the description, as relative paths on the blog's own origin.
+/// The cover declared by the feed (`media:thumbnail`) wins. Older feeds
+/// carry none, so the first picture of the description is the fallback.
 ///
 /// @param {string} html - Raw description content.
 /// @param {string} base - URL the picture paths are relative to, the feed's.
+/// @param {string} declared - Cover declared by the item, empty when absent.
 /// @return {string} An absolute URL, or an empty string when the post has no
 ///         picture or its address cannot be resolved.
 /// @author Claude
-export const toImage = ( html: string, base: string ): string =>
+export const toImage = ( html: string, base: string, declared = "" ): string =>
 {
-    const source = new DOMParser().parseFromString( html, "text/html" ).querySelector( "img" )?.getAttribute( "src" );
+    const source = declared.trim()
+      || new DOMParser().parseFromString( html, "text/html" ).querySelector( "img" )?.getAttribute( "src" );
 
     return source ? toSafeUrl( source, base ) : "";
 };
@@ -182,7 +184,11 @@ const loadPosts = async (): Promise<Post[]> =>
                 title: toTypography( text( item, "title" ), lang ),
                 link: toSafeUrl( text( item, "link" ).trim(), FEED_URL ),
                 date: toIsoDate( text( item, "pubDate" ) ),
-                image: toImage( text( item, "description" ), FEED_URL ),
+                image: toImage(
+                    text( item, "description" ),
+                    FEED_URL,
+                    item.getElementsByTagName( "media:thumbnail" )[ 0 ]?.getAttribute( "url" ) ?? ""
+                ),
                 excerpt: toTypography( toExcerpt( text( item, "description" ) ), lang )
             } ) )
             .filter( ( post ) => post.link !== "" )
@@ -198,4 +204,4 @@ const loadPosts = async (): Promise<Post[]> =>
 ///
 /// @return {Promise<Post[]>} At most `MAX_POSTS` entries, newest first.
 /// @author Claude
-export const fetchPosts = (): Promise<Post[]> => withCache( "portfolio:feed:v4", loadPosts );
+export const fetchPosts = (): Promise<Post[]> => withCache( "portfolio:feed", loadPosts );
